@@ -50,6 +50,32 @@
             margin: 40px auto;
             padding: 0 20px;
         }
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .guide-button, .machine-button, .printer-button, .back-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+        .guide-button:hover, .machine-button:hover, .printer-button:hover, .back-button:hover {
+            background-color: #0056b3;
+        }
+        .machine-guides, .printer-guides {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #e9ecef;
+        }
         footer {
             background-color: #222;
             color: white;
@@ -58,6 +84,29 @@
             margin-top: 40px;
         }
     </style>
+    <script>
+        function showMachineGuides() {
+            document.querySelector('.machine-guides').style.display = 'block';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function showPrinterGuides() {
+            document.body.innerHTML = `
+                <header>
+                    <h1>Fablab Spinderihallerne</h1>
+                </header>
+                <div class="printer-guides">
+                    <h2>3D-printere</h2>
+                    <a class="printer-button" href="prusa-mini.html">Prusa Mini</a>
+                    <a class="printer-button" href="prusa-mk3s.html">Prusa MK3S</a>
+                    <a class="printer-button" href="prusa-mk4.html">Prusa MK4</a>
+                    <a class="printer-button" href="prusa-xl.html">Prusa XL</a>
+                    <br>
+                    <a href="index.html" class="back-button">Tilbage til forsiden</a>
+                </div>
+            `;
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -65,7 +114,6 @@
     </header>
     <nav>
         <a href="#om">Om</a>
-        <a href="#aktiviteter">Aktiviteter</a>
         <a href="#kontakt">Kontakt</a>
     </nav>
     <div class="hero">
@@ -76,14 +124,22 @@
             <h2>Om Fablab Spinderihallerne</h2>
             <p>Fablab Spinderihallerne er et åbent værkstedsmiljø, hvor du kan arbejde med digital fabrikation, elektronik, prototyper og kreativ udvikling. Vi stiller udstyr og viden til rådighed for både begyndere og eksperter.</p>
         </section>
-        <section id="aktiviteter">
-            <h2>Aktiviteter</h2>
-            <p>Vi afholder workshops, åbent værksted, skoleforløb og events som Retro Game Days. Kig forbi og få en introduktion til 3D-print, laserskæring, CNC-fræsning og meget mere.</p>
-        </section>
         <section id="kontakt">
             <h2>Kontakt</h2>
             <p>Du finder os i Spinderihallerne i Vejle. Har du spørgsmål, er du velkommen til at kontakte os på <a href="mailto:fablab@vejle.dk">fablab@vejle.dk</a>.</p>
         </section>
+        <div class="button-container">
+            <button class="guide-button" onclick="showMachineGuides()">Guides til maskiner</button>
+        </div>
+    </div>
+    <div class="machine-guides">
+        <h2>Guides til maskiner</h2>
+        <button class="machine-button" onclick="showPrinterGuides()">3D print</button>
+        <button class="machine-button">Laserskærer</button>
+        <button class="machine-button">Vinylskærer</button>
+        <button class="machine-button">Varmepresse</button>
+        <button class="machine-button">CNC fræser</button>
+        <button class="machine-button">Airbrush maling</button>
     </div>
     <footer>
         &copy; 2025 Fablab Spinderihallerne. Alle rettigheder forbeholdes.
