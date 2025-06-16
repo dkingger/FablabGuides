@@ -21,6 +21,10 @@
             margin-top: 40px;
             color: #444;
         }
+        h3 {
+            margin-top: 20px;
+            color: #555;
+        }
         ul {
             list-style-type: disc;
             margin-left: 20px;
@@ -37,6 +41,38 @@
         a:hover {
             background-color: #0056b3;
         }
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .carousel img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .carousel .caption {
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .carousel-controls button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .carousel-controls button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -44,11 +80,24 @@
     <p>MK3S er en solid og alsidig 3D-printer fra Prusa, som er velegnet til både begyndere og erfarne brugere. Den er kendt for sin pålidelighed, gode kvalitet og automatiske features.</p>
 
     <h2>Sådan bruger du MK3S</h2>
+
+    <h3>Skift filament</h3>
+    <div class="carousel">
+        <img id="carouselImage" src="billeder/prusa-mk3s/skift filament/main_screen.avif" alt="Skift filament billede">
+        <div class="caption" id="carouselCaption">1. Startskærm: Vælg "Unload Filament"</div>
+        <div class="carousel-controls">
+            <button onclick="prevSlide()">Tilbage</button>
+            <button onclick="nextSlide()">Næste</button>
+        </div>
+    </div>
+
+    <h3>Start print</h3>
     <ul>
-        <li>Tænd printeren og vent til displayet viser hovedmenuen.</li>
-        <li>Vælg "Preheat" og vælg det materiale du skal printe med (f.eks. PLA).</li>
-        <li>Vælg "Load Filament" og følg instruktionerne på displayet.</li>
-        <li>Indsæt dit SD-kort med .gcode-filen og vælg "Print from SD".</li>
+        <li>Tænd printeren og vent til hovedmenuen vises.</li>
+        <li>Vælg "Preheat" og vælg det passende materiale (f.eks. PLA).</li>
+        <li>Indsæt SD-kortet med din .gcode-fil.</li>
+        <li>Vælg "Print from SD" og vælg den fil, du vil printe.</li>
+        <li>Printeren vil varme op og starte printet automatisk.</li>
     </ul>
 
     <h2>Prusaslicer</h2>
@@ -68,5 +117,63 @@
     </ul>
 
     <a href="index.html">Tilbage til forsiden</a>
+
+    <script>
+        const images = [
+            {
+                src: "billeder/prusa-mk3s/skift filament/main_screen.avif",
+                caption: "1. Startskærm: Vælg 'Unload Filament'"
+            },
+            {
+                src: "billeder/prusa-mk3s/skift filament/unload_filament.avif",
+                caption: "2. Vælg 'Unload Filament' i menuen"
+            },
+            {
+                src: "billeder/prusa-mk3s/skift filament/filament_choose.avif",
+                caption: "3. Vælg filamenttype, f.eks. PLA"
+            },
+            {
+                src: "billeder/prusa-mk3s/skift filament/preheat_to_unload.avif",
+                caption: "4. Printeren varmer op til korrekt temperatur"
+            },
+            {
+                src: "billeder/prusa-mk3s/skift filament/press_knob_unload.avif",
+                caption: "5. Tryk på knappen for at bekræfte"
+            },
+            {
+                src: "billeder/prusa-mk3s/skift filament/hotend.avif",
+                caption: "6. Træk forsigtigt filamentet ud, når det er opvarmet"
+            },
+            {
+                src: "billeder/prusa-mk3s/skift filament/extrude.avif",
+                caption: "7. Indsæt nyt filament og tryk på 'Load Filament'"
+            },
+            {
+                src: "billeder/prusa-mk3s/skift filament/correct_extrude.avif",
+                caption: "8. Kontroller at filamentet ekstruderes korrekt"
+            },
+            {
+                src: "billeder/prusa-mk3s/skift filament/printer_ok.avif",
+                caption: "9. Bekræft og afslut proceduren"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            document.getElementById("carouselImage").src = images[currentIndex].src;
+            document.getElementById("carouselCaption").textContent = images[currentIndex].caption;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateCarousel();
+        }
+    </script>
 </body>
 </html>
