@@ -87,24 +87,14 @@
     <script>
         function showMachineGuides() {
             document.querySelector('.machine-guides').style.display = 'block';
+            document.querySelector('.printer-guides').style.display = 'none';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
 
         function showPrinterGuides() {
-            document.body.innerHTML = `
-                <header>
-                    <h1>Fablab Spinderihallerne</h1>
-                </header>
-                <div class="printer-guides">
-                    <h2>3D-printere</h2>
-                    <a class="printer-button" href="prusa-mini.html">Prusa Mini</a>
-                    <a class="printer-button" href="prusa-mk3s.html">Prusa MK3S</a>
-                    <a class="printer-button" href="prusa-mk4.html">Prusa MK4</a>
-                    <a class="printer-button" href="prusa-xl.html">Prusa XL</a>
-                    <br>
-                    <a href="index.html" class="back-button">Tilbage til forsiden</a>
-                </div>
-            `;
+            document.querySelector('.machine-guides').style.display = 'none';
+            document.querySelector('.printer-guides').style.display = 'block';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
 </head>
@@ -132,6 +122,7 @@
             <button class="guide-button" onclick="showMachineGuides()">Guides til maskiner</button>
         </div>
     </div>
+
     <div class="machine-guides">
         <h2>Guides til maskiner</h2>
         <button class="machine-button" onclick="showPrinterGuides()">3D print</button>
@@ -141,6 +132,17 @@
         <button class="machine-button">CNC fræser</button>
         <button class="machine-button">Airbrush maling</button>
     </div>
+
+    <div class="printer-guides">
+        <h2>3D-printere</h2>
+        <a class="printer-button" href="prusa-mini.html">Prusa Mini</a>
+        <a class="printer-button" href="prusa-mk3s.html">Prusa MK3S</a>
+        <a class="printer-button" href="prusa-mk4.html">Prusa MK4</a>
+        <a class="printer-button" href="prusa-xl.html">Prusa XL</a>
+        <br>
+        <button class="back-button" onclick="showMachineGuides()">Tilbage til maskiner</button>
+    </div>
+
     <footer>
         &copy; 2025 Fablab Spinderihallerne. Alle rettigheder forbeholdes.
     </footer>
