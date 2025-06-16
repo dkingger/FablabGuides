@@ -102,12 +102,14 @@
     </div>
 
     <h2>Prusaslicer</h2>
-    <p>Til MK3S anbefales det at bruge <strong>PrusaSlicer</strong>, som er gratis og optimeret til Prusa-printere. Programmet bruges til at konvertere dine 3D-modeller (.stl) til printbare filer (.gcode).</p>
-    <ul>
-        <li>Hent programmet fra: <a href="https://www.prusa3d.com/prusaslicer/" target="_blank">prusa3d.com/prusaslicer</a></li>
-        <li>Vælg "Original Prusa i3 MK3S" som printerprofil.</li>
-        <li>Importér din .stl-fil, vælg indstillinger og eksporter .gcode til SD-kort.</li>
-    </ul>
+    <div class="carousel">
+        <img id="slicerImage" src="billeder/prusa-mk3s/prusaslicer/open_prusaslicer.avif" alt="PrusaSlicer billede">
+        <div class="caption" id="slicerCaption">1. Åbn PrusaSlicer</div>
+        <div class="carousel-controls">
+            <button onclick="prevSlicerSlide()">Tilbage</button>
+            <button onclick="nextSlicerSlide()">Næste</button>
+        </div>
+    </div>
 
     <h2>Tips og tricks</h2>
     <ul>
@@ -141,8 +143,22 @@
             { src: "billeder/prusa-mk3s/start_print/kontrol_first_lag.avif", caption: "6. Hold øje med første lag og justér Z-offset hvis nødvendigt" }
         ];
 
+        const slicerImages = [
+            { src: "billeder/prusa-mk3s/prusaslicer/open_prusaslicer.avif", caption: "1. Åbn PrusaSlicer" },
+            { src: "billeder/prusa-mk3s/prusaslicer/choose_stl_file.avif", caption: "2. Vælg din STL-fil" },
+            { src: "billeder/prusa-mk3s/prusaslicer/choose_printer.avif", caption: "3. Vælg MK3S som printerprofil" },
+            { src: "billeder/prusa-mk3s/prusaslicer/choose_fillament_slicer.avif", caption: "4. Vælg korrekt filamentprofil" },
+            { src: "billeder/prusa-mk3s/prusaslicer/choose_layer_height.avif", caption: "5. Vælg laghøjde" },
+            { src: "billeder/prusa-mk3s/prusaslicer/Slice_3D_print.avif", caption: "6. Klik 'Slice Now'" },
+            { src: "billeder/prusa-mk3s/prusaslicer/choose_support.avif", caption: "7. Tilføj support hvis nødvendigt" },
+            { src: "billeder/prusa-mk3s/prusaslicer/check_weight_print.avif", caption: "8. Kontroller printtid og vægt" },
+            { src: "billeder/prusa-mk3s/prusaslicer/Export_g_code.avif", caption: "9. Eksporter G-code til SD-kort" },
+            { src: "billeder/prusa-mk3s/prusaslicer/eject_drive.avif", caption: "10. Fjern sikkert SD-kortet" }
+        ];
+
         let currentIndex = 0;
         let currentPrintIndex = 0;
+        let currentSlicerIndex = 0;
 
         function updateCarousel() {
             document.getElementById("carouselImage").src = images[currentIndex].src;
@@ -172,6 +188,21 @@
         function prevPrintSlide() {
             currentPrintIndex = (currentPrintIndex - 1 + startPrintImages.length) % startPrintImages.length;
             updatePrintCarousel();
+        }
+
+        function updateSlicerCarousel() {
+            document.getElementById("slicerImage").src = slicerImages[currentSlicerIndex].src;
+            document.getElementById("slicerCaption").textContent = slicerImages[currentSlicerIndex].caption;
+        }
+
+        function nextSlicerSlide() {
+            currentSlicerIndex = (currentSlicerIndex + 1) % slicerImages.length;
+            updateSlicerCarousel();
+        }
+
+        function prevSlicerSlide() {
+            currentSlicerIndex = (currentSlicerIndex - 1 + slicerImages.length) % slicerImages.length;
+            updateSlicerCarousel();
         }
     </script>
 </body>
