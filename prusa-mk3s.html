@@ -92,13 +92,14 @@
     </div>
 
     <h3>Start print</h3>
-    <ul>
-        <li>Tænd printeren og vent til hovedmenuen vises.</li>
-        <li>Vælg "Preheat" og vælg det passende materiale (f.eks. PLA).</li>
-        <li>Indsæt SD-kortet med din .gcode-fil.</li>
-        <li>Vælg "Print from SD" og vælg den fil, du vil printe.</li>
-        <li>Printeren vil varme op og starte printet automatisk.</li>
-    </ul>
+    <div class="carousel">
+        <img id="startPrintImage" src="billeder/prusa-mk3s/start_print/kontrol_start_printer.avif" alt="Start print billede">
+        <div class="caption" id="startPrintCaption">1. Kontroller at printeren er tændt og klar</div>
+        <div class="carousel-controls">
+            <button onclick="prevPrintSlide()">Tilbage</button>
+            <button onclick="nextPrintSlide()">Næste</button>
+        </div>
+    </div>
 
     <h2>Prusaslicer</h2>
     <p>Til MK3S anbefales det at bruge <strong>PrusaSlicer</strong>, som er gratis og optimeret til Prusa-printere. Programmet bruges til at konvertere dine 3D-modeller (.stl) til printbare filer (.gcode).</p>
@@ -120,45 +121,28 @@
 
     <script>
         const images = [
-            {
-                src: "billeder/prusa-mk3s/skift filament/main_screen.avif",
-                caption: "1. Startskærm: Vælg 'Unload Filament'"
-            },
-            {
-                src: "billeder/prusa-mk3s/skift filament/unload_filament.avif",
-                caption: "2. Vælg 'Unload Filament' i menuen"
-            },
-            {
-                src: "billeder/prusa-mk3s/skift filament/filament_choose.avif",
-                caption: "3. Vælg filamenttype, f.eks. PLA"
-            },
-            {
-                src: "billeder/prusa-mk3s/skift filament/preheat_to_unload.avif",
-                caption: "4. Printeren varmer op til korrekt temperatur"
-            },
-            {
-                src: "billeder/prusa-mk3s/skift filament/press_knob_unload.avif",
-                caption: "5. Tryk på knappen for at bekræfte"
-            },
-            {
-                src: "billeder/prusa-mk3s/skift filament/hotend.avif",
-                caption: "6. Træk forsigtigt filamentet ud, når det er opvarmet"
-            },
-            {
-                src: "billeder/prusa-mk3s/skift filament/extrude.avif",
-                caption: "7. Indsæt nyt filament og tryk på 'Load Filament'"
-            },
-            {
-                src: "billeder/prusa-mk3s/skift filament/correct_extrude.avif",
-                caption: "8. Kontroller at filamentet ekstruderes korrekt"
-            },
-            {
-                src: "billeder/prusa-mk3s/skift filament/printer_ok.avif",
-                caption: "9. Bekræft og afslut proceduren"
-            }
+            { src: "billeder/prusa-mk3s/skift filament/main_screen.avif", caption: "1. Startskærm: Vælg 'Unload Filament'" },
+            { src: "billeder/prusa-mk3s/skift filament/unload_filament.avif", caption: "2. Vælg 'Unload Filament' i menuen" },
+            { src: "billeder/prusa-mk3s/skift filament/filament_choose.avif", caption: "3. Vælg filamenttype, f.eks. PLA" },
+            { src: "billeder/prusa-mk3s/skift filament/preheat_to_unload.avif", caption: "4. Printeren varmer op til korrekt temperatur" },
+            { src: "billeder/prusa-mk3s/skift filament/press_knob_unload.avif", caption: "5. Tryk på knappen for at bekræfte" },
+            { src: "billeder/prusa-mk3s/skift filament/hotend.avif", caption: "6. Træk forsigtigt filamentet ud, når det er opvarmet" },
+            { src: "billeder/prusa-mk3s/skift filament/extrude.avif", caption: "7. Indsæt nyt filament og tryk på 'Load Filament'" },
+            { src: "billeder/prusa-mk3s/skift filament/correct_extrude.avif", caption: "8. Kontroller at filamentet ekstruderes korrekt" },
+            { src: "billeder/prusa-mk3s/skift filament/printer_ok.avif", caption: "9. Bekræft og afslut proceduren" }
+        ];
+
+        const startPrintImages = [
+            { src: "billeder/prusa-mk3s/start_print/kontrol_start_printer.avif", caption: "1. Kontroller at printeren er tændt og klar" },
+            { src: "billeder/prusa-mk3s/start_print/wipe_surface.avif", caption: "2. Rengør byggepladen med isopropylalkohol" },
+            { src: "billeder/prusa-mk3s/start_print/insert_SD_kort.avif", caption: "3. Indsæt SD-kortet med din .gcode-fil" },
+            { src: "billeder/prusa-mk3s/start_print/choose_file.avif", caption: "4. Vælg den fil du vil printe fra menuen" },
+            { src: "billeder/prusa-mk3s/start_print/printer_varmer_start.avif", caption: "5. Printeren varmer op og starter print" },
+            { src: "billeder/prusa-mk3s/start_print/kontrol_first_lag.avif", caption: "6. Hold øje med første lag og justér Z-offset hvis nødvendigt" }
         ];
 
         let currentIndex = 0;
+        let currentPrintIndex = 0;
 
         function updateCarousel() {
             document.getElementById("carouselImage").src = images[currentIndex].src;
@@ -173,6 +157,21 @@
         function prevSlide() {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
             updateCarousel();
+        }
+
+        function updatePrintCarousel() {
+            document.getElementById("startPrintImage").src = startPrintImages[currentPrintIndex].src;
+            document.getElementById("startPrintCaption").textContent = startPrintImages[currentPrintIndex].caption;
+        }
+
+        function nextPrintSlide() {
+            currentPrintIndex = (currentPrintIndex + 1) % startPrintImages.length;
+            updatePrintCarousel();
+        }
+
+        function prevPrintSlide() {
+            currentPrintIndex = (currentPrintIndex - 1 + startPrintImages.length) % startPrintImages.length;
+            updatePrintCarousel();
         }
     </script>
 </body>
