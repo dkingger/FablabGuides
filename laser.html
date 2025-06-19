@@ -80,30 +80,36 @@
     <h1>Laserskærer</h1>
     <p>Herunder finder du en trin-for-trin guide til brug af LightBurn med laserskæreren.</p>
 
-    <h2>LightBurn workflow</h2>
-
+    <h2>Sæt materialetykkelse</h2>
     <div class="carousel">
-        <img id="carouselImage" src="" alt="LightBurn billede">
-        <div class="caption" id="carouselCaption"></div>
+        <img id="carouselImage1" src="" alt="Materialetykkelse billede">
+        <div class="caption" id="carouselCaption1"></div>
         <div class="carousel-controls">
-            <button onclick="prevSlide()">Tilbage</button>
-            <button onclick="nextSlide()">Næste</button>
+            <button onclick="prevSlide1()">Tilbage</button>
+            <button onclick="nextSlide1()">Næste</button>
         </div>
     </div>
 
-  <!--  <ul>
-        <li>Importer din tegning og tjek op på om farver passer</li>
-        <li>Vælg korrekte skære- og graveringsindstilling</li>
-        <li>Sæt origin i LightBurn og på maskinen.</li>
-        <li>Brug "Frame" til at kontrollere placeringen.</li>
-        <li>Start laseren, når alt ser korrekt ud.</li>
-    </ul>-->
+    <h2>LightBurn workflow</h2>
+    <div class="carousel">
+        <img id="carouselImage2" src="" alt="LightBurn billede">
+        <div class="caption" id="carouselCaption2"></div>
+        <div class="carousel-controls">
+            <button onclick="prevSlide2()">Tilbage</button>
+            <button onclick="nextSlide2()">Næste</button>
+        </div>
+    </div>
 
     <a href="index.html">Tilbage til forsiden</a>
     <a class="top-button" href="#top">Til toppen</a>
 
     <script>
-        const images = [
+        const images1 = [
+            { src: "billeder/laser/materiale/01_vaelg_materiale.jpeg", caption: "1. Vælg korrekt materiale" },
+            { src: "billeder/laser/materiale/02_indstil_tykkelse.jpeg", caption: "2. Indstil tykkelse på materialet" }
+        ];
+
+        const images2 = [
             { src: "billeder/laser/lightburn/01tom_skaerm.jpeg", caption: "1. Start Lightburn eller vælg 'Ny' i fanen filer" },
             { src: "billeder/laser/lightburn/02reset_to_default.jpeg", caption: "2. Gendan standardindstillinger hvis funktioner mangler" },
             { src: "billeder/laser/lightburn/03importer_tegning.jpeg", caption: "3. Importer tegning" },
@@ -115,32 +121,46 @@
             { src: "billeder/laser/lightburn/09skift_til_laser.jpeg", caption: "9. Skift til laser styring" },
             { src: "billeder/laser/lightburn/10marker_hele_figuren.jpeg", caption: "10. Sørg for at alt der skal skæres/graveres er markeret" },
             { src: "billeder/laser/lightburn/11saet_origin_ightburn.jpeg", caption: "11. Vælg et origin i Lightburn" },
-            { src: "billeder/laser/lightburn/12saet_origin_paa_laser.jpeg", caption: "12. Sæt origin samme sted fysisk på maskinen ved hjælp at piletaster ved displayet" },
+            { src: "billeder/laser/lightburn/12saet_origin_paa_laser.jpeg", caption: "12. Sæt origin samme sted fysisk på maskinen ved hjælp af piletaster ved displayet" },
             { src: "billeder/laser/lightburn/13frame_og_start_laser.jpeg", caption: "13a. Brug 'Frame' i Lightburn og tjek om der er plads på materialet" },
             { src: "billeder/laser/lightburn/12saet_origin_paa_laser.jpeg", caption: "13b. Tryk Start for at starte skæringen/graveringen" }
         ];
 
-        let currentIndex = 0;
+        let index1 = 0;
+        let index2 = 0;
 
-        function updateCarousel() {
-            const img = document.getElementById("carouselImage");
-            const caption = document.getElementById("carouselCaption");
-            img.src = images[currentIndex].src;
-            caption.textContent = images[currentIndex].caption;
+        function updateCarousel1() {
+            document.getElementById("carouselImage1").src = images1[index1].src;
+            document.getElementById("carouselCaption1").textContent = images1[index1].caption;
         }
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateCarousel();
+        function nextSlide1() {
+            index1 = (index1 + 1) % images1.length;
+            updateCarousel1();
         }
 
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateCarousel();
+        function prevSlide1() {
+            index1 = (index1 - 1 + images1.length) % images1.length;
+            updateCarousel1();
         }
 
-        // 👇 Sikrer at første billede vises
-        updateCarousel();
+        function updateCarousel2() {
+            document.getElementById("carouselImage2").src = images2[index2].src;
+            document.getElementById("carouselCaption2").textContent = images2[index2].caption;
+        }
+
+        function nextSlide2() {
+            index2 = (index2 + 1) % images2.length;
+            updateCarousel2();
+        }
+
+        function prevSlide2() {
+            index2 = (index2 - 1 + images2.length) % images2.length;
+            updateCarousel2();
+        }
+
+        updateCarousel1();
+        updateCarousel2();
     </script>
 </body>
 </html>
