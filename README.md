@@ -1,3 +1,3 @@
 # FablabGuides
 
-[here]((https://dkingger.github.io/FablabGuides/index.html))
+(https://dkingger.github.io/FablabGuides/index.html)
