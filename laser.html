@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laserskærer – LightBurn Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+        }
+        .carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 1000px;
+            flex-wrap: wrap;
+        }
+        .carousel img {
+            max-width: 90%;
+            max-height: 500px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        .carousel-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .carousel-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Laserskærer – LightBurn Guide</h1>
+    <p style="text-align: center;">Herunder finder du en trin-for-trin guide til opsætning og brug af laserskæreren i LightBurn.</p>
+
+    <a class="back-button" href="javascript:history.back()">← Tilbage til maskiner</a>
+
+    <div class="carousel">
+        <button class="carousel-button prev" onclick="prevSlide()">‹</button>
+        <img id="carousel-image" src="FablabGuides/billeder/Laser/Lightburn generelt/1. Tom skærm – mellem.jpeg" alt="Laser guide billede">
+        <button class="carousel-button next" onclick="nextSlide()">›</button>
+    </div>
+
+    <script>
+    const images = [
+        "FablabGuides/billeder/laser/lightburn/01tom_skaerm.jpeg",
+        "FablabGuides/billeder/laser/lightburn/02reset_to_default.jpeg",
+        "FablabGuides/billeder/laser/lightburn/03importer_tegning.jpeg",
+        "FablabGuides/billeder/laser/lightburn/04farver.jpeg",
+        "FablabGuides/billeder/laser/lightburn/05vaelg_farve.jpeg",
+        "FablabGuides/billeder/laser/lightburn/06skaering.jpeg",
+        "FablabGuides/billeder/laser/lightburn/07fyld_gravering.jpeg",
+        "FablabGuides/billeder/laser/lightburn/08linje_gravering.jpeg",
+        "FablabGuides/billeder/laser/lightburn/09skift_til_laser.jpeg",
+        "FablabGuides/billeder/laser/lightburn/10marker_hele_figuren.jpeg",
+        "FablabGuides/billeder/laser/lightburn/11saet_origin_ightburn.jpeg",
+        "FablabGuides/billeder/laser/lightburn/12saet_origin_paa_laser.jpeg",
+        "FablabGuides/billeder/laser/lightburn/13frame_og_start_laser.jpeg"
+    ];
+
+    let current = 0;
+
+    function showImage(index) {
+        const img = document.getElementById("carousel-image");
+        img.src = images[index];
+    }
+
+    function nextSlide() {
+        current = (current + 1) % images.length;
+        showImage(current);
+    }
+
+    function prevSlide() {
+        current = (current - 1 + images.length) % images.length;
+        showImage(current);
+    }
+    </script>
+
+</body>
+</html>
