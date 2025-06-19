@@ -1,3 +1,6 @@
+Her er din kode med en ekstra karrusel sat ind lige øverst i <body> (over de andre). Jeg har tilføjet både HTML og JavaScript til den nye karrusel (kaldet carousel0). Ret gerne billedstier og tekster i images0-arrayet til dine egne billeder.
+
+```html
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -77,6 +80,17 @@
 </head>
 <body>
     <a name="top"></a>
+
+    <!-- Ny karrusel sat ind her -->
+    <div class="carousel">
+        <img id="carouselImage0" src="" alt="Ekstra karrusel billede">
+        <div class="caption" id="carouselCaption0"></div>
+        <div class="carousel-controls">
+            <button onclick="prevSlide0()">Tilbage</button>
+            <button onclick="nextSlide0()">Næste</button>
+        </div>
+    </div>
+
     <h1>Laserskærer</h1>
     <p>Herunder finder du en trin-for-trin guide til brug af LightBurn med laserskæreren.</p>
 
@@ -104,11 +118,31 @@
     <a class="top-button" href="#top">Til toppen</a>
 
     <script>
+        // Ny karrusel (øverst)
+        const images0 = [
+            { src: "billeder/laser/ekstra/01.jpeg", caption: "1. Eksempelbillede 1" },
+            { src: "billeder/laser/ekstra/02.jpeg", caption: "2. Eksempelbillede 2" }
+        ];
+        let index0 = 0;
+        function updateCarousel0() {
+            document.getElementById("carouselImage0").src = images0[index0].src;
+            document.getElementById("carouselCaption0").textContent = images0[index0].caption;
+        }
+        function nextSlide0() {
+            index0 = (index0 + 1) % images0.length;
+            updateCarousel0();
+        }
+        function prevSlide0() {
+            index0 = (index0 - 1 + images0.length) % images0.length;
+            updateCarousel0();
+        }
+        updateCarousel0();
+
+        // Eksisterende karruseller:
         const images1 = [
             { src: "billeder/laser/materiale/01_vaelg_materiale.jpeg", caption: "1. Vælg korrekt materiale" },
             { src: "billeder/laser/materiale/02_indstil_tykkelse.jpeg", caption: "2. Indstil tykkelse på materialet" }
         ];
-
         const images2 = [
             { src: "billeder/laser/lightburn/01tom_skaerm.jpeg", caption: "1. Start Lightburn eller vælg 'Ny' i fanen filer" },
             { src: "billeder/laser/lightburn/02reset_to_default.jpeg", caption: "2. Gendan standardindstillinger hvis funktioner mangler" },
@@ -125,42 +159,37 @@
             { src: "billeder/laser/lightburn/13frame_og_start_laser.jpeg", caption: "13a. Brug 'Frame' i Lightburn og tjek om der er plads på materialet" },
             { src: "billeder/laser/lightburn/12saet_origin_paa_laser.jpeg", caption: "13b. Tryk Start for at starte skæringen/graveringen" }
         ];
-
         let index1 = 0;
         let index2 = 0;
-
         function updateCarousel1() {
             document.getElementById("carouselImage1").src = images1[index1].src;
             document.getElementById("carouselCaption1").textContent = images1[index1].caption;
         }
-
         function nextSlide1() {
             index1 = (index1 + 1) % images1.length;
             updateCarousel1();
         }
-
         function prevSlide1() {
             index1 = (index1 - 1 + images1.length) % images1.length;
             updateCarousel1();
         }
-
         function updateCarousel2() {
             document.getElementById("carouselImage2").src = images2[index2].src;
             document.getElementById("carouselCaption2").textContent = images2[index2].caption;
         }
-
         function nextSlide2() {
             index2 = (index2 + 1) % images2.length;
             updateCarousel2();
         }
-
         function prevSlide2() {
             index2 = (index2 - 1 + images2.length) % images2.length;
             updateCarousel2();
         }
-
         updateCarousel1();
         updateCarousel2();
     </script>
 </body>
 </html>
+```
+
+Bare kopier ovenstående kode ind i din `laser.html` – så har du nu tre karruseller, hvoraf den nye er allerøverst.
