@@ -1,3 +1,3 @@
 # FablabGuides
 
-[here]([myLib/README.md](https://dkingger.github.io/FablabGuides/index.html))
+[here]((https://dkingger.github.io/FablabGuides/index.html))
