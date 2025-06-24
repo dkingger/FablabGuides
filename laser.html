@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laserskærer – LightBurn Guide</title>
     <style>
+        /* Modal styles til fuldskærmsvisning */
+        #imageModal {
+          display: none;
+          position: fixed;
+          z-index: 1000;
+          padding-top: 60px;
+          left: 0; top: 0; width: 100%; height: 100%;
+          overflow: auto;
+          background-color: rgba(0,0,0,0.8);
+        }
+        #modalImg {
+          margin: auto;
+          display: block;
+          max-width: 90vw;
+          max-height: 80vh;
+        }
+        #imageModal .close {
+          position: absolute;
+          top: 30px;
+          right: 50px;
+          color: #fff;
+          font-size: 40px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
@@ -49,7 +75,7 @@
         }
         .carousel img {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             max-height: 320px;
             object-fit: contain;
             border-radius: 5px;
@@ -79,6 +105,12 @@
     </style>
 </head>
 <body>
+    <!-- Modal til at vise billede i fuld størrelse -->
+    <div id="imageModal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg" src="">
+    </div>
+    
     <a name="top"></a>
 
     <h1>Laserskærer</h1>
@@ -87,7 +119,7 @@
     
     <h2>Sæt materialetykkelse på Eduard laser</h2>
     <div class="carousel">
-        <img id="carouselImage0" src="" alt="Ekstra karrusel billede">
+        <img id="carouselImage0" src="" alt="Ekstra karrusel billede" onclick="openModal(this.src)">
         <div class="caption" id="carouselCaption0"></div>
         <div class="carousel-controls">
             <button onclick="prevSlide0()">Tilbage</button>
@@ -99,7 +131,7 @@
 
     <h2>Sæt materialetykkelse på AEON laser</h2>
     <div class="carousel">
-        <img id="carouselImage1" src="" alt="Materialetykkelse billede">
+        <img id="carouselImage1" src="" alt="Materialetykkelse billede" onclick="openModal(this.src)">
         <div class="caption" id="carouselCaption1"></div>
         <div class="carousel-controls">
             <button onclick="prevSlide1()">Tilbage</button>
@@ -109,7 +141,7 @@
 
     <h2>LightBurn workflow</h2>
     <div class="carousel">
-        <img id="carouselImage2" src="" alt="LightBurn billede">
+        <img id="carouselImage2" src="" alt="LightBurn billede" onclick="openModal(this.src)">
         <div class="caption" id="carouselCaption2"></div>
         <div class="carousel-controls">
             <button onclick="prevSlide2()">Tilbage</button>
@@ -121,6 +153,24 @@
     <a class="top-button" href="#top">Til toppen</a>
 
     <script>
+        // Modal funktioner
+        function openModal(src) {
+          document.getElementById('modalImg').src = src;
+          document.getElementById('imageModal').style.display = 'block';
+        }
+        function closeModal() {
+          document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Luk modal hvis man klikker udenfor billedet
+        window.onclick = function(event) {
+          var modal = document.getElementById('imageModal');
+          if (event.target == modal) {
+            closeModal();
+          }
+        }
+
+        
         // Sæt materialetykkelse på Eduard laser
         const images0 = [
             { src: "billeder/laser/ekstra/01.jpeg", caption: "1. Eksempelbillede 1" },
@@ -195,6 +245,3 @@
     </script>
 </body>
 </html>
-```
-
-Bare kopier ovenstående kode ind i din `laser.html` – så har du nu tre karruseller, hvoraf den nye er allerøverst.
