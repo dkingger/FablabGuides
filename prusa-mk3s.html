@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #d2e2d0;
+            color: #222;
             line-height: 1.6;
             max-width: 800px;
             margin: 40px auto;
@@ -32,14 +32,14 @@
         a, .top-button {
             display: inline-block;
             margin-top: 30px;
-            background-color: #007BFF;
+            background-color: #3a4f41;
             color: white;
             padding: 12px 25px;
             text-decoration: none;
             border-radius: 5px;
         }
         a:hover, .top-button:hover {
-            background-color: #0056b3;
+            background-color: #c94f3c;
         }
         .carousel {
             position: relative;
@@ -62,7 +62,7 @@
             margin-top: 10px;
         }
         .carousel-controls button {
-            background-color: #007BFF;
+            background-color: #3a4f41;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -71,7 +71,7 @@
             border-radius: 5px;
         }
         .carousel-controls button:hover {
-            background-color: #0056b3;
+            background-color: #c94f3c;
         }
     </style>
 </head>
@@ -122,90 +122,5 @@
 
     <a href="index.html">Tilbage til forsiden</a>
     <a class="top-button" href="#top">Til toppen</a>
-
-    <script>
-        const images = [
-            { src: "billeder/prusa-mk3s/skift filament/main_screen.avif", caption: "1. Startskærm: Vælg 'Unload Filament'" },
-            { src: "billeder/prusa-mk3s/skift filament/unload_filament.avif", caption: "2. Vælg 'Unload Filament' i menuen" },
-            { src: "billeder/prusa-mk3s/skift filament/filament_choose.avif", caption: "3. Vælg filamenttype, f.eks. PLA" },
-            { src: "billeder/prusa-mk3s/skift filament/preheat_to_unload.avif", caption: "4. Printeren varmer op til korrekt temperatur" },
-            { src: "billeder/prusa-mk3s/skift filament/press_knob_unload.avif", caption: "5. Tryk på knappen for at bekræfte" },
-            { src: "billeder/prusa-mk3s/skift filament/hotend.avif", caption: "6. Træk forsigtigt filamentet ud, når det er opvarmet" },
-            { src: "billeder/prusa-mk3s/skift filament/extrude.avif", caption: "7. Indsæt nyt filament og tryk på 'Load Filament'" },
-            { src: "billeder/prusa-mk3s/skift filament/correct_extrude.avif", caption: "8. Kontroller at filamentet ekstruderes korrekt" },
-            { src: "billeder/prusa-mk3s/skift filament/printer_ok.avif", caption: "9. Bekræft og afslut proceduren" }
-        ];
-
-        const startPrintImages = [
-            { src: "billeder/prusa-mk3s/start_print/kontrol_start_printer.avif", caption: "1. Kontroller at printeren er tændt og klar" },
-            { src: "billeder/prusa-mk3s/start_print/wipe_surface.avif", caption: "2. Rengør byggepladen med isopropylalkohol" },
-            { src: "billeder/prusa-mk3s/start_print/insert_SD_kort.avif", caption: "3. Indsæt SD-kortet med din .gcode-fil" },
-            { src: "billeder/prusa-mk3s/start_print/choose_file.avif", caption: "4. Vælg den fil du vil printe fra menuen" },
-            { src: "billeder/prusa-mk3s/start_print/printer_varmer_start.avif", caption: "5. Printeren varmer op og starter print" },
-            { src: "billeder/prusa-mk3s/start_print/kontrol_first_lag.avif", caption: "6. Hold øje med første lag og justér Z-offset hvis nødvendigt" }
-        ];
-
-        const slicerImages = [
-            { src: "billeder/prusa-mk3s/prusaslicer/open_prusaslicer.avif", caption: "1. Åbn PrusaSlicer" },
-            { src: "billeder/prusa-mk3s/prusaslicer/choose_stl_file.avif", caption: "2. Vælg din STL-fil" },
-            { src: "billeder/prusa-mk3s/prusaslicer/choose_printer.avif", caption: "3. Vælg MK3S som printerprofil" },
-            { src: "billeder/prusa-mk3s/prusaslicer/choose_fillament_slicer.avif", caption: "4. Vælg korrekt filamentprofil" },
-            { src: "billeder/prusa-mk3s/prusaslicer/choose_layer_height.avif", caption: "5. Vælg laghøjde" },
-            { src: "billeder/prusa-mk3s/prusaslicer/Slice_3D_print.avif", caption: "6. Klik 'Slice Now'" },
-            { src: "billeder/prusa-mk3s/prusaslicer/choose_support.avif", caption: "7. Tilføj support hvis nødvendigt" },
-            { src: "billeder/prusa-mk3s/prusaslicer/check_weight_print.avif", caption: "8. Kontroller printtid og vægt" },
-            { src: "billeder/prusa-mk3s/prusaslicer/Export_g_code.avif", caption: "9. Eksporter G-code til SD-kort" },
-            { src: "billeder/prusa-mk3s/prusaslicer/eject_drive.avif", caption: "10. Fjern sikkert SD-kortet" }
-        ];
-
-        let currentIndex = 0;
-        let currentPrintIndex = 0;
-        let currentSlicerIndex = 0;
-
-        function updateCarousel() {
-            document.getElementById("carouselImage").src = images[currentIndex].src;
-            document.getElementById("carouselCaption").textContent = images[currentIndex].caption;
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateCarousel();
-        }
-
-        function updatePrintCarousel() {
-            document.getElementById("startPrintImage").src = startPrintImages[currentPrintIndex].src;
-            document.getElementById("startPrintCaption").textContent = startPrintImages[currentPrintIndex].caption;
-        }
-
-        function nextPrintSlide() {
-            currentPrintIndex = (currentPrintIndex + 1) % startPrintImages.length;
-            updatePrintCarousel();
-        }
-
-        function prevPrintSlide() {
-            currentPrintIndex = (currentPrintIndex - 1 + startPrintImages.length) % startPrintImages.length;
-            updatePrintCarousel();
-        }
-
-        function updateSlicerCarousel() {
-            document.getElementById("slicerImage").src = slicerImages[currentSlicerIndex].src;
-            document.getElementById("slicerCaption").textContent = slicerImages[currentSlicerIndex].caption;
-        }
-
-        function nextSlicerSlide() {
-            currentSlicerIndex = (currentSlicerIndex + 1) % slicerImages.length;
-            updateSlicerCarousel();
-        }
-
-        function prevSlicerSlide() {
-            currentSlicerIndex = (currentSlicerIndex - 1 + slicerImages.length) % slicerImages.length;
-            updateSlicerCarousel();
-        }
-    </script>
 </body>
 </html>
