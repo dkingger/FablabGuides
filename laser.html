@@ -1,254 +1,163 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laserskærer – LightBurn Guide</title>
-    <style>
-        /* Modal styles til fuldskærmsvisning */
-        #imageModal {
-          display: none;
-          position: fixed;
-          z-index: 1000;
-          padding-top: 60px;
-          left: 0; top: 0; width: 100%; height: 100%;
-          overflow: auto;
-          background-color: rgba(0,0,0,0.8);
-        }
-        #modalImg {
-          margin: auto;
-          display: block;
-          max-width: 90vw;
-          max-height: 80vh;
-        }
-        #imageModal .close {
-          position: absolute;
-          top: 30px;
-          right: 50px;
-          color: #fff;
-          font-size: 40px;
-          font-weight: bold;
-          cursor: pointer;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        h1 {
-            color: #007BFF;
-        }
-        h2 {
-            margin-top: 40px;
-            color: #444;
-        }
-        h3 {
-            margin-top: 20px;
-            color: #555;
-        }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        a, .top-button {
-            display: inline-block;
-            margin-top: 30px;
-            background-color: #007BFF;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a:hover, .top-button:hover {
-            background-color: #0056b3;
-        }
-        .carousel {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        .carousel img {
-            width: 100%;
-            max-width: 800px;
-            max-height: 320px;
-            object-fit: contain;
-            border-radius: 5px;
-        }
-        .carousel .caption {
-            text-align: center;
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-        .carousel-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .carousel-controls button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .carousel-controls button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fablab Spinderihallerne – guides til laserskærer og LightBurn.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Fablab Spinderihallerne">
+  <title>Laserskærer – LightBurn Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #d2e2d0;
+      color: #222;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #3a4f41;
+      text-align: center;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #3a4f41;
+    }
+    h3 {
+      margin-top: 20px;
+      color: #444;
+    }
+    a, .top-button {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #3a4f41;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    a:hover, .top-button:hover {
+      background-color: #c94f3c;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+    .carousel img {
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .carousel .caption {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #3a4f41;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .carousel-controls button:hover {
+      background-color: #c94f3c;
+    }
+    #imageModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 60px;
+      left: 0; top: 0; width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+    #modalImg {
+      margin: auto;
+      display: block;
+      max-width: 90vw;
+      max-height: 80vh;
+    }
+    #imageModal .close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <!-- Modal til at vise billede i fuld størrelse -->
-    <div id="imageModal">
+  <div id="imageModal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img id="modalImg" src="">
+  </div>
+
+  <h1>Laserskærer</h1>
+  <p>Herunder finder du en trin-for-trin guide til brug af LightBurn med laserskæreren.</p>
+
+  <h2>Sæt materialetykkelse på Eduard laser</h2>
+  <div class="carousel">
+    <img id="carouselImage0" src="" alt="Ekstra karrusel billede" onclick="openModal(this.src)">
+    <div class="caption" id="carouselCaption0"></div>
+    <div class="carousel-controls">
+      <button onclick="prevSlide0()">Tilbage</button>
+      <button onclick="nextSlide0()">Næste</button>
     </div>
-    
-    <a name="top"></a>
+  </div>
 
-    <h1>Laserskærer</h1>
-    <p>Herunder finder du en trin-for-trin guide til brug af LightBurn med laserskæreren.</p>
-
-    
-    <h2>Sæt materialetykkelse på Eduard laser</h2>
-    <div class="carousel">
-        <img id="carouselImage0" src="" alt="Ekstra karrusel billede" onclick="openModal(this.src)">
-        <div class="caption" id="carouselCaption0"></div>
-        <div class="carousel-controls">
-            <button onclick="prevSlide0()">Tilbage</button>
-            <button onclick="nextSlide0()">Næste</button>
-        </div>
+  <h2>Sæt materialetykkelse på AEON laser</h2>
+  <div class="carousel">
+    <img id="carouselImage1" src="" alt="Materialetykkelse billede" onclick="openModal(this.src)">
+    <div class="caption" id="carouselCaption1"></div>
+    <div class="carousel-controls">
+      <button onclick="prevSlide1()">Tilbage</button>
+      <button onclick="nextSlide1()">Næste</button>
     </div>
+  </div>
 
-
-
-    <h2>Sæt materialetykkelse på AEON laser</h2>
-    <div class="carousel">
-        <img id="carouselImage1" src="" alt="Materialetykkelse billede" onclick="openModal(this.src)">
-        <div class="caption" id="carouselCaption1"></div>
-        <div class="carousel-controls">
-            <button onclick="prevSlide1()">Tilbage</button>
-            <button onclick="nextSlide1()">Næste</button>
-        </div>
+  <h2>LightBurn workflow</h2>
+  <div class="carousel">
+    <img id="carouselImage2" src="" alt="LightBurn billede" onclick="openModal(this.src)">
+    <div class="caption" id="carouselCaption2"></div>
+    <div class="carousel-controls">
+      <button onclick="prevSlide2()">Tilbage</button>
+      <button onclick="nextSlide2()">Næste</button>
     </div>
+  </div>
 
-    <h2>LightBurn workflow</h2>
-    <div class="carousel">
-        <img id="carouselImage2" src="" alt="LightBurn billede" onclick="openModal(this.src)">
-        <div class="caption" id="carouselCaption2"></div>
-        <div class="carousel-controls">
-            <button onclick="prevSlide2()">Tilbage</button>
-            <button onclick="nextSlide2()">Næste</button>
-        </div>
-    </div>
+  <a href="index.html">Tilbage til forsiden</a>
+  <a class="top-button" href="#top">Til toppen</a>
 
-    <a href="index.html">Tilbage til forsiden</a>
-    <a class="top-button" href="#top">Til toppen</a>
-
-    <script>
-        // Modal funktioner
-        function openModal(src) {
-          document.getElementById('modalImg').src = src;
-          document.getElementById('imageModal').style.display = 'block';
-        }
-        function closeModal() {
-          document.getElementById('imageModal').style.display = 'none';
-        }
-
-        // Luk modal hvis man klikker udenfor billedet
-        window.onclick = function(event) {
-          var modal = document.getElementById('imageModal');
-          if (event.target == modal) {
-            closeModal();
-          }
-        }
-
-        
-        // Sæt materialetykkelse på Eduard laser
-        const images0 = [
-            { src: "billeder/laser/hoejde_eduard/00materiale_i_maskine.jpeg", caption: "1. Placer materialet i maskinen og sørg for at det ligger under laserhovedet" },
-            { src: "billeder/laser/hoejde_eduard/01fokusbrik.jpeg", caption: "2. Placer fokusbrikken ved siden af hovedet" },
-            { src: "billeder/laser/hoejde_eduard/02tryk_zu.jpeg", caption: "3. Tryk på 'Z/U' tasten på kontrolpanelet på laserskæreren" },
-            { src: "billeder/laser/hoejde_eduard/03saet_z_hoejde.jpeg", caption: "4. Med pil venstre og højre ændres højden på bordet i laseren" },
-            { src: "billeder/laser/hoejde_eduard/04korrekt_hoejde.jpeg", caption: "5. Den korrekte højde er opnået når den øverste kant af fokusbrikken er på ved underkanten af det riflede på laserhovedet" }
- 
-        ];
-        let index0 = 0;
-        function updateCarousel0() {
-            document.getElementById("carouselImage0").src = images0[index0].src;
-            document.getElementById("carouselCaption0").textContent = images0[index0].caption;
-        }
-        function nextSlide0() {
-            index0 = (index0 + 1) % images0.length;
-            updateCarousel0();
-        }
-        function prevSlide0() {
-            index0 = (index0 - 1 + images0.length) % images0.length;
-            updateCarousel0();
-        }
-        updateCarousel0();
-
-        // Sæt materialetykkelse på AEON laser
-        const images1 = [
-            { src: "billeder/laser/hoejde_aeon/00forkert.jpg", caption: "1. Kontroller at afstandsmåleren er placeret korret over materialet. Her er den placeret forkert!" },
-            { src: "billeder/laser/hoejde_aeon/00rigtig.jpg", caption: "2. Her er den rigtige placering af afstandsmåler" },
-            { src: "billeder/laser/hoejde_aeon/01saethoej.jpg", caption: "3. Tryk på 'Z/U' tasten på kontrolpanelet på laserskæreren for at åbne menuen" },
-            { src: "billeder/laser/hoejde_aeon/02saethoej.jpg", caption: "4. Tryk på pil op tasten indtil 'Auto focus' er markeret" },
-            { src: "billeder/laser/hoejde_aeon/03saethoej.jpg", caption: "5. Tryk på 'Enter' for at starte auto fokus" }
-        ];
-
-        // LightBurn workflow
-        const images2 = [
-            { src: "billeder/laser/lightburn/01tom_skaerm.jpeg", caption: "1. Start Lightburn eller vælg 'Ny' i fanen filer" },
-            { src: "billeder/laser/lightburn/02reset_to_default.jpeg", caption: "2. Gendan standardindstillinger hvis funktioner mangler" },
-            { src: "billeder/laser/lightburn/03importer_tegning.jpeg", caption: "3. Importer tegning" },
-            { src: "billeder/laser/lightburn/04farver.jpeg", caption: "4. Kontrollér at alle de lag/farver du skal bruge er kommet med" },
-            { src: "billeder/laser/lightburn/05vaelg_farve.jpeg", caption: "5. Vælg f.eks. skære laget/farven" },
-            { src: "billeder/laser/lightburn/06skaering.jpeg", caption: "6. Vælg materiale i biblioteket og skæreindstilling. Tryk på 'Assign' (Tilføj på dansk)" },
-            { src: "billeder/laser/lightburn/07fyld_gravering.jpeg", caption: "7. Fuld gravering er symboliseret med en fyldt figur" },
-            { src: "billeder/laser/lightburn/08linje_gravering.jpeg", caption: "8. Linjegravering er symboliseret med en tom figur" },
-            { src: "billeder/laser/lightburn/09skift_til_laser.jpeg", caption: "9. Skift til laser styring" },
-            { src: "billeder/laser/lightburn/10marker_hele_figuren.jpeg", caption: "10. Sørg for at alt der skal skæres/graveres er markeret" },
-            { src: "billeder/laser/lightburn/11saet_origin_ightburn.jpeg", caption: "11. Vælg et origin i Lightburn" },
-            { src: "billeder/laser/lightburn/12saet_origin_paa_laser.jpeg", caption: "12. Sæt origin samme sted fysisk på maskinen ved hjælp af piletaster ved displayet" },
-            { src: "billeder/laser/lightburn/13frame_og_start_laser.jpeg", caption: "13a. Brug 'Frame' i Lightburn og tjek om der er plads på materialet" },
-            { src: "billeder/laser/lightburn/12saet_origin_paa_laser.jpeg", caption: "13b. Tryk Start for at starte skæringen/graveringen" }
-        ];
-        let index1 = 0;
-        let index2 = 0;
-        function updateCarousel1() {
-            document.getElementById("carouselImage1").src = images1[index1].src;
-            document.getElementById("carouselCaption1").textContent = images1[index1].caption;
-        }
-        function nextSlide1() {
-            index1 = (index1 + 1) % images1.length;
-            updateCarousel1();
-        }
-        function prevSlide1() {
-            index1 = (index1 - 1 + images1.length) % images1.length;
-            updateCarousel1();
-        }
-        function updateCarousel2() {
-            document.getElementById("carouselImage2").src = images2[index2].src;
-            document.getElementById("carouselCaption2").textContent = images2[index2].caption;
-        }
-        function nextSlide2() {
-            index2 = (index2 + 1) % images2.length;
-            updateCarousel2();
-        }
-        function prevSlide2() {
-            index2 = (index2 - 1 + images2.length) % images2.length;
-            updateCarousel2();
-        }
-        updateCarousel1();
-        updateCarousel2();
-    </script>
+  <script>
+    function openModal(src) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('imageModal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+      var modal = document.getElementById('imageModal');
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
 </body>
 </html>
