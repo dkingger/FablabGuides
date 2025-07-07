@@ -74,6 +74,13 @@
         .guide-button:hover, .machine-button:hover, .printer-button:hover, .back-button:hover {
             background-color: #c94f3c;
         }
+        .coming-soon {
+            background-color: #ccc;
+            color: #666;
+            cursor: default;
+            pointer-events: none;
+            font-style: italic;
+        }
         .machine-guides, .printer-guides {
             display: none;
             text-align: center;
@@ -107,12 +114,6 @@
         <img src="billeder/Fablab Logo.svg" alt="Fablab Logo" style="height: 80px;">
         <h1>Fablab Spinderihallerne</h1>
     </header>
-    <!--
-    <div class="hero">
-        Velkommen til
-        Fablab Spinderihallerne
-    </div>
-    -->
     <div class="content">
         <section id="om">
             <h2>Om os</h2>
@@ -129,10 +130,10 @@
         <h2>Guides til maskiner</h2>
         <button class="machine-button" onclick="showPrinterGuides()">3D print</button>
         <a class="machine-button" href="laser.html">Laserskærer</a>
-        <a class="machine-button" href="under-udvikling.html" style="background-color: #c94f3c;">Kommer Vinylskærer</a>
-        <a class="machine-button" href="under-udvikling.html" style="background-color: #c94f3c;">Kommer Varmepresse</a>
-        <a class="machine-button" href="under-udvikling.html" style="background-color: #c94f3c;">Kommer CNC fræser</a>
-        <a class="machine-button" href="under-udvikling.html" style="background-color: #c94f3c;">Kommer Airbrush maling</a>
+        <a class="machine-button coming-soon">Kommer Vinylskærer</a>
+        <a class="machine-button coming-soon">Kommer Varmepresse</a>
+        <a class="machine-button coming-soon">Kommer CNC fræser</a>
+        <a class="machine-button coming-soon">Kommer Airbrush maling</a>
     </div>
 
     <div class="printer-guides">
@@ -141,7 +142,7 @@
         <a class="printer-button" href="prusamini.html">Prusa Mini</a>
         <a class="printer-button" href="prusa-mk3s.html">Prusa MK3S</a>
         <a class="printer-button" href="prusa-mk4.html">Prusa MK4</a>
-        <a class="printer-button" href="prusa-xl.html" style="background-color: #c94f3c;">Kommer Prusa XL</a>
+        <a class="printer-button coming-soon">Kommer Prusa XL</a>
         <br>
         <button class="back-button" onclick="showMachineGuides()">Tilbage til maskiner</button>
     </div>
