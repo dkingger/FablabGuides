@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prusa Slicer – Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #d2e2d0;
+      color: #222;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #007BFF;
+      text-align: center;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .carousel img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .caption {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #3a4f41;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .carousel-controls button:hover {
+      background-color: #c94f3c;
+    }
+    a.top-button {
+      display: block;
+      text-align: center;
+      margin: 40px auto;
+      background-color: #007BFF;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <h1>Prusa Slicer</h1>
+  <p style="text-align: center;">Herunder kan du se trin-for-trin hvordan du bruger Prusa Slicer.</p>
+
+  <div class="carousel">
+    <img id="slicerImage" src="billeder/prusa-mk3s/prusaslicer/01_open_prusaslicer.jpeg" alt="PrusaSlicer billede">
+    <div class="caption" id="slicerCaption">1. Åbn PrusaSlicer</div>
+    <div class="carousel-controls">
+      <button onclick="prevSlicerSlide()">Tilbage</button>
+      <button onclick="nextSlicerSlide()">Næste</button>
+    </div>
+  </div>
+
+  <a class="top-button" href="index.html">Tilbage til forsiden</a>
+
+  <script>
+    const slicerImages = [
+      { src: "billeder/prusa-mk3s/prusaslicer/01_open_prusaslicer.jpeg", caption: "1. Åbn PrusaSlicer" },
+      { src: "billeder/prusa-mk3s/prusaslicer/02_import_model.jpeg", caption: "2. Importér din STL-model" },
+      { src: "billeder/prusa-mk3s/prusaslicer/03_choose_printer.jpeg", caption: "3. Vælg printerprofil (f.eks. MK3S)" },
+      { src: "billeder/prusa-mk3s/prusaslicer/04_choose_material.jpeg", caption: "4. Vælg materialeprofil (f.eks. PLA)" },
+      { src: "billeder/prusa-mk3s/prusaslicer/05_slice_preview.jpeg", caption: "5. Brug Slice og se preview" },
+      { src: "billeder/prusa-mk3s/prusaslicer/06_export_gcode.jpeg", caption: "6. Eksportér G-code til SD-kort" }
+    ];
+
+    let currentSlicerIndex = 0;
+
+    function updateSlicerCarousel() {
+      document.getElementById("slicerImage").src = slicerImages[currentSlicerIndex].src;
+      document.getElementById("slicerCaption").textContent = slicerImages[currentSlicerIndex].caption;
+    }
+
+    function nextSlicerSlide() {
+      currentSlicerIndex = (currentSlicerIndex + 1) % slicerImages.length;
+      updateSlicerCarousel();
+    }
+
+    function prevSlicerSlide() {
+      currentSlicerIndex = (currentSlicerIndex - 1 + slicerImages.length) % slicerImages.length;
+      updateSlicerCarousel();
+    }
+
+    updateSlicerCarousel();
+  </script>
+</body>
+</html>
 
