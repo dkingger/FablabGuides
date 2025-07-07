@@ -16,7 +16,7 @@
       padding: 0 20px;
     }
     h1 {
-      color: #007BFF;
+      color: #3a4f41;
       text-align: center;
     }
     .carousel {
@@ -55,12 +55,15 @@
       display: block;
       text-align: center;
       margin: 40px auto;
-      background-color: #007BFF;
+      background-color: #3a4f41;
       color: white;
       padding: 12px 25px;
       text-decoration: none;
       border-radius: 5px;
       width: fit-content;
+    }
+    a.top-button:hover {
+      background-color: #c94f3c;
     }
   </style>
 </head>
@@ -82,11 +85,15 @@
   <script>
     const slicerImages = [
       { src: "/billeder/prusa-mk3s/prusaslicer/open_prusaslicer.avif", caption: "1. Åbn PrusaSlicer" },
-      { src: "/billeder/prusa-mk3s/prusaslicer/import_model.avif", caption: "2. Importér din STL-model" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/choose_stl_file.avif", caption: "2. Vælg din STL-fil" },
       { src: "/billeder/prusa-mk3s/prusaslicer/choose_printer.avif", caption: "3. Vælg printerprofil (f.eks. MK3S)" },
-      { src: "/billeder/prusa-mk3s/prusaslicer/choose_material.avif", caption: "4. Vælg materialeprofil (f.eks. PLA)" },
-      { src: "/billeder/prusa-mk3s/prusaslicer/slice_preview.avif", caption: "5. Brug Slice og se preview" },
-      { src: "/billeder/prusa-mk3s/prusaslicer/export_gcode.avif", caption: "6. Eksportér G-code til SD-kort" }
+      { src: "/billeder/prusa-mk3s/prusaslicer/choose_fillament_slicer.avif", caption: "4. Vælg korrekt filamentprofil" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/choose_layer_height.avif", caption: "5. Vælg laghøjde" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/Slice_3D_print.avif", caption: "6. Slice og se preview" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/choose_support.avif", caption: "7. Tilføj support hvis nødvendigt" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/check_weight_print.avif", caption: "8. Kontroller printtid og vægt" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/Export_g_code.avif", caption: "9. Eksporter G-code til SD-kort" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/eject_drive.avif", caption: "10. Fjern sikkert SD-kortet" }
     ];
 
     let currentSlicerIndex = 0;
@@ -110,4 +117,3 @@
   </script>
 </body>
 </html>
-
