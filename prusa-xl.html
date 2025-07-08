@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prusa XL – Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d2e2d0;
+      color: #222;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #3a4f41;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #444;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .carousel img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .carousel .caption {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #3a4f41;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .carousel-controls button:hover {
+      background-color: #c94f3c;
+    }
+    a.top-button {
+      display: block;
+      text-align: center;
+      margin: 40px auto;
+      background-color: #3a4f41;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <h1>Prusa XL</h1>
+  <p style="text-align: center;">Herunder kan du se trin-for-trin hvordan du bruger Prusa XL.</p>
+
+  <h2>Skift filament</h2>
+  <div class="carousel">
+    <img id="filamentImage" src="" alt="Skift filament billede">
+    <div class="caption" id="filamentCaption"></div>
+    <div class="carousel-controls">
+      <button onclick="prevFilamentSlide()">Tilbage</button>
+      <button onclick="nextFilamentSlide()">Næste</button>
+    </div>
+  </div>
+
+  <h2>Start print</h2>
+  <div class="carousel">
+    <img id="printImage" src="" alt="Start print billede">
+    <div class="caption" id="printCaption"></div>
+    <div class="carousel-controls">
+      <button onclick="prevPrintSlide()">Tilbage</button>
+      <button onclick="nextPrintSlide()">Næste</button>
+    </div>
+  </div>
+
+  <a class="top-button" href="index.html">Tilbage til forsiden</a>
+
+  <script>
+    const filamentImages = [
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6315.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6316.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6318.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6320.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6322.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6323.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6324.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6325.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6326.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6328.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6329.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/skift_fillament/IMG_6331.jpeg", caption: "" }
+    ];
+
+    const printImages = [
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6332.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6333.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6335.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6336.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6337.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6339.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6340.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6341.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6342.jpeg", caption: "" },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6345.jpeg", caption: "" }
+    ];
+
+    let filamentIndex = 0;
+    let printIndex = 0;
+
+    function updateFilamentCarousel() {
+      document.getElementById("filamentImage").src = filamentImages[filamentIndex].src;
+      document.getElementById("filamentCaption").textContent = filamentImages[filamentIndex].caption;
+    }
+
+    function updatePrintCarousel() {
+      document.getElementById("printImage").src = printImages[printIndex].src;
+      document.getElementById("printCaption").textContent = printImages[printIndex].caption;
+    }
+
+    function nextFilamentSlide() {
+      filamentIndex = (filamentIndex + 1) % filamentImages.length;
+      updateFilamentCarousel();
+    }
+
+    function prevFilamentSlide() {
+      filamentIndex = (filamentIndex - 1 + filamentImages.length) % filamentImages.length;
+      updateFilamentCarousel();
+    }
+
+    function nextPrintSlide() {
+      printIndex = (printIndex + 1) % printImages.length;
+      updatePrintCarousel();
+    }
+
+    function prevPrintSlide() {
+      printIndex = (printIndex - 1 + printImages.length) % printImages.length;
+      updatePrintCarousel();
+    }
+
+    updateFilamentCarousel();
+    updatePrintCarousel();
+  </script>
+</body>
+</html>
