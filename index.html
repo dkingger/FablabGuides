@@ -14,17 +14,17 @@
             margin: 0;
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            background-color: #d2e2d0; /* mintgrøn */
+            background-color: #d2e2d0;
             color: #222;
         }
         header {
-            background-color: #222; /* sort */
+            background-color: #222;
             color: white;
             padding: 20px 0;
             text-align: center;
         }
         nav {
-            background-color: #3a4f41; /* mørk mintgrøn */
+            background-color: #3a4f41;
             display: flex;
             justify-content: center;
         }
@@ -35,7 +35,7 @@
             transition: background 0.3s;
         }
         nav a:hover {
-            background-color: #c94f3c; /* rød/orange accent */
+            background-color: #c94f3c;
         }
         .hero {
             background-image: url('https://www.spinderihallerne.dk/CustomerData/Files/Folders/5-fablab/6247_fablab.jpg');
@@ -99,12 +99,21 @@
         function showMachineGuides() {
             document.querySelector('.machine-guides').style.display = 'block';
             document.querySelector('.printer-guides').style.display = 'none';
+            document.getElementById('vinyl-menu').style.display = 'none';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
 
         function showPrinterGuides() {
             document.querySelector('.machine-guides').style.display = 'none';
             document.querySelector('.printer-guides').style.display = 'block';
+            document.getElementById('vinyl-menu').style.display = 'none';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function showVinylMenu() {
+            document.querySelector('.machine-guides').style.display = 'none';
+            document.querySelector('.printer-guides').style.display = 'none';
+            document.getElementById('vinyl-menu').style.display = 'block';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
@@ -130,7 +139,7 @@
         <h2>Guides til maskiner</h2>
         <button class="machine-button" onclick="showPrinterGuides()">3D print</button>
         <a class="machine-button" href="laser.html">Laserskærer</a>
-        <a class="machine-button coming-soon">Kommer Vinylskærer</a>
+        <a class="machine-button" onclick="showVinylMenu()">Vinylskærer</a>
         <a class="machine-button coming-soon">Kommer Varmepresse</a>
         <a class="machine-button coming-soon">Kommer CNC fræser</a>
         <a class="machine-button coming-soon">Kommer Airbrush maling</a>
@@ -143,6 +152,16 @@
         <a class="printer-button" href="prusa-mk3s.html">Prusa MK3S</a>
         <a class="printer-button" href="prusa-mk4.html">Prusa MK4</a>
         <a class="printer-button" href="prusa-xl.html">Prusa XL</a>
+        <br>
+        <button class="back-button" onclick="showMachineGuides()">Tilbage til maskiner</button>
+    </div>
+
+    <div id="vinyl-menu" class="printer-guides" style="display: none;">
+        <h2>Vinylskærer</h2>
+        <a class="printer-button" href="canvasworkspace.html">Canvas Workspace</a>
+        <a class="printer-button" href="surecutalot.html">Sure Cut a Lot</a>
+        <a class="printer-button" href="gcc-expert24.html">GCC Expert 24 II</a>
+        <a class="printer-button" href="brother-scanncut.html">Brother Scan'n'cut</a>
         <br>
         <button class="back-button" onclick="showMachineGuides()">Tilbage til maskiner</button>
     </div>
