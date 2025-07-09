@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCC Expert 24 II – Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d2e2d0;
+      color: #222;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #3a4f41;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #444;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .carousel img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .carousel .caption {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #3a4f41;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .carousel-controls button:hover {
+      background-color: #c94f3c;
+    }
+    a.top-button {
+      display: block;
+      text-align: center;
+      margin: 40px auto;
+      background-color: #3a4f41;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <h1>GCC Expert 24 II</h1>
+  <p style="text-align: center;">Herunder kan du se trin-for-trin hvordan du bruger GCC Expert 24 II.</p>
 
+  <div class="carousel">
+    <img id="gccImage" src="" alt="GCC Expert 24 II billede">
+    <div class="caption" id="gccCaption"></div>
+    <div class="carousel-controls">
+      <button onclick="prevGccSlide()">Tilbage</button>
+      <button onclick="nextGccSlide()">Næste</button>
+    </div>
+  </div>
+
+  <a class="top-button" href="index.html">Tilbage til forsiden</a>
+
+  <script>
+    const gccImages = [
+      { src: "billeder/vinylskaerer/gcc/01.slukmaskinen.jpeg", caption: "1. Sluk maskinen" },
+      { src: "billeder/vinylskaerer/gcc/02.placerrullestativbag.jpeg", caption: "2. Placer rullestativ bag maskinen" },
+      { src: "billeder/vinylskaerer/gcc/03.laegvinyliholder.jpeg", caption: "3. Læg vinyl i rullestativ" },
+      { src: "billeder/vinylskaerer/gcc/04.skubvinylind.jpeg", caption: "4. Skub vinylen ind i maskinen" },
+      { src: "billeder/vinylskaerer/gcc/05.placerindenfordehvidefelter.jpeg", caption: "5. Sørg for at vinylen ligger indenfor de hvide felter" },
+      { src: "billeder/vinylskaerer/gcc/06.placersaaflugtermedbeggelinealer.jpeg", caption: "6. Justér så kanterne flugter begge linealer" },
+      { src: "billeder/vinylskaerer/gcc/07.laasbegge.jpeg", caption: "7. Lås begge presseruller" },
+      { src: "billeder/vinylskaerer/gcc/08.laast.jpeg", caption: "8. Presserullerne skal være låst" },
+      { src: "billeder/vinylskaerer/gcc/09.taendmaskinen.jpeg", caption: "9. Tænd maskinen og skærehovedet begynder at bevæge sig frem og tilbage" },
+      { src: "billeder/vinylskaerer/gcc/10.saetoffline.jpeg", caption: "10. Tryk 'Offline'" },
+      { src: "billeder/vinylskaerer/gcc/11.brugpiletiatflyttefolie.jpeg", caption: "11. Brug piletasterne til at flytte folien" },
+      { src: "billeder/vinylskaerer/gcc/12.trykpaaorigin.jpeg", caption: "12. Tryk på 'Origin' for at sætte startpunkt" },
+      { src: "billeder/vinylskaerer/gcc/13.saetonline.jpeg", caption: "13. Tryk på 'Online'" },
+      { src: "billeder/vinylskaerer/gcc/14.maskineskaerer.jpeg", caption: "14. Maskinen skærer nu" },
+      { src: "billeder/vinylskaerer/gcc/15.saetoffline.jpeg", caption: "15. Når den er færdig – tryk 'Offline'" },
+      { src: "billeder/vinylskaerer/gcc/16.koerfolieud.jpeg", caption: "16. Brug piletasterne til at køre folien ud" },
+      { src: "billeder/vinylskaerer/gcc/17.klipligeaf.jpeg", caption: "17. Klip folien fri i et lige snit igennem hele rullen" },
+      { src: "billeder/vinylskaerer/gcc/18.saettapepaarulle.jpeg", caption: "18. Sæt tape på rullen for at gøre klar til næste og læg den på plads i Materialelageret" }
+    ];
+
+    let gccIndex = 0;
+
+    function updateGccCarousel() {
+      document.getElementById("gccImage").src = gccImages[gccIndex].src;
+      document.getElementById("gccCaption").textContent = gccImages[gccIndex].caption;
+    }
+
+    function nextGccSlide() {
+      gccIndex = (gccIndex + 1) % gccImages.length;
+      updateGccCarousel();
+    }
+
+    function prevGccSlide() {
+      gccIndex = (gccIndex - 1 + gccImages.length) % gccImages.length;
+      updateGccCarousel();
+    }
+
+    // Startvisning
+    updateGccCarousel();
+  </script>
+</body>
+</html>
