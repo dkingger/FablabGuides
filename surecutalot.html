@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sure Cuts a Lot – Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d2e2d0;
+      color: #222;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #3a4f41;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #444;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .carousel img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .carousel .caption {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #3a4f41;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .carousel-controls button:hover {
+      background-color: #c94f3c;
+    }
+    a.top-button {
+      display: block;
+      text-align: center;
+      margin: 40px auto;
+      background-color: #3a4f41;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sure Cuts a Lot</h1>
+  <p style="text-align: center;">Herunder kan du se trin-for-trin hvordan du bruger Sure Cuts a Lot.</p>
 
+  <div class="carousel">
+    <img id="scalImage" src="" alt="Sure Cuts a Lot billede">
+    <div class="caption" id="scalCaption"></div>
+    <div class="carousel-controls">
+      <button onclick="prevScalSlide()">Tilbage</button>
+      <button onclick="nextScalSlide()">Næste</button>
+    </div>
+  </div>
+
+  <a class="top-button" href="index.html">Tilbage til forsiden</a>
+
+  <script>
+    const scalImages = [
+      { src: "billeder/vinylskaerer/surecutsalot/01.startsurecutsalot.jpg", caption: "1. Start Sure Cuts a Lot" },
+      { src: "billeder/vinylskaerer/surecutsalot/02.stoerrelse.jpg", caption: "2. Vælg dokumentstørrelse" },
+      { src: "billeder/vinylskaerer/surecutsalot/03.skaermbillede.jpg", caption: "3. Startskærm vises" },
+      { src: "billeder/vinylskaerer/surecutsalot/04.importsvg.jpg", caption: "4. Importér SVG-fil" },
+      { src: "billeder/vinylskaerer/surecutsalot/05.vaelgfarvepalette.jpg", caption: "5. Vælg farvepalette" },
+      { src: "billeder/vinylskaerer/surecutsalot/06.saetlinecolour.jpg", caption: "6. Sæt stregfarve" },
+      { src: "billeder/vinylskaerer/surecutsalot/07.saetlinjebredde.jpg", caption: "7. Justér linjebredde" },
+      { src: "billeder/vinylskaerer/surecutsalot/08.placertegning.jpg", caption: "8. Placer tegningen korrekt" },
+      { src: "billeder/vinylskaerer/surecutsalot/09.trykpaacutter.jpg", caption: "9. Tryk på cutter-ikonet" },
+      { src: "billeder/vinylskaerer/surecutsalot/10.placeringsindstillinger.jpg", caption: "10. Indstil placering og størrelse" },
+      { src: "billeder/vinylskaerer/surecutsalot/11.vaelgvinyltype.jpg", caption: "11. Vælg type vinyl og skærestil" },
+      { src: "billeder/vinylskaerer/surecutsalot/12.trykcut.jpg", caption: "12. Tryk 'Cut' for at starte skæring" }
+    ];
+
+    let scalIndex = 0;
+
+    function updateScalCarousel() {
+      document.getElementById("scalImage").src = scalImages[scalIndex].src;
+      document.getElementById("scalCaption").textContent = scalImages[scalIndex].caption;
+    }
+
+    function nextScalSlide() {
+      scalIndex = (scalIndex + 1) % scalImages.length;
+      updateScalCarousel();
+    }
+
+    function prevScalSlide() {
+      scalIndex = (scalIndex - 1 + scalImages.length) % scalImages.length;
+      updateScalCarousel();
+    }
+
+    // Startvisning
+    updateScalCarousel();
+  </script>
+</body>
+</html>
