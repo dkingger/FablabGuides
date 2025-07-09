@@ -113,13 +113,19 @@
       { src: "billeder/3dprinter/prusaxl/start_print/IMG_6332.jpeg", caption: "1. Indsæt USB stikket" },    
       { src: "billeder/3dprinter/prusaxl/start_print/IMG_6335.jpeg", caption: "2. Den nyeste fil på USB stikket hentes automatisk ind" },
       { src: "billeder/3dprinter/prusaxl/start_print/IMG_6336.jpeg", caption: "3. Vælg hvilken filament der passer til hvilken farve i filen fra sliceren. Er der kun en farve i filen gå til billede 5." },
-      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6337.jpeg", caption: "4. Hvis farven er forkert i forhold til hvad man har sat i printeren eller mangler der at blive sat filament i en eller flere hotend kommer denne menu frem. Når alt er klar vil den starte printet." },
+      { src: "billeder/3dprinter/prusaxl/start_print/IMG_6337.jpeg", caption: "4. Hvis farven er forkert i forhold til hvad man har sat i printeren eller mangler der at blive sat filament i en eller flere positioner skal dette rettes før du fortsætter." },
       { src: "billeder/3dprinter/prusaxl/start_print/IMG_6339.jpeg", caption: "5. For at hente filen fra USB stikket tryk på 'Print'" },
       { src: "billeder/3dprinter/prusaxl/start_print/IMG_6340.jpeg", caption: "6. Vælg den fil man ønsker at printe" },
       { src: "billeder/3dprinter/prusaxl/start_print/IMG_6341.jpeg", caption: "7. Tryk 'Continue' hvis det er den rigtige fil" },
       { src: "billeder/3dprinter/prusaxl/start_print/IMG_6342.jpeg", caption: "8. Vælg hvilken hotend du vil printe med" },
       { src: "billeder/3dprinter/prusaxl/start_print/IMG_6345.jpeg", caption: "9. Kontroller at første lag sidder fast og er som det skal være" }
     ];
+
+    // --- PRELOAD ALL IMAGES FOR SMOOTH CAROUSEL ---
+    [...filamentImages, ...printImages].forEach(item => {
+      const img = new Image();
+      img.src = item.src;
+    });
 
     let filamentIndex = 0;
     let printIndex = 0;
