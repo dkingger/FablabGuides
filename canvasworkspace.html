@@ -1,1 +1,161 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Workspace – Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d2e2d0;
+      color: #222;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #3a4f41;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #444;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .carousel img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .carousel .caption {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #3a4f41;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .carousel-controls button:hover {
+      background-color: #c94f3c;
+    }
+    a.top-button {
+      display: block;
+      text-align: center;
+      margin: 40px auto;
+      background-color: #3a4f41;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <h1>Canvas Workspace</h1>
+  <p style="text-align: center;">Herunder kan du se trin-for-trin hvordan du bruger Canvas Workspace.</p>
 
+  <h2>Importer SVG</h2>
+  <div class="carousel">
+    <img id="svgImage" src="" alt="Importer SVG billede">
+    <div class="caption" id="svgCaption"></div>
+    <div class="carousel-controls">
+      <button onclick="prevSvgSlide()">Tilbage</button>
+      <button onclick="nextSvgSlide()">Næste</button>
+    </div>
+  </div>
+
+  <h2>Spor billede</h2>
+  <div class="carousel">
+    <img id="traceImage" src="" alt="Spor billede billede">
+    <div class="caption" id="traceCaption"></div>
+    <div class="carousel-controls">
+      <button onclick="prevTraceSlide()">Tilbage</button>
+      <button onclick="nextTraceSlide()">Næste</button>
+    </div>
+  </div>
+
+  <a class="top-button" href="index.html">Tilbage til forsiden</a>
+
+  <script>
+    const svgImages = [
+      { src: "billeder/vinylskaerer/canvas_workspace/importersvg/01.canvasworkspace.jpeg", caption: "1. Åbn Canvas Workspace" },
+      { src: "billeder/vinylskaerer/canvas_workspace/importersvg/02.nytdokument.jpeg", caption: "2. Opret et nyt dokument" },
+      { src: "billeder/vinylskaerer/canvas_workspace/importersvg/03.grundskærm.jpeg", caption: "3. Startskærm vises" },
+      { src: "billeder/vinylskaerer/canvas_workspace/importersvg/04.navngivdokument.jpeg", caption: "4. Navngiv dokumentet" },
+      { src: "billeder/vinylskaerer/canvas_workspace/importersvg/05.importersvg.jpeg", caption: "5. Tryk på 'Importer SVG'" },
+      { src: "billeder/vinylskaerer/canvas_workspace/importersvg/06.aabensvg.jpeg", caption: "6. Vælg SVG-fil" },
+      { src: "billeder/vinylskaerer/canvas_workspace/importersvg/07.placerbillede.jpeg", caption: "7. Placer billedet på skærmen" },
+      { src: "billeder/vinylskaerer/canvas_workspace/importersvg/08.downloadknap.jpeg", caption: "8. Tryk på download-knappen" },
+      { src: "billeder/vinylskaerer/canvas_workspace/importersvg/09.gempåcomputer.jpeg", caption: "9. Gem filen på computeren" }
+    ];
+
+    const traceImages = [
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/01.canvasworkspace.jpeg", caption: "1. Åbn Canvas Workspace" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/02.nytdokument.jpeg", caption: "2. Opret et nyt dokument" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/03.grundskærm.jpeg", caption: "3. Startskærm vises" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/04.navngivdokument.jpeg", caption: "4. Navngiv dokumentet" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/05.sporbillede.jpeg", caption: "5. Vælg 'Spor billede'" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/06.aabenbillede.jpeg", caption: "6. Åbn billedfil" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/07.vaelgcolor.jpeg", caption: "7. Vælg farvevalg til sporing" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/08.preview.jpeg", caption: "8. Forhåndsvis sporing" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/09.skygge.jpeg", caption: "9. Juster skygge" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/10.download.jpeg", caption: "10. Download projektet" },
+      { src: "billeder/vinylskaerer/canvas_workspace/sporbillede/11.vaelgcomputer.jpeg", caption: "11. Gem på din computer" }
+    ];
+
+    let svgIndex = 0;
+    let traceIndex = 0;
+
+    function updateSvgCarousel() {
+      document.getElementById("svgImage").src = svgImages[svgIndex].src;
+      document.getElementById("svgCaption").textContent = svgImages[svgIndex].caption;
+    }
+
+    function updateTraceCarousel() {
+      document.getElementById("traceImage").src = traceImages[traceIndex].src;
+      document.getElementById("traceCaption").textContent = traceImages[traceIndex].caption;
+    }
+
+    function nextSvgSlide() {
+      svgIndex = (svgIndex + 1) % svgImages.length;
+      updateSvgCarousel();
+    }
+
+    function prevSvgSlide() {
+      svgIndex = (svgIndex - 1 + svgImages.length) % svgImages.length;
+      updateSvgCarousel();
+    }
+
+    function nextTraceSlide() {
+      traceIndex = (traceIndex + 1) % traceImages.length;
+      updateTraceCarousel();
+    }
+
+    function prevTraceSlide() {
+      traceIndex = (traceIndex - 1 + traceImages.length) % traceImages.length;
+      updateTraceCarousel();
+    }
+
+    // Startvisning
+    updateSvgCarousel();
+    updateTraceCarousel();
+  </script>
+</body>
+</html>
