@@ -25,23 +25,142 @@
   header{display:flex; gap:16px; align-items:center; margin:0 auto 24px; justify-content:center;}
   header img{height:64px}
   h1{margin:0; font-size:clamp(1.2rem, 2.2vw, 1.8rem); font-weight:700}
-  .hint{margin:0 auto 18px; text-align:center; color:#333}
 
-  /* Lock */
-  .lock{
-    position:relative; width:min(360px, 92vw); aspect-ratio:1/1.15;
-    margin:24px auto; display:flex; align-items:flex-end; justify-content:center;
-  }
-  /* Shackle (click to unlock) */
-  .shackle{
-    position:absolute; top:-12%; left:50%; transform:translateX(-50%);
-    width:62%; height:38%; border:12px solid var(--steel); border-bottom:none;
-    border-radius:160px 160px 0 0; background:transparent; cursor:pointer;
-    box-shadow: inset 0 0 0 2px white, 0 2px 0 rgba(0,0,0,.06);
-  }
+  .lock{position:relative; width:min(360px, 92vw); aspect-ratio:1/1.15; margin:24px auto; display:flex; align-items:flex-end; justify-content:center;}
+  .shackle{position:absolute; top:-12%; left:50%; transform:translateX(-50%); width:62%; height:38%; border:12px solid var(--steel); border-bottom:none; border-radius:160px 160px 0 0; background:transparent; cursor:pointer; box-shadow: inset 0 0 0 2px white, 0 2px 0 rgba(0,0,0,.06);}
   .shackle:active{filter:brightness(.92)}
-  .shackle::after{ /* lille “hak” i højre side som på rigtige hængelåse */
-    content:""; position:absolute; right:8%; bottom:-12px; width:20px; height:18px;
-    background:var(--steel-dark); border-radius:4px;
-  }
-  .shackle-label{position:absolute; top:-44%; left:50%; transfo
+  .shackle::after{content:""; position:absolute; right:8%; bottom:-12px; width:20px; height:18px; background:var(--steel-dark); border-radius:4px;}
+  .shackle-label{position:absolute; top:-44%; left:50%; transform:translateX(-50%); font-size:.9rem; color:#333; user-select:none}
+
+  .body{width:100%; height:78%; border-radius:14px; background:linear-gradient(180deg, var(--gold2), var(--gold1) 55%, var(--gold3)); box-shadow: inset 0 0 0 2px rgba(255,255,255,.4), inset 0 -8px 20px rgba(0,0,0,.15), 0 10px 24px rgba(0,0,0,.18); padding:18px 16px 22px; display:flex; flex-direction:column; justify-content:center; gap:14px; position:relative;}
+  .brand{position:absolute; left:16px; bottom:12px; font-weight:700; letter-spacing:.06em; opacity:.35}
+  .model{position:absolute; right:16px; bottom:12px; opacity:.35}
+
+  .wheels{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-inline:auto; width:88%;}
+  .wheel{position:relative; height:64px; border-radius:8px; background:linear-gradient(#111,#222); color:#fefefe; display:grid; place-items:center; font-size:1.6rem; font-weight:700; cursor:pointer; user-select:none; box-shadow: inset 0 -8px 14px rgba(0,0,0,.35), inset 0 8px 14px rgba(255,255,255,.06); border:1px solid #000;}
+  .wheel:focus{outline:2px solid #fff8; outline-offset:2px}
+  .wheel small{position:absolute; bottom:4px; font-size:.6rem; opacity:.6; letter-spacing:.1em}
+  .tick{position:absolute; right:-6px; top:50%; transform:translateY(-50%); width:8px; height:60%; background:#2e2e2e; border-radius:2px; box-shadow: inset 0 0 0 1px #000, 0 0 0 2px rgba(0,0,0,.08);}
+
+  .actions{display:flex; justify-content:center; gap:10px; margin-top:6px}
+  .btn{appearance:none; border:none; border-radius:8px; padding:10px 14px; cursor:pointer; background:var(--accent); color:#fff; font-weight:700; letter-spacing:.02em;}
+  .btn:hover{filter:brightness(1.06)}
+  .btn.secondary{background:#444}
+
+  .error{color:#b00020; text-align:center; min-height:1.2em}
+  .shake{animation:shake .35s ease}
+  @keyframes shake{10%, 90% { transform: translateX(-2px) } 20%, 80% { transform: translateX(4px) } 30%, 50%, 70% { transform: translateX(-6px) } 40%, 60% { transform: translateX(6px) }}
+
+  .back{display:block; text-align:center; margin-top:10px; color:inherit; text-decoration:none}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#3a4f41" stroke-width="2"/><path d="M7 13l3 3 7-7" stroke="#3a4f41" stroke-width="2"/></svg>
+      <h1>Om os – lås op for siden</h1>
+    </header>
+
+    <div id="lock" class="lock" aria-label="Kombinationslås">
+      <button id="shackle" class="shackle" aria-label="Lås op (klik når koden er korrekt)"></button>
+      <div class="shackle-label">Klik her for at låse op</div>
+
+      <div class="body" id="lockBody">
+        <div class="wheels" role="group" aria-label="Kodehjul">
+          <button class="wheel" data-idx="0"><span class="digit">0</span><small>▲</small><span class="tick"></span></button>
+          <button class="wheel" data-idx="1"><span class="digit">0</span><small>▲</small><span class="tick"></span></button>
+          <button class="wheel" data-idx="2"><span class="digit">0</span><small>▲</small><span class="tick"></span></button>
+          <button class="wheel" data-idx="3"><span class="digit">0</span><small>▲</small><span class="tick"></span></button>
+        </div>
+        <div id="msg" class="error" aria-live="polite"></div>
+        <div class="actions"><button id="reset" class="btn secondary" type="button">Nulstil</button></div>
+        <div class="brand">FABLAB</div>
+        <div class="model">165/40</div>
+      </div>
+    </div>
+
+    <a class="back" href="#">⬅ Tilbage</a>
+  </div>
+
+<script>
+  // ——— Simpel obfuskering: vi gemmer ikke koden i klartekst ———
+  // Tjek sker mod en SHA‑256 af (indtastetKode + ":" + SALT)
+  // OBS: Dette er kun til at skjule koden for nysgerrige – ikke egentlig sikkerhed.
+  (() => {
+    const SALT = '3v8PqZkJx#Fablab!2025';
+    const HASH = '4c0f27f7f7f3b366adb2a5800b391b2731a4d8fc0467085e5850abf1114c66e9'; // sha256('1173:'+SALT)
+    const TARGET_URL = 'hemmelig.html';
+
+    const wheels = Array.from(document.querySelectorAll('.wheel'));
+    const digits = [0,0,0,0];
+    const msg = document.getElementById('msg');
+    const lockBody = document.getElementById('lockBody');
+    const shackleBtn = document.getElementById('shackle');
+
+    function render(){
+      wheels.forEach((btn, i) => btn.querySelector('.digit').textContent = digits[i]);
+    }
+    render();
+
+    wheels.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const i = Number(btn.dataset.idx);
+        digits[i] = (digits[i] + 1) % 10; render(); msg.textContent = '';
+      });
+      btn.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        const i = Number(btn.dataset.idx);
+        digits[i] = (digits[i] + 9) % 10; render(); msg.textContent = '';
+      });
+      btn.addEventListener('keydown', (e) => {
+        const i = Number(btn.dataset.idx);
+        if (e.key === 'ArrowUp') { digits[i] = (digits[i] + 1) % 10; render(); }
+        if (e.key === 'ArrowDown') { digits[i] = (digits[i] + 9) % 10; render(); }
+      });
+    });
+
+    document.getElementById('reset').addEventListener('click', () => {
+      digits.fill(0); render(); msg.textContent = '';
+    });
+
+    // SHA-256 helper (Web Crypto API)
+    async function sha256Hex(text){
+      const enc = new TextEncoder().encode(text);
+      const buf = await crypto.subtle.digest('SHA-256', enc);
+      const arr = Array.from(new Uint8Array(buf));
+      return arr.map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    let locked = false;
+    shackleBtn.addEventListener('click', async () => {
+      if (locked) return; // anti-spam klik
+      locked = true;
+      try {
+        const input = digits.join('');
+        const digest = await sha256Hex(input + ':' + SALT);
+        const ok = (digest === HASH);
+        if (ok){
+          await openAnimation();
+          window.location.href = TARGET_URL; // i demoen kan denne linje evt. kommenteres
+        } else {
+          msg.textContent = 'Forkert kode – prøv igen.';
+          lockBody.classList.remove('shake'); void lockBody.offsetWidth; lockBody.classList.add('shake');
+        }
+      } finally {
+        setTimeout(()=> locked = false, 600); // lille cooldown
+      }
+    });
+
+    function openAnimation(){
+      return new Promise(resolve => {
+        const shackle = document.getElementById('shackle');
+        shackle.animate([
+          { transform: 'translateX(-50%) translateY(0)' },
+          { transform: 'translateX(-50%) translateY(-18px)' }
+        ], { duration: 220, easing: 'ease-out' }).onfinish = () => resolve();
+      });
+    }
+  })();
+</script>
+</body>
+</html>
