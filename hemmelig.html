@@ -18,7 +18,6 @@
 <body>
 <iframe id="sheetFrame" style="width:90%;height:90%;border:none;border-radius:8px;"></iframe>
 <script>
-  // Korrekt Base64 (én linje, ingen mellemrum)
   const encoded = "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vc3ByZWFkc2hlZXRzL2QvMWR6Zkc2dGwyc1BXdFVrbGNEZzhKenNJRTZTR2dKTFF6Y1JrVlhPVEVCbEUvZWRpdD91c3A9c2hhcmluZw==";
   const url = atob(encoded);
   document.getElementById("sheetFrame").src = url;
