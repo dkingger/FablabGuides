@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Om os – Lås op</title>
+<title> </title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -57,14 +57,17 @@
 <body>
   <div class="wrap">
     <header>
+      <!-- 
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#3a4f41" stroke-width="2"/><path d="M7 13l3 3 7-7" stroke="#3a4f41" stroke-width="2"/></svg>
-      <h1>Om os – lås op for siden</h1>
+      -->
+      <h1> </h1>
     </header>
 
     <div id="lock" class="lock" aria-label="Kombinationslås">
-      <button id="shackle" class="shackle" aria-label="Lås op (klik når koden er korrekt)"></button>
+      <button id="shackle" class="shackle" aria-label=" "></button>
+<!--
       <div class="shackle-label">Klik her for at låse op</div>
-
+-->
       <div class="body" id="lockBody">
         <div class="wheels" role="group" aria-label="Kodehjul">
           <button class="wheel" data-idx="0"><span class="digit">0</span><small>▲</small><span class="tick"></span></button>
@@ -75,7 +78,7 @@
         <div id="msg" class="error" aria-live="polite"></div>
         <div class="actions"><button id="reset" class="btn secondary" type="button">Nulstil</button></div>
         <div class="brand">FABLAB</div>
-        <div class="model">165/40</div>
+        <div class="model">170/478/div>
       </div>
     </div>
 
@@ -83,12 +86,10 @@
   </div>
 
 <script>
-  // ——— Simpel obfuskering: vi gemmer ikke koden i klartekst ———
-  // Tjek sker mod en SHA‑256 af (indtastetKode + ":" + SALT)
-  // OBS: Dette er kun til at skjule koden for nysgerrige – ikke egentlig sikkerhed.
+
   (() => {
     const SALT = '3v8PqZkJx#Fablab!2025';
-    const HASH = '4c0f27f7f7f3b366adb2a5800b391b2731a4d8fc0467085e5850abf1114c66e9'; // sha256('1173:'+SALT)
+    const HASH = '4c0f27f7f7f3b366adb2a5800b391b2731a4d8fc0467085e5850abf1114c66e9'; 
     const TARGET_URL = 'hemmelig.html';
 
     const wheels = Array.from(document.querySelectorAll('.wheel'));
