@@ -78,12 +78,20 @@
         <div id="msg" class="error" aria-live="polite"></div>
         <div class="actions"><button id="reset" class="btn secondary" type="button">Nulstil</button></div>
         <div class="brand">FABLAB</div>
-        <div class="model">170/478/div>
+        <div class="model">170/478</div>
       </div>
     </div>
 
-    <a class="back" href="#">⬅ Tilbage</a>
-  </div>
+    <a class="back" href="index.html" id="backBtn">⬅ Tilbage</a>
+      <script>
+        (function(){
+            const b = document.getElementById('backBtn');
+          b.addEventListener('click', function(e){
+            if (document.referrer && history.length > 1) { e.preventDefault(); history.back(); }
+          });
+        })();
+      </script>
+
 
 <script>
 
