@@ -5,17 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hemmelig side</title>
   <style>
-    body{
+    body {
       margin:0; display:flex; align-items:center; justify-content:center;
       height:100vh; background:#d2e2d0; font-family:Arial, sans-serif;
     }
-    iframe{
-      width:90%; height:90%; border:none; box-shadow:0 0 12px rgba(0,0,0,.2);
-      border-radius:8px;
+    iframe {
+      width:90%; height:90%; border:none;
+      box-shadow:0 0 12px rgba(0,0,0,.2); border-radius:8px;
     }
   </style>
 </head>
 <body>
-  <iframe src="https://docs.google.com/spreadsheets/d/1dzfG6tl2sPWtUklcDg8JzsIE6SGgJLQzcRkVXOTEBlE/edit?usp=sharing"></iframe>
+  <iframe id="sheetFrame"></iframe>
+
+  <script>
+    const encoded = "aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vc3ByZWFkc2hlZXRzL2QvMWR6Zkc2dGwyc1BXdFVrbGNkR2dqeklFNlNHa0pMUXpjUmtWWE9URUJ sRS9lZGl0P3VzcD1zaGFyaW5n";
+    const url = atob(encoded);
+    document.getElementById("sheetFrame").src = url;
+  </script>
 </body>
 </html>
