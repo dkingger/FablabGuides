@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fablab Spinderihallerne – guides for machines, laser cutters, 3D printers, and digital tools.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Fablab Spinderihallerne">
+    <title>FabLab Vejle – Makerspace and Creative Workshop</title>
+    <meta name="description" content="Visit FabLab Vejle – an open makerspace with laser, 3D printing, CNC, and much more. See guides and projects here.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Roboto', sans-serif; line-height: 1.6; background-color: #d2e2d0; color: #222; }
+        header { background-color: #222; color: white; padding: 20px 0; text-align: center; }
+        .content { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .button-container { text-align: center; margin: 30px 0; }
+        .guide-button, .machine-button, .printer-button, .back-button { background-color: #3a4f41; color: white; border: none; padding: 15px 30px; font-size: 1rem; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; text-decoration: none; display: inline-block; margin: 10px; }
+        .guide-button:hover, .machine-button:hover, .printer-button:hover, .back-button:hover { background-color: #c94f3c; }
+        .coming-soon { background-color: #ccc; color: #666; cursor: default; pointer-events: none; font-style: italic; }
+        .machine-guides, .printer-guides { display: none; text-align: center; padding: 40px 20px; background-color: #e9ecef; }
+        footer { background-color: #222; color: white; text-align: center; padding: 20px 0; margin-top: 40px; }
+        .lang-switch { position: absolute; top: 20px; right: 20px; }
+        .lang-switch a { font-size: 2rem; margin-left: 10px; text-decoration: none; }
+    </style>
+    <script>
+        function showMachineGuides() {
+            document.querySelector('.machine-guides').style.display = 'block';
+            document.querySelector('.printer-guides').style.display = 'none';
+            document.getElementById('vinyl-menu').style.display = 'none';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+        function showPrinterGuides() {
+            document.querySelector('.machine-guides').style.display = 'none';
+            document.querySelector('.printer-guides').style.display = 'block';
+            document.getElementById('vinyl-menu').style.display = 'none';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+        function showVinylMenu() {
+            document.querySelector('.machine-guides').style.display = 'none';
+            document.querySelector('.printer-guides').style.display = 'none';
+            document.getElementById('vinyl-menu').style.display = 'block';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+    </script>
+</head>
+<body>
+    <div class="lang-switch">
+        <a href="/index.html" title="Dansk">🇩🇰</a>
+        <span>🇬🇧</span>
+    </div>
+    <header>
+        <img src="../billeder/Fablab Logo.svg" alt="Fablab Logo" style="height: 80px;">
+        <h1>Fablab Spinderihallerne</h1>
+    </header>
+    <div class="content">
+        <section id="about">
+            <h2><a href="omos.html" style="color: inherit; text-decoration: none;">About us</a></h2>
+            <p>Fablab Spinderihallerne is an open workshop environment where you can work with digital fabrication, electronics, prototypes, and creative development.</p>
+            <p>Every Tuesday from 15:00 – 20:00 (with some exceptions).</p>
+            <p>You can find us at Spinderihallerne in Vejle.</p>
+        </section>
+        <div class="button-container">
+            <button class="guide-button" onclick="showMachineGuides()">Machine guides</button>
+            <a href="https://place2book.com/en/sw2/sales/event_list/EM13515" class="guide-button" target="_blank" rel="noopener">Events</a>
+            <a href="https://judicious-radiator-ebc.notion.site/BioTechLab-Spinderihallerne-fbf28bba7f4949c4a801244631044e33" class="guide-button" target="_blank" rel="noopener">BioLab recipes</a>
+            <a href="https://github.com/Fablabvejle" class="guide-button" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </div>
+    <div class="machine-guides">
+        <h2>Machine guides</h2>
+        <button class="machine-button" onclick="showPrinterGuides()">3D printing</button>
+        <a class="machine-button" href="laser.html">Laser cutter</a>
+        <a class="machine-button" onclick="showVinylMenu()">Vinyl cutter</a>
+        <a class="machine-button coming-soon">Coming: Heat press</a>
+        <a class="machine-button coming-soon">Coming: CNC mill</a>
+        <a class="machine-button coming-soon">Coming: Airbrush painting</a>
+    </div>
+    <div class="printer-guides">
+        <h2>3D printers</h2>
+        <a class="printer-button" href="prusaslicer.html">Prusa Slicer</a>
+        <a class="printer-button" href="prusamini.html">Prusa Mini</a>
+        <a class="printer-button" href="prusa-mk3s.html">Prusa MK3S</a>
+        <a class="printer-button" href="prusa-mk4.html">Prusa MK4</a>
+        <a class="printer-button" href="prusa-xl.html">Prusa XL</a>
+        <br>
+        <button class="back-button" onclick="showMachineGuides()">Back to machines</button>
+    </div>
+    <div id="vinyl-menu" class="printer-guides">
+        <h2>Vinyl cutter</h2>
+        <a class="printer-button" href="canvasworkspace.html">Canvas Workspace</a>
+        <a class="printer-button" href="surecutalot.html">Sure Cut a Lot</a>
+        <a class="printer-button" href="gcc-expert24.html">GCC Expert 24 II</a>
+        <a class="printer-button" href="brother-scanncut.html">Brother Scan'n'cut</a>
+        <br>
+        <button class="back-button" onclick="showMachineGuides()">Back to machines</button>
+    </div>
+    <footer>
+        &copy; 2025 Fablab Spinderihallerne. All rights reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prusa MK3S Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d2e2d0;
+            color: #222;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #3a4f41;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #444;
+        }
+        h3 {
+            margin-top: 20px;
+            color: #555;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        a, .top-button {
+            display: inline-block;
+            margin-top: 30px;
+            background-color: #3a4f41;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover, .top-button:hover {
+            background-color: #c94f3c;
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .carousel img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .carousel .caption {
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .carousel-controls button {
+            background-color: #3a4f41;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .carousel-controls button:hover {
+            background-color: #c94f3c;
+        }
+    </style>
+</head>
+<body>
+    <a name="top"></a>
+    <h1>Prusa MK3S</h1>
+    <p>The MK3S is a solid and versatile 3D printer from Prusa, suitable for both beginners and experienced users. It is known for its reliability, high quality, and automatic features.</p>
+
+    <h2>How to use a Prusa MK3S</h2>
+
+    <h3>Change filament</h3>
+    <div class="carousel">
+        <img id="carouselImage" src="" alt="Change filament image">
+        <div class="caption" id="carouselCaption"></div>
+        <div class="carousel-controls">
+            <button onclick="prevSlide()">Back</button>
+            <button onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+
+    <h3>Start print</h3>
+    <div class="carousel">
+        <img id="startPrintImage" src="" alt="Start print image">
+        <div class="caption" id="startPrintCaption"></div>
+        <div class="carousel-controls">
+            <button onclick="prevPrintSlide()">Back</button>
+            <button onclick="nextPrintSlide()">Next</button>
+        </div>
+    </div>
+
+    <h2>Tips and tricks</h2>
+    <ul>
+        <li>Keep the build plate clean – use isopropyl alcohol and a microfiber cloth.</li>
+        <li>Adjust the first layer correctly – use Z-offset and test print.</li>
+        <li>Listen for unusual sounds during printing – it may indicate problems.</li>
+        <li>If the filament does not stick, stop and clean the nozzle and build plate.</li>
+    </ul>
+
+    <a href="index.html">Back to frontpage</a>
+    <a class="top-button" href="#top">Back to top</a>
+
+    <script>
+        const images = [
+            { src: "../billeder/prusa-mk3s/skift filament/main_screen.avif", caption: "1. Start screen: Select 'Unload Filament'" },
+            { src: "../billeder/prusa-mk3s/skift filament/unload_filament.avif", caption: "2. Select 'Unload Filament' in the menu" },
+            { src: "../billeder/prusa-mk3s/skift filament/filament_choose.avif", caption: "3. Select filament type, e.g. PLA" },
+            { src: "../billeder/prusa-mk3s/skift filament/preheat_to_unload.avif", caption: "4. The printer heats up to the correct temperature" },
+            { src: "../billeder/prusa-mk3s/skift filament/press_knob_unload.avif", caption: "5. Press the knob to confirm" },
+            { src: "../billeder/prusa-mk3s/skift filament/hotend.avif", caption: "6. Gently pull out the filament when heated" },
+            { src: "../billeder/prusa-mk3s/skift filament/extrude.avif", caption: "7. Insert new filament and press 'Load Filament'" },
+            { src: "../billeder/prusa-mk3s/skift filament/correct_extrude.avif", caption: "8. Check that the filament is extruded correctly" },
+            { src: "../billeder/prusa-mk3s/skift filament/printer_ok.avif", caption: "9. Confirm and finish the procedure" }
+        ];
+
+        const startPrintImages = [
+            { src: "../billeder/prusa-mk3s/start_print/kontrol_start_printer.avif", caption: "1. Check that the printer is on and ready" },
+            { src: "../billeder/prusa-mk3s/start_print/wipe_surface.avif", caption: "2. Clean the build plate with isopropyl alcohol" },
+            { src: "../billeder/prusa-mk3s/start_print/insert_SD_kort.avif", caption: "3. Insert the SD card with your .gcode file" },
+            { src: "../billeder/prusa-mk3s/start_print/choose_file.avif", caption: "4. Select the file you want to print from the menu" },
+            { src: "../billeder/prusa-mk3s/start_print/printer_varmer_start.avif", caption: "5. The printer heats up and starts printing" },
+            { src: "../billeder/prusa-mk3s/start_print/kontrol_first_lag.avif", caption: "6. Watch the first layer and adjust Z-offset if necessary" }
+        ];
+
+        let currentIndex = 0;
+        let currentPrintIndex = 0;
+
+        function updateCarousel() {
+            document.getElementById("carouselImage").src = images[currentIndex].src;
+            document.getElementById("carouselCaption").textContent = images[currentIndex].caption;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateCarousel();
+        }
+
+        function updatePrintCarousel() {
+            document.getElementById("startPrintImage").src = startPrintImages[currentPrintIndex].src;
+            document.getElementById("startPrintCaption").textContent = startPrintImages[currentPrintIndex].caption;
+        }
+
+        function nextPrintSlide() {
+            currentPrintIndex = (currentPrintIndex + 1) % startPrintImages.length;
+            updatePrintCarousel();
+        }
+
+        function prevPrintSlide() {
+            currentPrintIndex = (currentPrintIndex - 1 + startPrintImages.length) % startPrintImages.length;
+            updatePrintCarousel();
+        }
+
+        updateCarousel();
+        updatePrintCarousel();
+    </script>
+</body>
+</html>

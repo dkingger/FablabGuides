@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About us</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#d2e2d0;
+    --text:#222;
+    --gold1:#c8a560;
+    --gold2:#e2c37a;
+    --gold3:#b9934c;
+    --accent:#3a4f41;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:'Roboto',sans-serif; background:var(--bg); color:var(--text);
+    min-height:100svh; display:grid; place-items:center; padding:24px;
+  }
+  .wrap{max-width:900px; width:100%;}
+  header{display:flex; gap:16px; align-items:center; margin:0 auto 24px; justify-content:center;}
+  header img{height:64px}
+  h1{margin:0; font-size:clamp(1.2rem, 2.2vw, 1.8rem); font-weight:700}
+
+  .back{display:block; text-align:center; margin-top:10px; color:inherit; text-decoration:none}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>About us</h1>
+    </header>
+    <p>Welcome to FabLab Vejle! Here you can learn about our makerspace, our community, and how you can get involved. We offer open workshops, creative tools, and a space for innovation and prototyping. Everyone is welcome, regardless of experience level.</p>
+    <a class="back" href="index.html" id="backBtn">⬅ Back</a>
+    <script>
+      (function(){
+        const b = document.getElementById('backBtn');
+        b.addEventListener('click', function(e){
+          if (document.referrer && history.length > 1) { e.preventDefault(); history.back(); }
+        });
+      })();
+    </script>
+  </div>
+</body>
+</html>

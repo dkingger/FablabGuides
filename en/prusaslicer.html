@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrusaSlicer – Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #d2e2d0;
+      color: #222;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #3a4f41;
+      text-align: center;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .carousel img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .caption {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #3a4f41;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .carousel-controls button:hover {
+      background-color: #c94f3c;
+    }
+    a.top-button {
+      display: block;
+      text-align: center;
+      margin: 40px auto;
+      background-color: #3a4f41;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      width: fit-content;
+    }
+    a.top-button:hover {
+      background-color: #c94f3c;
+    }
+  </style>
+</head>
+<body>
+  <h1>PrusaSlicer</h1>
+  <p style="text-align: center;">Below you can see step-by-step instructions on how to use PrusaSlicer.</p>
+
+  <div class="carousel">
+    <img id="slicerImage" src="/billeder/prusa-mk3s/prusaslicer/open_prusaslicer.avif" alt="PrusaSlicer image">
+    <div class="caption" id="slicerCaption">1. Open PrusaSlicer</div>
+    <div class="carousel-controls">
+      <button onclick="prevSlicerSlide()">Back</button>
+      <button onclick="nextSlicerSlide()">Next</button>
+    </div>
+  </div>
+
+  <a class="top-button" href="index.html">Back to frontpage</a>
+
+  <script>
+    const slicerImages = [
+      { src: "/billeder/prusa-mk3s/prusaslicer/open_prusaslicer.avif", caption: "1. Open PrusaSlicer" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/choose_stl_file.avif", caption: "2. Select your STL file" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/choose_printer.avif", caption: "3. Choose printer profile (e.g. MK3S)" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/choose_fillament_slicer.avif", caption: "4. Select correct filament profile" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/choose_layer_height.avif", caption: "5. Choose layer height" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/Slice_3D_print.avif", caption: "6. Slice and preview" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/choose_support.avif", caption: "7. Add support if needed" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/check_weight_print.avif", caption: "8. Check print time and weight" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/Export_g_code.avif", caption: "9. Export G-code to SD card" },
+      { src: "/billeder/prusa-mk3s/prusaslicer/eject_drive.avif", caption: "10. Safely remove the SD card" }
+    ];
+
+    let currentSlicerIndex = 0;
+
+    function updateSlicerCarousel() {
+      document.getElementById("slicerImage").src = slicerImages[currentSlicerIndex].src;
+      document.getElementById("slicerCaption").textContent = slicerImages[currentSlicerIndex].caption;
+    }
+
+    function nextSlicerSlide() {
+      currentSlicerIndex = (currentSlicerIndex + 1) % slicerImages.length;
+      updateSlicerCarousel();
+    }
+
+    function prevSlicerSlide() {
+      currentSlicerIndex = (currentSlicerIndex - 1 + slicerImages.length) % slicerImages.length;
+      updateSlicerCarousel();
+    }
+
+    updateSlicerCarousel();
+  </script>
+</body>
+</html>
