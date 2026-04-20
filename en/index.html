@@ -38,18 +38,28 @@
             document.querySelector('.machine-guides').style.display = 'block';
             document.querySelector('.printer-guides').style.display = 'none';
             document.getElementById('vinyl-menu').style.display = 'none';
+            document.getElementById('laser-menu').style.display = 'none';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
         function showPrinterGuides() {
             document.querySelector('.machine-guides').style.display = 'none';
             document.querySelector('.printer-guides').style.display = 'block';
             document.getElementById('vinyl-menu').style.display = 'none';
+            document.getElementById('laser-menu').style.display = 'none';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
         function showVinylMenu() {
             document.querySelector('.machine-guides').style.display = 'none';
             document.querySelector('.printer-guides').style.display = 'none';
             document.getElementById('vinyl-menu').style.display = 'block';
+            document.getElementById('laser-menu').style.display = 'none';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+        function showLaserMenu() {
+            document.querySelector('.machine-guides').style.display = 'none';
+            document.querySelector('.printer-guides').style.display = 'none';
+            document.getElementById('vinyl-menu').style.display = 'none';
+            document.getElementById('laser-menu').style.display = 'block';
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
@@ -80,7 +90,7 @@
     <div class="machine-guides">
         <h2>Machine guides</h2>
         <button class="machine-button" onclick="showPrinterGuides()">3D printing</button>
-        <a class="machine-button" href="laser.html">Laser cutter</a>
+        <a class="machine-button" onclick="showLaserMenu()">Laser cutter</a>
         <a class="machine-button" onclick="showVinylMenu()">Vinyl cutter</a>
         <a class="machine-button coming-soon">Coming: Heat press</a>
         <a class="machine-button coming-soon">Coming: CNC router</a>
@@ -119,6 +129,28 @@
         <a class="printer-button" href="gcc-expert24.html">GCC Expert 24 II</a>
         <a class="printer-button" href="brother-scanncut.html">Brother Scan'n'cut</a>
         <br>
+        <button class="back-button" onclick="showMachineGuides()">Back to machines</button>
+    </div>
+    <div id="laser-menu" class="printer-guides">
+        <h2>Laser cutter</h2>
+        <div class="printer-grid">
+            <a class="printer-card" href="laser.html#lightburn">
+                <img class="printer-icon" src="../billeder/ikoner/laser-lightburn.png" alt="LightBurn">
+                <span class="printer-label">LightBurn</span>
+            </a>
+            <a class="printer-card" href="laser.html#eduard">
+                <img class="printer-icon" src="../billeder/ikoner/laser-eduard-fritlagt.png" alt="Eduard">
+                <span class="printer-label">Eduard</span>
+            </a>
+            <a class="printer-card" href="laser.html#aeon">
+                <img class="printer-icon" src="../billeder/ikoner/laser-aeon-fritlagt.png" alt="AEON">
+                <span class="printer-label">AEON</span>
+            </a>
+            <a class="printer-card" href="laser.html#epilog">
+                <img class="printer-icon" src="../billeder/ikoner/laser-epilog-fritlagt.png" alt="Epilog">
+                <span class="printer-label">Epilog</span>
+            </a>
+        </div>
         <button class="back-button" onclick="showMachineGuides()">Back to machines</button>
     </div>
     <footer>
