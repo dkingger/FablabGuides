@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Brother ScanNCut draft</title>
+  <desc id="desc">Draft illustration of a Brother ScanNCut machine on transparent background.</desc>
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#405169"/>
+      <stop offset="100%" stop-color="#232f3f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb321"/>
+      <stop offset="100%" stop-color="#f27700"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="320" cy="533" rx="180" ry="24" fill="#101722" opacity="0.15"/>
+  <rect x="150" y="180" width="340" height="240" rx="30" fill="url(#body)"/>
+  <rect x="184" y="215" width="272" height="120" rx="16" fill="#f8faff"/>
+  <circle cx="252" cy="275" r="16" fill="#283549"/>
+  <circle cx="348" cy="275" r="16" fill="#283549"/>
+  <rect x="200" y="348" width="240" height="38" rx="10" fill="url(#accent)"/>
+  <rect x="222" y="435" width="196" height="18" rx="9" fill="#182232"/>
+</svg>
