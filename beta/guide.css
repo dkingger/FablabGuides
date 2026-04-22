@@ -586,6 +586,7 @@ select {
     max-height: 78vh;
     object-fit: contain;
     border-radius: 20px;
+    cursor: ew-resize;
 }
 
 .modal-caption {

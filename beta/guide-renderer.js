@@ -1,4 +1,10 @@
 (function () {
+    const modalState = {
+        slides: [],
+        index: 0,
+        onIndexChange: null
+    };
+
     function escapeHtml(value) {
         return String(value)
             .replace(/&/g, "&amp;")
@@ -87,15 +93,42 @@
             + "</section>";
     }
 
-    function openModal(src, caption) {
+    function renderModalSlide() {
         const modal = document.getElementById("image-modal");
-        if (!modal) {
+        if (!modal || !modalState.slides.length) {
             return;
         }
 
-        modal.querySelector("img").src = src;
-        modal.querySelector("img").alt = caption;
-        modal.querySelector(".modal-caption").textContent = caption;
+        const activeSlide = modalState.slides[modalState.index];
+        modal.querySelector("img").src = activeSlide.src;
+        modal.querySelector("img").alt = activeSlide.caption;
+        modal.querySelector(".modal-caption").textContent = activeSlide.caption;
+    }
+
+    function stepModal(direction) {
+        if (!modalState.slides.length) {
+            return;
+        }
+
+        modalState.index = (modalState.index + direction + modalState.slides.length) % modalState.slides.length;
+        renderModalSlide();
+
+        if (typeof modalState.onIndexChange === "function") {
+            modalState.onIndexChange(modalState.index);
+        }
+    }
+
+    function openModal(slides, index, onIndexChange) {
+        const modal = document.getElementById("image-modal");
+        if (!modal || !slides || !slides.length) {
+            return;
+        }
+
+        modalState.slides = slides;
+        modalState.index = index;
+        modalState.onIndexChange = onIndexChange;
+
+        renderModalSlide();
         modal.classList.add("is-open");
         document.body.style.overflow = "hidden";
     }
@@ -108,6 +141,9 @@
 
         modal.classList.remove("is-open");
         document.body.style.overflow = "";
+        modalState.slides = [];
+        modalState.index = 0;
+        modalState.onIndexChange = null;
     }
 
     function initializeCarousel(carouselElement) {
@@ -161,13 +197,19 @@
         });
 
         image.addEventListener("click", function () {
-            openModal(slides[currentIndex].src, slides[currentIndex].caption);
+            openModal(slides, currentIndex, function (newIndex) {
+                currentIndex = newIndex;
+                renderSlide();
+            });
         });
 
         image.addEventListener("keydown", function (event) {
             if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                openModal(slides[currentIndex].src, slides[currentIndex].caption);
+                openModal(slides, currentIndex, function (newIndex) {
+                    currentIndex = newIndex;
+                    renderSlide();
+                });
             }
         });
 
@@ -231,14 +273,46 @@
 
         const modal = document.getElementById("image-modal");
         modal.addEventListener("click", function (event) {
-            if (event.target === modal || event.target.classList.contains("modal-close")) {
+            if (event.target.classList.contains("modal-close") || event.target === modal) {
                 closeModal();
+                return;
+            }
+
+            const modalImage = modal.querySelector("img");
+            const imageRect = modalImage.getBoundingClientRect();
+            const clickIsOnImage = event.clientX >= imageRect.left
+                && event.clientX <= imageRect.right
+                && event.clientY >= imageRect.top
+                && event.clientY <= imageRect.bottom;
+
+            if (!clickIsOnImage) {
+                return;
+            }
+
+            const imageCenterX = imageRect.left + (imageRect.width / 2);
+            if (event.clientX < imageCenterX) {
+                stepModal(-1);
+            } else {
+                stepModal(1);
             }
         });
 
         document.addEventListener("keydown", function (event) {
             if (event.key === "Escape") {
                 closeModal();
+                return;
+            }
+
+            if (!modal.classList.contains("is-open")) {
+                return;
+            }
+
+            if (event.key === "ArrowLeft") {
+                stepModal(-1);
+            }
+
+            if (event.key === "ArrowRight") {
+                stepModal(1);
             }
         });
     });
