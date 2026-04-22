@@ -298,5 +298,113 @@
             </div>
         </footer>
     </div>
+
+    <script>
+    (function () {
+        var IMAGES = [
+            '../billeder/foto/stemning-01.png',
+            '../billeder/foto/stemning-02.png',
+            '../billeder/foto/stemning-03.png',
+            '../billeder/foto/stemning-04.png',
+            '../billeder/foto/stemning-05.png',
+            '../billeder/foto/stemning-06.png',
+            '../billeder/foto/stemning-07.png',
+            '../billeder/foto/stemning-08.png',
+            '../billeder/foto/stemning-09.png',
+            '../billeder/foto/stemning-10.png',
+            '../billeder/foto/stemning-11.png',
+            '../billeder/foto/stemning-12.png',
+            '../billeder/foto/stemning-13.png',
+            '../billeder/foto/stemning-14.png',
+            '../billeder/foto/stemning-15.png',
+            '../billeder/foto/stemning-16.png',
+            '../billeder/foto/stemning-17.png',
+            '../billeder/foto/stemning-18.png',
+            '../billeder/foto/stemning-19.png',
+            '../billeder/foto/stemning-20.png',
+            '../billeder/foto/stemning-21.png',
+            '../billeder/foto/stemning-22.png',
+            '../billeder/foto/stemning-23.png',
+            '../billeder/foto/stemning-24.png',
+            '../billeder/foto/stemning-25.png',
+            '../billeder/foto/stemning-26.png',
+            '../billeder/foto/stemning-27.png',
+            '../billeder/foto/stemning-28.png'
+        ];
+
+        var TRANSITION = 700;
+        var DISPLAY    = 3000;
+        var DIRS = [[1,0],[-1,0],[0,1],[0,-1]];
+
+        function shuffle(arr) {
+            var a = arr.slice();
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var t = a[i]; a[i] = a[j]; a[j] = t;
+            }
+            return a;
+        }
+
+        function initCell(cell, startDelay) {
+            var pool = shuffle(IMAGES);
+            var idx = 0;
+
+            var first = cell.querySelector('img');
+            if (first) {
+                first.src = pool[idx];
+                first.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;';
+            }
+
+            function swap() {
+                idx = (idx + 1) % pool.length;
+                if (idx === 0) { pool = shuffle(IMAGES); }
+
+                var d = DIRS[Math.floor(Math.random() * DIRS.length)];
+                var dx = d[0], dy = d[1];
+
+                var oldImg = cell.querySelector('img');
+
+                var newImg = document.createElement('img');
+                newImg.alt = 'Stemningsbillede fra FabLab Vejle';
+                newImg.src = pool[idx];
+                newImg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;' +
+                    'transform:translate(' + (dx * 100) + '%,' + (dy * 100) + '%);' +
+                    'transition:transform ' + TRANSITION + 'ms cubic-bezier(0.4,0,0.2,1);';
+
+                if (oldImg) {
+                    oldImg.style.transition = 'transform ' + TRANSITION + 'ms cubic-bezier(0.4,0,0.2,1)';
+                }
+
+                cell.appendChild(newImg);
+
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        newImg.style.transform = 'translate(0,0)';
+                        if (oldImg) {
+                            oldImg.style.transform = 'translate(' + (-dx * 100) + '%,' + (-dy * 100) + '%)';
+                        }
+                    });
+                });
+
+                setTimeout(function () {
+                    if (oldImg && oldImg.parentNode) { oldImg.remove(); }
+                    newImg.style.transition = '';
+                }, TRANSITION + 50);
+
+                setTimeout(swap, DISPLAY);
+            }
+
+            setTimeout(swap, startDelay);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var cells = document.querySelectorAll('.insta-item');
+            var step = Math.floor(DISPLAY / cells.length);
+            cells.forEach(function (cell, i) {
+                initCell(cell, i * step);
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
