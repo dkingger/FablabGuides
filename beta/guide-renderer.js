@@ -241,6 +241,8 @@
             + "</a>"
             + "<nav class=\"top-nav\" aria-label=\"Guide navigation\">"
             + "<a class=\"nav-link interactive\" href=\"index.html#guides\">Alle guides</a>"
+            + "<a class=\"nav-link interactive\" href=\"maskiner.html\">Maskiner</a>"
+            + "<a class=\"nav-link interactive\" href=\"materialer.html\">Materialer</a>"
             + "<a class=\"nav-link interactive\" href=\"../index.html\">Nuværende site</a>"
             + "</nav>"
             + "</div>"
