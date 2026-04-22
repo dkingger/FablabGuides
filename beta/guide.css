@@ -617,6 +617,36 @@ select {
         width: min(calc(100% - 32px), var(--container));
     }
 
+    .nav-wrap {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 12px 0;
+    }
+
+    .brand {
+        flex: 0 0 auto;
+        gap: 10px;
+        padding: 6px 8px;
+    }
+
+    .brand-mark {
+        width: 56px;
+        height: 38px;
+        padding: 8px 10px;
+    }
+
+    .brand-text strong {
+        font-size: 0.84rem;
+    }
+
+    .brand-text span {
+        font-size: 0.74rem;
+    }
+
     .hero-card,
     .section-card,
     .placeholder-card,
@@ -627,7 +657,6 @@ select {
         border-radius: 24px;
     }
 
-    .top-nav,
     .hero-actions,
     .placeholder-actions,
     .footer-actions,
@@ -637,9 +666,33 @@ select {
         align-items: stretch;
     }
 
+    .top-nav {
+        flex: 0 0 auto;
+        width: auto;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 6px;
+    }
+
     .nav-link,
     .ghost-link,
     .button {
+        width: auto;
+    }
+
+    .nav-link,
+    .ghost-link {
+        min-height: 38px;
+        padding: 8px 12px;
+        font-size: 0.82rem;
+        white-space: nowrap;
+    }
+
+    .hero-actions .button,
+    .placeholder-actions .button,
+    .footer-actions .button,
+    .carousel-controls .button {
         width: 100%;
     }
 

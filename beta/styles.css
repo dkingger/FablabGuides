@@ -511,8 +511,33 @@ img {
     }
 
     .nav-wrap {
-        flex-direction: column;
-        align-items: start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 12px 0;
+    }
+
+    .brand {
+        flex: 0 0 auto;
+        gap: 10px;
+        padding: 6px 8px;
+    }
+
+    .brand-mark {
+        width: 56px;
+        height: 38px;
+        padding: 8px 10px;
+    }
+
+    .brand-text strong {
+        font-size: 0.84rem;
+    }
+
+    .brand-text span {
+        font-size: 0.74rem;
     }
 
     .hero-section {
@@ -541,11 +566,25 @@ img {
     }
 
     .top-nav {
-        width: 100%;
+        flex: 0 0 auto;
+        width: auto;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 6px;
     }
 
-    .nav-link,
-    .button {
+    .nav-link {
+        width: auto;
+        min-height: 38px;
+        padding: 8px 12px;
+        font-size: 0.82rem;
+        white-space: nowrap;
+    }
+
+    .hero-actions,
+    .visit-actions,
+    .footer-wrap .button,
+    .visit-actions .button {
         width: 100%;
     }
 
