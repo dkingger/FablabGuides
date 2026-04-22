@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Sure Cut a Lot draft</title>
+  <desc id="desc">Draft illustration of Sure Cut a Lot as a cutting app on transparent background.</desc>
+  <defs>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5a343b"/>
+      <stop offset="100%" stop-color="#362128"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb321"/>
+      <stop offset="100%" stop-color="#f27700"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="320" cy="530" rx="180" ry="22" fill="#1a1114" opacity="0.12"/>
+  <rect x="145" y="150" width="350" height="300" rx="26" fill="url(#frame)"/>
+  <rect x="180" y="195" width="280" height="210" rx="14" fill="#fff8f7"/>
+  <path d="M220 275h200" stroke="#3d242a" stroke-width="16" stroke-linecap="round"/>
+  <path d="M220 335h130" stroke="#3d242a" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="388" cy="335" r="30" fill="url(#accent)"/>
+  <rect x="180" y="150" width="280" height="28" rx="10" fill="#43272d"/>
+</svg>

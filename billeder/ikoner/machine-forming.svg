@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Forming machine illustration">
+  <rect width="320" height="220" fill="#edf2eb"/>
+  <rect x="56" y="126" width="208" height="34" rx="12" fill="#27463e"/>
+  <rect x="76" y="72" width="168" height="56" rx="12" fill="#ffffff" stroke="#18332b" stroke-width="7"/>
+  <path d="M98 104 C128 74,192 74,222 104" fill="none" stroke="#d46a43" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="160" cy="106" r="7" fill="#d46a43"/>
+</svg>

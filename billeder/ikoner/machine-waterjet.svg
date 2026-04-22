@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Waterjet machine illustration">
+  <rect width="320" height="220" fill="#edf2eb"/>
+  <rect x="34" y="62" width="252" height="110" rx="14" fill="#ffffff" stroke="#18332b" stroke-width="8"/>
+  <rect x="54" y="84" width="212" height="66" rx="10" fill="#dff2f7"/>
+  <rect x="148" y="34" width="24" height="56" rx="8" fill="#27463e"/>
+  <path d="M160 88 C150 104,150 116,160 126 C170 116,170 104,160 88Z" fill="#3a93c8"/>
+  <rect x="68" y="180" width="184" height="12" rx="6" fill="#27463e"/>
+</svg>

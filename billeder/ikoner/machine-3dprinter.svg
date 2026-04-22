@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="3D printer illustration">
+  <rect width="320" height="220" fill="#edf2eb"/>
+  <rect x="50" y="30" width="220" height="150" rx="14" fill="#ffffff" stroke="#27463e" stroke-width="8"/>
+  <rect x="80" y="55" width="160" height="18" rx="7" fill="#27463e"/>
+  <rect x="95" y="95" width="130" height="60" rx="8" fill="#f6f8f4" stroke="#18332b" stroke-width="6"/>
+  <rect x="120" y="84" width="80" height="12" rx="4" fill="#d46a43"/>
+  <rect x="64" y="188" width="192" height="14" rx="7" fill="#27463e"/>
+</svg>

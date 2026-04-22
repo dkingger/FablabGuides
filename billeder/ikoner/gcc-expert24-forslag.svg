@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">GCC Expert 24 draft</title>
+  <desc id="desc">Draft illustration of a GCC Expert 24 vinyl cutter on transparent background.</desc>
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3e5a56"/>
+      <stop offset="100%" stop-color="#20322f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb321"/>
+      <stop offset="100%" stop-color="#f27700"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="320" cy="530" rx="200" ry="24" fill="#111815" opacity="0.15"/>
+  <rect x="100" y="252" width="440" height="116" rx="20" fill="url(#body)"/>
+  <rect x="138" y="281" width="364" height="42" rx="9" fill="#f5fbfa"/>
+  <path d="M185 318h260l-58 42H240z" fill="url(#accent)"/>
+  <circle cx="458" cy="302" r="10" fill="#20322f"/>
+  <rect x="120" y="378" width="400" height="18" rx="9" fill="#16211f"/>
+</svg>
