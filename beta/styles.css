@@ -399,6 +399,49 @@ img {
     background: linear-gradient(180deg, rgba(237, 242, 235, 0.5) 0%, rgba(246, 248, 244, 0) 100%);
 }
 
+.insta-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.insta-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.15;
+    margin: 4px 0 0;
+}
+
+.insta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.insta-item {
+    display: block;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: var(--surface-muted);
+}
+
+.insta-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease, opacity 0.2s ease;
+}
+
+.insta-item:hover img,
+.insta-item:focus-visible img {
+    transform: scale(1.04);
+    opacity: 0.9;
+}
+
 .visit-grid {
     display: grid;
     grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.85fr);
@@ -491,6 +534,10 @@ img {
     .shortcut-grid,
     .feature-grid {
         grid-template-columns: 1fr;
+    }
+
+    .insta-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .section-head,
@@ -591,5 +638,15 @@ img {
     .hero-actions,
     .visit-actions {
         flex-direction: column;
+    }
+
+    .insta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .insta-head {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
