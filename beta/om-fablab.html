@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Om FabLab Spinderihallerne i Vejle - hvad et FabLab er, hvem der kan bruge det, og hvem der arbejder der.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Fablab Spinderihallerne">
+    <title>Om FabLab | FabLab Vejle Beta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="guide.css">
+    <style>
+        .page-hero {
+            padding: 72px 0 48px;
+        }
+        .page-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin: 8px 0 16px;
+            line-height: 1.15;
+            color: var(--brand-strong);
+        }
+        .page-hero .lead {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            max-width: 760px;
+            margin: 0;
+        }
+        .about-section {
+            padding: 24px 0 88px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .about-card {
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 26px;
+        }
+        .about-card h2 {
+            margin: 0 0 10px;
+            color: var(--brand-strong);
+            font-size: 1.35rem;
+        }
+        .about-card p {
+            margin: 0;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+        .team-wrap {
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 26px;
+        }
+        .team-wrap h2 {
+            margin: 0 0 18px;
+            color: var(--brand-strong);
+            font-size: 1.35rem;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .team-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--surface-muted);
+            padding: 16px;
+        }
+        .team-name {
+            margin: 0 0 6px;
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 700;
+        }
+        .team-role {
+            margin: 0;
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+        .source-note {
+            margin-top: 18px;
+            color: var(--text-soft);
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 760px) {
+            .page-hero {
+                padding: 48px 0 32px;
+            }
+        }
+    </style>
+</head>
+<body class="guide-shell">
+
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand interactive" href="index.html" aria-label="Til beta-forsiden">
+                <span class="brand-mark">
+                    <img src="../billeder/Fablab Logo.svg" alt="FabLab Vejle logo">
+                </span>
+                <span class="brand-text">
+                    <strong>FabLab Vejle</strong>
+                    <span>Beta redesign</span>
+                </span>
+            </a>
+            <nav class="top-nav" aria-label="Primær navigation">
+                <a class="nav-link interactive" href="index.html#guides">Guides</a>
+                <a class="nav-link interactive" href="maskiner.html">Maskiner</a>
+                <a class="nav-link interactive" href="materialer.html">Materialer</a>
+                <a class="nav-link interactive" href="index.html#besoeg">Besøg os</a>
+                <a class="nav-link interactive" href="../en/index.html">English</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">FabLab Spinderihallerne</span>
+                <h1>Om FabLab</h1>
+                <p class="lead">FabLab er et kreativt, højteknologisk prototypeværksted i Spinderihallerne, hvor borgere, elever, virksomheder og iværksættere kan arbejde med digitale produktionsteknologier og udvikle ideer til konkrete prototyper.</p>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <article class="about-card">
+                        <h2>Hvad er et FabLab?</h2>
+                        <p>Et FabLab (Fabrication Laboratory) er et værksted med adgang til maskiner som 3D-printere, laserskærere, CNC og anden digital fabrikation. Formålet er at gøre det lettere at eksperimentere, lære og bygge i mange materialer - også for begyndere.</p>
+                    </article>
+                    <article class="about-card">
+                        <h2>Hvem kan bruge det?</h2>
+                        <p>FabLab Spinderihallerne er åbent for alle. Det bruges af hobbybrugere, undervisningsmiljøer, virksomheder og iværksættere. Her kan man få hjælp af instruktører og arbejde med både små og store prototypeprojekter.</p>
+                    </article>
+                </div>
+
+                <section class="team-wrap" aria-labelledby="team-heading">
+                    <h2 id="team-heading">Medarbejdere i FabLab</h2>
+                    <div class="team-grid">
+                        <article class="team-card">
+                            <h3 class="team-name">Peter Dahl</h3>
+                            <p class="team-role">Chefkonsulent, FabLab</p>
+                        </article>
+                        <article class="team-card">
+                            <h3 class="team-name">Lars Eriksen Hoeeg</h3>
+                            <p class="team-role">Instruktoer, FabLab</p>
+                        </article>
+                        <article class="team-card">
+                            <h3 class="team-name">Simon Vibe Grevsen</h3>
+                            <p class="team-role">Laeringsraadgiver, FabLab</p>
+                        </article>
+                        <article class="team-card">
+                            <h3 class="team-name">Johannes van Roest Dahl</h3>
+                            <p class="team-role">Instruktoer, FabLab</p>
+                        </article>
+                    </div>
+                    <p class="source-note">Kilde: <a class="interactive" href="https://www.spinderihallerne.dk/fablab/" target="_blank" rel="noopener">Spinderihallerne - FabLab</a>. Oplysninger opdateres loebende.</p>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <p>FabLab Vejle - Beta redesign</p>
+            <div class="footer-actions">
+                <a class="button button-secondary interactive" href="index.html">Til beta-forsiden</a>
+                <a class="button button-primary interactive" href="../index.html">Til live forsiden</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
