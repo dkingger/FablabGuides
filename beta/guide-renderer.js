@@ -256,7 +256,7 @@
             + "<p class=\"lead\">" + escapeHtml(guide.description) + "</p>"
             + "<div class=\"hero-pills\">" + (guide.highlights || []).map(function (highlight) { return "<span class=\"pill\">" + escapeHtml(highlight) + "</span>"; }).join("") + "</div>"
             + "<div class=\"stats-grid\">" + renderHeroStats(guide) + "</div>"
-            + "<div class=\"hero-actions\"><a class=\"button button-primary interactive\" href=\"#guide-content\">Gå til guiden</a><a class=\"button button-secondary interactive\" href=\"index.html#guides\">Til guideoversigten</a>" + (guide.wamLink ? "<a class=\"button button-secondary interactive\" href=\"" + escapeHtml(guide.wamLink) + "\" target=\"_blank\" rel=\"noopener noreferrer\">WAM Link</a>" : "") + "</div>"
+            + "<div class=\"hero-actions\"><a class=\"button button-primary interactive\" href=\"#guide-content\">Gå til guiden</a><a class=\"button button-secondary interactive\" href=\"index.html#guides\">Til guideoversigten</a></div>"
             + "</div>"
             + "<aside class=\"hero-side\">"
             + "<div class=\"icon-card interactive\"><div class=\"icon-frame\"><img src=\"" + escapeHtml(guide.icon) + "\" alt=\"" + escapeHtml(guide.title) + " ikon\"></div><p>" + escapeHtml(guide.shortDescription || guide.description) + "</p></div>"
