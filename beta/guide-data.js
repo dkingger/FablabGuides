@@ -402,6 +402,7 @@ window.betaGuideData = {
         description: "Klargør dit skærejob i WAM-softwaren trin for trin – fra import af fil til eksport af G-code til maskinens SD-kort.",
         shortDescription: "Fra tegning til skærejob i WAM-softwaren.",
         highlights: ["9 trin", "WAM-software", "SD-kort eksport"],
+        wamLink: "https://wam.wazer.com/",
         sections: [
             {
                 tag: "Workflow",
@@ -409,7 +410,7 @@ window.betaGuideData = {
                 description: "Guiden dækker hele forløbet i WAM-softwaren: import, placering, materialevælger, tapper og eksport af G-code til SD-kortet.",
                 meta: "Software",
                 slides: [
-                    { link: "https://wam.wazer.com/", caption: "1. Åbn WAM-softwaren på wam.wazer.com og log på. Brugernavn: fablabspin · Adgangskode: fablabspin" },
+                    { src: "../billeder/wazer/wazer1.png", caption: "1. Åbn WAM-softwaren på wam.wazer.com og log på. Brugernavn: fablabspin · Adgangskode: fablabspin" },
                     { src: "../billeder/wazer/wazer2.png", caption: "2. Tryk på Import File for at åbne filen." },
                     { src: "../billeder/wazer/wazer3.png", caption: "3. Flyt figuren så den er placeret, hvor materialet kommer til at ligge." },
                     { src: "../billeder/wazer/wazer4.png", caption: "4. Figuren kan roteres eller skaleres op og ned her." },
