@@ -393,6 +393,35 @@ window.betaGuideData = {
             }
         ]
     },
+    "wazer": {
+        slug: "wazer",
+        title: "Wazer Waterjet",
+        category: "Vandskærer",
+        eyebrow: "Maskinguide",
+        icon: "../billeder/ikoner/wazer-waterjet-12x18.png",
+        description: "Klargør dit skærejob i WAM-softwaren trin for trin – fra import af fil til eksport af G-code til maskinens SD-kort.",
+        shortDescription: "Fra tegning til skærejob i WAM-softwaren.",
+        highlights: ["9 trin", "WAM-software", "SD-kort eksport"],
+        sections: [
+            {
+                tag: "Workflow",
+                title: "Klargør skærejob i WAM",
+                description: "Guiden dækker hele forløbet i WAM-softwaren: import, placering, materialevælger, tapper og eksport af G-code til SD-kortet.",
+                meta: "Software",
+                slides: [
+                    { link: "https://wam.wazer.com/", caption: "1. Åbn WAM-softwaren på wam.wazer.com og log på. Brugernavn: fablabspin · Adgangskode: fablabspin" },
+                    { src: "../billeder/wazer/wazer2.png", caption: "2. Tryk på Import File for at åbne filen." },
+                    { src: "../billeder/wazer/wazer3.png", caption: "3. Flyt figuren så den er placeret, hvor materialet kommer til at ligge." },
+                    { src: "../billeder/wazer/wazer4.png", caption: "4. Figuren kan roteres eller skaleres op og ned her." },
+                    { src: "../billeder/wazer/wazer5.png", caption: "5. Vælg materiale og tykkelse i menuerne. Kontrollér at enheden er sat til mm og ikke inches." },
+                    { src: "../billeder/wazer/wazer6.png", caption: "6. Vær omhyggelig her. Vælg om der skal skæres på ydersiden, midt i stregen eller på indersiden af stregen." },
+                    { src: "../billeder/wazer/wazer7.png", caption: "7. Placer tapper som holder emnet fast under skæringen. Tryk på ? for yderligere forklaring." },
+                    { src: "../billeder/wazer/wazer8.png", caption: "8. Vælg skærekvalitet – medium er fint til de fleste formål. Under Cut Details ses sandforbrug (15 kr. pr. påbegyndt kg) og skæretid. Gem som .wzr for at arbejde videre senere, eller tryk Generate Job File og gem G-code på maskinens SD-kort." },
+                    { src: "../billeder/wazer/wazer9.png", caption: "9. Tryk på View Simulation for at se en animation af skærejobbet. Den kan gennemgås manuelt eller afspilles automatisk." }
+                ]
+            }
+        ]
+    },
     "surecutalot": {
         slug: "surecutalot",
         title: "Sure Cuts A Lot",

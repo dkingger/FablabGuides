@@ -387,6 +387,41 @@ select {
     cursor: zoom-in;
 }
 
+.carousel-link-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 280px;
+    padding: 48px 32px;
+    background: linear-gradient(180deg, rgba(237, 242, 235, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+    text-align: center;
+}
+
+.carousel-link-label {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted, #6b7280);
+    word-break: break-all;
+}
+
+.carousel-link-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--brand);
+    color: #fff;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+
+.carousel-link-btn:hover {
+    opacity: 0.85;
+}
+
 .figure-footer {
     display: flex;
     align-items: center;
