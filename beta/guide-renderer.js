@@ -48,7 +48,6 @@
             + "<div class=\"carousel-shell\" data-carousel='" + escapeHtml(JSON.stringify(slides)) + "'>"
             + "<figure class=\"carousel-figure\">"
             + "<img class=\"carousel-image interactive\" src=\"\" alt=\"\" tabindex=\"0\">"
-            + "<div class=\"carousel-link-panel\" hidden><p class=\"carousel-link-label\"></p><a class=\"carousel-link-btn\" href=\"\" target=\"_blank\" rel=\"noopener noreferrer\">Åbn software</a></div>"
             + "<figcaption class=\"figure-footer\">"
             + "<p class=\"caption\"></p>"
             + "<span class=\"progress\"></span>"
@@ -101,10 +100,8 @@
         }
 
         const activeSlide = modalState.slides[modalState.index];
-        if (!activeSlide.link) {
-            modal.querySelector("img").src = activeSlide.src;
-            modal.querySelector("img").alt = activeSlide.caption;
-        }
+        modal.querySelector("img").src = activeSlide.src;
+        modal.querySelector("img").alt = activeSlide.caption;
         modal.querySelector(".modal-caption").textContent = activeSlide.caption;
     }
 
@@ -161,9 +158,6 @@
         const thumbTrack = carouselElement.querySelector(".thumb-track");
         const previousButton = carouselElement.querySelector('[data-action="prev"]');
         const nextButton = carouselElement.querySelector('[data-action="next"]');
-        const linkPanel = carouselElement.querySelector(".carousel-link-panel");
-        const linkBtn = linkPanel && linkPanel.querySelector(".carousel-link-btn");
-        const linkLabel = linkPanel && linkPanel.querySelector(".carousel-link-label");
         let currentIndex = 0;
 
         thumbTrack.innerHTML = slides.map(function (_slide, slideIndex) {
@@ -172,19 +166,8 @@
 
         function renderSlide() {
             const activeSlide = slides[currentIndex];
-            if (activeSlide.link) {
-                image.hidden = true;
-                if (linkPanel) {
-                    linkPanel.hidden = false;
-                    if (linkBtn) linkBtn.href = activeSlide.link;
-                    if (linkLabel) linkLabel.textContent = activeSlide.link;
-                }
-            } else {
-                image.hidden = false;
-                image.src = activeSlide.src;
-                image.alt = activeSlide.caption;
-                if (linkPanel) linkPanel.hidden = true;
-            }
+            image.src = activeSlide.src;
+            image.alt = activeSlide.caption;
             caption.textContent = activeSlide.caption;
             progress.textContent = (currentIndex + 1) + " / " + slides.length;
 
@@ -214,7 +197,6 @@
         });
 
         image.addEventListener("click", function () {
-            if (slides[currentIndex].link) { return; }
             openModal(slides, currentIndex, function (newIndex) {
                 currentIndex = newIndex;
                 renderSlide();
@@ -224,7 +206,6 @@
         image.addEventListener("keydown", function (event) {
             if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-                if (slides[currentIndex].link) { return; }
                 openModal(slides, currentIndex, function (newIndex) {
                     currentIndex = newIndex;
                     renderSlide();
