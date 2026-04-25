@@ -11,7 +11,7 @@
             unavailableDesc: 'Den oprindelige side i repoet har ikke noget færdigt guideindhold endnu. Derfor viser betaen her en klargjort, stylet placeholder i samme designlinje som resten af sitet.',
             backToGuides: 'Tilbage til guideoversigten',
             viewCurrentSite: 'Se nuværende site',
-            navAll: 'Alle guides', navMachines: 'Maskiner', navMaterials: 'Materialer', navSiteName: 'Nuværende site',
+            navAll: 'Alle guides', navMachines: 'Maskiner', navMaterials: 'Materialer', navAbout: 'Om os', navSiteName: 'Nuværende site',
             goToGuide: 'Gå til guiden', guideOverview: 'Til guideoversigten',
             betaCardTitle: 'Beta-overhaling',
             betaCardText: 'Alle beta-guides bruger nu samme visuelle system, samme knapper og samme bløde micro-interactions som forsiden.',
@@ -33,7 +33,7 @@
             unavailableDesc: 'This guide has not yet been completed. The beta shows a styled placeholder in the same design as the rest of the site.',
             backToGuides: 'Back to guide overview',
             viewCurrentSite: 'Back to main site',
-            navAll: 'All guides', navMachines: 'Machines', navMaterials: 'Materials', navSiteName: 'Current site',
+            navAll: 'All guides', navMachines: 'Machines', navMaterials: 'Materials', navAbout: 'About us', navSiteName: 'Current site',
             goToGuide: 'Go to guide', guideOverview: 'Guide overview',
             betaCardTitle: 'Beta redesign',
             betaCardText: 'All beta guides now use the same visual system, buttons and smooth micro-interactions as the front page.',
@@ -291,6 +291,7 @@
             + "<a class=\"nav-link interactive\" href=\"index.html#guides\">" + t.navAll + "</a>"
             + "<a class=\"nav-link interactive\" href=\"maskiner.html\">" + t.navMachines + "</a>"
             + "<a class=\"nav-link interactive\" href=\"materialer.html\">" + t.navMaterials + "</a>"
+            + "<a class=\"nav-link interactive\" href=\"om-fablab.html\">" + t.navAbout + "</a>"
             + "<a class=\"nav-link interactive\" href=\"" + t.currentSiteHref + "\">" + t.navSiteName + "</a>"
             + "<a class=\"nav-link interactive\" href=\"" + t.langSwitchHrefPrefix + guide.slug + ".html\">" + t.langSwitchText + "</a>"
             + "</nav>"
