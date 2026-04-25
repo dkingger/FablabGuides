@@ -1,6 +1,9 @@
 {
   "name": "Fablab Spinderihallerne",
   "short_name": "FabLab Spind",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/billeder/web-app-manifest-192x192.png",
