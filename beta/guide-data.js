@@ -409,7 +409,7 @@ window.betaGuideData = {
                 description: "Guiden dækker hele forløbet i WAM-softwaren: import, placering, materialevælger, tapper og eksport af G-code til SD-kortet.",
                 meta: "Software",
                 slides: [
-                    { src: "../billeder/wazer/wazer1.png", caption: "1. Klik på WAM knappen øversst til højre på Wazer hjemmesiden." },
+                    { src: "../billeder/wazer/wazer1.png", caption: "1. Klik på WAM knappen øversst til højre på Wazer hjemmesiden. Login: fablabspin / fablabspin" },
                     { src: "../billeder/wazer/wazer2.png", caption: "2. Tryk på Import File for at åbne filen." },
                     { src: "../billeder/wazer/wazer3.png", caption: "3. Flyt figuren så den er placeret, hvor materialet kommer til at ligge." },
                     { src: "../billeder/wazer/wazer4.png", caption: "4. Figuren kan roteres eller skaleres op og ned her." },
