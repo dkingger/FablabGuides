@@ -1,4 +1,52 @@
 (function () {
+    const lang = document.documentElement.lang === 'en' ? 'en' : 'da';
+    const t = {
+        da: {
+            prev: 'Tilbage', next: 'Næste',
+            sectionLabel: 'Sektion', sectionsLabel: 'Sektioner',
+            stepsLabel: 'Trin', categoryLabel: 'Kategori',
+            goToStepPrefix: 'Gå til trin',
+            comingSoon: 'Guide under udvikling',
+            unavailableTitle: 'Indholdet er ikke tilgængeligt endnu.',
+            unavailableDesc: 'Den oprindelige side i repoet har ikke noget færdigt guideindhold endnu. Derfor viser betaen her en klargjort, stylet placeholder i samme designlinje som resten af sitet.',
+            backToGuides: 'Tilbage til guideoversigten',
+            viewCurrentSite: 'Se nuværende site',
+            navAll: 'Alle guides', navMachines: 'Maskiner', navMaterials: 'Materialer', navSiteName: 'Nuværende site',
+            goToGuide: 'Gå til guiden', guideOverview: 'Til guideoversigten',
+            betaCardTitle: 'Beta-overhaling',
+            betaCardText: 'Alle beta-guides bruger nu samme visuelle system, samme knapper og samme bløde micro-interactions som forsiden.',
+            footerText: 'Denne side er en beta-version af den oprindelige guide, men med et fælles, mere professionelt og luftigt design.',
+            toFront: 'Til beta-forsiden', toLive: 'Til live forsiden',
+            closeImg: 'Luk billede',
+            relatedTitle: 'Andre guides i samme kategori',
+            brandAriaLabel: 'Til beta-forsiden',
+            currentSiteHref: '../index.html',
+            langSwitchText: 'English', langSwitchHrefPrefix: 'en/'
+        },
+        en: {
+            prev: 'Back', next: 'Next',
+            sectionLabel: 'Section', sectionsLabel: 'Sections',
+            stepsLabel: 'Steps', categoryLabel: 'Category',
+            goToStepPrefix: 'Go to step',
+            comingSoon: 'Guide in progress',
+            unavailableTitle: 'Content not yet available.',
+            unavailableDesc: 'This guide has not yet been completed. The beta shows a styled placeholder in the same design as the rest of the site.',
+            backToGuides: 'Back to guide overview',
+            viewCurrentSite: 'Back to main site',
+            navAll: 'All guides', navMachines: 'Machines', navMaterials: 'Materials', navSiteName: 'Current site',
+            goToGuide: 'Go to guide', guideOverview: 'Guide overview',
+            betaCardTitle: 'Beta redesign',
+            betaCardText: 'All beta guides now use the same visual system, buttons and smooth micro-interactions as the front page.',
+            footerText: 'This page is a beta version of the original guide with a shared, professional and airy design.',
+            toFront: 'Beta front page', toLive: 'Live site',
+            closeImg: 'Close image',
+            relatedTitle: 'Other guides in the same category',
+            brandAriaLabel: 'To beta front page',
+            currentSiteHref: '../../en/index.html',
+            langSwitchText: 'Dansk', langSwitchHrefPrefix: '../'
+        }
+    }[lang];
+
     const modalState = {
         slides: [],
         index: 0,
@@ -20,9 +68,9 @@
         }, 0);
 
         const stats = guide.stats || [
-            { value: guide.sections && guide.sections.length ? guide.sections.length : "-", label: guide.sections && guide.sections.length === 1 ? "Sektion" : "Sektioner" },
-            { value: totalSlides || "-", label: totalSlides === 1 ? "Trin" : "Trin" },
-            { value: guide.category, label: "Kategori" }
+            { value: guide.sections && guide.sections.length ? guide.sections.length : "-", label: guide.sections && guide.sections.length === 1 ? t.sectionLabel : t.sectionsLabel },
+            { value: totalSlides || "-", label: t.stepsLabel },
+            { value: guide.category, label: t.categoryLabel }
         ];
 
         return stats.map(function (stat) {
@@ -41,7 +89,7 @@
             + (section.description ? "<p>" + escapeHtml(section.description) + "</p>" : "")
             + "</div>"
             + "<div class=\"section-meta\">"
-            + "<span class=\"pill\">" + slides.length + " trin</span>"
+            + "<span class=\"pill\">" + slides.length + " " + t.stepsLabel.toLowerCase() + "</span>"
             + (section.meta ? "<span class=\"pill\">" + escapeHtml(section.meta) + "</span>" : "")
             + "</div>"
             + "</div>"
@@ -56,8 +104,8 @@
             + "<div class=\"carousel-controls\">"
             + "<div class=\"thumb-track\"></div>"
             + "<div class=\"hero-actions\">"
-            + "<button type=\"button\" class=\"button button-secondary interactive button-control\" data-action=\"prev\">Tilbage</button>"
-            + "<button type=\"button\" class=\"button button-primary interactive button-control\" data-action=\"next\">Næste</button>"
+            + "<button type=\"button\" class=\"button button-secondary interactive button-control\" data-action=\"prev\">" + t.prev + "</button>"
+            + "<button type=\"button\" class=\"button button-primary interactive button-control\" data-action=\"next\">" + t.next + "</button>"
             + "</div>"
             + "</div>"
             + "</div>"
@@ -79,7 +127,7 @@
         return ""
             + "<section class=\"related-section\">"
             + "<div class=\"container\">"
-            + "<h2>Andre guides i samme kategori</h2>"
+            + "<h2>" + t.relatedTitle + "</h2>"
             + "<div class=\"related-grid\">"
             + related.map(function (guide) {
                 return ""
@@ -161,7 +209,7 @@
         let currentIndex = 0;
 
         thumbTrack.innerHTML = slides.map(function (_slide, slideIndex) {
-            return "<button type=\"button\" class=\"thumb-button interactive\" data-thumb-index=\"" + slideIndex + "\" aria-label=\"Gå til trin " + (slideIndex + 1) + "\"></button>";
+            return "<button type=\"button\" class=\"thumb-button interactive\" data-thumb-index=\"" + slideIndex + "\" aria-label=\"" + t.goToStepPrefix + " " + (slideIndex + 1) + "\"></button>";
         }).join("");
 
         function renderSlide() {
@@ -229,21 +277,22 @@
         const sections = guide.sections || [];
         const sectionsMarkup = sections.length
             ? sections.map(renderSection).join("")
-            : "<div class=\"empty-state placeholder-card interactive\"><span class=\"section-tag\">Guide under udvikling</span><strong>Indholdet er ikke tilgængeligt endnu.</strong><p>Den oprindelige side i repoet har ikke noget færdigt guideindhold endnu. Derfor viser betaen her en klargjort, stylet placeholder i samme designlinje som resten af sitet.</p><div class=\"placeholder-actions\"><a class=\"button button-primary interactive\" href=\"index.html#guides\">Tilbage til guideoversigten</a><a class=\"button button-secondary interactive\" href=\"../index.html\">Se nuværende site</a></div></div>";
+            : "<div class=\"empty-state placeholder-card interactive\"><span class=\"section-tag\">" + t.comingSoon + "</span><strong>" + t.unavailableTitle + "</strong><p>" + t.unavailableDesc + "</p><div class=\"placeholder-actions\"><a class=\"button button-primary interactive\" href=\"index.html#guides\">" + t.backToGuides + "</a><a class=\"button button-secondary interactive\" href=\"" + t.currentSiteHref + "\">" + t.viewCurrentSite + "</a></div></div>";
 
         app.innerHTML = ""
             + "<div class=\"guide-shell\">"
             + "<header class=\"site-header\">"
             + "<div class=\"container nav-wrap\">"
-            + "<a class=\"brand interactive\" href=\"index.html\" aria-label=\"Til beta-forsiden\">"
+            + "<a class=\"brand interactive\" href=\"index.html\" aria-label=\"" + t.brandAriaLabel + "\">"
             + "<span class=\"brand-mark\"><img src=\"../billeder/Fablab Logo.svg\" alt=\"FabLab Vejle logo\"></span>"
             + "<span class=\"brand-text\"><strong>FabLab Vejle</strong><span>Beta guides</span></span>"
             + "</a>"
             + "<nav class=\"top-nav\" aria-label=\"Guide navigation\">"
-            + "<a class=\"nav-link interactive\" href=\"index.html#guides\">Alle guides</a>"
-            + "<a class=\"nav-link interactive\" href=\"maskiner.html\">Maskiner</a>"
-            + "<a class=\"nav-link interactive\" href=\"materialer.html\">Materialer</a>"
-            + "<a class=\"nav-link interactive\" href=\"../index.html\">Nuværende site</a>"
+            + "<a class=\"nav-link interactive\" href=\"index.html#guides\">" + t.navAll + "</a>"
+            + "<a class=\"nav-link interactive\" href=\"maskiner.html\">" + t.navMachines + "</a>"
+            + "<a class=\"nav-link interactive\" href=\"materialer.html\">" + t.navMaterials + "</a>"
+            + "<a class=\"nav-link interactive\" href=\"" + t.currentSiteHref + "\">" + t.navSiteName + "</a>"
+            + "<a class=\"nav-link interactive\" href=\"" + t.langSwitchHrefPrefix + guide.slug + ".html\">" + t.langSwitchText + "</a>"
             + "</nav>"
             + "</div>"
             + "</header>"
@@ -256,19 +305,19 @@
             + "<p class=\"lead\">" + escapeHtml(guide.description) + "</p>"
             + "<div class=\"hero-pills\">" + (guide.highlights || []).map(function (highlight) { return "<span class=\"pill\">" + escapeHtml(highlight) + "</span>"; }).join("") + "</div>"
             + "<div class=\"stats-grid\">" + renderHeroStats(guide) + "</div>"
-            + "<div class=\"hero-actions\"><a class=\"button button-primary interactive\" href=\"#guide-content\">Gå til guiden</a><a class=\"button button-secondary interactive\" href=\"index.html#guides\">Til guideoversigten</a></div>"
+            + "<div class=\"hero-actions\"><a class=\"button button-primary interactive\" href=\"#guide-content\">" + t.goToGuide + "</a><a class=\"button button-secondary interactive\" href=\"index.html#guides\">" + t.guideOverview + "</a></div>"
             + "</div>"
             + "<aside class=\"hero-side\">"
-            + "<div class=\"icon-card interactive\"><div class=\"icon-frame\"><img src=\"" + escapeHtml(guide.icon) + "\" alt=\"" + escapeHtml(guide.title) + " ikon\"></div><p>" + escapeHtml(guide.shortDescription || guide.description) + "</p></div>"
-            + "<div class=\"hero-note-card interactive\"><strong>Beta-overhaling</strong><p class=\"hero-note\">Alle beta-guides bruger nu samme visuelle system, samme knapper og samme bløde micro-interactions som forsiden.</p></div>"
+            + "<div class=\"icon-card interactive\"><div class=\"icon-frame\"><img src=\"" + escapeHtml(guide.icon) + "\" alt=\"" + escapeHtml(guide.title) + "\"></div><p>" + escapeHtml(guide.shortDescription || guide.description) + "</p></div>"
+            + "<div class=\"hero-note-card interactive\"><strong>" + t.betaCardTitle + "</strong><p class=\"hero-note\">" + t.betaCardText + "</p></div>"
             + "</aside>"
             + "</div>"
             + "</section>"
             + "<section class=\"content-section\" id=\"guide-content\"><div class=\"container section-stack\">" + sectionsMarkup + "</div></section>"
             + renderRelatedCards(allGuides, guide)
             + "</main>"
-            + "<footer class=\"site-footer\"><div class=\"container footer-wrap\"><p>Denne side er en beta-version af den oprindelige guide, men med et fælles, mere professionelt og luftigt design.</p><div class=\"footer-actions\"><a class=\"button button-secondary interactive\" href=\"index.html\">Til beta-forsiden</a><a class=\"button button-primary interactive\" href=\"../index.html\">Til live forsiden</a></div></div></footer>"
-            + "<div class=\"modal\" id=\"image-modal\" aria-hidden=\"true\"><div class=\"modal-panel\"><button class=\"modal-close interactive\" type=\"button\" aria-label=\"Luk billede\">&times;</button><img src=\"\" alt=\"\"><p class=\"modal-caption\"></p></div></div>"
+            + "<footer class=\"site-footer\"><div class=\"container footer-wrap\"><p>" + t.footerText + "</p><div class=\"footer-actions\"><a class=\"button button-secondary interactive\" href=\"index.html\">" + t.toFront + "</a><a class=\"button button-primary interactive\" href=\"" + t.currentSiteHref + "\">" + t.toLive + "</a></div></div></footer>"
+            + "<div class=\"modal\" id=\"image-modal\" aria-hidden=\"true\"><div class=\"modal-panel\"><button class=\"modal-close interactive\" type=\"button\" aria-label=\"" + t.closeImg + "\">&times;</button><img src=\"\" alt=\"\"><p class=\"modal-caption\"></p></div></div>"
             + "</div>";
 
         app.querySelectorAll("[data-carousel]").forEach(initializeCarousel);
