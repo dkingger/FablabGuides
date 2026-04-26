@@ -13,8 +13,6 @@
             viewCurrentSite: 'Se nuværende site',
             navAll: 'Alle guides', navMachines: 'Maskiner', navMaterials: 'Materialer', navAbout: 'Om os', navSiteName: 'Nuværende site',
             goToGuide: 'Gå til guiden', guideOverview: 'Til guideoversigten',
-            betaCardTitle: 'Beta-overhaling',
-            betaCardText: 'Alle beta-guides bruger nu samme visuelle system, samme knapper og samme bløde micro-interactions som forsiden.',
             footerText: 'Denne side er en beta-version af den oprindelige guide, men med et fælles, mere professionelt og luftigt design.',
             toFront: 'Til beta-forsiden', toLive: 'Til live forsiden',
             closeImg: 'Luk billede',
@@ -35,8 +33,6 @@
             viewCurrentSite: 'Back to main site',
             navAll: 'All guides', navMachines: 'Machines', navMaterials: 'Materials', navAbout: 'About us', navSiteName: 'Current site',
             goToGuide: 'Go to guide', guideOverview: 'Guide overview',
-            betaCardTitle: 'Beta redesign',
-            betaCardText: 'All beta guides now use the same visual system, buttons and smooth micro-interactions as the front page.',
             footerText: 'This page is a beta version of the original guide with a shared, professional and airy design.',
             toFront: 'Beta front page', toLive: 'Live site',
             closeImg: 'Close image',
@@ -310,7 +306,6 @@
             + "</div>"
             + "<aside class=\"hero-side\">"
             + "<div class=\"icon-card interactive\"><div class=\"icon-frame\"><img src=\"" + escapeHtml(guide.icon) + "\" alt=\"" + escapeHtml(guide.title) + "\"></div><p>" + escapeHtml(guide.shortDescription || guide.description) + "</p></div>"
-            + "<div class=\"hero-note-card interactive\"><strong>" + t.betaCardTitle + "</strong><p class=\"hero-note\">" + t.betaCardText + "</p></div>"
             + "</aside>"
             + "</div>"
             + "</section>"
