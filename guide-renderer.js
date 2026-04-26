@@ -14,7 +14,7 @@
             navAll: 'Alle guides', navMachines: 'Maskiner', navMaterials: 'Materialer', navAbout: 'Om os', navSiteName: 'Nuværende site',
             goToGuide: 'Gå til guiden', guideOverview: 'Til guideoversigten',
             footerText: 'Denne side er en redesign-version af den oprindelige guide, men med et fælles, mere professionelt og luftigt design.',
-            toFront: 'Til forsiden', toLive: 'Til live forsiden',
+            toFront: 'Til forsiden',
             closeImg: 'Luk billede',
             relatedTitle: 'Andre guides i samme kategori',
             brandAriaLabel: 'Til forsiden',
@@ -34,7 +34,7 @@
             navAll: 'All guides', navMachines: 'Machines', navMaterials: 'Materials', navAbout: 'About us', navSiteName: 'Current site',
             goToGuide: 'Go to guide', guideOverview: 'Guide overview',
             footerText: 'This page is a redesign version of the original guide with a shared, professional and airy design.',
-            toFront: 'Front page', toLive: 'Live site',
+            toFront: 'Front page',
             closeImg: 'Close image',
             relatedTitle: 'Other guides in the same category',
             brandAriaLabel: 'To front page',
@@ -312,7 +312,7 @@
             + "<section class=\"content-section\" id=\"guide-content\"><div class=\"container section-stack\">" + sectionsMarkup + "</div></section>"
             + renderRelatedCards(allGuides, guide)
             + "</main>"
-            + "<footer class=\"site-footer\"><div class=\"container footer-wrap\"><p>" + t.footerText + "</p><div class=\"footer-actions\"><a class=\"button button-secondary interactive\" href=\"index.html\">" + t.toFront + "</a><a class=\"button button-primary interactive\" href=\"" + t.currentSiteHref + "\">" + t.toLive + "</a></div></div></footer>"
+            + "<footer class=\"site-footer\"><div class=\"container footer-wrap\"><p>" + t.footerText + "</p><div class=\"footer-actions\"><a class=\"button button-secondary interactive\" href=\"index.html\">" + t.toFront + "</a></div></div></footer>"
             + "<div class=\"modal\" id=\"image-modal\" aria-hidden=\"true\"><div class=\"modal-panel\"><button class=\"modal-close interactive\" type=\"button\" aria-label=\"" + t.closeImg + "\">&times;</button><img src=\"\" alt=\"\"><p class=\"modal-caption\"></p></div></div>"
             + "</div>";
 
