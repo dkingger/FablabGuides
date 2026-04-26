@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Materialer til salg i FabLab Vejle – se hvad vi har på lager og hvad det koster.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Fablab Spinderihallerne">
+    <title>Materialer | FabLab Vejle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="guide.css">
+    <style>
+        .page-hero {
+            padding: 72px 0 48px;
+        }
+        .page-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin: 8px 0 16px;
+            line-height: 1.15;
+            color: var(--brand-strong);
+        }
+        .page-hero .lead {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            max-width: 600px;
+            margin: 0;
+        }
+        .materials-section {
+            padding: 48px 0 96px;
+        }
+        .category-block {
+            margin-bottom: 64px;
+        }
+        .category-block:last-child {
+            margin-bottom: 0;
+        }
+        .category-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--brand);
+            margin-bottom: 8px;
+        }
+        .category-label::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .category-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--brand-strong);
+            margin: 0 0 28px;
+        }
+
+        /* Material table */
+        .material-table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        .material-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface-strong);
+            font-size: 0.95rem;
+        }
+        .material-table thead th {
+            background: var(--brand-strong);
+            color: white;
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 14px 20px;
+            text-align: left;
+            white-space: nowrap;
+        }
+        .material-table thead th:last-child {
+            text-align: right;
+        }
+        .material-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s ease;
+        }
+        .material-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        .material-table tbody tr:hover {
+            background: var(--surface-muted);
+        }
+        .material-table tbody td {
+            padding: 16px 20px;
+            color: var(--text);
+            vertical-align: middle;
+        }
+        .material-table tbody td:last-child {
+            text-align: right;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--brand-strong);
+            white-space: nowrap;
+        }
+        .material-name {
+            font-weight: 700;
+            color: var(--text);
+        }
+        .material-detail {
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            margin-top: 2px;
+        }
+        .material-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--brand);
+            background: var(--surface-muted);
+            padding: 3px 10px;
+            border-radius: 999px;
+        }
+
+        .info-box {
+            margin-top: 40px;
+            padding: 20px 24px;
+            border-radius: var(--radius-md);
+            background: var(--surface-muted);
+            border-left: 3px solid var(--accent);
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            line-height: 1.65;
+        }
+        .info-box strong {
+            color: var(--text);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 760px) {
+            .page-hero {
+                padding: 48px 0 32px;
+            }
+            .material-table thead th,
+            .material-table tbody td {
+                padding: 12px 14px;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
+    <link rel="manifest" href="/billeder/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="FabLab Vejle">
+</head>
+<body class="guide-shell">
+
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand interactive" href="index.html" aria-label="Til forsiden">
+                <span class="brand-mark">
+                    <img src="billeder/Fablab Logo.svg" alt="FabLab Vejle logo">
+                </span>
+                <span class="brand-text">
+                    <strong>FabLab Vejle</strong>
+                    <span>Redesign</span>
+                </span>
+            </a>
+            <nav class="top-nav" id="site-nav" aria-label="Primær navigation" data-lang="da" data-page="materialer"></nav>
+            <script src="nav.js"></script>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">FabLab Vejle</span>
+                <h1>Materialer til salg</h1>
+                <p class="lead">Her finder du en oversigt over de materialer vi har til salg i FabLab Vejle. Brug af maskinerne er gratis – materialerne afregnes separat.</p>
+            </div>
+        </section>
+
+        <section class="materials-section">
+            <div class="container">
+
+                <!-- Træ -->
+                <div class="category-block">
+                    <p class="category-label">Træ</p>
+                    <h2 class="category-title">Træmaterialer</h2>
+                    <div class="material-table-wrap">
+                        <table class="material-table">
+                            <thead>
+                                <tr>
+                                    <th>Materiale</th>
+                                    <th>Format</th>
+                                    <th>Egnet til</th>
+                                    <th>Pris</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="material-name">2-lags laminat</div>
+                                        <div class="material-detail">Graveringsplader (Resopal/Resopalskilte), hvor toplaget fjernes for at skabe kontrast i bundfarven</div>
+                                    </td>
+                                    <td>1,5 mm (blandede farver)</td>
+                                    <td><span class="material-badge">Gravering</span></td>
+                                    <td>Kommer</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="material-name">Akryl</div>
+                                        <div class="material-detail">Blandet udvalg af farver</div>
+                                    </td>
+                                    <td>3 mm, 5 mm</td>
+                                    <td><span class="material-badge">Laser</span></td>
+                                    <td>Kommer</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="material-name">Krydsfiner</div>
+                                        <div class="material-detail">Til prototyper og skilte</div>
+                                    </td>
+                                    <td>3 mm, 6 mm</td>
+                                    <td><span class="material-badge">Laser</span></td>
+                                    <td>Kommer</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="material-name">MDF</div>
+                                        <div class="material-detail">Til modeller og opbygning</div>
+                                    </td>
+                                    <td>3 mm, 6 mm</td>
+                                    <td><span class="material-badge">Laser</span></td>
+                                    <td>Kommer</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Betaling og afhentning</strong>
+                    Materialerne købes og afhentes på stedet under åbningstid. Priserne på materialerne kommer.
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <p>FabLab Vejle – Redesign</p>
+            <div class="footer-actions">
+                <a class="button button-secondary interactive" href="index.html">Til forsiden</a>
+                <a class="button button-primary interactive" href="old/index.html">Til live forsiden</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/install-app.js" defer></script>
+</body>
+</html>

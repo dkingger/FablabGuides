@@ -3,66 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fablab Spinderihallerne – guides for machines, laser cutters, 3D printers, and digital tools.">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Redesign of FabLab Vejle's front page with a professional, minimalist and spacious expression.">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Fablab Spinderihallerne">
-    <title>FabLab Vejle – Makerspace and Creative Workshop</title>
-    <meta name="description" content="Visit FabLab Vejle – an open makerspace with laser, 3D printing, CNC, and much more. See guides and projects here.">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <style>
-        body { margin: 0; font-family: 'Roboto', sans-serif; line-height: 1.6; background-color: #d2e2d0; color: #222; }
-        header { background-color: #222; color: white; padding: 20px 0; text-align: center; }
-        .content { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        .button-container { text-align: center; margin: 30px 0; }
-        .guide-button, .machine-button, .printer-button, .back-button { background-color: #3a4f41; color: white; border: none; padding: 15px 30px; font-size: 1rem; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; text-decoration: none; display: inline-block; margin: 10px; }
-        .guide-button:hover, .machine-button:hover, .printer-button:hover, .back-button:hover { background-color: #c94f3c; }
-        .orange-button { background-color: #e67e22; }
-        .orange-button:hover { background-color: #d35400; }
-        .coming-soon { background-color: #ccc; color: #666; cursor: default; pointer-events: none; font-style: italic; }
-        .machine-guides, .printer-guides { display: none; text-align: center; padding: 40px 20px; background-color: #e9ecef; }
-        .printer-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 30px; }
-        .printer-card { display: inline-flex; flex-direction: column; align-items: center; gap: 12px; width: 170px; color: inherit; text-decoration: none; transition: transform 0.2s ease; }
-        .printer-card:hover { transform: translateY(-4px); }
-        .printer-icon { width: 150px; height: 150px; object-fit: contain; }
-        .printer-label { font-size: 1rem; font-weight: 600; }
-        @media (max-width: 600px) {
-            .printer-card { width: 140px; }
-            .printer-icon { width: 120px; height: 120px; }
-        }
-        footer { background-color: #222; color: white; text-align: center; padding: 20px 0; margin-top: 40px; }
-        .lang-switch { position: absolute; top: 20px; right: 20px; }
-        .lang-switch a { font-size: 2rem; margin-left: 10px; text-decoration: none; }
-    </style>
-    <script>
-        function showMachineGuides() {
-            document.querySelector('.machine-guides').style.display = 'block';
-            document.querySelector('.printer-guides').style.display = 'none';
-            document.getElementById('vinyl-menu').style.display = 'none';
-            document.getElementById('laser-menu').style.display = 'none';
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-        function showPrinterGuides() {
-            document.querySelector('.machine-guides').style.display = 'none';
-            document.querySelector('.printer-guides').style.display = 'block';
-            document.getElementById('vinyl-menu').style.display = 'none';
-            document.getElementById('laser-menu').style.display = 'none';
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-        function showVinylMenu() {
-            document.querySelector('.machine-guides').style.display = 'none';
-            document.querySelector('.printer-guides').style.display = 'none';
-            document.getElementById('vinyl-menu').style.display = 'block';
-            document.getElementById('laser-menu').style.display = 'none';
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-        function showLaserMenu() {
-            document.querySelector('.machine-guides').style.display = 'none';
-            document.querySelector('.printer-guides').style.display = 'none';
-            document.getElementById('vinyl-menu').style.display = 'none';
-            document.getElementById('laser-menu').style.display = 'block';
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-    </script>
+    <title>FabLab Vejle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
     <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
@@ -71,110 +19,414 @@
     <meta name="apple-mobile-web-app-title" content="FabLab Vejle">
 </head>
 <body>
-    <div class="lang-switch" style="position: absolute; top: 20px; right: 20px;">
-        <img src="../billeder/dkgbflag.png" alt="Switch language" style="height:28px; cursor:pointer;" onclick="window.location.href='../index.html'" title="Switch to English/Danish">
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="container nav-wrap">
+                <a class="brand interactive" href="index.html" aria-label="To front page">
+                    <span class="brand-mark">
+                        <img src="../billeder/Fablab Logo.svg" alt="FabLab Vejle logo">
+                    </span>
+                    <span class="brand-text">
+                        <strong>FabLab Vejle</strong>
+                        <span>Redesign</span>
+                    </span>
+                </a>
+
+                <nav class="top-nav" id="site-nav" aria-label="Primary navigation" data-lang="en" data-page="index"></nav>
+                <script src="../nav.js"></script>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <div class="container hero-grid">
+                    <div class="hero-copy">
+                        <p class="eyebrow">Open makerspace in Spinderihallerne</p>
+                        <h1>Learn digital fabrication in a calm, clear universe.</h1>
+                        <p class="hero-lead">FabLab Vejle gives access to 3D printing, laser cutting, vinyl cutting and creative tools.</p>
+
+                        <div class="hero-actions">
+                            <a class="button button-primary interactive" href="#guides">See guides</a>
+                            <a class="button button-secondary interactive" href="https://place2book.com/da/sw2/sales/event_list/EM13515" target="_blank" rel="noopener">Events</a>
+                        </div>
+
+                        <div class="hero-meta">
+                            <div class="meta-card interactive">
+                                <span class="meta-label">Open FabLab</span>
+                                <strong>Every Tuesday 15:00–20:00</strong>
+                                <p>Instructors and volunteers help you get started.</p>
+                            </div>
+                            <div class="meta-card interactive">
+                                <span class="meta-label">Location</span>
+                                <strong>Spinderihallerne, Vejle</strong>
+                                <p>Free machine use, materials charged separately.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="hero-panel">
+                        <div class="hero-panel-card interactive accent-panel">
+                            <p class="panel-kicker">Popular shortcuts</p>
+                            <div class="panel-links">
+                                <button class="panel-link panel-link-button interactive" type="button" data-install-app-button hidden>Add to Home Screen</button>
+                                <a class="panel-link interactive" href="https://place2book.com/da/sw2/sales/efx8f7isvj" target="_blank" rel="noopener">Makeacademy</a>
+                                <a class="panel-link interactive" href="https://github.com/Fablabvejle" target="_blank" rel="noopener">GitHub</a>
+                                <a class="panel-link interactive" href="https://judicious-radiator-ebc.notion.site/BioTechLab-Spinderihallerne-fbf28bba7f4949c4a801244631044e33" target="_blank" rel="noopener">BioLab recipes</a>
+                                <a class="panel-link interactive" href="../guide-til-laserfiler.html">Guide to laser files (DA)</a>
+                                <a class="panel-link interactive" href="guide-to-laser-files.html">Guide to laser files (EN)</a>
+                            </div>
+                        </div>
+
+                        <div class="hero-panel-card interactive stats-panel">
+                            <p class="panel-kicker">Machines and software</p>
+                            <div class="stat-grid">
+                                <div>
+                                    <strong>14</strong>
+                                    <span>3D printers</span>
+                                </div>
+                                <div>
+                                    <strong>3</strong>
+                                    <span>Laser cutters</span>
+                                </div>
+                                <div>
+                                    <strong>3</strong>
+                                    <span>Vinyl cutters</span>
+                                </div>
+                                <div>
+                                    <strong>1</strong>
+                                    <span>Waterjet</span>
+                                </div>
+                                <div>
+                                    <strong>3</strong>
+                                    <span>Vacuum formers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="content-section first-time-section" id="foerste-gang">
+                <div class="container">
+                    <article class="first-time-card interactive">
+                        <p class="eyebrow">New users</p>
+                        <h2>First time in FabLab?</h2>
+                        <p>You are welcome at open FabLab every Tuesday from 3:00 PM to 8:00 PM.</p>
+                        <p>You do not need to be an expert. Instructors and volunteers help you get started with machines, materials and files.</p>
+                        <p>It is free to use the machines, but you pay for the materials you use.</p>
+                        <p class="first-time-intro">Feel free to bring:</p>
+                        <ul class="first-time-list">
+                            <li>your idea, sketch or file</li>
+                            <li>your own computer, if you want to continue working on the design</li>
+                            <li>a little patience if there is a queue at the machines</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-strip">
+                <div class="container shortcut-grid">
+                    <a class="shortcut-card interactive" href="#guides">
+                        <span class="shortcut-label">Get started quickly</span>
+                        <strong>Find the right guide</strong>
+                        <p>Choose between 3D printing, laser and vinyl in a few seconds.</p>
+                    </a>
+                    <a class="shortcut-card interactive" href="om-fablab.html">
+                        <span class="shortcut-label">About FabLab</span>
+                        <strong>Read about the workshop</strong>
+                        <p>Who we are, how it works, and what you can use the space for.</p>
+                    </a>
+                    <a class="shortcut-card interactive" href="#besoeg">
+                        <span class="shortcut-label">Plan a visit</span>
+                        <strong>Practical information</strong>
+                        <p>Opening hours, address and what you need to know before your first visit.</p>
+                    </a>
+                </div>
+            </section>
+
+            <section class="content-section" id="guides">
+                <div class="container section-head">
+                    <div>
+                        <p class="eyebrow">Guides</p>
+                        <h2>Clear entry points to the most used tools.</h2>
+                    </div>
+                    <p class="section-intro">Here you will find the most commonly used guides to 3D printing, laser cutting and vinyl cutting. Choose the machine or software you need and follow the guide step by step.</p>
+                </div>
+
+                <div class="container category-grid" id="maskiner">
+                    <article class="category-card interactive">
+                        <div class="category-header">
+                            <span class="category-badge">3D Printing</span>
+                            <h3>From slicer to finished print</h3>
+                            <p>Start with the software and then choose the printer you are standing at.</p>
+                        </div>
+                        <div class="guide-list">
+                            <a class="guide-item interactive" href="prusaslicer.html">
+                                <img src="../billeder/ikoner/prusa-slicer.png" alt="PrusaSlicer icon">
+                                <span>PrusaSlicer</span>
+                            </a>
+                            <a class="guide-item interactive" href="prusamini.html">
+                                <img src="../billeder/ikoner/prusa-mini-fritlagt.png" alt="Prusa Mini icon">
+                                <span>Prusa Mini</span>
+                            </a>
+                            <a class="guide-item interactive" href="prusa-mk3s.html">
+                                <img src="../billeder/ikoner/prusa-mk3s-fritlagt.png" alt="Prusa MK3S icon">
+                                <span>Prusa MK3S</span>
+                            </a>
+                            <a class="guide-item interactive" href="prusa-mk4.html">
+                                <img src="../billeder/ikoner/prusa-mk4-fritlagt.png" alt="Prusa MK4 icon">
+                                <span>Prusa MK4</span>
+                            </a>
+                            <a class="guide-item interactive" href="prusa-xl.html">
+                                <img src="../billeder/ikoner/prusa-xl-fritlagt.png" alt="Prusa XL icon">
+                                <span>Prusa XL</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="category-card interactive">
+                        <div class="category-header">
+                            <span class="category-badge">Laser Cutter</span>
+                            <h3>Machines and software in one place</h3>
+                            <p>A simple overview of LightBurn and the laser stations users will find in the room.</p>
+                        </div>
+                        <div class="guide-list">
+                            <a class="guide-item interactive" href="guide-to-laser-files.html">
+                                <img src="../billeder/ikoner/laserguide_ikon.png" alt="Guide to Laser Files icon">
+                                <span>Guide to Laser Files</span>
+                            </a>
+                            <a class="guide-item interactive" href="laser-lightburn.html">
+                                <img src="../billeder/ikoner/laser-lightburn.png" alt="LightBurn icon">
+                                <span>LightBurn</span>
+                            </a>
+                            <a class="guide-item interactive" href="laser-eduard.html">
+                                <img src="../billeder/ikoner/laser-eduard-fritlagt.png" alt="Eduard icon">
+                                <span>Eduard</span>
+                            </a>
+                            <a class="guide-item interactive" href="laser-aeon.html">
+                                <img src="../billeder/ikoner/laser-aeon-fritlagt.png" alt="AEON icon">
+                                <span>AEON</span>
+                            </a>
+                            <a class="guide-item interactive" href="laser-epilog.html">
+                                <img src="../billeder/ikoner/laser-epilog-fritlagt.png" alt="Epilog icon">
+                                <span>Epilog</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="category-card interactive">
+                        <div class="category-header">
+                            <span class="category-badge">Vinyl Cutter</span>
+                            <h3>Design, preparation and cutting</h3>
+                            <p>A calm flow where software and hardware are shown side by side.</p>
+                        </div>
+                        <div class="guide-list">
+                            <a class="guide-item interactive" href="brother-scanncut.html">
+                                <img src="../billeder/ikoner/vinyl-brother-scanncut.png" alt="Brother Scan'n'Cut icon">
+                                <span>Brother Scan'n'Cut</span>
+                            </a>
+                            <a class="guide-item interactive" href="canvasworkspace.html">
+                                <img src="../billeder/ikoner/vinyl-brother-canvasworkspace.png" alt="CanvasWorkspace icon">
+                                <span>CanvasWorkspace</span>
+                            </a>
+                            <a class="guide-item interactive" href="gcc-expert24.html">
+                                <img src="../billeder/ikoner/vinyl-gcc-expert24.png" alt="GCC Expert 24 icon">
+                                <span>GCC Expert 24 II</span>
+                            </a>
+                            <a class="guide-item interactive" href="surecutalot.html">
+                                <img src="../billeder/ikoner/vinyl-gcc-surecut.png" alt="Sure Cuts A Lot icon">
+                                <span>Sure Cuts A Lot</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content-section muted-section">
+                <div class="container">
+                    <div class="insta-head">
+                        <div>
+                            <p class="eyebrow">From FabLab</p>
+                            <h2 class="insta-title">What's happening in the workshop?</h2>
+                        </div>
+                        <a class="button button-secondary interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener">Follow us on Instagram</a>
+                    </div>
+                    <div class="insta-grid">
+                        <a class="insta-item interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener" aria-label="FabLab on Instagram">
+                            <img src="../billeder/foto/stemning-01.png" alt="Photo from FabLab Vejle" loading="lazy">
+                        </a>
+                        <a class="insta-item interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener" aria-label="FabLab on Instagram">
+                            <img src="../billeder/foto/stemning-02.png" alt="Photo from FabLab Vejle" loading="lazy">
+                        </a>
+                        <a class="insta-item interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener" aria-label="FabLab on Instagram">
+                            <img src="../billeder/foto/stemning-03.png" alt="Photo from FabLab Vejle" loading="lazy">
+                        </a>
+                        <a class="insta-item interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener" aria-label="FabLab on Instagram">
+                            <img src="../billeder/foto/stemning-04.png" alt="Photo from FabLab Vejle" loading="lazy">
+                        </a>
+                        <a class="insta-item interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener" aria-label="FabLab on Instagram">
+                            <img src="../billeder/foto/stemning-05.png" alt="Photo from FabLab Vejle" loading="lazy">
+                        </a>
+                        <a class="insta-item interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener" aria-label="FabLab on Instagram">
+                            <img src="../billeder/foto/stemning-06.png" alt="Photo from FabLab Vejle" loading="lazy">
+                        </a>
+                        <a class="insta-item interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener" aria-label="FabLab on Instagram">
+                            <img src="../billeder/foto/stemning-07.png" alt="Photo from FabLab Vejle" loading="lazy">
+                        </a>
+                        <a class="insta-item interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener" aria-label="FabLab on Instagram">
+                            <img src="../billeder/foto/stemning-08.png" alt="Photo from FabLab Vejle" loading="lazy">
+                        </a>
+                        <a class="insta-item interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener" aria-label="FabLab on Instagram">
+                            <img src="../billeder/foto/stemning-09.png" alt="Photo from FabLab Vejle" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="besoeg">
+                <div class="container visit-grid">
+                    <div class="visit-copy">
+                        <p class="eyebrow">Visit us</p>
+                        <h2>FabLab is an open workshop for learning, experiments and prototypes.</h2>
+                        <p>You find us in Spinderihallerne in Vejle. Machines are free to use during open FabLab, while materials are charged per use. Instructors and volunteers help both new and experienced users.</p>
+                    </div>
+
+                    <div class="visit-cards">
+                        <div class="visit-card interactive">
+                            <span class="visit-label">Opening hours</span>
+                            <strong>Tuesday 15:00–20:00</strong>
+                            <p>With some exceptions during holidays and special events.</p>
+                        </div>
+                        <div class="visit-card interactive">
+                            <span class="visit-label">Address</span>
+                            <strong>Spinderihallerne, Vejle</strong>
+                            <p>A creative environment with room for prototypes, learning and collaboration.</p>
+                        </div>
+                        <div class="visit-card interactive">
+                            <span class="visit-label">External links</span>
+                            <div class="visit-actions">
+                                <a class="button button-tertiary interactive" href="om-fablab.html">About us</a>
+                                <a class="button button-tertiary interactive" href="https://github.com/Fablabvejle" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button button-tertiary interactive" href="https://www.instagram.com/fablabspinderihallerne/" target="_blank" rel="noopener">Instagram</a>
+                                <a class="button button-tertiary interactive" href="https://www.facebook.com/groups/fablabsh/" target="_blank" rel="noopener">Facebook</a>
+                                <a class="button button-tertiary interactive" href="https://www.linkedin.com/company/fablabspinderihallerne/" target="_blank" rel="noopener">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
     </div>
-    <header>
-        <img src="../billeder/Fablab Logo.svg" alt="Fablab Logo" style="height: 80px;">
-        <h1>Fablab Spinderihallerne</h1>
-    </header>
-    <div class="content">
-        <section id="about">
-            <h2><a href="omos.html" style="color: inherit; text-decoration: none;">About us</a></h2>
-            <p>Fablab Spinderihallerne is an open workshop environment where you can work with digital fabrication, electronics, prototypes, and creative development.</p>
-            <p>Every Tuesday from 15:00 – 20:00 (with some exceptions) there is open FabLab where everyone is welcome. The machines are free to use, but you must pay for materials. Our instructors and our team of volunteers will help show you how to operate the machines.</p>
-            <p>You can find us at Spinderihallerne in Vejle.</p>
-        </section>
-        <div class="button-container">
-            <button class="guide-button" onclick="showMachineGuides()">Machine guides</button>
-            <a href="https://place2book.com/en/sw2/sales/event_list/EM13515" class="guide-button" target="_blank" rel="noopener">Events</a>
-            <a href="https://judicious-radiator-ebc.notion.site/BioTechLab-Spinderihallerne-fbf28bba7f4949c4a801244631044e33" class="guide-button" target="_blank" rel="noopener">BioLab recipes</a>
-            <a href="https://github.com/Fablabvejle" class="guide-button" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://place2book.com/da/sw2/sales/efx8f7isvj" class="guide-button orange-button" target="_blank" rel="noopener">Makeacademy</a>
-        </div>
-    </div>
-    <div class="machine-guides">
-        <h2>Machine guides</h2>
-        <button class="machine-button" onclick="showPrinterGuides()">3D printing</button>
-        <a class="machine-button" onclick="showLaserMenu()">Laser cutter</a>
-        <a class="machine-button" onclick="showVinylMenu()">Vinyl cutter</a>
-        <a class="machine-button coming-soon">Coming: Heat press</a>
-        <a class="machine-button coming-soon">Coming: CNC router</a>
-        <a class="machine-button coming-soon">Coming: Airbrush painting</a>
-    </div>
-    <div class="printer-guides">
-        <h2>3D printers</h2>
-        <div class="printer-grid">
-            <a class="printer-card" href="prusaslicer.html">
-                <img class="printer-icon" src="../billeder/ikoner/prusa-slicer.png" alt="Prusa Slicer">
-                <span class="printer-label">Prusa Slicer</span>
-            </a>
-            <a class="printer-card" href="prusamini.html">
-                <img class="printer-icon" src="../billeder/ikoner/prusa-mini-fritlagt.png" alt="Prusa Mini">
-                <span class="printer-label">Prusa Mini</span>
-            </a>
-            <a class="printer-card" href="prusa-mk3s.html">
-                <img class="printer-icon" src="../billeder/ikoner/prusa-mk3s-fritlagt.png" alt="Prusa MK3S">
-                <span class="printer-label">Prusa MK3S</span>
-            </a>
-            <a class="printer-card" href="prusa-mk4.html">
-                <img class="printer-icon" src="../billeder/ikoner/prusa-mk4-fritlagt.png" alt="Prusa MK4">
-                <span class="printer-label">Prusa MK4</span>
-            </a>
-            <a class="printer-card" href="prusa-xl.html">
-                <img class="printer-icon" src="../billeder/ikoner/prusa-xl-fritlagt.png" alt="Prusa XL">
-                <span class="printer-label">Prusa XL</span>
-            </a>
-        </div>
-        <button class="back-button" onclick="showMachineGuides()">Back to machines</button>
-    </div>
-    <div id="vinyl-menu" class="printer-guides">
-        <h2>Vinyl cutter</h2>
-        <div class="printer-grid">
-            <a class="printer-card" href="brother-scanncut.html">
-                <img class="printer-icon" src="../billeder/ikoner/vinyl-brother-scanncut.png" alt="Brother Scan'n'Cut">
-                <span class="printer-label">Brother Scan'n'Cut</span>
-            </a>
-            <a class="printer-card" href="canvasworkspace.html">
-                <img class="printer-icon" src="../billeder/ikoner/vinyl-brother-canvasworkspace.png" alt="Brother CanvasWorkspace">
-                <span class="printer-label">Brother CanvasWorkspace</span>
-            </a>
-            <a class="printer-card" href="gcc-expert24.html">
-                <img class="printer-icon" src="../billeder/ikoner/vinyl-gcc-expert24.png" alt="GCC Expert 24 II">
-                <span class="printer-label">GCC Expert 24 II</span>
-            </a>
-            <a class="printer-card" href="surecutalot.html">
-                <img class="printer-icon" src="../billeder/ikoner/vinyl-gcc-surecut.png" alt="GCC Sure Cuts A Lot">
-                <span class="printer-label">GCC Sure Cuts A Lot</span>
-            </a>
-        </div>
-        <button class="back-button" onclick="showMachineGuides()">Back to machines</button>
-    </div>
-    <div id="laser-menu" class="printer-guides">
-        <h2>Laser cutter</h2>
-        <div class="printer-grid">
-            <a class="printer-card" href="laser-lightburn.html">
-                <img class="printer-icon" src="../billeder/ikoner/laser-lightburn.png" alt="LightBurn">
-                <span class="printer-label">LightBurn</span>
-            </a>
-            <a class="printer-card" href="laser-eduard.html">
-                <img class="printer-icon" src="../billeder/ikoner/laser-eduard-fritlagt.png" alt="Eduard">
-                <span class="printer-label">Eduard</span>
-            </a>
-            <a class="printer-card" href="laser-aeon.html">
-                <img class="printer-icon" src="../billeder/ikoner/laser-aeon-fritlagt.png" alt="AEON">
-                <span class="printer-label">AEON</span>
-            </a>
-            <a class="printer-card" href="laser-epilog.html">
-                <img class="printer-icon" src="../billeder/ikoner/laser-epilog-fritlagt.png" alt="Epilog">
-                <span class="printer-label">Epilog</span>
-            </a>
-        </div>
-        <button class="back-button" onclick="showMachineGuides()">Back to machines</button>
-    </div>
-    <footer>
-        &copy; 2025 Fablab Spinderihallerne. All rights reserved.
-    </footer>
+
+    <script>
+    (function () {
+        var IMAGES = [
+            '../billeder/foto/stemning-01.png',
+            '../billeder/foto/stemning-02.png',
+            '../billeder/foto/stemning-03.png',
+            '../billeder/foto/stemning-04.png',
+            '../billeder/foto/stemning-05.png',
+            '../billeder/foto/stemning-06.png',
+            '../billeder/foto/stemning-07.png',
+            '../billeder/foto/stemning-08.png',
+            '../billeder/foto/stemning-09.png',
+            '../billeder/foto/stemning-10.png',
+            '../billeder/foto/stemning-11.png',
+            '../billeder/foto/stemning-12.png',
+            '../billeder/foto/stemning-13.png',
+            '../billeder/foto/stemning-14.png',
+            '../billeder/foto/stemning-15.png',
+            '../billeder/foto/stemning-16.png',
+            '../billeder/foto/stemning-17.png',
+            '../billeder/foto/stemning-18.png',
+            '../billeder/foto/stemning-19.png',
+            '../billeder/foto/stemning-20.png',
+            '../billeder/foto/stemning-21.png',
+            '../billeder/foto/stemning-22.png',
+            '../billeder/foto/stemning-23.png',
+            '../billeder/foto/stemning-24.png',
+            '../billeder/foto/stemning-25.png',
+            '../billeder/foto/stemning-26.png',
+            '../billeder/foto/stemning-27.png',
+            '../billeder/foto/stemning-28.png'
+        ];
+
+        var TRANSITION = 700;
+        var DISPLAY    = 3000;
+        var DIRS = [[1,0],[-1,0],[0,1],[0,-1]];
+
+        function shuffle(arr) {
+            var a = arr.slice();
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var t = a[i]; a[i] = a[j]; a[j] = t;
+            }
+            return a;
+        }
+
+        function initCell(cell, startDelay) {
+            var pool = shuffle(IMAGES);
+            var idx = 0;
+
+            var first = cell.querySelector('img');
+            if (first) {
+                first.src = pool[idx];
+                first.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;';
+            }
+
+            function swap() {
+                idx = (idx + 1) % pool.length;
+                if (idx === 0) { pool = shuffle(IMAGES); }
+
+                var d = DIRS[Math.floor(Math.random() * DIRS.length)];
+                var dx = d[0], dy = d[1];
+
+                var oldImg = cell.querySelector('img');
+
+                var newImg = document.createElement('img');
+                newImg.alt = 'Photo from FabLab Vejle';
+                newImg.src = pool[idx];
+                newImg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;' +
+                    'transform:translate(' + (dx * 100) + '%,' + (dy * 100) + '%);' +
+                    'transition:transform ' + TRANSITION + 'ms cubic-bezier(0.4,0,0.2,1);';
+
+                if (oldImg) {
+                    oldImg.style.transition = 'transform ' + TRANSITION + 'ms cubic-bezier(0.4,0,0.2,1)';
+                }
+
+                cell.appendChild(newImg);
+
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        newImg.style.transform = 'translate(0,0)';
+                        if (oldImg) {
+                            oldImg.style.transform = 'translate(' + (-dx * 100) + '%,' + (-dy * 100) + '%)';
+                        }
+                    });
+                });
+
+                setTimeout(function () {
+                    if (oldImg && oldImg.parentNode) { oldImg.remove(); }
+                    newImg.style.transition = '';
+                }, TRANSITION + 50);
+
+                setTimeout(swap, DISPLAY);
+            }
+
+            setTimeout(swap, startDelay);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var cells = document.querySelectorAll('.insta-item');
+            var step = Math.floor(DISPLAY / cells.length);
+            cells.forEach(function (cell, i) {
+                initCell(cell, i * step);
+            });
+        });
+    })();
+    </script>
     <script src="/install-app.js" defer></script>
 </body>
 </html>

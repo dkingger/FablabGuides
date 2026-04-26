@@ -3,77 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prusa MK3S Guide</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #d2e2d0;
-            color: #222;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        h1 {
-            color: #3a4f41;
-        }
-        h2 {
-            margin-top: 40px;
-            color: #444;
-        }
-        h3 {
-            margin-top: 20px;
-            color: #555;
-        }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        a, .top-button {
-            display: inline-block;
-            margin-top: 30px;
-            background-color: #3a4f41;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a:hover, .top-button:hover {
-            background-color: #c94f3c;
-        }
-        .carousel {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        .carousel img {
-            width: 100%;
-            border-radius: 5px;
-        }
-        .carousel .caption {
-            text-align: center;
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-        .carousel-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .carousel-controls button {
-            background-color: #3a4f41;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .carousel-controls button:hover {
-            background-color: #c94f3c;
-        }
-    </style>
+    <meta name="robots" content="noindex, nofollow">
+    <title>Prusa MK3S | FabLab Vejle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="guide.css">
     <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
     <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
@@ -81,102 +16,10 @@
     <link rel="manifest" href="/billeder/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="FabLab Vejle">
 </head>
-<body>
-    <a name="top"></a>
-    <h1>Prusa MK3S</h1>
-    <p>MK3S er en solid og alsidig 3D-printer fra Prusa, som er velegnet til både begyndere og erfarne brugere. Den er kendt for sin pålidelighed, gode kvalitet og automatiske features.</p>
-
-    <h2>Sådan bruger man en Prusa MK3S</h2>
-
-    <h3>Skift filament</h3>
-    <div class="carousel">
-        <img id="carouselImage" src="" alt="Skift filament billede">
-        <div class="caption" id="carouselCaption"></div>
-        <div class="carousel-controls">
-            <button onclick="prevSlide()">Tilbage</button>
-            <button onclick="nextSlide()">Næste</button>
-        </div>
-    </div>
-
-    <h3>Start print</h3>
-    <div class="carousel">
-        <img id="startPrintImage" src="" alt="Start print billede">
-        <div class="caption" id="startPrintCaption"></div>
-        <div class="carousel-controls">
-            <button onclick="prevPrintSlide()">Tilbage</button>
-            <button onclick="nextPrintSlide()">Næste</button>
-        </div>
-    </div>
-
-    <h2>Tips og tricks</h2>
-    <ul>
-        <li>Hold byggepladen ren – brug isopropylalkohol og en mikrofiberklud.</li>
-        <li>Justér første lag korrekt – brug Z-offset og test print.</li>
-        <li>Lyt efter unormale lyde under print – det kan indikere problemer.</li>
-        <li>Hvis filamentet ikke sidder fast, så stop og rens dyse og byggeplade.</li>
-    </ul>
-
-    <a href="index.html">Tilbage til forsiden</a>
-    <a class="top-button" href="#top">Til toppen</a>
-
-    <script>
-        const images = [
-            { src: "billeder/prusa-mk3s/skift filament/main_screen.avif", caption: "1. Startskærm: Vælg 'Unload Filament'" },
-            { src: "billeder/prusa-mk3s/skift filament/unload_filament.avif", caption: "2. Vælg 'Unload Filament' i menuen" },
-            { src: "billeder/prusa-mk3s/skift filament/filament_choose.avif", caption: "3. Vælg filamenttype, f.eks. PLA" },
-            { src: "billeder/prusa-mk3s/skift filament/preheat_to_unload.avif", caption: "4. Printeren varmer op til korrekt temperatur" },
-            { src: "billeder/prusa-mk3s/skift filament/press_knob_unload.avif", caption: "5. Tryk på knappen for at bekræfte" },
-            { src: "billeder/prusa-mk3s/skift filament/hotend.avif", caption: "6. Træk forsigtigt filamentet ud, når det er opvarmet" },
-            { src: "billeder/prusa-mk3s/skift filament/extrude.avif", caption: "7. Indsæt nyt filament og tryk på 'Load Filament'" },
-            { src: "billeder/prusa-mk3s/skift filament/correct_extrude.avif", caption: "8. Kontroller at filamentet ekstruderes korrekt" },
-            { src: "billeder/prusa-mk3s/skift filament/printer_ok.avif", caption: "9. Bekræft og afslut proceduren" }
-        ];
-
-        const startPrintImages = [
-            { src: "billeder/prusa-mk3s/start_print/kontrol_start_printer.avif", caption: "1. Kontroller at printeren er tændt og klar" },
-            { src: "billeder/prusa-mk3s/start_print/wipe_surface.avif", caption: "2. Rengør byggepladen med isopropylalkohol" },
-            { src: "billeder/prusa-mk3s/start_print/insert_SD_kort.avif", caption: "3. Indsæt SD-kortet med din .gcode-fil" },
-            { src: "billeder/prusa-mk3s/start_print/choose_file.avif", caption: "4. Vælg den fil du vil printe fra menuen" },
-            { src: "billeder/prusa-mk3s/start_print/printer_varmer_start.avif", caption: "5. Printeren varmer op og starter print" },
-            { src: "billeder/prusa-mk3s/start_print/kontrol_first_lag.avif", caption: "6. Hold øje med første lag og justér Z-offset hvis nødvendigt" }
-        ];
-
-        let currentIndex = 0;
-        let currentPrintIndex = 0;
-
-        function updateCarousel() {
-            document.getElementById("carouselImage").src = images[currentIndex].src;
-            document.getElementById("carouselCaption").textContent = images[currentIndex].caption;
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateCarousel();
-        }
-
-        function updatePrintCarousel() {
-            document.getElementById("startPrintImage").src = startPrintImages[currentPrintIndex].src;
-            document.getElementById("startPrintCaption").textContent = startPrintImages[currentPrintIndex].caption;
-        }
-
-        function nextPrintSlide() {
-            currentPrintIndex = (currentPrintIndex + 1) % startPrintImages.length;
-            updatePrintCarousel();
-        }
-
-        function prevPrintSlide() {
-            currentPrintIndex = (currentPrintIndex - 1 + startPrintImages.length) % startPrintImages.length;
-            updatePrintCarousel();
-        }
-
-        updateCarousel();
-        updatePrintCarousel();
-    </script>
+<body data-guide-key="prusa-mk3s">
+    <div id="guide-app"></div>
+    <script src="guide-data.js"></script>
+    <script src="guide-renderer.js"></script>
     <script src="/install-app.js" defer></script>
 </body>
 </html>

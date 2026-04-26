@@ -1,71 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prusa XL – Guide</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #d2e2d0;
-      color: #222;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h1 {
-      color: #3a4f41;
-    }
-    h2 {
-      margin-top: 40px;
-      color: #444;
-    }
-    .carousel {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      margin: 20px auto;
-    }
-    .carousel img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 5px;
-    }
-    .carousel .caption {
-      text-align: center;
-      font-size: 1rem;
-      margin-top: 10px;
-    }
-    .carousel-controls {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-    .carousel-controls button {
-      background-color: #3a4f41;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .carousel-controls button:hover {
-      background-color: #c94f3c;
-    }
-    a.top-button {
-      display: block;
-      text-align: center;
-      margin: 40px auto;
-      background-color: #3a4f41;
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      width: fit-content;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Prusa XL | FabLab Vejle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../guide.css">
     <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
     <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
@@ -73,102 +16,10 @@
     <link rel="manifest" href="/billeder/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="FabLab Vejle">
 </head>
-<body>
-  <h1>Prusa XL</h1>
-  <p style="text-align: center;">Below you can see step-by-step guide on how to use the Prusa XL.</p>
-
-  <h2>Change filament</h2>
-  <div class="carousel">
-    <img id="filamentImage" src="" alt="Change filament image">
-    <div class="caption" id="filamentCaption"></div>
-    <div class="carousel-controls">
-      <button onclick="prevFilamentSlide()">Back</button>
-      <button onclick="nextFilamentSlide()">Next</button>
-    </div>
-  </div>
-
-  <h2>Start print</h2>
-  <div class="carousel">
-    <img id="printImage" src="" alt="Start print image">
-    <div class="caption" id="printCaption"></div>
-    <div class="carousel-controls">
-      <button onclick="prevPrintSlide()">Back</button>
-      <button onclick="nextPrintSlide()">Next</button>
-    </div>
-  </div>
-
-  <a class="top-button" href="index.html">Back to frontpage</a>
-
-  <script>
-    const filamentImages = [
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6315.jpeg", caption: "1. There can be 3 filament spools on the left side and 2 on the right. The loading procedure is the same for all 5." },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6316.jpeg", caption: "2. The spool holders can be pulled out if you need to use wider spools." },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6318.jpeg", caption: "3. Feed the filament into the holes marked 1 to 5. No.1 is the leftmost hotend and 5 is the rightmost." },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6320ny.jpg", caption: "4. The filament must be pushed all the way down to the sensor in the hotend. In this image, it is not far enough down." },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6322.jpeg", caption: "5. Select filament on the display" },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6323.jpeg", caption: "6. Select 'Load filament'" },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6324.jpeg", caption: "7. Select which hotend (Tool) to load filament into" },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6325.jpeg", caption: "8. Select filament type" },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6326.jpeg", caption: "9. The selected hotend is retrieved from parking" },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6328.jpeg", caption: "10. Push the filament forward so the sensor is activated and press 'Continue'" },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6329.jpeg", caption: "11. When it has loaded filament, check that the old filament has been replaced with the new one" },
-      { src: "../billeder/3dprinter/prusaxl/skift_fillament/IMG_6331.jpeg", caption: "12. Make sure there are no remains of old filament or anything else on the hotend" }
-    ];
-
-    const printImages = [
-      { src: "../billeder/3dprinter/prusaxl/start_print/IMG_6332.jpeg", caption: "1. Insert the USB stick" },    
-      { src: "../billeder/3dprinter/prusaxl/start_print/IMG_6335.jpeg", caption: "2. The newest file on the USB stick is automatically loaded" },
-      { src: "../billeder/3dprinter/prusaxl/start_print/IMG_6336.jpeg", caption: "3. Select which filament matches which color in the file from the slicer. If there is only one color in the file, go to image 5." },
-      { src: "../billeder/3dprinter/prusaxl/start_print/IMG_6337.jpeg", caption: "4. If the color is wrong compared to what is in the printer or if filament is missing in one or more positions, this must be corrected before you continue." },
-      { src: "../billeder/3dprinter/prusaxl/start_print/IMG_6339.jpeg", caption: "5. To load the file from the USB stick, press 'Print'" },
-      { src: "../billeder/3dprinter/prusaxl/start_print/IMG_6340.jpeg", caption: "6. Select the file you want to print" },
-      { src: "../billeder/3dprinter/prusaxl/start_print/IMG_6341.jpeg", caption: "7. Press 'Continue' if it is the correct file" },
-      { src: "../billeder/3dprinter/prusaxl/start_print/IMG_6342.jpeg", caption: "8. Select which hotend you want to print with" },
-      { src: "../billeder/3dprinter/prusaxl/start_print/IMG_6345.jpeg", caption: "9. Check that the first layer sticks and is as it should be" }
-    ];
-
-    // --- PRELOAD ALL IMAGES FOR SMOOTH CAROUSEL ---
-    [...filamentImages, ...printImages].forEach(item => {
-      const img = new Image();
-      img.src = item.src;
-    });
-
-    let filamentIndex = 0;
-    let printIndex = 0;
-
-    function updateFilamentCarousel() {
-      document.getElementById("filamentImage").src = filamentImages[filamentIndex].src;
-      document.getElementById("filamentCaption").textContent = filamentImages[filamentIndex].caption;
-    }
-
-    function updatePrintCarousel() {
-      document.getElementById("printImage").src = printImages[printIndex].src;
-      document.getElementById("printCaption").textContent = printImages[printIndex].caption;
-    }
-
-    function nextFilamentSlide() {
-      filamentIndex = (filamentIndex + 1) % filamentImages.length;
-      updateFilamentCarousel();
-    }
-
-    function prevFilamentSlide() {
-      filamentIndex = (filamentIndex - 1 + filamentImages.length) % filamentImages.length;
-      updateFilamentCarousel();
-    }
-
-    function nextPrintSlide() {
-      printIndex = (printIndex + 1) % printImages.length;
-      updatePrintCarousel();
-    }
-
-    function prevPrintSlide() {
-      printIndex = (printIndex - 1 + printImages.length) % printImages.length;
-      updatePrintCarousel();
-    }
-
-    updateFilamentCarousel();
-    updatePrintCarousel();
-  </script>
+<body data-guide-key="prusa-xl">
+    <div id="guide-app"></div>
+    <script src="guide-data-en.js"></script>
+    <script src="../guide-renderer.js"></script>
     <script src="/install-app.js" defer></script>
 </body>
 </html>

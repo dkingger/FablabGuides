@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fablab Spinderihallerne – guide for material height setup on AEON laser cutter.">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Fablab Spinderihallerne">
-  <title>Laser Cutter – AEON</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Roboto', sans-serif; background-color: #d2e2d0; color: #222; line-height: 1.6; max-width: 900px; margin: 40px auto; padding: 0 20px; }
-    h1 { color: #3a4f41; text-align: center; }
-    .carousel { position: relative; width: 100%; max-width: 500px; margin: 20px auto; }
-    .carousel img { width: 100%; border-radius: 5px; cursor: pointer; }
-    .caption { text-align: center; font-size: 1rem; margin-top: 10px; }
-    .carousel-controls { display: flex; justify-content: space-between; margin-top: 10px; }
-    .carousel-controls button, a, .top-button { background-color: #3a4f41; color: white; border: none; padding: 10px 20px; font-size: 1rem; cursor: pointer; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 25px; }
-    .carousel-controls button:hover, a:hover, .top-button:hover { background-color: #c94f3c; }
-    #imageModal { display: none; position: fixed; z-index: 1000; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
-    #modalImg { margin: auto; display: block; max-width: 90vw; max-height: 80vh; }
-    #imageModal .close { position: absolute; top: 30px; right: 50px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>AEON | FabLab Vejle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../guide.css">
     <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
     <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
@@ -28,55 +16,10 @@
     <link rel="manifest" href="/billeder/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="FabLab Vejle">
 </head>
-<body id="top">
-  <div id="imageModal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img id="modalImg" src="" alt="Enlarged image">
-  </div>
-
-  <h1>Laser Cutter: AEON</h1>
-  <p>Below is a step-by-step guide for setting material thickness on AEON.</p>
-
-  <div class="carousel">
-    <img id="carouselImage" src="" alt="AEON image" onclick="openModal(this.src)">
-    <div class="caption" id="carouselCaption"></div>
-    <div class="carousel-controls">
-      <button onclick="prevSlide()">Back</button>
-      <button onclick="nextSlide()">Next</button>
-    </div>
-  </div>
-
-  <a href="index.html">Back to frontpage</a>
-  <a class="top-button" href="#top">Back to top</a>
-
-  <script>
-    const images = [
-      { src: "../billeder/laser/hoejde_aeon/00forkert.jpg", caption: "1. Wrong height - focus pen is not within the material" },
-      { src: "../billeder/laser/hoejde_aeon/00rigtig.jpg", caption: "2. Correct height - focus pen is within the material" },
-      { src: "../billeder/laser/hoejde_aeon/01saethoej.jpg", caption: "3. Press Z/U to enter the machine menu" },
-      { src: "../billeder/laser/hoejde_aeon/02saethoej.jpg", caption: "4. Use arrow key to select Auto Focus" },
-      { src: "../billeder/laser/hoejde_aeon/03saethoej.jpg", caption: "5. Press Enter to focus the laser" }
-    ];
-    let index = 0;
-    function updateSlide() {
-      document.getElementById("carouselImage").src = images[index].src;
-      document.getElementById("carouselCaption").textContent = images[index].caption;
-    }
-    function nextSlide() { index = (index + 1) % images.length; updateSlide(); }
-    function prevSlide() { index = (index - 1 + images.length) % images.length; updateSlide(); }
-    function openModal(src) {
-      document.getElementById("modalImg").src = src;
-      document.getElementById("imageModal").style.display = "block";
-    }
-    function closeModal() {
-      document.getElementById("imageModal").style.display = "none";
-    }
-    window.onclick = function(event) {
-      const modal = document.getElementById("imageModal");
-      if (event.target === modal) closeModal();
-    };
-    updateSlide();
-  </script>
+<body data-guide-key="laser-aeon">
+    <div id="guide-app"></div>
+    <script src="guide-data-en.js"></script>
+    <script src="../guide-renderer.js"></script>
     <script src="/install-app.js" defer></script>
 </body>
 </html>

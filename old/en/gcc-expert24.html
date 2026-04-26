@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCC Expert 24 II – Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d2e2d0;
+      color: #222;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #3a4f41;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #444;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .carousel img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    .carousel .caption {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #3a4f41;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .carousel-controls button:hover {
+      background-color: #c94f3c;
+    }
+    a.top-button {
+      display: block;
+      text-align: center;
+      margin: 40px auto;
+      background-color: #3a4f41;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      width: fit-content;
+    }
+  </style>
+    <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
+    <link rel="manifest" href="/billeder/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="FabLab Vejle">
+</head>
+<body>
+  <h1>GCC Expert 24 II</h1>
+  <p style="text-align: center;">Below you can see step-by-step how to use the GCC Expert 24 II.</p>
+
+  <div class="carousel">
+    <img id="gccImage" src="" alt="GCC Expert 24 II image">
+    <div class="caption" id="gccCaption"></div>
+    <div class="carousel-controls">
+      <button onclick="prevGccSlide()">Back</button>
+      <button onclick="nextGccSlide()">Next</button>
+    </div>
+  </div>
+
+  <a class="top-button" href="index.html">Back to frontpage</a>
+
+  <script>
+    const gccImages = [
+      { src: "../billeder/vinylskaerer/gcc/01.slukmaskinen.jpeg", caption: "1. Turn off the machine" },
+      { src: "../billeder/vinylskaerer/gcc/02.placerrullestativbag.jpeg", caption: "2. Place the roll holder behind the machine" },
+      { src: "../billeder/vinylskaerer/gcc/03.laegvinyliholder.jpeg", caption: "3. Put vinyl in the roll holder" },
+      { src: "../billeder/vinylskaerer/gcc/04.skubvinylind.jpeg", caption: "4. Push the vinyl into the machine" },
+      { src: "../billeder/vinylskaerer/gcc/05.placerindenfordehvidefelter.jpeg", caption: "5. Make sure the vinyl is within the white areas" },
+      { src: "../billeder/vinylskaerer/gcc/06.placersaaflugtermedbeggelinealer.jpeg", caption: "6. Adjust so the edges align with both rulers" },
+      { src: "../billeder/vinylskaerer/gcc/07.laasbegge.jpeg", caption: "7. Lock both pinch rollers" },
+      { src: "../billeder/vinylskaerer/gcc/08.laast.jpeg", caption: "8. The pinch rollers must be locked" },
+      { src: "../billeder/vinylskaerer/gcc/09.taendmaskinen.jpeg", caption: "9. Turn on the machine and the cutting head will start moving back and forth" },
+      { src: "../billeder/vinylskaerer/gcc/10.saetoffline.jpeg", caption: "10. Press 'Offline'" },
+      { src: "../billeder/vinylskaerer/gcc/11.brugpiletiatflyttefolie.jpeg", caption: "11. Use the arrow keys to move the vinyl" },
+      { src: "../billeder/vinylskaerer/gcc/12.trykpaaorigin.jpeg", caption: "12. Press 'Origin' to set the starting point" },
+      { src: "../billeder/vinylskaerer/gcc/13.saetonline.jpeg", caption: "13. Press 'Online'" },
+      { src: "../billeder/vinylskaerer/gcc/14.maskineskaerer.jpeg", caption: "14. The machine is now cutting" },
+      { src: "../billeder/vinylskaerer/gcc/15.saetoffline.jpeg", caption: "15. When finished – press 'Offline'" },
+      { src: "../billeder/vinylskaerer/gcc/16.koerfolieud.jpeg", caption: "16. Use the arrow keys to feed out the vinyl" },
+      { src: "../billeder/vinylskaerer/gcc/17.klipligeaf.jpeg", caption: "17. Cut the vinyl straight across the roll" },
+      { src: "../billeder/vinylskaerer/gcc/18.saettapepaarulle.jpeg", caption: "18. Put tape on the roll to prepare for the next user and place it back in the Material Storage" }
+    ];
+
+    let gccIndex = 0;
+
+    function updateGccCarousel() {
+      document.getElementById("gccImage").src = gccImages[gccIndex].src;
+      document.getElementById("gccCaption").textContent = gccImages[gccIndex].caption;
+    }
+
+    function nextGccSlide() {
+      gccIndex = (gccIndex + 1) % gccImages.length;
+      updateGccCarousel();
+    }
+
+    function prevGccSlide() {
+      gccIndex = (gccIndex - 1 + gccImages.length) % gccImages.length;
+      updateGccCarousel();
+    }
+
+    // Initial view
+    updateGccCarousel();
+  </script>
+    <script src="/install-app.js" defer></script>
+</body>
+</html>
