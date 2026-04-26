@@ -36,32 +36,43 @@
     }
 
     var deferredPrompt = null;
-    var button = doc.createElement('button');
-    button.type = 'button';
+    var button = doc.querySelector('[data-install-app-button]');
+    var usesExistingButton = Boolean(button);
+
+    if (!button) {
+        button = doc.createElement('button');
+        button.type = 'button';
+        button.style.position = 'fixed';
+        button.style.right = '16px';
+        button.style.bottom = '16px';
+        button.style.zIndex = '9999';
+        button.style.border = '0';
+        button.style.padding = '12px 16px';
+        button.style.borderRadius = '999px';
+        button.style.fontSize = '14px';
+        button.style.fontWeight = '700';
+        button.style.cursor = 'pointer';
+        button.style.background = '#111111';
+        button.style.color = '#ffffff';
+        button.style.boxShadow = '0 10px 24px rgba(0, 0, 0, 0.2)';
+        button.style.display = 'none';
+    }
+
     button.textContent = t.button;
     button.setAttribute('aria-label', t.button);
-    button.style.position = 'fixed';
-    button.style.right = '16px';
-    button.style.bottom = '16px';
-    button.style.zIndex = '9999';
-    button.style.border = '0';
-    button.style.padding = '12px 16px';
-    button.style.borderRadius = '999px';
-    button.style.fontSize = '14px';
-    button.style.fontWeight = '700';
-    button.style.cursor = 'pointer';
-    button.style.background = '#111111';
-    button.style.color = '#ffffff';
-    button.style.boxShadow = '0 10px 24px rgba(0, 0, 0, 0.2)';
-    button.style.display = 'none';
 
     function showButton() {
-        if (!doc.body.contains(button)) {
+        button.hidden = false;
+
+        if (!usesExistingButton && !doc.body.contains(button)) {
             doc.body.appendChild(button);
         }
-        button.style.display = 'inline-flex';
-        button.style.alignItems = 'center';
-        button.style.gap = '8px';
+
+        if (!usesExistingButton) {
+            button.style.display = 'inline-flex';
+            button.style.alignItems = 'center';
+            button.style.gap = '8px';
+        }
     }
 
     function showIosHelp() {
@@ -129,7 +140,11 @@
             deferredPrompt.prompt();
             deferredPrompt.userChoice.finally(function () {
                 deferredPrompt = null;
-                button.style.display = 'none';
+                button.hidden = true;
+
+                if (!usesExistingButton) {
+                    button.style.display = 'none';
+                }
             });
             return;
         }

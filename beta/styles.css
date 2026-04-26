@@ -295,6 +295,13 @@ img {
     font-weight: 600;
 }
 
+.panel-link-button {
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
 .stats-panel {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, #f0f4ef 100%);
 }
@@ -326,6 +333,48 @@ img {
 .section-strip,
 .content-section {
     padding: 36px 0 44px;
+}
+
+.first-time-section {
+    padding-top: 10px;
+}
+
+.first-time-card {
+    padding: 34px;
+    border-radius: 30px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(237, 242, 235, 0.78) 100%);
+    border: 1px solid rgba(24, 51, 43, 0.1);
+    box-shadow: var(--shadow);
+    max-width: 920px;
+}
+
+.first-time-card h2 {
+    margin: 0 0 14px;
+    font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+}
+
+.first-time-card p {
+    margin: 0 0 12px;
+    color: var(--text-soft);
+}
+
+.first-time-intro {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.first-time-list {
+    margin: 0;
+    padding-left: 22px;
+    color: var(--text-soft);
+}
+
+.first-time-list li + li {
+    margin-top: 8px;
 }
 
 .shortcut-grid,
@@ -593,6 +642,7 @@ img {
     .category-card,
     .info-card,
     .visit-card,
+    .first-time-card,
     .footer-wrap {
         padding: 24px;
         border-radius: 24px;

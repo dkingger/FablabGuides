@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guide for preparing files for laser cutting and laser engraving in FabLab Vejle.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Fablab Spinderihallerne">
+    <title>Guide to Laser Files | FabLab Vejle Beta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../guide.css">
+    <style>
+        .guide-page {
+            padding: 42px 0 72px;
+        }
+        .guide-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            gap: 24px;
+            align-items: start;
+        }
+        .guide-main {
+            display: grid;
+            gap: 20px;
+        }
+        .guide-side {
+            display: grid;
+            gap: 20px;
+            position: sticky;
+            top: 108px;
+        }
+        .guide-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+        }
+        .guide-card h2 {
+            margin: 0 0 12px;
+            color: var(--brand-strong);
+            font-size: 1.45rem;
+            line-height: 1.15;
+        }
+        .guide-card h3 {
+            margin: 24px 0 10px;
+            color: var(--brand-strong);
+            font-size: 1.05rem;
+        }
+        .guide-card p,
+        .guide-card li {
+            color: var(--text-soft);
+        }
+        .guide-card p {
+            margin: 0 0 14px;
+        }
+        .guide-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .guide-card li + li {
+            margin-top: 8px;
+        }
+        .guide-card strong {
+            color: var(--text);
+        }
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .guide-table th,
+        .guide-table td {
+            padding: 14px 16px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid rgba(24, 51, 43, 0.08);
+        }
+        .guide-table th {
+            color: var(--brand-strong);
+            font-size: 0.92rem;
+        }
+        .guide-table td {
+            color: var(--text-soft);
+        }
+        .guide-download {
+            display: grid;
+            gap: 14px;
+        }
+        .guide-download p,
+        .guide-summary p {
+            margin: 0;
+        }
+        .guide-summary ul {
+            margin-top: 14px;
+        }
+        .guide-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .guide-anchor-list {
+            display: grid;
+            gap: 10px;
+        }
+        .guide-anchor-list a {
+            color: var(--brand);
+            font-weight: 600;
+        }
+        @media (max-width: 980px) {
+            .guide-layout {
+                grid-template-columns: 1fr;
+            }
+            .guide-side {
+                position: static;
+            }
+        }
+        @media (max-width: 760px) {
+            .guide-page {
+                padding-top: 28px;
+            }
+            .guide-card {
+                padding: 24px;
+                border-radius: var(--radius-md);
+            }
+            .guide-table,
+            .guide-table tbody,
+            .guide-table tr,
+            .guide-table th,
+            .guide-table td {
+                display: block;
+            }
+            .guide-table thead {
+                display: none;
+            }
+            .guide-table tr {
+                padding: 12px 0;
+            }
+            .guide-table td {
+                padding: 6px 0;
+                border-bottom: 0;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
+    <link rel="manifest" href="/billeder/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="FabLab Vejle">
+</head>
+<body class="guide-shell">
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand interactive" href="index.html" aria-label="To beta front page">
+                <span class="brand-mark">
+                    <img src="../../billeder/Fablab Logo.svg" alt="FabLab Vejle logo">
+                </span>
+                <span class="brand-text">
+                    <strong>FabLab Vejle</strong>
+                    <span>Beta redesign</span>
+                </span>
+            </a>
+            <nav class="top-nav" id="site-nav" aria-label="Primary navigation" data-lang="en" data-page="guides"></nav>
+            <script src="../nav.js"></script>
+        </div>
+    </header>
+
+    <main class="guide-page">
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-card">
+                    <span class="eyebrow">Laser Cutter</span>
+                    <h1>Guide to Laser Files</h1>
+                    <p class="lead">Preparing files for laser cutting and laser engraving. This guide helps you prepare files so they are easy to open, check and use on the laser cutter. The cleaner the file is, the less time we need to spend fixing problems at the machine.</p>
+                    <div class="hero-pills">
+                        <span class="pill">1:1 scale</span>
+                        <span class="pill">Vector files for cutting</span>
+                        <span class="pill">Convert text to outlines</span>
+                    </div>
+                    <div class="hero-actions">
+                        <a class="button button-primary interactive" href="../../billeder/laser/fablab_laser_guide_english.pdf" target="_blank" rel="noopener">Download PDF</a>
+                        <a class="button button-secondary interactive" href="laser-lightburn.html">See the LightBurn guide</a>
+                    </div>
+                </div>
+
+                <aside class="stat-card guide-download">
+                    <span class="section-tag">Use the guide</span>
+                    <p>Read the guide online, and download the PDF if you want to keep it offline or print it before your visit.</p>
+                    <div class="guide-actions">
+                        <a class="button button-primary interactive" href="../../billeder/laser/fablab_laser_guide_english.pdf" target="_blank" rel="noopener">Open PDF</a>
+                        <a class="button button-secondary interactive" href="#checklist">Start with the checklist</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section>
+            <div class="container guide-layout">
+                <div class="guide-main">
+                    <article class="guide-card guide-summary" id="checklist">
+                        <h2>Quick checklist before you come to FabLab</h2>
+                        <ul>
+                            <li>Draw in 1:1 scale - the same size the object should be cut or engraved.</li>
+                            <li>Use vector graphics for all lines that should be cut or line engraved.</li>
+                            <li>Convert text to curves/outlines.</li>
+                            <li>Delete guide lines, hidden layers and anything that should not be cut or engraved.</li>
+                            <li>Check for duplicate lines placed on top of each other.</li>
+                            <li>Use different colours or layers for cutting, line engraving and area engraving.</li>
+                            <li>Preferably save as SVG, PDF, DXF or AI - depending on the programme you are working in.</li>
+                        </ul>
+                    </article>
+
+                    <article class="guide-card" id="vector-or-image">
+                        <h2>1. Vector or image?</h2>
+                        <p>The laser cutter works best with vector graphics. Vectors are lines and shapes that the machine can follow precisely. These can be files from programmes such as Inkscape, Adobe Illustrator, CorelDRAW, AutoCAD, Rhino or Fusion 360.</p>
+                        <p>Images, for example JPG or PNG files, can be used for area engraving. This works best with clear contrast. A subject with many small details and low contrast often produces an unclear result and usually requires several tests.</p>
+                    </article>
+
+                    <article class="guide-card" id="correct-size">
+                        <h2>2. Draw at the correct size</h2>
+                        <p>Always make the drawing in 1:1 scale. If the object should be 100 mm wide, it should also be 100 mm wide in the file.</p>
+                        <p>If you are working in a 3D programme, export a 2D drawing, a sketch or a top view. The laser needs a flat 2D file - not a 3D model.</p>
+                    </article>
+
+                    <article class="guide-card" id="cutting-and-engraving">
+                        <h2>3. Cutting, line engraving, and area engraving</h2>
+                        <p>Use different colours or layers for the different operations:</p>
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>Operation</th>
+                                    <th>Used for</th>
+                                    <th>Recommendation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Cutting</strong></td>
+                                    <td>Lines that should be cut all the way through the material.</td>
+                                    <td>Use a very thin stroke/hairline and a clear colour.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Line engraving</strong></td>
+                                    <td>Lines that should be marked on the surface but not cut through.</td>
+                                    <td>Use a different colour than the cutting lines.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Area engraving</strong></td>
+                                    <td>Filled areas, images, or text that should be engraved as a surface.</td>
+                                    <td>Use fill or a raster image with good contrast.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <article class="guide-card" id="clean-up">
+                        <h2>4. Clean up the file</h2>
+                        <ul>
+                            <li>Delete lines, guide lines and objects that should not be used.</li>
+                            <li>Delete layers that should not be cut or engraved. Hiding them is not always enough.</li>
+                            <li>Avoid multiple pages or artboards in the same document unless otherwise agreed.</li>
+                            <li>Check that there are no identical lines placed on top of each other. Duplicate lines can make the laser cut the same place more than once.</li>
+                            <li>Make sure shapes are joined at the corners if they should be cut as closed shapes.</li>
+                            <li>If the laser should cut around an object, there must be an actual cutting line. It is not enough that the document has the correct page size.</li>
+                        </ul>
+                    </article>
+
+                    <article class="guide-card" id="text-to-outlines">
+                        <h2>5. Text must be converted to outlines</h2>
+                        <p>Text should usually be converted to curves/outlines before the file is used for laser work. Otherwise, the font may be missing or change when the file is opened on another computer.</p>
+                        <ul>
+                            <li>In Illustrator: select the text, right-click and choose <strong>Create Outlines</strong>.</li>
+                            <li>In Inkscape: select the text and choose <strong>Path &gt; Object to Path</strong>.</li>
+                            <li>In Rhino and other CAD programmes: use the programme's function for converting text to curves/outlines before export.</li>
+                        </ul>
+                    </article>
+
+                    <article class="guide-card" id="programs">
+                        <h2>6. Programme-specific advice</h2>
+                        <h3>Adobe Illustrator</h3>
+                        <ul>
+                            <li>Draw in 1:1 scale.</li>
+                            <li>Use thin strokes/hairline for cutting lines.</li>
+                            <li>Stroke width does not determine how wide the laser cuts. The machine follows the line.</li>
+                            <li>Convert text to outlines.</li>
+                            <li>Save as PDF or AI. If AI format is required, use a compatible version.</li>
+                        </ul>
+
+                        <h3>Inkscape</h3>
+                        <ul>
+                            <li>Draw in 1:1 scale and check the document units, for example mm.</li>
+                            <li>Convert text using <strong>Path &gt; Object to Path</strong>.</li>
+                            <li>Use very thin strokes for cutting lines.</li>
+                            <li>Save as SVG or PDF. If the file is to be used in CAD/CAM software, DXF may also be relevant.</li>
+                        </ul>
+
+                        <h3>Fusion 360 / SolidWorks / other 3D programmes</h3>
+                        <ul>
+                            <li>Export a 2D drawing, sketch or profile - not the 3D model itself.</li>
+                            <li>Check the dimensions after export.</li>
+                            <li>Usually save or export as DXF, SVG or PDF depending on the workflow.</li>
+                        </ul>
+
+                        <h3>Rhino / AutoCAD / other CAD programmes</h3>
+                        <ul>
+                            <li>Clean up guide lines, construction lines and hidden elements before export.</li>
+                            <li>Check that curves are closed if the shapes are to be cut out.</li>
+                            <li>Export as DXF, PDF or AI/SVG, depending on what the laser software needs.</li>
+                        </ul>
+
+                        <h3>SketchUp</h3>
+                        <ul>
+                            <li>Pay extra attention to scale when exporting.</li>
+                            <li>Export only the 2D geometry that is needed.</li>
+                            <li>Check the file in another programme before bringing it to FabLab.</li>
+                        </ul>
+                    </article>
+
+                    <article class="guide-card" id="images">
+                        <h2>7. Images for engraving</h2>
+                        <p>Digital images can be engraved, but the result depends heavily on the material, the contrast and the machine settings. Images with clear contrast and simple shapes work best.</p>
+                        <ul>
+                            <li>Use black and white or high contrast if the image needs to be clear.</li>
+                            <li>Avoid very dark or very detailed photos without clear contrast.</li>
+                            <li>Expect test cuts/test engravings, especially if the material has not been tested before.</li>
+                            <li>Save the image in a suitable resolution. A very low resolution gives a rough result, while an unnecessarily large file can be heavy to work with.</li>
+                        </ul>
+                    </article>
+
+                    <article class="guide-card" id="before-you-bring-the-file">
+                        <h2>8. Before you bring the file</h2>
+                        <ul>
+                            <li>Open the file again and check that everything is still correct.</li>
+                            <li>Check dimensions and units.</li>
+                            <li>Check that text has been converted to curves/outlines.</li>
+                            <li>Check that cutting, line engraving and area engraving are clearly separated.</li>
+                            <li>Check for duplicate lines.</li>
+                            <li>Delete hidden layers, empty objects and elements outside the work area.</li>
+                            <li>Bring both the original file and an exported file, for example SVG/PDF/DXF, if possible.</li>
+                        </ul>
+                    </article>
+
+                    <article class="guide-card" id="file-formats">
+                        <h2>9. Recommended file formats</h2>
+                        <table class="guide-table">
+                            <thead>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Typically used for</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>SVG</strong></td>
+                                    <td>Vector files from Inkscape and many other programmes.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PDF</strong></td>
+                                    <td>Good exchange format, especially from Illustrator, Inkscape and CAD programmes.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DXF</strong></td>
+                                    <td>Often used from CAD programmes and 3D programmes.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AI</strong></td>
+                                    <td>Illustrator format. Use only if the workflow requires it.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>JPG/PNG</strong></td>
+                                    <td>Images for area engraving - not for precise cutting lines.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <article class="guide-card" id="remember">
+                        <h2>Remember</h2>
+                        <p>A laser cutter does exactly what the file tells it to do. If there are extra lines, duplicate lines or hidden objects in the file, they may end up being cut or engraved.</p>
+                        <p>If you are unsure, bring both your working file and an exported file to FabLab. This makes it easier to help.</p>
+                    </article>
+                </div>
+
+                <aside class="guide-side">
+                    <article class="guide-card">
+                        <span class="section-tag">Contents</span>
+                        <div class="guide-anchor-list">
+                            <a class="interactive" href="#checklist">Quick checklist</a>
+                            <a class="interactive" href="#vector-or-image">1. Vector or image?</a>
+                            <a class="interactive" href="#correct-size">2. Draw in the correct size</a>
+                            <a class="interactive" href="#cutting-and-engraving">3. Cutting and engraving</a>
+                            <a class="interactive" href="#clean-up">4. Clean up the file</a>
+                            <a class="interactive" href="#text-to-outlines">5. Text to outlines</a>
+                            <a class="interactive" href="#programs">6. Programme-specific advice</a>
+                            <a class="interactive" href="#images">7. Images for engraving</a>
+                            <a class="interactive" href="#before-you-bring-the-file">8. Before you bring the file</a>
+                            <a class="interactive" href="#file-formats">9. Recommended file formats</a>
+                            <a class="interactive" href="#remember">Remember</a>
+                        </div>
+                    </article>
+
+                    <article class="guide-card">
+                        <span class="section-tag">Download</span>
+                        <p>The matching PDF can sit alongside the readable web version, so the visitor can choose the format that fits best.</p>
+                        <div class="guide-actions">
+                            <a class="button button-primary interactive" href="../../billeder/laser/fablab_laser_guide_english.pdf" target="_blank" rel="noopener">Download PDF</a>
+                        </div>
+                    </article>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <p>Guide to laser files for FabLab Vejle Beta.</p>
+            <div class="footer-actions">
+                <a class="button button-secondary interactive" href="index.html">Back to beta front page</a>
+                <a class="button button-primary interactive" href="laser-lightburn.html">See the LightBurn guide</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/install-app.js" defer></script>
+</body>
+</html>
