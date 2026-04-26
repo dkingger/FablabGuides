@@ -427,6 +427,10 @@ img {
     border-radius: 30px;
 }
 
+.category-cta {
+    margin-top: 14px;
+}
+
 .guide-list {
     display: grid;
     gap: 14px;
