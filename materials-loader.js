@@ -17,8 +17,8 @@
     // Recommended columns: da,en (or first column Danish + second column English).
     var CATEGORIES_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTuqq2lorOoIq63uNKIV5sNzGVCfo2Fk55eypb3IM7xSqvHnGTmfXHgwyc3mhd81PYOOqFd-5mPUYFK/pub?gid=1247234681&single=true&output=csv';
 
-    // Canonical display order for categories (sheet can have rows in any order)
-    var STATIC_CATEGORY_ORDER = [
+    // Default categories used when categories CSV is unavailable.
+    var STATIC_CATEGORIES = [
         'Træ', 'Akryl', '2-lags laminat', 'EVA skum', 'Metal',
         'Upcyclede PLA plader', 'Plader til vacumformer', 'Vinyl', 'Stempelgummi'
     ];
@@ -234,7 +234,7 @@
         var s = STRINGS[lang] || STRINGS.da;
         var labelsSource = (categoryConfig && categoryConfig.labels) || STATIC_CATEGORY_LABELS;
         var labels = labelsSource[lang] || labelsSource.da;
-        var categoryOrder = (categoryConfig && categoryConfig.order) || STATIC_CATEGORY_ORDER;
+        var categoryOrder = (categoryConfig && categoryConfig.order) || STATIC_CATEGORIES;
         var notes = CATEGORY_NOTES[lang] || {};
 
         if (!rows.length) {
@@ -251,10 +251,17 @@
             catMap[key].push(row);
         });
 
-        // Canonical order first, then any new categories found in the sheet
+        // Include known categories first, then add any categories present in data.
         var sorted = categoryOrder.filter(function (c) { return catMap[c]; });
         seenOrder.forEach(function (c) {
             if (sorted.indexOf(c) === -1) sorted.push(c);
+        });
+
+        // Always sort alphabetically by the rendered category title.
+        sorted.sort(function (a, b) {
+            var titleA = (labels[a] || a).toLowerCase();
+            var titleB = (labels[b] || b).toLowerCase();
+            return titleA.localeCompare(titleB, lang === 'en' ? 'en' : 'da');
         });
 
         var html = '';
