@@ -12,16 +12,19 @@
 (function () {
     'use strict';
 
-    var CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTuqq2lorOoIq63uNKIV5sNzGVCfo2Fk55eypb3IM7xSqvHnGTmfXHgwyc3mhd81PYOOqFd-5mPUYFK/pub?output=csv';
+    var MATERIALS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTuqq2lorOoIq63uNKIV5sNzGVCfo2Fk55eypb3IM7xSqvHnGTmfXHgwyc3mhd81PYOOqFd-5mPUYFK/pub?output=csv';
+    // Optional: publish the "categories" tab as its own CSV and paste URL here.
+    // Recommended columns: da,en (or first column Danish + second column English).
+    var CATEGORIES_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTuqq2lorOoIq63uNKIV5sNzGVCfo2Fk55eypb3IM7xSqvHnGTmfXHgwyc3mhd81PYOOqFd-5mPUYFK/pub?gid=1247234681&single=true&output=csv';
 
     // Canonical display order for categories (sheet can have rows in any order)
-    var CATEGORY_ORDER = [
+    var STATIC_CATEGORY_ORDER = [
         'Træ', 'Akryl', '2-lags laminat', 'EVA skum', 'Metal',
         'Upcyclede PLA plader', 'Plader til vacumformer', 'Vinyl', 'Stempelgummi'
     ];
 
     // Category heading translations (DA key → localised label)
-    var CATEGORY_LABELS = {
+    var STATIC_CATEGORY_LABELS = {
         da: {
             'Træ': 'Træ',
             'Akryl': 'Akryl',
@@ -62,8 +65,11 @@
             'Laser': 'Laser',
             'Gravering': 'Engraving',
             'Vandstraale': 'Water jet',
+            'Vandskærer': 'Water jet',
             'Vacumformer': 'Vacuum former',
-            'Vinylskaerer': 'Vinyl cutter'
+            'Vakumformer': 'Vacuum former',
+            'Vinylskaerer': 'Vinyl cutter',
+            'Vinylskærer': 'Vinyl cutter'
         }
     };
 
@@ -135,6 +141,74 @@
         return rows;
     }
 
+    function firstNonEmpty(row, keys) {
+        for (var i = 0; i < keys.length; i++) {
+            var v = row[keys[i]];
+            if (typeof v === 'string' && v.trim()) return v.trim();
+        }
+        return '';
+    }
+
+    function parseCategoryConfig(rows) {
+        if (!rows || !rows.length) return null;
+
+        var sampleKeys = Object.keys(rows[0]);
+        var hasMaterialHeaders = sampleKeys.some(function (k) {
+            return ['materiale', 'tykkelse', 'dimensioner', 'egnet til', 'pris'].indexOf(k) !== -1;
+        });
+        var hasDaHeader = sampleKeys.some(function (k) {
+            return ['da', 'dansk', 'kategori', 'kategori_da'].indexOf(k) !== -1;
+        });
+        var hasEnHeader = sampleKeys.some(function (k) {
+            return ['en', 'english', 'engelsk', 'kategori_en'].indexOf(k) !== -1;
+        });
+
+        // Avoid interpreting materials rows as category definitions.
+        if (hasMaterialHeaders) return null;
+
+        var useNamedHeaders = hasDaHeader || hasEnHeader;
+        var allowFallbackColumns = !useNamedHeaders && sampleKeys.length <= 2;
+
+        if (!useNamedHeaders && !allowFallbackColumns) return null;
+
+        var order = [];
+        var labelsDa = {};
+        var labelsEn = {};
+
+        rows.forEach(function (row) {
+            var da = '';
+            var en = '';
+
+            if (useNamedHeaders) {
+                da = firstNonEmpty(row, ['da', 'dansk', 'kategori', 'kategori_da']);
+                en = firstNonEmpty(row, ['en', 'english', 'engelsk', 'kategori_en']);
+            }
+
+            // Fallback: first column = da, second column = en
+            if (!da || !en) {
+                var keys = Object.keys(row);
+                if (!da && keys[0]) da = (row[keys[0]] || '').trim();
+                if (!en && keys[1]) en = (row[keys[1]] || '').trim();
+            }
+
+            if (!da) return;
+            if (order.indexOf(da) === -1) order.push(da);
+
+            labelsDa[da] = da;
+            labelsEn[da] = en || STATIC_CATEGORY_LABELS.en[da] || da;
+        });
+
+        if (!order.length) return null;
+
+        return {
+            order: order,
+            labels: {
+                da: labelsDa,
+                en: labelsEn
+            }
+        };
+    }
+
     // ── HTML rendering ───────────────────────────────────────────────────────────
 
     function esc(str) {
@@ -156,9 +230,11 @@
             .join(' ');
     }
 
-    function renderCategories(rows, lang) {
+    function renderCategories(rows, lang, categoryConfig) {
         var s = STRINGS[lang] || STRINGS.da;
-        var labels = CATEGORY_LABELS[lang] || CATEGORY_LABELS.da;
+        var labelsSource = (categoryConfig && categoryConfig.labels) || STATIC_CATEGORY_LABELS;
+        var labels = labelsSource[lang] || labelsSource.da;
+        var categoryOrder = (categoryConfig && categoryConfig.order) || STATIC_CATEGORY_ORDER;
         var notes = CATEGORY_NOTES[lang] || {};
 
         if (!rows.length) {
@@ -176,7 +252,7 @@
         });
 
         // Canonical order first, then any new categories found in the sheet
-        var sorted = CATEGORY_ORDER.filter(function (c) { return catMap[c]; });
+        var sorted = categoryOrder.filter(function (c) { return catMap[c]; });
         seenOrder.forEach(function (c) {
             if (sorted.indexOf(c) === -1) sorted.push(c);
         });
@@ -236,21 +312,37 @@
 
         if (btn) btn.textContent = s.updateBtn;
 
+        function fetchCsv(url, noCache) {
+            var finalUrl = noCache
+                ? (url + (url.indexOf('?') === -1 ? '?' : '&') + '_t=' + Date.now())
+                : url;
+            var opts = noCache ? { cache: 'no-store' } : {};
+
+            return fetch(finalUrl, opts).then(function (r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            });
+        }
+
         function load(noCache) {
             container.innerHTML = '<div class="materials-loading">' + s.loading + '</div>';
             if (btn) btn.disabled = true;
 
-            var url = noCache ? CSV_URL + '&_t=' + Date.now() : CSV_URL;
-            var opts = noCache ? { cache: 'no-store' } : {};
+            var materialsPromise = fetchCsv(MATERIALS_CSV_URL, noCache)
+                .then(function (text) { return parseCSV(text); });
 
-            fetch(url, opts)
-                .then(function (r) {
-                    if (!r.ok) throw new Error('HTTP ' + r.status);
-                    return r.text();
-                })
-                .then(function (text) {
-                    var rows = parseCSV(text);
-                    container.innerHTML = renderCategories(rows, lang);
+            var categoriesPromise = CATEGORIES_CSV_URL
+                ? fetchCsv(CATEGORIES_CSV_URL, noCache)
+                    .then(function (text) { return parseCategoryConfig(parseCSV(text)); })
+                    .catch(function () { return null; })
+                : Promise.resolve(null);
+
+            Promise.all([materialsPromise, categoriesPromise])
+                .then(function (result) {
+                    var rows = result[0];
+                    var categoryConfig = result[1];
+
+                    container.innerHTML = renderCategories(rows, lang, categoryConfig);
                     if (tsEl) {
                         var now = new Date();
                         tsEl.textContent = s.updatedAt + ' '
