@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Materials for sale at FabLab Vejle – see what we have in stock and what it costs.">
-    <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Fablab Spinderihallerne">
     <title>Materials | FabLab Vejle</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -154,6 +153,41 @@
                 padding: 12px 14px;
             }
         }
+        .category-head {
+            margin-bottom: 28px;
+        }
+        .category-head .category-title {
+            margin: 0;
+        }
+        .category-note {
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--text-soft);
+            margin-top: 8px;
+        }
+        .materials-loading {
+            padding: 48px 0;
+            text-align: center;
+            color: var(--text-soft);
+        }
+        .materials-error,
+        .materials-empty {
+            padding: 32px 0;
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+        .materials-footer {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .materials-updated-at {
+            font-size: 0.82rem;
+            color: var(--text-soft);
+        }
     </style>
     <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
@@ -192,64 +226,18 @@
         <section class="materials-section">
             <div class="container">
 
-                <div class="category-block">
-                    <p class="category-label">Wood &amp; Sheet materials</p>
-                    <h2 class="category-title">Sheet materials</h2>
-                    <div class="material-table-wrap">
-                        <table class="material-table">
-                            <thead>
-                                <tr>
-                                    <th>Material</th>
-                                    <th>Format</th>
-                                    <th>Suitable for</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="material-name">2-layer laminate</div>
-                                        <div class="material-detail">Engraving boards (Resopal), where the top layer is removed to create contrast in the base colour</div>
-                                    </td>
-                                    <td>1.5 mm (mixed colours)</td>
-                                    <td><span class="material-badge">Engraving</span></td>
-                                    <td>Coming soon</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="material-name">Acrylic</div>
-                                        <div class="material-detail">Mixed selection of colours</div>
-                                    </td>
-                                    <td>3 mm, 5 mm</td>
-                                    <td><span class="material-badge">Laser</span></td>
-                                    <td>Coming soon</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="material-name">Plywood</div>
-                                        <div class="material-detail">For prototypes and signs</div>
-                                    </td>
-                                    <td>3 mm, 6 mm</td>
-                                    <td><span class="material-badge">Laser</span></td>
-                                    <td>Coming soon</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="material-name">MDF</div>
-                                        <div class="material-detail">For models and constructions</div>
-                                    </td>
-                                    <td>3 mm, 6 mm</td>
-                                    <td><span class="material-badge">Laser</span></td>
-                                    <td>Coming soon</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div id="materials-container">
+                    <div class="materials-loading">Loading materials…</div>
                 </div>
 
                 <div class="info-box">
                     <strong>Payment and collection</strong>
-                    Materials are purchased and collected on-site during opening hours. Prices coming soon.
+                    Materials are purchased and collected on-site during opening hours. Large sheets can be cut into 1/2 and 1/4 pieces.
+                </div>
+
+                <div class="materials-footer">
+                    <span id="materials-updated-at" class="materials-updated-at"></span>
+                    <button class="button button-secondary interactive" id="materials-update-btn">Update prices</button>
                 </div>
 
             </div>
@@ -266,5 +254,7 @@
     </footer>
 
     <script src="/install-app.js" defer></script>
+    <script src="/materials-loader.js"></script>
+    <script>initMaterials({ lang: 'en' });</script>
 </body>
 </html>

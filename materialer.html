@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Materialer til salg i FabLab Vejle – se hvad vi har på lager og hvad det koster.">
-    <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Fablab Spinderihallerne">
     <title>Materialer | FabLab Vejle</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,6 +60,18 @@
             font-weight: 700;
             color: var(--brand-strong);
             margin: 0 0 28px;
+        }
+        .category-head {
+            margin-bottom: 28px;
+        }
+        .category-head .category-title {
+            margin: 0;
+        }
+        .category-note {
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--text-soft);
+            margin-top: 8px;
         }
 
         /* Material table */
@@ -153,10 +164,36 @@
             .page-hero {
                 padding: 48px 0 32px;
             }
+            .category-note {
+                margin-top: 8px;
+            }
             .material-table thead th,
             .material-table tbody td {
                 padding: 12px 14px;
             }
+        }
+        .materials-loading {
+            padding: 48px 0;
+            text-align: center;
+            color: var(--text-soft);
+        }
+        .materials-error,
+        .materials-empty {
+            padding: 32px 0;
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+        .materials-footer {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .materials-updated-at {
+            font-size: 0.82rem;
+            color: var(--text-soft);
         }
     </style>
     <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
@@ -196,65 +233,18 @@
         <section class="materials-section">
             <div class="container">
 
-                <!-- Træ -->
-                <div class="category-block">
-                    <p class="category-label">Træ</p>
-                    <h2 class="category-title">Træmaterialer</h2>
-                    <div class="material-table-wrap">
-                        <table class="material-table">
-                            <thead>
-                                <tr>
-                                    <th>Materiale</th>
-                                    <th>Format</th>
-                                    <th>Egnet til</th>
-                                    <th>Pris</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="material-name">2-lags laminat</div>
-                                        <div class="material-detail">Graveringsplader (Resopal/Resopalskilte), hvor toplaget fjernes for at skabe kontrast i bundfarven</div>
-                                    </td>
-                                    <td>1,5 mm (blandede farver)</td>
-                                    <td><span class="material-badge">Gravering</span></td>
-                                    <td>Kommer</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="material-name">Akryl</div>
-                                        <div class="material-detail">Blandet udvalg af farver</div>
-                                    </td>
-                                    <td>3 mm, 5 mm</td>
-                                    <td><span class="material-badge">Laser</span></td>
-                                    <td>Kommer</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="material-name">Krydsfiner</div>
-                                        <div class="material-detail">Til prototyper og skilte</div>
-                                    </td>
-                                    <td>3 mm, 6 mm</td>
-                                    <td><span class="material-badge">Laser</span></td>
-                                    <td>Kommer</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="material-name">MDF</div>
-                                        <div class="material-detail">Til modeller og opbygning</div>
-                                    </td>
-                                    <td>3 mm, 6 mm</td>
-                                    <td><span class="material-badge">Laser</span></td>
-                                    <td>Kommer</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div id="materials-container">
+                    <div class="materials-loading">Indlæser materialer…</div>
                 </div>
 
                 <div class="info-box">
                     <strong>Betaling og afhentning</strong>
-                    Materialerne købes og afhentes på stedet under åbningstid. Priserne på materialerne kommer.
+                    Materialerne købes og afhentes på stedet under åbningstid. De store plader kan skæres i 1/2 og 1/4 stykker.
+                </div>
+
+                <div class="materials-footer">
+                    <span id="materials-updated-at" class="materials-updated-at"></span>
+                    <button class="button button-secondary interactive" id="materials-update-btn">Opdater priser</button>
                 </div>
 
             </div>
@@ -271,5 +261,7 @@
     </footer>
 
     <script src="/install-app.js" defer></script>
+    <script src="/materials-loader.js"></script>
+    <script>initMaterials({ lang: 'da' });</script>
 </body>
 </html>
