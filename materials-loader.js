@@ -266,7 +266,16 @@
 
         var html = '';
         sorted.forEach(function (catKey) {
-            var catRows = catMap[catKey];
+            var catRows = catMap[catKey].slice().sort(function (a, b) {
+                var materialA = (a['materiale'] || '').toLowerCase();
+                var materialB = (b['materiale'] || '').toLowerCase();
+                var materialCmp = materialA.localeCompare(materialB, lang === 'en' ? 'en' : 'da');
+                if (materialCmp !== 0) return materialCmp;
+
+                var thicknessA = (a['tykkelse'] || '').toLowerCase();
+                var thicknessB = (b['tykkelse'] || '').toLowerCase();
+                return thicknessA.localeCompare(thicknessB, lang === 'en' ? 'en' : 'da');
+            });
             var title = labels[catKey] || catKey;
             var note = notes[catKey];
 
