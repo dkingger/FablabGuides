@@ -230,6 +230,12 @@
             .join(' ');
     }
 
+    function parseThicknessValue(value) {
+        var text = String(value || '').toLowerCase().trim().replace(',', '.');
+        var match = text.match(/(\d+(?:\.\d+)?)/);
+        return match ? parseFloat(match[1]) : Number.POSITIVE_INFINITY;
+    }
+
     function renderCategories(rows, lang, categoryConfig) {
         var s = STRINGS[lang] || STRINGS.da;
         var labelsSource = (categoryConfig && categoryConfig.labels) || STATIC_CATEGORY_LABELS;
@@ -274,6 +280,10 @@
 
                 var thicknessA = (a['tykkelse'] || '').toLowerCase();
                 var thicknessB = (b['tykkelse'] || '').toLowerCase();
+                var thicknessNumA = parseThicknessValue(thicknessA);
+                var thicknessNumB = parseThicknessValue(thicknessB);
+                if (thicknessNumA !== thicknessNumB) return thicknessNumA - thicknessNumB;
+
                 return thicknessA.localeCompare(thicknessB, lang === 'en' ? 'en' : 'da');
             });
             var title = labels[catKey] || catKey;
