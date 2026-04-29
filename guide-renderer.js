@@ -258,6 +258,21 @@
         });
 
         renderSlide();
+
+        // Touch swipe support for the carousel
+        var touchStartX = 0;
+        var figure = carouselElement.querySelector(".carousel-figure");
+        figure.addEventListener("touchstart", function (ev) {
+            touchStartX = ev.changedTouches[0].clientX;
+        }, { passive: true });
+        figure.addEventListener("touchend", function (ev) {
+            var dx = ev.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) < 40) { return; }
+            currentIndex = dx < 0
+                ? (currentIndex + 1) % slides.length
+                : (currentIndex - 1 + slides.length) % slides.length;
+            renderSlide();
+        }, { passive: true });
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -280,7 +295,7 @@
             + "<header class=\"site-header\">"
             + "<div class=\"container nav-wrap\">"
             + "<a class=\"brand interactive\" href=\"index.html\" aria-label=\"" + t.brandAriaLabel + "\">"
-            + "<span class=\"brand-mark\"><img src=\"billeder/Fablab Logo.svg\" alt=\"FabLab Vejle logo\"></span>"
+            + "<span class=\"brand-mark\"><img src=\"/billeder/Fablab Logo.svg\" alt=\"FabLab Vejle logo\"></span>"
             + "<span class=\"brand-text\"><strong>FabLab Vejle</strong><span>Guides</span></span>"
             + "</a>"
             + "<nav class=\"top-nav\" aria-label=\"Guide navigation\">"
@@ -343,6 +358,18 @@
                 stepModal(1);
             }
         });
+
+        // Touch swipe support for the modal
+        var modalTouchStartX = 0;
+        modal.addEventListener("touchstart", function (ev) {
+            modalTouchStartX = ev.changedTouches[0].clientX;
+        }, { passive: true });
+        modal.addEventListener("touchend", function (ev) {
+            if (!modal.classList.contains("is-open")) { return; }
+            var dx = ev.changedTouches[0].clientX - modalTouchStartX;
+            if (Math.abs(dx) < 40) { return; }
+            stepModal(dx < 0 ? 1 : -1);
+        }, { passive: true });
 
         document.addEventListener("keydown", function (event) {
             if (event.key === "Escape") {
