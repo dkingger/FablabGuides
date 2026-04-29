@@ -25,6 +25,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -32,6 +33,7 @@ body {
     font-family: "Plus Jakarta Sans", sans-serif;
     color: var(--text);
     line-height: 1.6;
+    overflow-x: hidden;
     background:
         radial-gradient(circle at top left, rgba(212, 106, 67, 0.1), transparent 28%),
         radial-gradient(circle at top right, rgba(39, 70, 62, 0.08), transparent 24%),
@@ -57,6 +59,7 @@ select {
 
 .guide-shell {
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
@@ -80,6 +83,7 @@ select {
     justify-content: space-between;
     gap: 24px;
     padding: 20px 0;
+    min-width: 0;
 }
 
 .brand {
@@ -135,6 +139,7 @@ select {
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
+    min-width: 0;
 }
 
 .nav-link,
@@ -167,6 +172,7 @@ select {
     background: var(--surface);
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
+    min-width: 0;
 }
 
 .hero-card {
@@ -206,6 +212,7 @@ select {
 .hero-card h1 {
     font-size: clamp(2.8rem, 5vw, 5rem);
     max-width: 11ch;
+    overflow-wrap: anywhere;
 }
 
 .lead {
@@ -615,16 +622,19 @@ select {
 
 @media (max-width: 760px) {
     .container {
-        width: min(calc(100% - 32px), var(--container));
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .nav-wrap {
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
         align-items: center;
-        justify-content: space-between;
         gap: 12px;
-        flex-wrap: nowrap;
-        overflow-x: auto;
         padding: 12px 0;
     }
 
@@ -656,6 +666,27 @@ select {
     .modal-panel {
         padding: 22px;
         border-radius: 24px;
+        width: calc(100vw - 32px);
+        max-width: calc(100vw - 32px);
+    }
+
+    .hero-card h1 {
+        max-width: 11ch;
+        font-size: 2.25rem;
+        letter-spacing: 0;
+        line-height: 1.12;
+        word-break: normal;
+        overflow-wrap: break-word;
+    }
+
+    .lead,
+    .section-copy p,
+    .caption,
+    .placeholder-card p,
+    .related-card p,
+    .footer-wrap p {
+        max-width: 28ch;
+        overflow-wrap: break-word;
     }
 
     .hero-actions,
@@ -668,12 +699,17 @@ select {
     }
 
     .top-nav {
-        flex: 0 0 auto;
-        width: auto;
+        min-width: 0;
+        width: 100%;
         flex-direction: row;
         flex-wrap: nowrap;
         overflow-x: auto;
         gap: 6px;
+        scrollbar-width: none;
+    }
+
+    .top-nav::-webkit-scrollbar {
+        display: none;
     }
 
     .nav-link,
