@@ -375,7 +375,7 @@ window.betaGuideData = {
                     { src: "billeder/vinylskaerer/gcc/02.placerrullestativbag.jpeg", caption: "2. Placer rullestativ bag maskinen" },
                     { src: "billeder/vinylskaerer/gcc/03.laegvinyliholder.jpeg", caption: "3. Læg vinyl i rullestativ" },
                     { src: "billeder/vinylskaerer/gcc/04.skubvinylind.jpeg", caption: "4. Skub vinylen ind i maskinen" },
-                    { src: "billeder/vinylskaerer/gcc/05.placerindenfordehvidefelter.jpeg", caption: "5. Sørg for at vinylen ligger indenfor de hvide felter" },
+                    { src: "billeder/vinylskaerer/gcc/05.placerindenfordehvidefelter.jpeg", caption: "5. Sørg for at vinylen ligger indenfor de hvide felter og med forsiden opad" },
                     { src: "billeder/vinylskaerer/gcc/06.placersaaflugtermedbeggelinealer.jpeg", caption: "6. Justér så kanterne flugter begge linealer" },
                     { src: "billeder/vinylskaerer/gcc/07.laasbegge.jpeg", caption: "7. Lås begge presseruller" },
                     { src: "billeder/vinylskaerer/gcc/08.laast.jpeg", caption: "8. Presserullerne skal være låst" },
