@@ -13,7 +13,7 @@
             viewCurrentSite: 'Se nuværende site',
             navAll: 'Alle guides', navMachines: 'Maskiner', navMaterials: 'Materialer', navAbout: 'Om os', navSiteName: 'Nuværende site',
             goToGuide: 'Gå til guiden', guideOverview: 'Til guideoversigten',
-            footerText: 'Denne side er en redesign-version af den oprindelige guide, men med et fælles, mere professionelt og luftigt design.',
+            footerText: 'Velkommen til den nye redesign-version af den oprindelige FabLabVejle.dk',
             toFront: 'Til forsiden',
             closeImg: 'Luk billede',
             relatedTitle: 'Andre guides i samme kategori',
