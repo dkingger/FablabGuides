@@ -425,7 +425,7 @@ img {
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
 }
 
@@ -456,6 +456,36 @@ img {
     height: 52px;
     object-fit: contain;
     flex: 0 0 auto;
+}
+
+.guide-item--tool {
+    align-items: flex-start;
+}
+
+.guide-item-icon {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(24, 51, 43, 0.06);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.guide-item-label {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.guide-item-desc {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-soft);
+    line-height: 1.3;
 }
 
 .muted-section {
