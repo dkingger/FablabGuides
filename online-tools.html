@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dansk oversigt over online file generators til laserskæring: kasser, tandhjul, labyrinter og flere nyttige værktøjer.">
+    <meta name="author" content="Fablab Spinderihallerne">
+    <title>Online tools | FabLab Vejle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="guide.css">
+    <style>
+        .guide-page {
+            padding: 42px 0 72px;
+        }
+        .hero-grid {
+            grid-template-columns: 1fr;
+        }
+        .guide-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+            gap: 24px;
+            align-items: start;
+        }
+        .guide-main {
+            display: grid;
+            gap: 20px;
+        }
+        .guide-side {
+            display: grid;
+            gap: 20px;
+            position: sticky;
+            top: 108px;
+        }
+        .guide-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+        }
+        .guide-card h2 {
+            margin: 0 0 12px;
+            color: var(--brand-strong);
+            font-size: 1.45rem;
+            line-height: 1.15;
+        }
+        .guide-card h3 {
+            margin: 22px 0 8px;
+            color: var(--brand-strong);
+            font-size: 1.05rem;
+        }
+        .guide-card p,
+        .guide-card li,
+        .tool-meta {
+            color: var(--text-soft);
+        }
+        .guide-card p {
+            margin: 0 0 14px;
+        }
+        .guide-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .guide-card li + li {
+            margin-top: 8px;
+        }
+        .guide-anchor-list {
+            display: grid;
+            gap: 10px;
+        }
+        .guide-anchor-list a {
+            color: var(--brand);
+            font-weight: 600;
+        }
+        .tool-list {
+            display: grid;
+            gap: 14px;
+            margin-top: 6px;
+        }
+        .tool-item {
+            border: 1px solid rgba(24, 51, 43, 0.08);
+            border-radius: 16px;
+            background: var(--surface-strong);
+            padding: 14px 16px;
+        }
+        .tool-item h3 {
+            margin: 0;
+            font-size: 1.02rem;
+        }
+        .tool-title-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .tool-logo {
+            width: 144px;
+            height: 144px;
+            border-radius: 12px;
+            border: 1px solid rgba(24, 51, 43, 0.12);
+            background: #f4f7f3;
+            object-fit: cover;
+            flex: 0 0 auto;
+            cursor: zoom-in;
+        }
+        .tool-item p {
+            margin: 8px 0 0;
+        }
+        .tool-item a {
+            color: var(--brand-strong);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .tool-meta {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .image-lightbox {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(10, 20, 16, 0.82);
+            z-index: 1100;
+        }
+        .image-lightbox.is-open {
+            display: flex;
+        }
+        .image-lightbox-backdrop {
+            position: absolute;
+            inset: 0;
+            border: 0;
+            background: transparent;
+            cursor: zoom-out;
+        }
+        .image-lightbox-content {
+            position: relative;
+            max-width: min(1200px, 95vw);
+            max-height: 92vh;
+            z-index: 1;
+        }
+        .image-lightbox img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            max-height: calc(92vh - 20px);
+            border-radius: 14px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+            background: #ffffff;
+        }
+        .image-lightbox-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 999px;
+            background: #ffffff;
+            color: #163128;
+            font-size: 1.4rem;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+        }
+        @media (max-width: 980px) {
+            .guide-layout {
+                grid-template-columns: 1fr;
+            }
+            .guide-side {
+                position: static;
+            }
+        }
+        @media (max-width: 760px) {
+            .guide-page {
+                padding-top: 28px;
+            }
+            .guide-card {
+                padding: 24px;
+                border-radius: var(--radius-md);
+            }
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
+    <link rel="manifest" href="/billeder/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="FabLab Vejle">
+</head>
+<body class="guide-shell">
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand interactive" href="index.html" aria-label="Til forsiden">
+                <span class="brand-mark">
+                    <img src="billeder/Fablab Logo.svg" alt="FabLab Vejle logo">
+                </span>
+                <span class="brand-text">
+                    <strong>FabLab Vejle</strong>
+                    <span>Redesign</span>
+                </span>
+            </a>
+            <nav class="top-nav" id="site-nav" aria-label="Primær navigation" data-lang="da" data-page="guides"></nav>
+            <script src="nav.js"></script>
+        </div>
+    </header>
+
+    <main class="guide-page">
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-card">
+                    <span class="eyebrow">Laserskæring</span>
+                    <h1>Online tools</h1>
+                    <p class="lead">En dansk oversigt over browser-baserede generators, der hurtigt kan lave filer til laserskæring. Siden er inspireret af Maker Design Labs samling, men skrevet til FabLab-brugere.</p>
+                    <div class="hero-pills">
+                        <span class="pill">Gratis webværktøjer</span>
+                        <span class="pill">SVG, DXF og PDF</span>
+                        <span class="pill">Klar til FabLab</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container guide-layout">
+                <div class="guide-main">
+                    <article class="guide-card" id="intro">
+                        <h2>Hvad er online file generators?</h2>
+                        <p>Online file generators er websider, der automatisk laver vektor-filer baseret på de mål og indstillinger, du taster ind. Det er en hurtig vej til kasser, tandhjul, labyrinter og andre geometriske designs uden at starte helt fra nul i CAD.</p>
+                        <p>De fleste værktøjer er bedst til prototyper og hurtige iterationer. Tjek altid målsætning, samlinger og kerf i en testfil, før du bruger dyrt materiale.</p>
+                    </article>
+
+                    <article class="guide-card" id="kasser">
+                        <h2>Kasser</h2>
+                        <p>Værktøjer til bokse med fingersamlinger, indsatsrum og specialformer.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-makercase">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/makecase.png" alt="MakerCase" loading="lazy">
+                                    <h3><a href="https://www.makercase.com/" target="_blank" rel="noopener">MakerCase</a></h3>
+                                </div>
+                                <p>Nem generator til klassiske projektkasser med 3D-forhåndsvisning. God til hurtig opstart.</p>
+                                <span class="tool-meta">Filtype: SVG, DXF</span>
+                            </div>
+                            <div class="tool-item" id="tool-boxespy">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/boxes_py.png" alt="Boxes.py" loading="lazy">
+                                    <h3><a href="http://www.festi.info/boxes.py/index.html" target="_blank" rel="noopener">Boxes.py</a></h3>
+                                </div>
+                                <p>Meget fleksibel open source generator med mange kassetyper og avancerede indstillinger.</p>
+                                <span class="tool-meta">Filtype: AI, DXF, GCODE, PDF, PLT, PS, SVG</span>
+                            </div>
+                            <div class="tool-item" id="tool-makeabox">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/make_a_box.png" alt="Make a box" loading="lazy">
+                                    <h3><a href="https://makeabox.io/" target="_blank" rel="noopener">Make a box</a></h3>
+                                </div>
+                                <p>En enkel og intuitiv generator til bokse med symmetriske fingersamlinger.</p>
+                                <span class="tool-meta">Filtype: PDF</span>
+                            </div>
+                            <div class="tool-item" id="tool-lasercutterbox">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/laser_cutter_box.png" alt="Laser Cutter Box" loading="lazy">
+                                    <h3><a href="http://jeromeleary.com/laser/" target="_blank" rel="noopener">Laser Cutter Box</a></h3>
+                                </div>
+                                <p>Letvægtsgenerator med live preview og forskellige bokstyper, inkl. skråning og skillevægge.</p>
+                                <span class="tool-meta">Filtype: DXF</span>
+                            </div>
+                            <div class="tool-item" id="tool-templatemaker">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/template_maker_nl.png" alt="Template Maker" loading="lazy">
+                                    <h3><a href="https://www.templatemaker.nl/" target="_blank" rel="noopener">Template Maker</a></h3>
+                                </div>
+                                <p>Fokus på pap- og emballageskabeloner. God til foldede konstruktioner og hurtige mockups.</p>
+                                <span class="tool-meta">Filtype: PDF, SVG, DXF</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="tandhjul">
+                        <h2>Tandhjul</h2>
+                        <p>Værktøjer til involute gears, hvor funktion og geometri er vigtig.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-involute">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/involute_spur_gear_builder.png" alt="Involute Spur Gear Builder" loading="lazy">
+                                    <h3><a href="http://hessmer.org/gears/InvoluteSpurGearBuilder.html" target="_blank" rel="noopener">Involute Spur Gear Builder</a></h3>
+                                </div>
+                                <p>Browser-værktøj til tandhjul, interne gears og rack-and-pinion med mange parametre.</p>
+                                <span class="tool-meta">Filtype: DXF</span>
+                            </div>
+                            <div class="tool-item" id="tool-geardesigner">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/gear_designer.png" alt="Gear Designer" loading="lazy">
+                                    <h3><a href="http://www.jeromeleary.com/gears/" target="_blank" rel="noopener">Gear Designer</a></h3>
+                                </div>
+                                <p>Hurtig generator til simple tandhjul ved at justere modul og antal tænder.</p>
+                                <span class="tool-meta">Filtype: DXF</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="labyrinter">
+                        <h2>Labyrinter</h2>
+                        <p>Generatorer til puslespil, spilplader og kreative mazes.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-lasercutmaze">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/lazer-cut_maze_designer.png" alt="Laser-Cut Maze Designer" loading="lazy">
+                                    <h3><a href="https://adashrod.github.io/LaserCutMazes/welcome" target="_blank" rel="noopener">Laser-Cut Maze Designer</a></h3>
+                                </div>
+                                <p>Genererer laserklare filer til trælabyrinter og mekaniske maze-projekter.</p>
+                                <span class="tool-meta">Filtype: SVG</span>
+                            </div>
+                            <div class="tool-item" id="tool-mazegenerator">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/maze_generator.png" alt="Maze Generator" loading="lazy">
+                                    <h3><a href="http://www.mazegenerator.net/" target="_blank" rel="noopener">Maze Generator</a></h3>
+                                </div>
+                                <p>Bygger rektangulære, triangulære, cirkulære og heksagonale labyrinter.</p>
+                                <span class="tool-meta">Filtype: PDF, SVG, PNG</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="andre">
+                        <h2>Andre værktøjer</h2>
+                        <p>Specialgeneratorer, der ikke passer i de øvrige kategorier.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-vectorruler">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/vector_ruler_generator.png" alt="Vector Ruler Generator" loading="lazy">
+                                    <h3><a href="http://robbbb.github.io/VectorRuler/" target="_blank" rel="noopener">Vector Ruler Generator</a></h3>
+                                </div>
+                                <p>Lav dine egne linealer med valgfri længde og markeringer.</p>
+                                <span class="tool-meta">Filtype: SVG</span>
+                            </div>
+                            <div class="tool-item" id="tool-jigsaw">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/jigsaw_puzzle_generator.png" alt="Jigsaw Puzzle Generator" loading="lazy">
+                                    <h3><a href="https://jigsawify.com/jigsaw-puzzle-generator" target="_blank" rel="noopener">Jigsaw Puzzle Generator</a></h3>
+                                </div>
+                                <p>Genererer puslespilsmønstre uden manuel tegning af hver brik.</p>
+                                <span class="tool-meta">Filtype: SVG</span>
+                            </div>
+                            <div class="tool-item" id="tool-svgnest">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/SVGnest.png" alt="SVGnest" loading="lazy">
+                                    <h3><a href="https://svgnest.com/" target="_blank" rel="noopener">SVGnest</a></h3>
+                                </div>
+                                <p>Automatisk nesting, så emner placeres med mindst muligt materialespild.</p>
+                                <span class="tool-meta">Filtype: SVG (import/eksport)</span>
+                            </div>
+                            <div class="tool-item" id="tool-deepnest">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/deepnest.png" alt="Deepnest" loading="lazy">
+                                    <h3><a href="https://deepnest.io/" target="_blank" rel="noopener">Deepnest (app)</a></h3>
+                                </div>
+                                <p>Desktop-udgave med flere avancerede nestingfunktioner.</p>
+                                <span class="tool-meta">Filtype: Afhænger af importformat</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="guide-side">
+                    <article class="guide-card">
+                        <span class="section-tag">Indhold</span>
+                        <div class="guide-anchor-list">
+                            <a class="interactive" href="#intro">Hvad er online generators?</a>
+                            <a class="interactive" href="#kasser">Kasser</a>
+                            <a class="interactive" href="#tandhjul">Tandhjul</a>
+                            <a class="interactive" href="#labyrinter">Labyrinter</a>
+                            <a class="interactive" href="#andre">Andre værktøjer</a>
+                        </div>
+                    </article>
+
+                    <article class="guide-card">
+                        <span class="section-tag">Tips i praksis</span>
+                        <ul>
+                            <li>Læg altid kerf-kompensation ind, hvis værktøjet understøtter det.</li>
+                            <li>Kontroller at enheder er mm før eksport.</li>
+                            <li>Undgå dobbeltlinjer i den færdige fil.</li>
+                            <li>Gem både originalen og en eksportfil til maskinen.</li>
+                        </ul>
+                    </article>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <p>Online tools til FabLab Vejle.</p>
+            <div class="footer-actions">
+                <a class="button button-secondary interactive" href="index.html">Til forsiden</a>
+                <a class="button button-primary interactive" href="guide-til-laserfiler.html">Se guide til laserfiler</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="image-lightbox" id="image-lightbox" aria-hidden="true">
+        <button class="image-lightbox-backdrop" type="button" data-lightbox-close aria-label="Luk stort billede"></button>
+        <div class="image-lightbox-content" role="dialog" aria-modal="true" aria-label="Stort billede">
+            <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="Luk">&times;</button>
+            <img id="image-lightbox-img" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var lightbox = document.getElementById('image-lightbox');
+            var lightboxImg = document.getElementById('image-lightbox-img');
+            var logos = document.querySelectorAll('.tool-logo');
+
+            if (!lightbox || !lightboxImg || !logos.length) return;
+
+            function openLightbox(img) {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt || 'Generator billede';
+                lightbox.classList.add('is-open');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('is-open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                lightboxImg.src = '';
+                document.body.style.overflow = '';
+            }
+
+            logos.forEach(function (img) {
+                img.setAttribute('role', 'button');
+                img.setAttribute('tabindex', '0');
+
+                img.addEventListener('click', function () {
+                    openLightbox(img);
+                });
+
+                img.addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        openLightbox(img);
+                    }
+                });
+            });
+
+            lightbox.addEventListener('click', function (event) {
+                if (event.target && event.target.matches('[data-lightbox-close]')) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+                    closeLightbox();
+                }
+            });
+        })();
+    </script>
+
+    <script src="/install-app.js" defer></script>
+</body>
+</html>
