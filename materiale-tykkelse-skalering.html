@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beregn skaleringsfaktor til laserskærefiler ved ændring af materialetykkelse.">
+    <meta name="author" content="Fablab Spinderihallerne">
+    <title>Skalering ved materialetykkelse | FabLab Vejle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="guide.css">
+    <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
+    <link rel="manifest" href="/billeder/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="FabLab Vejle">
+    <style>
+        .guide-page {
+            padding: 42px 0 72px;
+        }
+        .calculator-grid {
+            display: grid;
+            gap: 20px;
+        }
+        .calculator-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 28px;
+        }
+        .calculator-card h2 {
+            margin: 0 0 10px;
+            color: var(--brand-strong);
+            font-size: 1.35rem;
+        }
+        .calculator-card p {
+            margin: 0 0 14px;
+            color: var(--text-soft);
+        }
+        .formula {
+            margin: 0 0 18px;
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-weight: 700;
+            color: var(--brand-strong);
+        }
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+        .field label {
+            font-weight: 600;
+            color: var(--brand-strong);
+        }
+        .field input {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 11px 12px;
+            font: inherit;
+            color: var(--text-main);
+            background: #ffffff;
+        }
+        .result-box {
+            display: grid;
+            gap: 10px;
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: baseline;
+        }
+        .result-row span {
+            color: var(--text-soft);
+        }
+        .result-row strong {
+            color: var(--brand-strong);
+            font-size: 1.05rem;
+        }
+        .muted-note {
+            margin-top: 12px;
+            font-size: 0.92rem;
+            color: var(--text-soft);
+        }
+        .guide-steps {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-soft);
+        }
+        .guide-steps li + li {
+            margin-top: 10px;
+        }
+        .guide-formula {
+            margin: 10px 0 14px;
+            font-weight: 700;
+            color: var(--brand-strong);
+        }
+        .step-screenshot {
+            margin-top: 10px;
+        }
+        .step-screenshot button {
+            display: block;
+            width: 100%;
+            max-width: 620px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: zoom-in;
+        }
+        .step-screenshot img {
+            display: block;
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            background: #ffffff;
+        }
+        .image-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            border: 0;
+            padding: 20px;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 16, 26, 0.84);
+            cursor: zoom-out;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-lightbox::backdrop {
+            background: rgba(12, 16, 26, 0.84);
+        }
+        .image-lightbox[open] {
+            display: flex;
+        }
+        .image-lightbox img {
+            max-width: min(1100px, 94vw);
+            max-height: 88vh;
+            width: auto;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+            background: #ffffff;
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(0, 0, 0, 0.32);
+            color: #ffffff;
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .lightbox-close:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        @media (max-width: 760px) {
+            .guide-page {
+                padding-top: 28px;
+            }
+            .calculator-card {
+                padding: 22px;
+                border-radius: var(--radius-md);
+            }
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="guide-shell">
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand interactive" href="index.html" aria-label="Til forsiden">
+                <span class="brand-mark">
+                    <img src="billeder/Fablab Logo.svg" alt="FabLab Vejle logo">
+                </span>
+                <span class="brand-text">
+                    <strong>FabLab Vejle</strong>
+                    <span>Redesign</span>
+                </span>
+            </a>
+            <nav class="top-nav" id="site-nav" aria-label="Primær navigation" data-lang="da" data-page="guides"></nav>
+            <script src="nav.js"></script>
+        </div>
+    </header>
+
+    <main class="guide-page">
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-card">
+                    <span class="eyebrow">Laserskæring</span>
+                    <h1>Skalering ved materialetykkelse</h1>
+                    <p class="lead">Brug denne beregner, når en fil er lavet til én materialetykkelse, men du vil skære den i en anden tykkelse.</p>
+                    <div class="hero-pills">
+                        <span class="pill">Hurtig beregning</span>
+                        <span class="pill">Skaleringsfaktor i %</span>
+                        <span class="pill">Nye mål med det samme</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container calculator-grid">
+                <article class="calculator-card">
+                    <h2>Beregningsformel</h2>
+                    <p>Skaleringsfaktor udregnes sådan:</p>
+                    <p class="formula">Skaleringsfaktor = (Ny tykkelse / Original tykkelse) * 100</p>
+                    <p>Eksempel: En fil lavet til 3,0 mm skal skæres i 3,175 mm. Så bliver faktoren (3,175 / 3,0) * 100 = 105,83 %.</p>
+                </article>
+
+                <article class="calculator-card">
+                    <h2>Beregner</h2>
+                    <div class="input-grid">
+                        <div class="field">
+                            <label for="original-thickness">Original materialetykkelse (mm)</label>
+                            <input id="original-thickness" type="number" min="0" step="0.001" value="3">
+                        </div>
+                        <div class="field">
+                            <label for="new-thickness">Ny materialetykkelse (mm)</label>
+                            <input id="new-thickness" type="number" min="0" step="0.001" value="3.175">
+                        </div>
+                        <div class="field">
+                            <label for="original-width">Original bredde (mm)</label>
+                            <input id="original-width" type="number" min="0" step="0.1" value="100">
+                        </div>
+                        <div class="field">
+                            <label for="original-height">Original højde (mm)</label>
+                            <input id="original-height" type="number" min="0" step="0.1" value="60">
+                        </div>
+                    </div>
+
+                    <div class="result-box" aria-live="polite">
+                        <div class="result-row">
+                            <span>Skaleringsfaktor</span>
+                            <strong id="scale-factor">105.83 %</strong>
+                        </div>
+                        <div class="result-row">
+                            <span>Ny bredde</span>
+                            <strong id="new-width">105.83 mm</strong>
+                        </div>
+                        <div class="result-row">
+                            <span>Ny højde</span>
+                            <strong id="new-height">63.50 mm</strong>
+                        </div>
+                    </div>
+
+                    <p class="muted-note">Tip: Hvis dit emne skal have præcise slutmål, er ren skalering ikke altid nok. Tjek også samlinger/slots og kerf-kompensation.</p>
+                </article>
+
+                <article class="calculator-card">
+                    <h2>Guide: Sådan skalerer du i Inkscape</h2>
+                    <p>Brug denne arbejdsgang, når du vil ændre en eksisterende laserskærefil fra én materialetykkelse til en anden.</p>
+                    <p class="guide-formula">Scale Factor = (Ny tykkelse / Original tykkelse) * 100</p>
+                    <ol class="guide-steps">
+                        <li>
+                            Åbn filen i Inkscape og markér alt med <strong>Ctrl+A</strong>.
+                            <figure class="step-screenshot">
+                                <button type="button" class="js-lightbox-trigger" data-full-src="billeder/tools/inkscape_skaler_1.png" data-full-alt="Inkscape med markeret design klar til skalering" aria-label="Forstør trin 1-billede">
+                                    <img src="billeder/tools/inkscape_skaler_1.png" alt="Inkscape med markeret design klar til skalering" loading="lazy" decoding="async">
+                                </button>
+                            </figure>
+                        </li>
+                        <li>
+                            Gå til <strong>Object -> Transform</strong> eller brug <strong>Shift+Ctrl+M</strong>.
+                            <figure class="step-screenshot">
+                                <button type="button" class="js-lightbox-trigger" data-full-src="billeder/tools/inkscape_skaler_2.png" data-full-alt="Menuvalg i Inkscape for at åbne Transform" aria-label="Forstør trin 2-billede">
+                                    <img src="billeder/tools/inkscape_skaler_2.png" alt="Menuvalg i Inkscape for at åbne Transform" loading="lazy" decoding="async">
+                                </button>
+                            </figure>
+                        </li>
+                        <li>
+                            Skift til fanen <strong>Scale</strong>.
+                            <figure class="step-screenshot">
+                                <button type="button" class="js-lightbox-trigger" data-full-src="billeder/tools/inkscape_skaler_3.png" data-full-alt="Transform-panel i Inkscape med fanen Scale valgt" aria-label="Forstør trin 3-billede">
+                                    <img src="billeder/tools/inkscape_skaler_3.png" alt="Transform-panel i Inkscape med fanen Scale valgt" loading="lazy" decoding="async">
+                                </button>
+                            </figure>
+                        </li>
+                        <li>
+                            Aktivér <strong>Scale proportionally</strong>.
+                            <figure class="step-screenshot">
+                                <button type="button" class="js-lightbox-trigger" data-full-src="billeder/tools/inkscape_skaler_4.png" data-full-alt="Scale proportionally er aktiveret i Inkscape" aria-label="Forstør trin 4-billede">
+                                    <img src="billeder/tools/inkscape_skaler_4.png" alt="Scale proportionally er aktiveret i Inkscape" loading="lazy" decoding="async">
+                                </button>
+                            </figure>
+                        </li>
+                        <li>Indtast din skaleringsfaktor i feltet <strong>Width</strong> (enhed: <strong>%</strong>).</li>
+                        <li>Klik <strong>Apply</strong>.</li>
+                    </ol>
+                    <p class="muted-note">Eksempel: Fra 3,0 mm til 3,175 mm giver skaleringsfaktoren 105,83 %.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <p>Skaleringsværktøj til FabLab Vejle.</p>
+            <div class="footer-actions">
+                <a class="button button-secondary interactive" href="online-tools.html">Tilbage til Online tools</a>
+                <a class="button button-primary interactive" href="guide-til-laserfiler.html">Se guide til laserfiler</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var originalThicknessInput = document.getElementById('original-thickness');
+            var newThicknessInput = document.getElementById('new-thickness');
+            var originalWidthInput = document.getElementById('original-width');
+            var originalHeightInput = document.getElementById('original-height');
+
+            var scaleFactorEl = document.getElementById('scale-factor');
+            var newWidthEl = document.getElementById('new-width');
+            var newHeightEl = document.getElementById('new-height');
+
+            function toPositiveNumber(value) {
+                var num = parseFloat(value);
+                return Number.isFinite(num) && num > 0 ? num : NaN;
+            }
+
+            function formatMm(value) {
+                return value.toFixed(2) + ' mm';
+            }
+
+            function calculate() {
+                var originalThickness = toPositiveNumber(originalThicknessInput.value);
+                var newThickness = toPositiveNumber(newThicknessInput.value);
+                var originalWidth = toPositiveNumber(originalWidthInput.value);
+                var originalHeight = toPositiveNumber(originalHeightInput.value);
+
+                if (!originalThickness || !newThickness || !originalWidth || !originalHeight) {
+                    scaleFactorEl.textContent = '-';
+                    newWidthEl.textContent = '-';
+                    newHeightEl.textContent = '-';
+                    return;
+                }
+
+                var scaleFactor = (newThickness / originalThickness) * 100;
+                var multiplier = scaleFactor / 100;
+                var newWidth = originalWidth * multiplier;
+                var newHeight = originalHeight * multiplier;
+
+                scaleFactorEl.textContent = scaleFactor.toFixed(2) + ' %';
+                newWidthEl.textContent = formatMm(newWidth);
+                newHeightEl.textContent = formatMm(newHeight);
+            }
+
+            [originalThicknessInput, newThicknessInput, originalWidthInput, originalHeightInput].forEach(function (input) {
+                input.addEventListener('input', calculate);
+            });
+
+            calculate();
+
+            var screenshotButtons = document.querySelectorAll('.js-lightbox-trigger');
+            var lightbox = document.createElement('dialog');
+            lightbox.className = 'image-lightbox';
+            lightbox.setAttribute('aria-label', 'Forstørret billede');
+
+            var lightboxImage = document.createElement('img');
+            lightboxImage.alt = '';
+
+            var closeButton = document.createElement('button');
+            closeButton.type = 'button';
+            closeButton.className = 'lightbox-close';
+            closeButton.setAttribute('aria-label', 'Luk billede');
+            closeButton.textContent = '×';
+
+            lightbox.appendChild(lightboxImage);
+            lightbox.appendChild(closeButton);
+            document.body.appendChild(lightbox);
+
+            function openLightbox(src, alt) {
+                lightboxImage.src = src;
+                lightboxImage.alt = alt || '';
+                if (typeof lightbox.showModal === 'function') {
+                    lightbox.showModal();
+                } else {
+                    lightbox.setAttribute('open', 'open');
+                }
+            }
+
+            function closeLightbox() {
+                if (typeof lightbox.close === 'function') {
+                    lightbox.close();
+                } else {
+                    lightbox.removeAttribute('open');
+                }
+                lightboxImage.src = '';
+            }
+
+            screenshotButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    openLightbox(button.getAttribute('data-full-src'), button.getAttribute('data-full-alt'));
+                });
+            });
+
+            closeButton.addEventListener('click', function (event) {
+                event.stopPropagation();
+                closeLightbox();
+            });
+
+            lightbox.addEventListener('click', function (event) {
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            lightbox.addEventListener('cancel', function (event) {
+                event.preventDefault();
+                closeLightbox();
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && lightbox.hasAttribute('open')) {
+                    closeLightbox();
+                }
+            });
+        })();
+    </script>
+
+    <script src="/install-app.js" defer></script>
+</body>
+</html>
