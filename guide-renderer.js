@@ -11,9 +11,9 @@
             unavailableDesc: 'Den oprindelige side i repoet har ikke noget færdigt guideindhold endnu. Derfor viser redesignen her en klargjort, stylet placeholder i samme designlinje som resten af sitet.',
             backToGuides: 'Tilbage til guideoversigten',
             viewCurrentSite: 'Se nuværende site',
-            navAll: 'Alle guides', navMachines: 'Maskiner', navMaterials: 'Materialer', navAbout: 'Om os', navSiteName: 'Nuværende site',
+            navAll: 'Alle guides', navMachines: 'Maskiner', navMaterials: 'Materialer', navSiteName: 'Nuværende site',
             goToGuide: 'Gå til guiden', guideOverview: 'Til guideoversigten',
-            footerText: 'Velkommen til den nye redesign-version af den oprindelige FabLabVejle.dk',
+            footerText: 'Velkommen til den nye redesign-version af den oprindelige FabLab',
             toFront: 'Til forsiden',
             closeImg: 'Luk billede',
             relatedTitle: 'Andre guides i samme kategori',
@@ -31,7 +31,7 @@
             unavailableDesc: 'This guide has not yet been completed. The redesign shows a styled placeholder in the same design as the rest of the site.',
             backToGuides: 'Back to guide overview',
             viewCurrentSite: 'Back to main site',
-            navAll: 'All guides', navMachines: 'Machines', navMaterials: 'Materials', navAbout: 'About us', navSiteName: 'Current site',
+            navAll: 'All guides', navMachines: 'Machines', navMaterials: 'Materials', navSiteName: 'Current site',
             goToGuide: 'Go to guide', guideOverview: 'Guide overview',
             footerText: 'This page is a redesign version of the original guide with a shared, professional and airy design.',
             toFront: 'Front page',
@@ -295,14 +295,13 @@
             + "<header class=\"site-header\">"
             + "<div class=\"container nav-wrap\">"
             + "<a class=\"brand interactive\" href=\"index.html\" aria-label=\"" + t.brandAriaLabel + "\">"
-            + "<span class=\"brand-mark\"><img src=\"/billeder/Fablab Logo.svg\" alt=\"FabLab Vejle logo\"></span>"
-            + "<span class=\"brand-text\"><strong>FabLab Vejle</strong><span>Guides</span></span>"
+            + "<span class=\"brand-mark\"><img src=\"/billeder/Fablab Logo.svg\" alt=\"FabLab logo\"></span>"
+            + "<span class=\"brand-text\"><strong>FabLab</strong><span>Guides</span></span>"
             + "</a>"
             + "<nav class=\"top-nav\" aria-label=\"Guide navigation\">"
             + "<a class=\"nav-link interactive\" href=\"index.html#guides\">" + t.navAll + "</a>"
             + "<a class=\"nav-link interactive\" href=\"maskiner.html\">" + t.navMachines + "</a>"
             + "<a class=\"nav-link interactive\" href=\"materialer.html\">" + t.navMaterials + "</a>"
-            + "<a class=\"nav-link interactive\" href=\"om-fablab.html\">" + t.navAbout + "</a>"
             + "<a class=\"nav-link interactive\" href=\"" + t.currentSiteHref + "\">" + t.navSiteName + "</a>"
             + "<a class=\"nav-link interactive\" href=\"" + t.langSwitchHrefPrefix + guide.slug + ".html\">" + t.langSwitchText + "</a>"
             + "</nav>"
