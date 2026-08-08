@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">MakerWorld MakerLab</title>
+  <desc id="desc">Illustration af et digitalt værktøj til 3D-design</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef9ff"/>
+      <stop offset="1" stop-color="#d7f1ef"/>
+    </linearGradient>
+    <linearGradient id="cube" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#32b9c7"/>
+      <stop offset="1" stop-color="#087a91"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <g fill="none" stroke="#8ecfd3" stroke-width="3" opacity=".45">
+    <path d="M0 170h1200M0 730h1200M170 0v900M1030 0v900"/>
+    <circle cx="1040" cy="150" r="95"/>
+    <circle cx="160" cy="755" r="125"/>
+  </g>
+  <g transform="translate(600 360)">
+    <path d="M0-185 205-75 0 35-205-75Z" fill="#58cbd2"/>
+    <path d="M-205-75 0 35v235l-205-110Z" fill="#159aaa"/>
+    <path d="M205-75 0 35v235l205-110Z" fill="url(#cube)"/>
+    <path d="M0-185v220M-205-75 0 35l205-110" fill="none" stroke="#fff" stroke-width="12" opacity=".9"/>
+  </g>
+  <text x="600" y="710" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="700" fill="#162a32">MakerLab</text>
+  <text x="600" y="775" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" letter-spacing="8" fill="#087a91">DESIGN · CREATE · PRINT</text>
+</svg>

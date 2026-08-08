@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Overview of online file generators for laser cutting: boxes, gears, mazes and other useful tools.">
+    <meta name="description" content="Overview of online tools for laser cutting, 3D design, electronics and simulation.">
     <meta name="author" content="Fablab">
     <title>Online tools | FabLab</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,6 +74,12 @@
             color: var(--brand);
             font-weight: 600;
         }
+        .guide-anchor-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
         .tool-list {
             display: grid;
             gap: 14px;
@@ -93,6 +99,32 @@
             display: flex;
             align-items: center;
             gap: 12px;
+        }
+        .tool-heading {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .new-badge {
+            display: inline-flex;
+            align-items: center;
+            min-height: 24px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            background: #f4b942;
+            color: #30230a;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+        .new-badge--small {
+            min-height: 20px;
+            padding: 2px 7px;
+            font-size: 0.64rem;
+            flex: 0 0 auto;
         }
         .tool-logo {
             width: 144px;
@@ -214,12 +246,12 @@
         <section class="hero-section">
             <div class="container hero-grid">
                 <div class="hero-card">
-                    <span class="eyebrow">Laser Cutting</span>
+                    <span class="eyebrow">Digital tools</span>
                     <h1>Online tools</h1>
-                    <p class="lead">An overview of browser-based generators that quickly create files for laser cutting. This page is inspired by Maker Design Lab's collection, written for FabLab users.</p>
+                    <p class="lead">An overview of browser-based tools for laser cutting, 3D design, electronics and simulation. Selected for FabLab users who want to move quickly from idea to prototype.</p>
                     <div class="hero-pills">
-                        <span class="pill">Free web tools</span>
-                        <span class="pill">SVG, DXF and PDF</span>
+                        <span class="pill">10 new tools</span>
+                        <span class="pill">Design and simulation</span>
                         <span class="pill">Ready for FabLab</span>
                     </div>
                 </div>
@@ -230,8 +262,8 @@
             <div class="container guide-layout">
                 <div class="guide-main">
                     <article class="guide-card" id="intro">
-                        <h2>What are online file generators?</h2>
-                        <p>Online file generators are websites that automatically create vector files based on the dimensions and settings you enter. They are a quick path to boxes, gears, mazes and other geometric designs without starting from scratch in CAD.</p>
+                        <h2>What are online tools?</h2>
+                        <p>Online tools can automatically create files from your dimensions and settings or let you test electronics directly in the browser. They are a quick path to boxes, gears, 3D models and digital circuits without starting entirely from scratch.</p>
                         <p>Most tools are best for prototypes and quick iterations. Always check dimensions, joints and kerf in a test file before using expensive materials.</p>
                     </article>
 
@@ -279,6 +311,17 @@
                                 <p>Focus on cardboard and packaging templates. Good for folded constructions and quick mockups.</p>
                                 <span class="tool-meta">File type: PDF, SVG, DXF</span>
                             </div>
+                            <div class="tool-item" id="tool-boxstudio">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/box_studio.png" alt="Box Studio" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://box-studio.cc/about/en" target="_blank" rel="noopener">Box Studio</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>Free box generator with kerf compensation, finger joints, 3D preview, hinged lids and optional internal dividers.</p>
+                                <span class="tool-meta">File type: SVG</span>
+                            </div>
                         </div>
                     </article>
 
@@ -302,6 +345,35 @@
                                 <p>Quick generator for simple gears by adjusting module and number of teeth.</p>
                                 <span class="tool-meta">File type: DXF</span>
                             </div>
+                            <div class="tool-item" id="tool-geardxf">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/geardxf.png" alt="GearDXF" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://geardxf.com/" target="_blank" rel="noopener">GearDXF</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>Modern generator and simulator for spur gears, internal ring gears and racks, including backlash compensation.</p>
+                                <span class="tool-meta">File type: DXF, SVG, PDF</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="flexible-joints">
+                        <h2>Flexible joints</h2>
+                        <p>Create flexible patterns in rigid sheet materials for curves, lids and enclosures.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-livinghinge">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/living_hinge_generator.png" alt="Living Hinge Generator" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://livinghingegenerator.com/" target="_blank" rel="noopener">Living Hinge Generator</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>Generates adjustable living-hinge patterns with straight, wave, hexagonal or cross-shaped cuts and an instant preview.</p>
+                                <span class="tool-meta">File type: SVG, DXF</span>
+                            </div>
                         </div>
                     </article>
 
@@ -324,6 +396,104 @@
                                 </div>
                                 <p>Builds rectangular, triangular, circular and hexagonal mazes.</p>
                                 <span class="tool-meta">File type: PDF, SVG, PNG</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="cad">
+                        <h2>CAD</h2>
+                        <p>Browser-based CAD tools for creating precise 2D and 3D models for prototypes, laser cutting and 3D printing.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-tinkercad">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/tinkercad.png" alt="Autodesk Tinkercad" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://www.tinkercad.com/" target="_blank" rel="noopener">Tinkercad</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>Free, beginner-friendly 3D modelling from Autodesk, where models are built by combining and adjusting simple shapes.</p>
+                                <span class="tool-meta">Good for: First CAD models and simple parts for 3D printing</span>
+                            </div>
+                            <div class="tool-item" id="tool-jscad">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/jscad.png" alt="JSCAD" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://jscad.app/" target="_blank" rel="noopener">JSCAD</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>Open source tool for parametric 2D and 3D models that are described with JavaScript and displayed directly in the browser.</p>
+                                <span class="tool-meta">Good for: Code-based and parametric CAD</span>
+                            </div>
+                            <div class="tool-item" id="tool-sketchforge">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/sketchforge.png" alt="SketchForge" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://sketchforge3d.com/" target="_blank" rel="noopener">SketchForge</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>Free, open source 3D editor with a simple workflow for shapes, combinations, adjustments and browser-based export.</p>
+                                <span class="tool-meta">Import and export: Including STL and SVG</span>
+                            </div>
+                            <div class="tool-item" id="tool-onshape">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/onshape.png" alt="Onshape" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://www.onshape.com/en/products/free" target="_blank" rel="noopener">Onshape</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>Professional parametric cloud CAD with parts, assemblies, version control and collaboration. The free plan is for non-commercial use and documents are public.</p>
+                                <span class="tool-meta">Good for: Advanced CAD and browser-based collaboration</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="3d-design">
+                        <h2>3D design</h2>
+                        <p>Browser-based tools for creating models and preparing ideas for 3D printing.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-makerlab">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/makerworld_makerlab.svg" alt="MakerWorld MakerLab" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://makerworld.com/en/makerlab?utm_source=fablabguides.dk" target="_blank" rel="noopener">MakerWorld MakerLab</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>A collection of browser-based design tools that help you create and customise models for 3D printing.</p>
+                                <span class="tool-meta">Output: Depends on the selected tool</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="electronics">
+                        <h2>Electronics and simulation</h2>
+                        <p>Build, program and test digital circuits virtually before assembling them physically.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-wokwi">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/wokwi.png" alt="Wokwi" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://wokwi.com/" target="_blank" rel="noopener">Wokwi</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>Online simulator for Arduino, ESP32, STM32 and Raspberry Pi Pico, where code and electronics can be tested together.</p>
+                                <span class="tool-meta">Use: Microcontrollers, code and electronic components</span>
+                            </div>
+                            <div class="tool-item" id="tool-circuitverse">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="../billeder/tools/circuitverse.png" alt="CircuitVerse" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://circuitverse.org/" target="_blank" rel="noopener">CircuitVerse</a></h3>
+                                        <span class="new-badge" aria-label="New tool">New</span>
+                                    </div>
+                                </div>
+                                <p>Free open source simulator for digital logic circuits with logic gates, truth tables, timing diagrams and subcircuits.</p>
+                                <span class="tool-meta">Export: High-resolution images, including SVG</span>
                             </div>
                         </div>
                     </article>
@@ -372,10 +542,14 @@
                     <article class="guide-card">
                         <span class="section-tag">Contents</span>
                         <div class="guide-anchor-list">
-                            <a class="interactive" href="#intro">What are online generators?</a>
-                            <a class="interactive" href="#boxes">Boxes</a>
-                            <a class="interactive" href="#gears">Gears</a>
+                            <a class="interactive" href="#intro">What are online tools?</a>
+                            <a class="interactive guide-anchor-link" href="#boxes"><span>Boxes</span><span class="new-badge new-badge--small">New</span></a>
+                            <a class="interactive guide-anchor-link" href="#gears"><span>Gears</span><span class="new-badge new-badge--small">New</span></a>
+                            <a class="interactive guide-anchor-link" href="#flexible-joints"><span>Flexible joints</span><span class="new-badge new-badge--small">New</span></a>
                             <a class="interactive" href="#mazes">Mazes</a>
+                            <a class="interactive guide-anchor-link" href="#cad"><span>CAD</span><span class="new-badge new-badge--small">New</span></a>
+                            <a class="interactive guide-anchor-link" href="#3d-design"><span>3D design</span><span class="new-badge new-badge--small">New</span></a>
+                            <a class="interactive guide-anchor-link" href="#electronics"><span>Electronics and simulation</span><span class="new-badge new-badge--small">New</span></a>
                             <a class="interactive" href="#other">Other tools</a>
                         </div>
                     </article>

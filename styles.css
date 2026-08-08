@@ -302,6 +302,29 @@ img {
     font-weight: 600;
 }
 
+.panel-link-with-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.panel-new-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #f4b942;
+    color: #30230a;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+    flex: 0 0 auto;
+}
+
 .panel-link-button {
     width: 100%;
     text-align: left;
