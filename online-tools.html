@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dansk oversigt over online file generators til laserskæring: kasser, tandhjul, labyrinter og flere nyttige værktøjer.">
+    <meta name="description" content="Dansk oversigt over online værktøjer til laserskæring, 3D-design, elektronik og simulering.">
     <meta name="author" content="Fablab">
     <title>Online tools | FabLab</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,6 +74,12 @@
             color: var(--brand);
             font-weight: 600;
         }
+        .guide-anchor-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
         .tool-list {
             display: grid;
             gap: 14px;
@@ -93,6 +99,32 @@
             display: flex;
             align-items: center;
             gap: 12px;
+        }
+        .tool-heading {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .new-badge {
+            display: inline-flex;
+            align-items: center;
+            min-height: 24px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            background: #f4b942;
+            color: #30230a;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+        .new-badge--small {
+            min-height: 20px;
+            padding: 2px 7px;
+            font-size: 0.64rem;
+            flex: 0 0 auto;
         }
         .tool-logo {
             width: 144px;
@@ -214,12 +246,12 @@
         <section class="hero-section">
             <div class="container hero-grid">
                 <div class="hero-card">
-                    <span class="eyebrow">Laserskæring</span>
+                    <span class="eyebrow">Digitale værktøjer</span>
                     <h1>Online tools</h1>
-                    <p class="lead">En dansk oversigt over browser-baserede generators, der hurtigt kan lave filer til laserskæring. Siden er inspireret af Maker Design Labs samling, men skrevet til FabLab-brugere.</p>
+                    <p class="lead">En dansk oversigt over browserbaserede værktøjer til laserskæring, 3D-design, elektronik og simulering. Udvalgt til FabLab-brugere, der vil hurtigt fra idé til prototype.</p>
                     <div class="hero-pills">
-                        <span class="pill">Gratis webværktøjer</span>
-                        <span class="pill">SVG, DXF og PDF</span>
+                        <span class="pill">10 nye værktøjer</span>
+                        <span class="pill">Design og simulering</span>
                         <span class="pill">Klar til FabLab</span>
                     </div>
                 </div>
@@ -230,8 +262,8 @@
             <div class="container guide-layout">
                 <div class="guide-main">
                     <article class="guide-card" id="intro">
-                        <h2>Hvad er online file generators?</h2>
-                        <p>Online file generators er websider, der automatisk laver vektor-filer baseret på de mål og indstillinger, du taster ind. Det er en hurtig vej til kasser, tandhjul, labyrinter og andre geometriske designs uden at starte helt fra nul i CAD.</p>
+                        <h2>Hvad er online værktøjer?</h2>
+                        <p>Online værktøjer kan automatisk lave filer ud fra dine mål og indstillinger eller lade dig afprøve elektronik direkte i browseren. Det er en hurtig vej til kasser, tandhjul, 3D-modeller og digitale kredsløb uden at starte helt fra nul.</p>
                         <p>De fleste værktøjer er bedst til prototyper og hurtige iterationer. Tjek altid målsætning, samlinger og kerf i en testfil, før du bruger dyrt materiale.</p>
                     </article>
 
@@ -279,6 +311,17 @@
                                 <p>Fokus på pap- og emballageskabeloner. God til foldede konstruktioner og hurtige mockups.</p>
                                 <span class="tool-meta">Filtype: PDF, SVG, DXF</span>
                             </div>
+                            <div class="tool-item" id="tool-boxstudio">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/box_studio.png" alt="Box Studio" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://box-studio.cc/about/en" target="_blank" rel="noopener">Box Studio</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>Gratis kassegenerator med kerf-kompensation, fingersamlinger, 3D-forhåndsvisning, hængslet låg og mulighed for indvendige rum.</p>
+                                <span class="tool-meta">Filtype: SVG</span>
+                            </div>
                         </div>
                     </article>
 
@@ -302,6 +345,35 @@
                                 <p>Hurtig generator til simple tandhjul ved at justere modul og antal tænder.</p>
                                 <span class="tool-meta">Filtype: DXF</span>
                             </div>
+                            <div class="tool-item" id="tool-geardxf">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/geardxf.png" alt="GearDXF" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://geardxf.com/" target="_blank" rel="noopener">GearDXF</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>Moderne generator og simulator til tandhjul, indvendige ringhjul og tandstænger med blandt andet frigangskompensation.</p>
+                                <span class="tool-meta">Filtype: DXF, SVG, PDF</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="fleksible-samlinger">
+                        <h2>Fleksible samlinger</h2>
+                        <p>Lav bøjelige mønstre i stive pladematerialer til eksempelvis rundinger, låg og kabinetter.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-livinghinge">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/living_hinge_generator.png" alt="Living Hinge Generator" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://livinghingegenerator.com/" target="_blank" rel="noopener">Living Hinge Generator</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>Genererer justerbare living-hinge-mønstre med lige, bølgede, sekskantede eller krydsede udskæringer og viser resultatet med det samme.</p>
+                                <span class="tool-meta">Filtype: SVG, DXF</span>
+                            </div>
                         </div>
                     </article>
 
@@ -324,6 +396,104 @@
                                 </div>
                                 <p>Bygger rektangulære, triangulære, cirkulære og heksagonale labyrinter.</p>
                                 <span class="tool-meta">Filtype: PDF, SVG, PNG</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="cad">
+                        <h2>CAD</h2>
+                        <p>Browserbaserede CAD-værktøjer til at tegne præcise 2D- og 3D-modeller til prototyper, laserskæring og 3D-print.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-tinkercad">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/tinkercad.png" alt="Autodesk Tinkercad" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://www.tinkercad.com/" target="_blank" rel="noopener">Tinkercad</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>Gratis og begyndervenlig 3D-modellering fra Autodesk, hvor modeller bygges ved at kombinere og tilpasse simple former.</p>
+                                <span class="tool-meta">God til: De første CAD-modeller og enkle emner til 3D-print</span>
+                            </div>
+                            <div class="tool-item" id="tool-jscad">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/jscad.png" alt="JSCAD" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://jscad.app/" target="_blank" rel="noopener">JSCAD</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>Open source-værktøj til parametriske 2D- og 3D-modeller, der beskrives med JavaScript og vises direkte i browseren.</p>
+                                <span class="tool-meta">God til: Kodebaseret og parametrisk CAD</span>
+                            </div>
+                            <div class="tool-item" id="tool-sketchforge">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/sketchforge.png" alt="SketchForge" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://sketchforge3d.com/" target="_blank" rel="noopener">SketchForge</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>Gratis, open source 3D-editor med en enkel arbejdsgang til former, sammensætning, tilpasning og eksport direkte i browseren.</p>
+                                <span class="tool-meta">Import og eksport: Blandt andet STL og SVG</span>
+                            </div>
+                            <div class="tool-item" id="tool-onshape">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/onshape.png" alt="Onshape" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://www.onshape.com/en/products/free" target="_blank" rel="noopener">Onshape</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>Professionel, parametrisk cloud-CAD med dele, assemblies, versionsstyring og samarbejde. Gratisplanen er til ikke-kommerciel brug, og dokumenter er offentlige.</p>
+                                <span class="tool-meta">God til: Avanceret CAD og samarbejde i browseren</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="3d-design">
+                        <h2>3D-design</h2>
+                        <p>Browserbaserede værktøjer til at skabe modeller og klargøre idéer til 3D-print.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-makerlab">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/makerworld_makerlab.svg" alt="MakerWorld MakerLab" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://makerworld.com/en/makerlab?utm_source=fablabguides.dk" target="_blank" rel="noopener">MakerWorld MakerLab</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>En samling af browserbaserede designværktøjer, der hjælper med at skabe og tilpasse modeller til 3D-print.</p>
+                                <span class="tool-meta">Output: Afhænger af det valgte værktøj</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="guide-card" id="elektronik">
+                        <h2>Elektronik og simulering</h2>
+                        <p>Byg, programmér og afprøv digitale kredsløb virtuelt, før du samler dem fysisk.</p>
+                        <div class="tool-list">
+                            <div class="tool-item" id="tool-wokwi">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/wokwi.png" alt="Wokwi" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://wokwi.com/" target="_blank" rel="noopener">Wokwi</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>Online simulator til blandt andet Arduino, ESP32, STM32 og Raspberry Pi Pico, hvor kode og elektronik kan testes sammen.</p>
+                                <span class="tool-meta">Brug: Mikrocontrollere, kode og elektroniske komponenter</span>
+                            </div>
+                            <div class="tool-item" id="tool-circuitverse">
+                                <div class="tool-title-row">
+                                    <img class="tool-logo" src="billeder/tools/circuitverse.png" alt="CircuitVerse" loading="lazy">
+                                    <div class="tool-heading">
+                                        <h3><a href="https://circuitverse.org/" target="_blank" rel="noopener">CircuitVerse</a></h3>
+                                        <span class="new-badge" aria-label="Nyt værktøj">Ny</span>
+                                    </div>
+                                </div>
+                                <p>Gratis open source-simulator til digitale logikkredsløb med logiske porte, sandhedstabeller, timingdiagrammer og delkredsløb.</p>
+                                <span class="tool-meta">Eksport: Højopløste billeder, blandt andet SVG</span>
                             </div>
                         </div>
                     </article>
@@ -372,10 +542,14 @@
                     <article class="guide-card">
                         <span class="section-tag">Indhold</span>
                         <div class="guide-anchor-list">
-                            <a class="interactive" href="#intro">Hvad er online generators?</a>
-                            <a class="interactive" href="#kasser">Kasser</a>
-                            <a class="interactive" href="#tandhjul">Tandhjul</a>
+                            <a class="interactive" href="#intro">Hvad er online værktøjer?</a>
+                            <a class="interactive guide-anchor-link" href="#kasser"><span>Kasser</span><span class="new-badge new-badge--small">Ny</span></a>
+                            <a class="interactive guide-anchor-link" href="#tandhjul"><span>Tandhjul</span><span class="new-badge new-badge--small">Ny</span></a>
+                            <a class="interactive guide-anchor-link" href="#fleksible-samlinger"><span>Fleksible samlinger</span><span class="new-badge new-badge--small">Ny</span></a>
                             <a class="interactive" href="#labyrinter">Labyrinter</a>
+                            <a class="interactive guide-anchor-link" href="#cad"><span>CAD</span><span class="new-badge new-badge--small">Ny</span></a>
+                            <a class="interactive guide-anchor-link" href="#3d-design"><span>3D-design</span><span class="new-badge new-badge--small">Ny</span></a>
+                            <a class="interactive guide-anchor-link" href="#elektronik"><span>Elektronik og simulering</span><span class="new-badge new-badge--small">Ny</span></a>
                             <a class="interactive" href="#andre">Andre værktøjer</a>
                         </div>
                     </article>
