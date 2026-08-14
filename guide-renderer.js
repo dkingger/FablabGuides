@@ -87,6 +87,22 @@
                 + "</div>";
         }
 
+        if (block.type === "links") {
+            return ""
+                + "<div class=\"guide-source-block\">"
+                + (block.title ? "<h3>" + escapeHtml(block.title) + "</h3>" : "")
+                + "<div class=\"guide-source-list\">"
+                + (block.items || []).map(function (item) {
+                    return ""
+                        + "<a class=\"guide-source-link interactive\" href=\"" + escapeHtml(item.href) + "\" target=\"_blank\" rel=\"noopener\">"
+                        + "<strong>" + escapeHtml(item.label) + "</strong>"
+                        + (item.description ? "<span>" + escapeHtml(item.description) + "</span>" : "")
+                        + "</a>";
+                }).join("")
+                + "</div>"
+                + "</div>";
+        }
+
         if (block.type === "table") {
             return ""
                 + "<div class=\"guide-table-wrap\">"

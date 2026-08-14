@@ -379,7 +379,8 @@ select {
 }
 
 .guide-text-block,
-.guide-table-wrap {
+.guide-table-wrap,
+.guide-source-block {
     padding: 22px;
     border-radius: 22px;
     background: rgba(255, 255, 255, 0.68);
@@ -387,7 +388,8 @@ select {
 }
 
 .guide-text-block h3,
-.guide-table-wrap h3 {
+.guide-table-wrap h3,
+.guide-source-block h3 {
     margin: 0 0 12px;
     font-size: 1.18rem;
     line-height: 1.25;
@@ -440,6 +442,28 @@ select {
 
 .guide-table tr:last-child td {
     border-bottom: 0;
+}
+
+.guide-source-list {
+    display: grid;
+    gap: 12px;
+}
+
+.guide-source-link {
+    display: grid;
+    gap: 4px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(39, 70, 62, 0.12);
+    background: rgba(39, 70, 62, 0.06);
+}
+
+.guide-source-link strong {
+    color: var(--brand-strong);
+}
+
+.guide-source-link span {
+    color: var(--text-soft);
 }
 
 .table-note {

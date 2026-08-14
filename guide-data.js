@@ -439,11 +439,31 @@ window.betaGuideData = {
                         columns: ["Materiale", "Temperatur", "Tid", "Tryk", "Peel"],
                         rows: [
                             ["Alm. tekstilvinyl / flex", "150 C", "10-15 sek.", "Medium", "Hot peel eller kold peel afhænger af materialet. Tjek rullen eller emballagen."],
-                            ["STAHLS' CAD-CUT Puff", "150 C", "12 sek.", "Medium, ca. niveau 4-6 på Hotronix-varmepresse", "Hot peel - fjern bærefolien, mens den er varm."],
+                            ["STAHLS' CAD-CUT Puff", "150 °C", "12 sek.", "Medium, ca. niveau 4-6 på Hotronix®-varmepresse", "Hot Peel - fjern bærefolien, mens den er varm."],
                             ["Anden puff / 3D tekstilvinyl", "Tjek materialets anvisning", "Tjek materialets anvisning", "Medium til fast", "Puff-typer varierer. For lang tid eller for højt tryk kan gøre puff-effekten flad."],
                             ["Polyester eller varmefølsomt tekstil", "Laveste temperatur på materialets anvisning", "Kort testpres først", "Medium", "Test på en rest eller et skjult område, før du presser det endelige motiv."]
                         ],
                         note: "Hvis vinylen løfter sig efter peel, læg bærearket eller bagepapir på igen og pres 5-10 sekunder mere."
+                    },
+                    {
+                        type: "links",
+                        title: "Datablad",
+                        items: [
+                            {
+                                label: "STAHLS' Puff Hvid Tekstilfolie - White - 001",
+                                href: "https://www.skilteproduktion.dk/stahls-puff-tekstilfolie-white-001_13786r11758236.html",
+                                description: "Produktdatablad med temperatur, pressetid, tryk, Hot Peel og tekniske specifikationer."
+                            }
+                        ]
+                    },
+                    {
+                        type: "list",
+                        title: "Noter fra databladet",
+                        items: [
+                            "Producentens arbejdsområde er ca. 150-155 °C og 12-15 sekunder. Standardindstillingen 150 °C i 12 sekunder er et godt udgangspunkt.",
+                            "Anbefalet minimumslinjetykkelse er 8 mm.",
+                            "Vaskbar op til 40 °C. Stryg kun fra vrangen, og undgå tørretumbling."
+                        ]
                     }
                 ]
             },
