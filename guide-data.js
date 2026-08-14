@@ -403,7 +403,7 @@ window.betaGuideData = {
         shortDescription: "Temperaturer, peel-typer og arbejdsgang til tekstilvinyl.",
         highlights: ["Spejlvend før skæring", "Alm. vinyl og puff", "Hot peel og kold peel"],
         stats: [
-            { value: "150 C", label: "Typisk alm. tekstilvinyl" },
+            { value: "160 C", label: "STAHLS Basic Film" },
             { value: "8-15 sek.", label: "Typisk pressetid" },
             { value: "Peel", label: "Tjek altid typen" }
         ],
@@ -438,9 +438,10 @@ window.betaGuideData = {
                         title: "Typiske indstillinger",
                         columns: ["Materiale", "Temperatur", "Tid", "Tryk", "Peel"],
                         rows: [
-                            ["Alm. tekstilvinyl / flex", "150 C", "10-15 sek.", "Medium", "Hot peel eller kold peel afhænger af materialet. Tjek rullen eller emballagen."],
+                            ["STAHLS' CAD-CUT Basic Film", "160 °C", "10 sek.", "Medium, ca. niveau 4-6 på Hotronix®-varmepresse", "Cold Peel - lad motivet køle af, før bærefolien fjernes."],
                             ["STAHLS' CAD-CUT Glimmer", "150 °C", "10 sek.", "Medium, ca. niveau 4-6 på Hotronix®-varmepresse", "Hot Peel - fjern bærefolien, mens den er varm."],
                             ["STAHLS' CAD-CUT Puff", "150 °C", "12 sek.", "Medium, ca. niveau 4-6 på Hotronix®-varmepresse", "Hot Peel - fjern bærefolien, mens den er varm."],
+                            ["Anden alm. tekstilvinyl / flex", "Tjek materialets anvisning", "Tjek materialets anvisning", "Medium", "Hot peel eller Cold Peel afhænger af materialet. Tjek rullen eller emballagen."],
                             ["Anden puff / 3D tekstilvinyl", "Tjek materialets anvisning", "Tjek materialets anvisning", "Medium til fast", "Puff-typer varierer. For lang tid eller for højt tryk kan gøre puff-effekten flad."],
                             ["Polyester eller varmefølsomt tekstil", "Laveste temperatur på materialets anvisning", "Kort testpres først", "Medium", "Test på en rest eller et skjult område, før du presser det endelige motiv."]
                         ],
@@ -450,6 +451,11 @@ window.betaGuideData = {
                         type: "links",
                         title: "Datablade",
                         items: [
+                            {
+                                label: "STAHLS' CAD-CUT Basic Film",
+                                href: "https://www.skilteproduktion.dk/tekstilfolie/stahls-basicfilm_13768.html",
+                                description: "Produktdatablad med temperatur, pressetid, Cold Peel, flerlagstryk og vask."
+                            },
                             {
                                 label: "STAHLS' CAD-CUT Glimmer",
                                 href: "https://www.skilteproduktion.dk/tekstilfolie/stahls-glimmer_13767.html",
@@ -466,10 +472,12 @@ window.betaGuideData = {
                         type: "list",
                         title: "Noter fra databladene",
                         items: [
+                            "STAHLS' CAD-CUT Basic Film er 80 mikron, har ikke-klæbende carrier og er især velegnet til store, enkle motiver, tal og bogstaver.",
+                            "Basic Film kan bruges til flerfarvede tryk. Ved lagdelte tryk presses mellemlag kortere, og sidste lag presses længere efter producentens anvisning.",
                             "STAHLS' CAD-CUT Glimmer er 260 mikron og kan anvendes på bomuld, polyester og bomuld/polyester-blandinger. Test altid først ved varmefølsomme tekstiler.",
-                            "Producentens arbejdsområde er ca. 150-155 °C og 12-15 sekunder. Standardindstillingen 150 °C i 12 sekunder er et godt udgangspunkt.",
-                            "Anbefalet minimumslinjetykkelse er 8 mm.",
-                            "Vaskbar op til 40 °C. Stryg kun fra vrangen, og undgå tørretumbling."
+                            "Puff-producentens arbejdsområde er ca. 150-155 °C og 12-15 sekunder. Standardindstillingen 150 °C i 12 sekunder er et godt udgangspunkt.",
+                            "Anbefalet minimumslinjetykkelse: Basic Film ca. 1,5 mm og Puff ca. 8 mm.",
+                            "Vaskbarhed afhænger af folien: Basic Film op til 60 °C, Glimmer og Puff op til 40 °C. Følg altid tekstilets egen vaskeanvisning."
                         ]
                     }
                 ]

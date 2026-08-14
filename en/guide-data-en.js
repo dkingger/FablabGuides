@@ -403,7 +403,7 @@ window.betaGuideData = {
         shortDescription: "Temperatures, peel types and workflow for HTV.",
         highlights: ["Mirror before cutting", "Regular HTV and puff", "Hot peel and cold peel"],
         stats: [
-            { value: "150 C", label: "Typical regular HTV" },
+            { value: "160 C", label: "STAHLS Basic Film" },
             { value: "8-15 sec.", label: "Typical press time" },
             { value: "Peel", label: "Always check type" }
         ],
@@ -438,9 +438,10 @@ window.betaGuideData = {
                         title: "Typical settings",
                         columns: ["Material", "Temperature", "Time", "Pressure", "Peel"],
                         rows: [
-                            ["Regular HTV / flex", "150 C", "10-15 sec.", "Medium", "Hot peel or cold peel depends on the material. Check the roll or packaging."],
+                            ["STAHLS' CAD-CUT Basic Film", "160 °C", "10 sec.", "Medium, approx. level 4-6 on a Hotronix® heat press", "Cold Peel - let the design cool before removing the carrier."],
                             ["STAHLS' CAD-CUT Glimmer", "150 °C", "10 sec.", "Medium, approx. level 4-6 on a Hotronix® heat press", "Hot Peel - remove the carrier while it is warm."],
                             ["STAHLS' CAD-CUT Puff", "150 °C", "12 sec.", "Medium, approx. level 4-6 on a Hotronix® heat press", "Hot Peel - remove the carrier while it is warm."],
+                            ["Other regular HTV / flex", "Check material instructions", "Check material instructions", "Medium", "Hot peel or Cold Peel depends on the material. Check the roll or packaging."],
                             ["Other puff / 3D HTV", "Check material instructions", "Check material instructions", "Medium to firm", "Puff types vary. Too much time or pressure can flatten the puff effect."],
                             ["Polyester or heat-sensitive textile", "Lowest temperature listed for the material", "Short test press first", "Medium", "Test on a scrap or hidden area before pressing the final design."]
                         ],
@@ -450,6 +451,11 @@ window.betaGuideData = {
                         type: "links",
                         title: "Data sheets",
                         items: [
+                            {
+                                label: "STAHLS' CAD-CUT Basic Film",
+                                href: "https://www.skilteproduktion.dk/tekstilfolie/stahls-basicfilm_13768.html",
+                                description: "Product data sheet with temperature, press time, Cold Peel, layering and washing."
+                            },
                             {
                                 label: "STAHLS' CAD-CUT Glimmer",
                                 href: "https://www.skilteproduktion.dk/tekstilfolie/stahls-glimmer_13767.html",
@@ -466,10 +472,12 @@ window.betaGuideData = {
                         type: "list",
                         title: "Notes from the data sheets",
                         items: [
+                            "STAHLS' CAD-CUT Basic Film is 80 microns, has a non-adhesive carrier and is especially suited for large, simple designs, numbers and letters.",
+                            "Basic Film can be used for multicolour prints. For layered prints, press intermediate layers shorter and the final layer longer according to the manufacturer's instructions.",
                             "STAHLS' CAD-CUT Glimmer is 260 microns and can be used on cotton, polyester and cotton/polyester blends. Always test first on heat-sensitive textiles.",
-                            "The manufacturer's working range is approx. 150-155 °C and 12-15 seconds. The standard setting of 150 °C for 12 seconds is a good starting point.",
-                            "Recommended minimum line thickness is 8 mm.",
-                            "Washable up to 40 °C. Iron only from the reverse side, and avoid tumble drying."
+                            "The Puff manufacturer's working range is approx. 150-155 °C and 12-15 seconds. The standard setting of 150 °C for 12 seconds is a good starting point.",
+                            "Recommended minimum line thickness: Basic Film approx. 1.5 mm and Puff approx. 8 mm.",
+                            "Washability depends on the film: Basic Film up to 60 °C, Glimmer and Puff up to 40 °C. Always follow the textile's own care label."
                         ]
                     }
                 ]
