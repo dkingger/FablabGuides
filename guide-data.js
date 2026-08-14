@@ -439,7 +439,8 @@ window.betaGuideData = {
                         columns: ["Materiale", "Temperatur", "Tid", "Tryk", "Peel"],
                         rows: [
                             ["Alm. tekstilvinyl / flex", "150 C", "10-15 sek.", "Medium", "Hot peel eller kold peel afhænger af materialet. Tjek rullen eller emballagen."],
-                            ["Puff / 3D tekstilvinyl", "140-150 C", "8-10 sek.", "Medium til fast", "Ofte hot peel, men nogle typer kræver kold peel. For lang tid eller for højt tryk kan gøre puff-effekten flad."],
+                            ["STAHLS' CAD-CUT Puff", "150 C", "12 sek.", "Medium, ca. niveau 4-6 på Hotronix-varmepresse", "Hot peel - fjern bærefolien, mens den er varm."],
+                            ["Anden puff / 3D tekstilvinyl", "Tjek materialets anvisning", "Tjek materialets anvisning", "Medium til fast", "Puff-typer varierer. For lang tid eller for højt tryk kan gøre puff-effekten flad."],
                             ["Polyester eller varmefølsomt tekstil", "Laveste temperatur på materialets anvisning", "Kort testpres først", "Medium", "Test på en rest eller et skjult område, før du presser det endelige motiv."]
                         ],
                         note: "Hvis vinylen løfter sig efter peel, læg bærearket eller bagepapir på igen og pres 5-10 sekunder mere."

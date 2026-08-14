@@ -439,7 +439,8 @@ window.betaGuideData = {
                         columns: ["Material", "Temperature", "Time", "Pressure", "Peel"],
                         rows: [
                             ["Regular HTV / flex", "150 C", "10-15 sec.", "Medium", "Hot peel or cold peel depends on the material. Check the roll or packaging."],
-                            ["Puff / 3D HTV", "140-150 C", "8-10 sec.", "Medium to firm", "Often hot peel, but some types require cold peel. Too much time or pressure can flatten the puff effect."],
+                            ["STAHLS' CAD-CUT Puff", "150 C", "12 sec.", "Medium, approx. level 4-6 on a Hotronix heat press", "Hot peel - remove the carrier while it is warm."],
+                            ["Other puff / 3D HTV", "Check material instructions", "Check material instructions", "Medium to firm", "Puff types vary. Too much time or pressure can flatten the puff effect."],
                             ["Polyester or heat-sensitive textile", "Lowest temperature listed for the material", "Short test press first", "Medium", "Test on a scrap or hidden area before pressing the final design."]
                         ],
                         note: "If the vinyl lifts after peeling, place the carrier or parchment paper back on top and press for another 5-10 seconds."
