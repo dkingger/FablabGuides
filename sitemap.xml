@@ -91,6 +91,11 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://www.fablabvejle.dk/serigrafi.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://www.fablabvejle.dk/wazer.html</loc>
     <lastmod>2026-04-26</lastmod>
     <priority>0.80</priority>
@@ -182,6 +187,11 @@
   </url>
   <url>
     <loc>https://www.fablabvejle.dk/en/tekstilvinyl.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.fablabvejle.dk/en/serigrafi.html</loc>
     <lastmod>2026-08-14</lastmod>
     <priority>0.70</priority>
   </url>

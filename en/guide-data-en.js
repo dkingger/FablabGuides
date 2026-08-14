@@ -520,6 +520,128 @@ window.betaGuideData = {
             }
         ]
     },
+    "serigrafi": {
+        slug: "serigrafi",
+        title: "Screen Printing",
+        category: "Textile Printing",
+        eyebrow: "Print Guide",
+        icon: "../billeder/ikoner/screenprinting.svg",
+        description: "Guide to screen printing on textiles with Textile Solid and Textile Neon. The guide covers preparation, opaque and non-opaque paints, printing, heat fixing and washing.",
+        shortDescription: "Screen printing on textiles with paint, frame and squeegee.",
+        highlights: ["Textile Solid and Neon", "Iron fixing", "Wash at 40 C"],
+        stats: [
+            { value: "2-5 min.", label: "Iron fixing" },
+            { value: "40 C", label: "Wash after fixing" },
+            { value: "Test print", label: "Before final print" }
+        ],
+        sections: [
+            {
+                tag: "Setup",
+                title: "Before printing",
+                description: "A good screen print starts with a clean frame, a flat textile and a test print.",
+                meta: "Preparation",
+                content: [
+                    {
+                        type: "list",
+                        title: "Checklist",
+                        items: [
+                            "Wash or lightly press the textile first if it is wrinkled or damp.",
+                            "Place plastic, cardboard or another protective layer inside the textile so paint does not bleed through to the back.",
+                            "Stir the textile paint and add only the amount you need to the screen.",
+                            "Always make a test print on paper, scrap fabric or an old textile before printing the final item.",
+                            "Keep the print area flat. Seams, pockets, zippers and thick edges can create uneven prints."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Paint",
+                title: "Textile Solid and Textile Neon",
+                description: "FabLab mainly uses Textile Solid. Be aware that paint types behave differently on light and dark textiles.",
+                meta: "Materials",
+                content: [
+                    {
+                        type: "table",
+                        title: "Paint types",
+                        columns: ["Paint", "Opacity", "Use", "Fixing", "Washing"],
+                        rows: [
+                            ["Textile Solid", "Opaque textile paint", "Best as the standard choice, including on coloured and darker textiles. Always test first.", "Iron the dry decoration at high heat for 2-5 minutes. Place parchment paper above and below the textile.", "Can be washed at 40 C after iron fixing."],
+                            ["Textile Neon", "Not fully opaque", "Works best on light textiles or on top of a light base. The colour can change significantly on dark or strongly coloured textiles.", "Follow the product instructions and test on the same textile before final printing.", "Follow the product instructions and the textile's own care label."]
+                        ],
+                        note: "If the colour needs to be precise or highly visible, test both Solid and Neon on the same textile type before printing the final design."
+                    },
+                    {
+                        type: "links",
+                        title: "Product Link",
+                        items: [
+                            {
+                                label: "Textile Solid, opaque, brilliant blue, 250 ml",
+                                href: "https://www.cchobby.dk/textile-solid-daekkende-brilliant-bla-250-ml-1-fl",
+                                description: "Product data for the Textile Solid paint FabLab mainly uses."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Print",
+                title: "How to print",
+                description: "Work calmly and evenly. Too much paint or too many pulls can make the edges unclear.",
+                meta: "Workflow",
+                content: [
+                    {
+                        type: "list",
+                        title: "Workflow",
+                        items: [
+                            "Place the screen precisely over the textile and keep it stable during the print.",
+                            "Add an even line of paint along one side of the design.",
+                            "Pull the squeegee across the design with firm, even pressure. Keep the same angle and speed through the pull.",
+                            "Use one or a few controlled pulls rather than many small corrections.",
+                            "Lift the screen straight up so the design does not smear.",
+                            "Let the print dry completely before heat fixing."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Fixing",
+                title: "Heat fixing and washing",
+                description: "Textile Solid must be heat fixed after the paint is dry. Fixing makes the print washable.",
+                meta: "After printing",
+                content: [
+                    {
+                        type: "list",
+                        title: "Aftercare",
+                        items: [
+                            "Let the paint dry completely before fixing it.",
+                            "Place parchment paper above and below the textile so paint and iron do not touch directly.",
+                            "Fix the dry, decorated area with an iron at high heat for 2-5 minutes.",
+                            "Apply calm heat across the full design. Check that the textile can tolerate the heat.",
+                            "After correct fixing, Textile Solid can be washed at 40 C. Always follow the textile's own care label if it is lower."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Cleaning",
+                title: "Clean the screen immediately",
+                description: "Water-based textile paint is easiest to remove from the screen before it dries.",
+                meta: "Cleanup",
+                content: [
+                    {
+                        type: "list",
+                        title: "After use",
+                        items: [
+                            "Scrape excess paint back into the container if it is clean.",
+                            "Wash the screen, squeegee and tools with water immediately.",
+                            "Close paint containers tightly and wipe the rims so lids do not stick.",
+                            "Let the screen dry completely before putting it away."
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     "wazer": {
         slug: "wazer",
         title: "Wazer Waterjet",

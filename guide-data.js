@@ -520,6 +520,128 @@ window.betaGuideData = {
             }
         ]
     },
+    "serigrafi": {
+        slug: "serigrafi",
+        title: "Serigrafi",
+        category: "Tekstiltryk",
+        eyebrow: "Trykguide",
+        icon: "billeder/ikoner/screenprinting.svg",
+        description: "Guide til screenprinting på tekstil med Textile Solid og Textile Neon. Guiden samler klargøring, forskellen på dækkende og ikke fulddækkende maling, tryk, fiksering og vask.",
+        shortDescription: "Screenprinting på tekstil med maling, ramme og rakel.",
+        highlights: ["Textile Solid og Neon", "Strygefiksering", "Vask ved 40 C"],
+        stats: [
+            { value: "2-5 min.", label: "Strygefiksering" },
+            { value: "40 C", label: "Vask efter fiksering" },
+            { value: "Testtryk", label: "Før endeligt tryk" }
+        ],
+        sections: [
+            {
+                tag: "Klargøring",
+                title: "Før du trykker",
+                description: "Et godt serigrafitryk starter med en ren ramme, et plant tekstil og et testtryk.",
+                meta: "Forberedelse",
+                content: [
+                    {
+                        type: "list",
+                        title: "Tjekliste",
+                        items: [
+                            "Vask eller pres tekstilet let først, hvis det er krøllet eller fugtigt.",
+                            "Læg plast, pap eller andet beskyttende materiale ind i tekstilet, så malingen ikke trænger igennem til bagsiden.",
+                            "Rør tekstilmalingen op, og hæld kun den mængde på rammen, du skal bruge til trykket.",
+                            "Lav altid et testtryk på papir, stofrest eller et gammelt tekstil, før du trykker på det endelige emne.",
+                            "Hold motivområdet plant. Sømme, lommer, lynlåse og tykke kanter kan give ujævnt tryk."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Maling",
+                title: "Textile Solid og Textile Neon",
+                description: "FabLab bruger primært Textile Solid. Vær opmærksom på, at farvetyperne opfører sig forskelligt på lyse og mørke tekstiler.",
+                meta: "Materialer",
+                content: [
+                    {
+                        type: "table",
+                        title: "Malingstyper",
+                        columns: ["Maling", "Dækkeevne", "Brug", "Fiksering", "Vask"],
+                        rows: [
+                            ["Textile Solid", "Dækkende tekstilmaling", "Bedst som standardvalg, også på farvede og mørkere tekstiler. Test stadig altid først.", "Stryg den tørre dekoration ved høj varme i 2-5 min. Læg bagepapir over og under tekstilet.", "Holder vask ved 40 C efter strygefiksering."],
+                            ["Textile Neon", "Ikke fulddækkende", "Bruges bedst på lyse tekstiler eller oven på en lys bund. Farven kan ændre sig tydeligt på mørke eller kraftigt farvede tekstiler.", "Følg anvisningen på produktet, og test på samme tekstil før endeligt tryk.", "Følg anvisningen på produktet og tekstilets egen vaskeanvisning."]
+                        ],
+                        note: "Hvis farven skal være præcis eller meget synlig, så test både Solid og Neon på samme tekstiltype, før motivet trykkes endeligt."
+                    },
+                    {
+                        type: "links",
+                        title: "Produktlink",
+                        items: [
+                            {
+                                label: "Textile Solid, dækkende, brilliant blå, 250 ml",
+                                href: "https://www.cchobby.dk/textile-solid-daekkende-brilliant-bla-250-ml-1-fl",
+                                description: "Produktdata for den Textile Solid-maling, FabLab primært bruger."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Tryk",
+                title: "Sådan laver du trykket",
+                description: "Arbejd roligt og ensartet. For meget maling eller for mange træk kan give uklare kanter.",
+                meta: "Workflow",
+                content: [
+                    {
+                        type: "list",
+                        title: "Arbejdsgang",
+                        items: [
+                            "Placér rammen præcist over tekstilet, og hold den stabil under hele trykket.",
+                            "Læg en jævn stribe maling langs den ene side af motivet.",
+                            "Træk raklen hen over motivet med fast, jævnt tryk. Hold samme vinkel og hastighed gennem hele trækket.",
+                            "Lav hellere ét eller få kontrollerede træk end mange små rettelser.",
+                            "Løft rammen lige op, så motivet ikke tværes ud.",
+                            "Lad trykket tørre helt, før det fikseres med varme."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Fiksering",
+                title: "Fiksering og vask",
+                description: "Textile Solid skal fikseres med varme, når malingen er tør. Fiksering gør trykket vaskbart.",
+                meta: "Efter tryk",
+                content: [
+                    {
+                        type: "list",
+                        title: "Efterbehandling",
+                        items: [
+                            "Lad malingen tørre helt, før du fikserer den.",
+                            "Læg bagepapir over og under tekstilemnet, så maling og strygejern ikke kommer i direkte kontakt.",
+                            "Fikser den tørre, dekorerede flade med strygejern ved høj varme i 2-5 minutter.",
+                            "Brug rolig varme over hele motivet. Hold øje med, at tekstilet kan tåle varmen.",
+                            "Efter korrekt fiksering kan Textile Solid vaskes ved 40 C. Følg altid tekstilets egen vaskeanvisning, hvis den er lavere."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Rengøring",
+                title: "Rengør rammen med det samme",
+                description: "Vandbaseret tekstilmaling er lettest at få ud af rammen, før den tørrer.",
+                meta: "Oprydning",
+                content: [
+                    {
+                        type: "list",
+                        title: "Efter brug",
+                        items: [
+                            "Skrab overskydende maling tilbage i beholderen, hvis den er ren.",
+                            "Vask ramme, rakel og værktøj med vand med det samme.",
+                            "Luk malingsbeholderne tæt, og tør kanterne af, så lågene ikke limer fast.",
+                            "Lad rammen tørre helt, før den sættes på plads."
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     "wazer": {
         slug: "wazer",
         title: "Wazer Waterjet",

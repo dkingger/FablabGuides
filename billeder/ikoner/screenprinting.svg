@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Serigrafi ikon</title>
+  <desc id="desc">Illustration af en serigrafiramme, rakel og tekstilmaling.</desc>
+  <rect width="256" height="256" rx="42" fill="#18332b"/>
+  <rect x="46" y="54" width="164" height="106" rx="10" fill="#f6f8f4" opacity="0.96"/>
+  <rect x="64" y="72" width="128" height="70" rx="4" fill="#d9e7df"/>
+  <path d="M75 105h106" stroke="#27463e" stroke-width="7" stroke-linecap="round"/>
+  <path d="M78 126h88" stroke="#27463e" stroke-width="7" stroke-linecap="round" opacity="0.72"/>
+  <path d="M63 174h130" stroke="#d46a43" stroke-width="20" stroke-linecap="round"/>
+  <path d="M79 164h98l-12-33H91z" fill="#ffffff"/>
+  <path d="M94 130h69" stroke="#18332b" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="70" cy="198" r="14" fill="#f6e5de"/>
+  <circle cx="186" cy="198" r="14" fill="#f6e5de"/>
+</svg>
