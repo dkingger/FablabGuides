@@ -528,9 +528,9 @@ window.betaGuideData = {
         icon: "billeder/ikoner/screenprinting.svg",
         description: "Guide til screenprinting på tekstil med Textile Solid og Textile Neon. Guiden samler klargøring, forskellen på dækkende og ikke fulddækkende maling, tryk, fiksering og vask.",
         shortDescription: "Screenprinting på tekstil med maling, ramme og rakel.",
-        highlights: ["Textile Solid og Neon", "Strygefiksering", "Vask ved 40 C"],
+        highlights: ["Textile Solid og Neon", "Fiksering i varmepresse", "Vask ved 40 C"],
         stats: [
-            { value: "2-5 min.", label: "Strygefiksering" },
+            { value: "2-5 min.", label: "Fiksering i varmepresse" },
             { value: "40 C", label: "Vask efter fiksering" },
             { value: "Testtryk", label: "Før endeligt tryk" }
         ],
@@ -565,7 +565,7 @@ window.betaGuideData = {
                         title: "Malingstyper",
                         columns: ["Maling", "Dækkeevne", "Brug", "Fiksering", "Vask"],
                         rows: [
-                            ["Textile Solid", "Vandbaseret og dækkende tekstilmaling", "Bedst som standardvalg. Dækker også på mørke stoffer, er drøj i brug og findes i mange farver. Test stadig altid først.", "Stryg den tørre dekoration ved høj varme i 2-5 min. Læg bagepapir over og under tekstilet.", "Holder vask ved 40 C efter strygefiksering."],
+                            ["Textile Solid", "Vandbaseret og dækkende tekstilmaling", "Bedst som standardvalg. Dækker også på mørke stoffer, er drøj i brug og findes i mange farver. Test stadig altid først.", "Fikser den tørre dekoration i varmepresse i 2-5 min. Læg bagepapir over og under tekstilet.", "Holder vask ved 40 C efter varmefiksering."],
                             ["Textile Neon", "Ikke fulddækkende", "Bruges bedst på lyse tekstiler eller oven på en lys bund. Farven kan ændre sig tydeligt på mørke eller kraftigt farvede tekstiler.", "Følg anvisningen på produktet, og test på samme tekstil før endeligt tryk.", "Følg anvisningen på produktet og tekstilets egen vaskeanvisning."]
                         ],
                         note: "Hvis farven skal være præcis eller meget synlig, så test både Solid og Neon på samme tekstiltype, før motivet trykkes endeligt."
@@ -619,8 +619,8 @@ window.betaGuideData = {
                         title: "Efterbehandling",
                         items: [
                             "Lad malingen tørre helt, før du fikserer den.",
-                            "Læg bagepapir over og under tekstilemnet, så maling og strygejern ikke kommer i direkte kontakt.",
-                            "Fikser den tørre, dekorerede flade med strygejern ved høj varme i 2-5 minutter.",
+                            "Læg bagepapir over og under tekstilemnet, så maling og varmepresse ikke kommer i direkte kontakt.",
+                            "Fikser den tørre, dekorerede flade i varmepresse ved høj varme i 2-5 minutter.",
                             "Brug rolig varme over hele motivet. Hold øje med, at tekstilet kan tåle varmen.",
                             "Efter korrekt fiksering kan Textile Solid vaskes ved 40 C. Følg altid tekstilets egen vaskeanvisning, hvis den er lavere."
                         ]

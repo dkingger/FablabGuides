@@ -528,9 +528,9 @@ window.betaGuideData = {
         icon: "../billeder/ikoner/screenprinting.svg",
         description: "Guide to screen printing on textiles with Textile Solid and Textile Neon. The guide covers preparation, opaque and non-opaque paints, printing, heat fixing and washing.",
         shortDescription: "Screen printing on textiles with paint, frame and squeegee.",
-        highlights: ["Textile Solid and Neon", "Iron fixing", "Wash at 40 C"],
+        highlights: ["Textile Solid and Neon", "Heat press fixing", "Wash at 40 C"],
         stats: [
-            { value: "2-5 min.", label: "Iron fixing" },
+            { value: "2-5 min.", label: "Heat press fixing" },
             { value: "40 C", label: "Wash after fixing" },
             { value: "Test print", label: "Before final print" }
         ],
@@ -565,7 +565,7 @@ window.betaGuideData = {
                         title: "Paint types",
                         columns: ["Paint", "Opacity", "Use", "Fixing", "Washing"],
                         rows: [
-                            ["Textile Solid", "Water-based and opaque textile paint", "Best as the standard choice. It covers dark fabrics too, goes a long way and is available in many colours. Always test first.", "Iron the dry decoration at high heat for 2-5 minutes. Place parchment paper above and below the textile.", "Can be washed at 40 C after iron fixing."],
+                            ["Textile Solid", "Water-based and opaque textile paint", "Best as the standard choice. It covers dark fabrics too, goes a long way and is available in many colours. Always test first.", "Fix the dry decoration in a heat press for 2-5 minutes. Place parchment paper above and below the textile.", "Can be washed at 40 C after heat fixing."],
                             ["Textile Neon", "Not fully opaque", "Works best on light textiles or on top of a light base. The colour can change significantly on dark or strongly coloured textiles.", "Follow the product instructions and test on the same textile before final printing.", "Follow the product instructions and the textile's own care label."]
                         ],
                         note: "If the colour needs to be precise or highly visible, test both Solid and Neon on the same textile type before printing the final design."
@@ -619,8 +619,8 @@ window.betaGuideData = {
                         title: "Aftercare",
                         items: [
                             "Let the paint dry completely before fixing it.",
-                            "Place parchment paper above and below the textile so paint and iron do not touch directly.",
-                            "Fix the dry, decorated area with an iron at high heat for 2-5 minutes.",
+                            "Place parchment paper above and below the textile so paint and heat press do not touch directly.",
+                            "Fix the dry, decorated area in a heat press at high heat for 2-5 minutes.",
                             "Apply calm heat across the full design. Check that the textile can tolerate the heat.",
                             "After correct fixing, Textile Solid can be washed at 40 C. Always follow the textile's own care label if it is lower."
                         ]
