@@ -565,7 +565,7 @@ window.betaGuideData = {
                         title: "Paint types",
                         columns: ["Paint", "Opacity", "Use", "Fixing", "Washing"],
                         rows: [
-                            ["Textile Solid", "Opaque textile paint", "Best as the standard choice, including on coloured and darker textiles. Always test first.", "Iron the dry decoration at high heat for 2-5 minutes. Place parchment paper above and below the textile.", "Can be washed at 40 C after iron fixing."],
+                            ["Textile Solid", "Water-based and opaque textile paint", "Best as the standard choice. It covers dark fabrics too, goes a long way and is available in many colours. Always test first.", "Iron the dry decoration at high heat for 2-5 minutes. Place parchment paper above and below the textile.", "Can be washed at 40 C after iron fixing."],
                             ["Textile Neon", "Not fully opaque", "Works best on light textiles or on top of a light base. The colour can change significantly on dark or strongly coloured textiles.", "Follow the product instructions and test on the same textile before final printing.", "Follow the product instructions and the textile's own care label."]
                         ],
                         note: "If the colour needs to be precise or highly visible, test both Solid and Neon on the same textile type before printing the final design."
@@ -574,6 +574,11 @@ window.betaGuideData = {
                         type: "links",
                         title: "Product Link",
                         items: [
+                            {
+                                label: "Opaque textile paint",
+                                href: "https://www.cchobby.dk/produkter/produkter-3/maling-farver-og-tilbehor-5/tekstildekoration-2/daekkende-tekstilmaling",
+                                description: "Overview of water-based, opaque textile paint for light, dark and coloured textiles."
+                            },
                             {
                                 label: "Textile Solid, opaque, brilliant blue, 250 ml",
                                 href: "https://www.cchobby.dk/textile-solid-daekkende-brilliant-bla-250-ml-1-fl",

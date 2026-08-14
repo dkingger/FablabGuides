@@ -565,7 +565,7 @@ window.betaGuideData = {
                         title: "Malingstyper",
                         columns: ["Maling", "Dækkeevne", "Brug", "Fiksering", "Vask"],
                         rows: [
-                            ["Textile Solid", "Dækkende tekstilmaling", "Bedst som standardvalg, også på farvede og mørkere tekstiler. Test stadig altid først.", "Stryg den tørre dekoration ved høj varme i 2-5 min. Læg bagepapir over og under tekstilet.", "Holder vask ved 40 C efter strygefiksering."],
+                            ["Textile Solid", "Vandbaseret og dækkende tekstilmaling", "Bedst som standardvalg. Dækker også på mørke stoffer, er drøj i brug og findes i mange farver. Test stadig altid først.", "Stryg den tørre dekoration ved høj varme i 2-5 min. Læg bagepapir over og under tekstilet.", "Holder vask ved 40 C efter strygefiksering."],
                             ["Textile Neon", "Ikke fulddækkende", "Bruges bedst på lyse tekstiler eller oven på en lys bund. Farven kan ændre sig tydeligt på mørke eller kraftigt farvede tekstiler.", "Følg anvisningen på produktet, og test på samme tekstil før endeligt tryk.", "Følg anvisningen på produktet og tekstilets egen vaskeanvisning."]
                         ],
                         note: "Hvis farven skal være præcis eller meget synlig, så test både Solid og Neon på samme tekstiltype, før motivet trykkes endeligt."
@@ -574,6 +574,11 @@ window.betaGuideData = {
                         type: "links",
                         title: "Produktlink",
                         items: [
+                            {
+                                label: "Dækkende tekstilmaling",
+                                href: "https://www.cchobby.dk/produkter/produkter-3/maling-farver-og-tilbehor-5/tekstildekoration-2/daekkende-tekstilmaling",
+                                description: "Oversigt over vandbaseret, dækkende tekstilmaling til lyse, mørke og farvede tekstiler."
+                            },
                             {
                                 label: "Textile Solid, dækkende, brilliant blå, 250 ml",
                                 href: "https://www.cchobby.dk/textile-solid-daekkende-brilliant-bla-250-ml-1-fl",
