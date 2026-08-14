@@ -393,6 +393,97 @@ window.betaGuideData = {
             }
         ]
     },
+    "tekstilvinyl": {
+        slug: "tekstilvinyl",
+        title: "Heat Transfer Vinyl",
+        category: "Vinyl Cutter",
+        eyebrow: "Material Guide",
+        icon: "../billeder/ikoner/varmepresse.png",
+        description: "Prepare, cut and heat press HTV with focus on mirroring, temperature, time, and the difference between hot peel and cold peel.",
+        shortDescription: "Temperatures, peel types and workflow for HTV.",
+        highlights: ["Mirror before cutting", "Regular HTV and puff", "Hot peel and cold peel"],
+        stats: [
+            { value: "150 C", label: "Typical regular HTV" },
+            { value: "8-15 sec.", label: "Typical press time" },
+            { value: "Peel", label: "Always check type" }
+        ],
+        sections: [
+            {
+                tag: "Checklist",
+                title: "Before cutting",
+                description: "HTV is cut from the back side and turns the right way around when pressed onto the textile.",
+                meta: "Preparation",
+                content: [
+                    {
+                        type: "list",
+                        title: "Start here",
+                        items: [
+                            "Always mirror the design before sending it to the vinyl cutter. Text must look reversed on screen when cutting HTV.",
+                            "Place the HTV correctly: the clear or glossy carrier normally faces down, and the matte cut side faces up. If unsure, peel a corner carefully to identify the carrier.",
+                            "Make a small test cut before cutting the full design. The blade should cut through the vinyl, but not through the carrier.",
+                            "Weed away excess vinyl after cutting so only the design remains on the carrier.",
+                            "Pre-press the textile for 2-5 seconds to remove moisture and wrinkles."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Heat press",
+                title: "Temperature, time and peel",
+                description: "Use the table as a starting point if the roll has no clear instructions. The manufacturer's instructions on the material always come first.",
+                meta: "Start values",
+                content: [
+                    {
+                        type: "table",
+                        title: "Typical settings",
+                        columns: ["Material", "Temperature", "Time", "Pressure", "Peel"],
+                        rows: [
+                            ["Regular HTV / flex", "150 C", "10-15 sec.", "Medium", "Hot peel or cold peel depends on the material. Check the roll or packaging."],
+                            ["Puff / 3D HTV", "140-150 C", "8-10 sec.", "Medium to firm", "Often hot peel, but some types require cold peel. Too much time or pressure can flatten the puff effect."],
+                            ["Polyester or heat-sensitive textile", "Lowest temperature listed for the material", "Short test press first", "Medium", "Test on a scrap or hidden area before pressing the final design."]
+                        ],
+                        note: "If the vinyl lifts after peeling, place the carrier or parchment paper back on top and press for another 5-10 seconds."
+                    }
+                ]
+            },
+            {
+                tag: "Peel",
+                title: "Hot peel or cold peel",
+                description: "Peel describes when the carrier may be removed after pressing.",
+                meta: "After pressing",
+                content: [
+                    {
+                        type: "list",
+                        title: "How to do it",
+                        items: [
+                            "Hot peel: Remove the carrier immediately while the design is still hot. Pull calmly and low across the textile.",
+                            "Cold peel: Let the design cool completely before removing the carrier. Waiting too long is better than peeling too early.",
+                            "Warm peel: Wait a few seconds so the material is no longer extremely hot, but still warm.",
+                            "If small details lift with the carrier, stop pulling. Put the carrier back down, press briefly again, then try the same peel type once more."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Care",
+                title: "Durability and washing",
+                description: "Correct aftercare makes the print last longer.",
+                meta: "Washing",
+                content: [
+                    {
+                        type: "list",
+                        title: "After pressing",
+                        items: [
+                            "Wait at least 24 hours before washing the textile for the first time.",
+                            "Wash inside out when possible and avoid fabric softener.",
+                            "Do not iron directly on the design. Use parchment paper or a protective sheet if the design needs heat again.",
+                            "Do not press puff HTV hard again after final application, as the structure can become flat."
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     "wazer": {
         slug: "wazer",
         title: "Wazer Waterjet",

@@ -393,6 +393,97 @@ window.betaGuideData = {
             }
         ]
     },
+    "tekstilvinyl": {
+        slug: "tekstilvinyl",
+        title: "Tekstilvinyl",
+        category: "Vinylskærer",
+        eyebrow: "Materialeguide",
+        icon: "billeder/ikoner/varmepresse.png",
+        description: "Klargør, skær og pres tekstilvinyl med fokus på spejlvending, temperatur, tid og forskellen på hot peel og kold peel.",
+        shortDescription: "Temperaturer, peel-typer og arbejdsgang til tekstilvinyl.",
+        highlights: ["Spejlvend før skæring", "Alm. vinyl og puff", "Hot peel og kold peel"],
+        stats: [
+            { value: "150 C", label: "Typisk alm. tekstilvinyl" },
+            { value: "8-15 sek.", label: "Typisk pressetid" },
+            { value: "Peel", label: "Tjek altid typen" }
+        ],
+        sections: [
+            {
+                tag: "Tjekliste",
+                title: "Før du skærer",
+                description: "Tekstilvinyl skæres fra bagsiden og vendes rigtigt, når det presses på tekstilet.",
+                meta: "Klargøring",
+                content: [
+                    {
+                        type: "list",
+                        title: "Det vigtigste først",
+                        items: [
+                            "Spejlvend altid motivet, før du sender filen til vinylskæreren. Tekst skal se bagvendt ud på skærmen, når du skærer tekstilvinyl.",
+                            "Læg tekstilvinylen korrekt: den klare eller blanke bærefilm skal normalt vende nedad, og den matte skæreside skal vende opad. Er du i tvivl, så pil forsigtigt i et hjørne og find bærefilmen.",
+                            "Lav en lille testskæring, før du skærer hele motivet. Kniven skal skære gennem vinylen, men ikke gennem bærefilmen.",
+                            "Pil overskydende vinyl væk efter skæring, så kun motivet bliver siddende på bærefilmen.",
+                            "Forvarm tekstilet i varmepressen i 2-5 sekunder for at fjerne fugt og folder."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Varmepresse",
+                title: "Temperatur, tid og peel",
+                description: "Brug tabellen som startpunkt, hvis rullen ikke har tydelig anvisning. Producentens anvisning på materialet gælder altid først.",
+                meta: "Startværdier",
+                content: [
+                    {
+                        type: "table",
+                        title: "Typiske indstillinger",
+                        columns: ["Materiale", "Temperatur", "Tid", "Tryk", "Peel"],
+                        rows: [
+                            ["Alm. tekstilvinyl / flex", "150 C", "10-15 sek.", "Medium", "Hot peel eller kold peel afhænger af materialet. Tjek rullen eller emballagen."],
+                            ["Puff / 3D tekstilvinyl", "140-150 C", "8-10 sek.", "Medium til fast", "Ofte hot peel, men nogle typer kræver kold peel. For lang tid eller for højt tryk kan gøre puff-effekten flad."],
+                            ["Polyester eller varmefølsomt tekstil", "Laveste temperatur på materialets anvisning", "Kort testpres først", "Medium", "Test på en rest eller et skjult område, før du presser det endelige motiv."]
+                        ],
+                        note: "Hvis vinylen løfter sig efter peel, læg bærearket eller bagepapir på igen og pres 5-10 sekunder mere."
+                    }
+                ]
+            },
+            {
+                tag: "Peel",
+                title: "Hot peel eller kold peel",
+                description: "Peel betyder, hvornår bærefilmen må fjernes efter presning.",
+                meta: "Efter pres",
+                content: [
+                    {
+                        type: "list",
+                        title: "Sådan gør du",
+                        items: [
+                            "Hot peel: Fjern bærefilmen med det samme, mens motivet stadig er varmt. Træk roligt og lavt hen over tekstilet.",
+                            "Kold peel: Lad motivet køle helt ned, før du fjerner bærefilmen. Vent hellere lidt for længe end for kort.",
+                            "Warm peel: Vent få sekunder, så materialet ikke er helt brændvarmt, men stadig lunt.",
+                            "Hvis små detaljer følger med bærefilmen, stop med at trække. Læg bærefilmen tilbage, pres igen kort og prøv derefter samme peel-type igen."
+                        ]
+                    }
+                ]
+            },
+            {
+                tag: "Efterbehandling",
+                title: "Holdbarhed og vask",
+                description: "Korrekt efterbehandling gør trykket mere holdbart.",
+                meta: "Vask",
+                content: [
+                    {
+                        type: "list",
+                        title: "Efter presning",
+                        items: [
+                            "Vent mindst 24 timer, før tekstilet vaskes første gang.",
+                            "Vask helst med vrangen ud og undgå skyllemiddel.",
+                            "Undgå direkte strygning på motivet. Læg bagepapir eller et beskyttelsesark imellem, hvis motivet skal varmes igen.",
+                            "Puff-vinyl bør ikke presses hårdt igen efter færdig applikation, da strukturen kan blive flad."
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     "wazer": {
         slug: "wazer",
         title: "Wazer Waterjet",

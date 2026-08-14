@@ -86,6 +86,11 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://www.fablabvejle.dk/tekstilvinyl.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://www.fablabvejle.dk/wazer.html</loc>
     <lastmod>2026-04-26</lastmod>
     <priority>0.80</priority>
@@ -173,6 +178,11 @@
   <url>
     <loc>https://www.fablabvejle.dk/en/surecutalot.html</loc>
     <lastmod>2026-04-26</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.fablabvejle.dk/en/tekstilvinyl.html</loc>
+    <lastmod>2026-08-14</lastmod>
     <priority>0.70</priority>
   </url>
   <url>

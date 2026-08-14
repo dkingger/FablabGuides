@@ -74,8 +74,47 @@
         }).join("");
     }
 
+    function renderContentBlock(block) {
+        if (block.type === "list") {
+            return ""
+                + "<div class=\"guide-text-block\">"
+                + (block.title ? "<h3>" + escapeHtml(block.title) + "</h3>" : "")
+                + "<ul class=\"guide-checklist\">"
+                + (block.items || []).map(function (item) {
+                    return "<li>" + escapeHtml(item) + "</li>";
+                }).join("")
+                + "</ul>"
+                + "</div>";
+        }
+
+        if (block.type === "table") {
+            return ""
+                + "<div class=\"guide-table-wrap\">"
+                + (block.title ? "<h3>" + escapeHtml(block.title) + "</h3>" : "")
+                + "<table class=\"guide-table\">"
+                + "<thead><tr>" + (block.columns || []).map(function (column) {
+                    return "<th scope=\"col\">" + escapeHtml(column) + "</th>";
+                }).join("") + "</tr></thead>"
+                + "<tbody>" + (block.rows || []).map(function (row) {
+                    return "<tr>" + row.map(function (cell) {
+                        return "<td>" + escapeHtml(cell) + "</td>";
+                    }).join("") + "</tr>";
+                }).join("") + "</tbody>"
+                + "</table>"
+                + (block.note ? "<p class=\"table-note\">" + escapeHtml(block.note) + "</p>" : "")
+                + "</div>";
+        }
+
+        return ""
+            + "<div class=\"guide-text-block\">"
+            + (block.title ? "<h3>" + escapeHtml(block.title) + "</h3>" : "")
+            + (block.text ? "<p>" + escapeHtml(block.text) + "</p>" : "")
+            + "</div>";
+    }
+
     function renderSection(section, index) {
         const slides = section.slides || [];
+        const contentBlocks = section.content || [];
         return ""
             + "<section class=\"section-card interactive\" id=\"section-" + (index + 1) + "\">"
             + "<div class=\"section-header\">"
@@ -85,11 +124,12 @@
             + (section.description ? "<p>" + escapeHtml(section.description) + "</p>" : "")
             + "</div>"
             + "<div class=\"section-meta\">"
-            + "<span class=\"pill\">" + slides.length + " " + t.stepsLabel.toLowerCase() + "</span>"
+            + (slides.length ? "<span class=\"pill\">" + slides.length + " " + t.stepsLabel.toLowerCase() + "</span>" : "")
             + (section.meta ? "<span class=\"pill\">" + escapeHtml(section.meta) + "</span>" : "")
             + "</div>"
             + "</div>"
-            + "<div class=\"carousel-shell\" data-carousel='" + escapeHtml(JSON.stringify(slides)) + "'>"
+            + (contentBlocks.length ? "<div class=\"guide-content-blocks\">" + contentBlocks.map(renderContentBlock).join("") + "</div>" : "")
+            + (slides.length ? "<div class=\"carousel-shell\" data-carousel='" + escapeHtml(JSON.stringify(slides)) + "'>"
             + "<figure class=\"carousel-figure\">"
             + "<img class=\"carousel-image interactive\" src=\"\" alt=\"\" tabindex=\"0\">"
             + "<figcaption class=\"figure-footer\">"
@@ -104,7 +144,7 @@
             + "<button type=\"button\" class=\"button button-primary interactive button-control\" data-action=\"next\">" + t.next + "</button>"
             + "</div>"
             + "</div>"
-            + "</div>"
+            + "</div>" : "")
             + "</section>";
     }
 
