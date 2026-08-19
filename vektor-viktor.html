@@ -57,6 +57,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 .mode-btn.cut .swatch{background:transparent;border:2px solid var(--cut)}
 .mode-btn.green .swatch{background:transparent;border:2px solid var(--green-line)}
 .mode-btn.engrave .swatch{background:var(--engrave);border:1px solid #444}
+.mode-btn.engrave{font-weight:800;color:var(--engrave)}
 .mode-btn.both .swatch{background:var(--engrave);border:2px solid var(--cut)}
 .mode-btn.active{border-color:var(--accent);color:var(--text);background:#e3f5ea}
 .mode-btn:hover{border-color:var(--accent)}
@@ -121,7 +122,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
   <button type="button" id="btnSnap" class="header-btn active" title="Snap til hjørner/midtpunkter (magnet)">
     <svg viewBox="0 0 24 24" width="18" height="18"><path d="M7 7h4v4H7zM13 7h4v4h-4zM7 13h4v4H7zM15 15l4 4M15 19l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
-  <span class="hint">Rød/grøn kant = linje · Sort fyld = graver · Scroll/to fingre = zoom</span>
+  <span class="hint">Rød/grøn kant = linje · Fed sort = tekst/fyld · Scroll/to fingre = zoom</span>
 </header>
 
 
@@ -159,7 +160,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
       <div class="mode-row">
         <button class="mode-btn cut active" data-mode="cut"><div class="swatch"></div>Rød linje</button>
         <button class="mode-btn green" data-mode="green"><div class="swatch"></div>Grøn linje</button>
-        <button class="mode-btn engrave" data-mode="engrave"><div class="swatch"></div>Sort fyld</button>
+        <button class="mode-btn engrave" data-mode="engrave"><div class="swatch"></div>Fed sort</button>
       </div>
     </div>
     <div class="prop-group" id="noSelection">
@@ -240,6 +241,11 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
       </div>
       <button class="btn btn-primary" id="btnArrayApply" style="margin-top:8px">Opret array</button>
     </div>
+    <div class="prop-group hidden" id="groupProps">
+      <label>Gruppering</label>
+      <button class="btn btn-secondary" id="btnGroup" title="Gruppér valgte objekter">Gruppér valgte</button>
+      <button class="btn btn-secondary hidden" id="btnUngroup" title="Opløs den valgte gruppe" style="margin-top:6px">Opløs gruppe</button>
+    </div>
     <div class="prop-group hidden" id="layerOrderProps">
       <label>Lag-rækkefølge</label>
       <div class="prop-row" style="margin-bottom:0">
@@ -281,7 +287,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
   <span id="statusTool">Værktøj: Vælg</span>
   <span id="statusCount">Objekter: 0</span>
   <span id="statusSel">Valgt: 0</span>
-  <span>Rød/grøn = linje · Sort = fyld</span>
+  <span>Rød/grøn = linje · Fed sort = tekst/fyld</span>
   <span class="credit">Tak til Réne fra Fredericia MakerSpace</span>
 </div>
 <div class="modal-overlay" id="traceModal">
@@ -532,6 +538,7 @@ function applyMode(el,m){
   el.setAttribute('stroke-width', strokeFor(m)==='none' ? '0' : String(STROKE_MM));
   el.setAttribute('vector-effect','non-scaling-stroke'); // stroke stays 0.5mm visually even if scaled via transform
   el.setAttribute('pointer-events','all');
+  if(m==='engrave' && el.tagName && el.tagName.toLowerCase()==='text')el.setAttribute('font-weight','800');
 }
 function applyLineMode(el,m){
   el.setAttribute('stroke',m==='engrave'?ENG:strokeFor(m));
@@ -539,6 +546,17 @@ function applyLineMode(el,m){
   el.setAttribute('stroke-width',String(STROKE_MM));
   el.setAttribute('vector-effect','non-scaling-stroke');
   el.setAttribute('pointer-events','all');
+}
+function applyModeRecursive(obj,m){
+  if(!obj || obj.type==='image') return;
+  if(obj.type==='group'){
+    obj.el.querySelectorAll('rect,ellipse,line,path,polygon,text').forEach(el=>{
+      if(el.tagName.toLowerCase()==='line')applyLineMode(el,m);
+      else applyMode(el,m);
+    });
+  } else if(obj.type==='line')applyLineMode(obj.el,m);
+  else applyMode(obj.el,m);
+  obj.data.mode=m;
 }
 const applyModeToEl=applyMode;
 function handleSizeSvg(){
@@ -576,7 +594,7 @@ function setStatus(n){document.getElementById('statusTool').textContent='Værkt�
 function updateCount(){document.getElementById('statusCount').textContent='Objekter: '+objects.length;document.getElementById('statusSel').textContent='Valgt: '+selectedIds.length;renderLayers()}
 function renderLayers(){
   const list=document.getElementById('layerList');list.innerHTML='';
-  const L={rect:'Rektangel',ellipse:'Ellipse',line:'Linje',path:'Sti',polygon:'Polygon',image:'Billede',traced:'Sporing',text:'Tekst'};
+  const L={rect:'Rektangel',ellipse:'Ellipse',line:'Linje',path:'Sti',polygon:'Polygon',image:'Billede',traced:'Sporing',text:'Tekst',group:'Gruppe'};
   objects.slice().reverse().forEach(o=>{
     const item=document.createElement('div');
     item.className='layer-item'+(selectedIds.includes(o.id)?' selected':'');
@@ -618,11 +636,7 @@ document.querySelectorAll('.mode-btn').forEach(btn=>{
     btn.classList.add('active');
     if(selectedIds.length===1){
       const obj=objects.find(o=>o.id===selectedIds[0]);
-      if(obj&&obj.type!=='image'){
-        if(obj.type==='line')applyLineMode(obj.el,currentMode);
-        else applyMode(obj.el,currentMode);
-        obj.data.mode=currentMode;
-      }
+      applyModeRecursive(obj,currentMode);
     }
   });
 });
@@ -646,6 +660,12 @@ function refreshUI(){
   const lop=document.getElementById('layerOrderProps');if(lop)lop.classList.toggle('hidden',n!==1);
   const ap=document.getElementById('alignProps');if(ap)ap.classList.toggle('hidden',n<2);
   const arp=document.getElementById('arrayProps');if(arp)arp.classList.toggle('hidden',n<1);
+  const gp=document.getElementById('groupProps');if(gp)gp.classList.toggle('hidden',n<1);
+  const gb=document.getElementById('btnGroup');if(gb)gb.classList.toggle('hidden',n<2);
+  const ugb=document.getElementById('btnUngroup');if(ugb){
+    const selectedObj=n===1?objects.find(o=>o.id===selectedIds[0]):null;
+    ugb.classList.toggle('hidden',!(selectedObj&&selectedObj.type==='group'));
+  }
 
 
   document.getElementById('traceBtnWrap').classList.add('hidden');
@@ -890,6 +910,71 @@ function addObject(type,el,data,skipUndo){
 
 function deleteSelected(){if(!selectedIds.length)return;pushUndo();selectedIds.forEach(id=>{const i=objects.findIndex(o=>o.id===id);if(i>=0){objects[i].el.remove();objects.splice(i,1)}});deselectAll();updateCount()}
 function clearAll(){if(!objects.length)return;pushUndo();objects.forEach(o=>o.el.remove());objects=[];deselectAll();updateCount()}
+function elementType(el){
+  const stored=el.getAttribute('data-vv-type');
+  if(stored)return stored;
+  const tag=el.tagName.toLowerCase();
+  if(tag==='g')return 'group';
+  if(tag==='rect')return 'rect';
+  if(tag==='ellipse')return 'ellipse';
+  if(tag==='line')return 'line';
+  if(tag==='polygon')return 'polygon';
+  if(tag==='image')return 'image';
+  if(tag==='text')return 'text';
+  return tag==='path'?'path':tag;
+}
+function clearObjectIds(el){
+  el.removeAttribute('data-id');
+  el.querySelectorAll('[data-id]').forEach(child=>child.removeAttribute('data-id'));
+}
+function groupSelected(){
+  if(selectedIds.length<2)return;
+  const selected=objects.filter(o=>selectedIds.includes(o.id));
+  if(selected.length<2)return;
+  pushUndo();
+  const group=document.createElementNS(SVG_NS,'g');
+  selected.forEach(obj=>{
+    obj.el.setAttribute('data-vv-type',obj.type);
+    if(obj.data&&obj.data.mode)obj.el.setAttribute('data-vv-mode',obj.data.mode);
+    clearObjectIds(obj.el);
+    group.appendChild(obj.el);
+  });
+  objects=objects.filter(o=>!selectedIds.includes(o.id));
+  const id=addObject('group',group,{group:true},true);
+  selectedIds=[id];
+  refreshUI();
+}
+function ungroupSelected(){
+  if(selectedIds.length!==1)return;
+  const index=objects.findIndex(o=>o.id===selectedIds[0]);
+  const group=objects[index];
+  if(!group||group.type!=='group')return;
+  pushUndo();
+  const groupTransform=group.el.getAttribute('transform')||'';
+  const children=Array.from(group.el.children);
+  const newIds=[];
+  objects.splice(index,1);
+  group.el.remove();
+  children.forEach(child=>{
+    if(groupTransform){
+      const childTransform=child.getAttribute('transform')||'';
+      child.setAttribute('transform',(groupTransform+' '+childTransform).trim());
+    }
+    const type=elementType(child);
+    const mode=child.getAttribute('data-vv-mode')||detectMode({el:child});
+    child.removeAttribute('data-vv-type');
+    child.removeAttribute('data-vv-mode');
+    const id=uid();
+    child.dataset.id=id;
+    child.style.pointerEvents='all';
+    child.setAttribute('pointer-events','all');
+    objects.push({id,type,el:child,data:{mode}});
+    objectsG.appendChild(child);
+    newIds.push(id);
+  });
+  selectedIds=newIds;
+  refreshUI();
+}
 function applyProps(saveUndo){
   if(selectedIds.length!==1)return;
   const obj=objects.find(o=>o.id===selectedIds[0]);if(!obj)return;
@@ -966,6 +1051,8 @@ document.addEventListener('keydown',e=>{
   if((e.key==='Delete'||e.key==='Backspace')&&!e.target.matches('input'))deleteSelected();
   if(e.key==='v'||e.key==='V')document.querySelector('[data-tool="select"]').click();
   if((e.ctrlKey||e.metaKey) && (e.key==='z'||e.key==='Z')){e.preventDefault();undo();}
+  if((e.ctrlKey||e.metaKey) && !e.shiftKey && (e.key==='g'||e.key==='G')){e.preventDefault();groupSelected();}
+  if((e.ctrlKey||e.metaKey) && e.shiftKey && (e.key==='g'||e.key==='G')){e.preventDefault();ungroupSelected();}
   if((e.key==='Enter')&&tool==='bezier'&&bezierAnchors.length>=2){e.preventDefault();finishBezier();}
 });
 
@@ -2057,6 +2144,8 @@ function sendToBack(){
 
 document.getElementById('btnBringFront')?.addEventListener('click', bringToFront);
 document.getElementById('btnSendBack')?.addEventListener('click', sendToBack);
+document.getElementById('btnGroup')?.addEventListener('click', groupSelected);
+document.getElementById('btnUngroup')?.addEventListener('click', ungroupSelected);
 
 // Array UI
 document.getElementById('arrayTabGrid')?.addEventListener('click',()=>{
