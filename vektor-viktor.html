@@ -11,6 +11,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 header{background:var(--panel);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:16px;height:48px}
 header h1{font-size:1rem;font-weight:600;display:flex;align-items:center;gap:8px}
 header h1 .logo{width:24px;height:24px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff}
+.version-badge{font-size:.68rem;font-weight:700;color:var(--text-dim);background:var(--panel2);border:1px solid var(--border);border-radius:999px;padding:2px 7px;line-height:1}
 header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 .header-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);border-radius:8px;background:var(--panel2);color:var(--text);cursor:pointer;margin-left:8px}
 .header-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -102,7 +103,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 </head>
 <body>
 <header>
-  <h1><span class="logo">V</span> Vektor-Viktor</h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v45</span></h1>
   <button type="button" id="btnUndoHeader" class="header-btn" title="Fortryd (Ctrl+Z)">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 14L4 9l5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h10a7 7 0 1 1 0 14h-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
