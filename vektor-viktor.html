@@ -2850,6 +2850,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
 
 document.getElementById('btnExport').onclick=()=>{
   const clone=svg.cloneNode(true);
+  clone.querySelector('#pageBg')?.remove();
   clone.querySelector('#handles')?.remove();
   clone.querySelector('#temp')?.remove();
   const blob=new Blob([new XMLSerializer().serializeToString(clone)],{type:'image/svg+xml'});
