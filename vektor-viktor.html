@@ -6,7 +6,7 @@
 <title>Vektor-Viktor</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#eef3ef;--panel:#ffffff;--panel2:#f4f8f5;--border:#c9d9ce;--accent:#2d9e5f;--accent-hover:#248a51;--text:#1a2e22;--text-dim:#5a7260;--cut:#e74c3c;--engrave:#111;--success:#1a8f4a}
+:root{--bg:#eef3ef;--panel:#ffffff;--panel2:#f4f8f5;--border:#c9d9ce;--accent:#2d9e5f;--accent-hover:#248a51;--text:#1a2e22;--text-dim:#5a7260;--cut:#e74c3c;--green-line:#2d9e5f;--engrave:#111;--success:#1a8f4a}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;display:flex;flex-direction:column;user-select:none}
 header{background:var(--panel);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:16px;height:48px}
 header h1{font-size:1rem;font-weight:600;display:flex;align-items:center;gap:8px}
@@ -55,6 +55,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 .mode-btn{flex:1;padding:8px 6px;border:2px solid var(--border);border-radius:8px;background:#fff;color:var(--text-dim);font-size:.75rem;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px}
 .mode-btn .swatch{width:28px;height:14px;border-radius:3px}
 .mode-btn.cut .swatch{background:transparent;border:2px solid var(--cut)}
+.mode-btn.green .swatch{background:transparent;border:2px solid var(--green-line)}
 .mode-btn.engrave .swatch{background:var(--engrave);border:1px solid #444}
 .mode-btn.both .swatch{background:var(--engrave);border:2px solid var(--cut)}
 .mode-btn.active{border-color:var(--accent);color:var(--text);background:#e3f5ea}
@@ -120,7 +121,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
   <button type="button" id="btnSnap" class="header-btn active" title="Snap til hjørner/midtpunkter (magnet)">
     <svg viewBox="0 0 24 24" width="18" height="18"><path d="M7 7h4v4H7zM13 7h4v4h-4zM7 13h4v4H7zM15 15l4 4M15 19l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
-  <span class="hint">Rød kant = skær · Sort fyld = graver · Scroll/to fingre = zoom</span>
+  <span class="hint">Rød/grøn kant = linje · Sort fyld = graver · Scroll/to fingre = zoom</span>
 </header>
 
 
@@ -153,6 +154,14 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 
   <div class="props">
     <h2>Egenskaber</h2>
+    <div class="prop-group">
+      <label>Laser-tilstand</label>
+      <div class="mode-row">
+        <button class="mode-btn cut active" data-mode="cut"><div class="swatch"></div>Rød linje</button>
+        <button class="mode-btn green" data-mode="green"><div class="swatch"></div>Grøn linje</button>
+        <button class="mode-btn engrave" data-mode="engrave"><div class="swatch"></div>Sort fyld</button>
+      </div>
+    </div>
     <div class="prop-group" id="noSelection">
       <p style="color:var(--text-dim);font-size:.8rem;line-height:1.45">Vælg et objekt for egenskaber.<br><br>Træk en kasse eller hold <b style="color:var(--text)">Shift</b> for flere. Brug Justering og Boolske operationer når 2+ er valgt.</p>
     </div>
@@ -185,11 +194,6 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
         <input type="number" id="propFontSize" class="prop-select" min="8" max="400" step="1" value="28" style="margin-bottom:0">
         <label style="margin-top:8px">Tekst</label>
         <input type="text" id="propTextContent" class="prop-select" placeholder="Tekst..." style="margin-bottom:0">
-      </div>
-      <label style="margin-top:8px">Laser-tilstand</label>
-      <div class="mode-row">
-        <button class="mode-btn cut active" data-mode="cut"><div class="swatch"></div>Skær</button>
-        <button class="mode-btn engrave" data-mode="engrave"><div class="swatch"></div>Graver</button>
       </div>
       <div id="traceBtnWrap" class="hidden" style="margin-top:10px">
         <button class="btn btn-trace" id="btnTraceImage">Spor til vektor</button>
@@ -277,7 +281,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
   <span id="statusTool">Værktøj: Vælg</span>
   <span id="statusCount">Objekter: 0</span>
   <span id="statusSel">Valgt: 0</span>
-  <span>Rød = skær · Sort = graver</span>
+  <span>Rød/grøn = linje · Sort = fyld</span>
   <span class="credit">Tak til Réne fra Fredericia MakerSpace</span>
 </div>
 <div class="modal-overlay" id="traceModal">
@@ -295,7 +299,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 <input type="file" id="imageFile" accept="image/*" class="hidden">
 <script>
 const SVG_NS='http://www.w3.org/2000/svg';
-const CUT='#e74c3c', ENG='#111111', PREV='rgba(17,17,17,0.15)';
+const CUT='#e74c3c', GREEN='#2d9e5f', ENG='#111111', PREV='rgba(17,17,17,0.15)';
 const STROKE_MM = 0.5; // always 0.5 mm stroke
 const SNAP_MM = 3; // snap distance in mm
 
@@ -519,14 +523,21 @@ document.getElementById('pageSize')?.addEventListener('change', e => setPageSize
 
 
 function uid(){return 'obj'+(nextId++)}
-function strokeFor(m){return m==='engrave'?'none':CUT}
-function fillFor(m){return m==='cut'?'none':ENG}
+function strokeFor(m){return m==='engrave'?'none':(m==='green'?GREEN:CUT)}
+function fillFor(m){return m==='engrave'?ENG:'none'}
 function applyMode(el,m){
   el.setAttribute('stroke',strokeFor(m));
   const f=fillFor(m);
   el.setAttribute('fill',f==='none'?'transparent':f);
   el.setAttribute('stroke-width', strokeFor(m)==='none' ? '0' : String(STROKE_MM));
   el.setAttribute('vector-effect','non-scaling-stroke'); // stroke stays 0.5mm visually even if scaled via transform
+  el.setAttribute('pointer-events','all');
+}
+function applyLineMode(el,m){
+  el.setAttribute('stroke',m==='engrave'?ENG:strokeFor(m));
+  el.setAttribute('fill','none');
+  el.setAttribute('stroke-width',String(STROKE_MM));
+  el.setAttribute('vector-effect','non-scaling-stroke');
   el.setAttribute('pointer-events','all');
 }
 const applyModeToEl=applyMode;
@@ -607,8 +618,11 @@ document.querySelectorAll('.mode-btn').forEach(btn=>{
     btn.classList.add('active');
     if(selectedIds.length===1){
       const obj=objects.find(o=>o.id===selectedIds[0]);
-      if(obj&&obj.type!=='image'&&obj.type!=='line'){applyMode(obj.el,currentMode);obj.data.mode=currentMode}
-      else if(obj&&obj.type==='line'){obj.el.setAttribute('stroke',CUT);obj.el.setAttribute('fill','none');obj.el.setAttribute('stroke-width',String(STROKE_MM))}
+      if(obj&&obj.type!=='image'){
+        if(obj.type==='line')applyLineMode(obj.el,currentMode);
+        else applyMode(obj.el,currentMode);
+        obj.data.mode=currentMode;
+      }
     }
   });
 });
@@ -650,7 +664,10 @@ function refreshUI(){
 function detectMode(obj){
   const f=obj.el.getAttribute('fill');
   const hf=f&&f!=='none'&&f!=='transparent';
-  if(hf)return 'engrave';return 'cut';
+  if(hf)return 'engrave';
+  const s=(obj.el.getAttribute('stroke')||'').toLowerCase();
+  if(s===GREEN.toLowerCase())return 'green';
+  return 'cut';
 }
 function showProps(obj){
   document.getElementById('objType').textContent=(obj.type||'').toUpperCase();
@@ -863,7 +880,7 @@ function addObject(type,el,data,skipUndo){
   // Don't re-apply mode if element already has stroke/fill from clone
   if(!skipUndo){
     if(type!=='image'&&type!=='line'&&type!=='text'&&type!=='path')applyMode(el,mode);
-    else if(type==='line'){el.setAttribute('stroke',CUT);el.setAttribute('fill','none');el.setAttribute('stroke-width',String(STROKE_MM))}
+    else if(type==='line')applyLineMode(el,mode);
   }
   objects.push({id,type,el,data:Object.assign({mode},data||{})});
   objectsG.appendChild(el);
@@ -1057,9 +1074,7 @@ function onDown(e){
     isDrawing=true;
     freehandPts=[pt];
     currentPath=document.createElementNS(SVG_NS,'path');
-    currentPath.setAttribute('fill','none');
-    currentPath.setAttribute('stroke',CUT);
-    currentPath.setAttribute('stroke-width',String(STROKE_MM));
+    applyLineMode(currentPath,currentMode);
     currentPath.setAttribute('stroke-linecap','round');
     currentPath.setAttribute('stroke-linejoin','round');
     currentPath.setAttribute('d','M '+pt.x+' '+pt.y);
@@ -1080,10 +1095,7 @@ function onDown(e){
     bezierHandle={idx:bezierAnchors.length-1, start:pt};
     if(!currentPath){
       currentPath=document.createElementNS(SVG_NS,'path');
-      currentPath.setAttribute('fill','none');
-      currentPath.setAttribute('stroke',CUT);
-      currentPath.setAttribute('stroke-width',String(STROKE_MM));
-      currentPath.setAttribute('vector-effect','non-scaling-stroke');
+      applyLineMode(currentPath,currentMode);
       currentPath.setAttribute('stroke-linecap','round');
       currentPath.setAttribute('stroke-linejoin','round');
       tempG.appendChild(currentPath);
@@ -1102,10 +1114,7 @@ function onDown(e){
     if(!penPoints.length){
       penPoints.push(pt);
       currentPath=document.createElementNS(SVG_NS,'path');
-      currentPath.setAttribute('fill','none');
-      currentPath.setAttribute('stroke',CUT);
-      currentPath.setAttribute('stroke-width',String(STROKE_MM));
-      currentPath.setAttribute('vector-effect','non-scaling-stroke');
+      applyLineMode(currentPath,currentMode);
       currentPath.setAttribute('stroke-linecap','round');
       currentPath.setAttribute('stroke-linejoin','round');
       tempG.appendChild(currentPath);
@@ -1122,15 +1131,15 @@ function onDown(e){
       isDrawing=true;penPoints=[pt];
       currentPath=document.createElementNS(SVG_NS,'polygon');
       applyMode(currentPath,currentMode);
-      if(currentMode!=='cut')currentPath.setAttribute('fill',PREV);
+      if(currentMode==='engrave')currentPath.setAttribute('fill',PREV);
       tempG.appendChild(currentPath);
     } else penPoints.push(pt);
     updatePoly();return;
   }
   isDrawing=true;let el;
-  if(tool==='rect'){el=document.createElementNS(SVG_NS,'rect');el.setAttribute('x',pt.x);el.setAttribute('y',pt.y);el.setAttribute('width',0);el.setAttribute('height',0);applyMode(el,currentMode);if(currentMode!=='cut')el.setAttribute('fill',PREV)}
-  else if(tool==='ellipse'){el=document.createElementNS(SVG_NS,'ellipse');el.setAttribute('cx',pt.x);el.setAttribute('cy',pt.y);el.setAttribute('rx',0);el.setAttribute('ry',0);applyMode(el,currentMode);if(currentMode!=='cut')el.setAttribute('fill',PREV)}
-  else if(tool==='line'){el=document.createElementNS(SVG_NS,'line');el.setAttribute('x1',pt.x);el.setAttribute('y1',pt.y);el.setAttribute('x2',pt.x);el.setAttribute('y2',pt.y);el.setAttribute('stroke',CUT);el.setAttribute('stroke-width',String(STROKE_MM));el.setAttribute('vector-effect','non-scaling-stroke');el.setAttribute('stroke-linecap','round')}
+  if(tool==='rect'){el=document.createElementNS(SVG_NS,'rect');el.setAttribute('x',pt.x);el.setAttribute('y',pt.y);el.setAttribute('width',0);el.setAttribute('height',0);applyMode(el,currentMode);if(currentMode==='engrave')el.setAttribute('fill',PREV)}
+  else if(tool==='ellipse'){el=document.createElementNS(SVG_NS,'ellipse');el.setAttribute('cx',pt.x);el.setAttribute('cy',pt.y);el.setAttribute('rx',0);el.setAttribute('ry',0);applyMode(el,currentMode);if(currentMode==='engrave')el.setAttribute('fill',PREV)}
+  else if(tool==='line'){el=document.createElementNS(SVG_NS,'line');el.setAttribute('x1',pt.x);el.setAttribute('y1',pt.y);el.setAttribute('x2',pt.x);el.setAttribute('y2',pt.y);applyLineMode(el,currentMode);el.setAttribute('stroke-linecap','round')}
   if(el){currentPath=el;tempG.appendChild(el)}
 }
 
@@ -1321,14 +1330,11 @@ function onUp(e){
         for(let i=1;i<simplified.length;i++) d+=' L '+simplified[i].x.toFixed(2)+' '+simplified[i].y.toFixed(2);
         if(closed) d+=' Z';
         path.setAttribute('d',d);
-        path.setAttribute('fill', closed ? (currentMode==='cut'?'transparent':ENG) : 'none');
-        path.setAttribute('stroke',CUT);
-        path.setAttribute('stroke-width',String(STROKE_MM));
-        path.setAttribute('vector-effect','non-scaling-stroke');
         path.setAttribute('stroke-linecap','round');
         path.setAttribute('stroke-linejoin','round');
         if(closed) applyMode(path, currentMode);
-        addObject('path',path,{mode: closed ? currentMode : 'cut'});
+        else applyLineMode(path, currentMode);
+        addObject('path',path,{mode: currentMode});
       } else if(currentPath) currentPath.remove();
     } else if(currentPath) currentPath.remove();
     isDrawing=false; currentPath=null; freehandPts=[];
@@ -1470,13 +1476,13 @@ function startInlineText(svgP, clientX, clientY, existingObj){
     el.setAttribute('font-weight','bold');
     el.textContent = '';
     applyMode(el, currentMode);
-    if(currentMode==='cut'){
-      el.setAttribute('fill','transparent');
-      el.setAttribute('stroke', CUT);
-      el.setAttribute('stroke-width',String(STROKE_MM));
-    } else {
+    if(currentMode==='engrave'){
       el.setAttribute('fill', ENG);
       el.setAttribute('stroke','none');
+    } else {
+      el.setAttribute('fill','transparent');
+      el.setAttribute('stroke', strokeFor(currentMode));
+      el.setAttribute('stroke-width',String(STROKE_MM));
     }
     tempG.appendChild(el);
     textEditEl = el;
@@ -1520,13 +1526,13 @@ function commitInlineText(){
   el.textContent = txt;
   if(el.parentNode) el.parentNode.removeChild(el);
   applyMode(el, currentMode);
-  if(currentMode==='cut'){
-    el.setAttribute('fill','transparent');
-    el.setAttribute('stroke', CUT);
-    el.setAttribute('stroke-width',String(STROKE_MM));
-  } else {
+  if(currentMode==='engrave'){
     el.setAttribute('fill', ENG);
     el.setAttribute('stroke','none');
+  } else {
+    el.setAttribute('fill','transparent');
+    el.setAttribute('stroke', strokeFor(currentMode));
+    el.setAttribute('stroke-width',String(STROKE_MM));
   }
   addObject('text', el, { mode: currentMode, text: txt });
 }
@@ -1568,14 +1574,11 @@ function finishPen(closed){
   for(let i=1;i<penPoints.length;i++) d+=' L '+penPoints[i].x+' '+penPoints[i].y;
   if(closed) d+=' Z';
   path.setAttribute('d',d);
-  path.setAttribute('stroke',CUT);
-  path.setAttribute('stroke-width',String(STROKE_MM));
-  path.setAttribute('vector-effect','non-scaling-stroke');
   path.setAttribute('stroke-linecap','round');
   path.setAttribute('stroke-linejoin','round');
   if(closed){ applyMode(path, currentMode); }
-  else { path.setAttribute('fill','none'); }
-  addObject('path',path,{mode: closed?currentMode:'cut'});
+  else { applyLineMode(path, currentMode); }
+  addObject('path',path,{mode: currentMode});
   cancelDraw();
 }
 function updatePoly(ex){if(!currentPath)return;const pts=penPoints.map(p=>p.x+','+p.y);if(ex)pts.push(ex.x+','+ex.y);currentPath.setAttribute('points',pts.join(' '))}
@@ -1662,14 +1665,11 @@ function finishBezier(closed){
     d+=' C '+c1.x.toFixed(2)+' '+c1.y.toFixed(2)+' '+c2.x.toFixed(2)+' '+c2.y.toFixed(2)+' '+first.x.toFixed(2)+' '+first.y.toFixed(2)+' Z';
   }
   path.setAttribute('d',d);
-  path.setAttribute('stroke',CUT);
-  path.setAttribute('stroke-width',String(STROKE_MM));
-  path.setAttribute('vector-effect','non-scaling-stroke');
   path.setAttribute('stroke-linecap','round');
   path.setAttribute('stroke-linejoin','round');
   if(closed) applyMode(path, currentMode);
-  else path.setAttribute('fill','none');
-  addObject('path',path,{mode: closed?currentMode:'cut', bezier:true});
+  else applyLineMode(path, currentMode);
+  addObject('path',path,{mode: currentMode, bezier:true});
   cancelDraw();
 }
 
