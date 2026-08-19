@@ -140,7 +140,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
     <button class="tool-btn" data-tool="text"><svg viewBox="0 0 24 24"><path d="M4 7V5h16v2M12 5v14M9 19h6"/></svg><span class="tip">Tekst</span></button>
 
     <div class="tool-sep"></div>
-    <button class="tool-btn" data-tool="image"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M3 16l5-4 4 3 5-5 4 4"/></svg><span class="tip">Importer billede</span></button>
+    <button class="tool-btn" data-tool="image"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M3 16l5-4 4 3 5-5 4 4"/></svg><span class="tip">Importer billede/SVG</span></button>
     <div class="tool-sep"></div>
     <button class="tool-btn" data-tool="delete"><svg viewBox="0 0 24 24"><path d="M5 7h14M9 7V5h6v2M8 7l1 13h6l1-13"/></svg><span class="tip">Slet</span></button>
     <button class="tool-btn" data-tool="clear"><svg viewBox="0 0 24 24"><path d="M4 6h16M8 6V4h8v2M6 6l1 14h10l1-14"/></svg><span class="tip">Ryd alt</span></button>
@@ -302,7 +302,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
     </div>
   </div>
 </div>
-<input type="file" id="imageFile" accept="image/*" class="hidden">
+<input type="file" id="imageFile" accept="image/*,.svg" class="hidden">
 <script>
 const SVG_NS='http://www.w3.org/2000/svg';
 const CUT='#e74c3c', GREEN='#2d9e5f', ENG='#111111', PREV='rgba(17,17,17,0.15)';
@@ -899,7 +899,7 @@ function addObject(type,el,data,skipUndo){
   const mode=(data&&data.mode)||currentMode;
   // Don't re-apply mode if element already has stroke/fill from clone
   if(!skipUndo){
-    if(type!=='image'&&type!=='line'&&type!=='text'&&type!=='path')applyMode(el,mode);
+    if(type!=='image'&&type!=='line'&&type!=='text'&&type!=='path'&&type!=='group')applyMode(el,mode);
     else if(type==='line')applyLineMode(el,mode);
   }
   objects.push({id,type,el,data:Object.assign({mode},data||{})});
@@ -2167,8 +2167,49 @@ document.getElementById('btnArrayApply')?.addEventListener('click',()=>{
 });
 
 
-document.getElementById('imageFile').addEventListener('change',e=>{
-  const file=e.target.files[0];if(!file)return;
+function sanitizeImportedSvgNode(node){
+  if(node.nodeType!==1)return false;
+  const tag=node.tagName.toLowerCase();
+  if(['script','foreignobject','iframe','object','embed','audio','video','canvas'].includes(tag))return false;
+  Array.from(node.attributes||[]).forEach(attr=>{
+    const name=attr.name.toLowerCase();
+    const value=attr.value.trim().toLowerCase();
+    if(name.startsWith('on') || value.startsWith('javascript:'))node.removeAttribute(attr.name);
+  });
+  Array.from(node.children).forEach(child=>{
+    if(!sanitizeImportedSvgNode(child))child.remove();
+  });
+  return true;
+}
+function importSvgText(text){
+  const doc=new DOMParser().parseFromString(text,'image/svg+xml');
+  if(doc.querySelector('parsererror')){alert('SVG-filen kunne ikke læses.');return;}
+  const sourceSvg=doc.documentElement;
+  if(!sourceSvg || sourceSvg.tagName.toLowerCase()!=='svg'){alert('Filen er ikke en gyldig SVG.');return;}
+  sanitizeImportedSvgNode(sourceSvg);
+  const group=document.createElementNS(SVG_NS,'g');
+  group.setAttribute('data-vv-import','svg');
+  ['fill','stroke','stroke-width','stroke-linecap','stroke-linejoin','fill-rule','clip-rule','font-family','font-size'].forEach(attr=>{
+    if(sourceSvg.hasAttribute(attr))group.setAttribute(attr,sourceSvg.getAttribute(attr));
+  });
+  Array.from(sourceSvg.childNodes).forEach(node=>{
+    if(node.nodeType===1)group.appendChild(document.importNode(node,true));
+  });
+  if(!group.children.length){alert('SVG-filen indeholder ingen importerbare vektorobjekter.');return;}
+  clearObjectIds(group);
+  tempG.appendChild(group);
+  let bb;
+  try{bb=group.getBBox();}catch(_){bb=null;}
+  if(!bb || bb.width<=0 || bb.height<=0){group.remove();alert('SVG-filen indeholder ingen synlige vektorobjekter.');return;}
+  const maxW=BASE_VB.w*0.72, maxH=BASE_VB.h*0.72;
+  const scale=Math.min(1,maxW/bb.width,maxH/bb.height);
+  const x=(BASE_VB.w-bb.width*scale)/2;
+  const y=(BASE_VB.h-bb.height*scale)/2;
+  group.setAttribute('transform','translate('+x+','+y+') scale('+scale+') translate('+(-bb.x)+','+(-bb.y)+')');
+  addObject('group',group,{group:true,importedSvg:true});
+  document.querySelector('[data-tool="select"]').click();
+}
+function importRasterFile(file){
   const reader=new FileReader();
   reader.onload=ev=>{
     const img=new Image();
@@ -2184,7 +2225,18 @@ document.getElementById('imageFile').addEventListener('change',e=>{
     };
     img.src=ev.target.result;
   };
-  reader.readAsDataURL(file);e.target.value='';
+  reader.readAsDataURL(file);
+}
+document.getElementById('imageFile').addEventListener('change',e=>{
+  const file=e.target.files[0];if(!file)return;
+  if(file.type==='image/svg+xml' || /\.svg$/i.test(file.name)){
+    const reader=new FileReader();
+    reader.onload=ev=>importSvgText(String(ev.target.result||''));
+    reader.readAsText(file);
+  } else {
+    importRasterFile(file);
+  }
+  e.target.value='';
 });
 
     // ========== IMAGE TRACE ==========
