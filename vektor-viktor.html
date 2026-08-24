@@ -288,7 +288,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
     <div class="prop-group hidden" id="offsetProps">
       <label>Forskudt linje</label>
       <label class="offset-options"><input type="checkbox" id="offsetExpand" checked><span>Udvid udad</span></label>
-      <div class="offset-options"><span>Afstand (mm)</span><input type="number" id="offsetDistance" min="0.01" max="100" step="0.01" value="0.10"></div>
+      <div class="offset-options"><span>Afstand (mm)</span><input type="number" id="offsetDistance" min="0.01" max="100" step="0.01" value="5"></div>
       <div class="offset-options"><span>Hjørner</span><select id="offsetJoin"><option value="round">Runde</option><option value="miter">Skarpe</option><option value="bevel">Affasede</option></select></div>
       <div class="offset-options"><span>Mitergrænse</span><input type="number" id="offsetMiter" min="1" max="20" step="0.1" value="4"></div>
       <div class="offset-options"><span>Huller</span><select id="offsetHoles"><option value="remove">Fjern</option><option value="keep">Behold</option></select></div>
@@ -2532,7 +2532,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
     }
 
     function readOffsetSettings(){
-      const distance=Math.max(0.01,Math.min(100,parseFloat(document.getElementById('offsetDistance')?.value)||0.1));
+      const distance=Math.max(0.01,Math.min(100,parseFloat(document.getElementById('offsetDistance')?.value)||5));
       const join=document.getElementById('offsetJoin')?.value||'round';
       const miter=Math.max(1,Math.min(20,parseFloat(document.getElementById('offsetMiter')?.value)||4));
       const holes=document.getElementById('offsetHoles')?.value||'remove';
