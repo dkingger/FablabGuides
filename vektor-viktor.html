@@ -81,6 +81,11 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 .modal{background:var(--panel);border-radius:12px;padding:20px;width:90%;max-width:480px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.2)}
 .modal h2{font-size:1rem;margin-bottom:8px}
 .modal p{color:var(--text-dim);margin-bottom:12px;font-size:.85rem}
+.about-modal{position:relative;max-width:420px}
+.about-modal img{display:block;width:100%;max-height:220px;object-fit:contain;border:1px solid var(--border);border-radius:8px;margin:0 auto 14px;background:#f0f0f0}
+.about-modal p{line-height:1.5}
+.modal-close{position:absolute;top:8px;right:8px;width:30px;height:30px;border:0;border-radius:6px;background:transparent;color:var(--text-dim);font-size:1.35rem;line-height:1;cursor:pointer}
+.modal-close:hover{background:var(--panel2);color:var(--text)}
 .preview-box{width:100%;height:220px;background:#f0f0f0;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:14px}
 .preview-box canvas{max-width:100%;max-height:100%}
 .slider-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
@@ -154,6 +159,8 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
     <div class="tool-sep"></div>
     <button class="tool-btn" data-tool="delete" title="Slet" aria-label="Slet valgte objekter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M9 7V5h6v2M8 7l1 13h6l1-13"/></svg><span class="tip">Slet</span></button>
     <button class="tool-btn" data-tool="clear" title="Ryd alt" aria-label="Ryd alle objekter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M8 6V4h8v2M6 6l1 14h10l1-14"/></svg><span class="tip">Ryd alt</span></button>
+    <div class="tool-sep"></div>
+    <button class="tool-btn" data-tool="about" title="Om Vektor-Viktor" aria-label="Om Vektor-Viktor"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 10.5v5"/><circle cx="12" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg><span class="tip">Om Vektor-Viktor</span></button>
   </div>
   <div class="canvas-wrap">
     <svg id="drawSvg" width="841" height="595" viewBox="0 0 297 210">
@@ -305,6 +312,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 
     <div class="prop-group"><label>Objekter</label><div class="layer-list" id="layerList"></div></div>
     <button class="btn btn-primary" id="btnExport">Eksporter SVG</button>
+    <button class="btn btn-secondary" id="btnExportLaser" title="Konverterer al tekst til vektoromrids og gemmer en laserfil">Eksporter til laser</button>
     <button class="btn btn-secondary" id="btnZoomFit">Nulstil zoom</button>
   </div>
 </div>
@@ -324,6 +332,17 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
     <div class="modal-actions">
       <button class="btn btn-secondary" id="traceCancel">Annuller</button>
       <button class="btn btn-primary" id="traceDo">Spor nu</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="aboutModal" aria-hidden="true">
+  <div class="modal about-modal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle">
+    <button type="button" class="modal-close" id="aboutCloseIcon" aria-label="Luk Om-vinduet">×</button>
+    <img src="billeder/vektor-viktor.png" alt="Vektor-Viktor">
+    <h2 id="aboutModalTitle">Om Vektor-Viktor</h2>
+    <p>Vektor-Viktor er oprindeligt udviklet af <strong>Rene Gade</strong> fra Fredericia MakerSpace. Værktøjet er senere udbygget med tilføjelser af <strong>Johannes van Roest Dahl</strong> fra FabLab Spinderihallerne.</p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="aboutClose">Luk</button>
     </div>
   </div>
 </div>
@@ -630,10 +649,22 @@ function renderLayers(){
   });
 }
 
+const aboutModal=document.getElementById('aboutModal');
+function setAboutOpen(open){
+  if(!aboutModal)return;
+  aboutModal.classList.toggle('show',open);
+  aboutModal.setAttribute('aria-hidden',String(!open));
+  if(open)document.getElementById('aboutClose')?.focus();
+}
+document.getElementById('aboutClose')?.addEventListener('click',()=>setAboutOpen(false));
+document.getElementById('aboutCloseIcon')?.addEventListener('click',()=>setAboutOpen(false));
+aboutModal?.addEventListener('click',e=>{if(e.target===aboutModal)setAboutOpen(false)});
+
 document.getElementById('btnUndoHeader')?.addEventListener('click',()=>undo());
 document.querySelectorAll('.tool-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const t=btn.dataset.tool;
+    if(t==='about'){setAboutOpen(true);return}
     if(t==='delete'){deleteSelected();return}
     if(t==='undo'){undo();return}
     if(t==='clear'){if(confirm('Slet alle objekter?'))clearAll();return}
@@ -1079,7 +1110,8 @@ document.addEventListener('mousemove',onMove);
 document.addEventListener('mouseup',onUp);
 svg.addEventListener('dblclick',onDbl);
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){cancelDraw();deselectAll();nodeEdit=null;nodeDrag=null;refreshUI()}
+  if(e.key==='Escape'){setAboutOpen(false);cancelDraw();deselectAll();nodeEdit=null;nodeDrag=null;refreshUI()}
+  if(aboutModal?.classList.contains('show'))return;
   if((e.key==='Delete'||e.key==='Backspace')&&!e.target.matches('input'))deleteSelected();
   if(e.key==='v'||e.key==='V')document.querySelector('[data-tool="select"]').click();
   if((e.ctrlKey||e.metaKey) && (e.key==='z'||e.key==='Z')){e.preventDefault();undo();}
@@ -3164,13 +3196,176 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       if (!added) alert('Resultatet blev tomt efter filtrering.');
     }
 
-document.getElementById('btnExport').onclick=()=>{
+function prepareSvgExport(){
   const clone=svg.cloneNode(true);
   clone.querySelector('#pageBg')?.remove();
   clone.querySelector('#handles')?.remove();
   clone.querySelector('#temp')?.remove();
-  const blob=new Blob([new XMLSerializer().serializeToString(clone)],{type:'image/svg+xml'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tegning-'+pageSize+'.svg';a.click();
+  clone.setAttribute('xmlns',SVG_NS);
+  clone.setAttribute('xmlns:xlink','http://www.w3.org/1999/xlink');
+  return clone;
+}
+
+function downloadSvg(root,filename){
+  const blob=new Blob([new XMLSerializer().serializeToString(root)],{type:'image/svg+xml'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=filename;
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function getSvgStyleValue(el,name,fallback){
+  // SVG presentation attributes inherit, as do values in inline style rules.
+  // Read those first so imported SVGs work even when the temporary export root
+  // is not attached to the document.
+  for(let node=el;node&&node.nodeType===1;node=node.parentElement){
+    if(node.hasAttribute(name))return node.getAttribute(name).trim();
+    const style=node.getAttribute('style')||'';
+    const match=style.match(new RegExp('(?:^|;)\\s*'+name+'\\s*:\\s*([^;]+)','i'));
+    if(match)return match[1].trim();
+  }
+  try{
+    const computed=getComputedStyle(el).getPropertyValue(name);
+    if(computed)return computed.trim();
+  }catch(_){ }
+  return fallback;
+}
+
+function firstSvgNumber(value,fallback){
+  const match=String(value??'').match(/[-+]?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/i);
+  return match?parseFloat(match[0]):fallback;
+}
+
+function textFontString(el,fontSize,scale){
+  const style=getSvgStyleValue(el,'font-style','normal');
+  const variant=getSvgStyleValue(el,'font-variant','normal');
+  const weight=getSvgStyleValue(el,'font-weight','normal');
+  const family=getSvgStyleValue(el,'font-family','Arial, sans-serif');
+  return [style,variant,weight,(fontSize*scale)+'px',family].join(' ');
+}
+
+function measureCanvasText(ctx,text,fontSize,scale,el,letterSpacing){
+  ctx.font=textFontString(el,fontSize,scale);
+  const metrics=ctx.measureText(text);
+  const spacing=letterSpacing*(Math.max(0,[...text].length-1));
+  return {
+    width:metrics.width+spacing,
+    ascent:metrics.actualBoundingBoxAscent||fontSize*0.8,
+    descent:metrics.actualBoundingBoxDescent||fontSize*0.2
+  };
+}
+
+function drawCanvasTextWithSpacing(ctx,text,x,y,letterSpacing,scale){
+  if(!letterSpacing){ctx.fillText(text,x*scale,y*scale);return;}
+  let cursor=x*scale;
+  [...text].forEach(char=>{
+    ctx.fillText(char,cursor,y*scale);
+    cursor+=ctx.measureText(char).width+letterSpacing*scale;
+  });
+}
+
+function textOutlinePath(textEl){
+  const text=(textEl.textContent||'').replace(/\r\n?/g,'\n');
+  if(!text.trim())return null;
+
+  const rawSize=getSvgStyleValue(textEl,'font-size','28');
+  const fontSize=Math.max(0.1,firstSvgNumber(rawSize,28));
+  const letterSpacing=firstSvgNumber(getSvgStyleValue(textEl,'letter-spacing','0'),0);
+  const lines=text.split('\n');
+  const lineHeight=fontSize*1.2;
+  const x=firstSvgNumber(textEl.getAttribute('x'),0);
+  const y=firstSvgNumber(textEl.getAttribute('y'),0);
+  const anchor=getSvgStyleValue(textEl,'text-anchor','start').toLowerCase();
+  const baseline=getSvgStyleValue(textEl,'dominant-baseline','alphabetic').toLowerCase();
+
+  const measureCanvas=document.createElement('canvas').getContext('2d');
+  if(!measureCanvas)return null;
+  const measurements=lines.map(line=>measureCanvasText(measureCanvas,line,fontSize,1,textEl,letterSpacing));
+  const maxWidth=Math.max(0,...measurements.map(m=>m.width));
+  const ascent=Math.max(fontSize*0.8,...measurements.map(m=>m.ascent));
+  const descent=Math.max(fontSize*0.2,...measurements.map(m=>m.descent));
+  const baselineOffset=(baseline==='middle'||baseline==='central')?(ascent-descent)/2:
+    (baseline==='hanging'||baseline==='text-before-edge')?ascent:0;
+  const firstBaseline=y+baselineOffset;
+  const startX=anchor==='middle'?x-maxWidth/2:anchor==='end'?x-maxWidth:x;
+  const padding=Math.max(2,1.5/fontSize*28);
+  const minX=startX-padding;
+  const minY=firstBaseline-ascent-padding;
+  const maxX=startX+maxWidth+padding;
+  const maxY=firstBaseline+(lines.length-1)*lineHeight+descent+padding;
+
+  // Render at several pixels per SVG unit and trace the resulting glyph mask.
+  // This produces real SVG paths while keeping the code self-contained.
+  const maxPixels=5200;
+  const scale=Math.min(10,Math.max(3,Math.min(maxPixels/Math.max(1,maxX-minX),maxPixels/Math.max(1,maxY-minY))));
+  const width=Math.max(4,Math.ceil((maxX-minX)*scale));
+  const height=Math.max(4,Math.ceil((maxY-minY)*scale));
+  if(width>maxPixels||height>maxPixels||width*height>18000000)return null;
+
+  const canvas=document.createElement('canvas');
+  canvas.width=width;canvas.height=height;
+  const ctx=canvas.getContext('2d',{willReadFrequently:true});
+  if(!ctx)return null;
+  ctx.fillStyle='#fff';ctx.fillRect(0,0,width,height);
+  ctx.fillStyle='#000';
+  ctx.textBaseline='alphabetic';
+  lines.forEach((line,index)=>{
+    const metrics=measurements[index];
+    const lineX=anchor==='middle'?x-metrics.width/2:anchor==='end'?x-metrics.width:x;
+    ctx.font=textFontString(textEl,fontSize,scale);
+    drawCanvasTextWithSpacing(ctx,line,lineX-minX,firstBaseline+index*lineHeight-minY,letterSpacing,scale);
+  });
+
+  const contours=findContours(ctx.getImageData(0,0,width,height),200);
+  const parts=[];
+  contours.forEach(contour=>{
+    if(contour.length<4)return;
+    const simplified=rdpSimplify(contour,0.6);
+    if(simplified.length<3)return;
+    let d='M '+(simplified[0].x/scale+minX).toFixed(3)+' '+(simplified[0].y/scale+minY).toFixed(3);
+    for(let i=1;i<simplified.length;i++){
+      d+=' L '+(simplified[i].x/scale+minX).toFixed(3)+' '+(simplified[i].y/scale+minY).toFixed(3);
+    }
+    parts.push(d+' Z');
+  });
+  if(!parts.length)return null;
+
+  const path=document.createElementNS(SVG_NS,'path');
+  Array.from(textEl.attributes).forEach(attr=>{
+    if(!['x','y','dx','dy','rotate','textLength','lengthAdjust','text-anchor','dominant-baseline'].includes(attr.name)){
+      path.setAttribute(attr.name,attr.value);
+    }
+  });
+  path.setAttribute('d',parts.join(' '));
+  path.setAttribute('fill-rule',textEl.getAttribute('fill-rule')||'evenodd');
+  return path;
+}
+
+function convertTextsToOutlines(root){
+  const textNodes=Array.from(root.querySelectorAll('text'));
+  let converted=0,failed=0;
+  textNodes.forEach(textEl=>{
+    if(!textEl.textContent.trim()){textEl.remove();return;}
+    const path=textOutlinePath(textEl);
+    if(path){textEl.replaceWith(path);converted++;}
+    else failed++;
+  });
+  return {total:textNodes.length,converted,failed};
+}
+
+document.getElementById('btnExport').onclick=()=>{
+  downloadSvg(prepareSvgExport(),'tegning-'+pageSize+'.svg');
+};
+document.getElementById('btnExportLaser').onclick=()=>{
+  const clone=prepareSvgExport();
+  const result=convertTextsToOutlines(clone);
+  if(result.failed){
+    alert('Kunne ikke konvertere '+result.failed+' tekstobjekt(er) til omrids. Filen blev ikke gemt.');
+    return;
+  }
+  downloadSvg(clone,'tegning-'+pageSize+'-laser.svg');
 };
 document.getElementById('btnZoomFit').onclick=()=>zoomReset();
 setPageSize('A4');
