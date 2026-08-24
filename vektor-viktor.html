@@ -99,6 +99,11 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 .array-tabs{display:flex;gap:4px;margin-bottom:8px}
 .array-tabs button{flex:1;padding:6px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text-dim);font-size:.75rem;font-weight:600;cursor:pointer}
 .array-tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.offset-options{display:flex;align-items:center;gap:6px;margin-bottom:7px;font-size:.75rem;color:var(--text-dim)}
+.offset-options input[type=checkbox]{accent-color:var(--accent)}
+.offset-options input[type=number],.offset-options select{flex:1;min-width:0;padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text);font-size:.8rem}
+.offset-options input[type=number]:focus,.offset-options select:focus{outline:none;border-color:var(--accent)}
+.offset-help{font-size:.68rem;color:var(--text-dim);line-height:1.35;margin-top:6px}
 
 </style>
 </head>
@@ -107,7 +112,7 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FablabGuides" aria-label="Tilbage til FablabGuides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.45</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.46</span></h1>
   <button type="button" id="btnUndoHeader" class="header-btn" title="Fortryd (Ctrl+Z)">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 14L4 9l5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h10a7 7 0 1 1 0 14h-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
@@ -280,6 +285,21 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
       </button>
     </div>
 
+    <div class="prop-group hidden" id="offsetProps">
+      <label>Forskudt linje</label>
+      <label class="offset-options"><input type="checkbox" id="offsetExpand" checked><span>Udvid udad</span></label>
+      <div class="offset-options"><span>Afstand (mm)</span><input type="number" id="offsetDistance" min="0.01" max="100" step="0.01" value="0.10"></div>
+      <div class="offset-options"><span>Hjørner</span><select id="offsetJoin"><option value="round">Runde</option><option value="miter">Skarpe</option><option value="bevel">Affasede</option></select></div>
+      <div class="offset-options"><span>Mitergrænse</span><input type="number" id="offsetMiter" min="1" max="20" step="0.1" value="4"></div>
+      <div class="offset-options"><span>Huller</span><select id="offsetHoles"><option value="remove">Fjern</option><option value="keep">Behold</option></select></div>
+      <div class="offset-options"><span>Linjetype</span><select id="offsetMode"><option value="green" selected>Grøn linje</option><option value="cut">Rød linje</option></select></div>
+      <div class="prop-row" style="margin-top:4px;margin-bottom:0">
+        <button type="button" class="btn btn-secondary" id="btnOffsetPreview" style="width:auto;flex:1">Forhåndsvis</button>
+        <button type="button" class="btn btn-primary" id="btnOffsetApply" style="width:auto;flex:1">Opret linje</button>
+      </div>
+      <p class="offset-help">Laver en ny SVG-linje og beholder de markerede objekter. Vælg flere objekter med Shift.</p>
+    </div>
+
 
 
 
@@ -320,6 +340,7 @@ const tempG=document.getElementById('temp');
 const handlesG=document.getElementById('handles');
 let tool='select', objects=[], selectedIds=[], isDrawing=false, startPt=null, currentPath=null, penPoints=[], dragOffset=null, resizeState=null, marqueeState=null, nextId=1, traceSourceId=null, traceImageData=null, currentMode='cut', undoStack=[];
 let freehandPts=[], bezierAnchors=[], bezierDragging=false, bezierHandle=null, nodeEdit=null, nodeDrag=null;
+let offsetPreviewEls=[], offsetPreviewActive=false;
 
 
 let snapEnabled = true;
@@ -639,9 +660,13 @@ document.querySelectorAll('.mode-btn').forEach(btn=>{
     currentMode=btn.dataset.mode;
     document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    if(selectedIds.length===1){
-      const obj=objects.find(o=>o.id===selectedIds[0]);
-      applyModeRecursive(obj,currentMode);
+    if(selectedIds.length){
+      pushUndo();
+      selectedIds.forEach(id=>{
+        const obj=objects.find(o=>o.id===id);
+        applyModeRecursive(obj,currentMode);
+      });
+      refreshUI();
     }
   });
 });
@@ -650,6 +675,7 @@ function selectOnly(id){selectedIds=[id];refreshUI()}
 function toggleSelect(id){const i=selectedIds.indexOf(id);if(i>=0)selectedIds.splice(i,1);else selectedIds.push(id);refreshUI()}
 function deselectAll(){selectedIds=[];refreshUI()}
 function refreshUI(){
+  clearOffsetPreview();
   objects.forEach(o=>{o.el.style.filter='';});
   handlesG.innerHTML='';
   selectedIds.forEach(id=>{const o=objects.find(x=>x.id===id);if(o)drawHandle(o)});
@@ -662,6 +688,7 @@ function refreshUI(){
   document.getElementById('noSelection').classList.toggle('hidden',n>0);
   document.getElementById('selectionProps').classList.toggle('hidden',n!==1);
   document.getElementById('boolProps').classList.toggle('hidden',n<2);
+  const op=document.getElementById('offsetProps');if(op)op.classList.toggle('hidden',n<1);
   const lop=document.getElementById('layerOrderProps');if(lop)lop.classList.toggle('hidden',n!==1);
   const ap=document.getElementById('alignProps');if(ap)ap.classList.toggle('hidden',n<2);
   const arp=document.getElementById('arrayProps');if(arp)arp.classList.toggle('hidden',n<1);
@@ -1675,7 +1702,7 @@ function finishPen(closed){
 }
 function updatePoly(ex){if(!currentPath)return;const pts=penPoints.map(p=>p.x+','+p.y);if(ex)pts.push(ex.x+','+ex.y);currentPath.setAttribute('points',pts.join(' '))}
 function finishPoly(){if(penPoints.length<3){cancelDraw();return}if(currentPath)currentPath.remove();const poly=document.createElementNS(SVG_NS,'polygon');poly.setAttribute('points',penPoints.map(p=>p.x+','+p.y).join(' '));applyMode(poly,currentMode);addObject('polygon',poly,{mode:currentMode});cancelDraw()}
-function cancelDraw(){isDrawing=false;currentPath=null;penPoints=[];freehandPts=[];bezierAnchors=[];bezierDragging=false;bezierHandle=null;hideSnapMarker();tempG.innerHTML=''; if(document.getElementById('snapMarker')) document.getElementById('snapMarker').remove();}
+function cancelDraw(){isDrawing=false;currentPath=null;penPoints=[];freehandPts=[];bezierAnchors=[];bezierDragging=false;bezierHandle=null;hideSnapMarker();tempG.innerHTML='';offsetPreviewEls=[];offsetPreviewActive=false;const offsetBtn=document.getElementById('btnOffsetPreview');if(offsetBtn)offsetBtn.textContent='Forhåndsvis'; if(document.getElementById('snapMarker')) document.getElementById('snapMarker').remove();}
 
 
 
@@ -2491,6 +2518,290 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       }
       return rec(points);
     }
+
+    // ========== OFFSET / FORSKUDT LINJE ==========
+    // Offset is calculated from a temporary high-resolution mask. This keeps
+    // it compatible with imported SVG paths, Bézier paths and groups without
+    // adding a third-party geometry library to the single-file app.
+    function clearOffsetPreview(){
+      offsetPreviewEls.forEach(el=>el.remove());
+      offsetPreviewEls=[];
+      offsetPreviewActive=false;
+      const btn=document.getElementById('btnOffsetPreview');
+      if(btn)btn.textContent='Forhåndsvis';
+    }
+
+    function readOffsetSettings(){
+      const distance=Math.max(0.01,Math.min(100,parseFloat(document.getElementById('offsetDistance')?.value)||0.1));
+      const join=document.getElementById('offsetJoin')?.value||'round';
+      const miter=Math.max(1,Math.min(20,parseFloat(document.getElementById('offsetMiter')?.value)||4));
+      const holes=document.getElementById('offsetHoles')?.value||'remove';
+      const mode=document.getElementById('offsetMode')?.value||'green';
+      return {distance,expand:document.getElementById('offsetExpand')?.checked!==false,join,miter,holes,mode};
+    }
+
+    function applyCanvasElementTransform(ctx,el){
+      try{
+        const list=el.transform&&el.transform.baseVal;
+        if(list&&list.numberOfItems){
+          const c=list.consolidate();
+          if(c){const m=c.matrix;ctx.transform(m.a,m.b,m.c,m.d,m.e,m.f);return;}
+        }
+      }catch(_){ }
+      const attr=el.getAttribute('transform')||'';
+      const parts=attr.match(/(matrix|translate|scale|rotate|skewX|skewY)\([^)]*\)/g)||[];
+      parts.forEach(part=>{
+        const nums=(part.match(/[-\d.]+/g)||[]).map(Number);
+        if(part.startsWith('matrix')&&nums.length>=6)ctx.transform(...nums.slice(0,6));
+        else if(part.startsWith('translate'))ctx.translate(nums[0]||0,nums[1]||0);
+        else if(part.startsWith('scale'))ctx.scale(nums[0]||1,nums.length>1?nums[1]:nums[0]||1);
+        else if(part.startsWith('rotate')){
+          const a=(nums[0]||0)*Math.PI/180;
+          if(nums.length>=3){ctx.translate(nums[1],nums[2]);ctx.rotate(a);ctx.translate(-nums[1],-nums[2]);}
+          else ctx.rotate(a);
+        } else if(part.startsWith('skewX'))ctx.transform(1,0,Math.tan((nums[0]||0)*Math.PI/180),1,0,0);
+        else if(part.startsWith('skewY'))ctx.transform(1,Math.tan((nums[0]||0)*Math.PI/180),0,1,0,0);
+      });
+    }
+
+    function offsetPathIsClosed(d){return /z\s*$/i.test((d||'').trim());}
+
+    function paintOffsetObject(ctx,obj,settings){
+      if(!obj)return;
+      const el=obj.el||obj;
+      const tag=(el.tagName||'').toLowerCase();
+      const type=obj.type||({'rect':'rect','ellipse':'ellipse','line':'line','polygon':'polygon','path':'path','text':'text','g':'group'}[tag]||tag);
+      if(type==='image'||tag==='image'||tag==='defs'||tag==='use')return;
+
+      ctx.save();
+      applyCanvasElementTransform(ctx,el);
+      ctx.fillStyle='#000';
+      ctx.strokeStyle='#000';
+      ctx.lineJoin=settings.join;
+      ctx.lineCap='round';
+      ctx.miterLimit=settings.miter;
+
+      try{
+        if(type==='group'||tag==='g'){
+          Array.from(el.children||[]).forEach(child=>paintOffsetObject(ctx,{type:child.tagName.toLowerCase()==='g'?'group':child.tagName.toLowerCase(),el:child},settings));
+        } else if(type==='rect'||tag==='rect'){
+          const x=parseFloat(el.getAttribute('x'))||0,y=parseFloat(el.getAttribute('y'))||0;
+          const w=parseFloat(el.getAttribute('width'))||0,h=parseFloat(el.getAttribute('height'))||0;
+          const rx=Math.min(Math.abs(parseFloat(el.getAttribute('rx'))||0),w/2,h/2);
+          ctx.beginPath();
+          if(rx&&ctx.roundRect)ctx.roundRect(x,y,w,h,rx);
+          else ctx.rect(x,y,w,h);
+          ctx.fill();
+        } else if(type==='ellipse'||tag==='ellipse'){
+          ctx.beginPath();
+          ctx.ellipse(parseFloat(el.getAttribute('cx'))||0,parseFloat(el.getAttribute('cy'))||0,
+            Math.max(0.1,parseFloat(el.getAttribute('rx'))||0),Math.max(0.1,parseFloat(el.getAttribute('ry'))||0),0,0,Math.PI*2);
+          ctx.fill();
+        } else if(type==='line'||tag==='line'){
+          ctx.lineWidth=Math.max(0.1,parseFloat(el.getAttribute('stroke-width'))||STROKE_MM);
+          ctx.beginPath();
+          ctx.moveTo(parseFloat(el.getAttribute('x1'))||0,parseFloat(el.getAttribute('y1'))||0);
+          ctx.lineTo(parseFloat(el.getAttribute('x2'))||0,parseFloat(el.getAttribute('y2'))||0);
+          ctx.stroke();
+        } else if(type==='polygon'||tag==='polygon'){
+          const raw=(el.getAttribute('points')||'').trim().split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
+          if(raw.length>=6){ctx.beginPath();ctx.moveTo(raw[0],raw[1]);for(let i=2;i+1<raw.length;i+=2)ctx.lineTo(raw[i],raw[i+1]);ctx.closePath();ctx.fill('evenodd');}
+        } else if(type==='text'||tag==='text'){
+          const size=parseFloat(el.getAttribute('font-size'))||28;
+          const weight=el.getAttribute('font-weight')||'normal';
+          const family=el.getAttribute('font-family')||'Arial, sans-serif';
+          ctx.font=weight+' '+size+'px '+family;
+          ctx.textBaseline='alphabetic';
+          ctx.fillText(el.textContent||'',parseFloat(el.getAttribute('x'))||0,parseFloat(el.getAttribute('y'))||0);
+        } else if(type==='path'||tag==='path'){
+          const d=el.getAttribute('d')||'';
+          if(typeof Path2D!=='undefined'&&d){
+            const p=new Path2D(d);
+            if(offsetPathIsClosed(d))ctx.fill(p,'evenodd');
+            else {ctx.lineWidth=Math.max(0.1,parseFloat(el.getAttribute('stroke-width'))||STROKE_MM);ctx.stroke(p);}
+          }
+        }
+      }catch(_){ }
+      ctx.restore();
+    }
+
+    function offsetMetric(join){
+      if(join==='miter')return {straight:1,diagonal:1};
+      if(join==='bevel')return {straight:1,diagonal:2};
+      return {straight:1,diagonal:Math.SQRT2};
+    }
+
+    function offsetDistanceTransform(mask,w,h,toForeground,metric){
+      const inf=1e9,dist=new Float32Array(w*h);
+      for(let i=0;i<dist.length;i++)dist[i]=((toForeground?mask[i]===1:mask[i]===0)?0:inf);
+      const s=metric.straight,d=metric.diagonal;
+      for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+        const i=y*w+x;let v=dist[i];
+        if(x>0)v=Math.min(v,dist[i-1]+s);
+        if(y>0)v=Math.min(v,dist[i-w]+s);
+        if(x>0&&y>0)v=Math.min(v,dist[i-w-1]+d);
+        if(x+1<w&&y>0)v=Math.min(v,dist[i-w+1]+d);
+        dist[i]=v;
+      }
+      for(let y=h-1;y>=0;y--)for(let x=w-1;x>=0;x--){
+        const i=y*w+x;let v=dist[i];
+        if(x+1<w)v=Math.min(v,dist[i+1]+s);
+        if(y+1<h)v=Math.min(v,dist[i+w]+s);
+        if(x+1<w&&y+1<h)v=Math.min(v,dist[i+w+1]+d);
+        if(x>0&&y+1<h)v=Math.min(v,dist[i+w-1]+d);
+        dist[i]=v;
+      }
+      return dist;
+    }
+
+    function pointInContour(pt,poly){
+      let inside=false;
+      for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+        const a=poly[i],b=poly[j];
+        if(((a.y>pt.y)!==(b.y>pt.y))&&pt.x<(b.x-a.x)*(pt.y-a.y)/(b.y-a.y||1e-12)+a.x)inside=!inside;
+      }
+      return inside;
+    }
+
+    function contourToOffsetD(points,minX,minY,scale){
+      const simplified=rdpSimplify(points,0.7);
+      if(simplified.length<3)return '';
+      let d='M '+(simplified[0].x/scale+minX).toFixed(3)+' '+(simplified[0].y/scale+minY).toFixed(3);
+      for(let i=1;i<simplified.length;i++)d+=' L '+(simplified[i].x/scale+minX).toFixed(3)+' '+(simplified[i].y/scale+minY).toFixed(3);
+      return d+' Z';
+    }
+
+    function getOffsetBBox(obj){
+      // Unlike the regular property panel, offsetting must also account for
+      // transforms on rectangles and ellipses (for example after an array
+      // rotation). Use all four rendered corners when possible.
+      try{
+        const r=obj.el.getBoundingClientRect(),inv=svg.getScreenCTM().inverse();
+        const corners=[[r.left,r.top],[r.right,r.top],[r.right,r.bottom],[r.left,r.bottom]].map(([x,y])=>{
+          const p=svg.createSVGPoint();p.x=x;p.y=y;return p.matrixTransform(inv);
+        });
+        const xs=corners.map(p=>p.x),ys=corners.map(p=>p.y);
+        const x=Math.min(...xs),y=Math.min(...ys),maxX=Math.max(...xs),maxY=Math.max(...ys);
+        if(Number.isFinite(x)&&Number.isFinite(y)&&maxX>=x&&maxY>=y)return {x,y,width:maxX-x,height:maxY-y};
+      }catch(_){ }
+      return getWorldBBox(obj);
+    }
+
+    function buildOffsetContours(settings,quiet){
+      const sel=selectedIds.map(id=>objects.find(o=>o.id===id)).filter(Boolean);
+      if(!sel.length)return [];
+      if(sel.some(o=>o.type==='image')){
+        if(!quiet)alert('Forskudt linje virker kun på vektorer. Spor billedet først.');
+        return null;
+      }
+      const boxes=sel.map(getOffsetBBox).filter(b=>b&&b.width>=0&&b.height>=0);
+      if(!boxes.length)return [];
+      const pad=settings.distance+4;
+      const minX=Math.min(...boxes.map(b=>b.x))-pad;
+      const minY=Math.min(...boxes.map(b=>b.y))-pad;
+      const maxX=Math.max(...boxes.map(b=>b.x+b.width))+pad;
+      const maxY=Math.max(...boxes.map(b=>b.y+b.height))+pad;
+      let scale=Math.min(12,Math.max(6,settings.distance<1?12:10));
+      const maxPixels=3600;
+      scale=Math.min(scale,maxPixels/Math.max(maxX-minX,maxY-minY));
+      const w=Math.max(12,Math.ceil((maxX-minX)*scale));
+      const h=Math.max(12,Math.ceil((maxY-minY)*scale));
+      if(w>maxPixels||h>maxPixels||w*h>15000000){
+        if(!quiet)alert('Figurerne er for store til at beregne en forskudt linje.');
+        return null;
+      }
+
+      const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+      const ctx=canvas.getContext('2d',{willReadFrequently:true});
+      ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);
+      ctx.setTransform(scale,0,0,scale,-minX*scale,-minY*scale);
+      sel.forEach(o=>paintOffsetObject(ctx,o,settings));
+      const src=ctx.getImageData(0,0,w,h),mask=new Uint8Array(w*h);
+      let hasSource=false;
+      for(let i=0,p=0;i<mask.length;i++,p+=4){
+        if(src.data[p]<200){mask[i]=1;hasSource=true;}
+      }
+      if(!hasSource){
+        if(!quiet)alert('Der blev ikke fundet en lukket form eller linje at forskyde.');
+        return [];
+      }
+      const radius=Math.max(0.5,settings.distance*scale);
+      const dist=offsetDistanceTransform(mask,w,h,settings.expand,offsetMetric(settings.join));
+      const out=ctx.createImageData(w,h);
+      let hasOutput=false;
+      for(let i=0,p=0;i<mask.length;i++,p+=4){
+        const on=settings.expand ? dist[i]<=radius : (mask[i]===1&&dist[i]>radius);
+        const v=on?0:255;
+        out.data[p]=out.data[p+1]=out.data[p+2]=v;out.data[p+3]=255;
+        if(on)hasOutput=true;
+      }
+      if(!hasOutput){
+        if(!quiet)alert('Afstanden er større end figuren, så forskydningen blev tom.');
+        return [];
+      }
+      const contours=findContours(out,128).filter(c=>c.length>=4);
+      if(!contours.length)return [];
+
+      // A contour inside another is a hole. It can be kept as a second line
+      // or removed, matching the reference tool's “holes: remove” option.
+      const filtered=contours.filter((contour,i)=>{
+        if(settings.holes==='keep')return true;
+        const p=contour[Math.floor(contour.length/2)];let depth=0;
+        contours.forEach((other,j)=>{if(i!==j&&pointInContour(p,other))depth++;});
+        return depth%2===0;
+      });
+      return filtered.map(c=>contourToOffsetD(c,minX,minY,scale)).filter(Boolean);
+    }
+
+    function makeOffsetPath(d,settings,preview){
+      const path=document.createElementNS(SVG_NS,'path');
+      path.setAttribute('d',d);path.setAttribute('fill','none');
+      applyLineMode(path,settings.mode);
+      path.setAttribute('stroke-linejoin',settings.join);
+      path.setAttribute('stroke-linecap','round');
+      path.setAttribute('stroke-miterlimit',settings.miter);
+      if(preview){path.setAttribute('pointer-events','none');path.setAttribute('opacity','0.85');path.dataset.offsetPreview='true';}
+      return path;
+    }
+
+    function showOffsetPreview(){
+      const settings=readOffsetSettings();
+      const ds=buildOffsetContours(settings,false);
+      clearOffsetPreview();
+      if(!ds||!ds.length)return;
+      offsetPreviewEls=ds.map(d=>makeOffsetPath(d,Object.assign({},settings,{mode:'green'}),true));
+      offsetPreviewEls.forEach(el=>tempG.appendChild(el));
+      offsetPreviewActive=true;
+      const btn=document.getElementById('btnOffsetPreview');if(btn)btn.textContent='Skjul preview';
+    }
+
+    function refreshOffsetPreview(){
+      if(!offsetPreviewActive)return;
+      showOffsetPreview();
+    }
+
+    function createOffset(){
+      const settings=readOffsetSettings();
+      const ds=buildOffsetContours(settings,false);
+      if(!ds||!ds.length)return;
+      pushUndo();
+      const ids=ds.map(d=>addObject('path',makeOffsetPath(d,settings,false),{
+        mode:settings.mode,offset:true,distance:settings.distance,expand:settings.expand,join:settings.join,holes:settings.holes
+      },true));
+      clearOffsetPreview();
+      selectedIds=ids;
+      refreshUI();
+    }
+
+    document.getElementById('btnOffsetPreview')?.addEventListener('click',()=>{
+      if(offsetPreviewActive)clearOffsetPreview();
+      else showOffsetPreview();
+    });
+    document.getElementById('btnOffsetApply')?.addEventListener('click',createOffset);
+    ['offsetExpand','offsetDistance','offsetJoin','offsetMiter','offsetHoles','offsetMode'].forEach(id=>{
+      document.getElementById(id)?.addEventListener('input',refreshOffsetPreview);
+      document.getElementById(id)?.addEventListener('change',refreshOffsetPreview);
+    });
 
     document.getElementById('btnUnion').onclick = () => doBoolean('union');
     document.getElementById('btnSubtract').onclick = () => doBoolean('subtract');
