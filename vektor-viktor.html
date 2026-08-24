@@ -184,8 +184,8 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
     <svg id="drawSvg" width="841" height="595" viewBox="0 0 297 210">
       <rect id="pageBg" width="297" height="210" fill="#ffffff"/>
       <g id="pageGrid" pointer-events="none"></g>
-      <g id="objects"></g><g id="temp"></g><g id="handles"></g>
-
+      <defs id="overlapDefs"></defs>
+      <g id="objects"></g><g id="overlapHighlights" pointer-events="none"></g><g id="temp"></g><g id="handles"></g>
     </svg>
     <input type="text" id="inlineTextInput" class="hidden" autocomplete="off" spellcheck="false">
   </div>
@@ -781,6 +781,94 @@ document.querySelectorAll('.mode-btn').forEach(btn=>{
 function selectOnly(id){selectedIds=[id];refreshUI()}
 function toggleSelect(id){const i=selectedIds.indexOf(id);if(i>=0)selectedIds.splice(i,1);else selectedIds.push(id);refreshUI()}
 function deselectAll(){selectedIds=[];refreshUI()}
+
+const overlapColorCtx=document.createElement('canvas').getContext('2d');
+const overlapFillTags=new Set(['circle','ellipse','path','polygon','rect','text']);
+function isBlackFillValue(value){
+  const raw=String(value||'').trim().toLowerCase();
+  if(!raw||raw==='none'||raw==='transparent'||raw.startsWith('url('))return false;
+  if(!overlapColorCtx)return raw==='black'||raw==='#000'||raw==='#000000'||raw==='#111'||raw==='#111111';
+  overlapColorCtx.fillStyle='rgba(0,0,0,0)';
+  try{overlapColorCtx.fillStyle=raw}catch(_){return false}
+  const parsed=overlapColorCtx.fillStyle.match(/rgba?\(\s*([\d.]+)[, ]+\s*([\d.]+)[, ]+\s*([\d.]+)(?:[, /]+\s*([\d.]+))?\s*\)/i);
+  if(!parsed)return false;
+  const alpha=parsed[4]===undefined?1:parseFloat(parsed[4]);
+  return alpha>0.01 && (parseFloat(parsed[1])+parseFloat(parsed[2])+parseFloat(parsed[3]))/3<90;
+}
+function elementHasBlackFill(el){
+  if(!el||el.nodeType!==1)return false;
+  const tag=el.tagName.toLowerCase();
+  if(tag==='g')return Array.from(el.children).some(elementHasBlackFill);
+  if(tag==='line'||tag==='polyline'||!overlapFillTags.has(tag))return false;
+  const opacity=parseFloat(getSvgStyleValue(el,'opacity','1'));
+  const fillOpacity=parseFloat(getSvgStyleValue(el,'fill-opacity','1'));
+  if((Number.isFinite(opacity)&&opacity<=0.01)||(Number.isFinite(fillOpacity)&&fillOpacity<=0.01))return false;
+  return isBlackFillValue(getSvgStyleValue(el,'fill','none'));
+}
+function isBlackFillObject(obj){
+  if(!obj||obj.type==='image'||obj.type==='line')return false;
+  // Objects created by this editor carry their laser mode explicitly. This
+  // also avoids depending on browser color parsing for the normal black mode.
+  if(obj.data&&obj.data.mode==='engrave')return true;
+  return elementHasBlackFill(obj.el);
+}
+function makeOverlapClone(sourceEl){
+  const clone=sourceEl.cloneNode(true);
+  function clean(source,node){
+    node.removeAttribute('id');
+    node.removeAttribute('data-id');
+    node.removeAttribute('data-vv-type');
+    node.removeAttribute('data-vv-mode');
+    const tag=node.tagName.toLowerCase();
+    if(tag==='g'){
+      node.setAttribute('fill','#fff');
+      node.setAttribute('stroke','none');
+      node.style.fill='#fff';
+      node.style.stroke='none';
+      Array.from(source.children).forEach((sourceChild,index)=>{
+        const child=node.children[index];
+        if(child)clean(sourceChild,child);
+      });
+      return;
+    }
+    if(overlapFillTags.has(tag)&&elementHasBlackFill(source)){
+      node.setAttribute('fill','#fff');
+      node.setAttribute('stroke','none');
+      node.style.fill='#fff';
+      node.style.stroke='none';
+      node.style.opacity='1';
+    }else{
+      node.setAttribute('display','none');
+    }
+  }
+  clean(sourceEl,clone);
+  clone.setAttribute('pointer-events','none');
+  return clone;
+}
+function refreshOverlapHighlights(){
+  const defs=document.getElementById('overlapDefs');
+  const highlights=document.getElementById('overlapHighlights');
+  if(!defs||!highlights)return;
+  defs.innerHTML='';
+  highlights.innerHTML='';
+  const blackObjects=objects.filter(isBlackFillObject);
+  if(blackObjects.length<2)return;
+  let clipNo=0;
+  for(let i=0;i<blackObjects.length-1;i++){
+    for(let j=i+1;j<blackObjects.length;j++){
+      const clip=document.createElementNS(SVG_NS,'clipPath');
+      const clipId='overlapClip'+(++clipNo);
+      clip.setAttribute('id',clipId);
+      clip.setAttribute('clipPathUnits','userSpaceOnUse');
+      clip.appendChild(makeOverlapClone(blackObjects[i].el));
+      defs.appendChild(clip);
+
+      const white=makeOverlapClone(blackObjects[j].el);
+      white.setAttribute('clip-path','url(#'+clipId+')');
+      highlights.appendChild(white);
+    }
+  }
+}
 function refreshUI(){
   clearOffsetPreview();
   objects.forEach(o=>{o.el.style.filter='';});
@@ -791,6 +879,7 @@ function refreshUI(){
     if(still) drawNodeHandles();
     else {nodeEdit=null;}
   }
+  refreshOverlapHighlights();
   const n=selectedIds.length;
   document.getElementById('noSelection').classList.toggle('hidden',n>0);
   document.getElementById('selectionProps').classList.toggle('hidden',n!==1);
@@ -1071,7 +1160,9 @@ function addObject(type,el,data,skipUndo){
   objects.push({id,type,el,data:Object.assign({mode},data||{})});
   objectsG.appendChild(el);
   if(!skipUndo) selectOnly(id);
-  updateCount();return id;
+  updateCount();
+  refreshOverlapHighlights();
+  return id;
 }
 
 function deleteSelected(){if(!selectedIds.length)return;pushUndo();selectedIds.forEach(id=>{const i=objects.findIndex(o=>o.id===id);if(i>=0){objects[i].el.remove();objects.splice(i,1)}});deselectAll();updateCount()}
@@ -1708,6 +1799,7 @@ function onMove(e){
       // redraw handles
       handlesG.innerHTML='';
       drawHandle(obj);
+      refreshOverlapHighlights();
 
     }
     return;
@@ -1741,6 +1833,7 @@ function onMove(e){
     }
     applyNodeEdit();
     drawNodeHandles();
+    refreshOverlapHighlights();
     return;
   }
   if(tool==='freehand'&&isDrawing&&currentPath){
@@ -3683,6 +3776,8 @@ function prepareSvgExport(){
   const clone=svg.cloneNode(true);
   clone.querySelector('#pageBg')?.remove();
   clone.querySelector('#pageGrid')?.remove();
+  clone.querySelector('#overlapDefs')?.remove();
+  clone.querySelector('#overlapHighlights')?.remove();
   clone.querySelector('#handles')?.remove();
   clone.querySelector('#temp')?.remove();
   clone.setAttribute('xmlns',SVG_NS);
