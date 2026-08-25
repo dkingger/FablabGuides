@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Sander illustration">
-  <rect width="320" height="220" fill="#edf2eb"/>
-  <rect x="52" y="142" width="216" height="26" rx="10" fill="#27463e"/>
-  <rect x="76" y="80" width="120" height="56" rx="10" fill="#ffffff" stroke="#18332b" stroke-width="7"/>
-  <circle cx="232" cy="108" r="34" fill="#ffffff" stroke="#18332b" stroke-width="8"/>
-  <circle cx="232" cy="108" r="8" fill="#d46a43"/>
+  <rect width="320" height="220" fill="#dbe2ef"/>
+  <rect x="52" y="142" width="216" height="26" rx="10" fill="#3f72af"/>
+  <rect x="76" y="80" width="120" height="56" rx="10" fill="#ffffff" stroke="#112d4e" stroke-width="7"/>
+  <circle cx="232" cy="108" r="34" fill="#ffffff" stroke="#112d4e" stroke-width="8"/>
+  <circle cx="232" cy="108" r="8" fill="#3f72af"/>
 </svg>

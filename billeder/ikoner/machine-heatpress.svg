@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Heat press illustration">
-  <rect width="320" height="220" fill="#edf2eb"/>
-  <rect x="64" y="150" width="192" height="24" rx="10" fill="#27463e"/>
-  <rect x="82" y="108" width="156" height="30" rx="8" fill="#ffffff" stroke="#18332b" stroke-width="6"/>
-  <path d="M95 92 L220 54 L240 74 L114 112 Z" fill="#d46a43"/>
-  <rect x="216" y="46" width="16" height="20" rx="6" fill="#18332b"/>
+  <rect width="320" height="220" fill="#dbe2ef"/>
+  <rect x="64" y="150" width="192" height="24" rx="10" fill="#3f72af"/>
+  <rect x="82" y="108" width="156" height="30" rx="8" fill="#ffffff" stroke="#112d4e" stroke-width="6"/>
+  <path d="M95 92 L220 54 L240 74 L114 112 Z" fill="#3f72af"/>
+  <rect x="216" y="46" width="16" height="20" rx="6" fill="#112d4e"/>
 </svg>

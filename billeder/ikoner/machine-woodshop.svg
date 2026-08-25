@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="Wood shop combo machine illustration">
-  <rect width="320" height="220" fill="#edf2eb"/>
-  <rect x="44" y="130" width="232" height="28" rx="10" fill="#27463e"/>
-  <rect x="60" y="74" width="200" height="54" rx="10" fill="#ffffff" stroke="#18332b" stroke-width="7"/>
-  <rect x="88" y="90" width="58" height="10" rx="4" fill="#d46a43"/>
-  <circle cx="214" cy="102" r="18" fill="#f6f8f4" stroke="#18332b" stroke-width="6"/>
-  <circle cx="214" cy="102" r="4" fill="#18332b"/>
+  <rect width="320" height="220" fill="#dbe2ef"/>
+  <rect x="44" y="130" width="232" height="28" rx="10" fill="#3f72af"/>
+  <rect x="60" y="74" width="200" height="54" rx="10" fill="#ffffff" stroke="#112d4e" stroke-width="7"/>
+  <rect x="88" y="90" width="58" height="10" rx="4" fill="#3f72af"/>
+  <circle cx="214" cy="102" r="18" fill="#f9f7f7" stroke="#112d4e" stroke-width="6"/>
+  <circle cx="214" cy="102" r="4" fill="#112d4e"/>
 </svg>
