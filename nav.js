@@ -10,13 +10,13 @@
         { href: 'index.html#guides', key: 'guides',    text: 'Guides' },
         { href: 'maskiner.html',     key: 'maskiner',   text: 'Machines' },
         { href: 'materialer.html',   key: 'materialer', text: 'Materials' },
-        { href: 'index.html#besoeg', key: 'besoeg',     text: 'Visit' },
+        { href: 'index.html#resources', key: 'resources', text: 'Find your FabLab' },
         { href: '../index.html',     key: 'lang',       text: 'Dansk' }
     ] : [
         { href: 'index.html#guides', key: 'guides',    text: 'Guides' },
         { href: 'maskiner.html',     key: 'maskiner',   text: 'Maskiner' },
         { href: 'materialer.html',   key: 'materialer', text: 'Materialer' },
-        { href: 'index.html#besoeg', key: 'besoeg',     text: 'Bes\u00f8g os' },
+        { href: 'index.html#ressourcer', key: 'resources', text: 'Find dit FabLab' },
         { href: 'en/index.html',     key: 'lang',       text: 'English' }
     ];
 
