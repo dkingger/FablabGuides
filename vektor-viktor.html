@@ -8,19 +8,26 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#eef3ef;--panel:#ffffff;--panel2:#f4f8f5;--border:#c9d9ce;--accent:#2d9e5f;--accent-hover:#248a51;--text:#1a2e22;--text-dim:#5a7260;--cut:#e74c3c;--green-line:#2d9e5f;--engrave:#111;--success:#1a8f4a}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;display:flex;flex-direction:column;user-select:none}
-header{background:var(--panel);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:16px;height:48px}
-header h1{font-size:1rem;font-weight:600;display:flex;align-items:center;gap:8px}
+header{background:var(--panel);border-bottom:1px solid var(--border);padding:8px 12px;display:flex;align-items:center;gap:10px;height:48px;flex-wrap:nowrap}
+header h1{font-size:1rem;font-weight:600;display:flex;align-items:center;gap:8px;flex-shrink:0}
 header h1 .logo{width:24px;height:24px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff}
 .version-badge{font-size:.68rem;font-weight:700;color:var(--text-dim);background:var(--panel2);border:1px solid var(--border);border-radius:999px;padding:2px 7px;line-height:1}
-header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
-.header-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);border-radius:8px;background:var(--panel2);color:var(--text);cursor:pointer;margin-left:8px}
+header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space:nowrap}
+.header-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);border-radius:8px;background:var(--panel2);color:var(--text);cursor:pointer;flex-shrink:0}
 .header-btn.back-btn{margin-left:0;text-decoration:none}
 .header-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .header-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .header-btn svg{display:block}
+.header-btn.wide{width:auto;padding:0 12px;gap:6px;font-size:.78rem;font-weight:600}
+.project-name-wrap{display:flex;align-items:center;gap:6px;margin-left:8px;min-width:0}
+.project-name-wrap label{font-size:.72rem;color:var(--text-dim);font-weight:600;white-space:nowrap}
+#projectName{width:160px;max-width:22vw;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-size:.85rem;font-weight:600}
+#projectName:focus{outline:none;border-color:var(--accent)}
+#projectName::placeholder{color:var(--text-dim);font-weight:500}
 
-.header-zoom{display:flex;align-items:center;gap:4px;margin-left:12px}
+.header-zoom{display:flex;align-items:center;gap:4px;margin-left:4px}
 .zoom-label{font-size:.75rem;color:var(--text-dim);min-width:42px;text-align:center;font-variant-numeric:tabular-nums}
+
 .main{flex:1;display:flex;overflow:hidden}
 .toolbar{width:56px;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:2px}
 .tool-btn{width:44px;height:44px;border:none;border-radius:8px;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-dim);position:relative}
@@ -36,8 +43,10 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 #drawSvg{background:#fff;box-shadow:0 4px 28px rgba(0,0,0,.25);cursor:crosshair;border:1px solid #6a7d72}
 .page-size-select{margin-left:12px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--panel2);color:var(--text);font-size:.8rem;font-weight:600;cursor:pointer}
 .page-size-select:focus{outline:none;border-color:var(--accent)}
-#inlineTextInput{position:fixed;left:-9999px;top:0;opacity:0;width:1px;height:1px;border:none;padding:0;margin:0;pointer-events:none}
+#inlineTextInput{position:absolute;z-index:40;min-width:96px;width:auto;max-width:360px;height:44px;padding:4px 12px;border:1.5px solid var(--accent);border-radius:4px;font-size:20px;font-family:Arial,sans-serif;font-weight:600;background:#fff;color:#111;outline:none;box-shadow:0 1px 6px rgba(0,0,0,.18);caret-color:var(--accent);line-height:1.2}
+
 #inlineTextInput.hidden{display:none!important}
+
 
 
 
@@ -117,7 +126,11 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FablabGuides" aria-label="Tilbage til FablabGuides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.46</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.55</span></h1>
+  <div class="project-name-wrap">
+    <label for="projectName">Projekt</label>
+    <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
+  </div>
   <button type="button" id="btnUndoHeader" class="header-btn" title="Fortryd (Ctrl+Z)">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 14L4 9l5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h10a7 7 0 1 1 0 14h-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
@@ -133,12 +146,15 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
   <select id="pageSize" class="page-size-select" title="Sidestørrelse">
     <option value="A4">A4 (297×210)</option>
     <option value="A3">A3 (420×297)</option>
+    <option value="ScanNCut">ScanNCut (300×300)</option>
   </select>
+
   <button type="button" id="btnSnap" class="header-btn active" title="Snap til hjørner/midtpunkter (magnet)">
     <svg viewBox="0 0 24 24" width="18" height="18"><path d="M7 7h4v4H7zM13 7h4v4h-4zM7 13h4v4H7zM15 15l4 4M15 19l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
-  <span class="hint">Rød/grøn kant = linje · Fed sort = tekst/fyld · Scroll/to fingre = zoom</span>
+  <span class="hint">Rød/grøn = linje · Sort = fyld · Zoom med scroll</span>
 </header>
+
 
 
 <div class="main">
@@ -151,8 +167,10 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
     <button class="tool-btn" data-tool="freehand" title="Frithånd" aria-label="Frithånd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17c4-6 6-4 8-2s5 3 10-6"/></svg><span class="tip">Frithånd</span></button>
     <button class="tool-btn" data-tool="bezier" title="Bezier" aria-label="Bezier"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18C4 10 10 6 12 6s8 4 8 12"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/><circle cx="12" cy="6" r="1.5" fill="currentColor"/><circle cx="20" cy="18" r="1.5" fill="currentColor"/></svg><span class="tip">Bezier</span></button>
     <button class="tool-btn" data-tool="node" title="Noder" aria-label="Noder"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/><circle cx="4" cy="12" r="2.5" fill="currentColor"/><circle cx="20" cy="12" r="2.5" fill="currentColor"/><circle cx="12" cy="4" r="2.5" fill="currentColor"/><circle cx="12" cy="20" r="2.5" fill="currentColor"/></svg><span class="tip">Noder</span></button>
-    <button class="tool-btn" data-tool="polygon" title="Polygon" aria-label="Polygon"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 21,9 18,20 6,20 3,9"/></svg><span class="tip">Polygon</span></button>
+    <button class="tool-btn" data-tool="polygon" title="Polygon (klik punkter)" aria-label="Polygon"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 21,9 18,20 6,20 3,9"/></svg><span class="tip">Polygon (klik)</span></button>
+    <button class="tool-btn" data-tool="ngon" title="Regelmæssig polygon (trekant+). +/- ændrer sider" aria-label="Regelmæssig polygon"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 20.5,8.5 17.5,18.5 6.5,18.5 3.5,8.5"/></svg><span class="tip">Reg. polygon (+/-)</span></button>
     <button class="tool-btn" data-tool="text" title="Tekst" aria-label="Tekst"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M12 5v14M9 19h6"/></svg><span class="tip">Tekst</span></button>
+
 
     <div class="tool-sep"></div>
     <button class="tool-btn" data-tool="image" title="Importer billede/SVG" aria-label="Importer billede eller SVG"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M3 16l5-4 4 3 5-5 4 4"/></svg><span class="tip">Importer billede/SVG</span></button>
@@ -165,7 +183,9 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
   <div class="canvas-wrap">
     <svg id="drawSvg" width="841" height="595" viewBox="0 0 297 210">
       <rect id="pageBg" width="297" height="210" fill="#ffffff"/>
+      <g id="pageGrid" pointer-events="none"></g>
       <g id="objects"></g><g id="temp"></g><g id="handles"></g>
+
     </svg>
     <input type="text" id="inlineTextInput" class="hidden" autocomplete="off" spellcheck="false">
   </div>
@@ -218,7 +238,21 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
         <p style="font-size:.7rem;color:var(--text-dim);margin-top:5px">Laver outline og sletter billedet.</p>
       </div>
     </div>
+    <div class="prop-group hidden" id="transformProps">
+      <label>Transformér</label>
+      <div class="align-grid" style="margin-bottom:6px">
+        <button type="button" class="align-btn" id="btnRotLeft" title="Rotér 90° venstre">↺ 90°</button>
+        <button type="button" class="align-btn" id="btnRotRight" title="Rotér 90° højre">↻ 90°</button>
+        <button type="button" class="align-btn" id="btnRotCustom" title="Rotér valgfri vinkel">↻ °</button>
+      </div>
+      <div class="align-grid">
+        <button type="button" class="align-btn wide" id="btnFlipH" title="Spejl vandret">↔ Spejl H</button>
+        <button type="button" class="align-btn wide" id="btnFlipV" title="Spejl lodret">↕ Spejl V</button>
+      </div>
+      <p style="font-size:.68rem;color:var(--text-dim);margin-top:6px">Ctrl+C / Ctrl+V = kopiér / indsæt</p>
+    </div>
     <div class="prop-group hidden" id="alignProps">
+
       <label>Justering</label>
       <div class="align-grid">
         <button type="button" class="align-btn" data-align="left" title="Venstre">⬅</button>
@@ -311,9 +345,10 @@ header .hint{font-size:.75rem;color:var(--text-dim);margin-left:auto}
 
 
     <div class="prop-group"><label>Objekter</label><div class="layer-list" id="layerList"></div></div>
-    <button class="btn btn-primary" id="btnExport">Eksporter SVG</button>
-    <button class="btn btn-secondary" id="btnExportLaser" title="Konverterer al tekst til vektoromrids og gemmer en laserfil">Eksporter til laser</button>
+    <button class="btn btn-primary" id="btnExport" title="Konverterer tekst til stier og gemmer SVG (klar til ScanNCut/laser)">Eksporter til SVG</button>
     <button class="btn btn-secondary" id="btnZoomFit">Nulstil zoom</button>
+
+
   </div>
 </div>
 <div class="statusbar">
@@ -358,6 +393,8 @@ const objectsG=document.getElementById('objects');
 const tempG=document.getElementById('temp');
 const handlesG=document.getElementById('handles');
 let tool='select', objects=[], selectedIds=[], isDrawing=false, startPt=null, currentPath=null, penPoints=[], dragOffset=null, resizeState=null, marqueeState=null, nextId=1, traceSourceId=null, traceImageData=null, currentMode='cut', undoStack=[];
+let regularPolySides = 3; // for ngon tool (min 3)
+
 let freehandPts=[], bezierAnchors=[], bezierDragging=false, bezierHandle=null, nodeEdit=null, nodeDrag=null;
 let offsetPreviewEls=[], offsetPreviewActive=false;
 
@@ -464,7 +501,8 @@ document.getElementById('btnSnap')?.addEventListener('click',()=>{
 // Page sizes in mm (landscape)
 const PAGE_SIZES = {
   A4: { w: 297, h: 210 },
-  A3: { w: 420, h: 297 }
+  A3: { w: 420, h: 297 },
+  ScanNCut: { w: 300, h: 300 } // 30×30 cm
 };
 let pageSize = 'A4';
 let BASE_VB = { x:0, y:0, w:297, h:210 };
@@ -472,6 +510,40 @@ let BASE_VB = { x:0, y:0, w:297, h:210 };
 // Base pixels-per-mm at 100% zoom
 const BASE_PPM = 2.8;
 let zoomLevel = 1; // 1 = 100%
+
+function updatePageGrid(){
+  const g = document.getElementById('pageGrid');
+  if(!g) return;
+  g.innerHTML = '';
+  // Kun ScanNCut får 25 mm-tern
+  if(pageSize !== 'ScanNCut') return;
+  const p = PAGE_SIZES.ScanNCut;
+  const step = 25; // mm
+  const stroke = '#d0d0d0'; // lysegrå, diskret
+  const sw = 0.2;
+  for(let x = 0; x <= p.w + 0.01; x += step){
+    const line = document.createElementNS(SVG_NS, 'line');
+    line.setAttribute('x1', x);
+    line.setAttribute('y1', 0);
+    line.setAttribute('x2', x);
+    line.setAttribute('y2', p.h);
+    line.setAttribute('stroke', stroke);
+    line.setAttribute('stroke-width', sw);
+    line.setAttribute('vector-effect', 'non-scaling-stroke');
+    g.appendChild(line);
+  }
+  for(let y = 0; y <= p.h + 0.01; y += step){
+    const line = document.createElementNS(SVG_NS, 'line');
+    line.setAttribute('x1', 0);
+    line.setAttribute('y1', y);
+    line.setAttribute('x2', p.w);
+    line.setAttribute('y2', y);
+    line.setAttribute('stroke', stroke);
+    line.setAttribute('stroke-width', sw);
+    line.setAttribute('vector-effect', 'non-scaling-stroke');
+    g.appendChild(line);
+  }
+}
 
 function setPageSize(size){
   if(!PAGE_SIZES[size]) return;
@@ -482,8 +554,10 @@ function setPageSize(size){
   if(pageBg){ pageBg.setAttribute('width', p.w); pageBg.setAttribute('height', p.h); }
   // Always show full page in viewBox; zoom changes element size
   svg.setAttribute('viewBox', '0 0 '+p.w+' '+p.h);
+  updatePageGrid();
   applyZoomSize();
 }
+
 function getVB(){
   const v = (svg.getAttribute('viewBox')||('0 0 '+BASE_VB.w+' '+BASE_VB.h)).trim().split(/[\s,]+/).map(Number);
   return { x:v[0]||0, y:v[1]||0, w:v[2]||BASE_VB.w, h:v[3]||BASE_VB.h };
@@ -671,7 +745,8 @@ document.querySelectorAll('.tool-btn').forEach(btn=>{
     if(t==='image'){document.getElementById('imageFile').click();return}
     document.querySelectorAll('.tool-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');tool=t;
-    setStatus({select:'Vælg',rect:'Rektangel',ellipse:'Ellipse',line:'Linje',pen:'Pen',freehand:'Frithånd',bezier:'Bezier',node:'Noder',polygon:'Polygon',text:'Tekst'}[t]||t);
+    setStatus({select:'Vælg',rect:'Rektangel',ellipse:'Ellipse',line:'Linje',pen:'Pen',freehand:'Frithånd',bezier:'Bezier',node:'Noder',polygon:'Polygon',ngon:'Reg. polygon ('+regularPolySides+')',text:'Tekst'}[t]||t);
+
     svg.classList.toggle('select-mode', t==='select'||t==='node');
     document.querySelector('.canvas-wrap').classList.toggle('select-mode', t==='select'||t==='node');
     svg.style.cursor = (t==='select'||t==='node') ? 'default' : 'crosshair';
@@ -719,10 +794,12 @@ function refreshUI(){
   document.getElementById('noSelection').classList.toggle('hidden',n>0);
   document.getElementById('selectionProps').classList.toggle('hidden',n!==1);
   document.getElementById('boolProps').classList.toggle('hidden',n<2);
+  const tp=document.getElementById('transformProps');if(tp)tp.classList.toggle('hidden',n<1);
   const op=document.getElementById('offsetProps');if(op)op.classList.toggle('hidden',n<1);
   const lop=document.getElementById('layerOrderProps');if(lop)lop.classList.toggle('hidden',n!==1);
   const ap=document.getElementById('alignProps');if(ap)ap.classList.toggle('hidden',n<2);
   const arp=document.getElementById('arrayProps');if(arp)arp.classList.toggle('hidden',n<1);
+
   const gp=document.getElementById('groupProps');if(gp)gp.classList.toggle('hidden',n<1);
   const gb=document.getElementById('btnGroup');if(gb)gb.classList.toggle('hidden',n<2);
   const ugb=document.getElementById('btnUngroup');if(ugb){
@@ -875,13 +952,31 @@ function drawHandle(obj){
 }
 
 
-function resizeObject(obj, handle, mx, my, origin){
+function resizeObject(obj, handle, mx, my, origin, uniform){
   // origin = bbox at start of resize
   let x=origin.x, y=origin.y, w=origin.width, h=origin.height;
   if(handle.includes('e')) w = Math.max(4, mx - origin.x);
   if(handle.includes('s')) h = Math.max(4, my - origin.y);
   if(handle.includes('w')){ w = Math.max(4, origin.x + origin.width - mx); x = mx; }
   if(handle.includes('n')){ h = Math.max(4, origin.y + origin.height - my); y = my; }
+
+  // Shift = ensartet (proportional) skalering
+  if(uniform && origin.width>0.01 && origin.height>0.01){
+    const ratio = origin.width / origin.height;
+    // Brug den dimension der ændrede mest
+    const dw = Math.abs(w - origin.width);
+    const dh = Math.abs(h - origin.height);
+    if(dw >= dh){
+      h = Math.max(4, w / ratio);
+    } else {
+      w = Math.max(4, h * ratio);
+    }
+    // Hold det hjørne der ikke trækkes i, fast
+    if(handle.includes('w')) x = origin.x + origin.width - w;
+    if(handle.includes('n')) y = origin.y + origin.height - h;
+    if(!handle.includes('w') && !handle.includes('e')) x = origin.x + (origin.width - w) / 2;
+    if(!handle.includes('n') && !handle.includes('s')) y = origin.y + (origin.height - h) / 2;
+  }
 
   if(obj.type==='rect' || obj.type==='image'){
     obj.el.setAttribute('x', x); obj.el.setAttribute('y', y);
@@ -902,22 +997,29 @@ function resizeObject(obj, handle, mx, my, origin){
     else if(handle==='sw'){ obj.el.setAttribute('x1', mx); obj.el.setAttribute('y2', my); }
   } else {
     // path / polygon / traced – scale via transform relative to origin
-    const bb = obj.el.getBBox();
-    if(bb.width < 0.1 || bb.height < 0.1) return;
-    const sx = w / origin.width;
-    const sy = h / origin.height;
-    // reset to identity then place
-    // Work from local bbox + desired world position
-    // Remove existing translate, set new translate+scale
+    if(origin.width < 0.1 || origin.height < 0.1) return;
     obj.el.removeAttribute('transform');
-    // After removing transform, local bbox is original
     const lb = obj.el.getBBox();
-    const scaleX = w / lb.width;
-    const scaleY = h / lb.height;
+    if(lb.width < 0.1 || lb.height < 0.1) return;
+    let scaleX = w / lb.width;
+    let scaleY = h / lb.height;
+    if(uniform){
+      const s = Math.max(0.01, Math.min(scaleX, scaleY) === scaleX ? scaleX : scaleY);
+      // better: use average of intended scales from origin ratio
+      const sUni = (w / origin.width + h / origin.height) / 2;
+      scaleX = scaleY = Math.max(0.01, (w / origin.width)); // consistent with uniform w/h
+      // recompute w,h already uniform; scale from local bbox
+      scaleX = w / lb.width;
+      scaleY = h / lb.height;
+      // force equal
+      const s2 = Math.abs(scaleX) >= Math.abs(scaleY) ? scaleX : scaleY;
+      scaleX = scaleY = s2;
+    }
     obj.el.setAttribute('transform',
       'translate('+x+','+y+') scale('+scaleX+','+scaleY+') translate('+(-lb.x)+','+(-lb.y)+')');
   }
 }
+
 
 function pushUndo(){
   // snapshot serializable state of objects
@@ -979,13 +1081,79 @@ function elementType(el){
   const tag=el.tagName.toLowerCase();
   if(tag==='g')return 'group';
   if(tag==='rect')return 'rect';
-  if(tag==='ellipse')return 'ellipse';
+  if(tag==='ellipse'||tag==='circle')return 'ellipse';
   if(tag==='line')return 'line';
-  if(tag==='polygon')return 'polygon';
+  if(tag==='polygon'||tag==='polyline')return 'polygon';
   if(tag==='image')return 'image';
   if(tag==='text')return 'text';
   return tag==='path'?'path':tag;
 }
+
+/** Normalize circle→ellipse and polyline→polygon for editing */
+function normalizeImportedShape(el){
+  const tag=el.tagName.toLowerCase();
+  if(tag==='circle'){
+    const cx=+el.getAttribute('cx')||0, cy=+el.getAttribute('cy')||0, r=+el.getAttribute('r')||0;
+    const ell=document.createElementNS(SVG_NS,'ellipse');
+    Array.from(el.attributes).forEach(a=>{
+      if(!['cx','cy','r'].includes(a.name)) ell.setAttribute(a.name, a.value);
+    });
+    ell.setAttribute('cx', cx); ell.setAttribute('cy', cy);
+    ell.setAttribute('rx', r); ell.setAttribute('ry', r);
+    if(el.getAttribute('transform')) ell.setAttribute('transform', el.getAttribute('transform'));
+    return ell;
+  }
+  if(tag==='polyline'){
+    const poly=document.createElementNS(SVG_NS,'polygon');
+    Array.from(el.attributes).forEach(a=>{
+      if(a.name!=='points') poly.setAttribute(a.name, a.value);
+    });
+    poly.setAttribute('points', el.getAttribute('points')||'');
+    // polyline is open – store as path instead for better node edit
+    const pts=(el.getAttribute('points')||'').trim();
+    if(pts){
+      const nums=pts.split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
+      let d='';
+      for(let i=0;i+1<nums.length;i+=2){
+        d += (i===0?'M ':'L ')+nums[i]+' '+nums[i+1]+' ';
+      }
+      const path=document.createElementNS(SVG_NS,'path');
+      Array.from(el.attributes).forEach(a=>{
+        if(a.name!=='points') path.setAttribute(a.name, a.value);
+      });
+      path.setAttribute('d', d.trim());
+      if(el.getAttribute('transform')) path.setAttribute('transform', el.getAttribute('transform'));
+      return path;
+    }
+    return poly;
+  }
+  return el;
+}
+
+function collectLeafShapes(root, acc){
+  const tag=(root.tagName||'').toLowerCase();
+  if(['path','polygon','polyline','rect','ellipse','circle','line'].includes(tag)){
+    acc.push(root);
+    return;
+  }
+  if(tag==='g'||tag==='a'||tag==='svg'){
+    Array.from(root.children).forEach(c=>collectLeafShapes(c, acc));
+  }
+}
+
+/** Build transform string from leaf up to (but not including) stopEl, then prepend stopTransform */
+function combinedTransform(leaf, stopEl, stopTransform){
+  const parts=[];
+  let node=leaf;
+  while(node && node!==stopEl){
+    const t=node.getAttribute && node.getAttribute('transform');
+    if(t && t.trim()) parts.unshift(t.trim());
+    node=node.parentElement;
+  }
+  if(stopTransform && stopTransform.trim()) parts.unshift(stopTransform.trim());
+  return parts.join(' ');
+}
+
 function clearObjectIds(el){
   el.removeAttribute('data-id');
   el.querySelectorAll('[data-id]').forEach(child=>child.removeAttribute('data-id'));
@@ -1007,6 +1175,51 @@ function groupSelected(){
   selectedIds=[id];
   refreshUI();
 }
+/** Lift a leaf shape out of an imported group into its own object */
+function promoteShapeFromGroup(groupObj, shapeEl){
+  if(!groupObj || groupObj.type!=='group' || !shapeEl) return null;
+  try{
+    pushUndo();
+    let clone=shapeEl.cloneNode(true);
+    const xf=combinedTransform(shapeEl, groupObj.el, groupObj.el.getAttribute('transform')||'');
+    if(xf) clone.setAttribute('transform', xf);
+    clone=normalizeImportedShape(clone);
+    clearObjectIds(clone);
+    shapeEl.remove();
+    const type=elementType(clone);
+    const mode=detectMode({el:clone});
+    const id=addObject(type, clone, {mode, importedSvg:true}, true);
+    const obj=objects.find(o=>o.id===id);
+    if(obj && (obj.type==='path'||obj.type==='traced')) bakePathTransform(obj);
+    else if(obj && obj.type==='polygon' && obj.el.getAttribute('transform')){
+      const raw=(obj.el.getAttribute('points')||'').trim().split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
+      let d='';
+      for(let i=0;i+1<raw.length;i+=2) d+=(i===0?'M ':'L ')+raw[i]+' '+raw[i+1]+' ';
+      d+='Z';
+      const path=document.createElementNS(SVG_NS,'path');
+      path.setAttribute('d', d.trim());
+      path.setAttribute('fill-rule','evenodd');
+      if(obj.el.getAttribute('transform')) path.setAttribute('transform', obj.el.getAttribute('transform'));
+      ['fill','stroke','stroke-width'].forEach(a=>{ if(obj.el.hasAttribute(a)) path.setAttribute(a, obj.el.getAttribute(a)); });
+      path.dataset.id=obj.id;
+      path.setAttribute('pointer-events','all');
+      obj.el.replaceWith(path);
+      obj.el=path;
+      obj.type='path';
+      bakePathTransform(obj);
+    }
+    // If group is empty, remove it
+    if(!groupObj.el.children.length){
+      const gi=objects.findIndex(o=>o.id===groupObj.id);
+      if(gi>=0){ objects[gi].el.remove(); objects.splice(gi,1); }
+    }
+    return obj;
+  }catch(err){
+    console.warn('promoteShapeFromGroup', err);
+    return null;
+  }
+}
+
 function ungroupSelected(){
   if(selectedIds.length!==1)return;
   const index=objects.findIndex(o=>o.id===selectedIds[0]);
@@ -1023,19 +1236,24 @@ function ungroupSelected(){
       const childTransform=child.getAttribute('transform')||'';
       child.setAttribute('transform',(groupTransform+' '+childTransform).trim());
     }
-    const type=elementType(child);
-    const mode=child.getAttribute('data-vv-mode')||detectMode({el:child});
-    child.removeAttribute('data-vv-type');
-    child.removeAttribute('data-vv-mode');
+    let el=normalizeImportedShape(child);
+    if(el!==child && child.parentNode){ /* already detached */ }
+    const type=elementType(el);
+    const mode=el.getAttribute('data-vv-mode')||detectMode({el});
+    el.removeAttribute('data-vv-type');
+    el.removeAttribute('data-vv-mode');
     const id=uid();
-    child.dataset.id=id;
-    child.style.pointerEvents='all';
-    child.setAttribute('pointer-events','all');
-    objects.push({id,type,el:child,data:{mode}});
-    objectsG.appendChild(child);
+    el.dataset.id=id;
+    el.style.pointerEvents='all';
+    el.setAttribute('pointer-events','all');
+    objects.push({id,type,el,data:{mode}});
+    objectsG.appendChild(el);
+    const obj=objects[objects.length-1];
+    if(obj.type==='path') bakePathTransform(obj);
     newIds.push(id);
   });
   selectedIds=newIds;
+
   refreshUI();
 }
 function applyProps(saveUndo){
@@ -1109,16 +1327,143 @@ svg.addEventListener('mouseup',onUp);
 document.addEventListener('mousemove',onMove);
 document.addEventListener('mouseup',onUp);
 svg.addEventListener('dblclick',onDbl);
+let clipboardData = []; // serialized selected objects for copy/paste
+
+function isTypingTarget(el){
+  if(!el) return false;
+  const tag=(el.tagName||'').toLowerCase();
+  return tag==='input'||tag==='textarea'||el.isContentEditable;
+}
+
+function copySelected(){
+  if(!selectedIds.length) return;
+  clipboardData = selectedIds.map(id=>{
+    const o=objects.find(x=>x.id===id);
+    if(!o) return null;
+    return {
+      type: o.type,
+      data: JSON.parse(JSON.stringify(o.data||{})),
+      html: new XMLSerializer().serializeToString(o.el)
+    };
+  }).filter(Boolean);
+}
+
+function pasteClipboard(){
+  if(!clipboardData.length) return;
+  pushUndo();
+  const newIds=[];
+  clipboardData.forEach(item=>{
+    try{
+      const parser=new DOMParser();
+      // wrap in svg so parse works for all shapes
+      const doc=parser.parseFromString('<svg xmlns="'+SVG_NS+'">'+item.html+'</svg>','image/svg+xml');
+      const el=doc.documentElement.firstElementChild;
+      if(!el) return;
+      const imported=document.importNode(el,true);
+      imported.removeAttribute('data-id');
+      clearObjectIds(imported);
+      const id=addObject(item.type, imported, item.data, true);
+      const obj=objects.find(o=>o.id===id);
+      if(obj) moveBy(obj, 12, 12);
+      newIds.push(id);
+    }catch(err){ console.warn('Paste fejl:', err); }
+  });
+  if(newIds.length){
+    selectedIds=newIds;
+    refreshUI();
+  }
+}
+
+function selectionCenter(){
+  const objs=selectedIds.map(id=>objects.find(o=>o.id===id)).filter(Boolean);
+  if(!objs.length) return null;
+  let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
+  objs.forEach(o=>{
+    const b=getWorldBBox(o);
+    minX=Math.min(minX,b.x); minY=Math.min(minY,b.y);
+    maxX=Math.max(maxX,b.x+b.width); maxY=Math.max(maxY,b.y+b.height);
+  });
+  return { cx:(minX+maxX)/2, cy:(minY+maxY)/2, objs };
+}
+
+function rotateSelected(deg){
+  const c=selectionCenter();
+  if(!c) return;
+  pushUndo();
+  c.objs.forEach(o=>rotateObjectAround(o, c.cx, c.cy, deg));
+  refreshUI();
+}
+
+function flipSelected(axis){
+  const c=selectionCenter();
+  if(!c) return;
+  pushUndo();
+  c.objs.forEach(obj=>{
+    const b=getWorldBBox(obj);
+    const cx=b.x+b.width/2, cy=b.y+b.height/2;
+    const t=obj.el.getAttribute('transform')||'';
+    if(axis==='h'){
+      obj.el.setAttribute('transform', (t+' translate('+cx+' '+cy+') scale(-1 1) translate('+(-cx)+' '+(-cy)+')').trim());
+    } else {
+      obj.el.setAttribute('transform', (t+' translate('+cx+' '+cy+') scale(1 -1) translate('+(-cx)+' '+(-cy)+')').trim());
+    }
+  });
+  refreshUI();
+}
+
 document.addEventListener('keydown',e=>{
+  if(isTypingTarget(e.target)) return;
   if(e.key==='Escape'){setAboutOpen(false);cancelDraw();deselectAll();nodeEdit=null;nodeDrag=null;refreshUI()}
   if(aboutModal?.classList.contains('show'))return;
   if((e.key==='Delete'||e.key==='Backspace')&&!e.target.matches('input'))deleteSelected();
-  if(e.key==='v'||e.key==='V')document.querySelector('[data-tool="select"]').click();
+  // V = select tool only without Ctrl/Cmd (Ctrl+V = paste)
+  if((e.key==='v'||e.key==='V') && !(e.ctrlKey||e.metaKey)) document.querySelector('[data-tool="select"]')?.click();
   if((e.ctrlKey||e.metaKey) && (e.key==='z'||e.key==='Z')){e.preventDefault();undo();}
+  if((e.ctrlKey||e.metaKey) && (e.key==='c'||e.key==='C')){e.preventDefault();copySelected();}
+  if((e.ctrlKey||e.metaKey) && (e.key==='v'||e.key==='V')){e.preventDefault();pasteClipboard();}
+  if((e.ctrlKey||e.metaKey) && (e.key==='d'||e.key==='D')){e.preventDefault();copySelected();pasteClipboard();}
   if((e.ctrlKey||e.metaKey) && !e.shiftKey && (e.key==='g'||e.key==='G')){e.preventDefault();groupSelected();}
   if((e.ctrlKey||e.metaKey) && e.shiftKey && (e.key==='g'||e.key==='G')){e.preventDefault();ungroupSelected();}
   if((e.key==='Enter')&&tool==='bezier'&&bezierAnchors.length>=2){e.preventDefault();finishBezier();}
+  // +/- ændrer antal sider på regelmæssig polygon
+  if(tool==='ngon' && (e.key==='+'||e.key==='='||e.key==='Add')){
+    e.preventDefault();
+    regularPolySides=Math.min(24, regularPolySides+1);
+    setStatus('Reg. polygon ('+regularPolySides+')');
+  }
+  if(tool==='ngon' && (e.key==='-'||e.key==='_'||e.key==='Subtract')){
+    e.preventDefault();
+    regularPolySides=Math.max(3, regularPolySides-1);
+    setStatus('Reg. polygon ('+regularPolySides+')');
+  }
+  // Piletaster: flyt valgte elementer
+  if(selectedIds.length && (e.key==='ArrowLeft'||e.key==='ArrowRight'||e.key==='ArrowUp'||e.key==='ArrowDown')){
+    e.preventDefault();
+    const step = e.shiftKey ? 5 : 1; // mm; Shift = 5 mm
+    let dx=0, dy=0;
+    if(e.key==='ArrowLeft') dx=-step;
+    if(e.key==='ArrowRight') dx=step;
+    if(e.key==='ArrowUp') dy=-step;
+    if(e.key==='ArrowDown') dy=step;
+    if(!e.repeat) pushUndo();
+    selectedIds.forEach(id=>{
+      const o=objects.find(x=>x.id===id);
+      if(o) moveBy(o, dx, dy);
+    });
+    refreshUI();
+  }
 });
+
+document.getElementById('btnRotLeft')?.addEventListener('click',()=>rotateSelected(-90));
+document.getElementById('btnRotRight')?.addEventListener('click',()=>rotateSelected(90));
+document.getElementById('btnRotCustom')?.addEventListener('click',()=>{
+  const v=prompt('Rotér (grader, positiv = med uret):','15');
+  if(v===null||v==='') return;
+  const deg=parseFloat(v);
+  if(!isNaN(deg)) rotateSelected(deg);
+});
+document.getElementById('btnFlipH')?.addEventListener('click',()=>flipSelected('h'));
+document.getElementById('btnFlipV')?.addEventListener('click',()=>flipSelected('v'));
 
 
 function onDown(e){
@@ -1213,6 +1558,18 @@ function onDown(e){
       const id = target.getAttribute('data-id')||target.dataset.id;
       const obj = objects.find(o=>o.id===id);
       if(obj && obj.type!=='image' && obj.type!=='text'){
+        // If group: try to promote the clicked leaf shape so nodes can be edited
+        if(obj.type==='group'){
+          const tag=(e.target.tagName||'').toLowerCase();
+          if(['path','polygon','polyline','rect','ellipse','circle','line'].includes(tag) && e.target!==obj.el){
+            const promoted=promoteShapeFromGroup(obj, e.target);
+            if(promoted){
+              selectOnly(promoted.id);
+              startNodeEdit(promoted);
+              return;
+            }
+          }
+        }
         selectOnly(id);
         startNodeEdit(obj);
       }
@@ -1222,6 +1579,7 @@ function onDown(e){
     return;
   }
   if(tool==='freehand'){
+
     isDrawing=true;
     freehandPts=[pt];
     currentPath=document.createElementNS(SVG_NS,'path');
@@ -1287,12 +1645,39 @@ function onDown(e){
     } else penPoints.push(pt);
     updatePoly();return;
   }
+  if(tool==='ngon'){
+    isDrawing=true;
+    currentPath=document.createElementNS(SVG_NS,'polygon');
+    applyMode(currentPath,currentMode);
+    if(currentMode==='engrave')currentPath.setAttribute('fill',PREV);
+    updateRegularPolygon(startPt, pt, regularPolySides, currentPath);
+    tempG.appendChild(currentPath);
+    return;
+  }
   isDrawing=true;let el;
   if(tool==='rect'){el=document.createElementNS(SVG_NS,'rect');el.setAttribute('x',pt.x);el.setAttribute('y',pt.y);el.setAttribute('width',0);el.setAttribute('height',0);applyMode(el,currentMode);if(currentMode==='engrave')el.setAttribute('fill',PREV)}
   else if(tool==='ellipse'){el=document.createElementNS(SVG_NS,'ellipse');el.setAttribute('cx',pt.x);el.setAttribute('cy',pt.y);el.setAttribute('rx',0);el.setAttribute('ry',0);applyMode(el,currentMode);if(currentMode==='engrave')el.setAttribute('fill',PREV)}
   else if(tool==='line'){el=document.createElementNS(SVG_NS,'line');el.setAttribute('x1',pt.x);el.setAttribute('y1',pt.y);el.setAttribute('x2',pt.x);el.setAttribute('y2',pt.y);applyLineMode(el,currentMode);el.setAttribute('stroke-linecap','round')}
   if(el){currentPath=el;tempG.appendChild(el)}
 }
+
+function updateRegularPolygon(center, edgePt, sides, el){
+  const n=Math.max(3, Math.min(24, sides|0));
+  const r=Math.hypot(edgePt.x-center.x, edgePt.y-center.y);
+  if(r < 0.5){
+    el.setAttribute('points', center.x+','+center.y);
+    return;
+  }
+  // Start angle so one vertex points toward the mouse
+  const startAng=Math.atan2(edgePt.y-center.y, edgePt.x-center.x);
+  const pts=[];
+  for(let i=0;i<n;i++){
+    const a=startAng + i*(Math.PI*2/n);
+    pts.push((center.x+r*Math.cos(a)).toFixed(2)+','+(center.y+r*Math.sin(a)).toFixed(2));
+  }
+  el.setAttribute('points', pts.join(' '));
+}
+
 
 function onMove(e){
   const pt=svgPt(e);
@@ -1313,10 +1698,11 @@ function onMove(e){
   if(tool==='select'&&resizeState){
     const obj=objects.find(o=>o.id===resizeState.objId);
     if(obj){
-      resizeObject(obj, resizeState.handle, pt.x, pt.y, resizeState.origin);
+      resizeObject(obj, resizeState.handle, pt.x, pt.y, resizeState.origin, !!e.shiftKey);
       // update props live
       const b=getWorldBBox(obj);
       document.getElementById('propW').value=Math.round(b.width*10)/10;
+
       document.getElementById('propH').value=Math.round(b.height*10)/10;
       // redraw handles
       handlesG.innerHTML='';
@@ -1399,12 +1785,23 @@ function onMove(e){
 
 
   if(!isDrawing||!currentPath)return;
-  if(tool==='rect'){const x=Math.min(startPt.x,pt.x),y=Math.min(startPt.y,pt.y);currentPath.setAttribute('x',x);currentPath.setAttribute('y',y);currentPath.setAttribute('width',Math.abs(pt.x-startPt.x));currentPath.setAttribute('height',Math.abs(pt.y-startPt.y))}
-  else if(tool==='ellipse'){currentPath.setAttribute('cx',(startPt.x+pt.x)/2);currentPath.setAttribute('cy',(startPt.y+pt.y)/2);currentPath.setAttribute('rx',Math.abs(pt.x-startPt.x)/2);currentPath.setAttribute('ry',Math.abs(pt.y-startPt.y)/2)}
+  if(tool==='rect'){
+    let w=Math.abs(pt.x-startPt.x), h=Math.abs(pt.y-startPt.y);
+    if(e.shiftKey){ const s=Math.max(w,h); w=s; h=s; }
+    const x=pt.x<startPt.x?startPt.x-w:startPt.x, y=pt.y<startPt.y?startPt.y-h:startPt.y;
+    currentPath.setAttribute('x',x);currentPath.setAttribute('y',y);currentPath.setAttribute('width',w);currentPath.setAttribute('height',h);
+  }
+  else if(tool==='ellipse'){
+    let rx=Math.abs(pt.x-startPt.x)/2, ry=Math.abs(pt.y-startPt.y)/2;
+    if(e.shiftKey){ const s=Math.max(rx,ry); rx=s; ry=s; }
+    currentPath.setAttribute('cx',(startPt.x+pt.x)/2);currentPath.setAttribute('cy',(startPt.y+pt.y)/2);currentPath.setAttribute('rx',rx);currentPath.setAttribute('ry',ry);
+  }
   else if(tool==='line'){currentPath.setAttribute('x2',pt.x);currentPath.setAttribute('y2',pt.y)}
   else if(tool==='pen')updatePen(pt);
   else if(tool==='polygon')updatePoly(pt);
+  else if(tool==='ngon')updateRegularPolygon(startPt, pt, regularPolySides, currentPath);
 }
+
 function onUp(e){
   if(tool==='text' && pendingTextPlace){
     const p = pendingTextPlace;
@@ -1500,19 +1897,20 @@ function onUp(e){
     return;
   }
   if(!isDrawing)return;
-  if(tool==='rect'||tool==='ellipse'||tool==='line'){
+  if(tool==='rect'||tool==='ellipse'||tool==='line'||tool==='ngon'){
     if(currentPath){
-      const type=tool==='ellipse'?'ellipse':tool;
+      const type=tool==='ngon'?'polygon':(tool==='ellipse'?'ellipse':tool);
       let ok=true;
       try{const bb=currentPath.getBBox();if(tool!=='line'&&bb.width<2&&bb.height<2)ok=false;
         if(tool==='line'){const x1=+currentPath.getAttribute('x1'),y1=+currentPath.getAttribute('y1'),x2=+currentPath.getAttribute('x2'),y2=+currentPath.getAttribute('y2');if(Math.hypot(x2-x1,y2-y1)<3)ok=false}
       }catch(_){}
-      if(ok){if(type!=='line')applyMode(currentPath,currentMode);addObject(type,currentPath,{mode:currentMode})}
+      if(ok){if(type!=='line')applyMode(currentPath,currentMode);addObject(type,currentPath,{mode:currentMode, sides: tool==='ngon'?regularPolySides:undefined})}
       else currentPath.remove();
     }
     isDrawing=false;currentPath=null;
   }
 }
+
 function onDbl(e){
   if(tool==='bezier'&&bezierAnchors.length>=2){finishBezier();return}
   if(tool==='pen'&&penPoints.length>1){finishPen();return}
@@ -1608,74 +2006,80 @@ function updateTextCaret(){
     tempG.appendChild(textCaret);
   } catch(_){}
 }
+let pendingTextSvgPt = null;
+
 function startInlineText(svgP, clientX, clientY, existingObj){
   // Finish any open session first
-  if(textEditEl) commitInlineText();
+  if(textEditEl || !document.getElementById('inlineTextInput')?.classList.contains('hidden')){
+    commitInlineText();
+  }
   removeTextCaret();
+  textEditExisting = existingObj || null;
+  textEditEl = existingObj ? existingObj.el : null;
+  pendingTextSvgPt = existingObj ? null : { x: svgP.x, y: svgP.y };
+  if(existingObj) pushUndo();
 
-  if(existingObj){
-    textEditExisting = existingObj;
-    textEditEl = existingObj.el;
-    pushUndo();
-  } else {
-    textEditExisting = null;
-    const el = document.createElementNS(SVG_NS,'text');
-    el.setAttribute('x', svgP.x);
-    el.setAttribute('y', svgP.y);
-    el.setAttribute('font-size','28');
-    el.setAttribute('font-family','Arial, sans-serif');
-    el.setAttribute('font-weight','bold');
-    el.textContent = '';
-    applyMode(el, currentMode);
-    if(currentMode==='engrave'){
-      el.setAttribute('fill', ENG);
-      el.setAttribute('stroke','none');
-    } else {
-      el.setAttribute('fill','transparent');
-      el.setAttribute('stroke', strokeFor(currentMode));
-      el.setAttribute('stroke-width',String(STROKE_MM));
-    }
-    tempG.appendChild(el);
-    textEditEl = el;
-  }
-  updateTextCaret();
-
-  // Hidden input captures keyboard (mobile + desktop)
   const input = document.getElementById('inlineTextInput');
-  if(input){
-    input.classList.remove('hidden');
-    input.value = textEditEl.textContent || '';
-    requestAnimationFrame(()=> input.focus());
-  }
+  if(!input) return;
+  const wrap = document.querySelector('.canvas-wrap');
+  const wrapRect = wrap.getBoundingClientRect();
+  const left = clientX - wrapRect.left + wrap.scrollLeft;
+  const top = clientY - wrapRect.top + wrap.scrollTop - 10;
+  input.classList.remove('hidden');
+  input.style.left = Math.max(4, left) + 'px';
+  input.style.top = Math.max(4, top) + 'px';
+  input.style.width = '144px';
+  input.style.fontSize = '20px';
+
+  input.value = existingObj ? (existingObj.el.textContent || '') : '';
+  input.dataset.svgX = svgP.x;
+  input.dataset.svgY = svgP.y;
+  // Expand width a bit as user types
+  requestAnimationFrame(()=>{
+    input.focus();
+    input.select();
+  });
 }
 function commitInlineText(){
   removeTextCaret();
   const input = document.getElementById('inlineTextInput');
-  if(input){ input.classList.add('hidden'); input.blur(); }
-  if(!textEditEl) return;
-  const txt = (textEditEl.textContent || '').trim();
-  if(textEditExisting){
-    if(!txt){
-      // leave as was via undo if empty - just restore
-      textEditEl.textContent = (textEditExisting.data && textEditExisting.data.text) || '';
-    } else {
+  if(!input || input.classList.contains('hidden')) {
+    textEditEl = null;
+    textEditExisting = null;
+    pendingTextSvgPt = null;
+    return;
+  }
+  const txt = (input.value || '').trim();
+  input.classList.add('hidden');
+  input.blur();
+
+  if(textEditExisting && textEditEl){
+    if(txt){
       textEditEl.textContent = txt;
       if(textEditExisting.data) textEditExisting.data.text = txt;
     }
     textEditEl = null;
     textEditExisting = null;
+    pendingTextSvgPt = null;
     refreshUI();
     return;
   }
-  // new text
-  const el = textEditEl;
+
   textEditEl = null;
-  if(!txt){
-    el.remove();
-    return;
-  }
+  textEditExisting = null;
+  if(!txt){ pendingTextSvgPt = null; return; }
+
+  const x = parseFloat(input.dataset.svgX) || (pendingTextSvgPt && pendingTextSvgPt.x) || 0;
+  const y = parseFloat(input.dataset.svgY) || (pendingTextSvgPt && pendingTextSvgPt.y) || 0;
+  pendingTextSvgPt = null;
+
+  const el = document.createElementNS(SVG_NS,'text');
+  el.setAttribute('x', x);
+  el.setAttribute('y', y);
+  el.setAttribute('font-size','12');
+  el.setAttribute('font-family','Arial, sans-serif');
+  el.setAttribute('font-weight','bold');
   el.textContent = txt;
-  if(el.parentNode) el.parentNode.removeChild(el);
   applyMode(el, currentMode);
   if(currentMode==='engrave'){
     el.setAttribute('fill', ENG);
@@ -1688,32 +2092,35 @@ function commitInlineText(){
   addObject('text', el, { mode: currentMode, text: txt });
 }
 
-
-// Drive live text from hidden input
 document.getElementById('inlineTextInput')?.addEventListener('input', e=>{
-  if(!textEditEl) return;
-  textEditEl.textContent = e.target.value;
-  updateTextCaret();
+  // Grow the small box slightly with content
+  const input = e.target;
+  const len = Math.max(4, (input.value||'').length);
+  input.style.width = Math.min(360, 96 + len * 12) + 'px';
+
 });
 document.getElementById('inlineTextInput')?.addEventListener('keydown', e=>{
   e.stopPropagation();
   if(e.key==='Enter'){ e.preventDefault(); commitInlineText(); }
   if(e.key==='Escape'){
     e.preventDefault();
-    removeTextCaret();
-    if(textEditEl && !textEditExisting) textEditEl.remove();
-    textEditEl = null;
-    textEditExisting = null;
     const input = document.getElementById('inlineTextInput');
     if(input){ input.classList.add('hidden'); input.value=''; }
+    textEditEl = null;
+    textEditExisting = null;
+    pendingTextSvgPt = null;
   }
+});
+document.getElementById('inlineTextInput')?.addEventListener('mousedown', e=>{
+  e.stopPropagation();
 });
 document.getElementById('inlineTextInput')?.addEventListener('blur', ()=>{
   setTimeout(()=>{
-    if(textEditEl && document.activeElement !== document.getElementById('inlineTextInput')){
+    const input = document.getElementById('inlineTextInput');
+    if(input && !input.classList.contains('hidden') && document.activeElement !== input){
       commitInlineText();
     }
-  }, 100);
+  }, 120);
 });
 
 function updatePen(ex){if(!currentPath||!penPoints.length)return;let d='M '+penPoints[0].x+' '+penPoints[0].y;for(let i=1;i<penPoints.length;i++)d+=' L '+penPoints[i].x+' '+penPoints[i].y;if(ex)d+=' L '+ex.x+' '+ex.y;currentPath.setAttribute('d',d)}
@@ -1881,10 +2288,36 @@ function nodesToPathD(pts, closed){
 }
 function startNodeEdit(obj){
   let pts=[];
+  // Groups: cannot edit as a whole – tip user to click a path inside
+  if(obj.type==='group'){
+    setStatus('Node: klik en sti inde i gruppen');
+    return;
+  }
   // Bake any scale/translate so node coords match visual size
   if(obj.type==='path'||obj.type==='traced') bakePathTransform(obj);
+  // Polygon with transform → path + bake
+  if(obj.type==='polygon' && obj.el.getAttribute('transform')){
+    const raw=(obj.el.getAttribute('points')||'').trim().split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
+    let d='';
+    for(let i=0;i+1<raw.length;i+=2) d+=(i===0?'M ':'L ')+raw[i]+' '+raw[i+1]+' ';
+    d+='Z';
+    const path=document.createElementNS(SVG_NS,'path');
+    path.setAttribute('d', d.trim());
+    path.setAttribute('fill-rule','evenodd');
+    path.setAttribute('transform', obj.el.getAttribute('transform'));
+    ['fill','stroke','stroke-width','opacity'].forEach(a=>{ if(obj.el.hasAttribute(a)) path.setAttribute(a, obj.el.getAttribute(a)); });
+    const mode=obj.data.mode||detectMode(obj);
+    path.setAttribute('pointer-events','all');
+    path.dataset.id=obj.id;
+    obj.el.replaceWith(path);
+    obj.el=path;
+    obj.type='path';
+    obj.data.mode=mode;
+    bakePathTransform(obj);
+  }
   // Convert rect/ellipse to editable path once
   if(obj.type==='rect'){
+
     const x=+obj.el.getAttribute('x')||0, y=+obj.el.getAttribute('y')||0;
     const w=+obj.el.getAttribute('width')||0, h=+obj.el.getAttribute('height')||0;
     const d='M '+x+' '+y+' L '+(x+w)+' '+y+' L '+(x+w)+' '+(y+h)+' L '+x+' '+(y+h)+' Z';
@@ -2273,6 +2706,7 @@ function importSvgText(text){
   addObject('group',group,{group:true,importedSvg:true});
   document.querySelector('[data-tool="select"]').click();
 }
+
 function importRasterFile(file){
   const reader=new FileReader();
   reader.onload=ev=>{
@@ -2906,7 +3340,6 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       let sel = selectedIds.map(id => objects.find(o => o.id === id)).filter(Boolean);
       if (sel.length < 2) return;
       // Sort by z-order (objects array): lower index = bottom, higher = top
-      // For subtract: bottom is base, top is cutter → sel[0] = bottom base, rest = cutters
       sel = sel.slice().sort((a, b) => objects.indexOf(a) - objects.indexOf(b));
       if (sel.some(o => o.type === 'image')) {
         alert('Boolske operationer virker kun på vektorer. Spor billedet først.');
@@ -2917,33 +3350,37 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         return;
       }
 
-
-      // Bake transforms so path coords match visual (important for traced + resized shapes)
+      // Bake transforms so path coords match visual (traced + resized)
       sel.forEach(o => {
-        if (o.type === 'path' || o.type === 'traced') bakePathTransform(o);
+        if (o.type === 'path' || o.type === 'traced') {
+          try { bakePathTransform(o); } catch (_) {}
+        }
       });
 
-      const boxes = sel.map(o => getWorldBBox(o));
-      const pad = 4;
+      const boxes = sel.map(o => {
+        try { return getWorldBBox(o); } catch (_) { return { x:0, y:0, width:1, height:1 }; }
+      });
+      const pad = 6;
       const minX = Math.min(...boxes.map(b => b.x)) - pad;
       const minY = Math.min(...boxes.map(b => b.y)) - pad;
       const maxX = Math.max(...boxes.map(b => b.x + b.width)) + pad;
       const maxY = Math.max(...boxes.map(b => b.y + b.height)) + pad;
+      const worldW = Math.max(1, maxX - minX);
+      const worldH = Math.max(1, maxY - minY);
 
-      // Higher resolution for detailed traces (rabbit etc.)
-      let SCALE = 4;
-      let cw = Math.max(8, Math.ceil((maxX - minX) * SCALE));
-      let ch = Math.max(8, Math.ceil((maxY - minY) * SCALE));
-      if (cw > 3500 || ch > 3500) {
-        SCALE = Math.max(1.5, 3500 / Math.max(maxX - minX, maxY - minY));
-        cw = Math.max(8, Math.ceil((maxX - minX) * SCALE));
-        ch = Math.max(8, Math.ceil((maxY - minY) * SCALE));
+      // Higher resolution for detailed traces
+      let SCALE = 6;
+      let cw = Math.max(16, Math.ceil(worldW * SCALE));
+      let ch = Math.max(16, Math.ceil(worldH * SCALE));
+      if (cw > 4000 || ch > 4000) {
+        SCALE = Math.max(2, 4000 / Math.max(worldW, worldH));
+        cw = Math.max(16, Math.ceil(worldW * SCALE));
+        ch = Math.max(16, Math.ceil(worldH * SCALE));
       }
-      if (cw > 5000 || ch > 5000) {
+      if (cw > 6000 || ch > 6000 || cw * ch > 25000000) {
         alert('Figurerne er for store til boolsk operation.');
         return;
       }
-
 
       function applyElTransform(ctx, el) {
         try {
@@ -2959,68 +3396,106 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         } catch (_) {}
         const tAttr = el.getAttribute('transform') || '';
         if (!tAttr) return;
-        // fallback: apply all translate/scale/rotate in order
-        const parts = tAttr.match(/(translate|scale|rotate)\([^)]*\)/g) || [];
+        const parts = tAttr.match(/(translate|scale|rotate|matrix)\([^)]*\)/gi) || [];
         parts.forEach(part => {
-          const nums = (part.match(/[-\d.]+/g) || []).map(Number);
-          if (part.startsWith('translate')) ctx.translate(nums[0] || 0, nums[1] || 0);
-          else if (part.startsWith('scale')) ctx.scale(nums[0], nums.length > 1 ? nums[1] : nums[0]);
-          else if (part.startsWith('rotate')) {
-            if (nums.length >= 3) { ctx.translate(nums[1], nums[2]); ctx.rotate(nums[0] * Math.PI / 180); ctx.translate(-nums[1], -nums[2]); }
-            else ctx.rotate((nums[0] || 0) * Math.PI / 180);
+          const nums = (part.match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi) || []).map(Number);
+          const low = part.toLowerCase();
+          if (low.startsWith('translate')) ctx.translate(nums[0] || 0, nums[1] || 0);
+          else if (low.startsWith('scale')) ctx.scale(nums[0], nums.length > 1 ? nums[1] : nums[0]);
+          else if (low.startsWith('rotate')) {
+            if (nums.length >= 3) {
+              ctx.translate(nums[1], nums[2]);
+              ctx.rotate(nums[0] * Math.PI / 180);
+              ctx.translate(-nums[1], -nums[2]);
+            } else ctx.rotate((nums[0] || 0) * Math.PI / 180);
+          } else if (low.startsWith('matrix') && nums.length >= 6) {
+            ctx.transform(nums[0], nums[1], nums[2], nums[3], nums[4], nums[5]);
           }
         });
+      }
+
+      function paintLeafShape(ctx, el, typeHint) {
+        const tag = (el.tagName || '').toLowerCase();
+        const type = typeHint || elementType(el);
+        ctx.fillStyle = '#000000';
+        if (type === 'rect' || tag === 'rect') {
+          const x = parseFloat(el.getAttribute('x')) || 0;
+          const y = parseFloat(el.getAttribute('y')) || 0;
+          const w = parseFloat(el.getAttribute('width')) || 0;
+          const h = parseFloat(el.getAttribute('height')) || 0;
+          if (w > 0 && h > 0) ctx.fillRect(x, y, w, h);
+        } else if (type === 'ellipse' || tag === 'ellipse' || tag === 'circle') {
+          const cx = parseFloat(el.getAttribute('cx')) || 0;
+          const cy = parseFloat(el.getAttribute('cy')) || 0;
+          let rx, ry;
+          if (tag === 'circle') {
+            rx = ry = Math.max(0.5, parseFloat(el.getAttribute('r')) || 0);
+          } else {
+            rx = Math.max(0.5, parseFloat(el.getAttribute('rx')) || 0);
+            ry = Math.max(0.5, parseFloat(el.getAttribute('ry')) || 0);
+          }
+          ctx.beginPath();
+          ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (type === 'polygon' || tag === 'polygon' || tag === 'polyline') {
+          const raw = (el.getAttribute('points') || '').trim().split(/[\s,]+/).map(Number).filter(n => !isNaN(n));
+          if (raw.length >= 6) {
+            ctx.beginPath();
+            ctx.moveTo(raw[0], raw[1]);
+            for (let i = 2; i < raw.length; i += 2) ctx.lineTo(raw[i], raw[i + 1]);
+            if (tag !== 'polyline') ctx.closePath();
+            ctx.fill('evenodd');
+          }
+        } else if (tag === 'path' || type === 'path' || type === 'traced') {
+          const d = el.getAttribute('d') || '';
+          if (!d) return;
+          if (typeof Path2D !== 'undefined') {
+            try {
+              const p2d = new Path2D(d);
+              ctx.fill(p2d, 'evenodd');
+              return;
+            } catch (_) {}
+          }
+          paintPathManual(ctx, d);
+        }
+      }
+
+      // Paint full DOM tree (supports imported SVG groups)
+      function paintDomTree(ctx, el) {
+        if (!el || el.nodeType !== 1) return;
+        const tag = (el.tagName || '').toLowerCase();
+        if (tag === 'g' || tag === 'a' || tag === 'svg' || tag === 'symbol') {
+          ctx.save();
+          applyElTransform(ctx, el);
+          Array.from(el.children).forEach(c => paintDomTree(ctx, c));
+          ctx.restore();
+          return;
+        }
+        if (['defs', 'clippath', 'mask', 'style', 'title', 'desc', 'metadata', 'filter', 'pattern', 'lineargradient', 'radialgradient', 'marker', 'text', 'tspan', 'image', 'use'].includes(tag)) {
+          return;
+        }
+        ctx.save();
+        applyElTransform(ctx, el);
+        paintLeafShape(ctx, el, null);
+        ctx.restore();
       }
 
       function paintShape(ctx, obj, composite) {
         ctx.save();
         ctx.globalCompositeOperation = composite || 'source-over';
+        // Reset to world→canvas mapping, then paint geometry in SVG units
         ctx.setTransform(SCALE, 0, 0, SCALE, -minX * SCALE, -minY * SCALE);
         ctx.fillStyle = '#000000';
-        const el = obj.el;
         try {
-          applyElTransform(ctx, el);
-          if (obj.type === 'rect') {
-            const x = parseFloat(el.getAttribute('x')) || 0;
-            const y = parseFloat(el.getAttribute('y')) || 0;
-            const w = parseFloat(el.getAttribute('width')) || 0;
-            const h = parseFloat(el.getAttribute('height')) || 0;
-            ctx.fillRect(x, y, w, h);
-          } else if (obj.type === 'ellipse') {
-            ctx.beginPath();
-            ctx.ellipse(
-              parseFloat(el.getAttribute('cx')) || 0,
-              parseFloat(el.getAttribute('cy')) || 0,
-              Math.max(0.5, parseFloat(el.getAttribute('rx')) || 0),
-              Math.max(0.5, parseFloat(el.getAttribute('ry')) || 0),
-              0, 0, Math.PI * 2
-            );
-            ctx.fill();
-          } else if (obj.type === 'polygon') {
-            const raw = (el.getAttribute('points') || '').trim().split(/[\s,]+/).map(Number).filter(n => !isNaN(n));
-            if (raw.length >= 6) {
-              ctx.beginPath();
-              ctx.moveTo(raw[0], raw[1]);
-              for (let i = 2; i < raw.length; i += 2) ctx.lineTo(raw[i], raw[i + 1]);
-              ctx.closePath();
-              ctx.fill('evenodd');
-            }
+          if (obj.type === 'group') {
+            paintDomTree(ctx, obj.el);
           } else {
-            // path / traced – prefer Path2D (supports C, Q, A, etc.)
-            const d = el.getAttribute('d') || '';
-            if (d && typeof Path2D !== 'undefined') {
-              try {
-                const p2d = new Path2D(d);
-                ctx.fill(p2d, 'evenodd');
-              } catch (err) {
-                // fallback manual parse
-                paintPathManual(ctx, d);
-              }
-            } else if (d) {
-              paintPathManual(ctx, d);
-            }
+            ctx.save();
+            applyElTransform(ctx, obj.el);
+            paintLeafShape(ctx, obj.el, obj.type);
+            ctx.restore();
           }
-        } catch (err) { console.warn(err); }
+        } catch (err) { console.warn('paintShape', err); }
         ctx.restore();
       }
 
@@ -3081,60 +3556,48 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         if (ok) ctx.fill('evenodd');
       }
 
-
-      // Build result mask using offscreen canvases for proper ops
       const canvas = document.createElement('canvas');
       canvas.width = cw; canvas.height = ch;
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      if (!ctx) { alert('Kunne ikke oprette tegneflade til boolsk operation.'); return; }
 
       if (op === 'union') {
-        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cw, ch);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, cw, ch);
         sel.forEach(o => paintShape(ctx, o, 'source-over'));
       } else if (op === 'subtract') {
-        // A minus union(B,C,...)
-        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cw, ch);
+        // nederste (sel[0]) minus alle ovenpå
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, cw, ch);
         paintShape(ctx, sel[0], 'source-over');
         for (let i = 1; i < sel.length; i++) {
           paintShape(ctx, sel[i], 'destination-out');
         }
       } else if (op === 'intersect') {
-        // start with A, keep only overlap with each next
-        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cw, ch);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, cw, ch);
         paintShape(ctx, sel[0], 'source-over');
         for (let i = 1; i < sel.length; i++) {
-          // mask: destination-in with next shape drawn on temp
           const tmp = document.createElement('canvas');
           tmp.width = cw; tmp.height = ch;
           const tctx = tmp.getContext('2d');
-          tctx.fillStyle = '#fff'; tctx.fillRect(0, 0, cw, ch);
+          tctx.fillStyle = '#ffffff';
+          tctx.fillRect(0, 0, cw, ch);
           paintShape(tctx, sel[i], 'source-over');
           ctx.globalCompositeOperation = 'destination-in';
           ctx.drawImage(tmp, 0, 0);
           ctx.globalCompositeOperation = 'source-over';
         }
       } else if (op === 'xor') {
-        // symmetric difference of all – pairwise accumulate
-        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cw, ch);
-        // Use xor composite for filled shapes
-        sel.forEach(o => {
-          paintShape(ctx, o, 'xor');
-        });
-        // xor leaves transparent background; fill white holes differently:
-        // After xor on transparent, non-overlapping parts are black-ish.
-        // Better: draw on transparent then composite
-      }
-
-      // For xor, redo with clearer approach
-      if (op === 'xor') {
-        ctx.clearRect(0, 0, cw, ch);
-        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, cw, ch);
-        // Count coverage: use separate grayscale layers
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, cw, ch);
         const counts = new Uint8Array(cw * ch);
         sel.forEach(o => {
           const tmp = document.createElement('canvas');
           tmp.width = cw; tmp.height = ch;
           const tctx = tmp.getContext('2d');
-          tctx.fillStyle = '#fff'; tctx.fillRect(0, 0, cw, ch);
+          tctx.fillStyle = '#ffffff';
+          tctx.fillRect(0, 0, cw, ch);
           paintShape(tctx, o, 'source-over');
           const id = tctx.getImageData(0, 0, cw, ch).data;
           for (let i = 0, p = 0; i < counts.length; i++, p += 4) {
@@ -3144,40 +3607,42 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         const out = ctx.createImageData(cw, ch);
         for (let i = 0, p = 0; i < counts.length; i++, p += 4) {
           const on = (counts[i] % 2) === 1;
-          out.data[p] = out.data[p+1] = out.data[p+2] = on ? 0 : 255;
-          out.data[p+3] = 255;
+          out.data[p] = out.data[p + 1] = out.data[p + 2] = on ? 0 : 255;
+          out.data[p + 3] = 255;
         }
         ctx.putImageData(out, 0, 0);
       }
 
       const imgData = ctx.getImageData(0, 0, cw, ch);
-      const contours = findContours(imgData, 128);
-
-      if (!contours.length) {
-        alert('Resultatet blev tomt.\\n\\nFigurerne skal overlappe for snit/træk-fra.');
+      // Verify that something was painted (at least some black pixels)
+      let black = 0;
+      for (let p = 0; p < imgData.data.length; p += 4) {
+        if (imgData.data[p] < 128) { black++; if (black > 20) break; }
+      }
+      if (black < 5) {
+        alert('Kunne ikke tegne figurerne til boolsk operation.\\n\\nTjek at importerede SVG-figurer er lukkede stier, eller ophæv grupperingen først.');
         return;
       }
 
-      const idsToRemove = sel.map(o => o.id);
-      pushUndo();
-      idsToRemove.forEach(id => {
-        const i = objects.findIndex(o => o.id === id);
-        if (i >= 0) { objects[i].el.remove(); objects.splice(i, 1); }
-      });
+      const contours = findContours(imgData, 128);
+      if (!contours.length) {
+        alert('Resultatet blev tomt.\\n\\nFigurerne skal overlappe for snit/forskel.');
+        return;
+      }
 
+      // Build result paths BEFORE removing originals, so we never lose data on failure
+      const resultPaths = [];
       contours.sort((a, b) => b.length - a.length);
-      let added = 0;
       contours.forEach(pts => {
-        if (pts.length < 3) return;
-        const simplified = rdpSimplify(pts, 0.75);
+        if (pts.length < 4) return;
+        const simplified = rdpSimplify(pts, Math.max(0.5, 1.2));
         if (simplified.length < 3) return;
-
         let minx = Infinity, miny = Infinity, maxx = -Infinity, maxy = -Infinity;
         simplified.forEach(p => {
           if (p.x < minx) minx = p.x; if (p.y < miny) miny = p.y;
           if (p.x > maxx) maxx = p.x; if (p.y > maxy) maxy = p.y;
         });
-        if ((maxx - minx) < 1.5 && (maxy - miny) < 1.5) return;
+        if ((maxx - minx) < 1.2 && (maxy - miny) < 1.2) return;
 
         const path = document.createElementNS(SVG_NS, 'path');
         let d = 'M ' + (simplified[0].x / SCALE + minX).toFixed(2) + ' ' + (simplified[0].y / SCALE + minY).toFixed(2);
@@ -3188,23 +3653,42 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         path.setAttribute('d', d);
         path.setAttribute('fill-rule', 'evenodd');
         applyMode(path, currentMode);
-        addObject('traced', path, { mode: currentMode }, true);
-        added++;
+        resultPaths.push(path);
       });
 
+      if (!resultPaths.length) {
+        alert('Resultatet blev tomt efter filtrering.');
+        return;
+      }
+
+      const idsToRemove = sel.map(o => o.id);
+      pushUndo();
+      idsToRemove.forEach(id => {
+        const i = objects.findIndex(o => o.id === id);
+        if (i >= 0) { objects[i].el.remove(); objects.splice(i, 1); }
+      });
+
+      const newIds = [];
+      resultPaths.forEach(path => {
+        const id = addObject('traced', path, { mode: currentMode }, true);
+        newIds.push(id);
+      });
+      selectedIds = newIds;
       updateCount();
-      if (!added) alert('Resultatet blev tomt efter filtrering.');
+      refreshUI();
     }
 
 function prepareSvgExport(){
   const clone=svg.cloneNode(true);
   clone.querySelector('#pageBg')?.remove();
+  clone.querySelector('#pageGrid')?.remove();
   clone.querySelector('#handles')?.remove();
   clone.querySelector('#temp')?.remove();
   clone.setAttribute('xmlns',SVG_NS);
   clone.setAttribute('xmlns:xlink','http://www.w3.org/1999/xlink');
   return clone;
 }
+
 
 function downloadSvg(root,filename){
   const blob=new Blob([new XMLSerializer().serializeToString(root)],{type:'image/svg+xml'});
@@ -3266,107 +3750,226 @@ function drawCanvasTextWithSpacing(ctx,text,x,y,letterSpacing,scale){
   });
 }
 
+function detectTextMode(textEl){
+  const fill=(textEl.getAttribute('fill')||'').toLowerCase();
+  const stroke=(textEl.getAttribute('stroke')||'').toLowerCase();
+  if(fill && fill!=='none' && fill!=='transparent') return 'engrave';
+  if(stroke.includes('2d9e') || stroke.includes('green') || stroke==='#2d9e5f') return 'green';
+  return 'cut';
+}
+
 function textOutlinePath(textEl){
-  const text=(textEl.textContent||'').replace(/\r\n?/g,'\n');
-  if(!text.trim())return null;
+  // Flatten all text content (including tspan)
+  let text='';
+  try{
+    text=(textEl.textContent||'').replace(/\r\n?/g,'\n');
+  }catch(_){ text=''; }
+  if(!text.trim()) return null;
 
-  const rawSize=getSvgStyleValue(textEl,'font-size','28');
-  const fontSize=Math.max(0.1,firstSvgNumber(rawSize,28));
-  const letterSpacing=firstSvgNumber(getSvgStyleValue(textEl,'letter-spacing','0'),0);
+  const fontSize=Math.max(1, firstSvgNumber(textEl.getAttribute('font-size')||getSvgStyleValue(textEl,'font-size','28'), 28));
+  const family=textEl.getAttribute('font-family') || getSvgStyleValue(textEl,'font-family','Arial, Helvetica, sans-serif') || 'Arial, Helvetica, sans-serif';
+  const weight=textEl.getAttribute('font-weight') || getSvgStyleValue(textEl,'font-weight','bold') || 'bold';
+  const style=textEl.getAttribute('font-style') || 'normal';
+  const letterSpacing=firstSvgNumber(textEl.getAttribute('letter-spacing')||'0', 0);
   const lines=text.split('\n');
-  const lineHeight=fontSize*1.2;
-  const x=firstSvgNumber(textEl.getAttribute('x'),0);
-  const y=firstSvgNumber(textEl.getAttribute('y'),0);
-  const anchor=getSvgStyleValue(textEl,'text-anchor','start').toLowerCase();
-  const baseline=getSvgStyleValue(textEl,'dominant-baseline','alphabetic').toLowerCase();
+  const lineHeight=fontSize*1.25;
+  const x=firstSvgNumber(textEl.getAttribute('x'), 0);
+  const y=firstSvgNumber(textEl.getAttribute('y'), 0);
+  const anchor=(textEl.getAttribute('text-anchor')||'start').toLowerCase();
 
-  const measureCanvas=document.createElement('canvas').getContext('2d');
-  if(!measureCanvas)return null;
-  const measurements=lines.map(line=>measureCanvasText(measureCanvas,line,fontSize,1,textEl,letterSpacing));
-  const maxWidth=Math.max(0,...measurements.map(m=>m.width));
-  const ascent=Math.max(fontSize*0.8,...measurements.map(m=>m.ascent));
-  const descent=Math.max(fontSize*0.2,...measurements.map(m=>m.descent));
-  const baselineOffset=(baseline==='middle'||baseline==='central')?(ascent-descent)/2:
-    (baseline==='hanging'||baseline==='text-before-edge')?ascent:0;
-  const firstBaseline=y+baselineOffset;
+  // Measure with a solid, known font string
+  const measureCanvas=document.createElement('canvas');
+  const mctx=measureCanvas.getContext('2d');
+  if(!mctx) return null;
+  function fontStr(px){ return style+' normal '+weight+' '+px+'px '+family; }
+  mctx.font=fontStr(fontSize);
+  const measurements=lines.map(line=>{
+    const metrics=mctx.measureText(line||' ');
+    const spacing=letterSpacing*Math.max(0, [...(line||'')].length-1);
+    return {
+      width:(metrics.width||fontSize)+spacing,
+      ascent:metrics.actualBoundingBoxAscent||fontSize*0.8,
+      descent:metrics.actualBoundingBoxDescent||fontSize*0.25
+    };
+  });
+  const maxWidth=Math.max(fontSize, ...measurements.map(m=>m.width));
+  const ascent=Math.max(fontSize*0.75, ...measurements.map(m=>m.ascent));
+  const descent=Math.max(fontSize*0.2, ...measurements.map(m=>m.descent));
+  const firstBaseline=y;
   const startX=anchor==='middle'?x-maxWidth/2:anchor==='end'?x-maxWidth:x;
-  const padding=Math.max(2,1.5/fontSize*28);
+  const padding=Math.max(2, fontSize*0.15);
   const minX=startX-padding;
   const minY=firstBaseline-ascent-padding;
   const maxX=startX+maxWidth+padding;
   const maxY=firstBaseline+(lines.length-1)*lineHeight+descent+padding;
 
-  // Render at several pixels per SVG unit and trace the resulting glyph mask.
-  // This produces real SVG paths while keeping the code self-contained.
-  const maxPixels=5200;
-  const scale=Math.min(10,Math.max(3,Math.min(maxPixels/Math.max(1,maxX-minX),maxPixels/Math.max(1,maxY-minY))));
-  const width=Math.max(4,Math.ceil((maxX-minX)*scale));
-  const height=Math.max(4,Math.ceil((maxY-minY)*scale));
-  if(width>maxPixels||height>maxPixels||width*height>18000000)return null;
+  // High resolution raster for clean glyph edges
+  const maxPixels=6000;
+  let scale=Math.min(12, Math.max(6, Math.min(maxPixels/Math.max(1,maxX-minX), maxPixels/Math.max(1,maxY-minY))));
+  let width=Math.max(8, Math.ceil((maxX-minX)*scale));
+  let height=Math.max(8, Math.ceil((maxY-minY)*scale));
+  if(width*height > 20000000){
+    scale=Math.sqrt(20000000/(Math.max(1,maxX-minX)*Math.max(1,maxY-minY)));
+    width=Math.max(8, Math.ceil((maxX-minX)*scale));
+    height=Math.max(8, Math.ceil((maxY-minY)*scale));
+  }
 
   const canvas=document.createElement('canvas');
-  canvas.width=width;canvas.height=height;
-  const ctx=canvas.getContext('2d',{willReadFrequently:true});
-  if(!ctx)return null;
-  ctx.fillStyle='#fff';ctx.fillRect(0,0,width,height);
-  ctx.fillStyle='#000';
+  canvas.width=width; canvas.height=height;
+  const ctx=canvas.getContext('2d', {willReadFrequently:true});
+  if(!ctx) return null;
+  // Always draw solid black glyphs on white – ignore stroke-only / transparent fill
+  ctx.fillStyle='#ffffff';
+  ctx.fillRect(0,0,width,height);
+  ctx.fillStyle='#000000';
+  ctx.strokeStyle='#000000';
   ctx.textBaseline='alphabetic';
+  ctx.font=fontStr(fontSize*scale);
+
   lines.forEach((line,index)=>{
     const metrics=measurements[index];
     const lineX=anchor==='middle'?x-metrics.width/2:anchor==='end'?x-metrics.width:x;
-    ctx.font=textFontString(textEl,fontSize,scale);
-    drawCanvasTextWithSpacing(ctx,line,lineX-minX,firstBaseline+index*lineHeight-minY,letterSpacing,scale);
+    const drawX=(lineX-minX)*scale;
+    const drawY=(firstBaseline+index*lineHeight-minY)*scale;
+    if(!letterSpacing){
+      ctx.fillText(line||'', drawX, drawY);
+    } else {
+      let cursor=drawX;
+      [...(line||'')].forEach(ch=>{
+        ctx.fillText(ch, cursor, drawY);
+        cursor+=ctx.measureText(ch).width+letterSpacing*scale;
+      });
+    }
   });
 
-  const contours=findContours(ctx.getImageData(0,0,width,height),200);
+  // Use global findContours if available, else local simple version
+  const contourFn=typeof findContours==='function'?findContours:null;
+  const simplifyFn=typeof rdpSimplify==='function'?rdpSimplify:(pts=>pts);
+  if(!contourFn){
+    console.warn('findContours mangler – kan ikke spore tekst');
+    return null;
+  }
+  const contours=contourFn(ctx.getImageData(0,0,width,height), 128);
   const parts=[];
   contours.forEach(contour=>{
-    if(contour.length<4)return;
-    const simplified=rdpSimplify(contour,0.6);
-    if(simplified.length<3)return;
+    if(contour.length<5) return;
+    const simplified=simplifyFn(contour, Math.max(0.4, 0.8));
+    if(simplified.length<3) return;
     let d='M '+(simplified[0].x/scale+minX).toFixed(3)+' '+(simplified[0].y/scale+minY).toFixed(3);
     for(let i=1;i<simplified.length;i++){
       d+=' L '+(simplified[i].x/scale+minX).toFixed(3)+' '+(simplified[i].y/scale+minY).toFixed(3);
     }
     parts.push(d+' Z');
   });
-  if(!parts.length)return null;
+  if(!parts.length) return null;
 
   const path=document.createElementNS(SVG_NS,'path');
-  Array.from(textEl.attributes).forEach(attr=>{
-    if(!['x','y','dx','dy','rotate','textLength','lengthAdjust','text-anchor','dominant-baseline'].includes(attr.name)){
-      path.setAttribute(attr.name,attr.value);
-    }
-  });
-  path.setAttribute('d',parts.join(' '));
-  path.setAttribute('fill-rule',textEl.getAttribute('fill-rule')||'evenodd');
+  path.setAttribute('d', parts.join(' '));
+  path.setAttribute('fill-rule','evenodd');
+  path.setAttribute('pointer-events','all');
+  // Apply laser mode so ScanNCut/laser sees red cut stroke or black engrave fill
+  const mode=detectTextMode(textEl);
+  applyMode(path, mode);
+  // Keep transform if text had one
+  if(textEl.getAttribute('transform')) path.setAttribute('transform', textEl.getAttribute('transform'));
   return path;
 }
 
 function convertTextsToOutlines(root){
   const textNodes=Array.from(root.querySelectorAll('text'));
-  let converted=0,failed=0;
+  let converted=0, failed=0;
   textNodes.forEach(textEl=>{
-    if(!textEl.textContent.trim()){textEl.remove();return;}
-    const path=textOutlinePath(textEl);
-    if(path){textEl.replaceWith(path);converted++;}
-    else failed++;
+    const content=(textEl.textContent||'').trim();
+    if(!content){ textEl.remove(); return; }
+    try{
+      const path=textOutlinePath(textEl);
+      if(path){
+        // preserve data-id if present
+        if(textEl.getAttribute('data-id')) path.setAttribute('data-id', textEl.getAttribute('data-id'));
+        textEl.replaceWith(path);
+        converted++;
+      } else {
+        failed++;
+        console.warn('Tekst-til-sti fejlede for:', content);
+      }
+    }catch(err){
+      failed++;
+      console.warn('Tekst-til-sti fejl:', err);
+    }
   });
-  return {total:textNodes.length,converted,failed};
+  return {total:textNodes.length, converted, failed};
 }
 
-document.getElementById('btnExport').onclick=()=>{
-  downloadSvg(prepareSvgExport(),'tegning-'+pageSize+'.svg');
-};
-document.getElementById('btnExportLaser').onclick=()=>{
+/** Konverter alle tekstobjekter i tegningen til stier (live på lærredet). */
+function convertAllTextsInDocument(){
+  const textObjs=objects.filter(o=>o.type==='text');
+  if(!textObjs.length){
+    alert('Ingen tekst at konvertere.');
+    return {converted:0, failed:0};
+  }
+  pushUndo();
+  let converted=0, failed=0;
+  textObjs.forEach(obj=>{
+    const content=(obj.el.textContent||'').trim();
+    if(!content){
+      obj.el.remove();
+      objects=objects.filter(o=>o.id!==obj.id);
+      return;
+    }
+    try{
+      const path=textOutlinePath(obj.el);
+      if(!path){ failed++; return; }
+      path.setAttribute('data-id', obj.id);
+      obj.el.replaceWith(path);
+      obj.el=path;
+      obj.type='path';
+      if(obj.data){ obj.data.mode=detectTextMode(path); obj.data.fromText=true; }
+      converted++;
+    }catch(err){
+      console.warn(err);
+      failed++;
+    }
+  });
+  deselectAll();
+  updateCount();
+  refreshUI();
+  return {converted, failed};
+}
+
+function exportSvgWithTextAsPaths(filename){
+  // Først konverter live tekst på lærredet, så brugeren kan se resultatet
+  const liveTexts=objects.filter(o=>o.type==='text');
+  if(liveTexts.length){
+    const live=convertAllTextsInDocument();
+    if(live.failed && !live.converted){
+      alert('Kunne ikke konvertere tekst til stier.\nPrøv knappen «Tekst → stier» først.');
+      return;
+    }
+  }
   const clone=prepareSvgExport();
+  // Sikkerhedsnet: konverter evt. resterende <text> i eksport-klonen
   const result=convertTextsToOutlines(clone);
-  if(result.failed){
-    alert('Kunne ikke konvertere '+result.failed+' tekstobjekt(er) til omrids. Filen blev ikke gemt.');
+  if(result.failed && !result.converted && result.total>0){
+    alert('Kunne ikke konvertere '+result.failed+' tekstobjekt(er) til stier. Filen blev ikke gemt.');
     return;
   }
-  downloadSvg(clone,'tegning-'+pageSize+'-laser.svg');
-};
+  downloadSvg(clone, filename);
+}
+
+function getProjectFileName(){
+  const raw=(document.getElementById('projectName')?.value||'').trim() || 'Mit projekt';
+  const safe=raw.replace(/[\\/:*?"<>|]+/g,'-').replace(/\s+/g,' ').trim().slice(0,80) || 'Mit projekt';
+  return safe + '.svg';
+}
+function saveProjectFile(){
+  exportSvgWithTextAsPaths(getProjectFileName());
+}
+document.getElementById('btnExport').onclick=()=>saveProjectFile();
+document.getElementById('projectName')?.addEventListener('keydown', e=>{
+  // Undgå at genveje fanger tastetryk mens man skriver projektnavn
+  e.stopPropagation();
+});
+
 document.getElementById('btnZoomFit').onclick=()=>zoomReset();
 setPageSize('A4');
 updateZoomLabel();
