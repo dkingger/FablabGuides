@@ -126,7 +126,7 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FablabGuides" aria-label="Tilbage til FablabGuides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.55</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.56</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
@@ -346,6 +346,7 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 
     <div class="prop-group"><label>Objekter</label><div class="layer-list" id="layerList"></div></div>
     <button class="btn btn-primary" id="btnExport" title="Konverterer tekst til stier og gemmer SVG (klar til ScanNCut/laser)">Eksporter til SVG</button>
+    <button class="btn btn-secondary" id="btnExportFcm" title="Gemmer en ScanNCut-kompatibel FCM-fil">Eksporter FCM</button>
     <button class="btn btn-secondary" id="btnZoomFit">Nulstil zoom</button>
 
 
@@ -3700,6 +3701,392 @@ function downloadSvg(root,filename){
   setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
+function downloadBinary(bytes,filename,mime){
+  const blob=new Blob([bytes],{type:mime||'application/octet-stream'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=filename;
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+class BinaryWriter{
+  constructor(){this.bytes=[];}
+  get length(){return this.bytes.length;}
+  u8(v){this.bytes.push(v&255);}
+  u16(v){this.u8(v);this.u8(v>>8);}
+  u32(v){v=Number(v)>>>0;this.u8(v);this.u8(v>>8);this.u8(v>>16);this.u8(v>>24);}
+  i32(v){this.u32(Number(v)|0);}
+  f32(v){const b=new ArrayBuffer(4);new DataView(b).setFloat32(0,Number(v)||0,true);this.bytes.push(...new Uint8Array(b));}
+  ascii(text){for(let i=0;i<text.length;i++)this.u8(text.charCodeAt(i));}
+  bytesOf(data){this.bytes.push(...data);}
+  utf16Field(text){
+    const chars=Array.from(String(text||' ').slice(0,255));
+    this.u8(chars.length);
+    chars.forEach(ch=>this.u16(ch.charCodeAt(0)));
+  }
+  finish(){return new Uint8Array(this.bytes);}
+}
+
+function fcmBlankThumbnailBmp(){
+  const width=88, height=88;
+  const rowSize=Math.ceil(width/32)*4;
+  const pixelBytes=rowSize*height;
+  const fileSize=14+40+8+pixelBytes;
+  const w=new BinaryWriter();
+  w.ascii('BM');
+  w.u32(fileSize);
+  w.u16(0);w.u16(0);
+  w.u32(14+40+8);
+  w.u32(40);
+  w.i32(width);w.i32(height);
+  w.u16(1);
+  w.u16(1);
+  w.u32(0);
+  w.u32(0);
+  w.i32(5669);w.i32(5669);
+  w.u32(2);w.u32(2);
+  w.u8(0);w.u8(0);w.u8(0);w.u8(0);
+  w.u8(255);w.u8(255);w.u8(255);w.u8(0);
+  for(let i=0;i<pixelBytes;i++)w.u8(255);
+  return w.finish();
+}
+
+function fcmIdentityMatrix(){return {a:1,b:0,c:0,d:1,e:0,f:0};}
+function fcmMultiplyMatrix(m,n){
+  return {
+    a:m.a*n.a+m.c*n.b,
+    b:m.b*n.a+m.d*n.b,
+    c:m.a*n.c+m.c*n.d,
+    d:m.b*n.c+m.d*n.d,
+    e:m.a*n.e+m.c*n.f+m.e,
+    f:m.b*n.e+m.d*n.f+m.f
+  };
+}
+function fcmMapPoint(m,p){
+  return {x:m.a*p.x+m.c*p.y+m.e,y:m.b*p.x+m.d*p.y+m.f};
+}
+function fcmElementMatrix(el){
+  try{
+    const c=el.transform&&el.transform.baseVal&&el.transform.baseVal.consolidate();
+    if(c){const m=c.matrix;return {a:m.a,b:m.b,c:m.c,d:m.d,e:m.e,f:m.f};}
+  }catch(_){}
+  return fcmParseTransform(el.getAttribute&&el.getAttribute('transform')||'');
+}
+function fcmParseTransform(transform){
+  let matrix=fcmIdentityMatrix();
+  const parts=String(transform||'').match(/(matrix|translate|scale|rotate)\([^)]*\)/gi)||[];
+  parts.forEach(part=>{
+    const nums=(part.match(/[-+]?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/ig)||[]).map(Number);
+    let m=fcmIdentityMatrix();
+    const low=part.toLowerCase();
+    if(low.startsWith('matrix')&&nums.length>=6)m={a:nums[0],b:nums[1],c:nums[2],d:nums[3],e:nums[4],f:nums[5]};
+    else if(low.startsWith('translate'))m={a:1,b:0,c:0,d:1,e:nums[0]||0,f:nums.length>1?nums[1]:0};
+    else if(low.startsWith('scale'))m={a:nums[0]||1,b:0,c:0,d:nums.length>1?nums[1]:nums[0]||1,e:0,f:0};
+    else if(low.startsWith('rotate')){
+      const deg=nums[0]||0,rad=deg*Math.PI/180,cos=Math.cos(rad),sin=Math.sin(rad);
+      const rot={a:cos,b:sin,c:-sin,d:cos,e:0,f:0};
+      if(nums.length>=3){
+        const t1={a:1,b:0,c:0,d:1,e:nums[1],f:nums[2]};
+        const t2={a:1,b:0,c:0,d:1,e:-nums[1],f:-nums[2]};
+        m=fcmMultiplyMatrix(fcmMultiplyMatrix(t1,rot),t2);
+      }else m=rot;
+    }
+    matrix=fcmMultiplyMatrix(matrix,m);
+  });
+  return matrix;
+}
+
+function fcmModeForElement(el){
+  const fill=(getSvgStyleValue(el,'fill',el.getAttribute('fill')||'none')||'none').trim().toLowerCase();
+  const stroke=(getSvgStyleValue(el,'stroke',el.getAttribute('stroke')||'')||'').trim().toLowerCase();
+  if(fill&&fill!=='none'&&fill!=='transparent'&&!fill.startsWith('rgba(0, 0, 0, 0'))return 'engrave';
+  if(stroke.includes('2d9e5f')||stroke.includes('rgb(45, 158, 95)')||stroke==='green')return 'green';
+  return 'cut';
+}
+
+function fcmPathTokens(d){
+  return String(d||'').match(/[a-zA-Z]|[-+]?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/ig)||[];
+}
+function fcmPathSubpaths(d){
+  const tokens=fcmPathTokens(d);
+  const subs=[];
+  let i=0,cmd='',cx=0,cy=0,sx=0,sy=0,lastC2=null,lastQ=null,current=null;
+  const isCmd=t=>/^[a-zA-Z]$/.test(t);
+  const hasNum=()=>i<tokens.length&&!isCmd(tokens[i]);
+  const num=()=>parseFloat(tokens[i++]);
+  const flush=()=>{if(current&&current.segments.length)subs.push(current);current=null;};
+  const start=(x,y)=>{flush();cx=x;cy=y;sx=x;sy=y;current={start:{x,y},segments:[],closed:false};lastC2=null;lastQ=null;};
+  const line=(x,y)=>{if(!current)start(cx,cy);current.segments.push({type:'L',end:{x,y}});cx=x;cy=y;lastC2=null;lastQ=null;};
+  const cubic=(c1,c2,end)=>{if(!current)start(cx,cy);current.segments.push({type:'C',c1,c2,end});cx=end.x;cy=end.y;lastC2=c2;lastQ=null;};
+  while(i<tokens.length){
+    if(isCmd(tokens[i]))cmd=tokens[i++];
+    if(!cmd)throw new Error('Manglende SVG path-kommando.');
+    const up=cmd.toUpperCase(),rel=cmd!==up;
+    if(up==='M'){
+      if(!hasNum())continue;
+      const x0=num(),y0=num();
+      start(rel?cx+x0:x0,rel?cy+y0:y0);
+      while(hasNum()){
+        const x=num(),y=num();
+        line(rel?cx+x:x,rel?cy+y:y);
+      }
+    }else if(up==='L'){
+      while(hasNum()){
+        const x=num(),y=num();
+        line(rel?cx+x:x,rel?cy+y:y);
+      }
+    }else if(up==='H'){
+      while(hasNum()){const x=num();line(rel?cx+x:x,cy);}
+    }else if(up==='V'){
+      while(hasNum()){const y=num();line(cx,rel?cy+y:y);}
+    }else if(up==='C'){
+      while(hasNum()){
+        const x1=num(),y1=num(),x2=num(),y2=num(),x=num(),y=num();
+        cubic(
+          {x:rel?cx+x1:x1,y:rel?cy+y1:y1},
+          {x:rel?cx+x2:x2,y:rel?cy+y2:y2},
+          {x:rel?cx+x:x,y:rel?cy+y:y}
+        );
+      }
+    }else if(up==='S'){
+      while(hasNum()){
+        const c1=lastC2?{x:2*cx-lastC2.x,y:2*cy-lastC2.y}:{x:cx,y:cy};
+        const x2=num(),y2=num(),x=num(),y=num();
+        cubic(c1,{x:rel?cx+x2:x2,y:rel?cy+y2:y2},{x:rel?cx+x:x,y:rel?cy+y:y});
+      }
+    }else if(up==='Q'){
+      while(hasNum()){
+        const qx=num(),qy=num(),x=num(),y=num();
+        const q={x:rel?cx+qx:qx,y:rel?cy+qy:qy};
+        const end={x:rel?cx+x:x,y:rel?cy+y:y};
+        const c1={x:cx+(2/3)*(q.x-cx),y:cy+(2/3)*(q.y-cy)};
+        const c2={x:end.x+(2/3)*(q.x-end.x),y:end.y+(2/3)*(q.y-end.y)};
+        cubic(c1,c2,end);
+        lastQ=q;
+      }
+    }else if(up==='T'){
+      while(hasNum()){
+        const q=lastQ?{x:2*cx-lastQ.x,y:2*cy-lastQ.y}:{x:cx,y:cy};
+        const x=num(),y=num();
+        const end={x:rel?cx+x:x,y:rel?cy+y:y};
+        const c1={x:cx+(2/3)*(q.x-cx),y:cy+(2/3)*(q.y-cy)};
+        const c2={x:end.x+(2/3)*(q.x-end.x),y:end.y+(2/3)*(q.y-end.y)};
+        cubic(c1,c2,end);
+        lastQ=q;
+      }
+    }else if(up==='Z'){
+      if(current){
+        if(Math.hypot(cx-sx,cy-sy)>0.001)current.segments.push({type:'L',end:{x:sx,y:sy}});
+        current.closed=true;cx=sx;cy=sy;
+      }
+      lastC2=null;lastQ=null;
+    }else{
+      throw new Error('FCM-eksport understøtter ikke SVG path-kommandoen '+up+' endnu.');
+    }
+  }
+  flush();
+  return subs;
+}
+
+function fcmShapeSubpaths(el){
+  const tag=(el.tagName||'').toLowerCase();
+  if(tag==='line'){
+    return [{start:{x:+el.getAttribute('x1')||0,y:+el.getAttribute('y1')||0},segments:[{type:'L',end:{x:+el.getAttribute('x2')||0,y:+el.getAttribute('y2')||0}}],closed:false}];
+  }
+  if(tag==='rect'){
+    const x=+el.getAttribute('x')||0,y=+el.getAttribute('y')||0,w=+el.getAttribute('width')||0,h=+el.getAttribute('height')||0;
+    if(w<=0||h<=0)return [];
+    return [{start:{x,y},segments:[{type:'L',end:{x:x+w,y}},{type:'L',end:{x:x+w,y:y+h}},{type:'L',end:{x,y:y+h}},{type:'L',end:{x,y}}],closed:true}];
+  }
+  if(tag==='ellipse'||tag==='circle'){
+    const cx=+el.getAttribute('cx')||0,cy=+el.getAttribute('cy')||0;
+    const rx=tag==='circle'?(+el.getAttribute('r')||0):(+el.getAttribute('rx')||0);
+    const ry=tag==='circle'?rx:(+el.getAttribute('ry')||0);
+    if(rx<=0||ry<=0)return [];
+    const k=0.5522847498;
+    return [{start:{x:cx-rx,y:cy},segments:[
+      {type:'C',c1:{x:cx-rx,y:cy-k*ry},c2:{x:cx-k*rx,y:cy-ry},end:{x:cx,y:cy-ry}},
+      {type:'C',c1:{x:cx+k*rx,y:cy-ry},c2:{x:cx+rx,y:cy-k*ry},end:{x:cx+rx,y:cy}},
+      {type:'C',c1:{x:cx+rx,y:cy+k*ry},c2:{x:cx+k*rx,y:cy+ry},end:{x:cx,y:cy+ry}},
+      {type:'C',c1:{x:cx-k*rx,y:cy+ry},c2:{x:cx-rx,y:cy+k*ry},end:{x:cx-rx,y:cy}}
+    ],closed:true}];
+  }
+  if(tag==='polygon'||tag==='polyline'){
+    const nums=(el.getAttribute('points')||'').trim().split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
+    if(nums.length<4)return [];
+    const pts=[];
+    for(let i=0;i+1<nums.length;i+=2)pts.push({x:nums[i],y:nums[i+1]});
+    const segs=pts.slice(1).map(p=>({type:'L',end:p}));
+    const closed=tag==='polygon';
+    if(closed)segs.push({type:'L',end:pts[0]});
+    return [{start:pts[0],segments:segs,closed}];
+  }
+  if(tag==='path')return fcmPathSubpaths(el.getAttribute('d')||'');
+  return [];
+}
+
+function fcmTransformSubpath(sub,matrix){
+  return {
+    start:fcmMapPoint(matrix,sub.start),
+    closed:sub.closed,
+    segments:sub.segments.map(seg=>{
+      if(seg.type==='C')return {type:'C',c1:fcmMapPoint(matrix,seg.c1),c2:fcmMapPoint(matrix,seg.c2),end:fcmMapPoint(matrix,seg.end)};
+      return {type:'L',end:fcmMapPoint(matrix,seg.end)};
+    })
+  };
+}
+
+function fcmScalePoint(p){return {x:Math.round(p.x*100),y:Math.round(p.y*100)};}
+function fcmCollectPaths(root){
+  const paths=[],skipped=[];
+  const walk=(node,matrix)=>{
+    if(node.nodeType!==1)return;
+    const tag=(node.tagName||'').toLowerCase();
+    const local=fcmElementMatrix(node);
+    const current=fcmMultiplyMatrix(matrix,local);
+    if(tag==='image'){
+      skipped.push('billede');
+      return;
+    }
+    if(tag==='g'||tag==='svg'||tag==='a'){
+      Array.from(node.children).forEach(child=>walk(child,current));
+      return;
+    }
+    if(!['path','polygon','polyline','rect','ellipse','circle','line'].includes(tag))return;
+    try{
+      const mode=fcmModeForElement(node);
+      fcmShapeSubpaths(node).forEach(sub=>{
+        const transformed=fcmTransformSubpath(sub,current);
+        if(!transformed.segments.length)return;
+        paths.push({mode,closed:!!transformed.closed,start:fcmScalePoint(transformed.start),segments:transformed.segments.map(seg=>{
+          if(seg.type==='C')return {type:'C',c1:fcmScalePoint(seg.c1),c2:fcmScalePoint(seg.c2),end:fcmScalePoint(seg.end)};
+          return {type:'L',end:fcmScalePoint(seg.end)};
+        })});
+      });
+    }catch(err){
+      skipped.push(tag+': '+err.message);
+    }
+  };
+  walk(root,fcmIdentityMatrix());
+  return {paths,skipped};
+}
+
+function fcmFlagsForPath(path){
+  let flags=path.mode==='green'?0x1004:path.mode==='engrave'?0x0020:0x0002;
+  if(!path.closed)flags|=0x0001;
+  return flags;
+}
+function fcmWritePath(path){
+  const groups=[];
+  path.segments.forEach(seg=>{
+    const type=seg.type==='C'?1:0;
+    let group=groups[groups.length-1];
+    if(!group||group.type!==type){group={type,segments:[]};groups.push(group);}
+    group.segments.push(seg);
+  });
+  const w=new BinaryWriter();
+  w.u32(4);
+  w.u32(fcmFlagsForPath(path));
+  w.u32(groups.length);
+  w.u32(0);
+  w.u32(0);
+  w.i32(path.start.x);w.i32(path.start.y);
+  groups.forEach(group=>{
+    w.u32(group.type);
+    w.u32(group.segments.length);
+    group.segments.forEach(seg=>{
+      if(group.type===1){
+        w.i32(seg.c1.x);w.i32(seg.c1.y);
+        w.i32(seg.c2.x);w.i32(seg.c2.y);
+      }
+      w.i32(seg.end.x);w.i32(seg.end.y);
+    });
+  });
+  return w.finish();
+}
+
+function fcmWritePiece(paths,pageW,pageH){
+  const pathBytes=paths.map(fcmWritePath);
+  const w=new BinaryWriter();
+  for(let i=0;i<8;i++)w.u8(0);
+  w.u32(pageW);w.u32(pageH);
+  w.u32(1);
+  w.f32(1);w.f32(0);w.f32(0);w.f32(1);w.f32(0);w.f32(0);
+  w.u32(0);w.u32(0);
+  w.u32(4);
+  w.u32(4);
+  w.u32(0);
+  w.u32(pathBytes.length);
+  pathBytes.forEach(bytes=>{w.u32(bytes.length);w.bytesOf(bytes);});
+  return w.finish();
+}
+
+function fcmBuildFile(paths){
+  const page=PAGE_SIZES[pageSize]||BASE_VB;
+  const pageW=Math.round(page.w*100),pageH=Math.round(page.h*100);
+  const thumb=fcmBlankThumbnailBmp();
+  const dynamic=new BinaryWriter();
+  for(let i=0;i<8;i++)dynamic.u8(0);
+  dynamic.utf16Field(getProjectBaseName());
+  dynamic.utf16Field(' ');
+  dynamic.utf16Field(' ');
+  dynamic.u8(3);dynamic.u8(3);
+  dynamic.u32(thumb.length);
+  dynamic.bytesOf(thumb);
+  dynamic.ascii('1APP');
+  dynamic.u32(0);
+
+  const piece=fcmWritePiece(paths,pageW,pageH);
+  const w=new BinaryWriter();
+  w.ascii('#FCM');
+  w.ascii('0100');
+  w.u32(400000002);
+  w.u32(dynamic.length);
+  w.bytesOf(dynamic.finish());
+  w.u32(0x10);
+  w.u32(0);
+  w.u32(pageW);
+  w.u32(pageH);
+  w.u32(2000);
+  w.u32(1);
+  w.u32(0);
+  w.u32(piece.length);
+  w.u32(1);
+  w.u16(0);
+  w.bytesOf(piece);
+  return w.finish();
+}
+
+function exportFcmFile(){
+  const liveTexts=objects.filter(o=>o.type==='text');
+  if(liveTexts.length){
+    const live=convertAllTextsInDocument();
+    if(live.failed&&!live.converted){
+      alert('Kunne ikke konvertere tekst til stier. FCM-filen blev ikke gemt.');
+      return;
+    }
+  }
+  const clone=prepareSvgExport();
+  const result=convertTextsToOutlines(clone);
+  if(result.failed&&result.total>0){
+    alert('Kunne ikke konvertere al tekst til stier. FCM-filen blev ikke gemt.');
+    return;
+  }
+  const collected=fcmCollectPaths(clone);
+  if(!collected.paths.length){
+    alert('Der er ingen vektorobjekter at gemme som FCM.');
+    return;
+  }
+  const bytes=fcmBuildFile(collected.paths);
+  downloadBinary(bytes,getProjectFileName('fcm'),'application/octet-stream');
+  setStatus('FCM eksporteret: '+collected.paths.length+' sti(er)');
+  if(collected.skipped.length){
+    alert('FCM-filen blev gemt, men '+collected.skipped.length+' objekt(er) blev sprunget over. Billeder skal spores til vektor først, og avancerede SVG-paths kan kræve konvertering til simple stier.');
+  }
+}
+
 function getSvgStyleValue(el,name,fallback){
   // SVG presentation attributes inherit, as do values in inline style rules.
   // Read those first so imported SVGs work even when the temporary export root
@@ -3956,15 +4343,18 @@ function exportSvgWithTextAsPaths(filename){
   downloadSvg(clone, filename);
 }
 
-function getProjectFileName(){
+function getProjectBaseName(){
   const raw=(document.getElementById('projectName')?.value||'').trim() || 'Mit projekt';
-  const safe=raw.replace(/[\\/:*?"<>|]+/g,'-').replace(/\s+/g,' ').trim().slice(0,80) || 'Mit projekt';
-  return safe + '.svg';
+  return raw.replace(/[\\/:*?"<>|]+/g,'-').replace(/\s+/g,' ').trim().slice(0,80) || 'Mit projekt';
+}
+function getProjectFileName(ext){
+  return getProjectBaseName() + '.' + (ext || 'svg');
 }
 function saveProjectFile(){
-  exportSvgWithTextAsPaths(getProjectFileName());
+  exportSvgWithTextAsPaths(getProjectFileName('svg'));
 }
 document.getElementById('btnExport').onclick=()=>saveProjectFile();
+document.getElementById('btnExportFcm').onclick=()=>exportFcmFile();
 document.getElementById('projectName')?.addEventListener('keydown', e=>{
   // Undgå at genveje fanger tastetryk mens man skriver projektnavn
   e.stopPropagation();
