@@ -3831,6 +3831,19 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       }
 
       const imgData = ctx.getImageData(0, 0, cw, ch);
+      // destination-out leaves transparent pixels. Composite the result over
+      // white before contour detection; otherwise transparent black is read as
+      // black geometry and Forskel produces the wrong contour.
+      for (let p = 0; p < imgData.data.length; p += 4) {
+        const alpha = imgData.data[p + 3] / 255;
+        if (alpha < 1) {
+          imgData.data[p] = Math.round(imgData.data[p] * alpha + 255 * (1 - alpha));
+          imgData.data[p + 1] = Math.round(imgData.data[p + 1] * alpha + 255 * (1 - alpha));
+          imgData.data[p + 2] = Math.round(imgData.data[p + 2] * alpha + 255 * (1 - alpha));
+          imgData.data[p + 3] = 255;
+        }
+      }
+      ctx.putImageData(imgData, 0, 0);
       // Verify that something was painted (at least some black pixels)
       let black = 0;
       for (let p = 0; p < imgData.data.length; p += 4) {
