@@ -119,6 +119,83 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 .offset-options input[type=number]:focus,.offset-options select:focus{outline:none;border-color:var(--accent)}
 .offset-help{font-size:.68rem;color:var(--text-dim);line-height:1.35;margin-top:6px}
 
+/* Vektor-Viktor v1.58 dark workspace theme */
+:root{
+  --bg:#2f343b;
+  --panel:#ffffff;
+  --panel2:#f6f8fa;
+  --border:#dde3e8;
+  --accent:#16a36a;
+  --accent-hover:#108858;
+  --text:#17212b;
+  --text-dim:#66727f;
+  --cut:#e5484d;
+  --green-line:#16a36a;
+  --engrave:#121820;
+  --success:#168b5a;
+  --header:#20252b;
+  --toolbar:#252b31;
+  --toolbar-hover:#343c44;
+  --canvas:#3b424a;
+}
+html,body{height:100%}
+body{font-family:Inter,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+header{height:58px;padding:0 14px;gap:8px;background:var(--header);border-bottom:1px solid rgba(255,255,255,.07);box-shadow:0 1px 0 rgba(0,0,0,.18);color:#f7f9fb;position:relative;z-index:20}
+header h1{font-size:.98rem;font-weight:700;letter-spacing:-.01em;margin-right:4px}
+header h1 .logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(145deg,#20bd7c,#118f5c);box-shadow:0 5px 14px rgba(22,163,106,.28),inset 0 1px 0 rgba(255,255,255,.22);font-size:.82rem;font-weight:800}
+.version-badge{color:#aeb8c2;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:.62rem;padding:3px 7px;font-weight:700}
+header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
+.header-btn{width:36px;height:36px;border:1px solid rgba(255,255,255,.09);border-radius:9px;background:rgba(255,255,255,.045);color:#d7dee5;transition:background .15s ease,border-color .15s ease,color .15s ease,transform .15s ease}
+.header-btn:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.16)}
+.header-btn:active{transform:translateY(1px)}
+.header-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 12px rgba(22,163,106,.25)}
+.header-btn.back-btn{margin-right:2px}
+.project-name-wrap{gap:7px;margin-left:6px;padding-left:12px;border-left:1px solid rgba(255,255,255,.09)}
+.project-name-wrap label{color:#9ca7b2;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+#projectName{width:176px;height:36px;padding:7px 10px;color:#f7f9fb;background:#2b3138;border:1px solid rgba(255,255,255,.10);border-radius:8px;font-size:.82rem;box-shadow:inset 0 1px 1px rgba(0,0,0,.14)}
+#projectName:hover{border-color:rgba(255,255,255,.18)}
+#projectName:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(22,163,106,.16)}
+#projectName::placeholder{color:#77828d}
+.header-zoom{gap:4px;padding:0 7px;border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08)}
+.zoom-label{min-width:46px;color:#c0c9d2;font-size:.72rem;font-weight:650}
+.page-size-select{height:36px;margin-left:2px;padding:0 30px 0 10px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:#2b3138;color:#e8edf2;font-size:.75rem;font-weight:650}
+.page-size-select:hover{border-color:rgba(255,255,255,.18)}
+.page-size-select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(22,163,106,.14)}
+.main{background:var(--canvas)}
+.toolbar{width:62px;padding:8px 7px;gap:3px;background:var(--toolbar);border-right:1px solid rgba(0,0,0,.28);box-shadow:2px 0 12px rgba(0,0,0,.08);overflow-y:auto;scrollbar-width:none;z-index:15}
+.toolbar::-webkit-scrollbar{display:none}
+.tool-btn{width:46px;height:42px;border-radius:9px;color:#aeb8c2;transition:background .14s ease,color .14s ease,box-shadow .14s ease,transform .14s ease}
+.tool-btn:hover{background:var(--toolbar-hover);color:#fff}
+.tool-btn:active{transform:translateY(1px)}
+.tool-btn.active{background:var(--accent);color:#fff;box-shadow:0 5px 14px rgba(22,163,106,.23),inset 0 1px 0 rgba(255,255,255,.18)}
+.tool-btn .tip{left:54px;top:50%;transform:translateY(-50%);background:#11161b;color:#f8fafb;border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:6px 9px;font-size:.68rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+.tool-sep{width:34px;background:rgba(255,255,255,.09);margin:5px 0}
+.canvas-wrap{background-color:var(--canvas);background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:20px 20px;box-shadow:inset 0 0 28px rgba(0,0,0,.08)}
+.canvas-wrap #drawSvg{margin:34px}
+#drawSvg{border:1px solid rgba(12,20,28,.26);box-shadow:0 18px 46px rgba(5,10,15,.34),0 2px 8px rgba(0,0,0,.22)}
+#inlineTextInput{border:2px solid var(--accent);border-radius:8px;box-shadow:0 0 0 4px rgba(22,163,106,.15),0 10px 24px rgba(0,0,0,.2)}
+.handle-box{fill:var(--accent);stroke:#fff;stroke-width:1.25}
+.props{width:294px;padding:15px 14px 18px;gap:10px;background:#f5f7f9;border-left:1px solid #cfd6dc;box-shadow:-3px 0 16px rgba(15,23,31,.08);scrollbar-color:#bcc5cd transparent;scrollbar-width:thin}
+.props h2{padding:2px 2px 4px;color:#596674;font-size:.67rem;font-weight:800;letter-spacing:.12em}
+.prop-group{padding:11px;background:#fff;border:1px solid #dde3e8;border-radius:11px;box-shadow:0 1px 2px rgba(21,30,39,.03)}
+.prop-group label{margin-bottom:5px;color:#6c7884;font-size:.68rem;font-weight:700}
+.prop-row input[type=number],.prop-select{border-color:#d5dce2;background:#fff}
+.prop-row input[type=number]:hover,.prop-select:hover{border-color:#b9c4cc}
+.btn{min-height:34px;border-radius:8px;transition:background .14s ease,border-color .14s ease,transform .14s ease,box-shadow .14s ease}
+.btn:active{transform:translateY(1px)}
+.btn-primary{box-shadow:0 4px 10px rgba(22,163,106,.18)}
+.btn-secondary{border-color:#d5dce2;background:#fff}
+.btn-bool{background:#f4f0fa;border-color:#dfd2ee}
+.btn-trace{background:#e8f7ef;border-color:#b7e2c8}
+.coords-box{border-color:#d5dce2}
+.layer-item{border-color:transparent}
+.layer-item:hover{border-color:#d5dce2}
+.modal{box-shadow:0 20px 60px rgba(8,15,22,.28)}
+.preview-box{background:#f3f5f7;border-color:#d5dce2}
+.slider-row input[type=range]{accent-color:var(--accent)}
+.statusbar{background:#20252b;border-top-color:rgba(255,255,255,.08);color:#9ca7b2}
+@media (max-width:900px){.props{width:260px}header .hint{display:none}#projectName{width:140px}}
+
 </style>
 </head>
 <body>
@@ -126,7 +203,7 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FablabGuides" aria-label="Tilbage til FablabGuides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.57 beta</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.58</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
@@ -184,8 +261,7 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
     <svg id="drawSvg" width="841" height="595" viewBox="0 0 297 210">
       <rect id="pageBg" width="297" height="210" fill="#ffffff"/>
       <g id="pageGrid" pointer-events="none"></g>
-      <defs id="overlapDefs"></defs>
-      <g id="objects"></g><g id="overlapHighlights" pointer-events="none"></g><g id="temp"></g><g id="handles"></g>
+      <g id="objects"></g><g id="temp"></g><g id="handles"></g>
     </svg>
     <input type="text" id="inlineTextInput" class="hidden" autocomplete="off" spellcheck="false">
   </div>
@@ -365,6 +441,9 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
     <p>Juster tærsklen så de mørke dele bliver sorte i forhåndsvisningen. Tryk derefter «Spor nu».</p>
     <div class="preview-box" id="tracePreview"><span style="color:#666">Indlæser…</span></div>
     <div class="slider-row"><label>Tærskel</label><input type="range" id="traceThreshold" min="0" max="255" value="128"><span id="threshVal">128</span></div>
+    <div class="slider-row"><label>Detaljer</label><input type="range" id="traceDetail" min="0" max="100" value="90"><span id="detailVal">90</span></div>
+    <div class="slider-row"><label>Udglatning</label><input type="range" id="traceSmooth" min="0" max="100" value="12"><span id="smoothVal">12</span></div>
+    <p style="font-size:.7rem;margin-top:-2px;margin-bottom:8px">Høj detalje bevarer små former. Lav udglatning giver den mest præcise kant.</p>
     <div class="modal-actions">
       <button class="btn btn-secondary" id="traceCancel">Annuller</button>
       <button class="btn btn-primary" id="traceDo">Spor nu</button>
@@ -781,94 +860,6 @@ document.querySelectorAll('.mode-btn').forEach(btn=>{
 function selectOnly(id){selectedIds=[id];refreshUI()}
 function toggleSelect(id){const i=selectedIds.indexOf(id);if(i>=0)selectedIds.splice(i,1);else selectedIds.push(id);refreshUI()}
 function deselectAll(){selectedIds=[];refreshUI()}
-
-const overlapColorCtx=document.createElement('canvas').getContext('2d');
-const overlapFillTags=new Set(['circle','ellipse','path','polygon','rect','text']);
-function isBlackFillValue(value){
-  const raw=String(value||'').trim().toLowerCase();
-  if(!raw||raw==='none'||raw==='transparent'||raw.startsWith('url('))return false;
-  if(!overlapColorCtx)return raw==='black'||raw==='#000'||raw==='#000000'||raw==='#111'||raw==='#111111';
-  overlapColorCtx.fillStyle='rgba(0,0,0,0)';
-  try{overlapColorCtx.fillStyle=raw}catch(_){return false}
-  const parsed=overlapColorCtx.fillStyle.match(/rgba?\(\s*([\d.]+)[, ]+\s*([\d.]+)[, ]+\s*([\d.]+)(?:[, /]+\s*([\d.]+))?\s*\)/i);
-  if(!parsed)return false;
-  const alpha=parsed[4]===undefined?1:parseFloat(parsed[4]);
-  return alpha>0.01 && (parseFloat(parsed[1])+parseFloat(parsed[2])+parseFloat(parsed[3]))/3<90;
-}
-function elementHasBlackFill(el){
-  if(!el||el.nodeType!==1)return false;
-  const tag=el.tagName.toLowerCase();
-  if(tag==='g')return Array.from(el.children).some(elementHasBlackFill);
-  if(tag==='line'||tag==='polyline'||!overlapFillTags.has(tag))return false;
-  const opacity=parseFloat(getSvgStyleValue(el,'opacity','1'));
-  const fillOpacity=parseFloat(getSvgStyleValue(el,'fill-opacity','1'));
-  if((Number.isFinite(opacity)&&opacity<=0.01)||(Number.isFinite(fillOpacity)&&fillOpacity<=0.01))return false;
-  return isBlackFillValue(getSvgStyleValue(el,'fill','none'));
-}
-function isBlackFillObject(obj){
-  if(!obj||obj.type==='image'||obj.type==='line')return false;
-  // Objects created by this editor carry their laser mode explicitly. This
-  // also avoids depending on browser color parsing for the normal black mode.
-  if(obj.data&&obj.data.mode==='engrave')return true;
-  return elementHasBlackFill(obj.el);
-}
-function makeOverlapClone(sourceEl){
-  const clone=sourceEl.cloneNode(true);
-  function clean(source,node){
-    node.removeAttribute('id');
-    node.removeAttribute('data-id');
-    node.removeAttribute('data-vv-type');
-    node.removeAttribute('data-vv-mode');
-    const tag=node.tagName.toLowerCase();
-    if(tag==='g'){
-      node.setAttribute('fill','#fff');
-      node.setAttribute('stroke','none');
-      node.style.fill='#fff';
-      node.style.stroke='none';
-      Array.from(source.children).forEach((sourceChild,index)=>{
-        const child=node.children[index];
-        if(child)clean(sourceChild,child);
-      });
-      return;
-    }
-    if(overlapFillTags.has(tag)&&elementHasBlackFill(source)){
-      node.setAttribute('fill','#fff');
-      node.setAttribute('stroke','none');
-      node.style.fill='#fff';
-      node.style.stroke='none';
-      node.style.opacity='1';
-    }else{
-      node.setAttribute('display','none');
-    }
-  }
-  clean(sourceEl,clone);
-  clone.setAttribute('pointer-events','none');
-  return clone;
-}
-function refreshOverlapHighlights(){
-  const defs=document.getElementById('overlapDefs');
-  const highlights=document.getElementById('overlapHighlights');
-  if(!defs||!highlights)return;
-  defs.innerHTML='';
-  highlights.innerHTML='';
-  const blackObjects=objects.filter(isBlackFillObject);
-  if(blackObjects.length<2)return;
-  let clipNo=0;
-  for(let i=0;i<blackObjects.length-1;i++){
-    for(let j=i+1;j<blackObjects.length;j++){
-      const clip=document.createElementNS(SVG_NS,'clipPath');
-      const clipId='overlapClip'+(++clipNo);
-      clip.setAttribute('id',clipId);
-      clip.setAttribute('clipPathUnits','userSpaceOnUse');
-      clip.appendChild(makeOverlapClone(blackObjects[i].el));
-      defs.appendChild(clip);
-
-      const white=makeOverlapClone(blackObjects[j].el);
-      white.setAttribute('clip-path','url(#'+clipId+')');
-      highlights.appendChild(white);
-    }
-  }
-}
 function refreshUI(){
   clearOffsetPreview();
   objects.forEach(o=>{o.el.style.filter='';});
@@ -879,7 +870,6 @@ function refreshUI(){
     if(still) drawNodeHandles();
     else {nodeEdit=null;}
   }
-  refreshOverlapHighlights();
   const n=selectedIds.length;
   document.getElementById('noSelection').classList.toggle('hidden',n>0);
   document.getElementById('selectionProps').classList.toggle('hidden',n!==1);
@@ -1160,9 +1150,7 @@ function addObject(type,el,data,skipUndo){
   objects.push({id,type,el,data:Object.assign({mode},data||{})});
   objectsG.appendChild(el);
   if(!skipUndo) selectOnly(id);
-  updateCount();
-  refreshOverlapHighlights();
-  return id;
+  updateCount();return id;
 }
 
 function deleteSelected(){if(!selectedIds.length)return;pushUndo();selectedIds.forEach(id=>{const i=objects.findIndex(o=>o.id===id);if(i>=0){objects[i].el.remove();objects.splice(i,1)}});deselectAll();updateCount()}
@@ -1799,7 +1787,6 @@ function onMove(e){
       // redraw handles
       handlesG.innerHTML='';
       drawHandle(obj);
-      refreshOverlapHighlights();
 
     }
     return;
@@ -1833,7 +1820,6 @@ function onMove(e){
     }
     applyNodeEdit();
     drawNodeHandles();
-    refreshOverlapHighlights();
     return;
   }
   if(tool==='freehand'&&isDrawing&&currentPath){
@@ -2841,18 +2827,19 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       if (!href) { alert('Kunne ikke læse billedet.'); return; }
       const img = new Image();
       img.onload = () => {
-        // High resolution for cleaner vectors (up to ~1800px)
-        const max = 1800;
+        // High-resolution trace buffer. More source pixels preserve small details.
+        const maxSide = 3000;
+        const maxPixels = 5000000;
         let w = img.width, h = img.height;
-        if (w > max || h > max) {
-          if (w > h) { h = Math.round(h * max / w); w = max; }
-          else { w = Math.round(w * max / h); h = max; }
-        }
-        // Upscale small images for smoother contours
-        if (w < 800 && h < 800) {
-          const up = Math.min(2.5, 800 / Math.max(w, h));
-          w = Math.round(w * up);
-          h = Math.round(h * up);
+        let scale = Math.min(1, maxSide / Math.max(w, h), Math.sqrt(maxPixels / Math.max(1, w * h)));
+        w = Math.max(2, Math.round(w * scale));
+        h = Math.max(2, Math.round(h * scale));
+        // Small source images benefit from a larger working grid without inventing detail.
+        const targetLongSide = 1400;
+        if (Math.max(w, h) < targetLongSide) {
+          const up = Math.min(4, targetLongSide / Math.max(w, h), Math.sqrt(maxPixels / Math.max(1, w * h)));
+          w = Math.max(2, Math.round(w * up));
+          h = Math.max(2, Math.round(h * up));
         }
         const c = document.createElement('canvas');
         c.width = w; c.height = h;
@@ -2880,6 +2867,12 @@ document.getElementById('imageFile').addEventListener('change',e=>{
     document.getElementById('traceThreshold').oninput = e => {
       document.getElementById('threshVal').textContent = e.target.value;
       updateTracePreview();
+    };
+    document.getElementById('traceDetail').oninput = e => {
+      document.getElementById('detailVal').textContent = e.target.value;
+    };
+    document.getElementById('traceSmooth').oninput = e => {
+      document.getElementById('smoothVal').textContent = e.target.value;
     };
 
     function updateTracePreview() {
@@ -2919,63 +2912,32 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       const scaleX = dispW / traceImageData.width;
       const scaleY = dispH / traceImageData.height;
 
-      const contours = findContours(traceImageData, thresh);
+      const detail = parseInt(document.getElementById('traceDetail').value, 10) || 0;
+      const smooth = parseInt(document.getElementById('traceSmooth').value, 10) || 0;
+
+      // Subpixel marching-squares tracing interpolates threshold crossings,
+      // producing more accurate diagonals and preserving holes and small details.
+      const contours = findContoursPrecise(traceImageData, thresh);
       if (!contours.length) {
         alert('Ingen konturer fundet.\n\nTip: Flyt tærsklen indtil forhåndsvisningen viser tydelige sorte former på hvid baggrund.');
         return;
       }
 
-      contours.sort((a, b) => b.length - a.length);
+      contours.sort((a, b) => Math.abs(contourArea(b)) - Math.abs(contourArea(a)));
 
-      // Smooth contour: Chaikin corner-cutting (rounds jagged pixel edges)
-      function chaikinSmooth(pts, iterations){
-        let p = pts.slice();
-        for(let it=0; it<iterations; it++){
-          if(p.length < 3) break;
-          const out = [];
-          for(let i=0; i<p.length; i++){
-            const a = p[i], b = p[(i+1) % p.length];
-            out.push({ x: 0.75*a.x + 0.25*b.x, y: 0.75*a.y + 0.25*b.y });
-            out.push({ x: 0.25*a.x + 0.75*b.x, y: 0.25*a.y + 0.75*b.y });
-          }
-          p = out;
-        }
-        return p;
-      }
-      // Convert polyline to smooth cubic path (Catmull-Rom style)
-      function smoothPathD(pts, sx, sy, ox, oy){
-        if(pts.length < 3) return '';
-        const to = (p)=>({ x: p.x*sx+ox, y: p.y*sy+oy });
-        const P = pts.map(to);
-        const n = P.length;
-        let d = 'M ' + P[0].x.toFixed(2) + ' ' + P[0].y.toFixed(2);
-        for(let i=0; i<n; i++){
-          const p0 = P[(i-1+n)%n], p1 = P[i], p2 = P[(i+1)%n], p3 = P[(i+2)%n];
-          // Catmull-Rom → cubic bezier
-          const c1x = p1.x + (p2.x - p0.x) / 6;
-          const c1y = p1.y + (p2.y - p0.y) / 6;
-          const c2x = p2.x - (p3.x - p1.x) / 6;
-          const c2y = p2.y - (p3.y - p1.y) / 6;
-          d += ' C ' + c1x.toFixed(2)+' '+c1y.toFixed(2)+' '+c2x.toFixed(2)+' '+c2y.toFixed(2)+' '+p2.x.toFixed(2)+' '+p2.y.toFixed(2);
-        }
-        d += ' Z';
-        return d;
-      }
+      // Detail controls simplification and removal of tiny speckles.
+      const simplifyPx = 0.12 + Math.pow((100 - detail) / 100, 1.7) * 2.4;
+      const minAreaPx = 0.35 + Math.pow((100 - detail) / 100, 2) * 20;
 
       let added = 0;
       contours.forEach(pts => {
-        if (pts.length < 4) return;
-        // Mild simplify first (keep detail), then smooth
-        let simplified = rdpSimplify(pts, 0.55);
-        if (simplified.length < 4) simplified = pts;
-        // 2× Chaikin to round pixel stairs
-        simplified = chaikinSmooth(simplified, 2);
-        // Light second simplify after smooth
-        simplified = rdpSimplify(simplified, 0.35);
+        if (pts.length < 4 || Math.abs(contourArea(pts)) < minAreaPx) return;
+        let simplified = simplifyClosedContour(pts, simplifyPx);
+        if (simplified.length < 3) simplified = pts;
         if (simplified.length < 3) return;
 
         const path = document.createElementNS(SVG_NS, 'path');
-        path.setAttribute('d', smoothPathD(simplified, scaleX, scaleY, ox, oy));
+        path.setAttribute('d', preciseClosedPathD(simplified, scaleX, scaleY, ox, oy, smooth));
         path.setAttribute('fill-rule', 'evenodd');
         applyMode(path, currentMode);
         addObject('traced', path, { mode: currentMode }, true);
@@ -2997,6 +2959,167 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       updateCount();
       if (!added) alert('Konturer blev filtreret væk. Prøv en anden tærskel.');
     };
+
+    // High-fidelity image tracer. The legacy findContours() remains in use by
+    // the offset tool, which works on binary masks rather than source images.
+    function findContoursPrecise(imgData, threshold) {
+      const sw = imgData.width, sh = imgData.height, src = imgData.data;
+      // White padding guarantees closed contours when dark pixels touch an edge.
+      const w = sw + 2, h = sh + 2;
+      const gray = new Float32Array(w * h);
+      gray.fill(255);
+      for (let y = 0; y < sh; y++) {
+        for (let x = 0; x < sw; x++) {
+          const i = (y * sw + x) * 4;
+          const a = src[i + 3] / 255;
+          // Composite transparency onto white before calculating luminance.
+          const r = src[i] * a + 255 * (1 - a);
+          const g = src[i + 1] * a + 255 * (1 - a);
+          const b = src[i + 2] * a + 255 * (1 - a);
+          gray[(y + 1) * w + (x + 1)] = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        }
+      }
+
+      const segments = [];
+      const interp = (v1, v2) => {
+        const d = v2 - v1;
+        if (Math.abs(d) < 1e-9) return 0.5;
+        return Math.max(0, Math.min(1, (threshold - v1) / d));
+      };
+      const edgePoint = (edge, x, y, tl, tr, br, bl) => {
+        if (edge === 0) { const t = interp(tl, tr); return {x:x+t-1, y:y-1}; }
+        if (edge === 1) { const t = interp(tr, br); return {x:x, y:y+t-1}; }
+        if (edge === 2) { const t = interp(bl, br); return {x:x+t-1, y:y}; }
+        const t = interp(tl, bl); return {x:x-1, y:y+t-1};
+      };
+      const add = (a, b, x, y, tl, tr, br, bl) => {
+        segments.push([edgePoint(a,x,y,tl,tr,br,bl), edgePoint(b,x,y,tl,tr,br,bl)]);
+      };
+
+      for (let y = 0; y < h - 1; y++) {
+        for (let x = 0; x < w - 1; x++) {
+          const tl = gray[y*w+x], tr = gray[y*w+x+1];
+          const bl = gray[(y+1)*w+x], br = gray[(y+1)*w+x+1];
+          const mask = (tl < threshold ? 1 : 0) | (tr < threshold ? 2 : 0) |
+                       (br < threshold ? 4 : 0) | (bl < threshold ? 8 : 0);
+          if (mask === 0 || mask === 15) continue;
+          switch(mask) {
+            case 1: add(3,0,x,y,tl,tr,br,bl); break;
+            case 2: add(0,1,x,y,tl,tr,br,bl); break;
+            case 3: add(3,1,x,y,tl,tr,br,bl); break;
+            case 4: add(1,2,x,y,tl,tr,br,bl); break;
+            case 5: {
+              const center = (tl + tr + br + bl) * 0.25;
+              if (center < threshold) { add(0,1,x,y,tl,tr,br,bl); add(2,3,x,y,tl,tr,br,bl); }
+              else { add(3,0,x,y,tl,tr,br,bl); add(1,2,x,y,tl,tr,br,bl); }
+              break;
+            }
+            case 6: add(0,2,x,y,tl,tr,br,bl); break;
+            case 7: add(3,2,x,y,tl,tr,br,bl); break;
+            case 8: add(2,3,x,y,tl,tr,br,bl); break;
+            case 9: add(0,2,x,y,tl,tr,br,bl); break;
+            case 10: {
+              const center = (tl + tr + br + bl) * 0.25;
+              if (center < threshold) { add(3,0,x,y,tl,tr,br,bl); add(1,2,x,y,tl,tr,br,bl); }
+              else { add(0,1,x,y,tl,tr,br,bl); add(2,3,x,y,tl,tr,br,bl); }
+              break;
+            }
+            case 11: add(1,2,x,y,tl,tr,br,bl); break;
+            case 12: add(3,1,x,y,tl,tr,br,bl); break;
+            case 13: add(0,1,x,y,tl,tr,br,bl); break;
+            case 14: add(3,0,x,y,tl,tr,br,bl); break;
+          }
+        }
+      }
+      if (!segments.length) return [];
+
+      // Stitch marching-squares segments into closed loops.
+      const key = p => Math.round(p.x * 10000) + ',' + Math.round(p.y * 10000);
+      const adjacency = new Map();
+      segments.forEach((seg, i) => seg.forEach((p, end) => {
+        const k = key(p);
+        if (!adjacency.has(k)) adjacency.set(k, []);
+        adjacency.get(k).push([i, end]);
+      }));
+      const used = new Uint8Array(segments.length);
+      const contours = [];
+      for (let s = 0; s < segments.length; s++) {
+        if (used[s]) continue;
+        used[s] = 1;
+        const pts = [segments[s][0], segments[s][1]];
+        const startKey = key(pts[0]);
+        let currentKey = key(pts[1]);
+        let guard = 0;
+        while (currentKey !== startKey && guard++ < segments.length + 8) {
+          const candidates = adjacency.get(currentKey) || [];
+          let next = null;
+          for (const c of candidates) if (!used[c[0]]) { next = c; break; }
+          if (!next) break;
+          const [idx, end] = next;
+          used[idx] = 1;
+          const p = segments[idx][1-end];
+          pts.push(p);
+          currentKey = key(p);
+        }
+        if (pts.length >= 4 && currentKey === startKey) {
+          if (key(pts[pts.length-1]) === startKey) pts.pop();
+          contours.push(pts);
+        }
+      }
+      return contours;
+    }
+
+    function contourArea(pts) {
+      let a = 0;
+      for (let i = 0, n = pts.length; i < n; i++) {
+        const p = pts[i], q = pts[(i+1)%n];
+        a += p.x*q.y - q.x*p.y;
+      }
+      return a * 0.5;
+    }
+
+    function simplifyClosedContour(pts, eps) {
+      const n = pts.length;
+      if (n < 5 || eps <= 0) return pts.slice();
+      let a = 0;
+      for (let i=1;i<n;i++) if (pts[i].x < pts[a].x) a=i;
+      let b = a, best = -1;
+      for (let i=0;i<n;i++) {
+        const dx=pts[i].x-pts[a].x, dy=pts[i].y-pts[a].y, d=dx*dx+dy*dy;
+        if (d > best) { best=d; b=i; }
+      }
+      if (a === b) return pts.slice();
+      const arc = (from,to) => {
+        const out=[pts[from]];
+        let i=from;
+        while(i!==to){ i=(i+1)%n; out.push(pts[i]); if(out.length>n+1)break; }
+        return out;
+      };
+      const p1 = rdpSimplify(arc(a,b), eps);
+      const p2 = rdpSimplify(arc(b,a), eps);
+      const joined = p1.slice(0,-1).concat(p2.slice(0,-1));
+      return joined.length >= 3 ? joined : pts.slice();
+    }
+
+    function preciseClosedPathD(pts, sx, sy, ox, oy, smoothing) {
+      const P = pts.map(p => ({x:p.x*sx+ox, y:p.y*sy+oy}));
+      const n = P.length;
+      if (n < 3) return '';
+      let d = 'M ' + P[0].x.toFixed(3) + ' ' + P[0].y.toFixed(3);
+      const amount = Math.max(0, Math.min(100, smoothing)) / 100;
+      if (amount <= 0.001) {
+        for (let i=1;i<n;i++) d += ' L ' + P[i].x.toFixed(3) + ' ' + P[i].y.toFixed(3);
+      } else {
+        const k = amount / 6;
+        for (let i=0;i<n;i++) {
+          const p0=P[(i-1+n)%n], p1=P[i], p2=P[(i+1)%n], p3=P[(i+2)%n];
+          const c1x=p1.x+(p2.x-p0.x)*k, c1y=p1.y+(p2.y-p0.y)*k;
+          const c2x=p2.x-(p3.x-p1.x)*k, c2y=p2.y-(p3.y-p1.y)*k;
+          d += ' C ' + c1x.toFixed(3)+' '+c1y.toFixed(3)+' '+c2x.toFixed(3)+' '+c2y.toFixed(3)+' '+p2.x.toFixed(3)+' '+p2.y.toFixed(3);
+        }
+      }
+      return d + ' Z';
+    }
 
     function findContours(imgData, threshold) {
       const w = imgData.width, h = imgData.height, src = imgData.data;
@@ -3776,8 +3899,6 @@ function prepareSvgExport(){
   const clone=svg.cloneNode(true);
   clone.querySelector('#pageBg')?.remove();
   clone.querySelector('#pageGrid')?.remove();
-  clone.querySelector('#overlapDefs')?.remove();
-  clone.querySelector('#overlapHighlights')?.remove();
   clone.querySelector('#handles')?.remove();
   clone.querySelector('#temp')?.remove();
   clone.setAttribute('xmlns',SVG_NS);
@@ -3815,9 +3936,10 @@ class BinaryWriter{
   i32(v){this.u32(Number(v)|0);}
   f32(v){const b=new ArrayBuffer(4);new DataView(b).setFloat32(0,Number(v)||0,true);this.bytes.push(...new Uint8Array(b));}
   ascii(text){for(let i=0;i<text.length;i++)this.u8(text.charCodeAt(i));}
+  asciiFixed(text,length){const s=String(text||'');for(let i=0;i<length;i++)this.u8(i<s.length?s.charCodeAt(i):0);}
   bytesOf(data){this.bytes.push(...data);}
   utf16Field(text){
-    const chars=Array.from(String(text||' ').slice(0,255));
+    const chars=Array.from(String(text??'').slice(0,255));
     this.u8(chars.length);
     chars.forEach(ch=>this.u16(ch.charCodeAt(0)));
   }
@@ -3846,6 +3968,78 @@ function fcmBlankThumbnailBmp(){
   w.u8(255);w.u8(255);w.u8(255);w.u8(0);
   for(let i=0;i<pixelBytes;i++)w.u8(255);
   return w.finish();
+}
+
+function fcmPathPoints(path,curveSteps=12){
+  const points=[];
+  if(!path?.start)return points;
+  points.push({x:path.start.x,y:path.start.y});
+  let current={x:path.start.x,y:path.start.y};
+  (path.segments||[]).forEach(seg=>{
+    if(seg.type==='C'&&seg.c1&&seg.c2&&seg.end){
+      for(let i=1;i<=curveSteps;i++){
+        const t=i/curveSteps,u=1-t;
+        points.push({
+          x:u*u*u*current.x+3*u*u*t*seg.c1.x+3*u*t*t*seg.c2.x+t*t*t*seg.end.x,
+          y:u*u*u*current.y+3*u*u*t*seg.c1.y+3*u*t*t*seg.c2.y+t*t*t*seg.end.y
+        });
+      }
+    }else if(seg.end){
+      points.push({x:seg.end.x,y:seg.end.y});
+    }
+    if(seg.end)current={x:seg.end.x,y:seg.end.y};
+  });
+  return points;
+}
+
+function fcmBounds(paths){
+  let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
+  (paths||[]).forEach(path=>{
+    if(path?.start){
+      const points=[path.start];
+      (path.segments||[]).forEach(seg=>{
+        if(seg.c1)points.push(seg.c1);
+        if(seg.c2)points.push(seg.c2);
+        if(seg.end)points.push(seg.end);
+      });
+      points.forEach(p=>{
+        minX=Math.min(minX,p.x);minY=Math.min(minY,p.y);
+        maxX=Math.max(maxX,p.x);maxY=Math.max(maxY,p.y);
+      });
+    }
+  });
+  if(!Number.isFinite(minX))return null;
+  return {minX,minY,maxX,maxY,width:Math.max(1,maxX-minX),height:Math.max(1,maxY-minY)};
+}
+
+function fcmThumbnailBmp(paths){
+  const bmp=fcmBlankThumbnailBmp();
+  const bounds=fcmBounds(paths);
+  if(!bounds||bounds.width<=0||bounds.height<=0)return bmp;
+  const size=88,rowBytes=12,pixels=bmp.subarray(62);
+  const scale=80/Math.max(bounds.width,bounds.height);
+  const tx=p=>Math.round((p.x-bounds.minX)*scale+(size-bounds.width*scale)/2);
+  const ty=p=>Math.round((p.y-bounds.minY)*scale+(size-bounds.height*scale)/2);
+  const setPixel=(x,y)=>{
+    if(x<0||x>=size||y<0||y>=size)return;
+    const row=size-1-y,byteIndex=row*rowBytes+Math.floor(x/8),bit=7-(x%8);
+    pixels[byteIndex]&=~(1<<bit);
+  };
+  const drawLine=(x0,y0,x1,y1)=>{
+    let dx=Math.abs(x1-x0),dy=-Math.abs(y1-y0),sx=x0<x1?1:-1,sy=y0<y1?1:-1,err=dx+dy,x=x0,y=y0;
+    while(true){
+      setPixel(x,y);
+      if(x===x1&&y===y1)break;
+      const e2=2*err;
+      if(e2>=dy){err+=dy;x+=sx;}
+      if(e2<=dx){err+=dx;y+=sy;}
+    }
+  };
+  (paths||[]).forEach(path=>{
+    const points=fcmPathPoints(path);
+    for(let i=1;i<points.length;i++)drawLine(tx(points[i-1]),ty(points[i-1]),tx(points[i]),ty(points[i]));
+  });
+  return bmp;
 }
 
 function fcmIdentityMatrix(){return {a:1,b:0,c:0,d:1,e:0,f:0};}
@@ -4036,7 +4230,8 @@ function fcmTransformSubpath(sub,matrix){
 function fcmScalePoint(p){return {x:Math.round(p.x*100),y:Math.round(p.y*100)};}
 function fcmCollectPaths(root){
   const paths=[],skipped=[];
-  const walk=(node,matrix)=>{
+  let ownerCounter=0;
+  const walk=(node,matrix,owner=null)=>{
     if(node.nodeType!==1)return;
     const tag=(node.tagName||'').toLowerCase();
     const local=fcmElementMatrix(node);
@@ -4046,7 +4241,10 @@ function fcmCollectPaths(root){
       return;
     }
     if(tag==='g'||tag==='svg'||tag==='a'){
-      Array.from(node.children).forEach(child=>walk(child,current));
+      Array.from(node.children).forEach(child=>{
+        const childOwner=owner===null && node.id==='objects' ? (++ownerCounter) : owner;
+        walk(child,current,childOwner);
+      });
       return;
     }
     if(!['path','polygon','polyline','rect','ellipse','circle','line'].includes(tag))return;
@@ -4055,7 +4253,7 @@ function fcmCollectPaths(root){
       fcmShapeSubpaths(node).forEach(sub=>{
         const transformed=fcmTransformSubpath(sub,current);
         if(!transformed.segments.length)return;
-        paths.push({mode,closed:!!transformed.closed,start:fcmScalePoint(transformed.start),segments:transformed.segments.map(seg=>{
+        paths.push({owner,mode,closed:!!transformed.closed,start:fcmScalePoint(transformed.start),segments:transformed.segments.map(seg=>{
           if(seg.type==='C')return {type:'C',c1:fcmScalePoint(seg.c1),c2:fcmScalePoint(seg.c2),end:fcmScalePoint(seg.end)};
           return {type:'L',end:fcmScalePoint(seg.end)};
         })});
@@ -4066,6 +4264,83 @@ function fcmCollectPaths(root){
   };
   walk(root,fcmIdentityMatrix());
   return {paths,skipped};
+}
+
+function fcmPolyArea(points){
+  let area=0;
+  for(let i=0;i<points.length;i++){
+    const a=points[i],b=points[(i+1)%points.length];
+    area+=a.x*b.y-b.x*a.y;
+  }
+  return area/2;
+}
+
+function fcmPolyBounds(points){
+  let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
+  (points||[]).forEach(p=>{
+    minX=Math.min(minX,p.x);minY=Math.min(minY,p.y);
+    maxX=Math.max(maxX,p.x);maxY=Math.max(maxY,p.y);
+  });
+  return {minX,minY,maxX,maxY};
+}
+
+function fcmPointInPoly(point,poly){
+  let inside=false;
+  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+    const a=poly[i],b=poly[j];
+    const hit=((a.y>point.y)!==(b.y>point.y)) &&
+      point.x<(b.x-a.x)*(point.y-a.y)/((b.y-a.y)||1e-12)+a.x;
+    if(hit)inside=!inside;
+  }
+  return inside;
+}
+
+function fcmSplitPathsIntoPieces(paths){
+  // Keep paths from each original drawing object together, then group nested
+  // contours so holes in O/A/8 remain attached to their outer contour.
+  const byOwner=new Map();
+  (paths||[]).forEach(path=>{
+    const owner=path.owner===null||path.owner===undefined?path.owner:path.owner;
+    if(!byOwner.has(owner))byOwner.set(owner,[]);
+    byOwner.get(owner).push(path);
+  });
+  const pieces=[];
+  byOwner.forEach(records=>{
+    const closed=[],open=[];
+    records.forEach((path,index)=>{
+      const poly=fcmPathPoints(path);
+      if(path.closed&&poly.length>=3){
+        closed.push({path,poly,area:Math.abs(fcmPolyArea(poly)),bounds:fcmPolyBounds(poly),parent:-1,index});
+      }else{
+        open.push([path]);
+      }
+    });
+    for(let i=0;i<closed.length;i++){
+      const child=closed[i],sample=child.poly[0];
+      let best=-1,bestArea=Infinity;
+      for(let j=0;j<closed.length;j++){
+        if(i===j)continue;
+        const parent=closed[j];
+        if(parent.area<=child.area+1e-9)continue;
+        const b=parent.bounds;
+        if(sample.x<b.minX||sample.x>b.maxX||sample.y<b.minY||sample.y>b.maxY)continue;
+        if(parent.area<bestArea&&fcmPointInPoly(sample,parent.poly)){best=j;bestArea=parent.area;}
+      }
+      child.parent=best;
+    }
+    for(let i=0;i<closed.length;i++){
+      if(closed[i].parent!==-1)continue;
+      const group=[],stack=[i];
+      while(stack.length){
+        const current=stack.pop();
+        group.push(closed[current].path);
+        for(let k=0;k<closed.length;k++)if(closed[k].parent===current)stack.push(k);
+      }
+      if(group.length)pieces.push(group);
+    }
+    open.forEach(group=>pieces.push(group));
+  });
+  return pieces;
 }
 
 function fcmFlagsForPath(path){
@@ -4102,15 +4377,30 @@ function fcmWritePath(path){
   return w.finish();
 }
 
-function fcmWritePiece(paths,pageW,pageH){
+function fcmCenterPath(path,cx,cy){
+  const shift=p=>({x:p.x-cx,y:p.y-cy});
+  return {
+    ...path,
+    start:shift(path.start),
+    segments:(path.segments||[]).map(seg=>seg.type==='C'
+      ? {type:'C',c1:shift(seg.c1),c2:shift(seg.c2),end:shift(seg.end)}
+      : {type:'L',end:shift(seg.end)})
+  };
+}
+
+function fcmWritePiece(paths,width,height,transform){
   const pathBytes=paths.map(fcmWritePath);
   const w=new BinaryWriter();
   for(let i=0;i<8;i++)w.u8(0);
-  w.u32(pageW);w.u32(pageH);
-  w.u32(1);
-  w.f32(1);w.f32(0);w.f32(0);w.f32(1);w.f32(0);w.f32(0);
+  w.u32(width);w.u32(height);
+  if(transform){
+    w.u32(1);
+    transform.forEach(v=>w.f32(v));
+  }else{
+    w.u32(0);
+  }
   w.u32(0);w.u32(0);
-  w.u32(4);
+  w.u32(0);
   w.u32(4);
   w.u32(0);
   w.u32(pathBytes.length);
@@ -4118,39 +4408,57 @@ function fcmWritePiece(paths,pageW,pageH){
   return w.finish();
 }
 
-function fcmBuildFile(paths){
+function fcmBuildFile(pieces){
   const page=PAGE_SIZES[pageSize]||BASE_VB;
   const pageW=Math.round(page.w*100),pageH=Math.round(page.h*100);
-  const thumb=fcmBlankThumbnailBmp();
+  const allPaths=(pieces||[]).flat();
+  const thumb=fcmThumbnailBmp(allPaths);
+  const project=getProjectBaseName();
+  const shortName=project.replace(/[^a-zA-Z0-9]/g,'').slice(0,8)||'VV';
+
+  const pieceData=(pieces||[]).map(paths=>{
+    const bounds=fcmBounds(paths);
+    if(!bounds)return null;
+    const centerX=(bounds.minX+bounds.maxX)/2;
+    const centerY=(bounds.minY+bounds.maxY)/2;
+    return {
+      paths:paths.map(path=>fcmCenterPath(path,centerX,centerY)),
+      width:bounds.width,
+      height:bounds.height,
+      transform:[1,0,0,1,centerX,centerY]
+    };
+  }).filter(Boolean);
+
   const dynamic=new BinaryWriter();
-  for(let i=0;i<8;i++)dynamic.u8(0);
-  dynamic.utf16Field(getProjectBaseName());
-  dynamic.utf16Field(' ');
-  dynamic.utf16Field(' ');
+  dynamic.asciiFixed(shortName,8);
+  dynamic.utf16Field(project);
+  dynamic.utf16Field('');
+  dynamic.utf16Field('');
   dynamic.u8(3);dynamic.u8(3);
   dynamic.u32(thumb.length);
   dynamic.bytesOf(thumb);
   dynamic.ascii('1APP');
-  dynamic.u32(0);
+  dynamic.u32(1);
 
-  const piece=fcmWritePiece(paths,pageW,pageH);
+  const serializedPieces=pieceData.map(piece=>fcmWritePiece(piece.paths,piece.width,piece.height,piece.transform));
   const w=new BinaryWriter();
   w.ascii('#FCM');
   w.ascii('0100');
-  w.u32(400000002);
+  w.u32(0);
   w.u32(dynamic.length);
   w.bytesOf(dynamic.finish());
   w.u32(0x10);
   w.u32(0);
   w.u32(pageW);
   w.u32(pageH);
-  w.u32(2000);
-  w.u32(1);
   w.u32(0);
-  w.u32(piece.length);
-  w.u32(1);
-  w.u16(0);
-  w.bytesOf(piece);
+  w.u32(serializedPieces.length);
+  let offset=0;
+  serializedPieces.forEach(piece=>{w.u32(offset);offset+=piece.length;});
+  w.u32(offset);
+  w.u32(serializedPieces.length);
+  serializedPieces.forEach((_,index)=>w.u16(index));
+  serializedPieces.forEach(piece=>w.bytesOf(piece));
   return w.finish();
 }
 
@@ -4174,9 +4482,14 @@ function exportFcmFile(){
     alert('Der er ingen vektorobjekter at gemme som FCM.');
     return;
   }
-  const bytes=fcmBuildFile(collected.paths);
+  const pieces=fcmSplitPathsIntoPieces(collected.paths);
+  if(!pieces.length){
+    alert('Der er ingen selvstændige FCM-dele at gemme.');
+    return;
+  }
+  const bytes=fcmBuildFile(pieces);
   downloadBinary(bytes,getProjectFileName('fcm'),'application/octet-stream');
-  setStatus('FCM eksporteret: '+collected.paths.length+' sti(er)');
+  setStatus('FCM eksporteret: '+collected.paths.length+' sti(er), '+pieces.length+' del(e)');
   if(collected.skipped.length){
     alert('FCM-filen blev gemt, men '+collected.skipped.length+' objekt(er) blev sprunget over. Billeder skal spores til vektor først, og avancerede SVG-paths kan kræve konvertering til simple stier.');
   }
