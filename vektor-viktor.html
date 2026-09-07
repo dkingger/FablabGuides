@@ -72,6 +72,7 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 .mode-btn.both .swatch{background:var(--engrave);border:2px solid var(--cut)}
 .mode-btn.active{border-color:var(--accent);color:var(--text);background:#e3f5ea}
 .mode-btn:hover{border-color:var(--accent)}
+.mode-btn:disabled{opacity:.5;cursor:not-allowed}
 .btn{padding:8px 12px;border:none;border-radius:6px;font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;width:100%}
 .btn-primary{background:var(--accent);color:#fff}
 .btn-primary:hover{background:var(--accent-hover)}
@@ -200,7 +201,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 </head>
 <body>
 <header>
-  <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FablabGuides" aria-label="Tilbage til FablabGuides">
+  <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
   <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.60</span></h1>
@@ -378,8 +379,8 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
     </div>
 
     <div class="prop-group"><label>Objekter</label><div class="layer-list" id="layerList"></div></div>
-    <button class="btn btn-primary" id="btnExport" title="Konverterer tekst til stier og gemmer SVG (klar til ScanNCut/laser)">Eksporter til SVG</button>
-    <button class="btn btn-secondary" id="btnExportFcm" title="Gemmer en ScanNCut-kompatibel FCM-fil">Eksporter FCM</button>
+    <button class="btn btn-primary" id="btnExport" title="Konverterer tekst til stier og gemmer SVG (klar til ScanNCut/laser)">Gem til laser</button>
+    <button class="btn btn-secondary" id="btnExportFcm" title="Gemmer en ScanNCut-kompatibel FCM-fil">Gem til Scan'n'Cut</button>
     <button class="btn btn-secondary" id="btnZoomFit">Nulstil zoom</button>
 
 
@@ -644,7 +645,31 @@ function setPageSize(size){
   // Always show full page in viewBox; zoom changes element size
   svg.setAttribute('viewBox', '0 0 '+p.w+' '+p.h);
   updatePageGrid();
+  updateModeButtonsForPageSize();
+  refreshObjectModesForPageSize();
   applyZoomSize();
+}
+
+function isScanNCutPageSize(){
+  return pageSize==='ScanNCut';
+}
+
+function updateModeButtonsForPageSize(){
+  const locked=isScanNCutPageSize();
+  const buttons=document.querySelectorAll('.mode-btn');
+  buttons.forEach(btn=>{
+    btn.disabled=locked;
+    if(locked)btn.classList.toggle('active',btn.dataset.mode==='cut');
+  });
+  if(locked)currentMode='cut';
+}
+
+function refreshObjectModesForPageSize(){
+  objects.forEach(obj=>{
+    if(obj.type==='image')return;
+    const mode=(obj.data&&obj.data.mode)||detectMode(obj);
+    applyModeRecursive(obj,mode);
+  });
 }
 
 function getVB(){
@@ -737,7 +762,11 @@ document.getElementById('pageSize')?.addEventListener('change', e => setPageSize
 
 
 function uid(){return 'obj'+(nextId++)}
-function strokeFor(m){return m==='engrave'?'none':(m==='green'?GREEN:CUT)}
+function strokeFor(m){
+  if(m==='engrave')return 'none';
+  if(isScanNCutPageSize())return ENG;
+  return m==='green'?GREEN:CUT;
+}
 function fillFor(m){return m==='engrave'?ENG:'none'}
 function applyMode(el,m){
   el.setAttribute('stroke',strokeFor(m));
@@ -878,6 +907,7 @@ document.querySelectorAll('.tool-btn').forEach(btn=>{
 
 document.querySelectorAll('.mode-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
+    if(isScanNCutPageSize())return;
     currentMode=btn.dataset.mode;
     document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
@@ -927,8 +957,13 @@ function refreshUI(){
       showProps(obj);
       if(obj.type==='image')document.getElementById('traceBtnWrap').classList.remove('hidden');
       const mode=obj.data.mode||detectMode(obj);
-      document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
-      currentMode=mode;
+      if(isScanNCutPageSize()){
+        document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode==='cut'));
+        currentMode='cut';
+      }else{
+        document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+        currentMode=mode;
+      }
     }
   }
   updateCount();
@@ -4509,6 +4544,16 @@ function fcmBuildFile(pieces){
   return w.finish();
 }
 
+function forceFcmExportToRedLines(root){
+  if(!root)return;
+  root.querySelectorAll('path,line,polyline,polygon,rect,circle,ellipse').forEach(el=>{
+    el.setAttribute('fill','none');
+    el.setAttribute('stroke',CUT);
+    el.setAttribute('stroke-width',String(STROKE_MM));
+    el.setAttribute('vector-effect','non-scaling-stroke');
+  });
+}
+
 function exportFcmFile(){
   const liveTexts=objects.filter(o=>o.type==='text');
   if(liveTexts.length){
@@ -4524,6 +4569,7 @@ function exportFcmFile(){
     alert('Kunne ikke konvertere al tekst til stier. FCM-filen blev ikke gemt.');
     return;
   }
+  forceFcmExportToRedLines(clone);
   const collected=fcmCollectPaths(clone);
   if(!collected.paths.length){
     alert('Der er ingen vektorobjekter at gemme som FCM.');

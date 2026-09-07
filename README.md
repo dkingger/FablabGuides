@@ -5,7 +5,7 @@
 
 ## Version
 
-Aktuel version: 1.60.0
+Aktuel version: 1.60.1
 Dato: 2026-09-07
 
 ## Versionsstandard
@@ -29,6 +29,32 @@ Eksempler:
 3. Beskriv kort, hvilke filer/funktioner der er aendret.
 
 ## Seneste aendringer
+
+### v1.60.1 (2026-09-07)
+
+- `index.html`
+  - Fjernet Online tools-kortet under guides-sektionen.
+  - Fjernet statistikboksen Maskiner og software i hero-omraadet.
+
+- `en/index.html`
+  - Fjernet statistikboksen Machines and software i hero-omraadet.
+
+- `guide-til-laserfiler.html`
+- `maskiner.html`
+- `materiale-tykkelse-skalering.html`
+- `materialer.html`
+- `online-tools.html`
+- `en/guide-to-laser-files.html`
+- `en/maskiner.html`
+- `en/materialer.html`
+- `en/online-tools.html`
+  - Standardiseret brand/tilbage-knaptekst til FabLab Guides.
+
+- `vektor-viktor.html`
+  - Normaliseret tilbage-knappens label til Tilbage til FabLab Guides.
+  - Eksportknapper omdoebt til Gem til laser og Gem til Scan'n'Cut.
+  - FCM-eksport tvinger nu alle vektorobjekter til roed linje foer .fcm genereres.
+  - ScanNCut-sideformat laaser farvevalg og viser linjer som sorte i editoren.
 
 ### v1.60.0 (2026-09-07)
 
