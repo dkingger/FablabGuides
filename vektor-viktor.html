@@ -119,7 +119,7 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 .offset-options input[type=number]:focus,.offset-options select:focus{outline:none;border-color:var(--accent)}
 .offset-help{font-size:.68rem;color:var(--text-dim);line-height:1.35;margin-top:6px}
 
-/* Vektor-Viktor v1.58 dark workspace theme */
+/* Vektor-Viktor v1.60 dark workspace theme */
 :root{
   --bg:#2f343b;
   --panel:#ffffff;
@@ -203,7 +203,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FablabGuides" aria-label="Tilbage til FablabGuides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.58</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.60</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
@@ -247,10 +247,10 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
     <button class="tool-btn" data-tool="polygon" title="Polygon (klik punkter)" aria-label="Polygon"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 21,9 18,20 6,20 3,9"/></svg><span class="tip">Polygon (klik)</span></button>
     <button class="tool-btn" data-tool="ngon" title="Regelmæssig polygon (trekant+). +/- ændrer sider" aria-label="Regelmæssig polygon"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 20.5,8.5 17.5,18.5 6.5,18.5 3.5,8.5"/></svg><span class="tip">Reg. polygon (+/-)</span></button>
     <button class="tool-btn" data-tool="text" title="Tekst" aria-label="Tekst"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M12 5v14M9 19h6"/></svg><span class="tip">Tekst</span></button>
-
-
     <div class="tool-sep"></div>
     <button class="tool-btn" data-tool="image" title="Importer billede/SVG" aria-label="Importer billede eller SVG"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M3 16l5-4 4 3 5-5 4 4"/></svg><span class="tip">Importer billede/SVG</span></button>
+    <button class="tool-btn" data-tool="offset" title="Forskudt linje" aria-label="Forskudt linje"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h8a4 4 0 0 1 4 4v8"/><path d="M5 9h7a3 3 0 0 1 3 3v7"/><path d="M3 13h5a3 3 0 0 1 3 3v5"/></svg><span class="tip">Forskudt linje</span></button>
+    <button class="tool-btn" data-tool="array" title="Array (mangegør)" aria-label="Array (mangegør)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg><span class="tip">Array (mangegør)</span></button>
     <div class="tool-sep"></div>
     <button class="tool-btn" data-tool="delete" title="Slet" aria-label="Slet valgte objekter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M9 7V5h6v2M8 7l1 13h6l1-13"/></svg><span class="tip">Slet</span></button>
     <button class="tool-btn" data-tool="clear" title="Ryd alt" aria-label="Ryd alle objekter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M8 6V4h8v2M6 6l1 14h10l1-14"/></svg><span class="tip">Ryd alt</span></button>
@@ -343,31 +343,6 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
         <button type="button" class="align-btn wide" data-align="dist-v" title="Fordel lodret">⇕ Fordel V</button>
       </div>
     </div>
-    <div class="prop-group hidden" id="arrayProps">
-      <label>Array (mangegør)</label>
-      <div class="array-tabs">
-        <button type="button" class="active" data-array-tab="grid" id="arrayTabGrid">Kvadratisk</button>
-        <button type="button" data-array-tab="circle" id="arrayTabCircle">Cirkulært</button>
-      </div>
-      <div id="arrayGridFields">
-        <label>Kolonner × Rækker</label>
-        <div class="prop-row"><input type="number" id="arrCols" min="1" max="50" value="3"><input type="number" id="arrRows" min="1" max="50" value="3"></div>
-        <label>Afstand X / Y</label>
-        <div class="prop-row"><input type="number" id="arrGapX" step="1" value="20"><input type="number" id="arrGapY" step="1" value="20"></div>
-      </div>
-      <div id="arrayCircleFields" class="hidden">
-        <label>Antal kopier</label>
-        <input type="number" id="arrCount" class="prop-select" min="2" max="72" value="6" style="margin-bottom:6px">
-        <label>Radius</label>
-        <input type="number" id="arrRadius" class="prop-select" min="1" step="1" value="80" style="margin-bottom:6px">
-        <label>Startvinkel (°)</label>
-        <input type="number" id="arrAngle" class="prop-select" step="1" value="0" style="margin-bottom:6px">
-        <label style="display:flex;align-items:center;gap:6px;cursor:pointer">
-          <input type="checkbox" id="arrRotate" checked> Roter kopier
-        </label>
-      </div>
-      <button class="btn btn-primary" id="btnArrayApply" style="margin-top:8px">Opret array</button>
-    </div>
     <div class="prop-group hidden" id="groupProps">
       <label>Gruppering</label>
       <button class="btn btn-secondary" id="btnGroup" title="Gruppér valgte objekter">Gruppér valgte</button>
@@ -402,24 +377,6 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
       </button>
     </div>
 
-    <div class="prop-group hidden" id="offsetProps">
-      <label>Forskudt linje</label>
-      <label class="offset-options"><input type="checkbox" id="offsetExpand" checked><span>Udvid udad</span></label>
-      <div class="offset-options"><span>Afstand (mm)</span><input type="number" id="offsetDistance" min="0.01" max="100" step="0.01" value="5"></div>
-      <div class="offset-options"><span>Hjørner</span><select id="offsetJoin"><option value="round">Runde</option><option value="miter">Skarpe</option><option value="bevel">Affasede</option></select></div>
-      <div class="offset-options"><span>Mitergrænse</span><input type="number" id="offsetMiter" min="1" max="20" step="0.1" value="4"></div>
-      <div class="offset-options"><span>Huller</span><select id="offsetHoles"><option value="remove">Fjern</option><option value="keep">Behold</option></select></div>
-      <div class="offset-options"><span>Linjetype</span><select id="offsetMode"><option value="green" selected>Grøn linje</option><option value="cut">Rød linje</option></select></div>
-      <div class="prop-row" style="margin-top:4px;margin-bottom:0">
-        <button type="button" class="btn btn-secondary" id="btnOffsetPreview" style="width:auto;flex:1">Forhåndsvis</button>
-        <button type="button" class="btn btn-primary" id="btnOffsetApply" style="width:auto;flex:1">Opret linje</button>
-      </div>
-      <p class="offset-help">Laver en ny SVG-linje og beholder de markerede objekter. Vælg flere objekter med Shift.</p>
-    </div>
-
-
-
-
     <div class="prop-group"><label>Objekter</label><div class="layer-list" id="layerList"></div></div>
     <button class="btn btn-primary" id="btnExport" title="Konverterer tekst til stier og gemmer SVG (klar til ScanNCut/laser)">Eksporter til SVG</button>
     <button class="btn btn-secondary" id="btnExportFcm" title="Gemmer en ScanNCut-kompatibel FCM-fil">Eksporter FCM</button>
@@ -434,6 +391,58 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <span id="statusSel">Valgt: 0</span>
   <span>Rød/grøn = linje · Fed sort = tekst/fyld</span>
   <span class="credit">Tak til Réne fra Fredericia MakerSpace</span>
+</div>
+<div class="modal-overlay" id="offsetModal" aria-hidden="true">
+  <div class="modal about-modal" role="dialog" aria-modal="true" aria-labelledby="offsetModalTitle">
+    <button type="button" class="modal-close" id="offsetClose" aria-label="Luk Forskudt linje">×</button>
+    <h2 id="offsetModalTitle">Forskudt linje</h2>
+    <div class="prop-group">
+      <label class="offset-options"><input type="checkbox" id="offsetExpand" checked><span>Udvid udad</span></label>
+      <div class="offset-options"><span>Afstand (mm)</span><input type="number" id="offsetDistance" min="0.01" max="100" step="0.01" value="5"></div>
+      <div class="offset-options"><span>Hjørner</span><select id="offsetJoin"><option value="round">Runde</option><option value="miter">Skarpe</option><option value="bevel">Affasede</option></select></div>
+      <div class="offset-options"><span>Mitergrænse</span><input type="number" id="offsetMiter" min="1" max="20" step="0.1" value="4"></div>
+      <div class="offset-options"><span>Huller</span><select id="offsetHoles"><option value="remove">Fjern</option><option value="keep">Behold</option></select></div>
+      <div class="offset-options"><span>Linjetype</span><select id="offsetMode"><option value="green" selected>Grøn linje</option><option value="cut">Rød linje</option></select></div>
+      <p class="offset-help">Laver en ny SVG-linje og beholder de markerede objekter. Vælg flere objekter med Shift.</p>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-secondary" id="btnOffsetPreview">Forhåndsvis</button>
+      <button type="button" class="btn btn-primary" id="btnOffsetApply">Opret linje</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="arrayModal" aria-hidden="true">
+  <div class="modal about-modal" role="dialog" aria-modal="true" aria-labelledby="arrayModalTitle">
+    <button type="button" class="modal-close" id="arrayClose" aria-label="Luk Array">×</button>
+    <h2 id="arrayModalTitle">Array (mangegør)</h2>
+    <div class="prop-group">
+      <div class="array-tabs">
+        <button type="button" class="active" data-array-tab="grid" id="arrayTabGrid">Kvadratisk</button>
+        <button type="button" data-array-tab="circle" id="arrayTabCircle">Cirkulært</button>
+      </div>
+      <div id="arrayGridFields">
+        <label>Kolonner × Rækker</label>
+        <div class="prop-row"><input type="number" id="arrCols" min="1" max="50" value="3"><input type="number" id="arrRows" min="1" max="50" value="3"></div>
+        <label>Afstand X / Y</label>
+        <div class="prop-row"><input type="number" id="arrGapX" step="1" value="20"><input type="number" id="arrGapY" step="1" value="20"></div>
+      </div>
+      <div id="arrayCircleFields" class="hidden">
+        <label>Antal kopier</label>
+        <input type="number" id="arrCount" class="prop-select" min="2" max="72" value="6" style="margin-bottom:6px">
+        <label>Radius</label>
+        <input type="number" id="arrRadius" class="prop-select" min="1" step="1" value="80" style="margin-bottom:6px">
+        <label>Startvinkel (°)</label>
+        <input type="number" id="arrAngle" class="prop-select" step="1" value="0" style="margin-bottom:6px">
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer">
+          <input type="checkbox" id="arrRotate" checked> Roter kopier
+        </label>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-secondary" id="arrayCancel">Annuller</button>
+      <button type="button" class="btn btn-primary" id="btnArrayApply">Opret array</button>
+    </div>
+  </div>
 </div>
 <div class="modal-overlay" id="traceModal">
   <div class="modal">
@@ -804,6 +813,30 @@ function renderLayers(){
 }
 
 const aboutModal=document.getElementById('aboutModal');
+const offsetModal=document.getElementById('offsetModal');
+const arrayModal=document.getElementById('arrayModal');
+function setArrayOpen(open){
+  if(!arrayModal)return;
+  if(open&&!selectedIds.length){alert('Vælg først den figur, der skal bruges i arrayet.');return}
+  arrayModal.classList.toggle('show',open);
+  arrayModal.setAttribute('aria-hidden',String(!open));
+  if(open)document.getElementById('arrCols')?.focus();
+}
+document.getElementById('arrayClose')?.addEventListener('click',()=>setArrayOpen(false));
+document.getElementById('arrayCancel')?.addEventListener('click',()=>setArrayOpen(false));
+arrayModal?.addEventListener('click',e=>{if(e.target===arrayModal)setArrayOpen(false)});
+
+function setOffsetOpen(open){
+  if(!offsetModal)return;
+  if(open&&!selectedIds.length){alert('Vælg først den figur, der skal have en forskudt linje.');return}
+  offsetModal.classList.toggle('show',open);
+  offsetModal.setAttribute('aria-hidden',String(!open));
+  if(open)document.getElementById('offsetDistance')?.focus();
+  else clearOffsetPreview();
+}
+document.getElementById('offsetClose')?.addEventListener('click',()=>setOffsetOpen(false));
+offsetModal?.addEventListener('click',e=>{if(e.target===offsetModal)setOffsetOpen(false)});
+
 function setAboutOpen(open){
   if(!aboutModal)return;
   aboutModal.classList.toggle('show',open);
@@ -819,6 +852,8 @@ document.querySelectorAll('.tool-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const t=btn.dataset.tool;
     if(t==='about'){setAboutOpen(true);return}
+    if(t==='offset'){setOffsetOpen(true);return}
+    if(t==='array'){setArrayOpen(true);return}
     if(t==='delete'){deleteSelected();return}
     if(t==='undo'){undo();return}
     if(t==='clear'){if(confirm('Slet alle objekter?'))clearAll();return}
@@ -875,11 +910,8 @@ function refreshUI(){
   document.getElementById('selectionProps').classList.toggle('hidden',n!==1);
   document.getElementById('boolProps').classList.toggle('hidden',n<2);
   const tp=document.getElementById('transformProps');if(tp)tp.classList.toggle('hidden',n<1);
-  const op=document.getElementById('offsetProps');if(op)op.classList.toggle('hidden',n<1);
   const lop=document.getElementById('layerOrderProps');if(lop)lop.classList.toggle('hidden',n!==1);
   const ap=document.getElementById('alignProps');if(ap)ap.classList.toggle('hidden',n<2);
-  const arp=document.getElementById('arrayProps');if(arp)arp.classList.toggle('hidden',n<1);
-
   const gp=document.getElementById('groupProps');if(gp)gp.classList.toggle('hidden',n<1);
   const gb=document.getElementById('btnGroup');if(gb)gb.classList.toggle('hidden',n<2);
   const ugb=document.getElementById('btnUngroup');if(ugb){
@@ -1493,8 +1525,8 @@ function flipSelected(axis){
 
 document.addEventListener('keydown',e=>{
   if(isTypingTarget(e.target)) return;
-  if(e.key==='Escape'){setAboutOpen(false);cancelDraw();deselectAll();nodeEdit=null;nodeDrag=null;refreshUI()}
-  if(aboutModal?.classList.contains('show'))return;
+  if(e.key==='Escape'){setAboutOpen(false);setOffsetOpen(false);setArrayOpen(false);cancelDraw();deselectAll();nodeEdit=null;nodeDrag=null;refreshUI()}
+  if(aboutModal?.classList.contains('show')||offsetModal?.classList.contains('show')||arrayModal?.classList.contains('show'))return;
   if((e.key==='Delete'||e.key==='Backspace')&&!e.target.matches('input'))deleteSelected();
   // V = select tool only without Ctrl/Cmd (Ctrl+V = paste)
   if((e.key==='v'||e.key==='V') && !(e.ctrlKey||e.metaKey)) document.querySelector('[data-tool="select"]')?.click();
@@ -2741,6 +2773,7 @@ document.getElementById('arrayTabCircle')?.addEventListener('click',()=>{
 document.getElementById('btnArrayApply')?.addEventListener('click',()=>{
   const isCircle=document.getElementById('arrayTabCircle').classList.contains('active');
   applyArray(isCircle?'circle':'grid');
+  setArrayOpen(false);
 });
 
 
@@ -3474,6 +3507,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       clearOffsetPreview();
       selectedIds=ids;
       refreshUI();
+      setOffsetOpen(false);
     }
 
     document.getElementById('btnOffsetPreview')?.addEventListener('click',()=>{
