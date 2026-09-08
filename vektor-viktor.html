@@ -180,6 +180,16 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 .props h2{padding:2px 2px 4px;color:#596674;font-size:.67rem;font-weight:800;letter-spacing:.12em}
 .prop-group{padding:11px;background:#fff;border:1px solid #dde3e8;border-radius:11px;box-shadow:0 1px 2px rgba(21,30,39,.03)}
 .prop-group label{margin-bottom:5px;color:#6c7884;font-size:.68rem;font-weight:700}
+
+/* Sammenklappelige menuer i højre egenskabspanel */
+.props > .prop-group.accordion-group{padding:0;overflow:visible;flex:0 0 auto;position:relative}
+.accordion-toggle{width:100%;min-height:40px;padding:10px 11px;border:0;border-radius:11px;background:#fff;color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:10px;font:inherit;font-size:.72rem;font-weight:800;letter-spacing:.01em;cursor:pointer;text-align:left;position:relative;z-index:1}
+.accordion-group.open > .accordion-toggle{border-radius:11px 11px 0 0}
+.accordion-toggle:hover{background:#f7f9fa}
+.accordion-chevron{font-size:.9rem;color:var(--text-dim);transition:transform .16s ease;transform:rotate(-90deg);flex:0 0 auto}
+.accordion-group.open > .accordion-toggle .accordion-chevron{transform:rotate(0deg)}
+.accordion-content{display:none;position:static!important;width:auto!important;height:auto!important;max-height:none!important;overflow:visible!important;padding:2px 11px 11px;background:#fff;border-radius:0 0 11px 11px}
+.accordion-group.open > .accordion-content{display:block}
 .prop-row input[type=number],.prop-select{border-color:#d5dce2;background:#fff}
 .prop-row input[type=number]:hover,.prop-select:hover{border-color:#b9c4cc}
 .btn{min-height:34px;border-radius:8px;transition:background .14s ease,border-color .14s ease,transform .14s ease,box-shadow .14s ease}
@@ -204,7 +214,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.61</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.64</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
@@ -763,22 +773,36 @@ document.getElementById('pageSize')?.addEventListener('change', e => setPageSize
 
 function uid(){return 'obj'+(nextId++)}
 function strokeFor(m){
-  if(m==='engrave')return 'none';
+  // På ScanNCut-måtten er farver låst: ALT er sort kontur, også tidligere fyld/gravering.
   if(isScanNCutPageSize())return ENG;
+  if(m==='engrave')return 'none';
   return m==='green'?GREEN:CUT;
 }
-function fillFor(m){return m==='engrave'?ENG:'none'}
+function fillFor(m){
+  if(isScanNCutPageSize())return 'none';
+  return m==='engrave'?ENG:'none';
+}
+function clearInlinePaint(el){
+  // Importerede SVG'er har ofte fill/stroke i style="...", som ellers vinder over SVG-attributter.
+  if(!el||!el.style)return;
+  el.style.removeProperty('fill');
+  el.style.removeProperty('stroke');
+  el.style.removeProperty('stroke-width');
+  el.style.removeProperty('paint-order');
+}
 function applyMode(el,m){
-  el.setAttribute('stroke',strokeFor(m));
-  const f=fillFor(m);
-  el.setAttribute('fill',f==='none'?'transparent':f);
-  el.setAttribute('stroke-width', strokeFor(m)==='none' ? '0' : String(STROKE_MM));
+  clearInlinePaint(el);
+  const stroke=strokeFor(m);
+  el.setAttribute('stroke',stroke);
+  el.setAttribute('fill',fillFor(m));
+  el.setAttribute('stroke-width', stroke==='none' ? '0' : String(STROKE_MM));
   el.setAttribute('vector-effect','non-scaling-stroke'); // stroke stays 0.5mm visually even if scaled via transform
   el.setAttribute('pointer-events','all');
-  if(m==='engrave' && el.tagName && el.tagName.toLowerCase()==='text')el.setAttribute('font-weight','800');
+  if(m==='engrave' && !isScanNCutPageSize() && el.tagName && el.tagName.toLowerCase()==='text')el.setAttribute('font-weight','800');
 }
 function applyLineMode(el,m){
-  el.setAttribute('stroke',m==='engrave'?ENG:strokeFor(m));
+  clearInlinePaint(el);
+  el.setAttribute('stroke',isScanNCutPageSize()?ENG:(m==='engrave'?ENG:strokeFor(m)));
   el.setAttribute('fill','none');
   el.setAttribute('stroke-width',String(STROKE_MM));
   el.setAttribute('vector-effect','non-scaling-stroke');
@@ -786,14 +810,17 @@ function applyLineMode(el,m){
 }
 function applyModeRecursive(obj,m){
   if(!obj || obj.type==='image') return;
+  // ScanNCut overstyrer altid en evt. tidligere engrave/fill-tilstand.
+  const effectiveMode=isScanNCutPageSize()?'cut':m;
   if(obj.type==='group'){
-    obj.el.querySelectorAll('rect,ellipse,line,path,polygon,text').forEach(el=>{
-      if(el.tagName.toLowerCase()==='line')applyLineMode(el,m);
-      else applyMode(el,m);
+    obj.el.querySelectorAll('rect,ellipse,circle,line,path,polygon,polyline,text,use').forEach(el=>{
+      const tag=el.tagName.toLowerCase();
+      if(tag==='line'||tag==='polyline')applyLineMode(el,effectiveMode);
+      else applyMode(el,effectiveMode);
     });
-  } else if(obj.type==='line')applyLineMode(obj.el,m);
-  else applyMode(obj.el,m);
-  obj.data.mode=m;
+  } else if(obj.type==='line')applyLineMode(obj.el,effectiveMode);
+  else applyMode(obj.el,effectiveMode);
+  obj.data.mode=effectiveMode;
 }
 const applyModeToEl=applyMode;
 function handleSizeSvg(){
@@ -1214,8 +1241,10 @@ function addObject(type,el,data,skipUndo){
     if(type!=='image'&&type!=='line'&&type!=='text'&&type!=='path'&&type!=='group')applyMode(el,mode);
     else if(type==='line')applyLineMode(el,mode);
   }
-  objects.push({id,type,el,data:Object.assign({mode},data||{})});
+  const record={id,type,el,data:Object.assign({mode},data||{})};
+  objects.push(record);
   objectsG.appendChild(el);
+  if(isScanNCutPageSize() && type!=='image')applyModeRecursive(record,'cut');
   if(!skipUndo) selectOnly(id);
   updateCount();return id;
 }
@@ -1546,14 +1575,17 @@ function flipSelected(axis){
   if(!c) return;
   pushUndo();
   c.objs.forEach(obj=>{
-    const b=getWorldBBox(obj);
+    // Spejl i figurens EGEN lokale midterakse. Det er vigtigt for importerede SVG-grupper,
+    // som allerede har translate/scale-transform; en verdenskoordinat her får ellers figuren til at hoppe.
+    let b;
+    try{ b=obj.el.getBBox(); }catch(_){ b=null; }
+    if(!b || !Number.isFinite(b.x) || !Number.isFinite(b.y))return;
     const cx=b.x+b.width/2, cy=b.y+b.height/2;
     const t=obj.el.getAttribute('transform')||'';
-    if(axis==='h'){
-      obj.el.setAttribute('transform', (t+' translate('+cx+' '+cy+') scale(-1 1) translate('+(-cx)+' '+(-cy)+')').trim());
-    } else {
-      obj.el.setAttribute('transform', (t+' translate('+cx+' '+cy+') scale(1 -1) translate('+(-cx)+' '+(-cy)+')').trim());
-    }
+    const mirror=axis==='h'
+      ? 'translate('+cx+' '+cy+') scale(-1 1) translate('+(-cx)+' '+(-cy)+')'
+      : 'translate('+cx+' '+cy+') scale(1 -1) translate('+(-cx)+' '+(-cy)+')';
+    obj.el.setAttribute('transform',(t+' '+mirror).trim());
   });
   refreshUI();
 }
@@ -2851,7 +2883,11 @@ function importSvgText(text){
   const x=(BASE_VB.w-bb.width*scale)/2;
   const y=(BASE_VB.h-bb.height*scale)/2;
   group.setAttribute('transform','translate('+x+','+y+') scale('+scale+') translate('+(-bb.x)+','+(-bb.y)+')');
-  addObject('group',group,{group:true,importedSvg:true});
+  const importedId=addObject('group',group,{group:true,importedSvg:true,mode:isScanNCutPageSize()?'cut':currentMode});
+  if(isScanNCutPageSize()){
+    const importedObj=objects.find(o=>o.id===importedId);
+    if(importedObj)applyModeRecursive(importedObj,'cut');
+  }
   document.querySelector('[data-tool="select"]').click();
 }
 
@@ -4313,9 +4349,10 @@ function fcmScalePoint(p){return {x:Math.round(p.x*100),y:Math.round(p.y*100)};}
 function fcmCollectPaths(root){
   const paths=[],skipped=[];
   let ownerCounter=0;
-  const walk=(node,matrix,owner=null)=>{
+  const walk=(node,matrix,owner=null,textGroup=null)=>{
     if(node.nodeType!==1)return;
     const tag=(node.tagName||'').toLowerCase();
+    if(node.hasAttribute('data-vv-text-group'))textGroup=node;
     const local=fcmElementMatrix(node);
     const current=fcmMultiplyMatrix(matrix,local);
     if(tag==='image'){
@@ -4325,7 +4362,7 @@ function fcmCollectPaths(root){
     if(tag==='g'||tag==='svg'||tag==='a'){
       Array.from(node.children).forEach(child=>{
         const childOwner=owner===null && node.id==='objects' ? (++ownerCounter) : owner;
-        walk(child,current,childOwner);
+        walk(child,current,childOwner,textGroup);
       });
       return;
     }
@@ -4335,7 +4372,7 @@ function fcmCollectPaths(root){
       fcmShapeSubpaths(node).forEach(sub=>{
         const transformed=fcmTransformSubpath(sub,current);
         if(!transformed.segments.length)return;
-        paths.push({owner,mode,closed:!!transformed.closed,start:fcmScalePoint(transformed.start),segments:transformed.segments.map(seg=>{
+        paths.push({owner,textGroup,mode,closed:!!transformed.closed,start:fcmScalePoint(transformed.start),segments:transformed.segments.map(seg=>{
           if(seg.type==='C')return {type:'C',c1:fcmScalePoint(seg.c1),c2:fcmScalePoint(seg.c2),end:fcmScalePoint(seg.end)};
           return {type:'L',end:fcmScalePoint(seg.end)};
         })});
@@ -4381,12 +4418,18 @@ function fcmSplitPathsIntoPieces(paths){
   // Keep paths from each original drawing object together, then group nested
   // contours so holes in O/A/8 remain attached to their outer contour.
   const byOwner=new Map();
+  const textGroups=new Map();
   (paths||[]).forEach(path=>{
+    if(path.textGroup){
+      if(!textGroups.has(path.textGroup))textGroups.set(path.textGroup,[]);
+      textGroups.get(path.textGroup).push(path);
+      return;
+    }
     const owner=path.owner===null||path.owner===undefined?path.owner:path.owner;
     if(!byOwner.has(owner))byOwner.set(owner,[]);
     byOwner.get(owner).push(path);
   });
-  const pieces=[];
+  const pieces=Array.from(textGroups.values());
   byOwner.forEach(records=>{
     const closed=[],open=[];
     records.forEach((path,index)=>{
@@ -4569,6 +4612,7 @@ function exportFcmFile(){
     alert('Kunne ikke konvertere al tekst til stier. FCM-filen blev ikke gemt.');
     return;
   }
+  groupTextOutlinesForExport(clone);
   forceFcmExportToRedLines(clone);
   const collected=fcmCollectPaths(clone);
   if(!collected.paths.length){
@@ -4730,29 +4774,40 @@ function textOutlinePath(textEl){
     }
   });
 
-  // Use global findContours if available, else local simple version
-  const contourFn=typeof findContours==='function'?findContours:null;
-  const simplifyFn=typeof rdpSimplify==='function'?rdpSimplify:(pts=>pts);
+  // Brug den præcise marching-squares tracer og cubic-kurver til tekst.
+  // Det fjerner det kantede/pixelerede udtryk i ScanNCut-FCM uden at gøre bogstaverne unødigt tunge.
+  const contourFn=typeof findContoursPrecise==='function'
+    ? findContoursPrecise
+    : (typeof findContours==='function'?findContours:null);
   if(!contourFn){
-    console.warn('findContours mangler – kan ikke spore tekst');
+    console.warn('Kontur-tracer mangler – kan ikke spore tekst');
     return null;
   }
   const contours=contourFn(ctx.getImageData(0,0,width,height), 128);
   const parts=[];
   contours.forEach(contour=>{
     if(contour.length<5) return;
-    const simplified=simplifyFn(contour, Math.max(0.4, 0.8));
-    if(simplified.length<3) return;
-    let d='M '+(simplified[0].x/scale+minX).toFixed(3)+' '+(simplified[0].y/scale+minY).toFixed(3);
-    for(let i=1;i<simplified.length;i++){
-      d+=' L '+(simplified[i].x/scale+minX).toFixed(3)+' '+(simplified[i].y/scale+minY).toFixed(3);
+    let simplified=contour;
+    if(typeof simplifyClosedContour==='function'){
+      // ca. 0,05–0,10 mm tolerance ved de normale tekst-skalaer
+      simplified=simplifyClosedContour(contour, Math.max(0.45, scale*0.055));
+    } else if(typeof rdpSimplify==='function'){
+      simplified=rdpSimplify(contour, Math.max(0.45, scale*0.055));
     }
-    parts.push(d+' Z');
+    if(simplified.length<3) return;
+    if(typeof preciseClosedPathD==='function'){
+      parts.push(preciseClosedPathD(simplified,1/scale,1/scale,minX,minY,22));
+    } else {
+      let d='M '+(simplified[0].x/scale+minX).toFixed(3)+' '+(simplified[0].y/scale+minY).toFixed(3);
+      for(let i=1;i<simplified.length;i++)d+=' L '+(simplified[i].x/scale+minX).toFixed(3)+' '+(simplified[i].y/scale+minY).toFixed(3);
+      parts.push(d+' Z');
+    }
   });
   if(!parts.length) return null;
 
   const path=document.createElementNS(SVG_NS,'path');
   path.setAttribute('d', parts.join(' '));
+  path.setAttribute('data-vv-from-text','true');
   path.setAttribute('fill-rule','evenodd');
   path.setAttribute('pointer-events','all');
   // Apply laser mode so ScanNCut/laser sees red cut stroke or black engrave fill
@@ -4824,6 +4879,24 @@ function convertAllTextsInDocument(){
   return {converted, failed};
 }
 
+// Preserve each text field as one SVG group and one FCM piece, including holes
+// and detached marks such as the dots in i, j and Danish letters.
+function groupTextOutlinesForExport(root){
+  // Also recognize text converted before this grouping feature was introduced.
+  objects.filter(obj=>obj.data?.fromText).forEach(obj=>{
+    root.querySelectorAll('[data-id]').forEach(el=>{
+      if(el.getAttribute('data-id')===obj.id)el.setAttribute('data-vv-from-text','true');
+    });
+  });
+  root.querySelectorAll('[data-vv-from-text]').forEach(el=>{
+    if(el.closest('[data-vv-text-group]'))return;
+    const group=document.createElementNS(SVG_NS,'g');
+    group.setAttribute('data-vv-text-group','true');
+    el.replaceWith(group);
+    group.appendChild(el);
+  });
+}
+
 function exportSvgWithTextAsPaths(filename){
   // Først konverter live tekst på lærredet, så brugeren kan se resultatet
   const liveTexts=objects.filter(o=>o.type==='text');
@@ -4841,6 +4914,7 @@ function exportSvgWithTextAsPaths(filename){
     alert('Kunne ikke konvertere '+result.failed+' tekstobjekt(er) til stier. Filen blev ikke gemt.');
     return;
   }
+  groupTextOutlinesForExport(clone);
   downloadSvg(clone, filename);
 }
 
@@ -4854,6 +4928,69 @@ function getProjectFileName(ext){
 function saveProjectFile(){
   exportSvgWithTextAsPaths(getProjectFileName('svg'));
 }
+
+function initRightPanelAccordions(){
+  const panel=document.querySelector('.props');
+  if(!panel)return;
+  const titleById={
+    selectionProps:'Objekt-egenskaber',
+    transformProps:'Transformér',
+    alignProps:'Justering',
+    groupProps:'Gruppering',
+    layerOrderProps:'Lag-rækkefølge',
+    boolProps:'Boolske operationer'
+  };
+
+  function closeAccordion(group){
+    group.classList.remove('open');
+    const btn=group.querySelector(':scope > .accordion-toggle');
+    if(btn)btn.setAttribute('aria-expanded','false');
+  }
+
+  Array.from(panel.children).forEach(group=>{
+    if(!group.classList||!group.classList.contains('prop-group')||group.id==='noSelection')return;
+    const firstLabel=Array.from(group.children).find(el=>el.tagName&&el.tagName.toLowerCase()==='label');
+    if(!firstLabel)return;
+    const title=titleById[group.id] || (firstLabel.textContent||'Menu').trim() || 'Menu';
+    firstLabel.remove();
+    const content=document.createElement('div');
+    content.className='accordion-content';
+    while(group.firstChild)content.appendChild(group.firstChild);
+    const toggle=document.createElement('button');
+    toggle.type='button';
+    toggle.className='accordion-toggle';
+    toggle.setAttribute('aria-expanded','false');
+    toggle.innerHTML='<span>'+title.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[ch]))+'</span><span class="accordion-chevron" aria-hidden="true">⌄</span>';
+    toggle.addEventListener('click',()=>{
+      const shouldOpen=!group.classList.contains('open');
+
+      // Kun én sektion åben ad gangen, så panelerne aldrig overlapper hinanden.
+      panel.querySelectorAll(':scope > .accordion-group.open').forEach(other=>{
+        if(other!==group)closeAccordion(other);
+      });
+
+      if(shouldOpen){
+        group.classList.add('open');
+        toggle.setAttribute('aria-expanded','true');
+        // Vent til browseren har beregnet den fulde højde, og rul sektionen ind i panelet.
+        requestAnimationFrame(()=>{
+          const panelRect=panel.getBoundingClientRect();
+          const groupRect=group.getBoundingClientRect();
+          if(groupRect.top<panelRect.top || groupRect.bottom>panelRect.bottom){
+            group.scrollIntoView({block:'nearest',behavior:'auto'});
+          }
+        });
+      }else{
+        closeAccordion(group);
+      }
+    });
+    group.classList.add('accordion-group');
+    group.appendChild(toggle);
+    group.appendChild(content);
+  });
+}
+
+initRightPanelAccordions();
 document.getElementById('btnExport').onclick=()=>saveProjectFile();
 document.getElementById('btnExportFcm').onclick=()=>exportFcmFile();
 document.getElementById('projectName')?.addEventListener('keydown', e=>{

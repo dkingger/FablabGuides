@@ -5,10 +5,28 @@
 
 ## Version
 
-Aktuel version: 1.61
-Dato: 2026-09-07
+Aktuel version: 1.64
+Dato: 2026-09-08
 
 ## Seneste aendringer
+
+### v1.64 (2026-09-08)
+
+- `vektor-viktor.html`
+  - Eksport samler alle konturer fra hvert tekstfelt i én SVG-gruppe til laser og én FCM-del til ScanNCut.
+- `index.html`
+  - Vektor-Viktor-link viser nu version v1.64.
+
+### v1.63 (2026-09-08)
+
+- `vektor-viktor.html`
+  - Opdateret med den leverede Vektor-Viktor v1.63.
+  - Sammenklappelige menuer i egenskabspanelet med én sektion aaben ad gangen.
+  - ScanNCut bruger sorte konturer uden fyld, ogsaa for importerede SVG-objekter.
+  - Rettet spejling af transformerede SVG-grupper.
+  - Forbedret tekstkonturer med mere praecis sporing og kurver.
+- `index.html`
+  - Vektor-Viktor-link viser nu version v1.63.
 
 ### v1.61 (2026-09-07)
 
@@ -50,8 +68,8 @@ Projektet bruger versionsformatet `MAJOR.MINOR`.
 
 Eksempler:
 
-- `1.61` -> Aktuel release.
-- `1.62` -> Naeste release med nye forbedringer.
+- `1.64` -> Aktuel release.
+- `1.65` -> Naeste release med nye forbedringer.
 - `2.0` -> Stoerre breaking release.
 
 ### Saadan opdateres versionen
