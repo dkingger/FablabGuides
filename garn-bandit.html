@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garn Bandit – STL-generator | FabLab Guides</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;1,300&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #f0f4ee;
+    --surface: #dde8d8;
+    --border: #b0c8a8;
+    --accent: #3a7d44;
+    --accent2: #2d6235;
+    --text: #1e3320;
+    --muted: #6a8f6e;
+    --pin: #5a9e6a;
+    --plate: #8fc49a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.4;
+  }
+
+  header {
+    padding: 2.5rem 3rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 1.5rem;
+  }
+
+  .back-link { color: var(--accent); font-size: 0.75rem; text-decoration: none; white-space: nowrap; }
+  .back-link:hover { text-decoration: underline; }
+  .back-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  header { flex-wrap: wrap; }
+
+  h1 { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 300; color: var(--accent); letter-spacing: -0.02em; }
+  h1 em { font-style: italic; font-weight: 300; }
+
+  .tagline { color: var(--muted); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .main { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 80px); }
+
+  .panel { padding: 2rem 2.5rem; border-right: 1px solid var(--border); }
+
+  .panel-title {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .panel-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* Mode selector */
+  .mode-select { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+
+  .mode-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    padding: 1.1rem 1rem; border-radius: 6px;
+    border: 2px solid var(--border); background: var(--surface);
+    cursor: pointer; transition: all 0.15s;
+    font-family: 'DM Mono', monospace; color: var(--muted);
+    font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .mode-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .mode-btn.active { border-color: var(--accent); background: #cce8d0; color: var(--accent2); }
+  .mode-btn .mode-icon { font-size: 1.6rem; opacity: 0.7; }
+  .mode-btn.active .mode-icon { opacity: 1; }
+  .mode-btn .mode-name { font-weight: 500; }
+  .mode-btn .mode-desc { font-size: 0.6rem; opacity: 0.7; text-align: center; line-height: 1.4; }
+
+  /* Upload zone */
+  .upload-zone {
+    border: 1.5px dashed var(--border); border-radius: 4px;
+    padding: 2.5rem 2rem; text-align: center; cursor: pointer;
+    transition: all 0.2s; position: relative; background: var(--surface);
+  }
+  .upload-zone:hover, .upload-zone.drag-over { border-color: var(--accent); background: #ccdfc6; }
+  .upload-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; z-index: 2; }
+  .upload-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; opacity: 0.5; pointer-events: none; }
+  .upload-zone p { color: var(--muted); font-size: 0.78rem; line-height: 1.6; pointer-events: none; }
+  .upload-zone strong { color: var(--accent); font-weight: 500; }
+
+  /* Controls */
+  .controls { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .control-row { display: flex; align-items: center; gap: 1rem; }
+  .control-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; min-width: 140px; }
+  .slider-wrap { flex: 1; display: flex; align-items: center; gap: 0.75rem; }
+
+  input[type=range] { flex: 1; -webkit-appearance: none; height: 3px; background: var(--border); border-radius: 2px; outline: none; }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; border: 2px solid var(--bg);
+  }
+  .slider-val { font-size: 0.75rem; color: var(--accent); min-width: 2.5rem; text-align: right; }
+
+  .img-only { transition: opacity 0.2s; }
+  .img-only.hidden { opacity: 0.25; pointer-events: none; }
+
+  /* Bundplade-tilstand */
+  .base-toggle { display: flex; flex: 1; gap: 0.5rem; }
+  .base-btn {
+    flex: 1; padding: 0.5rem 0.6rem; border-radius: 3px;
+    border: 1.5px solid var(--border); background: var(--surface); color: var(--muted);
+    font-family: 'DM Mono', monospace; font-size: 0.66rem; letter-spacing: 0.03em;
+    text-transform: uppercase; cursor: pointer; transition: all 0.15s; line-height: 1.4;
+  }
+  .base-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .base-btn.active { border-color: var(--accent); background: #cce8d0; color: var(--accent2); }
+  .base-btn-sub { display: block; font-size: 0.56rem; opacity: 0.75; text-transform: none; letter-spacing: 0.01em; margin-top: 0.1rem; }
+
+  /* Canvas / preview */
+  .canvas-wrap {
+    background: var(--surface); border-radius: 4px; overflow: hidden;
+    border: 1px solid var(--border); aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+  }
+  canvas { max-width: 100%; max-height: 100%; display: block; }
+
+  /* SVG preview */
+  .svg-preview-wrap {
+    position: relative; background: #fff;
+    border-radius: 4px; border: 1px solid var(--border);
+    aspect-ratio: 1; overflow: hidden; display: none;
+  }
+  #svgContainer { width: 100%; height: 100%; }
+  #svgContainer svg { width: 100%; height: 100%; display: block; }
+  #svgPinsOverlay { position: absolute; inset: 0; pointer-events: none; }
+
+  .canvas-placeholder { color: var(--muted); font-size: 0.75rem; text-align: center; padding: 2rem; line-height: 1.8; }
+  .canvas-placeholder .big { font-family: 'Fraunces', serif; font-size: 3rem; display: block; opacity: 0.15; margin-bottom: 1rem; }
+
+  .legend { display: flex; gap: 1.5rem; margin-top: 0.75rem; font-size: 0.68rem; color: var(--muted); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 0.35rem; vertical-align: middle; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.5rem; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 0.75rem 1rem; text-align: center; }
+  .stat-val { font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--accent); display: block; }
+  .stat-label { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.2rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.5rem; border-radius: 3px;
+    font-family: 'DM Mono', monospace; font-size: 0.78rem;
+    letter-spacing: 0.05em; cursor: pointer; transition: all 0.15s;
+    border: none; text-transform: uppercase;
+  }
+  .btn-primary { background: var(--accent); color: #f0f4ee; font-weight: 500; }
+  .btn-primary:hover:not(:disabled) { background: var(--accent2); transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
+  .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+
+  .progress-bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 1rem; overflow: hidden; display: none; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s; width: 0%; }
+
+  .status-msg { font-size: 0.72rem; color: var(--muted); margin-top: 0.5rem; min-height: 1.2em; }
+  .status-msg.ok  { color: #4a9e54; }
+  .status-msg.err { color: #c05050; }
+
+  .info-box {
+    background: #e8f0e4; border: 1px solid #a8c8a0; border-radius: 4px;
+    padding: 1rem 1.25rem; font-size: 0.73rem; color: #3d6b45; line-height: 1.7; margin-top: 1.5rem;
+  }
+  .info-box strong { color: #2a5230; }
+
+  .edit-hint {
+    margin-top: 0.6rem;
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+  /* Klikbar canvas */
+  #previewCanvas { cursor: crosshair; }
+  /* SVG overlay skal modtage klik */
+  #svgPinsOverlay { pointer-events: all !important; cursor: crosshair; }
+
+  /* Flash animation ved tilføj/fjern */
+  @keyframes pinPop {
+    0%   { transform: scale(0); opacity: 0; }
+    60%  { transform: scale(1.3); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @media (max-width: 900px) {
+    .main { grid-template-columns: 1fr; }
+    .panel { border-right: none; border-bottom: 1px solid var(--border); }
+    header { padding: 1.5rem; flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="back-link" href="index.html" aria-label="Tilbage til FabLab Guides">← FabLab Guides</a>
+  <h1>Garn <em>Bandit</em></h1>
+  <span class="tagline">Silhuet → 3D pinde → Print → Vikl med garn</span>
+</header>
+
+<div class="main">
+  <div class="panel">
+    <div class="panel-title">1 — Vælg filtype</div>
+
+    <div class="mode-select">
+      <button class="mode-btn active" id="modeBtnImg" onclick="setMode('image')">
+        <span class="mode-icon">🖼</span>
+        <span class="mode-name">Billede</span>
+        <span class="mode-desc">PNG / JPG<br>Automatisk kantsporing</span>
+      </button>
+      <button class="mode-btn" id="modeBtnSvg" onclick="setMode('svg')">
+        <span class="mode-icon">✦</span>
+        <span class="mode-name">SVG</span>
+        <span class="mode-desc">Vektor-fil<br>Direkte rendering</span>
+      </button>
+    </div>
+
+    <div class="upload-zone" id="uploadZone">
+      <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp">
+      <span class="upload-icon">⬡</span>
+      <p id="uploadHint"><strong>Klik eller træk PNG/JPG hertil</strong><br>Mørkt motiv på lys baggrund virker bedst</p>
+    </div>
+
+    <div class="controls" id="controls" style="display:none">
+      <div class="panel-title" style="margin-top:1.5rem" id="step2label">2 — Juster kantdetektionen</div>
+
+      <div class="control-row img-only" id="rowThreshold">
+        <span class="control-label">Tærskelværdi</span>
+        <div class="slider-wrap">
+          <input type="range" id="threshold" min="10" max="245" value="128">
+          <span class="slider-val" id="threshVal">128</span>
+        </div>
+      </div>
+
+      <div class="control-row img-only" id="rowSmoothing">
+        <span class="control-label">Glat kanten</span>
+        <div class="slider-wrap">
+          <input type="range" id="smoothing" min="0" max="20" value="4">
+          <span class="slider-val" id="smoothVal">4</span>
+        </div>
+      </div>
+
+      <div class="control-row">
+        <span class="control-label">Model bredde (mm)</span>
+        <div class="slider-wrap">
+          <input type="range" id="modelSize" min="50" max="300" value="150">
+          <span class="slider-val" id="sizeVal">150 mm</span>
+        </div>
+      </div>
+
+      <div class="control-row">
+        <span class="control-label">Bundplade</span>
+        <div class="base-toggle" id="baseToggle">
+          <button type="button" class="base-btn active" data-base="frame">Kant<span class="base-btn-sub">hurtigere print</span></button>
+          <button type="button" class="base-btn" data-base="solid">Hel bund<span class="base-btn-sub">mere stabil</span></button>
+        </div>
+      </div>
+
+      <div class="control-row">
+        <span class="control-label">Pinde afstand (mm)</span>
+        <div class="slider-wrap">
+          <input type="range" id="pinSpacing" min="5" max="30" value="8">
+          <span class="slider-val" id="pinVal">8 mm</span>
+        </div>
+      </div>
+
+      <div class="stats" id="stats" style="display:none">
+        <div class="stat"><span class="stat-val" id="pinCount">0</span><span class="stat-label">Antal pinde</span></div>
+        <div class="stat"><span class="stat-val" id="areaSize">0</span><span class="stat-label">Areal mm²</span></div>
+        <div class="stat"><span class="stat-val" id="printTime">0</span><span class="stat-label">Ca. print min</span></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="generateBtn" disabled>⬡ Generer STL</button>
+        <button class="btn btn-secondary" id="resetBtn">↺ Nulstil</button>
+      </div>
+
+      <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="status-msg" id="statusMsg"></div>
+    </div>
+
+    <div class="info-box">
+      <strong>Pinde spec:</strong> 10 mm høje · ⌀ 2,5 mm · min. 5 mm mellem centre<br>
+      <strong>Bundplade:</strong> 3 mm tyk · silhuettens form<br>
+      <strong>SVG-tip:</strong> Enkle ikoner / bogstaver uden huller fungerer bedst
+    </div>
+  </div>
+
+  <!-- HØJRE PANEL -->
+  <div class="panel" style="border-right:none">
+    <div class="panel-title">3 — Forhåndsvisning</div>
+
+    <div class="canvas-wrap" id="canvasWrap">
+      <div class="canvas-placeholder" id="placeholder">
+        <span class="big">◈</span>
+        Upload en fil for at se<br>silhuet og pinde placering
+      </div>
+      <canvas id="previewCanvas" style="display:none"></canvas>
+    </div>
+
+    <div class="svg-preview-wrap" id="svgPreviewWrap">
+      <div id="svgContainer"></div>
+      <svg id="svgPinsOverlay" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;pointer-events:none"></svg>
+    </div>
+
+    <div class="legend" id="legend" style="display:none">
+      <span><span class="legend-dot" style="background:var(--plate)"></span>Bundplade</span>
+      <span><span class="legend-dot" style="background:var(--pin)"></span>Pinde</span>
+      <span><span class="legend-dot" style="background:var(--accent)"></span>Kant</span>
+    </div>
+    <div class="edit-hint" id="editHint" style="display:none">
+      <span>＋ Klik inden for silhuetten for at tilføje &nbsp;·&nbsp; Klik på en pind for at fjerne</span>
+    </div>
+  </div>
+</div>
+
+<canvas id="workCanvas" style="display:none"></canvas>
+
+<script>
+// ─── STATE ────────────────────────────────────────────────────────────────────
+let mode = 'image';
+let originalImage = null;
+let svgLoaded = false;
+let contourPoints = [];
+let pinPositions  = [];
+let currentMask = null, currentMaskW = 0, currentMaskH = 0;
+let svgNaturalW = 400, svgNaturalH = 400;
+let baseMode = 'frame'; // 'frame' = kun kant · 'solid' = hel bund
+
+// ─── DOM ──────────────────────────────────────────────────────────────────────
+const fileInput       = document.getElementById('fileInput');
+const uploadZone      = document.getElementById('uploadZone');
+const previewCanvas   = document.getElementById('previewCanvas');
+const workCanvas      = document.getElementById('workCanvas');
+const previewCtx      = previewCanvas.getContext('2d');
+const workCtx         = workCanvas.getContext('2d');
+const svgPreviewWrap  = document.getElementById('svgPreviewWrap');
+const svgContainer    = document.getElementById('svgContainer');
+const svgPinsOverlay  = document.getElementById('svgPinsOverlay');
+const canvasWrap      = document.getElementById('canvasWrap');
+const generateBtn     = document.getElementById('generateBtn');
+const resetBtn        = document.getElementById('resetBtn');
+const statusMsg       = document.getElementById('statusMsg');
+const progressBar     = document.getElementById('progressBar');
+const progressFill    = document.getElementById('progressFill');
+const thresholdSlider = document.getElementById('threshold');
+const smoothingSlider = document.getElementById('smoothing');
+const modelSizeSlider = document.getElementById('modelSize');
+const pinSpacingSlider= document.getElementById('pinSpacing');
+const baseToggle       = document.getElementById('baseToggle');
+
+baseToggle.querySelectorAll('.base-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    baseMode = btn.dataset.base;
+    baseToggle.querySelectorAll('.base-btn').forEach(b => b.classList.toggle('active', b === btn));
+  });
+});
+
+// ─── MODE SWITCH ──────────────────────────────────────────────────────────────
+function setMode(m) {
+  mode = m;
+  document.getElementById('modeBtnImg').classList.toggle('active', m === 'image');
+  document.getElementById('modeBtnSvg').classList.toggle('active', m === 'svg');
+  document.querySelectorAll('.img-only').forEach(el => el.classList.toggle('hidden', m === 'svg'));
+
+  if (m === 'svg') {
+    fileInput.accept = '.svg,image/svg+xml';
+    document.getElementById('uploadHint').innerHTML =
+      '<strong>Klik eller træk SVG hertil</strong><br>Vektor-fil renderes direkte uden sporing';
+    document.getElementById('step2label').textContent = '2 — Indstillinger';
+  } else {
+    fileInput.accept = 'image/png,image/jpeg,image/webp';
+    document.getElementById('uploadHint').innerHTML =
+      '<strong>Klik eller træk PNG/JPG hertil</strong><br>Mørkt motiv på lys baggrund virker bedst';
+    document.getElementById('step2label').textContent = '2 — Juster kantdetektionen';
+  }
+
+  // Nulstil
+  originalImage = null; svgLoaded = false;
+  contourPoints = []; pinPositions = [];
+  previewCanvas.style.display = 'none';
+  document.getElementById('placeholder').style.display = 'block';
+  canvasWrap.style.display = 'flex';
+  svgPreviewWrap.style.display = 'none';
+  document.getElementById('controls').style.display = 'none';
+  document.getElementById('legend').style.display = 'none';
+  document.getElementById('stats').style.display = 'none';
+  generateBtn.disabled = true;
+  setStatus('', 0);
+  fileInput.value = '';
+}
+
+// ─── UPLOAD ───────────────────────────────────────────────────────────────────
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault(); uploadZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
+
+// Sikkerhedsnet: hvis klikket rammer selve uploadZone (fx kanten/paddingen)
+// og ikke det usynlige input direkte, åbn filvælgeren manuelt.
+uploadZone.addEventListener('click', e => {
+  if (e.target === uploadZone) fileInput.click();
+});
+
+function handleFile(file) {
+  const isSvg = file.name.toLowerCase().endsWith('.svg') || file.type === 'image/svg+xml';
+  if (mode === 'svg') {
+    if (isSvg) loadSVGFile(file);
+    else setStatus('Vælg en .svg fil i SVG-tilstand', 'err');
+  } else {
+    if (file.type.startsWith('image/') && !isSvg) loadImageFile(file);
+    else setStatus('Vælg PNG, JPG eller WEBP i billede-tilstand', 'err');
+  }
+}
+
+// ─── BILLEDE-MODE ─────────────────────────────────────────────────────────────
+function loadImageFile(file) {
+  const reader = new FileReader();
+  reader.onload = evt => {
+    const img = new Image();
+    img.onload = () => {
+      originalImage = img;
+      canvasWrap.style.display = 'flex';
+      svgPreviewWrap.style.display = 'none';
+      showControls();
+      processImage();
+    };
+    img.src = evt.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function processImage() {
+  if (!originalImage) return;
+  const threshold = parseInt(thresholdSlider.value);
+  const smoothing  = parseInt(smoothingSlider.value);
+  const maxDim = 400;
+  let w = originalImage.width, h = originalImage.height;
+  if (w > maxDim || h > maxDim) { const s = maxDim/Math.max(w,h); w=Math.round(w*s); h=Math.round(h*s); }
+  workCanvas.width = w; workCanvas.height = h;
+  workCtx.drawImage(originalImage, 0, 0, w, h);
+  const imgData = workCtx.getImageData(0, 0, w, h);
+  const mask = new Uint8Array(w*h);
+  for (let i = 0; i < w*h; i++) {
+    const r=imgData.data[i*4],g=imgData.data[i*4+1],b=imgData.data[i*4+2];
+    mask[i] = (0.299*r+0.587*g+0.114*b) < threshold ? 1 : 0;
+  }
+  currentMask=mask; currentMaskW=w; currentMaskH=h;
+  buildPinsAndDraw(smoothing);
+}
+
+// ─── SVG-MODE ─────────────────────────────────────────────────────────────────
+function loadSVGFile(file) {
+  const reader = new FileReader();
+  reader.onload = evt => {
+    const text = evt.target.result;
+    displaySVG(text);
+  };
+  reader.readAsText(file);
+}
+
+function displaySVG(text) {
+  // Vis SVG i preview
+  svgContainer.innerHTML = text;
+  const inlineSvg = svgContainer.querySelector('svg');
+  if (!inlineSvg) { setStatus('Ugyldig SVG-fil', 'err'); return; }
+
+  inlineSvg.style.cssText = 'width:100%;height:100%;display:block;';
+  inlineSvg.removeAttribute('width');
+  inlineSvg.removeAttribute('height');
+
+  // Hent dimensioner fra viewBox
+  const vb = inlineSvg.getAttribute('viewBox');
+  if (vb) {
+    const p = vb.trim().split(/[\s,]+/);
+    svgNaturalW = parseFloat(p[2])||400;
+    svgNaturalH = parseFloat(p[3])||400;
+  } else {
+    svgNaturalW = 400; svgNaturalH = 400;
+    inlineSvg.setAttribute('viewBox', `0 0 400 400`);
+  }
+
+  canvasWrap.style.display = 'none';
+  svgPreviewWrap.style.display = 'block';
+  document.getElementById('placeholder').style.display = 'none';
+  svgLoaded = true;
+
+  // Render til canvas for maskegenerering
+  renderSVGToCanvas(inlineSvg);
+}
+
+function renderSVGToCanvas(inlineSvg) {
+  setStatus('Analyserer SVG...', 0);
+  const serializer = new XMLSerializer();
+  let svgStr = serializer.serializeToString(inlineSvg);
+  if (!svgStr.includes('xmlns=')) svgStr = svgStr.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+
+  const maxDim = 400;
+  const aspect = svgNaturalW / svgNaturalH;
+  const w = aspect >= 1 ? maxDim : Math.round(maxDim*aspect);
+  const h = aspect >= 1 ? Math.round(maxDim/aspect) : maxDim;
+
+  workCanvas.width = w; workCanvas.height = h;
+
+  const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const img  = new Image(w, h);
+
+  img.onload = () => {
+    workCtx.clearRect(0, 0, w, h);
+    // Hvid baggrund så transparente SVG-baggrunde ikke forstyrrer
+    workCtx.fillStyle = 'white';
+    workCtx.fillRect(0, 0, w, h);
+    workCtx.drawImage(img, 0, 0, w, h);
+    URL.revokeObjectURL(url);
+
+    const imgData = workCtx.getImageData(0, 0, w, h);
+    const mask = new Uint8Array(w*h);
+    for (let i = 0; i < w*h; i++) {
+      const r=imgData.data[i*4], g=imgData.data[i*4+1], b=imgData.data[i*4+2], a=imgData.data[i*4+3];
+      const gray = 0.299*r + 0.587*g + 0.114*b;
+      // Mørke ikke-transparente pixels = inden for silhuetten
+      mask[i] = (a > 30 && gray < 180) ? 1 : 0;
+    }
+    currentMask=mask; currentMaskW=w; currentMaskH=h;
+
+    showControls();
+    buildPinsAndDraw(parseInt(smoothingSlider.value));
+    setStatus('', 0);
+  };
+
+  img.onerror = () => {
+    URL.revokeObjectURL(url);
+    setStatus('SVG kunne ikke renderes. Prøv at gemme filen som "plain SVG" uden inkscape-udvidelser.', 'err');
+  };
+
+  img.src = url;
+}
+
+// ─── FÆLLES PIN-LOGIK ────────────────────────────────────────────────────────
+function buildPinsAndDraw(smoothing) {
+  contourPoints = traceContour(currentMask, currentMaskW, currentMaskH);
+  if (smoothing > 0) contourPoints = smoothContour(contourPoints, smoothing);
+  const pinSpacingPx = parseInt(pinSpacingSlider.value) * (currentMaskW / parseInt(modelSizeSlider.value));
+  pinPositions = placePins(contourPoints, pinSpacingPx);
+
+  if (mode === 'svg') {
+    drawSVGPinsOverlay();
+    document.getElementById('legend').style.display = 'flex';
+    showEditHint();
+  } else {
+    drawPreview(currentMask, currentMaskW, currentMaskH, contourPoints, pinPositions);
+  }
+  updateStats();
+  generateBtn.disabled = pinPositions.length < 3;
+}
+
+function showControls() {
+  const ctrl = document.getElementById('controls');
+  ctrl.style.display = 'flex';
+  ctrl.style.flexDirection = 'column';
+}
+
+// ─── SLIDERS ──────────────────────────────────────────────────────────────────
+[thresholdSlider, smoothingSlider, modelSizeSlider, pinSpacingSlider].forEach(s => {
+  s.addEventListener('input', () => {
+    updateSliderLabels();
+    if (mode === 'image' && originalImage) processImage();
+    if (mode === 'svg'   && svgLoaded)     buildPinsAndDraw(parseInt(smoothingSlider.value));
+  });
+});
+
+resetBtn.addEventListener('click', () => {
+  thresholdSlider.value=128; smoothingSlider.value=4;
+  modelSizeSlider.value=150; pinSpacingSlider.value=8;
+  updateSliderLabels();
+  if (mode === 'image' && originalImage) processImage();
+  if (mode === 'svg'   && svgLoaded)     buildPinsAndDraw(parseInt(smoothingSlider.value));
+});
+
+function updateSliderLabels() {
+  document.getElementById('threshVal').textContent = thresholdSlider.value;
+  document.getElementById('smoothVal').textContent = smoothingSlider.value;
+  document.getElementById('sizeVal').textContent   = modelSizeSlider.value + ' mm';
+  document.getElementById('pinVal').textContent    = pinSpacingSlider.value + ' mm';
+}
+updateSliderLabels();
+
+// ─── CONTOUR TRACING ──────────────────────────────────────────────────────────
+function traceContour(mask, w, h) {
+  let startX=-1, startY=-1;
+  outer: for (let y=1;y<h-1;y++) for (let x=1;x<w-1;x++)
+    if (mask[y*w+x]===1&&mask[(y-1)*w+x]===0) { startX=x; startY=y; break outer; }
+  if (startX<0) return [];
+  const dirs=[[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]];
+  const contour=[]; let cx=startX,cy=startY,prevDir=6,steps=0;
+  do {
+    contour.push({x:cx,y:cy});
+    let found=false;
+    for (let d=0;d<8;d++) {
+      const di=(prevDir+6+d)%8, nx=cx+dirs[di][0], ny=cy+dirs[di][1];
+      if (nx>=0&&nx<w&&ny>=0&&ny<h&&mask[ny*w+nx]===1) { cx=nx;cy=ny;prevDir=di;found=true;break; }
+    }
+    if (!found) break; steps++;
+  } while ((cx!==startX||cy!==startY)&&steps<w*h*2);
+  const dec=[]; const step=Math.max(1,Math.floor(contour.length/800));
+  for (let i=0;i<contour.length;i+=step) dec.push(contour[i]);
+  return dec;
+}
+
+function smoothContour(pts, iters) {
+  let p=[...pts];
+  for (let it=0;it<iters;it++) {
+    const s=[];
+    for (let i=0;i<p.length;i++) {
+      const pv=p[(i-1+p.length)%p.length], nx=p[(i+1)%p.length];
+      s.push({x:(pv.x+p[i].x+nx.x)/3,y:(pv.y+p[i].y+nx.y)/3});
+    }
+    p=s;
+  }
+  return p;
+}
+
+// ─── PIN PLACEMENT ────────────────────────────────────────────────────────────
+function isCenterInsideMask(cx, cy, r, mask, w, h) {
+  for (let s=0;s<16;s++) {
+    const a=(s/16)*Math.PI*2;
+    const px=Math.round(cx+Math.cos(a)*r), py=Math.round(cy+Math.sin(a)*r);
+    if (px<0||px>=w||py<0||py>=h||mask[py*w+px]===0) return false;
+  }
+  const cx0=Math.round(cx),cy0=Math.round(cy);
+  return cx0>=0&&cx0<w&&cy0>=0&&cy0<h&&mask[cy0*w+cx0]===1;
+}
+
+function placePins(pts, spacing) {
+  if (pts.length<2) return [];
+  const pins=[], mask=currentMask, w=currentMaskW, h=currentMaskH;
+  const mmPx       = w / parseInt(modelSizeSlider.value);
+  const pinR       = 1.25 * mmPx;
+  const flangeR    = 1.85 * mmPx;
+  const minDist    = 5   * mmPx;
+  let accumulated  = 0;
+
+  for (let i=0;i<pts.length;i++) {
+    if (i===0||accumulated>=spacing) {
+      const pt=pts[i];
+      const pv=pts[(i-1+pts.length)%pts.length], nx2=pts[(i+1)%pts.length];
+      const tx=nx2.x-pv.x, ty=nx2.y-pv.y, tlen=Math.sqrt(tx*tx+ty*ty)||1;
+      let nx=-ty/tlen, ny=tx/tlen;
+
+      // Find indadvendt retning
+      const td=Math.max(3,pinR);
+      const x1=Math.round(pt.x+nx*td),y1=Math.round(pt.y+ny*td);
+      const x2=Math.round(pt.x-nx*td),y2=Math.round(pt.y-ny*td);
+      const in1=x1>=0&&x1<w&&y1>=0&&y1<h&&mask[y1*w+x1]===1;
+      const in2=x2>=0&&x2<w&&y2>=0&&y2<h&&mask[y2*w+x2]===1;
+      let inX,inY;
+      if      (in1&&!in2) { inX=nx;  inY=ny;  }
+      else if (in2&&!in1) { inX=-nx; inY=-ny; }
+      else {
+        const ca=pts.map(p=>p.x), cb=pts.map(p=>p.y);
+        const cX=ca.reduce((a,b)=>a+b,0)/ca.length, cY=cb.reduce((a,b)=>a+b,0)/cb.length;
+        const dx=cX-pt.x,dy=cY-pt.y,dl=Math.sqrt(dx*dx+dy*dy)||1;
+        inX=dx/dl; inY=dy/dl;
+      }
+
+      // Flyt indad indtil flange er helt inde
+      let bx=pt.x+inX*flangeR, by=pt.y+inY*flangeR, found=false;
+      for (let ins=flangeR;ins<=flangeR+pinR*5;ins+=0.5) {
+        const tcx=pt.x+inX*ins, tcy=pt.y+inY*ins;
+        if (isCenterInsideMask(tcx,tcy,flangeR,mask,w,h)) { bx=tcx;by=tcy;found=true;break; }
+      }
+
+      if (found) {
+        const tooClose=pins.some(e=>{ const dx=e.x-bx,dy=e.y-by; return Math.sqrt(dx*dx+dy*dy)<minDist; });
+        if (!tooClose) pins.push({x:bx,y:by,nx:inX,ny:inY});
+      }
+      accumulated=0;
+    }
+    if (i>0) { const dx=pts[i].x-pts[i-1].x,dy=pts[i].y-pts[i-1].y; accumulated+=Math.sqrt(dx*dx+dy*dy); }
+  }
+  return pins;
+}
+
+// ─── PREVIEW DRAWING ──────────────────────────────────────────────────────────
+function drawPreview(mask, w, h, contour, pins) {
+  const D=500;
+  previewCanvas.width=D; previewCanvas.height=D;
+  const s=Math.min(D/w,D/h);
+  const ox=(D-w*s)/2, oy=(D-h*s)/2;
+  previewCtx.clearRect(0,0,D,D);
+
+  previewCtx.fillStyle='rgba(140,180,212,0.18)';
+  for (let y=0;y<h;y++) for (let x=0;x<w;x++)
+    if (mask[y*w+x]) previewCtx.fillRect(ox+x*s,oy+y*s,Math.ceil(s),Math.ceil(s));
+
+  if (contour.length>1) {
+    previewCtx.beginPath();
+    previewCtx.moveTo(ox+contour[0].x*s,oy+contour[0].y*s);
+    for (let i=1;i<contour.length;i++) previewCtx.lineTo(ox+contour[i].x*s,oy+contour[i].y*s);
+    previewCtx.closePath();
+    previewCtx.strokeStyle='#3a7d44'; previewCtx.lineWidth=1.5; previewCtx.stroke();
+  }
+
+  pins.forEach(p => {
+    previewCtx.beginPath();
+    previewCtx.arc(ox+p.x*s,oy+p.y*s,Math.max(1.5,1.85*s),0,Math.PI*2);
+    previewCtx.fillStyle='rgba(90,158,106,0.35)'; previewCtx.fill();
+    previewCtx.beginPath();
+    previewCtx.arc(ox+p.x*s,oy+p.y*s,Math.max(1.5,2*s),0,Math.PI*2);
+    previewCtx.fillStyle='#5a9e6a'; previewCtx.fill();
+  });
+
+  document.getElementById('placeholder').style.display='none';
+  previewCanvas.style.display='block';
+  document.getElementById('legend').style.display='flex';
+  showEditHint();
+}
+
+function drawSVGPinsOverlay() {
+  // Hent den aktuelle størrelse af SVG-preview-boksen
+  const rect = svgPreviewWrap.getBoundingClientRect();
+  const dw = rect.width  || 400;
+  const dh = rect.height || 400;
+  const sx = dw / currentMaskW;
+  const sy = dh / currentMaskH;
+
+  svgPinsOverlay.setAttribute('width',   dw);
+  svgPinsOverlay.setAttribute('height',  dh);
+  svgPinsOverlay.setAttribute('viewBox', `0 0 ${dw} ${dh}`);
+  while (svgPinsOverlay.firstChild) svgPinsOverlay.removeChild(svgPinsOverlay.firstChild);
+
+  const flangeDispR = 1.85 * sx;
+  const pinDispR    = 1.25 * sx;
+
+  pinPositions.forEach(p => {
+    const cx = p.x*sx, cy = p.y*sy;
+    const outer = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    outer.setAttribute('cx',cx); outer.setAttribute('cy',cy); outer.setAttribute('r',flangeDispR);
+    outer.setAttribute('fill','rgba(90,158,106,0.35)');
+    svgPinsOverlay.appendChild(outer);
+    const inner = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    inner.setAttribute('cx',cx); inner.setAttribute('cy',cy); inner.setAttribute('r',pinDispR);
+    inner.setAttribute('fill','#3a7d44');
+    svgPinsOverlay.appendChild(inner);
+  });
+}
+
+// ─── KLIK-INTERAKTION: TILFØJ / FJERN PINDE ──────────────────────────────────
+
+// Hjælpefunktion: konverter klik-koordinat (display) til mask-koordinat
+function displayToMask(dispX, dispY, dispW, dispH) {
+  return {
+    mx: Math.round(dispX * currentMaskW / dispW),
+    my: Math.round(dispY * currentMaskH / dispH)
+  };
+}
+
+// Tjek om et klik rammer en eksisterende pind (mask-koordinater)
+// Returnerer indekset eller -1
+function hitPin(mx, my, hitRadiusPx) {
+  for (let i = 0; i < pinPositions.length; i++) {
+    const dx = pinPositions[i].x - mx, dy = pinPositions[i].y - my;
+    if (Math.sqrt(dx*dx+dy*dy) <= hitRadiusPx) return i;
+  }
+  return -1;
+}
+
+// Beregn en "indad-normal" for et manuelt tilføjet punkt i masken
+function estimateInward(mx, my) {
+  const w = currentMaskW, h = currentMaskH, mask = currentMask;
+  // Scan i 8 retninger – vælg den der har flest mask-pixels indenfor
+  const dirs8 = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]];
+  let bestX = 0, bestY = 0, bestScore = -1;
+  for (const [dx, dy] of dirs8) {
+    let score = 0;
+    for (let r = 1; r <= 6; r++) {
+      const nx = Math.round(mx+dx*r), ny = Math.round(my+dy*r);
+      if (nx>=0&&nx<w&&ny>=0&&ny<h&&mask[ny*w+nx]===1) score++;
+    }
+    if (score > bestScore) { bestScore=score; bestX=dx; bestY=dy; }
+  }
+  const len = Math.sqrt(bestX*bestX+bestY*bestY)||1;
+  return { inX: bestX/len, inY: bestY/len };
+}
+
+function handlePreviewClick(e, containerEl, dispW, dispH) {
+  if (!currentMask) return;
+  const rect = containerEl.getBoundingClientRect();
+  const dispX = e.clientX - rect.left;
+  const dispY = e.clientY - rect.top;
+  const { mx, my } = displayToMask(dispX, dispY, dispW, dispH);
+
+  const mmPx      = currentMaskW / parseInt(modelSizeSlider.value);
+  const flangeR   = 1.85 * mmPx;
+  const hitR      = Math.max(8, flangeR * 1.5); // lidt generøs hit-radius
+
+  const hitIdx = hitPin(mx, my, hitR);
+
+  if (hitIdx >= 0) {
+    // ── Fjern pind ──
+    pinPositions.splice(hitIdx, 1);
+  } else {
+    // ── Tilføj pind – kun hvis klikket er inden for masken ──
+    if (mx < 0||mx >= currentMaskW||my < 0||my >= currentMaskH) return;
+    if (currentMask[my*currentMaskW+mx] === 0) {
+      setStatus('Klik inden for motivets silhuet for at tilføje en pind', '');
+      return;
+    }
+
+    // Find indad-retning og placer pinden korrekt
+    const { inX, inY } = estimateInward(mx, my);
+    const minDist = 5 * mmPx;
+
+    // Prøv at finde en valid placering nær klik-punktet
+    let placed = false;
+    // Prøv først det nøjagtige klik, derefter med lidt indrykning
+    for (let inset = 0; inset <= flangeR*3; inset += 0.5) {
+      const cx = mx + inX*inset, cy = my + inY*inset;
+      if (isCenterInsideMask(cx, cy, flangeR, currentMask, currentMaskW, currentMaskH)) {
+        // Tjek 5mm afstand
+        const tooClose = pinPositions.some(p => {
+          const dx=p.x-cx, dy=p.y-cy; return Math.sqrt(dx*dx+dy*dy) < minDist;
+        });
+        if (!tooClose) {
+          pinPositions.push({ x: cx, y: cy, nx: inX, ny: inY });
+          placed = true;
+        } else {
+          setStatus('For tæt på en eksisterende pind (min. 5 mm)', '');
+        }
+        break;
+      }
+    }
+    if (!placed && !pinPositions.some(p => {
+      const dx=p.x-mx,dy=p.y-my; return Math.sqrt(dx*dx+dy*dy)<minDist;
+    })) {
+      setStatus('Kunne ikke placere pind her – prøv lidt længere inde i motivet', '');
+      return;
+    }
+  }
+
+  // Gentegn
+  if (mode === 'image') {
+    drawPreview(currentMask, currentMaskW, currentMaskH, contourPoints, pinPositions);
+  } else {
+    drawSVGPinsOverlay();
+  }
+  updateStats();
+  generateBtn.disabled = pinPositions.length < 3;
+}
+
+// Bind klik-events
+previewCanvas.addEventListener('click', e => {
+  const D = 500; // canvas draw size
+  handlePreviewClick(e, previewCanvas, D, D);
+});
+
+svgPinsOverlay.addEventListener('click', e => {
+  const rect = svgPreviewWrap.getBoundingClientRect();
+  handlePreviewClick(e, svgPreviewWrap, rect.width, rect.height);
+});
+
+// Vis edit-hint når der er en model
+function showEditHint() {
+  document.getElementById('editHint').style.display = 'block';
+}
+
+function updateStats() {
+  document.getElementById('pinCount').textContent  = pinPositions.length;
+  document.getElementById('areaSize').textContent  = Math.round(pinPositions.length*8*8);
+  document.getElementById('printTime').textContent = Math.round(pinPositions.length*0.3+5);
+  document.getElementById('stats').style.display   = 'grid';
+}
+
+// ─── STL GENERATION ───────────────────────────────────────────────────────────
+generateBtn.addEventListener('click', generateSTL);
+
+async function generateSTL() {
+  generateBtn.disabled=true;
+  progressBar.style.display='block';
+  setStatus('Forbereder model...', 0);
+  await sleep(10);
+
+  const modelWidthMM = parseInt(modelSizeSlider.value);
+  const pxPerMM      = currentMaskW / modelWidthMM;
+
+  const scaledContour = contourPoints.map(p=>({x:p.x/pxPerMM,y:p.y/pxPerMM}));
+  const scaledPins    = pinPositions.map(p=>({x:p.x/pxPerMM,y:p.y/pxPerMM,nx:p.nx,ny:p.ny}));
+
+  const xs=scaledContour.map(p=>p.x), ys=scaledContour.map(p=>p.y);
+  const minX=Math.min(...xs), minY=Math.min(...ys);
+  const cx=scaledContour.map(p=>({x:p.x-minX,y:p.y-minY}));
+  const cp=scaledPins.map(p=>({x:p.x-minX,y:p.y-minY,nx:p.nx,ny:p.ny}));
+
+  const tris=[];
+  const PLATE_H=3,PIN_H=10,PIN_R=1.25,PIN_SEGS=16;
+  const FLANGE_H=2,FLANGE_R=PIN_R+0.6,SHAFT_TOP=PLATE_H+PIN_H-FLANGE_H;
+  const FRAME_W=12; // mm – fast rammebredde
+
+  // Offset ydre kontur 12mm indad punkt-for-punkt (bruges kun i "Kant"-tilstand)
+  function offsetContourInward(pts, offsetMM) {
+    const n=pts.length;
+    return pts.map((pt,i)=>{
+      const prev=pts[(i-1+n)%n], next=pts[(i+1)%n];
+      const tx=next.x-prev.x, ty=next.y-prev.y;
+      const tlen=Math.sqrt(tx*tx+ty*ty)||1;
+      const nx=-ty/tlen, ny=tx/tlen;
+      const cX=pts.reduce((s,p)=>s+p.x,0)/n;
+      const cY=pts.reduce((s,p)=>s+p.y,0)/n;
+      const dot=nx*(cX-pt.x)+ny*(cY-pt.y);
+      const inX=dot>=0?nx:-nx, inY=dot>=0?ny:-ny;
+      return {x:pt.x+inX*offsetMM, y:pt.y+inY*offsetMM};
+    });
+  }
+
+  // Simpel "ear clipping" polygon-triangulering (bruges kun i "Hel bund"-tilstand)
+  function simplifyForTriangulation(pts, maxPts=180) {
+    if (pts.length<=maxPts) return pts;
+    const step=pts.length/maxPts, out=[];
+    for (let i=0;i<maxPts;i++) out.push(pts[Math.floor(i*step)]);
+    return out;
+  }
+  function earClipTriangulate(pts) {
+    const n=pts.length;
+    function signedArea(p){ let a=0; for(let i=0;i<p.length;i++){const j=(i+1)%p.length; a+=p[i].x*p[j].y-p[j].x*p[i].y;} return a/2; }
+    let indices=pts.map((_,i)=>i);
+    if (signedArea(pts)<0) indices.reverse(); // sikr CCW
+    function cross(o,a,b){ return (a.x-o.x)*(b.y-o.y)-(a.y-o.y)*(b.x-o.x); }
+    function pointInTri(p,a,b,c){
+      const d1=cross(a,b,p), d2=cross(b,c,p), d3=cross(c,a,p);
+      const hasNeg=(d1<0)||(d2<0)||(d3<0), hasPos=(d1>0)||(d2>0)||(d3>0);
+      return !(hasNeg&&hasPos);
+    }
+    const triIdx=[]; let guard=0;
+    while (indices.length>3 && guard<n*4) {
+      guard++;
+      let earFound=false;
+      for (let i=0;i<indices.length;i++){
+        const iPrev=indices[(i-1+indices.length)%indices.length];
+        const iCurr=indices[i];
+        const iNext=indices[(i+1)%indices.length];
+        const a=pts[iPrev],b=pts[iCurr],c=pts[iNext];
+        if (cross(a,b,c)<=0) continue; // reflex/degenereret hjørne
+        let isEar=true;
+        for (let j=0;j<indices.length;j++){
+          const idx=indices[j];
+          if (idx===iPrev||idx===iCurr||idx===iNext) continue;
+          if (pointInTri(pts[idx],a,b,c)) { isEar=false; break; }
+        }
+        if (isEar){ triIdx.push([iPrev,iCurr,iNext]); indices.splice(i,1); earFound=true; break; }
+      }
+      if (!earFound) break; // undgå uendelig løkke ved selv-krydsende konturer
+    }
+    if (indices.length===3) triIdx.push([indices[0],indices[1],indices[2]]);
+    return triIdx;
+  }
+
+  if (baseMode==='solid') {
+    setStatus('Bygger massiv bundplade...', 30); await sleep(10);
+    const poly=simplifyForTriangulation(cx);
+    const triIdx=earClipTriangulate(poly);
+    for (const [i,j,k] of triIdx) {
+      const a=poly[i], b=poly[j], c=poly[k];
+      tris.push([[a.x,a.y,PLATE_H],[b.x,b.y,PLATE_H],[c.x,c.y,PLATE_H]]);
+      tris.push([[a.x,a.y,0],[c.x,c.y,0],[b.x,b.y,0]]);
+    }
+    const oN2=poly.length;
+    for (let i=0;i<oN2;i++){
+      const a=poly[i], b=poly[(i+1)%oN2];
+      tris.push([[a.x,a.y,0],[b.x,b.y,0],[b.x,b.y,PLATE_H]]);
+      tris.push([[a.x,a.y,0],[b.x,b.y,PLATE_H],[a.x,a.y,PLATE_H]]);
+    }
+  } else {
+    setStatus('Bygger bundplade (ramme)...', 30); await sleep(10);
+    const outerRing=cx;
+    const innerRing=offsetContourInward(cx, FRAME_W);
+    const oN=outerRing.length, iN=innerRing.length;
+
+    // Walking triangulation mellem ydre og indre ring
+    let bestStart=0, bestDist=Infinity;
+    for (let i=0;i<iN;i++){
+      const dx=innerRing[i].x-outerRing[0].x, dy=innerRing[i].y-outerRing[0].y;
+      const d=dx*dx+dy*dy; if(d<bestDist){bestDist=d;bestStart=i;}
+    }
+    let oi=0, ii=bestStart;
+    for (let step=0;step<oN+iN+4;step++){
+      const oa=outerRing[oi%oN], ob=outerRing[(oi+1)%oN];
+      const ia=innerRing[ii%iN], ib=innerRing[(ii+1)%iN];
+      const dO=(ob.x-ia.x)**2+(ob.y-ia.y)**2;
+      const dI=(ib.x-oa.x)**2+(ib.y-oa.y)**2;
+      if(dO<=dI){
+        tris.push([[oa.x,oa.y,PLATE_H],[ob.x,ob.y,PLATE_H],[ia.x,ia.y,PLATE_H]]);
+        tris.push([[oa.x,oa.y,0],[ia.x,ia.y,0],[ob.x,ob.y,0]]);
+        oi++;
+      } else {
+        tris.push([[oa.x,oa.y,PLATE_H],[ib.x,ib.y,PLATE_H],[ia.x,ia.y,PLATE_H]]);
+        tris.push([[oa.x,oa.y,0],[ia.x,ia.y,0],[ib.x,ib.y,0]]);
+        ii++;
+      }
+    }
+    // Ydre side-væg
+    for(let i=0;i<oN;i++){
+      const a=outerRing[i],b=outerRing[(i+1)%oN];
+      tris.push([[a.x,a.y,0],[b.x,b.y,0],[b.x,b.y,PLATE_H]]);
+      tris.push([[a.x,a.y,0],[b.x,b.y,PLATE_H],[a.x,a.y,PLATE_H]]);
+    }
+    // Indre side-væg (omvendt winding)
+    for(let i=0;i<iN;i++){
+      const a=innerRing[i],b=innerRing[(i+1)%iN];
+      tris.push([[a.x,a.y,0],[b.x,b.y,PLATE_H],[b.x,b.y,0]]);
+      tris.push([[a.x,a.y,0],[a.x,a.y,PLATE_H],[b.x,b.y,PLATE_H]]);
+    }
+  }
+
+  // Pinde
+  setStatus('Placerer pinde...', 60); await sleep(10);
+  for (const pin of cp) {
+    const px=pin.x,py=pin.y;
+    const zB=PLATE_H,zM=SHAFT_TOP,zT=PLATE_H+PIN_H;
+    for (let s=0;s<PIN_SEGS;s++) {
+      const a0=(s/PIN_SEGS)*Math.PI*2, a1=((s+1)/PIN_SEGS)*Math.PI*2;
+      const cx0=px+Math.cos(a0)*PIN_R,   cy0=py+Math.sin(a0)*PIN_R;
+      const cx1=px+Math.cos(a1)*PIN_R,   cy1=py+Math.sin(a1)*PIN_R;
+      const fx0=px+Math.cos(a0)*FLANGE_R,fy0=py+Math.sin(a0)*FLANGE_R;
+      const fx1=px+Math.cos(a1)*FLANGE_R,fy1=py+Math.sin(a1)*FLANGE_R;
+      tris.push([[cx0,cy0,zB],[cx1,cy1,zB],[cx1,cy1,zM]]);
+      tris.push([[cx0,cy0,zB],[cx1,cy1,zM],[cx0,cy0,zM]]);
+      tris.push([[px,py,zB],[cx1,cy1,zB],[cx0,cy0,zB]]);
+      tris.push([[cx0,cy0,zM],[cx1,cy1,zM],[fx1,fy1,zM]]);
+      tris.push([[cx0,cy0,zM],[fx1,fy1,zM],[fx0,fy0,zM]]);
+      tris.push([[fx0,fy0,zM],[fx1,fy1,zM],[fx1,fy1,zT]]);
+      tris.push([[fx0,fy0,zM],[fx1,fy1,zT],[fx0,fy0,zT]]);
+      tris.push([[px,py,zT],[fx0,fy0,zT],[fx1,fy1,zT]]);
+    }
+  }
+
+  // Binær STL
+  setStatus('Skriver STL fil...', 85); await sleep(10);
+  const n=tris.length;
+  const buf=new ArrayBuffer(84+n*50);
+  const dv=new DataView(buf);
+  const hdr='GarnKunst STL';
+  for (let i=0;i<80;i++) dv.setUint8(i,i<hdr.length?hdr.charCodeAt(i):0);
+  dv.setUint32(80,n,true);
+  for (let t=0;t<n;t++) {
+    const off=84+t*50, tri=tris[t];
+    const v0=tri[0],v1=tri[1],v2=tri[2];
+    const e1=[v1[0]-v0[0],v1[1]-v0[1],v1[2]-v0[2]];
+    const e2=[v2[0]-v0[0],v2[1]-v0[1],v2[2]-v0[2]];
+    const nm=[e1[1]*e2[2]-e1[2]*e2[1],e1[2]*e2[0]-e1[0]*e2[2],e1[0]*e2[1]-e1[1]*e2[0]];
+    const nl=Math.sqrt(nm[0]*nm[0]+nm[1]*nm[1]+nm[2]*nm[2])||1;
+    dv.setFloat32(off,   nm[0]/nl,true); dv.setFloat32(off+4,nm[1]/nl,true); dv.setFloat32(off+8,nm[2]/nl,true);
+    for (let v=0;v<3;v++) {
+      dv.setFloat32(off+12+v*12,  tri[v][0],true);
+      dv.setFloat32(off+12+v*12+4,tri[v][1],true);
+      dv.setFloat32(off+12+v*12+8,tri[v][2],true);
+    }
+    dv.setUint16(off+48,0,true);
+  }
+
+  progressFill.style.width='100%';
+  setStatus(`✓ ${n.toLocaleString()} trekanter · ${cp.length} pinde · klar til download`, 'ok');
+  const blob=new Blob([buf],{type:'application/octet-stream'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='garnkunst-model.stl'; a.click();
+  URL.revokeObjectURL(url);
+  generateBtn.disabled=false;
+  progressFill.style.width='0%';
+  progressBar.style.display='none';
+}
+
+// Hover cursor: pointer ved pind, crosshair ellers
+function updateCursor(e, containerEl, dispW, dispH, targetEl) {
+  if (!currentMask) return;
+  const rect = containerEl.getBoundingClientRect();
+  const dispX = e.clientX - rect.left, dispY = e.clientY - rect.top;
+  const { mx, my } = displayToMask(dispX, dispY, dispW, dispH);
+  const mmPx = currentMaskW / parseInt(modelSizeSlider.value);
+  const hitR = Math.max(8, 1.85 * mmPx * 1.5);
+  targetEl.style.cursor = hitPin(mx, my, hitR) >= 0 ? 'pointer' : 'crosshair';
+}
+
+previewCanvas.addEventListener('mousemove', e => updateCursor(e, previewCanvas, 500, 500, previewCanvas));
+svgPinsOverlay.addEventListener('mousemove', e => {
+  const rect = svgPreviewWrap.getBoundingClientRect();
+  updateCursor(e, svgPreviewWrap, rect.width, rect.height, svgPinsOverlay);
+});
+
+function setStatus(msg, progress) {
+  statusMsg.className='status-msg'+(progress==='ok'?' ok':progress==='err'?' err':'');
+  statusMsg.textContent=msg;
+  if (typeof progress==='number') progressFill.style.width=progress+'%';
+}
+
+function sleep(ms) { return new Promise(r=>setTimeout(r,ms)); }
+</script>
+</body>
+</html>
