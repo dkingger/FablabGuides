@@ -5,10 +5,17 @@
 
 ## Version
 
-Aktuel version: 1.64
-Dato: 2026-09-08
+Aktuel version: 1.73
+Dato: 2026-09-16
 
 ## Seneste aendringer
+
+### v1.73 (2026-09-16)
+
+- `vektor-viktor.html`
+  - Opdateret med den leverede Vektor-Viktor v1.73.
+- `index.html`
+  - Vektor-Viktor-link viser nu version v1.73.
 
 ### v1.64 (2026-09-08)
 
@@ -68,8 +75,8 @@ Projektet bruger versionsformatet `MAJOR.MINOR`.
 
 Eksempler:
 
-- `1.64` -> Aktuel release.
-- `1.65` -> Naeste release med nye forbedringer.
+- `1.73` -> Aktuel release.
+- `1.74` -> Naeste release med nye forbedringer.
 - `2.0` -> Stoerre breaking release.
 
 ### Saadan opdateres versionen

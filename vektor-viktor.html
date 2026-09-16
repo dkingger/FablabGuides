@@ -6,7 +6,7 @@
 <title>Vektor-Viktor</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#eef3ef;--panel:#ffffff;--panel2:#f4f8f5;--border:#c9d9ce;--accent:#2d9e5f;--accent-hover:#248a51;--text:#1a2e22;--text-dim:#5a7260;--cut:#e74c3c;--green-line:#2d9e5f;--engrave:#111;--success:#1a8f4a}
+:root{--bg:#eef3ef;--panel:#ffffff;--panel2:#f4f8f5;--border:#c9d9ce;--accent:#2d9e5f;--accent-hover:#248a51;--text:#1a2e22;--text-dim:#5a7260;--cut:#FF0000;--green-line:#2d9e5f;--engrave:#000000;--success:#1a8f4a}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;display:flex;flex-direction:column;user-select:none}
 header{background:var(--panel);border-bottom:1px solid var(--border);padding:8px 12px;display:flex;align-items:center;gap:10px;height:48px;flex-wrap:nowrap}
 header h1{font-size:1rem;font-weight:600;display:flex;align-items:center;gap:8px;flex-shrink:0}
@@ -130,9 +130,9 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
   --accent-hover:#108858;
   --text:#17212b;
   --text-dim:#66727f;
-  --cut:#e5484d;
+  --cut:#FF0000;
   --green-line:#16a36a;
-  --engrave:#121820;
+  --engrave:#000000;
   --success:#168b5a;
   --header:#20252b;
   --toolbar:#252b31;
@@ -176,6 +176,9 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 #drawSvg{border:1px solid rgba(12,20,28,.26);box-shadow:0 18px 46px rgba(5,10,15,.34),0 2px 8px rgba(0,0,0,.22)}
 #inlineTextInput{border:2px solid var(--accent);border-radius:8px;box-shadow:0 0 0 4px rgba(22,163,106,.15),0 10px 24px rgba(0,0,0,.2)}
 .handle-box{fill:var(--accent);stroke:#fff;stroke-width:1.25}
+/* Hold tegnelinjer visuelt konstante ved zoom. Især tekst må ikke blive tykkere/tyndere. */
+#objects path,#objects rect,#objects ellipse,#objects circle,#objects line,#objects polygon,#objects polyline,#objects text,#objects use{vector-effect:non-scaling-stroke;shape-rendering:geometricPrecision}
+#objects text{text-rendering:geometricPrecision;-webkit-font-smoothing:antialiased}
 .props{width:294px;padding:15px 14px 18px;gap:10px;background:#f5f7f9;border-left:1px solid #cfd6dc;box-shadow:-3px 0 16px rgba(15,23,31,.08);scrollbar-color:#bcc5cd transparent;scrollbar-width:thin}
 .props h2{padding:2px 2px 4px;color:#596674;font-size:.67rem;font-weight:800;letter-spacing:.12em}
 .prop-group{padding:11px;background:#fff;border:1px solid #dde3e8;border-radius:11px;box-shadow:0 1px 2px rgba(21,30,39,.03)}
@@ -207,6 +210,11 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 .statusbar{background:#20252b;border-top-color:rgba(255,255,255,.08);color:#9ca7b2}
 @media (max-width:900px){.props{width:260px}header .hint{display:none}#projectName{width:140px}}
 
+
+/* Stabilt zoom/pan-arbejdsområde: et usynligt stage giver plads til at zoome mod markøren og panorere i alle retninger. */
+.canvas-wrap{display:block!important;position:relative;overflow:auto!important}
+.canvas-stage{position:relative;display:block;min-width:100%;min-height:100%}
+.canvas-stage #drawSvg{position:absolute!important;margin:0!important;flex:none!important}
 </style>
 </head>
 <body>
@@ -214,7 +222,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.64</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.73</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
@@ -484,7 +492,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 <input type="file" id="imageFile" accept="image/*,.svg" class="hidden">
 <script>
 const SVG_NS='http://www.w3.org/2000/svg';
-const CUT='#e74c3c', GREEN='#2d9e5f', ENG='#111111', PREV='rgba(17,17,17,0.15)';
+const CUT='#FF0000', GREEN='#2d9e5f', ENG='#000000', PREV='rgba(0,0,0,0.15)';
 const STROKE_MM = 0.5; // always 0.5 mm stroke
 const SNAP_MM = 3; // snap distance in mm
 
@@ -493,9 +501,10 @@ const objectsG=document.getElementById('objects');
 const tempG=document.getElementById('temp');
 const handlesG=document.getElementById('handles');
 let tool='select', objects=[], selectedIds=[], isDrawing=false, startPt=null, currentPath=null, penPoints=[], dragOffset=null, resizeState=null, marqueeState=null, nextId=1, traceSourceId=null, traceImageData=null, currentMode='cut', undoStack=[];
+let panState=null;
 let regularPolySides = 3; // for ngon tool (min 3)
 
-let freehandPts=[], bezierAnchors=[], bezierDragging=false, bezierHandle=null, nodeEdit=null, nodeDrag=null;
+let freehandPts=[], bezierAnchors=[], bezierDragging=false, bezierHandle=null, nodeEdit=null, nodeDrag=null, nodeMarqueeState=null;
 let offsetPreviewEls=[], offsetPreviewActive=false;
 
 
@@ -610,6 +619,9 @@ let BASE_VB = { x:0, y:0, w:297, h:210 };
 // Base pixels-per-mm at 100% zoom
 const BASE_PPM = 2.8;
 let zoomLevel = 1; // 1 = 100%
+let canvasStage=null;
+let canvasNudgeX=0, canvasNudgeY=0;
+const PAN_GUTTER=320;
 
 function updatePageGrid(){
   const g = document.getElementById('pageGrid');
@@ -658,6 +670,7 @@ function setPageSize(size){
   updateModeButtonsForPageSize();
   refreshObjectModesForPageSize();
   applyZoomSize();
+  centerCanvasView();
 }
 
 function isScanNCutPageSize(){
@@ -686,6 +699,46 @@ function getVB(){
   const v = (svg.getAttribute('viewBox')||('0 0 '+BASE_VB.w+' '+BASE_VB.h)).trim().split(/[\s,]+/).map(Number);
   return { x:v[0]||0, y:v[1]||0, w:v[2]||BASE_VB.w, h:v[3]||BASE_VB.h };
 }
+function enforceConstantStrokeRendering(){
+  // Imported SVG'er kan have egne styles. Gentag derfor de visuelle SVG-egenskaber,
+  // så zoom aldrig skalerer stregen på tekst eller øvrige konturer.
+  objectsG.querySelectorAll('path,rect,ellipse,circle,line,polygon,polyline,text,use').forEach(el=>{
+    el.setAttribute('vector-effect','non-scaling-stroke');
+    el.setAttribute('shape-rendering','geometricPrecision');
+    if(el.tagName.toLowerCase()==='text') el.setAttribute('text-rendering','geometricPrecision');
+  });
+}
+function layoutCanvasStage(centerView){
+  const wrap=document.querySelector('.canvas-wrap');
+  if(centerView){canvasNudgeX=0;canvasNudgeY=0;}
+  if(!wrap)return;
+  let created=false;
+  if(!canvasStage){
+    canvasStage=document.createElement('div');
+    canvasStage.className='canvas-stage';
+    svg.parentNode.insertBefore(canvasStage,svg);
+    canvasStage.appendChild(svg);
+    created=true;
+  }
+  const w=parseFloat(svg.style.width)||parseFloat(svg.getAttribute('width'))||1;
+  const h=parseFloat(svg.style.height)||parseFloat(svg.getAttribute('height'))||1;
+  const vw=Math.max(1,wrap.clientWidth), vh=Math.max(1,wrap.clientHeight);
+  const sw=Math.max(w+PAN_GUTTER*2,vw+PAN_GUTTER*2);
+  const sh=Math.max(h+PAN_GUTTER*2,vh+PAN_GUTTER*2);
+  canvasStage.style.width=sw+'px';
+  canvasStage.style.height=sh+'px';
+  svg.style.left=((sw-w)/2)+'px';
+  svg.style.top=((sh-h)/2)+'px';
+  svg.style.transform='translate('+canvasNudgeX+'px,'+canvasNudgeY+'px)';
+  if(created||centerView){
+    requestAnimationFrame(()=>{
+      wrap.scrollLeft=Math.max(0,(canvasStage.scrollWidth-wrap.clientWidth)/2);
+      wrap.scrollTop=Math.max(0,(canvasStage.scrollHeight-wrap.clientHeight)/2);
+    });
+  }
+}
+function centerCanvasView(){ layoutCanvasStage(true); }
+
 function applyZoomSize(){
   // Physically grow/shrink the paper element
   const ppm = BASE_PPM * zoomLevel;
@@ -695,7 +748,9 @@ function applyZoomSize(){
   svg.setAttribute('height', h);
   svg.style.width = w + 'px';
   svg.style.height = h + 'px';
+  layoutCanvasStage(false);
   updateZoomLabel();
+  enforceConstantStrokeRendering();
   // redraw handles at constant screen size
   if(selectedIds.length){
     handlesG.innerHTML='';
@@ -718,33 +773,40 @@ function updateZoomLabel(){
 }
 function zoomAt(clientX, clientY, factor){
   const wrap = document.querySelector('.canvas-wrap');
-  const oldLevel = zoomLevel;
   let next = zoomLevel * factor;
-  // clamp 25% – 400%
   next = Math.max(0.25, Math.min(4, next));
   if(Math.abs(next - zoomLevel) < 0.001) return;
 
-  // Scroll so the point under cursor stays stable
-  if(wrap){
-    const rect = svg.getBoundingClientRect();
-    const relX = clientX - rect.left;
-    const relY = clientY - rect.top;
-    const ratioX = relX / Math.max(1, rect.width);
-    const ratioY = relY / Math.max(1, rect.height);
+  if(!wrap){
     zoomLevel = next;
     applyZoomSize();
-    const newRect = svg.getBoundingClientRect();
-    const newRelX = ratioX * newRect.width;
-    const newRelY = ratioY * newRect.height;
-    // Adjust scroll of wrap to keep cursor point
-    const scrollX = wrap.scrollLeft + (newRelX - relX);
-    const scrollY = wrap.scrollTop + (newRelY - relY);
-    // canvas-wrap may not scroll if centered – ensure overflow auto
-    wrap.scrollLeft = Math.max(0, scrollX);
-    wrap.scrollTop = Math.max(0, scrollY);
-  } else {
-    zoomLevel = next;
-    applyZoomSize();
+    return;
+  }
+
+  // Gem det PRÆCISE SVG-koordinatpunkt under markøren før zoom.
+  // Det er mere præcist end en procentdel af bounding-boxen (som også indeholder SVG-borderen).
+  const screenPoint=svg.createSVGPoint();
+  screenPoint.x=clientX; screenPoint.y=clientY;
+  let anchor;
+  try{anchor=screenPoint.matrixTransform(svg.getScreenCTM().inverse());}
+  catch(_){anchor={x:BASE_VB.w/2,y:BASE_VB.h/2};}
+
+  zoomLevel = next;
+  applyZoomSize();
+
+  const anchorPoint=svg.createSVGPoint();
+  anchorPoint.x=anchor.x; anchorPoint.y=anchor.y;
+  let afterScreen=anchorPoint.matrixTransform(svg.getScreenCTM());
+  wrap.scrollLeft += afterScreen.x-clientX;
+  wrap.scrollTop  += afterScreen.y-clientY;
+
+  // Scroll kan blive afrundet. Fjern den sidste subpixel-fejl med en CSS-translation.
+  afterScreen=anchorPoint.matrixTransform(svg.getScreenCTM());
+  const residualX=afterScreen.x-clientX;
+  const residualY=afterScreen.y-clientY;
+  if(Math.abs(residualX)>0.001 || Math.abs(residualY)>0.001){
+    canvasNudgeX-=residualX; canvasNudgeY-=residualY;
+    svg.style.transform='translate('+canvasNudgeX+'px,'+canvasNudgeY+'px)';
   }
 }
 function zoomBy(factor){
@@ -755,16 +817,36 @@ function zoomReset(){
   zoomLevel = 1;
   svg.setAttribute('viewBox', '0 0 '+BASE_VB.w+' '+BASE_VB.h);
   applyZoomSize();
+  centerCanvasView();
 }
 
-
-// Wheel / trackpad zoom (pinch often comes as wheel+ctrl on some systems; also plain wheel)
-svg.addEventListener('wheel', function(e){
+// Scrollhjulet zoomer altid mod musemarkøren – også hvis markøren står lige uden for papiret.
+const canvasWrap=document.querySelector('.canvas-wrap');
+canvasWrap?.addEventListener('wheel', function(e){
   e.preventDefault();
-  // deltaY > 0 = zoom out
   const factor = e.deltaY > 0 ? (1/1.12) : 1.12;
   zoomAt(e.clientX, e.clientY, factor);
-}, { passive: false });
+}, { passive:false });
+
+// Hold rullehjulet nede og træk for at panorere arbejdsområdet.
+canvasWrap?.addEventListener('mousedown', function(e){
+  if(e.button!==1) return;
+  e.preventDefault();
+  e.stopPropagation();
+  panState={x:e.clientX,y:e.clientY,left:canvasWrap.scrollLeft,top:canvasWrap.scrollTop};
+  canvasWrap.style.cursor='grabbing';
+}, true);
+document.addEventListener('mousemove', function(e){
+  if(!panState || !canvasWrap) return;
+  e.preventDefault();
+  canvasWrap.scrollLeft = panState.left - (e.clientX-panState.x);
+  canvasWrap.scrollTop  = panState.top  - (e.clientY-panState.y);
+}, true);
+document.addEventListener('mouseup', function(e){
+  if(!panState || e.button!==1) return;
+  panState=null;
+  if(canvasWrap) canvasWrap.style.cursor='';
+}, true);
 
 document.getElementById('btnZoomIn')?.addEventListener('click', () => zoomBy(1.25));
 document.getElementById('btnZoomOut')?.addEventListener('click', () => zoomBy(1/1.25));
@@ -783,43 +865,98 @@ function fillFor(m){
   return m==='engrave'?ENG:'none';
 }
 function clearInlinePaint(el){
-  // Importerede SVG'er har ofte fill/stroke i style="...", som ellers vinder over SVG-attributter.
   if(!el||!el.style)return;
-  el.style.removeProperty('fill');
-  el.style.removeProperty('stroke');
-  el.style.removeProperty('stroke-width');
-  el.style.removeProperty('paint-order');
+  ['fill','fill-opacity','stroke','stroke-opacity','stroke-width','paint-order','stroke-linecap','stroke-linejoin'].forEach(p=>el.style.removeProperty(p));
+}
+function setSvgPaintImportant(el,name,value){
+  if(!el)return;
+  el.setAttribute(name,value);
+  // SVG'er fra Illustrator/Inkscape/CanvasWorkspace m.fl. bruger ofte CSS-klasser.
+  // En almindelig SVG-attribut taber til en CSS-regel, så laser/ScanNCut-farver
+  // skal også sættes som inline !important for at kunne fjerne fyld sikkert.
+  if(el.style)el.style.setProperty(name,value,'important');
 }
 function applyMode(el,m){
   clearInlinePaint(el);
   const stroke=strokeFor(m);
-  el.setAttribute('stroke',stroke);
-  el.setAttribute('fill',fillFor(m));
-  el.setAttribute('stroke-width', stroke==='none' ? '0' : String(STROKE_MM));
-  el.setAttribute('vector-effect','non-scaling-stroke'); // stroke stays 0.5mm visually even if scaled via transform
+  const fill=fillFor(m);
+  setSvgPaintImportant(el,'stroke',stroke);
+  setSvgPaintImportant(el,'fill',fill);
+  setSvgPaintImportant(el,'stroke-width',stroke==='none'?'0':String(STROKE_MM));
+  setSvgPaintImportant(el,'stroke-opacity','1');
+  setSvgPaintImportant(el,'fill-opacity','1');
+  setSvgPaintImportant(el,'stroke-linecap','round');
+  setSvgPaintImportant(el,'stroke-linejoin','round');
+  el.setAttribute('vector-effect','non-scaling-stroke');
+  el.setAttribute('shape-rendering','geometricPrecision');
+  if(el.tagName && (el.tagName.toLowerCase()==='text'||el.tagName.toLowerCase()==='tspan')) el.setAttribute('text-rendering','geometricPrecision');
   el.setAttribute('pointer-events','all');
   if(m==='engrave' && !isScanNCutPageSize() && el.tagName && el.tagName.toLowerCase()==='text')el.setAttribute('font-weight','800');
 }
 function applyLineMode(el,m){
   clearInlinePaint(el);
-  el.setAttribute('stroke',isScanNCutPageSize()?ENG:(m==='engrave'?ENG:strokeFor(m)));
-  el.setAttribute('fill','none');
-  el.setAttribute('stroke-width',String(STROKE_MM));
+  setSvgPaintImportant(el,'stroke',isScanNCutPageSize()?ENG:(m==='engrave'?ENG:strokeFor(m)));
+  setSvgPaintImportant(el,'fill','none');
+  setSvgPaintImportant(el,'stroke-width',String(STROKE_MM));
+  setSvgPaintImportant(el,'stroke-opacity','1');
+  setSvgPaintImportant(el,'fill-opacity','1');
+  setSvgPaintImportant(el,'stroke-linecap','round');
+  setSvgPaintImportant(el,'stroke-linejoin','round');
   el.setAttribute('vector-effect','non-scaling-stroke');
+  el.setAttribute('shape-rendering','geometricPrecision');
   el.setAttribute('pointer-events','all');
+}
+// <use> kan pege på en figur i <defs>/<symbol> med sit eget eksplicitte fill.
+// At sætte fill=none på selve <use>-elementet er derfor ikke altid nok. Når en
+// bruger vælger linjetilstand, overstyrer vi også den refererede vektorgeometri.
+function resolveUseReference(useEl){
+  if(!useEl)return null;
+  const href=(useEl.getAttribute('href')||useEl.getAttributeNS('http://www.w3.org/1999/xlink','href')||'').trim();
+  if(!href || href[0]!=='#')return null;
+  const id=href.slice(1);
+  if(!id)return null;
+  const root=useEl.ownerSVGElement||svg;
+  try{return root.querySelector('#'+CSS.escape(id));}catch(_){
+    return root.querySelector('[id="'+id.replace(/"/g,'\\"')+'"]');
+  }
+}
+function applyModeToUseReference(useEl,m,seen){
+  seen=seen||new Set();
+  const ref=resolveUseReference(useEl);
+  if(!ref||seen.has(ref))return;
+  seen.add(ref);
+  const drawable='rect,ellipse,circle,line,path,polygon,polyline,text,tspan,use';
+  const nodes=[];
+  const tag=(ref.tagName||'').toLowerCase();
+  if(['rect','ellipse','circle','line','path','polygon','polyline','text','tspan','use'].includes(tag))nodes.push(ref);
+  nodes.push(...Array.from(ref.querySelectorAll?.(drawable)||[]));
+  nodes.forEach(el=>{
+    const t=(el.tagName||'').toLowerCase();
+    if(t==='line'||t==='polyline')applyLineMode(el,m);
+    else applyMode(el,m);
+    if(t==='use')applyModeToUseReference(el,m,seen);
+  });
 }
 function applyModeRecursive(obj,m){
   if(!obj || obj.type==='image') return;
-  // ScanNCut overstyrer altid en evt. tidligere engrave/fill-tilstand.
   const effectiveMode=isScanNCutPageSize()?'cut':m;
-  if(obj.type==='group'){
-    obj.el.querySelectorAll('rect,ellipse,circle,line,path,polygon,polyline,text,use').forEach(el=>{
+  // Brug selve DOM-strukturen frem for kun obj.type. Det gør også importerede
+  // SVG-dele robuste, hvis de indeholder <use>, <tspan> eller et internt <g>.
+  const isContainer=obj.el && ['g','svg','symbol'].includes((obj.el.tagName||'').toLowerCase());
+  if(obj.type==='group'||isContainer){
+    const nodes=Array.from(obj.el.querySelectorAll('rect,ellipse,circle,line,path,polygon,polyline,text,tspan,use'));
+    // Hvis containeren selv er en tegnbar node (sjældent), håndteres den nedenfor.
+    nodes.forEach(el=>{
       const tag=el.tagName.toLowerCase();
       if(tag==='line'||tag==='polyline')applyLineMode(el,effectiveMode);
       else applyMode(el,effectiveMode);
+      if(tag==='use')applyModeToUseReference(el,effectiveMode);
     });
   } else if(obj.type==='line')applyLineMode(obj.el,effectiveMode);
-  else applyMode(obj.el,effectiveMode);
+  else {
+    applyMode(obj.el,effectiveMode);
+    if((obj.el.tagName||'').toLowerCase()==='use')applyModeToUseReference(obj.el,effectiveMode);
+  }
   obj.data.mode=effectiveMode;
 }
 const applyModeToEl=applyMode;
@@ -926,8 +1063,8 @@ document.querySelectorAll('.tool-btn').forEach(btn=>{
     if(t==='pen'||t==='polygon')penPoints=[];
     if(t==='bezier'){bezierAnchors=[];bezierDragging=false;cancelDraw();}
     if(t==='freehand'){freehandPts=[];}
-    if(t==='node'){nodeEdit=null;nodeDrag=null;refreshUI();}
-    else {nodeEdit=null;nodeDrag=null;}
+    if(t==='node'){nodeEdit=null;nodeDrag=null;nodeMarqueeState=null;document.getElementById('nodeMarqueeBox')?.remove();refreshUI();}
+    else {nodeEdit=null;nodeDrag=null;nodeMarqueeState=null;document.getElementById('nodeMarqueeBox')?.remove();}
   });
 });
 
@@ -1036,6 +1173,18 @@ function showProps(obj){
 }
 function getWorldBBox(obj){
   const el = obj.el;
+  // Primitive SVG-elementer kan efter import/spejling have en transform.
+  // I så fald skal mål altid beregnes i lærredets koordinater – ikke fra de lokale x/y-værdier.
+  if(((el.getAttribute('transform')||'').trim())){
+    try{
+      const rect=el.getBoundingClientRect();
+      const inv=svg.getScreenCTM().inverse();
+      const a=svg.createSVGPoint();a.x=rect.left;a.y=rect.top;
+      const b=svg.createSVGPoint();b.x=rect.right;b.y=rect.bottom;
+      const p1=a.matrixTransform(inv),p2=b.matrixTransform(inv);
+      return {x:p1.x,y:p1.y,width:Math.max(0,p2.x-p1.x),height:Math.max(0,p2.y-p1.y)};
+    }catch(_){ }
+  }
   if(obj.type==='rect' || obj.type==='image'){
     return {
       x: parseFloat(el.getAttribute('x'))||0,
@@ -1066,6 +1215,26 @@ function getWorldBBox(obj){
     return el.getBBox();
   }
 }
+// Robust hit-test for selection. SVG paths with fill="none" can otherwise be
+// frustrating to grab because the browser only reports a hit on the visible stroke.
+// In select mode we deliberately treat the object's whole visual bounding box as a
+// draggable hit area, so a press anywhere inside the figure's area can start a move.
+function findTopmostObjectAtPoint(pt){
+  const tol=Math.max(0.35, 2.5/(BASE_PPM*Math.max(zoomLevel,0.01)));
+  const children=Array.from(objectsG.children).reverse();
+  for(const el of children){
+    const id=el.getAttribute&&el.getAttribute('data-id');
+    if(!id)continue;
+    const obj=objects.find(o=>o.id===id);
+    if(!obj)continue;
+    let b;
+    try{b=getWorldBBox(obj);}catch(_){continue;}
+    if(!b||!isFinite(b.x)||!isFinite(b.y)||!isFinite(b.width)||!isFinite(b.height))continue;
+    if(pt.x>=b.x-tol && pt.x<=b.x+b.width+tol && pt.y>=b.y-tol && pt.y<=b.y+b.height+tol)return obj;
+  }
+  return null;
+}
+
 function drawHandle(obj){
   const b=getWorldBBox(obj);
   const hs = handleSizeSvg();
@@ -1126,8 +1295,13 @@ function drawHandle(obj){
 }
 
 
-function resizeObject(obj, handle, mx, my, origin, uniform){
-  // origin = bbox at start of resize
+function resizeObject(obj, handle, mx, my, origin, uniform, baseTransform){
+  // origin = bbox at start of resize. IMPORTANT: every mousemove must start from
+  // exactly the same transform, otherwise scale is compounded frame-by-frame.
+  if(baseTransform!==undefined){
+    if(baseTransform) obj.el.setAttribute('transform',baseTransform);
+    else obj.el.removeAttribute('transform');
+  }
   let x=origin.x, y=origin.y, w=origin.width, h=origin.height;
   if(handle.includes('e')) w = Math.max(4, mx - origin.x);
   if(handle.includes('s')) h = Math.max(4, my - origin.y);
@@ -1152,7 +1326,12 @@ function resizeObject(obj, handle, mx, my, origin, uniform){
     if(!handle.includes('n') && !handle.includes('s')) y = origin.y + (origin.height - h) / 2;
   }
 
-  if(obj.type==='rect' || obj.type==='image'){
+  // Alt med en eksisterende transform samt alle frie vektorformer skaleres som et
+  // visuelt objekt i lærredets koordinatsystem. Den originale SVG-geometri røres ikke.
+  if((obj.el.getAttribute('transform')||'').trim() || ['path','traced','polygon','group'].includes(obj.type)){
+    if(origin.width < 0.1 || origin.height < 0.1) return;
+    transformElementBetweenBBoxes(obj.el,origin,{x,y,width:w,height:h});
+  } else if(obj.type==='rect' || obj.type==='image'){
     obj.el.setAttribute('x', x); obj.el.setAttribute('y', y);
     obj.el.setAttribute('width', w); obj.el.setAttribute('height', h);
   } else if(obj.type==='ellipse'){
@@ -1169,28 +1348,6 @@ function resizeObject(obj, handle, mx, my, origin, uniform){
     else if(handle==='nw'){ obj.el.setAttribute('x1', mx); obj.el.setAttribute('y1', my); }
     else if(handle==='ne'){ obj.el.setAttribute('x2', mx); obj.el.setAttribute('y1', my); }
     else if(handle==='sw'){ obj.el.setAttribute('x1', mx); obj.el.setAttribute('y2', my); }
-  } else {
-    // path / polygon / traced – scale via transform relative to origin
-    if(origin.width < 0.1 || origin.height < 0.1) return;
-    obj.el.removeAttribute('transform');
-    const lb = obj.el.getBBox();
-    if(lb.width < 0.1 || lb.height < 0.1) return;
-    let scaleX = w / lb.width;
-    let scaleY = h / lb.height;
-    if(uniform){
-      const s = Math.max(0.01, Math.min(scaleX, scaleY) === scaleX ? scaleX : scaleY);
-      // better: use average of intended scales from origin ratio
-      const sUni = (w / origin.width + h / origin.height) / 2;
-      scaleX = scaleY = Math.max(0.01, (w / origin.width)); // consistent with uniform w/h
-      // recompute w,h already uniform; scale from local bbox
-      scaleX = w / lb.width;
-      scaleY = h / lb.height;
-      // force equal
-      const s2 = Math.abs(scaleX) >= Math.abs(scaleY) ? scaleX : scaleY;
-      scaleX = scaleY = s2;
-    }
-    obj.el.setAttribute('transform',
-      'translate('+x+','+y+') scale('+scaleX+','+scaleY+') translate('+(-lb.x)+','+(-lb.y)+')');
   }
 }
 
@@ -1334,6 +1491,133 @@ function clearObjectIds(el){
   el.removeAttribute('data-id');
   el.querySelectorAll('[data-id]').forEach(child=>child.removeAttribute('data-id'));
 }
+
+function matrixRelativeToObjects(el){
+  try{
+    const ec=el.getCTM();
+    const pc=objectsG.getCTM();
+    if(!ec||!pc)return null;
+    return pc.inverse().multiply(ec);
+  }catch(_){ return null; }
+}
+function matrixTransformString(m){
+  if(!m)return '';
+  const clean=v=>Math.abs(v)<1e-10?0:+v.toFixed(10);
+  return 'matrix('+[m.a,m.b,m.c,m.d,m.e,m.f].map(clean).join(' ')+')';
+}
+
+// Apply a resize in the parent/canvas coordinate system WITHOUT rewriting the
+// element's vector geometry. This is essential for imported SVG paths: a path
+// may contain several subpaths, curves or arc commands that must remain byte-for-
+// byte intact when a group is dissolved or the object is resized.
+function transformElementBetweenBBoxes(el, fromBox, toBox){
+  if(!el||!fromBox||!toBox||fromBox.width<1e-9||fromBox.height<1e-9)return false;
+  const sx=toBox.width/fromBox.width, sy=toBox.height/fromBox.height;
+  try{
+    const base=el.transform&&el.transform.baseVal?el.transform.baseVal.consolidate():null;
+    const current=base?base.matrix:svg.createSVGMatrix();
+    const world=svg.createSVGMatrix();
+    world.a=sx; world.b=0; world.c=0; world.d=sy;
+    world.e=toBox.x-sx*fromBox.x;
+    world.f=toBox.y-sy*fromBox.y;
+    // world transform is applied in the parent's coordinate system, BEFORE the
+    // element's existing local transform.
+    const result=world.multiply(current);
+    el.setAttribute('transform',matrixTransformString(result));
+    return true;
+  }catch(err){
+    console.warn('transformElementBetweenBBoxes',err);
+    return false;
+  }
+}
+function preserveComputedPresentation(el){
+  try{
+    const cs=getComputedStyle(el);
+    const map={
+      fill:'fill','fill-opacity':'fillOpacity',stroke:'stroke','stroke-opacity':'strokeOpacity','stroke-width':'strokeWidth','stroke-linecap':'strokeLinecap',
+      'stroke-linejoin':'strokeLinejoin','stroke-miterlimit':'strokeMiterlimit',
+      'fill-rule':'fillRule','clip-rule':'clipRule',opacity:'opacity',
+      'clip-path':'clipPath',mask:'mask',filter:'filter',visibility:'visibility',display:'display',
+      'font-family':'fontFamily','font-size':'fontSize','font-weight':'fontWeight','font-style':'fontStyle',
+      'text-anchor':'textAnchor'
+    };
+    const out={};
+    Object.entries(map).forEach(([attr,prop])=>{
+      const v=cs[prop];
+      if((v!==undefined && v!==null && v!=='' && v!=='normal' && v!=='none') || (v!==undefined && ['fill','stroke','clip-path','mask','filter'].includes(attr))) out[attr]=v;
+    });
+    return out;
+  }catch(_){ return {}; }
+}
+function detachImportedCss(el){
+  if(!el)return;
+  // Klassen er allerede aflæst via getComputedStyle før opløsning. Hvis den får
+  // lov at leve videre, kan SVG'ens <style>-regler overstyre både vores nye
+  // transform-matrix og fill/stroke efter opløsning.
+  el.removeAttribute('class');
+  if(el.style){
+    ['transform','transform-origin','transform-box','fill','fill-opacity','stroke','stroke-opacity','stroke-width','stroke-linecap','stroke-linejoin','paint-order'].forEach(p=>el.style.removeProperty(p));
+  }
+  // Tekst kan have tspans med egne klasser; fjern kun klasse/CSS-paint der også.
+  el.querySelectorAll?.('*').forEach(child=>{
+    child.removeAttribute('class');
+    if(child.style){
+      ['transform','transform-origin','transform-box','fill','fill-opacity','stroke','stroke-opacity','stroke-width','stroke-linecap','stroke-linejoin','paint-order'].forEach(p=>child.style.removeProperty(p));
+    }
+  });
+}
+
+function bakeImportedLeafTransform(obj){
+  if(!obj||obj.type==='group'||obj.type==='image'||obj.type==='text')return;
+  const el=obj.el;
+  const t=(el.getAttribute('transform')||'').trim();
+  if(!t)return;
+  let mat=null;
+  try{const c=el.transform.baseVal.consolidate();if(c)mat=c.matrix;}catch(_){ }
+  if(!mat)return;
+  const map=(x,y)=>({x:mat.a*x+mat.c*y+mat.e,y:mat.b*x+mat.d*y+mat.f});
+  const axisAligned=Math.abs(mat.b)<1e-9&&Math.abs(mat.c)<1e-9;
+
+  if(obj.type==='rect'){
+    const x=+el.getAttribute('x')||0,y=+el.getAttribute('y')||0,w=+el.getAttribute('width')||0,h=+el.getAttribute('height')||0;
+    const pts=[map(x,y),map(x+w,y),map(x+w,y+h),map(x,y+h)];
+    if(axisAligned){
+      const xs=pts.map(p=>p.x),ys=pts.map(p=>p.y);
+      el.setAttribute('x',Math.min(...xs));el.setAttribute('y',Math.min(...ys));
+      el.setAttribute('width',Math.max(...xs)-Math.min(...xs));el.setAttribute('height',Math.max(...ys)-Math.min(...ys));
+      el.removeAttribute('transform');return;
+    }
+    const path=document.createElementNS(SVG_NS,'path');
+    Array.from(el.attributes).forEach(a=>{if(!['x','y','width','height','rx','ry','transform','data-id'].includes(a.name))path.setAttribute(a.name,a.value);});
+    path.setAttribute('d','M '+pts[0].x+' '+pts[0].y+' L '+pts[1].x+' '+pts[1].y+' L '+pts[2].x+' '+pts[2].y+' L '+pts[3].x+' '+pts[3].y+' Z');
+    path.dataset.id=obj.id;path.setAttribute('pointer-events','all');el.replaceWith(path);obj.el=path;obj.type='path';return;
+  }
+  if(obj.type==='ellipse'){
+    const cx=+el.getAttribute('cx')||0,cy=+el.getAttribute('cy')||0,rx=+el.getAttribute('rx')||0,ry=+el.getAttribute('ry')||0;
+    if(axisAligned){
+      const c=map(cx,cy);el.setAttribute('cx',c.x);el.setAttribute('cy',c.y);el.setAttribute('rx',Math.abs(mat.a)*rx);el.setAttribute('ry',Math.abs(mat.d)*ry);el.removeAttribute('transform');return;
+    }
+    const k=0.5522847498307936;
+    const p0=map(cx+rx,cy),c1=map(cx+rx,cy+k*ry),c2=map(cx+k*rx,cy+ry),p1=map(cx,cy+ry);
+    const c3=map(cx-k*rx,cy+ry),c4=map(cx-rx,cy+k*ry),p2=map(cx-rx,cy);
+    const c5=map(cx-rx,cy-k*ry),c6=map(cx-k*rx,cy-ry),p3=map(cx,cy-ry);
+    const c7=map(cx+k*rx,cy-ry),c8=map(cx+rx,cy-k*ry);
+    const path=document.createElementNS(SVG_NS,'path');
+    Array.from(el.attributes).forEach(a=>{if(!['cx','cy','rx','ry','transform','data-id'].includes(a.name))path.setAttribute(a.name,a.value);});
+    path.setAttribute('d',`M ${p0.x} ${p0.y} C ${c1.x} ${c1.y} ${c2.x} ${c2.y} ${p1.x} ${p1.y} C ${c3.x} ${c3.y} ${c4.x} ${c4.y} ${p2.x} ${p2.y} C ${c5.x} ${c5.y} ${c6.x} ${c6.y} ${p3.x} ${p3.y} C ${c7.x} ${c7.y} ${c8.x} ${c8.y} ${p0.x} ${p0.y} Z`);
+    path.dataset.id=obj.id;path.setAttribute('pointer-events','all');el.replaceWith(path);obj.el=path;obj.type='path';return;
+  }
+  if(obj.type==='line'){
+    const p1=map(+el.getAttribute('x1')||0,+el.getAttribute('y1')||0),p2=map(+el.getAttribute('x2')||0,+el.getAttribute('y2')||0);
+    el.setAttribute('x1',p1.x);el.setAttribute('y1',p1.y);el.setAttribute('x2',p2.x);el.setAttribute('y2',p2.y);el.removeAttribute('transform');return;
+  }
+  if(obj.type==='polygon'){
+    const raw=(el.getAttribute('points')||'').trim().split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
+    const out=[];for(let i=0;i+1<raw.length;i+=2){const p=map(raw[i],raw[i+1]);out.push(p.x+','+p.y);}el.setAttribute('points',out.join(' '));el.removeAttribute('transform');return;
+  }
+  if(obj.type==='path'||obj.type==='traced')bakePathTransform(obj);
+}
+
 function groupSelected(){
   if(selectedIds.length<2)return;
   const selected=objects.filter(o=>selectedIds.includes(o.id));
@@ -1355,10 +1639,18 @@ function groupSelected(){
 function promoteShapeFromGroup(groupObj, shapeEl){
   if(!groupObj || groupObj.type!=='group' || !shapeEl) return null;
   try{
+    // Tag matrix + beregnet udseende mens elementet stadig sidder i den oprindelige
+    // SVG-hierarki. Så mister vi hverken nested transforms eller klasse-baseret paint.
+    const matrix=matrixRelativeToObjects(shapeEl);
+    const presentation=preserveComputedPresentation(shapeEl);
     pushUndo();
     let clone=shapeEl.cloneNode(true);
-    const xf=combinedTransform(shapeEl, groupObj.el, groupObj.el.getAttribute('transform')||'');
-    if(xf) clone.setAttribute('transform', xf);
+    detachImportedCss(clone);
+    clone.removeAttribute('transform');
+    if(matrix)clone.setAttribute('transform',matrixTransformString(matrix));
+    Object.entries(presentation||{}).forEach(([attr,val])=>{
+      if(val!==undefined&&val!==null&&val!=='')clone.setAttribute(attr,val);
+    });
     clone=normalizeImportedShape(clone);
     clearObjectIds(clone);
     shapeEl.remove();
@@ -1366,24 +1658,7 @@ function promoteShapeFromGroup(groupObj, shapeEl){
     const mode=detectMode({el:clone});
     const id=addObject(type, clone, {mode, importedSvg:true}, true);
     const obj=objects.find(o=>o.id===id);
-    if(obj && (obj.type==='path'||obj.type==='traced')) bakePathTransform(obj);
-    else if(obj && obj.type==='polygon' && obj.el.getAttribute('transform')){
-      const raw=(obj.el.getAttribute('points')||'').trim().split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
-      let d='';
-      for(let i=0;i+1<raw.length;i+=2) d+=(i===0?'M ':'L ')+raw[i]+' '+raw[i+1]+' ';
-      d+='Z';
-      const path=document.createElementNS(SVG_NS,'path');
-      path.setAttribute('d', d.trim());
-      path.setAttribute('fill-rule','evenodd');
-      if(obj.el.getAttribute('transform')) path.setAttribute('transform', obj.el.getAttribute('transform'));
-      ['fill','stroke','stroke-width'].forEach(a=>{ if(obj.el.hasAttribute(a)) path.setAttribute(a, obj.el.getAttribute(a)); });
-      path.dataset.id=obj.id;
-      path.setAttribute('pointer-events','all');
-      obj.el.replaceWith(path);
-      obj.el=path;
-      obj.type='path';
-      bakePathTransform(obj);
-    }
+    if(obj&&isScanNCutPageSize())applyModeRecursive(obj,'cut');
     // If group is empty, remove it
     if(!groupObj.el.children.length){
       const gi=objects.findIndex(o=>o.id===groupObj.id);
@@ -1401,37 +1676,104 @@ function ungroupSelected(){
   const index=objects.findIndex(o=>o.id===selectedIds[0]);
   const group=objects[index];
   if(!group||group.type!=='group')return;
+
+  // Imported SVG files very often have several nested <g> layers. "Opløs gruppe"
+  // should therefore dissolve the WHOLE imported hierarchy in one click, not just
+  // move the first child group out as another group.
+  const editableTags=new Set(['path','polygon','polyline','rect','ellipse','circle','line','text','use']);
+  // <style> flyttes bevidst IKKE med efter opløsning. Dens beregnede udseende
+  // fryses på de enkelte dele, så gamle CSS-klasser ikke kan styre dem bagefter.
+  const supportTags=new Set(['defs']);
+  const leafSnapshots=[];
+  const supportNodes=[];
+
+  // Snapshot while the original hierarchy is still attached to the live SVG so
+  // getCTM()/computedStyle include every ancestor transform and inherited style.
+  const walk=node=>{
+    if(!node || node.nodeType!==1)return;
+    const tag=(node.tagName||'').toLowerCase();
+    if(supportTags.has(tag)){
+      supportNodes.push(node.cloneNode(true));
+      return;
+    }
+    if(editableTags.has(tag)){
+      leafSnapshots.push({
+        clone:node.cloneNode(true),
+        matrix:matrixRelativeToObjects(node),
+        presentation:preserveComputedPresentation(node),
+        tag
+      });
+      return;
+    }
+    // Containers (<g>, nested <svg>, <a>, etc.) are intentionally not kept as
+    // objects; recurse until the actual drawable leaves are reached.
+    Array.from(node.children||[]).forEach(walk);
+  };
+  Array.from(group.el.children).forEach(walk);
+
+  // If an unusual SVG contains no supported leaves, fall back to the old direct
+  // child behaviour rather than deleting the artwork.
+  if(!leafSnapshots.length){
+    alert('SVG-gruppen indeholder ingen dele, som kan opløses individuelt.');
+    return;
+  }
+
   pushUndo();
-  const groupTransform=group.el.getAttribute('transform')||'';
-  const children=Array.from(group.el.children);
-  const newIds=[];
   objects.splice(index,1);
   group.el.remove();
-  children.forEach(child=>{
-    if(groupTransform){
-      const childTransform=child.getAttribute('transform')||'';
-      child.setAttribute('transform',(groupTransform+' '+childTransform).trim());
-    }
-    let el=normalizeImportedShape(child);
-    if(el!==child && child.parentNode){ /* already detached */ }
+
+  // Keep defs available for gradients, clip paths etc. without making them
+  // selectable. Duplicate IDs are avoided when the same support block appears twice.
+  const existingSupportIds=new Set(Array.from(objectsG.querySelectorAll('[data-vv-support="true"] [id], [data-vv-support="true"][id]')).map(n=>n.id));
+  supportNodes.forEach(node=>{
+    if(node.id && existingSupportIds.has(node.id))return;
+    node.removeAttribute('data-id');
+    node.setAttribute('data-vv-support','true');
+    node.style.pointerEvents='none';
+    objectsG.insertBefore(node,objectsG.firstChild);
+    if(node.id)existingSupportIds.add(node.id);
+  });
+
+  const newIds=[];
+  leafSnapshots.forEach(snap=>{
+    let el=snap.clone;
+
+    // Først kobles den opløste del helt fri af den importerede SVG's CSS. Dens
+    // fulde synlige transform er allerede gemt i snap.matrix, og dens beregnede
+    // farver/egenskaber ligger i snap.presentation.
+    detachImportedCss(el);
+    el.removeAttribute('transform');
+    if(snap.matrix) el.setAttribute('transform',matrixTransformString(snap.matrix));
+
+    Object.entries(snap.presentation||{}).forEach(([attr,val])=>{
+      if(val===undefined||val===null||val==='')return;
+      // CSS-transform fryses via matrixen ovenfor og må aldrig kopieres tilbage.
+      if(attr==='transform'||attr==='transform-origin'||attr==='transform-box')return;
+      el.setAttribute(attr,val);
+    });
+
+    el=normalizeImportedShape(el);
     const type=elementType(el);
     const mode=el.getAttribute('data-vv-mode')||detectMode({el});
     el.removeAttribute('data-vv-type');
     el.removeAttribute('data-vv-mode');
+    clearObjectIds(el);
     const id=uid();
     el.dataset.id=id;
     el.style.pointerEvents='all';
     el.setAttribute('pointer-events','all');
-    objects.push({id,type,el,data:{mode}});
+    objects.push({id,type,el,data:{mode,importedSvg:true}});
     objectsG.appendChild(el);
     const obj=objects[objects.length-1];
-    if(obj.type==='path') bakePathTransform(obj);
+    if(isScanNCutPageSize())applyModeRecursive(obj,'cut');
     newIds.push(id);
   });
-  selectedIds=newIds;
 
+  selectedIds=newIds;
   refreshUI();
+  updateCount();
 }
+
 function applyProps(saveUndo){
   if(selectedIds.length!==1)return;
   const obj=objects.find(o=>o.id===selectedIds[0]);if(!obj)return;
@@ -1445,7 +1787,12 @@ function applyProps(saveUndo){
   const w=Math.max(0.1,parseFloat(wRaw)||0.1);
   const h=Math.max(0.1,parseFloat(hRaw)||0.1);
 
-  if(obj.type==='rect'){obj.el.setAttribute('x',x);obj.el.setAttribute('y',y);obj.el.setAttribute('width',w);obj.el.setAttribute('height',h)}
+  // Importerede/spejlede/roterede elementer skal skaleres i lærredets koordinater.
+  // Ellers ændrer man lokale x/y-værdier inde i en matrix og figuren kan hoppe eller forvrides.
+  if((obj.el.getAttribute('transform')||'').trim() || ['path','traced','polygon','group'].includes(obj.type)){
+    if(!transformElementBetweenBBoxes(obj.el,bb0,{x,y,width:w,height:h})) return;
+  }
+  else if(obj.type==='rect'){obj.el.setAttribute('x',x);obj.el.setAttribute('y',y);obj.el.setAttribute('width',w);obj.el.setAttribute('height',h)}
   else if(obj.type==='ellipse'){obj.el.setAttribute('cx',x+w/2);obj.el.setAttribute('cy',y+h/2);obj.el.setAttribute('rx',w/2);obj.el.setAttribute('ry',h/2)}
   else if(obj.type==='image'){obj.el.setAttribute('x',x);obj.el.setAttribute('y',y);obj.el.setAttribute('width',w);obj.el.setAttribute('height',h)}
   else if(obj.type==='text'){obj.el.setAttribute('x',x);obj.el.setAttribute('y',y+h*0.8);obj.el.setAttribute('font-size',Math.max(8,h*0.85))}
@@ -1454,27 +1801,33 @@ function applyProps(saveUndo){
     const x2=parseFloat(obj.el.getAttribute('x2')),y2=parseFloat(obj.el.getAttribute('y2'));
     const dx=x-Math.min(x1,x2),dy=y-Math.min(y1,y2);
     obj.el.setAttribute('x1',x1+dx);obj.el.setAttribute('y1',y1+dy);obj.el.setAttribute('x2',x2+dx);obj.el.setAttribute('y2',y2+dy);
-  } else {
-    obj.el.removeAttribute('transform');
-    const lb = obj.el.getBBox();
-    if(lb.width > 0.1 && lb.height > 0.1){
-      const sx = w / lb.width, sy = h / lb.height;
-      obj.el.setAttribute('transform',
-        'translate('+x+','+y+') scale('+sx+','+sy+') translate('+(-lb.x)+','+(-lb.y)+')');
-    } else {
-      setTranslate(obj, x - lb.x, y - lb.y);
-    }
   }
   refreshUI();
 }
-function setTranslate(obj,dx,dy){
-  let t=obj.el.getAttribute('transform')||'';
-  const m=t.match(/translate\(([^,]+),\s*([^)]+)\)/);
-  if(m)t=t.replace(/translate\([^)]+\)/,'translate('+(parseFloat(m[1])+dx)+','+(parseFloat(m[2])+dy)+')');
-  else t='translate('+dx+','+dy+') '+t;
-  obj.el.setAttribute('transform',t.trim());
+function translateElementWorld(el,dx,dy){
+  if(!el || (!dx && !dy)) return;
+  // Konsolider den eksisterende transform og flyt i FORÆLDERENS/lærredets koordinater.
+  // Ved spejling (negativ scale) må vi ikke ændre lokale x/y eller en intern translate,
+  // for så bliver selve musebevægelsen også spejlet.
+  try{
+    const base=el.transform && el.transform.baseVal ? el.transform.baseVal.consolidate() : null;
+    if(base){
+      const m=base.matrix;
+      el.setAttribute('transform','matrix('+[m.a,m.b,m.c,m.d,m.e+dx,m.f+dy].join(' ')+')');
+      return;
+    }
+  }catch(_){ }
+  const t=(el.getAttribute('transform')||'').trim();
+  el.setAttribute('transform',('translate('+dx+' '+dy+') '+t).trim());
 }
-['propW','propH'].forEach(id=>{const el=document.getElementById(id);if(el){el.addEventListener('change',()=>applyProps(true));el.addEventListener('input',()=>applyProps(false))}});
+function setTranslate(obj,dx,dy){
+  translateElementWorld(obj.el,dx,dy);
+}
+['propW','propH'].forEach(id=>{const el=document.getElementById(id);if(el){
+  // Vent til Enter/tab/fokus-skift. Live-skalering ved hvert tastetryk (fx 6 → 60 → 600)
+  // gav især importerede SVG-matricer unødige og meget store mellemskaleringer.
+  el.addEventListener('change',()=>applyProps(true));
+}});
 
 function applyTextProps(saveUndo){
   if(selectedIds.length!==1)return;
@@ -1592,9 +1945,30 @@ function flipSelected(axis){
 
 document.addEventListener('keydown',e=>{
   if(isTypingTarget(e.target)) return;
-  if(e.key==='Escape'){setAboutOpen(false);setOffsetOpen(false);setArrayOpen(false);cancelDraw();deselectAll();nodeEdit=null;nodeDrag=null;refreshUI()}
+  if(e.key==='Escape'){setAboutOpen(false);setOffsetOpen(false);setArrayOpen(false);cancelDraw();deselectAll();nodeEdit=null;nodeDrag=null;nodeMarqueeState=null;document.getElementById('nodeMarqueeBox')?.remove();refreshUI()}
   if(aboutModal?.classList.contains('show')||offsetModal?.classList.contains('show')||arrayModal?.classList.contains('show'))return;
-  if((e.key==='Delete'||e.key==='Backspace')&&!e.target.matches('input'))deleteSelected();
+
+  // Ctrl/Cmd+A = markér alle objekter på tegnefladen.
+  if((e.ctrlKey||e.metaKey) && (e.key==='a'||e.key==='A')){
+    e.preventDefault();
+    selectedIds=objects.map(o=>o.id);
+    // Ctrl+A er objektmarkering – forlad evt. aktiv punktmarkering.
+    if(nodeEdit){ nodeEdit.selectedIndex=null; nodeEdit.selectedIndices=[]; }
+    refreshUI();
+    return;
+  }
+
+  // I stiredigering sletter Delete/Backspace først det markerede ankerpunkt.
+  // Uden et markeret punkt bevares den normale funktion: slet valgte objekter.
+  if((e.key==='Delete'||e.key==='Backspace')&&!e.target.matches('input')){
+    e.preventDefault();
+    if(tool==='node' && nodeEdit && getSelectedNodeIndices().length){
+      deleteSelectedNodes();
+    }else{
+      deleteSelected();
+    }
+    return;
+  }
   // V = select tool only without Ctrl/Cmd (Ctrl+V = paste)
   if((e.key==='v'||e.key==='V') && !(e.ctrlKey||e.metaKey)) document.querySelector('[data-tool="select"]')?.click();
   if((e.ctrlKey||e.metaKey) && (e.key==='z'||e.key==='Z')){e.preventDefault();undo();}
@@ -1646,6 +2020,7 @@ document.getElementById('btnFlipV')?.addEventListener('click',()=>flipSelected('
 
 
 function onDown(e){
+  if(e.button===1 || panState)return;
   const pt=svgPt(e);startPt=pt;
   if(tool==='select'){
     // 1) Resize handle?
@@ -1663,26 +2038,43 @@ function onDown(e){
         document.getElementById('noSelection').classList.add('hidden');
         document.getElementById('selectionProps').classList.remove('hidden');
         pushUndo();
-        resizeState = { handle: hid, objId: oid, origin: Object.assign({}, getWorldBBox(obj)) };
+        resizeState = {
+          handle: hid,
+          objId: oid,
+          origin: Object.assign({}, getWorldBBox(obj)),
+          baseTransform: obj.el.getAttribute('transform') || ''
+        };
         dragOffset = null;
         const cursors = {nw:'nwse-resize',se:'nwse-resize',ne:'nesw-resize',sw:'nesw-resize'};
         svg.style.cursor = cursors[hid] || 'default';
       }
       return;
     }
-    // 2) Object click
+    // 2) Object click. If SVG hit-testing misses (typical for fill="none"),
+    // fall back to the topmost object's visual bounding box.
     let target = e.target.closest ? e.target.closest('[data-id]') : null;
     if(!target && e.target.getAttribute && e.target.getAttribute('data-id')) target = e.target;
+    let hitObj=null;
+    let id=null;
     if(target){
-      const id = target.getAttribute('data-id') || target.dataset.id;
+      id = target.getAttribute('data-id') || target.dataset.id;
+      hitObj = objects.find(o=>o.id===id)||null;
+    }else{
+      hitObj=findTopmostObjectAtPoint(pt);
+      if(hitObj)id=hitObj.id;
+    }
+    if(id){
       if(e.shiftKey) toggleSelect(id);
       else {
-        selectOnly(id);
-        const obj = objects.find(o=>o.id===id);
+        // Clicking one member of an existing multi-selection must not collapse it
+        // before dragging; make the clicked object primary and move the full set.
+        if(!selectedIds.includes(id)) selectOnly(id);
+        const ids=[id,...selectedIds.filter(x=>x!==id)];
+        const obj = hitObj || objects.find(o=>o.id===id);
         if(obj){
           const b = getWorldBBox(obj);
           pushUndo();
-          dragOffset = { x: pt.x - b.x, y: pt.y - b.y, ids: selectedIds.slice() };
+          dragOffset = { x: pt.x - b.x, y: pt.y - b.y, ids };
           resizeState = null;
         }
       }
@@ -1720,18 +2112,63 @@ function onDown(e){
 
 
   if(tool==='node'){
-    // click node handle or select path for editing
+    // Klik på nodehåndtag: markér/drag node. Shift kan tilføje/fjerne en node fra markeringen.
     const nh = e.target.closest ? e.target.closest('[data-node]') : null;
     if(nh){
       e.preventDefault(); e.stopPropagation();
       const idx = parseInt(nh.getAttribute('data-node'),10);
       const kind = nh.getAttribute('data-kind')||'anchor';
       if(nodeEdit && nodeEdit.pts[idx]){
+        let sel=getSelectedNodeIndices();
+        if(kind==='anchor' && e.shiftKey){
+          sel=sel.includes(idx) ? sel.filter(i=>i!==idx) : sel.concat(idx);
+          setSelectedNodeIndices(sel);
+        }else if(!sel.includes(idx) || kind!=='anchor'){
+          setSelectedNodeIndices([idx]);
+        }
+        drawNodeHandles();
         pushUndo();
-        nodeDrag = { idx, kind, start: pt, orig: JSON.parse(JSON.stringify(nodeEdit.pts[idx])) };
+        const dragSel=(kind==='anchor' && getSelectedNodeIndices().includes(idx)) ? getSelectedNodeIndices() : [idx];
+        nodeDrag = {
+          idx, kind, start: nodeWorldToLocal(svgPtRaw(e)),
+          orig: JSON.parse(JSON.stringify(nodeEdit.pts[idx])),
+          multi: dragSel.map(i=>({idx:i,orig:JSON.parse(JSON.stringify(nodeEdit.pts[i]))}))
+        };
       }
       return;
     }
+
+    // Når en sti allerede redigeres, starter et træk på selve tegnefladen en
+    // markeringskasse for noder. På mouseup afgøres om det var et træk eller et klik.
+    if(nodeEdit){
+      e.preventDefault(); e.stopPropagation();
+      const raw=svgPtRaw(e);
+      const target=e.target.closest ? e.target.closest('[data-id]') : null;
+      nodeMarqueeState={
+        x1:raw.x,y1:raw.y,x2:raw.x,y2:raw.y,
+        additive:e.shiftKey,
+        baseSelection:getSelectedNodeIndices().slice(),
+        downTargetId:target ? (target.getAttribute('data-id')||target.dataset.id) : null,
+        downTargetEl:e.target
+      };
+      let box=document.getElementById('nodeMarqueeBox');
+      if(!box){
+        box=document.createElementNS(SVG_NS,'rect');
+        box.id='nodeMarqueeBox';
+        box.setAttribute('fill','rgba(45,158,95,0.12)');
+        box.setAttribute('stroke','#2d9e5f');
+        box.setAttribute('stroke-width','0.6');
+        box.setAttribute('stroke-dasharray','3 2');
+        box.setAttribute('vector-effect','non-scaling-stroke');
+        box.setAttribute('pointer-events','none');
+        tempG.appendChild(box);
+      }
+      box.setAttribute('x',raw.x);box.setAttribute('y',raw.y);
+      box.setAttribute('width',0);box.setAttribute('height',0);box.style.display='';
+      return;
+    }
+
+    // Ingen aktiv node-redigering endnu: klik på en figur for at starte.
     let target = e.target.closest ? e.target.closest('[data-id]') : null;
     if(target){
       const id = target.getAttribute('data-id')||target.dataset.id;
@@ -1753,7 +2190,7 @@ function onDown(e){
         startNodeEdit(obj);
       }
     } else {
-      nodeEdit=null; nodeDrag=null; deselectAll();
+      nodeEdit=null; nodeDrag=null; nodeMarqueeState=null; document.getElementById('nodeMarqueeBox')?.remove(); deselectAll();
     }
     return;
   }
@@ -1859,6 +2296,7 @@ function updateRegularPolygon(center, edgePt, sides, el){
 
 
 function onMove(e){
+  if(panState)return;
   const pt=svgPt(e);
   if(tool==='select'&&marqueeState){
     marqueeState.x2 = pt.x;
@@ -1877,7 +2315,11 @@ function onMove(e){
   if(tool==='select'&&resizeState){
     const obj=objects.find(o=>o.id===resizeState.objId);
     if(obj){
-      resizeObject(obj, resizeState.handle, pt.x, pt.y, resizeState.origin, !!e.shiftKey);
+      // Importerede SVG'er skal som udgangspunkt beholde proportionerne. Det
+      // forhindrer at en opløst del bliver strakt/skæv ved almindelig hjørneskalering.
+      // Hold Shift nede hvis man bevidst vil skalere bredde/højde uafhængigt.
+      const keepRatio=(obj.data&&obj.data.importedSvg)?!e.shiftKey:!!e.shiftKey;
+      resizeObject(obj, resizeState.handle, pt.x, pt.y, resizeState.origin, keepRatio, resizeState.baseTransform);
       // update props live
       const b=getWorldBBox(obj);
       document.getElementById('propW').value=Math.round(b.width*10)/10;
@@ -1905,13 +2347,33 @@ function onMove(e){
     refreshUI();return;
   }
 
+  if(tool==='node'&&nodeMarqueeState&&nodeEdit){
+    const raw=svgPtRaw(e);
+    nodeMarqueeState.x2=raw.x; nodeMarqueeState.y2=raw.y;
+    const box=document.getElementById('nodeMarqueeBox');
+    if(box){
+      const x=Math.min(nodeMarqueeState.x1,nodeMarqueeState.x2);
+      const y=Math.min(nodeMarqueeState.y1,nodeMarqueeState.y2);
+      const w=Math.abs(nodeMarqueeState.x2-nodeMarqueeState.x1);
+      const h=Math.abs(nodeMarqueeState.y2-nodeMarqueeState.y1);
+      box.setAttribute('x',x);box.setAttribute('y',y);box.setAttribute('width',w);box.setAttribute('height',h);
+    }
+    return;
+  }
   if(tool==='node'&&nodeDrag&&nodeEdit){
-    const dx=pt.x-nodeDrag.start.x, dy=pt.y-nodeDrag.start.y;
+    const raw=nodeWorldToLocal(svgPtRaw(e));
+    const dx=raw.x-nodeDrag.start.x, dy=raw.y-nodeDrag.start.y;
     const p=nodeEdit.pts[nodeDrag.idx];
     if(nodeDrag.kind==='anchor'){
-      p.x=nodeDrag.orig.x+dx; p.y=nodeDrag.orig.y+dy;
-      if(p.h1){p.h1.x=nodeDrag.orig.h1.x+dx; p.h1.y=nodeDrag.orig.h1.y+dy;}
-      if(p.h2){p.h2.x=nodeDrag.orig.h2.x+dx; p.h2.y=nodeDrag.orig.h2.y+dy;}
+      // Hvis flere ankre er markeret, flyttes de samlet.
+      const multi=(nodeDrag.multi&&nodeDrag.multi.length)?nodeDrag.multi:[{idx:nodeDrag.idx,orig:nodeDrag.orig}];
+      multi.forEach(item=>{
+        const q=nodeEdit.pts[item.idx], o=item.orig;
+        if(!q||!o)return;
+        q.x=o.x+dx; q.y=o.y+dy;
+        if(q.h1&&o.h1){q.h1.x=o.h1.x+dx;q.h1.y=o.h1.y+dy;}
+        if(q.h2&&o.h2){q.h2.x=o.h2.x+dx;q.h2.y=o.h2.y+dy;}
+      });
     } else if(nodeDrag.kind==='h1'&&p.h1){
       p.h1.x=nodeDrag.orig.h1.x+dx; p.h1.y=nodeDrag.orig.h1.y+dy;
     } else if(nodeDrag.kind==='h2'&&p.h2){
@@ -2019,9 +2481,11 @@ function onUp(e){
     if(resizeState){
       const oid=resizeState.objId;
       resizeState=null;
-      // bake path transform after resize so nodes stay correct
       const o=objects.find(x=>x.id===oid);
-      if(o && (o.type==='path'||o.type==='traced')) bakePathTransform(o);
+      // VIGTIGT: importerede/komplekse SVG-paths må IKKE bages tilbage til 'd'
+      // efter skalering. Den gamle bakePathTransform-parser kan ikke bevare alle
+      // SVG-kommandoer (bl.a. buer og flere delstier) og var årsagen til de lange
+      // diagonaler/ødelagte figurer. Transform-matricen er tabsfri og beholdes.
       refreshUI();
       if(tool==='node' && o){ startNodeEdit(o); }
     }
@@ -2030,6 +2494,35 @@ function onUp(e){
     return;
   }
   if(tool==='node'){
+    if(nodeMarqueeState&&nodeEdit){
+      const st=nodeMarqueeState;
+      const x=Math.min(st.x1,st.x2), y=Math.min(st.y1,st.y2);
+      const w=Math.abs(st.x2-st.x1), h=Math.abs(st.y2-st.y1);
+      document.getElementById('nodeMarqueeBox')?.remove();
+      nodeMarqueeState=null;
+      if(w>1.5 || h>1.5){
+        const hit=[];
+        nodeEdit.pts.forEach((p,i)=>{
+          const q=nodeLocalToWorld(p);
+          if(q&&q.x>=x && q.x<=x+w && q.y>=y && q.y<=y+h) hit.push(i);
+        });
+        const next=st.additive ? Array.from(new Set(st.baseSelection.concat(hit))) : hit;
+        setSelectedNodeIndices(next);
+        drawNodeHandles();
+        setStatus(next.length===1?'1 node markeret':next.length+' noder markeret');
+      }else{
+        // Et almindeligt klik uden drag: klik på en anden figur skifter node-redigering.
+        if(st.downTargetId && st.downTargetId!==nodeEdit.objId){
+          const obj=objects.find(o=>o.id===st.downTargetId);
+          if(obj && obj.type!=='image' && obj.type!=='text'){
+            selectOnly(obj.id); startNodeEdit(obj);
+          }
+        }else if(!st.additive){
+          setSelectedNodeIndices([]); drawNodeHandles();
+        }
+      }
+      return;
+    }
     if(nodeDrag){
       nodeDrag=null;
       // ensure path is consistent
@@ -2121,14 +2614,14 @@ function onDbl(e){
 
 function insertNodeAt(pt){
   if(!nodeEdit || !nodeEdit.pts.length) return;
+  pt=nodeWorldToLocal(pt);
   const pts = nodeEdit.pts;
-  let bestI = 0, bestD = Infinity, bestP = pt;
+  let bestI = -1, bestD = Infinity, bestP = pt;
   const n = pts.length;
-  const closed = nodeEdit.closed;
-  const count = closed ? n : n - 1;
-  for(let i=0;i<count;i++){
-    const a = pts[i], b = pts[(i+1)%n];
-    // project onto segment a->b
+  for(let i=0;i<n-1;i++){
+    const a=pts[i],b=pts[i+1];
+    // Never connect two separate SVG subpaths while finding an insertion edge.
+    if(b.move || (Number.isInteger(a.subpath)&&Number.isInteger(b.subpath)&&a.subpath!==b.subpath))continue;
     const dx=b.x-a.x, dy=b.y-a.y;
     const len2=dx*dx+dy*dy || 1e-12;
     let t=((pt.x-a.x)*dx+(pt.y-a.y)*dy)/len2;
@@ -2137,12 +2630,14 @@ function insertNodeAt(pt){
     const d=Math.hypot(pt.x-px, pt.y-py);
     if(d<bestD){ bestD=d; bestI=i; bestP={x:px,y:py}; }
   }
+  if(bestI<0){setStatus('Ingen egnet del af stien til nyt punkt');return;}
   // don't insert too close to existing anchors
   if(bestD > SNAP_MM * 8 && n > 2) {
     // still allow if reasonably near edge - use larger threshold for sparse paths
   }
   pushUndo();
-  const newNode = {x:bestP.x, y:bestP.y, h1:null, h2:null};
+  const base=pts[bestI];
+  const newNode = {x:bestP.x, y:bestP.y, h1:null, h2:null,move:false,close:false,subpath:Number.isInteger(base.subpath)?base.subpath:0,arc:null};
   pts.splice(bestI+1, 0, newNode);
   applyNodeEdit();
   drawNodeHandles();
@@ -2260,13 +2755,18 @@ function commitInlineText(){
   el.setAttribute('font-weight','bold');
   el.textContent = txt;
   applyMode(el, currentMode);
-  if(currentMode==='engrave'){
+  if(currentMode==='engrave' && !isScanNCutPageSize()){
     el.setAttribute('fill', ENG);
     el.setAttribute('stroke','none');
   } else {
-    el.setAttribute('fill','transparent');
+    el.setAttribute('fill','none');
     el.setAttribute('stroke', strokeFor(currentMode));
     el.setAttribute('stroke-width',String(STROKE_MM));
+    el.setAttribute('vector-effect','non-scaling-stroke');
+    el.setAttribute('stroke-linecap','round');
+    el.setAttribute('stroke-linejoin','round');
+    el.setAttribute('shape-rendering','geometricPrecision');
+    el.setAttribute('text-rendering','geometricPrecision');
   }
   addObject('text', el, { mode: currentMode, text: txt });
 }
@@ -2411,155 +2911,289 @@ function finishBezier(closed){
 }
 
 
-function parsePathNodes(d){
-  // Parse M/L/C/Z into anchor list with optional handles
-  const pts=[];
-  if(!d) return pts;
-  const cmds = d.match(/[MLCSQTAZmlcsqtaz][^MLCSQTAZmlcsqtaz]*/g)||[];
-  let cx=0,cy=0, startX=0, startY=0;
-  cmds.forEach(cmd=>{
-    const t=cmd[0];
-    const nums=cmd.slice(1).trim().split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
-    const up=t.toUpperCase();
-    const rel=t===t.toLowerCase();
-    if(up==='M'&&nums.length>=2){
-      cx=rel?cx+nums[0]:nums[0]; cy=rel?cy+nums[1]:nums[1];
-      startX=cx; startY=cy;
-      pts.push({x:cx,y:cy,h1:null,h2:null});
-      for(let i=2;i+1<nums.length;i+=2){
-        cx=rel?cx+nums[i]:nums[i]; cy=rel?cy+nums[i+1]:nums[i+1];
-        pts.push({x:cx,y:cy,h1:null,h2:null});
-      }
-    } else if(up==='L'){
-      for(let i=0;i+1<nums.length;i+=2){
-        cx=rel?cx+nums[i]:nums[i]; cy=rel?cy+nums[i+1]:nums[i+1];
-        pts.push({x:cx,y:cy,h1:null,h2:null});
-      }
-    } else if(up==='C'&&nums.length>=6){
-      for(let i=0;i+5<nums.length;i+=6){
-        const x1=rel?cx+nums[i]:nums[i], y1=rel?cy+nums[i+1]:nums[i+1];
-        const x2=rel?cx+nums[i+2]:nums[i+2], y2=rel?cy+nums[i+3]:nums[i+3];
-        const x=rel?cx+nums[i+4]:nums[i+4], y=rel?cy+nums[i+5]:nums[i+5];
-        if(pts.length){ pts[pts.length-1].h2={x:x1,y:y1}; }
-        pts.push({x:x,y:y,h1:{x:x2,y:y2},h2:null});
-        cx=x; cy=y;
-      }
-    } else if(up==='Z'){
-      // closed – ignore for node list (path already has points)
-    }
-  });
-  return pts;
+function pathDataTokens(d){
+  const out=[];
+  const re=/([a-zA-Z])|([-+]?(?:\d*\.\d+|\d+\.?)(?:[eE][-+]?\d+)?)/g;
+  let m;
+  while((m=re.exec(d||''))){
+    if(m[1]) out.push({type:'cmd',value:m[1]});
+    else out.push({type:'num',value:Number(m[2])});
+  }
+  return out;
 }
-function nodesToPathD(pts, closed){
-  if(!pts.length) return '';
-  let d='M '+pts[0].x.toFixed(2)+' '+pts[0].y.toFixed(2);
-  for(let i=1;i<pts.length;i++){
-    const prev=pts[i-1], a=pts[i];
-    if(prev.h2 || a.h1){
-      const c1=prev.h2||prev, c2=a.h1||a;
-      d+=' C '+c1.x.toFixed(2)+' '+c1.y.toFixed(2)+' '+c2.x.toFixed(2)+' '+c2.y.toFixed(2)+' '+a.x.toFixed(2)+' '+a.y.toFixed(2);
-    } else {
-      d+=' L '+a.x.toFixed(2)+' '+a.y.toFixed(2);
+function parsePathNodes(d){
+  // Full SVG path parser for node editing. H/V become lines, Q/T/S are
+  // normalized to cubic Béziers, while A (arc) is preserved as an arc segment.
+  // Multiple subpaths are kept separate, so compound imported SVG paths are not
+  // accidentally joined by long diagonal lines when a node is edited.
+  const tokens=pathDataTokens(d);
+  const pts=[];
+  let i=0,cmd=null,cx=0,cy=0,sx=0,sy=0,subpath=-1;
+  let prevSeg='',lastCubic=null,lastQuad=null;
+  const isNum=()=>i<tokens.length&&tokens[i].type==='num';
+  const canRead=n=>{for(let k=0;k<n;k++)if(i+k>=tokens.length||tokens[i+k].type!=='num')return false;return true;};
+  const nums=n=>{const a=[];for(let k=0;k<n;k++)a.push(tokens[i++].value);return a;};
+  const absXY=(x,y,rel)=>({x:rel?cx+x:x,y:rel?cy+y:y});
+  const addLine=(x,y)=>{pts.push({x,y,h1:null,h2:null,move:false,close:false,subpath,arc:null});cx=x;cy=y;lastCubic=null;lastQuad=null;prevSeg='L';};
+  const addCubic=(c1x,c1y,c2x,c2y,x,y)=>{
+    const prev=pts[pts.length-1];
+    if(prev&&prev.subpath===subpath)prev.h2={x:c1x,y:c1y};
+    pts.push({x,y,h1:{x:c2x,y:c2y},h2:null,move:false,close:false,subpath,arc:null});
+    cx=x;cy=y;lastCubic={x:c2x,y:c2y};lastQuad=null;prevSeg='C';
+  };
+  while(i<tokens.length){
+    if(tokens[i].type==='cmd')cmd=tokens[i++].value;
+    if(!cmd)break;
+    let up=cmd.toUpperCase(),rel=cmd!==up;
+    if(up==='Z'){
+      for(let j=pts.length-1;j>=0;j--){if(pts[j].subpath===subpath){pts[j].close=true;break;}}
+      cx=sx;cy=sy;lastCubic=null;lastQuad=null;prevSeg='Z';cmd=null;continue;
+    }
+    if(up==='M'){
+      let first=true;
+      while(canRead(2)){
+        const [vx,vy]=nums(2);const p=absXY(vx,vy,rel);
+        if(first){
+          subpath++;cx=p.x;cy=p.y;sx=cx;sy=cy;
+          pts.push({x:cx,y:cy,h1:null,h2:null,move:true,close:false,subpath,arc:null});
+          first=false;lastCubic=null;lastQuad=null;prevSeg='M';
+        }else addLine(p.x,p.y);
+        if(!isNum())break;
+      }
+      cmd=rel?'l':'L';
+      continue;
+    }
+    const count={L:2,H:1,V:1,C:6,S:4,Q:4,T:2,A:7}[up];
+    if(!count){cmd=null;continue;}
+    if(!canRead(count)){cmd=null;continue;}
+    while(canRead(count)){
+      const a=nums(count);
+      if(up==='L'){
+        const p=absXY(a[0],a[1],rel);addLine(p.x,p.y);
+      }else if(up==='H'){
+        addLine(rel?cx+a[0]:a[0],cy);
+      }else if(up==='V'){
+        addLine(cx,rel?cy+a[0]:a[0]);
+      }else if(up==='C'){
+        const c1=absXY(a[0],a[1],rel),c2=absXY(a[2],a[3],rel),p=absXY(a[4],a[5],rel);
+        addCubic(c1.x,c1.y,c2.x,c2.y,p.x,p.y);
+      }else if(up==='S'){
+        const c1=(prevSeg==='C'&&lastCubic)?{x:2*cx-lastCubic.x,y:2*cy-lastCubic.y}:{x:cx,y:cy};
+        const c2=absXY(a[0],a[1],rel),p=absXY(a[2],a[3],rel);
+        addCubic(c1.x,c1.y,c2.x,c2.y,p.x,p.y);
+      }else if(up==='Q'){
+        const q=absXY(a[0],a[1],rel),p=absXY(a[2],a[3],rel);
+        const c1={x:cx+(2/3)*(q.x-cx),y:cy+(2/3)*(q.y-cy)};
+        const c2={x:p.x+(2/3)*(q.x-p.x),y:p.y+(2/3)*(q.y-p.y)};
+        addCubic(c1.x,c1.y,c2.x,c2.y,p.x,p.y);
+        lastQuad=q;prevSeg='Q';lastCubic=null;
+      }else if(up==='T'){
+        const q=(prevSeg==='Q'&&lastQuad)?{x:2*cx-lastQuad.x,y:2*cy-lastQuad.y}:{x:cx,y:cy};
+        const p=absXY(a[0],a[1],rel);
+        const c1={x:cx+(2/3)*(q.x-cx),y:cy+(2/3)*(q.y-cy)};
+        const c2={x:p.x+(2/3)*(q.x-p.x),y:p.y+(2/3)*(q.y-p.y)};
+        addCubic(c1.x,c1.y,c2.x,c2.y,p.x,p.y);
+        lastQuad=q;prevSeg='Q';lastCubic=null;
+      }else if(up==='A'){
+        const p=absXY(a[5],a[6],rel);
+        pts.push({x:p.x,y:p.y,h1:null,h2:null,move:false,close:false,subpath,
+          arc:{rx:Math.abs(a[0]),ry:Math.abs(a[1]),rot:a[2]||0,laf:a[3]?1:0,sf:a[4]?1:0}});
+        cx=p.x;cy=p.y;lastCubic=null;lastQuad=null;prevSeg='A';
+      }
+      if(!isNum())break;
     }
   }
-  if(closed) d+=' Z';
-  return d;
+  return pts;
+}
+function fmtPathNum(v){
+  if(!isFinite(v))return '0';
+  const n=Math.abs(v)<1e-10?0:Number(v.toFixed(6));
+  return String(n);
+}
+function nodesToPathD(pts, closed){
+  if(!pts.length)return '';
+  let d='';
+  const structured=pts.some(p=>p.move||p.close||p.arc||Number.isInteger(p.subpath));
+  let prev=null;
+  pts.forEach((p,idx)=>{
+    const newSub=idx===0||p.move||(prev&&Number.isInteger(p.subpath)&&Number.isInteger(prev.subpath)&&p.subpath!==prev.subpath);
+    if(newSub){
+      d+=(d?' ':'')+'M '+fmtPathNum(p.x)+' '+fmtPathNum(p.y);
+    }else if(p.arc){
+      const a=p.arc;
+      d+=' A '+fmtPathNum(a.rx)+' '+fmtPathNum(a.ry)+' '+fmtPathNum(a.rot)+' '+(a.laf?1:0)+' '+(a.sf?1:0)+' '+fmtPathNum(p.x)+' '+fmtPathNum(p.y);
+    }else if((prev&&prev.h2)||p.h1){
+      const c1=(prev&&prev.h2)||prev||p,c2=p.h1||p;
+      d+=' C '+fmtPathNum(c1.x)+' '+fmtPathNum(c1.y)+' '+fmtPathNum(c2.x)+' '+fmtPathNum(c2.y)+' '+fmtPathNum(p.x)+' '+fmtPathNum(p.y);
+    }else{
+      d+=' L '+fmtPathNum(p.x)+' '+fmtPathNum(p.y);
+    }
+    if(p.close)d+=' Z';
+    prev=p;
+  });
+  if(!structured&&closed)d+=' Z';
+  return d.trim();
+}
+function nodeMatrixForObject(obj){
+  const m=matrixRelativeToObjects(obj.el);
+  if(!m)return {a:1,b:0,c:0,d:1,e:0,f:0};
+  return {a:m.a,b:m.b,c:m.c,d:m.d,e:m.e,f:m.f};
+}
+function nodeLocalToWorld(p){
+  if(!p)return null;
+  const m=(nodeEdit&&nodeEdit.matrix)||{a:1,b:0,c:0,d:1,e:0,f:0};
+  return {x:m.a*p.x+m.c*p.y+m.e,y:m.b*p.x+m.d*p.y+m.f};
+}
+function nodeWorldToLocal(p){
+  if(!p)return null;
+  const m=(nodeEdit&&nodeEdit.matrix)||{a:1,b:0,c:0,d:1,e:0,f:0};
+  const det=m.a*m.d-m.b*m.c;
+  if(Math.abs(det)<1e-12)return {x:p.x,y:p.y};
+  const x=p.x-m.e,y=p.y-m.f;
+  return {x:(m.d*x-m.c*y)/det,y:(-m.b*x+m.a*y)/det};
+}
+function copyShapePresentationToPath(from,path,exclude){
+  const ex=new Set(exclude||[]);
+  Array.from(from.attributes||[]).forEach(a=>{
+    if(ex.has(a.name)||a.name==='data-id')return;
+    path.setAttribute(a.name,a.value);
+  });
 }
 function startNodeEdit(obj){
   let pts=[];
-  // Groups: cannot edit as a whole – tip user to click a path inside
   if(obj.type==='group'){
     setStatus('Node: klik en sti inde i gruppen');
     return;
   }
-  // Bake any scale/translate so node coords match visual size
-  if(obj.type==='path'||obj.type==='traced') bakePathTransform(obj);
-  // Polygon with transform → path + bake
-  if(obj.type==='polygon' && obj.el.getAttribute('transform')){
-    const raw=(obj.el.getAttribute('points')||'').trim().split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
-    let d='';
-    for(let i=0;i+1<raw.length;i+=2) d+=(i===0?'M ':'L ')+raw[i]+' '+raw[i+1]+' ';
-    d+='Z';
-    const path=document.createElementNS(SVG_NS,'path');
-    path.setAttribute('d', d.trim());
-    path.setAttribute('fill-rule','evenodd');
-    path.setAttribute('transform', obj.el.getAttribute('transform'));
-    ['fill','stroke','stroke-width','opacity'].forEach(a=>{ if(obj.el.hasAttribute(a)) path.setAttribute(a, obj.el.getAttribute(a)); });
-    const mode=obj.data.mode||detectMode(obj);
-    path.setAttribute('pointer-events','all');
-    path.dataset.id=obj.id;
-    obj.el.replaceWith(path);
-    obj.el=path;
-    obj.type='path';
-    obj.data.mode=mode;
-    bakePathTransform(obj);
-  }
-  // Convert rect/ellipse to editable path once
+
+  // Rect/ellipse are converted once to an equivalent LOCAL path, but their
+  // transform is preserved. We never bake an imported path transform into d.
   if(obj.type==='rect'){
-
-    const x=+obj.el.getAttribute('x')||0, y=+obj.el.getAttribute('y')||0;
-    const w=+obj.el.getAttribute('width')||0, h=+obj.el.getAttribute('height')||0;
-    const d='M '+x+' '+y+' L '+(x+w)+' '+y+' L '+(x+w)+' '+(y+h)+' L '+x+' '+(y+h)+' Z';
+    const x=+obj.el.getAttribute('x')||0,y=+obj.el.getAttribute('y')||0;
+    const w=+obj.el.getAttribute('width')||0,h=+obj.el.getAttribute('height')||0;
     const path=document.createElementNS(SVG_NS,'path');
-    path.setAttribute('d',d);
-    path.setAttribute('fill-rule','evenodd');
-    const mode=obj.data.mode||detectMode(obj);
-    applyMode(path, mode);
-    path.setAttribute('pointer-events','all');
-    path.dataset.id=obj.id;
-    obj.el.replaceWith(path);
-    obj.el=path;
-    obj.type='path';
-    obj.data.mode=mode;
-  } else if(obj.type==='ellipse'){
-    const cx=+obj.el.getAttribute('cx')||0, cy=+obj.el.getAttribute('cy')||0;
-    const rx=Math.max(0.5,+obj.el.getAttribute('rx')||0), ry=Math.max(0.5,+obj.el.getAttribute('ry')||0);
-    // approximate ellipse with 4 cubic beziers (kappa)
-    const k=0.5522847498;
-    const d=[
-      'M',cx-rx,cy,
-      'C',cx-rx,cy-k*ry, cx-k*rx,cy-ry, cx,cy-ry,
-      'C',cx+k*rx,cy-ry, cx+rx,cy-k*ry, cx+rx,cy,
-      'C',cx+rx,cy+k*ry, cx+k*rx,cy+ry, cx,cy+ry,
-      'C',cx-k*rx,cy+ry, cx-rx,cy+k*ry, cx-rx,cy,'Z'
-    ].join(' ');
+    copyShapePresentationToPath(obj.el,path,['x','y','width','height','rx','ry']);
+    path.setAttribute('d','M '+x+' '+y+' L '+(x+w)+' '+y+' L '+(x+w)+' '+(y+h)+' L '+x+' '+(y+h)+' Z');
+    path.dataset.id=obj.id;path.setAttribute('pointer-events','all');
+    obj.el.replaceWith(path);obj.el=path;obj.type='path';
+  }else if(obj.type==='ellipse'){
+    const cx=+obj.el.getAttribute('cx')||0,cy=+obj.el.getAttribute('cy')||0;
+    const rx=Math.max(0.0001,+obj.el.getAttribute('rx')||0),ry=Math.max(0.0001,+obj.el.getAttribute('ry')||0);
+    const k=0.5522847498307936;
+    const d=['M',cx-rx,cy,
+      'C',cx-rx,cy-k*ry,cx-k*rx,cy-ry,cx,cy-ry,
+      'C',cx+k*rx,cy-ry,cx+rx,cy-k*ry,cx+rx,cy,
+      'C',cx+rx,cy+k*ry,cx+k*rx,cy+ry,cx,cy+ry,
+      'C',cx-k*rx,cy+ry,cx-rx,cy+k*ry,cx-rx,cy,'Z'].join(' ');
     const path=document.createElementNS(SVG_NS,'path');
-    path.setAttribute('d',d);
-    path.setAttribute('fill-rule','evenodd');
-    const mode=obj.data.mode||detectMode(obj);
-    applyMode(path, mode);
-    path.setAttribute('pointer-events','all');
-    path.dataset.id=obj.id;
-    obj.el.replaceWith(path);
-    obj.el=path;
-    obj.type='path';
-    obj.data.mode=mode;
+    copyShapePresentationToPath(obj.el,path,['cx','cy','rx','ry','r']);
+    path.setAttribute('d',d);path.dataset.id=obj.id;path.setAttribute('pointer-events','all');
+    obj.el.replaceWith(path);obj.el=path;obj.type='path';
   }
 
+  const matrix=nodeMatrixForObject(obj);
   if(obj.type==='polygon'){
     const raw=(obj.el.getAttribute('points')||'').trim().split(/[\s,]+/).map(Number).filter(n=>!isNaN(n));
-    for(let i=0;i+1<raw.length;i+=2) pts.push({x:raw[i],y:raw[i+1],h1:null,h2:null});
-    nodeEdit={objId:obj.id, pts, closed:true, type:'polygon'};
-  } else if(obj.type==='line'){
-    pts=[
-      {x:+obj.el.getAttribute('x1'),y:+obj.el.getAttribute('y1'),h1:null,h2:null},
-      {x:+obj.el.getAttribute('x2'),y:+obj.el.getAttribute('y2'),h1:null,h2:null}
-    ];
-    nodeEdit={objId:obj.id, pts, closed:false, type:'line'};
-  } else {
+    for(let i=0;i+1<raw.length;i+=2)pts.push({x:raw[i],y:raw[i+1],h1:null,h2:null});
+    if(!pts.length){setStatus('Ingen redigerbare punkter i figuren');return;}
+    nodeEdit={objId:obj.id,pts,closed:true,type:'polygon',selectedIndex:null,selectedIndices:[],matrix};
+  }else if(obj.type==='line'){
+    pts=[{x:+obj.el.getAttribute('x1'),y:+obj.el.getAttribute('y1'),h1:null,h2:null},{x:+obj.el.getAttribute('x2'),y:+obj.el.getAttribute('y2'),h1:null,h2:null}];
+    nodeEdit={objId:obj.id,pts,closed:false,type:'line',selectedIndex:null,selectedIndices:[],matrix};
+  }else if(obj.type==='path'||obj.type==='traced'){
     const d=obj.el.getAttribute('d')||'';
     pts=parsePathNodes(d);
     if(!pts.length){
-      // fallback: sample bbox corners
-      const b=getWorldBBox(obj);
-      pts=[{x:b.x,y:b.y,h1:null,h2:null},{x:b.x+b.width,y:b.y,h1:null,h2:null},{x:b.x+b.width,y:b.y+b.height,h1:null,h2:null},{x:b.x,y:b.y+b.height,h1:null,h2:null}];
+      // Never replace an unknown/complex imported path with bbox corners. That was
+      // the destructive fallback that could turn SVG artwork into odd polygons.
+      nodeEdit=null;
+      setStatus('Denne SVG-sti kan ikke noderedigeres sikkert');
+      return;
     }
-    nodeEdit={objId:obj.id, pts, closed:/z/i.test(d.trim().slice(-1)), type:'path'};
+    nodeEdit={objId:obj.id,pts,closed:pts.some(p=>p.close),type:'path',selectedIndex:null,selectedIndices:[],matrix};
+  }else{
+    setStatus('Denne figurtype kan ikke noderedigeres');
+    nodeEdit=null;return;
   }
   handlesG.innerHTML='';
   drawHandle(obj);
   drawNodeHandles();
 }
+function getSelectedNodeIndices(){
+  if(!nodeEdit) return [];
+  const src=Array.isArray(nodeEdit.selectedIndices) ? nodeEdit.selectedIndices : (Number.isInteger(nodeEdit.selectedIndex)?[nodeEdit.selectedIndex]:[]);
+  return Array.from(new Set(src.filter(i=>Number.isInteger(i)&&i>=0&&i<nodeEdit.pts.length))).sort((a,b)=>a-b);
+}
+function setSelectedNodeIndices(indices){
+  if(!nodeEdit) return;
+  const clean=Array.from(new Set((indices||[]).filter(i=>Number.isInteger(i)&&i>=0&&i<nodeEdit.pts.length))).sort((a,b)=>a-b);
+  nodeEdit.selectedIndices=clean;
+  // selectedIndex beholdes af kompatibilitet med ældre kode, men bruges kun ved præcis ét punkt.
+  nodeEdit.selectedIndex=clean.length===1?clean[0]:null;
+}
+function deleteSelectedNodes(){
+  if(!nodeEdit) return false;
+  const selected=getSelectedNodeIndices();
+  if(!selected.length) return false;
+
+  // Validate each SVG subpath independently. A whole subpath may be removed,
+  // but a remaining closed subpath needs 3 anchors and an open one needs 2.
+  if(nodeEdit.type==='path'){
+    const bySub=new Map();
+    nodeEdit.pts.forEach((p,i)=>{
+      const sp=Number.isInteger(p.subpath)?p.subpath:0;
+      if(!bySub.has(sp))bySub.set(sp,{idx:[],closed:false});
+      bySub.get(sp).idx.push(i);if(p.close)bySub.get(sp).closed=true;
+    });
+    for(const info of bySub.values()){
+      const remaining=info.idx.filter(i=>!selected.includes(i)).length;
+      if(remaining!==0 && remaining<(info.closed?3:2)){
+        setStatus(info.closed?'En lukket delsti skal have mindst 3 punkter':'En åben delsti skal have mindst 2 punkter');
+        return false;
+      }
+    }
+  }else{
+    const minPts=nodeEdit.closed ? 3 : 2;
+    if(nodeEdit.pts.length-selected.length<minPts){
+      setStatus(nodeEdit.closed ? 'En lukket sti skal have mindst 3 punkter' : 'En sti skal have mindst 2 punkter');
+      return false;
+    }
+  }
+
+  pushUndo();
+  const subClosed=new Map();
+  nodeEdit.pts.forEach(p=>{
+    const sp=Number.isInteger(p.subpath)?p.subpath:0;
+    if(!subClosed.has(sp))subClosed.set(sp,false);
+    if(p.close)subClosed.set(sp,true);
+  });
+  selected.slice().sort((a,b)=>b-a).forEach(idx=>nodeEdit.pts.splice(idx,1));
+
+  if(nodeEdit.type==='path'){
+    const groups=new Map();
+    nodeEdit.pts.forEach(p=>{
+      const sp=Number.isInteger(p.subpath)?p.subpath:0;
+      if(!groups.has(sp))groups.set(sp,[]);
+      groups.get(sp).push(p);
+      p.move=false;p.close=false;
+    });
+    groups.forEach((arr,sp)=>{
+      if(!arr.length)return;
+      arr[0].move=true;
+      if(subClosed.get(sp))arr[arr.length-1].close=true;
+    });
+    nodeEdit.closed=nodeEdit.pts.some(p=>p.close);
+  }
+
+  setSelectedNodeIndices([]);
+  applyNodeEdit();
+  refreshUI();
+  setStatus(selected.length===1?'Punkt slettet':selected.length+' punkter slettet');
+  return true;
+}
+// Bagudkompatibel wrapper.
+function deleteSelectedNode(){ return deleteSelectedNodes(); }
+
 function applyNodeEdit(){
   if(!nodeEdit) return;
   const obj=objects.find(o=>o.id===nodeEdit.objId); if(!obj) return;
@@ -2656,35 +3290,42 @@ function drawNodeHandles(){
   const rH = s * 0.4;
   const sw = Math.max(0.15, 0.3 / zoomLevel);
   nodeEdit.pts.forEach((p,i)=>{
+    const wp=nodeLocalToWorld(p);
+    if(!wp)return;
     if(p.h1){
+      const wh=nodeLocalToWorld(p.h1);
       const l=document.createElementNS(SVG_NS,'line');
       l.setAttribute('class','node-line');
-      l.setAttribute('x1',p.x);l.setAttribute('y1',p.y);l.setAttribute('x2',p.h1.x);l.setAttribute('y2',p.h1.y);
+      l.setAttribute('x1',wp.x);l.setAttribute('y1',wp.y);l.setAttribute('x2',wh.x);l.setAttribute('y2',wh.y);
       l.setAttribute('stroke','#2d9e5f');l.setAttribute('stroke-width',sw);l.setAttribute('pointer-events','none');
       handlesG.appendChild(l);
       const h=document.createElementNS(SVG_NS,'circle');
-      h.setAttribute('cx',p.h1.x);h.setAttribute('cy',p.h1.y);h.setAttribute('r',rH);
+      h.setAttribute('cx',wh.x);h.setAttribute('cy',wh.y);h.setAttribute('r',rH);
       h.setAttribute('fill','#fff');h.setAttribute('stroke','#2d9e5f');h.setAttribute('stroke-width',sw);
       h.setAttribute('data-node',i);h.setAttribute('data-kind','h1');
       h.style.cursor='crosshair';
       handlesG.appendChild(h);
     }
     if(p.h2){
+      const wh=nodeLocalToWorld(p.h2);
       const l=document.createElementNS(SVG_NS,'line');
       l.setAttribute('class','node-line');
-      l.setAttribute('x1',p.x);l.setAttribute('y1',p.y);l.setAttribute('x2',p.h2.x);l.setAttribute('y2',p.h2.y);
+      l.setAttribute('x1',wp.x);l.setAttribute('y1',wp.y);l.setAttribute('x2',wh.x);l.setAttribute('y2',wh.y);
       l.setAttribute('stroke','#2d9e5f');l.setAttribute('stroke-width',sw);l.setAttribute('pointer-events','none');
       handlesG.appendChild(l);
       const h=document.createElementNS(SVG_NS,'circle');
-      h.setAttribute('cx',p.h2.x);h.setAttribute('cy',p.h2.y);h.setAttribute('r',rH);
+      h.setAttribute('cx',wh.x);h.setAttribute('cy',wh.y);h.setAttribute('r',rH);
       h.setAttribute('fill','#fff');h.setAttribute('stroke','#2d9e5f');h.setAttribute('stroke-width',sw);
       h.setAttribute('data-node',i);h.setAttribute('data-kind','h2');
       h.style.cursor='crosshair';
       handlesG.appendChild(h);
     }
     const c=document.createElementNS(SVG_NS,'circle');
-    c.setAttribute('cx',p.x);c.setAttribute('cy',p.y);c.setAttribute('r',rA);
-    c.setAttribute('fill','#2d9e5f');c.setAttribute('stroke','#fff');c.setAttribute('stroke-width',sw);
+    const selectedNode=getSelectedNodeIndices().includes(i);
+    c.setAttribute('cx',wp.x);c.setAttribute('cy',wp.y);c.setAttribute('r',selectedNode?rA*1.18:rA);
+    c.setAttribute('fill',selectedNode?'#fff':'#2d9e5f');
+    c.setAttribute('stroke',selectedNode?'#2d9e5f':'#fff');
+    c.setAttribute('stroke-width',selectedNode?sw*1.8:sw);
     c.setAttribute('data-node',i);c.setAttribute('data-kind','anchor');
     c.style.cursor='move';
     handlesG.appendChild(c);
@@ -2693,6 +3334,13 @@ function drawNodeHandles(){
 
 
 function moveBy(obj,dx,dy){
+  // Alt med transform (fx spejlet/roteret tekst) flyttes som HELHED i lærredets koordinater.
+  // Det gør drag-retningen uafhængig af scale(-1,1) / scale(1,-1).
+  const hasTransform=!!((obj.el.getAttribute('transform')||'').trim());
+  if(hasTransform){
+    translateElementWorld(obj.el,dx,dy);
+    return;
+  }
   if(obj.type==='rect'||obj.type==='image'||obj.type==='text'){obj.el.setAttribute('x',(+obj.el.getAttribute('x')||0)+dx);obj.el.setAttribute('y',(+obj.el.getAttribute('y')||0)+dy)}
   else if(obj.type==='ellipse'){obj.el.setAttribute('cx',+obj.el.getAttribute('cx')+dx);obj.el.setAttribute('cy',+obj.el.getAttribute('cy')+dy)}
   else if(obj.type==='line'){['x1','y1','x2','y2'].forEach((a,i)=>obj.el.setAttribute(a,+obj.el.getAttribute(a)+(i%2===0?dx:dy)))}
@@ -2858,6 +3506,106 @@ function sanitizeImportedSvgNode(node){
   });
   return true;
 }
+const SVG_MM_PER_PX = 25.4 / 96;
+function svgLengthToMm(raw){
+  if(raw===null || raw===undefined)return null;
+  const value=String(raw).trim();
+  if(!value || value.endsWith('%'))return null;
+  const m=value.match(/^([+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?)\s*([a-zA-Z]*)$/);
+  if(!m)return null;
+  const n=Number(m[1]);
+  if(!Number.isFinite(n) || n<=0)return null;
+  const unit=(m[2]||'px').toLowerCase();
+  const factors={mm:1,cm:10,q:0.25,in:25.4,pt:25.4/72,pc:25.4/6,px:SVG_MM_PER_PX};
+  return Object.prototype.hasOwnProperty.call(factors,unit)?n*factors[unit]:null;
+}
+function readSvgViewBox(sourceSvg){
+  const raw=(sourceSvg.getAttribute('viewBox')||'').trim();
+  if(!raw)return null;
+  const v=raw.split(/[\s,]+/).map(Number);
+  if(v.length<4 || v.slice(0,4).some(x=>!Number.isFinite(x)) || v[2]<=0 || v[3]<=0)return null;
+  return {x:v[0],y:v[1],w:v[2],h:v[3]};
+}
+function getSvgPhysicalSizeMm(sourceSvg,vb){
+  let w=svgLengthToMm(sourceSvg.getAttribute('width'));
+  let h=svgLengthToMm(sourceSvg.getAttribute('height'));
+  // Hvis kun én fysisk dimension er angivet, kan den anden udledes præcist af viewBox-forholdet.
+  if(vb){
+    if(w && !h)h=w*vb.h/vb.w;
+    if(h && !w)w=h*vb.w/vb.h;
+    // SVG uden width/height har CSS-pixels som intrinsisk enhed. 96 dpi er SVG/CSS-standarden.
+    if(!w && !h){w=vb.w*SVG_MM_PER_PX;h=vb.h*SVG_MM_PER_PX;}
+  }
+  return {w,h};
+}
+function parsePreserveAspectRatio(sourceSvg){
+  let raw=(sourceSvg.getAttribute('preserveAspectRatio')||'xMidYMid meet').trim();
+  raw=raw.replace(/^defer\s+/i,'');
+  if(/^none(?:\s|$)/i.test(raw))return {none:true,meet:true,ax:0,ay:0};
+  const parts=raw.split(/\s+/);
+  const align=parts[0]||'xMidYMid';
+  const mode=(parts[1]||'meet').toLowerCase();
+  const ax=/xMin/i.test(align)?0:(/xMax/i.test(align)?1:0.5);
+  const ay=/YMin/i.test(align)?0:(/YMax/i.test(align)?1:0.5);
+  return {none:false,meet:mode!=='slice',ax,ay};
+}
+function exactSvgImportMatrix(sourceSvg,bb){
+  const vb=readSvgViewBox(sourceSvg);
+  const physical=getSvgPhysicalSizeMm(sourceSvg,vb);
+  // Med viewBox + fysisk width/height kan vi bevare SVG'ens originale mm-mål 1:1.
+  if(vb && physical.w && physical.h){
+    const par=parsePreserveAspectRatio(sourceSvg);
+    const viewportX=(BASE_VB.w-physical.w)/2;
+    const viewportY=(BASE_VB.h-physical.h)/2;
+    if(par.none){
+      const sx=physical.w/vb.w, sy=physical.h/vb.h;
+      return {a:sx,b:0,c:0,d:sy,e:viewportX-vb.x*sx,f:viewportY-vb.y*sy,w:physical.w,h:physical.h,exact:true};
+    }
+    const sx=physical.w/vb.w, sy=physical.h/vb.h;
+    const scale=par.meet?Math.min(sx,sy):Math.max(sx,sy);
+    const usedW=vb.w*scale, usedH=vb.h*scale;
+    const e=viewportX+(physical.w-usedW)*par.ax-vb.x*scale;
+    const f=viewportY+(physical.h-usedH)*par.ay-vb.y*scale;
+    return {a:scale,b:0,c:0,d:scale,e,f,w:physical.w,h:physical.h,exact:true};
+  }
+  // Ingen viewBox: SVG-user-units er CSS px. Bevar dem ved standardens 96 dpi.
+  // Centrer kun objektet; der sker INGEN automatisk fit-to-page-skalering.
+  const scale=SVG_MM_PER_PX;
+  const contentW=bb.width*scale, contentH=bb.height*scale;
+  return {
+    a:scale,b:0,c:0,d:scale,
+    e:(BASE_VB.w-contentW)/2-bb.x*scale,
+    f:(BASE_VB.h-contentH)/2-bb.y*scale,
+    w:physical.w||contentW,h:physical.h||contentH,exact:false
+  };
+}
+function isVisibleSvgPaint(v){
+  if(v===null || v===undefined)return false;
+  const s=String(v).trim().toLowerCase();
+  return !!s && s!=='none' && s!=='transparent' && s!=='rgba(0, 0, 0, 0)' && s!=='rgba(0,0,0,0)';
+}
+function normalizeImportedLaserColors(root){
+  const nodes=[];
+  const drawable='path,rect,ellipse,circle,line,polygon,polyline,text,tspan,use';
+  if(root.matches?.(drawable))nodes.push(root);
+  nodes.push(...Array.from(root.querySelectorAll(drawable)));
+  nodes.forEach(el=>{
+    let cs=null;
+    try{cs=getComputedStyle(el);}catch(_){cs=null;}
+    const tag=(el.tagName||'').toLowerCase();
+    const fill=cs?cs.fill:(el.getAttribute('fill')||'');
+    const stroke=cs?cs.stroke:(el.getAttribute('stroke')||'');
+    const fillOpacity=cs?parseFloat(cs.fillOpacity||'1'):parseFloat(el.getAttribute('fill-opacity')||'1');
+    const strokeOpacity=cs?parseFloat(cs.strokeOpacity||'1'):parseFloat(el.getAttribute('stroke-opacity')||'1');
+    // Rene laserfarver: synligt fyld = #000000, synlig streg = #FF0000.
+    if(tag!=='line' && tag!=='polyline')setSvgPaintImportant(el,'fill',(isVisibleSvgPaint(fill)&&fillOpacity!==0)?ENG:'none');
+    else setSvgPaintImportant(el,'fill','none');
+    if(isVisibleSvgPaint(stroke)&&strokeOpacity!==0)setSvgPaintImportant(el,'stroke',CUT);
+    else if(tag==='line'||tag==='polyline')setSvgPaintImportant(el,'stroke',CUT);
+    el.setAttribute('vector-effect','non-scaling-stroke');
+    el.setAttribute('shape-rendering','geometricPrecision');
+  });
+}
 function importSvgText(text){
   const doc=new DOMParser().parseFromString(text,'image/svg+xml');
   if(doc.querySelector('parsererror')){alert('SVG-filen kunne ikke læses.');return;}
@@ -2878,16 +3626,17 @@ function importSvgText(text){
   let bb;
   try{bb=group.getBBox();}catch(_){bb=null;}
   if(!bb || bb.width<=0 || bb.height<=0){group.remove();alert('SVG-filen indeholder ingen synlige vektorobjekter.');return;}
-  const maxW=BASE_VB.w*0.72, maxH=BASE_VB.h*0.72;
-  const scale=Math.min(1,maxW/bb.width,maxH/bb.height);
-  const x=(BASE_VB.w-bb.width*scale)/2;
-  const y=(BASE_VB.h-bb.height*scale)/2;
-  group.setAttribute('transform','translate('+x+','+y+') scale('+scale+') translate('+(-bb.x)+','+(-bb.y)+')');
-  const importedId=addObject('group',group,{group:true,importedSvg:true,mode:isScanNCutPageSize()?'cut':currentMode});
-  if(isScanNCutPageSize()){
-    const importedObj=objects.find(o=>o.id===importedId);
-    if(importedObj)applyModeRecursive(importedObj,'cut');
-  }
+
+  // Farver normaliseres mens SVG'ens egne CSS-regler stadig kan aflæses.
+  if(!isScanNCutPageSize())normalizeImportedLaserColors(group);
+
+  const m=exactSvgImportMatrix(sourceSvg,bb);
+  group.setAttribute('transform','matrix('+[m.a,m.b,m.c,m.d,m.e,m.f].map(n=>Number(n.toFixed(12))).join(' ')+')');
+  group.setAttribute('data-vv-source-width-mm',String(m.w));
+  group.setAttribute('data-vv-source-height-mm',String(m.h));
+  const importedId=addObject('group',group,{group:true,importedSvg:true,sourceWidthMm:m.w,sourceHeightMm:m.h,exactPhysicalSize:m.exact,mode:isScanNCutPageSize()?'cut':currentMode});
+  const importedObj=objects.find(o=>o.id===importedId);
+  if(importedObj && isScanNCutPageSize())applyModeRecursive(importedObj,'cut');
   document.querySelector('[data-tool="select"]').click();
 }
 
@@ -3657,6 +4406,95 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       refreshUI();
     }
 
+    function exactRectUnion(sel){
+      if(!sel.length || !sel.every(o=>o.type==='rect')) return false;
+      const rects=[];
+      for(const o of sel){
+        const el=o.el;
+        const m=matrixRelativeToObjects(el);
+        if(!m || Math.abs(m.b)>1e-8 || Math.abs(m.c)>1e-8) return false; // rotation/skew -> fallback
+        const x=+el.getAttribute('x')||0, y=+el.getAttribute('y')||0;
+        const w=+el.getAttribute('width')||0, h=+el.getAttribute('height')||0;
+        if(w<=0||h<=0)return false;
+        const x1=m.a*x+m.e, x2=m.a*(x+w)+m.e;
+        const y1=m.d*y+m.f, y2=m.d*(y+h)+m.f;
+        rects.push({x1:Math.min(x1,x2),x2:Math.max(x1,x2),y1:Math.min(y1,y2),y2:Math.max(y1,y2)});
+      }
+      const uniq=a=>Array.from(new Set(a.map(v=>+v.toFixed(9)))).sort((a,b)=>a-b);
+      const xs=uniq(rects.flatMap(r=>[r.x1,r.x2]));
+      const ys=uniq(rects.flatMap(r=>[r.y1,r.y2]));
+      if(xs.length<2||ys.length<2||xs.length*ys.length>10000)return false;
+      const nx=xs.length-1, ny=ys.length-1;
+      const filled=Array.from({length:ny},()=>Array(nx).fill(false));
+      for(let j=0;j<ny;j++)for(let i=0;i<nx;i++){
+        const cx=(xs[i]+xs[i+1])/2, cy=(ys[j]+ys[j+1])/2;
+        filled[j][i]=rects.some(r=>cx>r.x1-1e-9&&cx<r.x2+1e-9&&cy>r.y1-1e-9&&cy<r.y2+1e-9);
+      }
+      const key=(x,y)=>x.toFixed(9)+','+y.toFixed(9);
+      const edges=[];
+      const add=(x1,y1,x2,y2)=>edges.push({x1,y1,x2,y2,used:false});
+      for(let j=0;j<ny;j++)for(let i=0;i<nx;i++)if(filled[j][i]){
+        const x0=xs[i],x1=xs[i+1],y0=ys[j],y1=ys[j+1];
+        if(j===0||!filled[j-1][i]) add(x0,y0,x1,y0);
+        if(i===nx-1||!filled[j][i+1]) add(x1,y0,x1,y1);
+        if(j===ny-1||!filled[j+1][i]) add(x1,y1,x0,y1);
+        if(i===0||!filled[j][i-1]) add(x0,y1,x0,y0);
+      }
+      if(!edges.length)return false;
+      const byStart=new Map();
+      edges.forEach((e,idx)=>{const k=key(e.x1,e.y1);if(!byStart.has(k))byStart.set(k,[]);byStart.get(k).push(idx);});
+      const loops=[];
+      for(let ei=0;ei<edges.length;ei++){
+        if(edges[ei].used)continue;
+        const first=edges[ei]; first.used=true;
+        const pts=[[first.x1,first.y1],[first.x2,first.y2]];
+        let cx=first.x2,cy=first.y2,guard=0;
+        while(key(cx,cy)!==key(first.x1,first.y1) && guard++<edges.length+5){
+          const cand=(byStart.get(key(cx,cy))||[]).find(ix=>!edges[ix].used);
+          if(cand===undefined)break;
+          const e=edges[cand];e.used=true;pts.push([e.x2,e.y2]);cx=e.x2;cy=e.y2;
+        }
+        if(pts.length>=4 && key(cx,cy)===key(first.x1,first.y1)) loops.push(pts);
+      }
+      if(!loops.length)return false;
+
+      // Fjern kollineære punkter, så firkanter/L-former forbliver matematisk rene.
+      const cleanLoop=pts=>{
+        let a=pts.slice(0,-1); // slutpunkt = startpunkt
+        let changed=true;
+        while(changed&&a.length>3){
+          changed=false;
+          const out=[];
+          for(let i=0;i<a.length;i++){
+            const p0=a[(i-1+a.length)%a.length],p=a[i],p1=a[(i+1)%a.length];
+            const col=(Math.abs((p[0]-p0[0])*(p1[1]-p[1])-(p[1]-p0[1])*(p1[0]-p[0]))<1e-9);
+            if(col){changed=true;continue;} out.push(p);
+          }
+          a=out;
+        }
+        return a;
+      };
+
+      const result=[];
+      loops.forEach(loop=>{
+        const pts=cleanLoop(loop);if(pts.length<3)return;
+        const path=document.createElementNS(SVG_NS,'path');
+        const f=v=>+v.toFixed(6);
+        let d='M '+f(pts[0][0])+' '+f(pts[0][1]);
+        for(let i=1;i<pts.length;i++)d+=' L '+f(pts[i][0])+' '+f(pts[i][1]);
+        d+=' Z';
+        path.setAttribute('d',d);path.setAttribute('fill-rule','evenodd');applyMode(path,currentMode);result.push(path);
+      });
+      if(!result.length)return false;
+
+      pushUndo();
+      const ids=sel.map(o=>o.id);
+      ids.forEach(id=>{const i=objects.findIndex(o=>o.id===id);if(i>=0){objects[i].el.remove();objects.splice(i,1);}});
+      const newIds=result.map(path=>addObject('path',path,{mode:currentMode,exactBoolean:true},true));
+      selectedIds=newIds;updateCount();refreshUI();
+      return true;
+    }
+
     function doBoolean(op) {
       if (selectedIds.length < 2) return;
       let sel = selectedIds.map(id => objects.find(o => o.id === id)).filter(Boolean);
@@ -3671,6 +4509,9 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         alert('Linjer og tekst kan ikke bruges. Brug lukkede figurer.');
         return;
       }
+
+      // Rektangler forenes eksakt som vektorer. Det bevarer mål og 90° hjørner 1:1.
+      if(op==='union' && exactRectUnion(sel)) return;
 
       // Bake transforms so path coords match visual (traced + resized)
       sel.forEach(o => {
@@ -3691,7 +4532,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       const worldH = Math.max(1, maxY - minY);
 
       // Higher resolution for detailed traces
-      let SCALE = 6;
+      let SCALE = 10;
       let cw = Math.max(16, Math.ceil(worldW * SCALE));
       let ch = Math.max(16, Math.ceil(worldH * SCALE));
       if (cw > 4000 || ch > 4000) {
@@ -3970,7 +4811,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       contours.sort((a, b) => b.length - a.length);
       contours.forEach(pts => {
         if (pts.length < 4) return;
-        const simplified = rdpSimplify(pts, Math.max(0.5, 1.2));
+        const simplified = rdpSimplify(pts, 0.35);
         if (simplified.length < 3) return;
         let minx = Infinity, miny = Infinity, maxx = -Infinity, maxy = -Infinity;
         simplified.forEach(p => {
@@ -4349,10 +5190,9 @@ function fcmScalePoint(p){return {x:Math.round(p.x*100),y:Math.round(p.y*100)};}
 function fcmCollectPaths(root){
   const paths=[],skipped=[];
   let ownerCounter=0;
-  const walk=(node,matrix,owner=null,textGroup=null)=>{
+  const walk=(node,matrix,owner=null)=>{
     if(node.nodeType!==1)return;
     const tag=(node.tagName||'').toLowerCase();
-    if(node.hasAttribute('data-vv-text-group'))textGroup=node;
     const local=fcmElementMatrix(node);
     const current=fcmMultiplyMatrix(matrix,local);
     if(tag==='image'){
@@ -4362,7 +5202,7 @@ function fcmCollectPaths(root){
     if(tag==='g'||tag==='svg'||tag==='a'){
       Array.from(node.children).forEach(child=>{
         const childOwner=owner===null && node.id==='objects' ? (++ownerCounter) : owner;
-        walk(child,current,childOwner,textGroup);
+        walk(child,current,childOwner);
       });
       return;
     }
@@ -4372,7 +5212,7 @@ function fcmCollectPaths(root){
       fcmShapeSubpaths(node).forEach(sub=>{
         const transformed=fcmTransformSubpath(sub,current);
         if(!transformed.segments.length)return;
-        paths.push({owner,textGroup,mode,closed:!!transformed.closed,start:fcmScalePoint(transformed.start),segments:transformed.segments.map(seg=>{
+        paths.push({owner,mode,closed:!!transformed.closed,start:fcmScalePoint(transformed.start),segments:transformed.segments.map(seg=>{
           if(seg.type==='C')return {type:'C',c1:fcmScalePoint(seg.c1),c2:fcmScalePoint(seg.c2),end:fcmScalePoint(seg.end)};
           return {type:'L',end:fcmScalePoint(seg.end)};
         })});
@@ -4418,18 +5258,12 @@ function fcmSplitPathsIntoPieces(paths){
   // Keep paths from each original drawing object together, then group nested
   // contours so holes in O/A/8 remain attached to their outer contour.
   const byOwner=new Map();
-  const textGroups=new Map();
   (paths||[]).forEach(path=>{
-    if(path.textGroup){
-      if(!textGroups.has(path.textGroup))textGroups.set(path.textGroup,[]);
-      textGroups.get(path.textGroup).push(path);
-      return;
-    }
     const owner=path.owner===null||path.owner===undefined?path.owner:path.owner;
     if(!byOwner.has(owner))byOwner.set(owner,[]);
     byOwner.get(owner).push(path);
   });
-  const pieces=Array.from(textGroups.values());
+  const pieces=[];
   byOwner.forEach(records=>{
     const closed=[],open=[];
     records.forEach((path,index)=>{
@@ -4612,7 +5446,6 @@ function exportFcmFile(){
     alert('Kunne ikke konvertere al tekst til stier. FCM-filen blev ikke gemt.');
     return;
   }
-  groupTextOutlinesForExport(clone);
   forceFcmExportToRedLines(clone);
   const collected=fcmCollectPaths(clone);
   if(!collected.paths.length){
@@ -4807,7 +5640,6 @@ function textOutlinePath(textEl){
 
   const path=document.createElementNS(SVG_NS,'path');
   path.setAttribute('d', parts.join(' '));
-  path.setAttribute('data-vv-from-text','true');
   path.setAttribute('fill-rule','evenodd');
   path.setAttribute('pointer-events','all');
   // Apply laser mode so ScanNCut/laser sees red cut stroke or black engrave fill
@@ -4879,24 +5711,6 @@ function convertAllTextsInDocument(){
   return {converted, failed};
 }
 
-// Preserve each text field as one SVG group and one FCM piece, including holes
-// and detached marks such as the dots in i, j and Danish letters.
-function groupTextOutlinesForExport(root){
-  // Also recognize text converted before this grouping feature was introduced.
-  objects.filter(obj=>obj.data?.fromText).forEach(obj=>{
-    root.querySelectorAll('[data-id]').forEach(el=>{
-      if(el.getAttribute('data-id')===obj.id)el.setAttribute('data-vv-from-text','true');
-    });
-  });
-  root.querySelectorAll('[data-vv-from-text]').forEach(el=>{
-    if(el.closest('[data-vv-text-group]'))return;
-    const group=document.createElementNS(SVG_NS,'g');
-    group.setAttribute('data-vv-text-group','true');
-    el.replaceWith(group);
-    group.appendChild(el);
-  });
-}
-
 function exportSvgWithTextAsPaths(filename){
   // Først konverter live tekst på lærredet, så brugeren kan se resultatet
   const liveTexts=objects.filter(o=>o.type==='text');
@@ -4914,7 +5728,6 @@ function exportSvgWithTextAsPaths(filename){
     alert('Kunne ikke konvertere '+result.failed+' tekstobjekt(er) til stier. Filen blev ikke gemt.');
     return;
   }
-  groupTextOutlinesForExport(clone);
   downloadSvg(clone, filename);
 }
 
