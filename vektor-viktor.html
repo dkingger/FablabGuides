@@ -222,7 +222,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.73</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.74</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
@@ -304,6 +304,11 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
       <label>Størrelse (B × H mm)</label>
       <div class="prop-row"><input type="number" id="propW" step="0.1" min="0"><input type="number" id="propH" step="0.1" min="0"></div>
 
+      <div id="rectProps" class="hidden">
+        <label style="margin-top:8px">Hjørneradius (mm)</label>
+        <input type="number" id="propCornerRadius" class="prop-select" min="0" step="0.5" value="0" style="margin-bottom:0">
+      </div>
+
       <div id="textProps" class="hidden">
         <label style="margin-top:8px">Skrifttype</label>
         <select id="propFont" class="prop-select">
@@ -326,7 +331,13 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
         <label>Skriftstørrelse</label>
         <input type="number" id="propFontSize" class="prop-select" min="8" max="400" step="1" value="28" style="margin-bottom:0">
         <label style="margin-top:8px">Tekst</label>
-        <input type="text" id="propTextContent" class="prop-select" placeholder="Tekst..." style="margin-bottom:0">
+        <input type="text" id="propTextContent" class="prop-select" placeholder="Tekst..." style="margin-bottom:6px">
+        <label>Tekstbue (°)</label>
+        <div class="prop-row" style="align-items:center;margin-bottom:0">
+          <input type="range" id="propTextCurveRange" min="-180" max="180" step="1" value="0" style="flex:1;accent-color:var(--accent)">
+          <input type="number" id="propTextCurve" min="-180" max="180" step="1" value="0" style="max-width:72px">
+        </div>
+        <p style="font-size:.68rem;color:var(--text-dim);margin-top:5px">0° = lige · positiv bøjer opad · negativ bøjer nedad.</p>
       </div>
       <div id="traceBtnWrap" class="hidden" style="margin-top:10px">
         <button class="btn btn-trace" id="btnTraceImage">Spor til vektor</button>
@@ -848,9 +859,10 @@ document.addEventListener('mouseup', function(e){
   if(canvasWrap) canvasWrap.style.cursor='';
 }, true);
 
+document.getElementById('zoomLabel')?.addEventListener('dblclick', zoomReset);
+
 document.getElementById('btnZoomIn')?.addEventListener('click', () => zoomBy(1.25));
 document.getElementById('btnZoomOut')?.addEventListener('click', () => zoomBy(1/1.25));
-document.getElementById('zoomLabel')?.addEventListener('dblclick', zoomReset);
 document.getElementById('pageSize')?.addEventListener('change', e => setPageSize(e.target.value));
 
 
@@ -1141,12 +1153,119 @@ function detectMode(obj){
   if(s===GREEN.toLowerCase())return 'green';
   return 'cut';
 }
+function rectWorldScale(el){
+  // User-drawn rectangles are normally direct children of #objects. Account for
+  // an optional element transform so the radius field remains a real mm value.
+  try{
+    const c=el.transform&&el.transform.baseVal?el.transform.baseVal.consolidate():null;
+    if(c){
+      const m=c.matrix;
+      return {sx:Math.hypot(m.a,m.b)||1, sy:Math.hypot(m.c,m.d)||1};
+    }
+  }catch(_){ }
+  return {sx:1,sy:1};
+}
+function getRectCornerRadiusMm(obj){
+  if(!obj||obj.type!=='rect')return 0;
+  const sc=rectWorldScale(obj.el);
+  const rx=Math.max(0,parseFloat(obj.el.getAttribute('rx'))||0);
+  const ry=Math.max(0,parseFloat(obj.el.getAttribute('ry'))||rx);
+  return Math.min(rx*sc.sx,ry*sc.sy);
+}
+function setRectCornerRadiusMm(obj,radius){
+  if(!obj||obj.type!=='rect')return;
+  const sc=rectWorldScale(obj.el);
+  let r=Math.max(0,Number(radius)||0);
+  r=Math.min(r,(+obj.el.getAttribute('width')||0)*sc.sx/2,(+obj.el.getAttribute('height')||0)*sc.sy/2);
+  if(r<=0){obj.el.removeAttribute('rx');obj.el.removeAttribute('ry');}
+  else{
+    obj.el.setAttribute('rx',String(r/sc.sx));
+    obj.el.setAttribute('ry',String(r/sc.sy));
+  }
+}
+function getTextCurve(el){
+  return Math.max(-180,Math.min(180,parseFloat(el?.getAttribute('data-vv-curve-angle'))||0));
+}
+function textRawContent(obj){
+  if(!obj)return '';
+  if(obj.data&&typeof obj.data.text==='string')return obj.data.text;
+  const saved=obj.el.getAttribute('data-vv-text');
+  if(saved!==null)return saved;
+  return obj.el.textContent||'';
+}
+function textCanvasFont(el,size){
+  const family=el.getAttribute('font-family')||'Arial, Helvetica, sans-serif';
+  const weight=el.getAttribute('font-weight')||'normal';
+  const style=el.getAttribute('font-style')||'normal';
+  return style+' '+weight+' '+size+'px '+family;
+}
+function rebuildCurvedText(obj){
+  if(!obj||obj.type!=='text')return;
+  const el=obj.el;
+  const content=textRawContent(obj);
+  if(obj.data)obj.data.text=content;
+  el.setAttribute('data-vv-text',content);
+  const angle=getTextCurve(el);
+  if(Math.abs(angle)<0.001){
+    el.textContent=content;
+    return;
+  }
+  const fs=Math.max(1,parseFloat(el.getAttribute('font-size'))||12);
+  const x=parseFloat(el.getAttribute('x'))||0;
+  const y=parseFloat(el.getAttribute('y'))||0;
+  const anchor=(el.getAttribute('text-anchor')||'start').toLowerCase();
+  const letterSpacing=parseFloat(el.getAttribute('letter-spacing'))||0;
+  const canvas=document.createElement('canvas');
+  const ctx=canvas.getContext('2d');
+  if(!ctx){el.textContent=content;return;}
+  ctx.font=textCanvasFont(el,fs);
+  const chars=[...content];
+  const widths=chars.map(ch=>Math.max(0.01,ctx.measureText(ch===' '?'\u00a0':ch).width)+(letterSpacing||0));
+  const total=Math.max(0.01,widths.reduce((a,b)=>a+b,0));
+  const theta=Math.max(0.001,Math.abs(angle)*Math.PI/180);
+  const radius=total/theta;
+  const sign=angle>=0?1:-1;
+  const centerX=anchor==='middle'?x:(anchor==='end'?x-total/2:x+total/2);
+  el.textContent='';
+  el.setAttribute('xml:space','preserve');
+  let cursor=-total/2;
+  chars.forEach((ch,i)=>{
+    const w=widths[i];
+    const s=cursor+w/2;
+    const phi=s/radius;
+    const px=centerX+radius*Math.sin(phi);
+    const py=y+sign*radius*(1-Math.cos(phi));
+    const rot=sign*phi*180/Math.PI;
+    const t=document.createElementNS(SVG_NS,'tspan');
+    t.setAttribute('x',px.toFixed(4));
+    t.setAttribute('y',py.toFixed(4));
+    t.setAttribute('rotate',rot.toFixed(4));
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('data-vv-char','1');
+    t.textContent=ch===' '?'\u00a0':ch;
+    el.appendChild(t);
+    cursor+=w;
+  });
+}
+function setTextObjectContent(obj,content){
+  if(!obj||obj.type!=='text')return;
+  const value=String(content??'');
+  if(obj.data)obj.data.text=value;
+  obj.el.setAttribute('data-vv-text',value);
+  rebuildCurvedText(obj);
+}
+
 function showProps(obj){
   document.getElementById('objType').textContent=(obj.type||'').toUpperCase();
   const b=getWorldBBox(obj);
   document.getElementById('propW').value=Math.round(b.width*10)/10;
   document.getElementById('propH').value=Math.round(b.height*10)/10;
   const tp = document.getElementById('textProps');
+  const rp = document.getElementById('rectProps');
+  if(rp){
+    rp.classList.toggle('hidden',obj.type!=='rect');
+    if(obj.type==='rect') document.getElementById('propCornerRadius').value=Math.round(getRectCornerRadiusMm(obj)*100)/100;
+  }
 
   if(obj.type==='text' && tp){
     tp.classList.remove('hidden');
@@ -1167,7 +1286,10 @@ function showProps(obj){
       }
     }
     document.getElementById('propFontSize').value = parseFloat(obj.el.getAttribute('font-size')) || 28;
-    document.getElementById('propTextContent').value = obj.el.textContent || '';
+    document.getElementById('propTextContent').value = textRawContent(obj);
+    const curve=getTextCurve(obj.el);
+    document.getElementById('propTextCurve').value=Math.round(curve);
+    document.getElementById('propTextCurveRange').value=Math.round(curve);
   } else if(tp) {
     tp.classList.add('hidden');
   }
@@ -1329,7 +1451,7 @@ function resizeObject(obj, handle, mx, my, origin, uniform, baseTransform){
 
   // Alt med en eksisterende transform samt alle frie vektorformer skaleres som et
   // visuelt objekt i lærredets koordinatsystem. Den originale SVG-geometri røres ikke.
-  if((obj.el.getAttribute('transform')||'').trim() || ['path','traced','polygon','group'].includes(obj.type)){
+  if((obj.el.getAttribute('transform')||'').trim() || ['path','traced','polygon','group'].includes(obj.type) || (obj.type==='text'&&Math.abs(getTextCurve(obj.el))>0.001)){
     if(origin.width < 0.1 || origin.height < 0.1) return;
     transformElementBetweenBBoxes(obj.el,origin,{x,y,width:w,height:h});
   } else if(obj.type==='rect' || obj.type==='image'){
@@ -1790,7 +1912,7 @@ function applyProps(saveUndo){
 
   // Importerede/spejlede/roterede elementer skal skaleres i lærredets koordinater.
   // Ellers ændrer man lokale x/y-værdier inde i en matrix og figuren kan hoppe eller forvrides.
-  if((obj.el.getAttribute('transform')||'').trim() || ['path','traced','polygon','group'].includes(obj.type)){
+  if((obj.el.getAttribute('transform')||'').trim() || ['path','traced','polygon','group'].includes(obj.type) || (obj.type==='text'&&Math.abs(getTextCurve(obj.el))>0.001)){
     if(!transformElementBetweenBBoxes(obj.el,bb0,{x,y,width:w,height:h})) return;
   }
   else if(obj.type==='rect'){obj.el.setAttribute('x',x);obj.el.setAttribute('y',y);obj.el.setAttribute('width',w);obj.el.setAttribute('height',h)}
@@ -1838,17 +1960,50 @@ function applyTextProps(saveUndo){
   const font=document.getElementById('propFont').value;
   const size=Math.max(8,parseFloat(document.getElementById('propFontSize').value)||28);
   const content=document.getElementById('propTextContent').value;
+  const curve=Math.max(-180,Math.min(180,parseFloat(document.getElementById('propTextCurve').value)||0));
   obj.el.setAttribute('font-family',font);
   obj.el.setAttribute('font-size',size);
-  if(content!==undefined)obj.el.textContent=content;
-  if(obj.data){obj.data.text=content;obj.data.font=font}
+  obj.el.setAttribute('data-vv-curve-angle',String(curve));
+  if(obj.data){obj.data.text=content;obj.data.font=font;obj.data.curve=curve}
+  obj.el.setAttribute('data-vv-text',content||'');
+  rebuildCurvedText(obj);
   refreshUI();
+}
+['propTextCurveRange','propTextCurve','propCornerRadius'].forEach(id=>{
+  const control=document.getElementById(id);
+  let editing=false;
+  control?.addEventListener('input',()=>{
+    if(!editing && selectedIds.length===1){pushUndo();editing=true;}
+  });
+  control?.addEventListener('change',()=>{editing=false;});
+  control?.addEventListener('blur',()=>{editing=false;});
+});
+function syncTextCurve(source){
+  const num=document.getElementById('propTextCurve');
+  const range=document.getElementById('propTextCurveRange');
+  if(!num||!range)return;
+  let v=parseFloat(source.value)||0;v=Math.max(-180,Math.min(180,v));
+  num.value=v;range.value=v;
 }
 document.getElementById('propFont')?.addEventListener('change',()=>applyTextProps(true));
 document.getElementById('propFontSize')?.addEventListener('change',()=>applyTextProps(true));
 document.getElementById('propFontSize')?.addEventListener('input',()=>applyTextProps(false));
 document.getElementById('propTextContent')?.addEventListener('change',()=>applyTextProps(true));
 document.getElementById('propTextContent')?.addEventListener('input',()=>applyTextProps(false));
+document.getElementById('propTextCurveRange')?.addEventListener('input',e=>{syncTextCurve(e.target);applyTextProps(false)});
+document.getElementById('propTextCurveRange')?.addEventListener('change',e=>{syncTextCurve(e.target);applyTextProps(false)});
+document.getElementById('propTextCurve')?.addEventListener('input',e=>{syncTextCurve(e.target);applyTextProps(false)});
+document.getElementById('propTextCurve')?.addEventListener('change',e=>{syncTextCurve(e.target);applyTextProps(false)});
+document.getElementById('propCornerRadius')?.addEventListener('change',e=>{
+  if(selectedIds.length!==1)return;
+  const obj=objects.find(o=>o.id===selectedIds[0]);if(!obj||obj.type!=='rect')return;
+  setRectCornerRadiusMm(obj,e.target.value);refreshUI();
+});
+document.getElementById('propCornerRadius')?.addEventListener('input',e=>{
+  if(selectedIds.length!==1)return;
+  const obj=objects.find(o=>o.id===selectedIds[0]);if(!obj||obj.type!=='rect')return;
+  setRectCornerRadiusMm(obj,e.target.value);handlesG.innerHTML='';drawHandle(obj);
+});
 
 
 svg.addEventListener('mousedown',onDown);
@@ -2706,7 +2861,7 @@ function startInlineText(svgP, clientX, clientY, existingObj){
   input.style.width = '144px';
   input.style.fontSize = '20px';
 
-  input.value = existingObj ? (existingObj.el.textContent || '') : '';
+  input.value = existingObj ? textRawContent(existingObj) : '';
   input.dataset.svgX = svgP.x;
   input.dataset.svgY = svgP.y;
   // Expand width a bit as user types
@@ -2730,8 +2885,7 @@ function commitInlineText(){
 
   if(textEditExisting && textEditEl){
     if(txt){
-      textEditEl.textContent = txt;
-      if(textEditExisting.data) textEditExisting.data.text = txt;
+      setTextObjectContent(textEditExisting,txt);
     }
     textEditEl = null;
     textEditExisting = null;
@@ -2755,6 +2909,8 @@ function commitInlineText(){
   el.setAttribute('font-family','Arial, sans-serif');
   el.setAttribute('font-weight','bold');
   el.textContent = txt;
+  el.setAttribute('data-vv-text',txt);
+  el.setAttribute('data-vv-curve-angle','0');
   applyMode(el, currentMode);
   if(currentMode==='engrave' && !isScanNCutPageSize()){
     el.setAttribute('fill', ENG);
@@ -2769,7 +2925,7 @@ function commitInlineText(){
     el.setAttribute('shape-rendering','geometricPrecision');
     el.setAttribute('text-rendering','geometricPrecision');
   }
-  addObject('text', el, { mode: currentMode, text: txt });
+  addObject('text', el, { mode: currentMode, text: txt, curve:0 });
 }
 
 document.getElementById('inlineTextInput')?.addEventListener('input', e=>{
@@ -3342,7 +3498,8 @@ function moveBy(obj,dx,dy){
     translateElementWorld(obj.el,dx,dy);
     return;
   }
-  if(obj.type==='rect'||obj.type==='image'||obj.type==='text'){obj.el.setAttribute('x',(+obj.el.getAttribute('x')||0)+dx);obj.el.setAttribute('y',(+obj.el.getAttribute('y')||0)+dy)}
+  if(obj.type==='text'&&Math.abs(getTextCurve(obj.el))>0.001){translateElementWorld(obj.el,dx,dy)}
+  else if(obj.type==='rect'||obj.type==='image'||obj.type==='text'){obj.el.setAttribute('x',(+obj.el.getAttribute('x')||0)+dx);obj.el.setAttribute('y',(+obj.el.getAttribute('y')||0)+dy)}
   else if(obj.type==='ellipse'){obj.el.setAttribute('cx',+obj.el.getAttribute('cx')+dx);obj.el.setAttribute('cy',+obj.el.getAttribute('cy')+dy)}
   else if(obj.type==='line'){['x1','y1','x2','y2'].forEach((a,i)=>obj.el.setAttribute(a,+obj.el.getAttribute(a)+(i%2===0?dx:dy)))}
   else setTranslate(obj,dx,dy);
@@ -4412,6 +4569,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       const rects=[];
       for(const o of sel){
         const el=o.el;
+        if((+el.getAttribute('rx')||0)>0 || (+el.getAttribute('ry')||0)>0)return false;
         const m=matrixRelativeToObjects(el);
         if(!m || Math.abs(m.b)>1e-8 || Math.abs(m.c)>1e-8) return false; // rotation/skew -> fallback
         const x=+el.getAttribute('x')||0, y=+el.getAttribute('y')||0;
@@ -4587,7 +4745,11 @@ document.getElementById('imageFile').addEventListener('change',e=>{
           const y = parseFloat(el.getAttribute('y')) || 0;
           const w = parseFloat(el.getAttribute('width')) || 0;
           const h = parseFloat(el.getAttribute('height')) || 0;
-          if (w > 0 && h > 0) ctx.fillRect(x, y, w, h);
+          if (w > 0 && h > 0) {
+            const rx=Math.min(w/2,Math.max(0,+(el.getAttribute('rx')??el.getAttribute('ry'))||0));
+            const ry=Math.min(h/2,Math.max(0,+(el.getAttribute('ry')??el.getAttribute('rx'))||0));
+            ctx.beginPath();ctx.roundRect(x,y,w,h,{x:rx,y:ry});ctx.fill();
+          }
         } else if (type === 'ellipse' || tag === 'ellipse' || tag === 'circle') {
           const cx = parseFloat(el.getAttribute('cx')) || 0;
           const cy = parseFloat(el.getAttribute('cy')) || 0;
@@ -4863,6 +5025,15 @@ function prepareSvgExport(){
   clone.querySelector('#temp')?.remove();
   clone.setAttribute('xmlns',SVG_NS);
   clone.setAttribute('xmlns:xlink','http://www.w3.org/1999/xlink');
+
+  // Eksportér altid med FYSISKE millimetermål. På lærredet bruges width/height i
+  // skærmpixels til zoom; hvis de værdier følger med til LightBurn, bliver hele
+  // tegningen skaleret efter 96 dpi. ViewBox-enhederne i Vektor-Viktor er 1 mm.
+  clone.setAttribute('viewBox','0 0 '+BASE_VB.w+' '+BASE_VB.h);
+  clone.setAttribute('width',BASE_VB.w+'mm');
+  clone.setAttribute('height',BASE_VB.h+'mm');
+  clone.removeAttribute('style');
+  clone.setAttribute('preserveAspectRatio','xMinYMin meet');
   return clone;
 }
 
@@ -5147,6 +5318,21 @@ function fcmShapeSubpaths(el){
   if(tag==='rect'){
     const x=+el.getAttribute('x')||0,y=+el.getAttribute('y')||0,w=+el.getAttribute('width')||0,h=+el.getAttribute('height')||0;
     if(w<=0||h<=0)return [];
+    const rx=Math.min(w/2,Math.max(0,+(el.getAttribute('rx')??el.getAttribute('ry'))||0));
+    const ry=Math.min(h/2,Math.max(0,+(el.getAttribute('ry')??el.getAttribute('rx'))||0));
+    if(rx>0&&ry>0){
+      const k=0.5522847498307936;
+      return [{start:{x:x+rx,y},segments:[
+        {type:'L',end:{x:x+w-rx,y}},
+        {type:'C',c1:{x:x+w-rx+k*rx,y},c2:{x:x+w,y:y+ry-k*ry},end:{x:x+w,y:y+ry}},
+        {type:'L',end:{x:x+w,y:y+h-ry}},
+        {type:'C',c1:{x:x+w,y:y+h-ry+k*ry},c2:{x:x+w-rx+k*rx,y:y+h},end:{x:x+w-rx,y:y+h}},
+        {type:'L',end:{x:x+rx,y:y+h}},
+        {type:'C',c1:{x:x+rx-k*rx,y:y+h},c2:{x,y:y+h-ry+k*ry},end:{x,y:y+h-ry}},
+        {type:'L',end:{x,y:y+ry}},
+        {type:'C',c1:{x,y:y+ry-k*ry},c2:{x:x+rx-k*rx,y},end:{x:x+rx,y}}
+      ],closed:true}];
+    }
     return [{start:{x,y},segments:[{type:'L',end:{x:x+w,y}},{type:'L',end:{x:x+w,y:y+h}},{type:'L',end:{x,y:y+h}},{type:'L',end:{x,y}}],closed:true}];
   }
   if(tag==='ellipse'||tag==='circle'){
@@ -5524,11 +5710,52 @@ function detectTextMode(textEl){
   return 'cut';
 }
 
+function curvedTextOutlinePath(textEl){
+  const spans=Array.from(textEl.querySelectorAll('tspan[data-vv-char="1"]'));
+  if(!spans.length)return null;
+  let bb;
+  try{bb=textEl.getBBox();}catch(_){return null;}
+  const fs=Math.max(1,firstSvgNumber(textEl.getAttribute('font-size')||'12',12));
+  const padding=Math.max(2,fs*0.2);
+  const minX=bb.x-padding,minY=bb.y-padding,maxX=bb.x+bb.width+padding,maxY=bb.y+bb.height+padding;
+  const maxPixels=6000;
+  let scale=Math.min(12,Math.max(6,Math.min(maxPixels/Math.max(1,maxX-minX),maxPixels/Math.max(1,maxY-minY))));
+  let width=Math.max(8,Math.ceil((maxX-minX)*scale)),height=Math.max(8,Math.ceil((maxY-minY)*scale));
+  if(width*height>20000000){scale=Math.sqrt(20000000/(Math.max(1,maxX-minX)*Math.max(1,maxY-minY)));width=Math.max(8,Math.ceil((maxX-minX)*scale));height=Math.max(8,Math.ceil((maxY-minY)*scale));}
+  const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
+  const ctx=canvas.getContext('2d',{willReadFrequently:true});if(!ctx)return null;
+  ctx.fillStyle='#fff';ctx.fillRect(0,0,width,height);ctx.fillStyle='#000';ctx.textBaseline='alphabetic';ctx.textAlign='center';ctx.font=textCanvasFont(textEl,fs*scale);
+  spans.forEach(t=>{
+    const ch=t.textContent||'';if(!ch)return;
+    const x=firstSvgNumber(t.getAttribute('x'),0),y=firstSvgNumber(t.getAttribute('y'),0),rot=firstSvgNumber(t.getAttribute('rotate'),0);
+    ctx.save();ctx.translate((x-minX)*scale,(y-minY)*scale);ctx.rotate(rot*Math.PI/180);ctx.fillText(ch,0,0);ctx.restore();
+  });
+  const contourFn=typeof findContoursPrecise==='function'?findContoursPrecise:(typeof findContours==='function'?findContours:null);if(!contourFn)return null;
+  const contours=contourFn(ctx.getImageData(0,0,width,height),128),parts=[];
+  contours.forEach(contour=>{
+    if(contour.length<5)return;
+    let simplified=contour;
+    if(typeof simplifyClosedContour==='function')simplified=simplifyClosedContour(contour,Math.max(0.45,scale*0.055));
+    else if(typeof rdpSimplify==='function')simplified=rdpSimplify(contour,Math.max(0.45,scale*0.055));
+    if(simplified.length<3)return;
+    if(typeof preciseClosedPathD==='function')parts.push(preciseClosedPathD(simplified,1/scale,1/scale,minX,minY,22));
+    else{let d='M '+(simplified[0].x/scale+minX).toFixed(3)+' '+(simplified[0].y/scale+minY).toFixed(3);for(let i=1;i<simplified.length;i++)d+=' L '+(simplified[i].x/scale+minX).toFixed(3)+' '+(simplified[i].y/scale+minY).toFixed(3);parts.push(d+' Z');}
+  });
+  if(!parts.length)return null;
+  const path=document.createElementNS(SVG_NS,'path');path.setAttribute('d',parts.join(' '));path.setAttribute('fill-rule','evenodd');path.setAttribute('pointer-events','all');applyMode(path,detectTextMode(textEl));
+  if(textEl.getAttribute('transform'))path.setAttribute('transform',textEl.getAttribute('transform'));
+  return path;
+}
+
 function textOutlinePath(textEl){
+  if(Math.abs(getTextCurve(textEl))>0.001){
+    const curved=curvedTextOutlinePath(textEl);
+    if(curved)return curved;
+  }
   // Flatten all text content (including tspan)
   let text='';
   try{
-    text=(textEl.textContent||'').replace(/\r\n?/g,'\n');
+    text=(textEl.getAttribute('data-vv-text')||textEl.textContent||'').replace(/\r\n?/g,'\n');
   }catch(_){ text=''; }
   if(!text.trim()) return null;
 
@@ -5686,7 +5913,7 @@ function convertAllTextsInDocument(){
   pushUndo();
   let converted=0, failed=0;
   textObjs.forEach(obj=>{
-    const content=(obj.el.textContent||'').trim();
+    const content=(textRawContent(obj)||'').trim();
     if(!content){
       obj.el.remove();
       objects=objects.filter(o=>o.id!==obj.id);

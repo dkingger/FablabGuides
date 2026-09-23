@@ -5,10 +5,19 @@
 
 ## Version
 
-Aktuel version: 1.73
-Dato: 2026-09-16
+Aktuel version: 1.74
+Dato: 2026-09-23
 
 ## Seneste aendringer
+
+### v1.74 (2026-09-23)
+
+- Tilføjet hjørneradius i millimeter og tekst på bue med justerbar vinkel.
+- Buet tekst kan redigeres, flyttes, skaleres og konverteres til konturer. Positiv vinkel bøjer opad som angivet i brugerfladen.
+- SVG-eksport bruger fysiske millimetermål uafhængigt af zoom.
+- Bevaret dobbeltklik på zoomprocenten for at nulstille til 100 %.
+- Rettet afrundede hjørner ved ScanNCut-eksport og booleske operationer samt fortrydelse af hjørneradius og tekstbue.
+- Opdateret versionsnummeret på forsiden.
 
 ### v1.73 (2026-09-16)
 
@@ -119,8 +128,8 @@ Projektet bruger versionsformatet `MAJOR.MINOR`.
 
 Eksempler:
 
-- `1.73` -> Aktuel release.
-- `1.74` -> Naeste release med nye forbedringer.
+- `1.74` -> Aktuel release.
+- `1.75` -> Naeste release med nye forbedringer.
 - `2.0` -> Stoerre breaking release.
 
 ### Saadan opdateres versionen
