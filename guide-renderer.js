@@ -13,7 +13,15 @@
             viewCurrentSite: 'Se nuværende site',
             navAll: 'Alle guides', navMachines: 'Maskiner', navMaterials: 'Materialer', navSiteName: 'Nuværende site',
             goToGuide: 'Gå til guiden', guideOverview: 'Til guideoversigten',
-            footerText: 'Hjemmesiden er drevet af Jimmi Kristensen.',
+            skipLink: 'Spring til hovedindhold',
+            footerLicenseText: 'Al tekst udgivet under',
+            footerLicenseLabel: 'CC BY-SA',
+            footerLicenseHref: 'https://creativecommons.org/licenses/by-sa/4.0/',
+            footerLicenseIcon: 'billeder/ikoner/cc-by-sa.svg',
+            accessibilityText: 'Se sidens',
+            accessibilityLabel: 'tilgængelighedserklæring',
+            accessibilityHref: 'tilgaengelighedserklaering.html',
+            accessibilityIcon: 'billeder/ikoner/accessibility-a11y.svg',
             toFront: 'Til forsiden',
             closeImg: 'Luk billede',
             relatedTitle: 'Andre guides i samme kategori',
@@ -33,7 +41,15 @@
             viewCurrentSite: 'Back to main site',
             navAll: 'All guides', navMachines: 'Machines', navMaterials: 'Materials', navSiteName: 'Current site',
             goToGuide: 'Go to guide', guideOverview: 'Guide overview',
-            footerText: 'Website powered by Jimmi Kristensen.',
+            skipLink: 'Skip to main content',
+            footerLicenseText: 'All text published under',
+            footerLicenseLabel: 'CC BY-SA',
+            footerLicenseHref: 'https://creativecommons.org/licenses/by-sa/4.0/',
+            footerLicenseIcon: '../billeder/ikoner/cc-by-sa.svg',
+            accessibilityText: 'See the site\'s',
+            accessibilityLabel: 'accessibility statement',
+            accessibilityHref: '../en/tilgaengelighedserklaering.html',
+            accessibilityIcon: '../billeder/ikoner/accessibility-a11y.svg',
             toFront: 'Front page',
             closeImg: 'Close image',
             relatedTitle: 'Other guides in the same category',
@@ -348,6 +364,7 @@
 
         app.innerHTML = ""
             + "<div class=\"guide-shell\">"
+            + "<a class=\"skip-link\" href=\"#main-content\">" + t.skipLink + "</a>"
             + "<header class=\"site-header\">"
             + "<div class=\"container nav-wrap\">"
             + "<a class=\"brand interactive\" href=\"index.html\" aria-label=\"" + t.brandAriaLabel + "\">"
@@ -363,7 +380,7 @@
             + "</nav>"
             + "</div>"
             + "</header>"
-            + "<main>"
+            + "<main id=\"main-content\">"
             + "<section class=\"hero-section\">"
             + "<div class=\"container hero-grid\">"
             + "<div class=\"hero-card interactive\">"
@@ -382,7 +399,7 @@
             + "<section class=\"content-section\" id=\"guide-content\"><div class=\"container section-stack\">" + sectionsMarkup + "</div></section>"
             + renderRelatedCards(allGuides, guide)
             + "</main>"
-            + "<footer class=\"site-footer\"><div class=\"container footer-wrap\"><p>" + t.footerText + "</p><div class=\"footer-actions\"><a class=\"button button-secondary interactive\" href=\"index.html\">" + t.toFront + "</a></div></div></footer>"
+            + "<footer class=\"site-footer\"><div class=\"container footer-wrap\"><div class=\"footer-license\"><a class=\"interactive\" href=\"" + t.footerLicenseHref + "\" target=\"_blank\" rel=\"license noopener\"><img class=\"cc-license-logo\" src=\"" + t.footerLicenseIcon + "\" alt=\"Creative Commons BY-SA 4.0\"></a><p class=\"cc-license-text\">" + t.footerLicenseText + " <a href=\"" + t.footerLicenseHref + "\" target=\"_blank\" rel=\"license noopener\">" + t.footerLicenseLabel + "</a>.</p></div><div class=\"footer-license\"><a class=\"interactive\" href=\"" + t.accessibilityHref + "\"><img class=\"cc-license-logo\" src=\"" + t.accessibilityIcon + "\" alt=\"Accessibility statement\"></a><p class=\"cc-license-text\">" + t.accessibilityText + " <a href=\"" + t.accessibilityHref + "\">" + t.accessibilityLabel + "</a>.</p></div><div class=\"footer-actions\"><a class=\"button button-secondary interactive\" href=\"index.html\">" + t.toFront + "</a></div></div></footer>"
             + "<div class=\"modal\" id=\"image-modal\" aria-hidden=\"true\"><div class=\"modal-panel\"><button class=\"modal-close interactive\" type=\"button\" aria-label=\"" + t.closeImg + "\">&times;</button><img src=\"\" alt=\"\"><p class=\"modal-caption\"></p></div></div>"
             + "</div>";
 

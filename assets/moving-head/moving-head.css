@@ -1,0 +1,15 @@
+.moving-head {
+  width: var(--moving-head-width, 560px);
+  max-width: 100%;
+  aspect-ratio: 880 / 720;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+.moving-head > .moving-head__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}

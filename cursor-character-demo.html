@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Karaktertest · FabLab Guides</title>
+  <link rel="stylesheet" href="assets/cursor-character/cursor-character.css">
+  <style>
+    .flg-demo { margin:0; background:#f2f5f8; color:#18334b; font:16px/1.65 system-ui,sans-serif; }
+    .flg-demo__main { max-width:820px; margin:50px auto; padding:24px; }
+    .flg-demo__label { font-size:12px; letter-spacing:.15em; text-transform:uppercase; color:#557082; }
+    .flg-demo__main h1 { font-size:clamp(28px,5vw,44px); line-height:1.2; }
+    .flg-demo__stage { min-height:400px; display:grid; grid-template-columns:minmax(0,1fr); place-items:center; background:white; border:1px solid #d9e3eb; border-radius:20px; margin:32px 0; padding:24px; }
+    .flg-demo__main a { color:#155e8b; }
+    .flg-demo__note { font-size:14px; color:#557082; }
+  </style>
+  <script type="module" src="assets/cursor-character/cursor-character.js"></script>
+</head>
+<body class="flg-demo">
+  <main class="flg-demo__main">
+    <p class="flg-demo__label">FabLab Guides · isoleret test</p>
+    <h1>En lille figur, der følger med.</h1>
+    <p>Bevæg musen rundt om figuren. Hold markøren ved ansigtet for at få øjenkontakt.</p>
+    <div class="flg-demo__stage">
+      <div class="flg-cursor-character" data-flg-character role="img" aria-label="FabLab-figur, der følger markøren" style="--flg-character-width:360px">
+        <img class="flg-cursor-character__fallback" src="assets/cursor-character/frames/center.webp" width="1280" height="720" alt="FabLab-figur, der kigger mod dig">
+        <canvas class="flg-cursor-character__canvas" aria-hidden="true"></canvas>
+      </div>
+    </div>
+    <p class="flg-demo__note">På touchskærme og med reduceret bevægelse vises et roligt portræt. Den røde baggrund er bevaret fra kildematerialet. Ingen video afspilles.</p>
+    <p><a href="index.html">Tilbage til FabLab Guides</a></p>
+  </main>
+</body>
+</html>

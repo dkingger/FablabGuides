@@ -18,6 +18,7 @@
     <meta name="apple-mobile-web-app-title" content="FabLab">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="page-shell">
         <header class="site-header">
             <div class="container nav-wrap">
@@ -32,7 +33,7 @@
             </div>
         </header>
 
-        <main>
+        <main id="main-content">
             <section class="hero-section">
                 <div class="container hero-grid">
                     <div class="hero-copy">
@@ -64,18 +65,13 @@
                             <p class="panel-kicker">Popular shortcuts</p>
                             <div class="panel-links">
                                 <button class="panel-link panel-link-button interactive" type="button" data-install-app-button hidden>Add to Home Screen</button>
-                                <a class="panel-link panel-link-with-badge interactive" href="../vektor-viktor.html">
-                                    <span>Vektor-Viktor</span>
-                                    <span class="panel-new-badge">New</span>
-                                </a>
+                                <a class="panel-link interactive" href="../vektor-viktor.html">Vektor-Viktor (DA)</a>
                                 <a class="panel-link interactive" href="../garn-bandit.html">Garn Bandit v1.0 (DA)</a>
                                 <a class="panel-link interactive" href="../wedo-blokvaerksted.html">WeDo Blokværksted (DA)</a>
+                                <a class="panel-link interactive" href="moving-head.html">The Heads</a>
                                 <a class="panel-link interactive" href="../guide-til-laserfiler.html">Guide to laser files (DA)</a>
                                 <a class="panel-link interactive" href="guide-to-laser-files.html">Guide to laser files (EN)</a>
-                                <a class="panel-link panel-link-with-badge interactive" href="online-tools.html">
-                                    <span>Online tools</span>
-                                    <span class="panel-new-badge">New</span>
-                                </a>
+                                <a class="panel-link interactive" href="online-tools.html">Online tools</a>
                             </div>
                         </div>
 
@@ -331,7 +327,18 @@
 
         <footer class="site-footer">
             <div class="container footer-wrap">
-                <p>Website powered by Jimmi Kristensen.</p>
+                <div class="footer-license">
+                    <a class="interactive" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">
+                        <img class="cc-license-logo" src="../billeder/ikoner/cc-by-sa.svg" alt="Creative Commons BY-SA 4.0">
+                    </a>
+                    <p class="cc-license-text">All text published under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA</a>.</p>
+                </div>
+                <div class="footer-license">
+                    <a class="interactive" href="../en/tilgaengelighedserklaering.html">
+                        <img class="cc-license-logo" src="../billeder/ikoner/accessibility-a11y.svg" alt="Accessibility statement">
+                    </a>
+                    <p class="cc-license-text">See the site's <a href="../en/tilgaengelighedserklaering.html">accessibility statement</a>.</p>
+                </div>
             </div>
         </footer>
 

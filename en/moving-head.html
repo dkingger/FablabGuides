@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Heads shows two cursor-tracking figures built with the cursor-character frame system.">
+    <meta name="author" content="Fablab">
+    <title>The Heads | FabLab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../guide.css">
+    <link rel="stylesheet" href="../assets/cursor-character/cursor-character.css">
+    <style>
+        .moving-head-page {
+            padding: 42px 0 72px;
+        }
+        .hero-grid {
+            grid-template-columns: 1fr;
+        }
+        .moving-head-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            gap: 24px;
+            align-items: start;
+        }
+        .moving-head-main,
+        .moving-head-side {
+            display: grid;
+            gap: 20px;
+        }
+        .moving-head-card,
+        .moving-head-stage,
+        .moving-head-note {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            min-width: 0;
+        }
+        .moving-head-card h2 {
+            margin: 0 0 12px;
+            color: var(--brand-strong);
+            font-size: 1.5rem;
+            line-height: 1.15;
+        }
+        .moving-head-card p,
+        .moving-head-note p,
+        .moving-head-note li {
+            color: var(--text-soft);
+        }
+        .moving-head-card p {
+            margin: 0 0 14px;
+        }
+        .moving-head-stage {
+            display: grid;
+            justify-items: center;
+            gap: 20px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, #dbe2ef 100%);
+        }
+        .moving-head-stage h2 {
+            margin: 0;
+            color: var(--brand-strong);
+            font-size: 1.25rem;
+            text-align: center;
+        }
+        .moving-head-note ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .moving-head-note li + li {
+            margin-top: 8px;
+        }
+        .flg-cursor-character {
+            --flg-character-width: min(100%, 560px);
+            width: 100%;
+        }
+        .flg-cursor-character--secondary {
+            margin-top: 18px;
+            background: #c5211f;
+        }
+        .moving-head-stage__nameplate {
+            margin: 6px 0 0;
+        }
+        @media (max-width: 980px) {
+            .moving-head-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 760px) {
+            .moving-head-page {
+                padding-top: 28px;
+            }
+            .moving-head-card,
+            .moving-head-stage,
+            .moving-head-note {
+                padding: 24px;
+                border-radius: var(--radius-md);
+            }
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
+    <link rel="manifest" href="/billeder/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="FabLab">
+</head>
+<body class="guide-shell">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand interactive" href="index.html" aria-label="To front page">
+                <span class="brand-text">
+                    <strong>FabLab Guides</strong>
+                </span>
+            </a>
+            <nav class="top-nav" id="site-nav" aria-label="Primary navigation" data-lang="en" data-page="moving-head"></nav>
+            <script src="../nav.js"></script>
+        </div>
+    </header>
+
+    <main id="main-content" class="moving-head-page">
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <article class="hero-card interactive">
+                    <p class="eyebrow">Cursor Character</p>
+                    <h1>Who are we?</h1>
+                    <p class="lead">This site and the rest of FabLab Guides are created and maintained by Rene and Johannes.</p>
+                    <div class="hero-pills" aria-label="Feature overview">
+                        <span class="pill">Open Source</span>
+                        <span class="pill">Open Denmark</span>
+                        <span class="pill">Creative Commons</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="container moving-head-layout" aria-label="The Heads demo">
+            <div class="moving-head-main">
+                <article class="moving-head-stage interactive">
+                    <h2>Johannes Dahl</h2>
+                    <div class="flg-cursor-character" data-flg-character role="img" aria-label="FabLab figure following the cursor" style="--flg-character-width: 560px">
+                        <img class="flg-cursor-character__fallback" src="../assets/cursor-character/frames/center.webp" width="1280" height="720" alt="FabLab figure in neutral position">
+                        <canvas class="flg-cursor-character__canvas" aria-hidden="true"></canvas>
+                    </div>
+                    <h2 class="moving-head-stage__nameplate">Rene Gade</h2>
+                    <div class="flg-cursor-character flg-cursor-character--secondary" data-flg-character data-flg-frames="../assets/moving-head/frames/" role="img" aria-label="Moving Head figure following the cursor" style="--flg-character-width: 560px">
+                        <img class="flg-cursor-character__fallback" src="../assets/moving-head/frames/center.webp" width="880" height="720" alt="Moving Head figure in neutral position">
+                        <canvas class="flg-cursor-character__canvas" aria-hidden="true"></canvas>
+                    </div>
+                </article>
+            </div>
+
+            <aside class="moving-head-side">
+                <article class="moving-head-card interactive">
+                    <h2>About us</h2>
+                    <p>We are Rene and Johannes, and we create and maintain FabLab Guides together.</p>
+                    <p>Our focus is to keep the guides simple, visual, free and easy to use for everyone.</p>
+                </article>
+
+                <article class="moving-head-note interactive">
+                    <h2>Tips</h2>
+                    <ul>
+                        <li>Move the cursor around the figure to see the head rotate.</li>
+                        <li>Keep the cursor close to the face for the neutral center frame.</li>
+                        <li>On touch screens the figure stays in a calm fallback state.</li>
+                    </ul>
+                </article>
+            </aside>
+        </section>
+    </main>
+
+    <script type="module" src="../assets/cursor-character/cursor-character.js"></script>
+    <script src="../install-app.js" defer></script>
+</body>
+</html>

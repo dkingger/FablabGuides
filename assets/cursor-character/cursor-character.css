@@ -1,0 +1,29 @@
+/* Deliberately scoped: no body, canvas, img, or other global selectors. */
+.flg-cursor-character {
+  --flg-character-width: 280px;
+  position: relative;
+  display: block;
+  width: var(--flg-character-width);
+  max-width: 100%;
+  min-width: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--flg-character-radius, 16px);
+  contain: layout paint;
+}
+.flg-cursor-character > .flg-cursor-character__fallback,
+.flg-cursor-character > .flg-cursor-character__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  object-fit: contain;
+  pointer-events: none;
+}
+.flg-cursor-character > .flg-cursor-character__canvas { visibility: hidden; }
+.flg-cursor-character[data-flg-ready] > .flg-cursor-character__canvas { visibility: visible; }
+.flg-cursor-character[data-flg-ready] > .flg-cursor-character__fallback { visibility: hidden; }
