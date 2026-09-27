@@ -5,7 +5,16 @@ const path = require('node:path');
 const puppeteer = require(process.env.PUPPETEER_MODULE || 'puppeteer');
 const base = process.argv[2] || 'http://127.0.0.1:8765';
 (async () => {
-    const browser = await puppeteer.launch({headless:true,args:['--no-sandbox']});
+    const systemChrome = [
+        process.env.PUPPETEER_EXECUTABLE_PATH,
+        '/usr/bin/google-chrome-stable',
+        '/usr/bin/google-chrome',
+        '/usr/bin/chromium',
+        '/usr/bin/chromium-browser'
+    ].find(candidate => candidate && fs.existsSync(candidate));
+    const launchOptions = {headless:true,args:['--no-sandbox']};
+    if (systemChrome) launchOptions.executablePath = systemChrome;
+    const browser = await puppeteer.launch(launchOptions);
     const work = fs.mkdtempSync(path.join(os.tmpdir(), 'fablab-wedo-test-'));
     try {
         const page = await browser.newPage();

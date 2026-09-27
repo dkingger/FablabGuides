@@ -9,8 +9,8 @@ Dato: 27. september 2026. Målestok: WCAG 2.2 niveau A og AA.
 | Måling | Før | Efter |
 |---|---:|---:|
 | Konstaterede fund | 351 | 0 |
-| Potentielle fund | 1329 | 1329 |
-| Manuelle kontroller | 195 | 186 |
+| Potentielle fund | 1329 | 1328 |
+| Manuelle kontroller | 195 | 185 |
 | Anbefalinger | 8 | 45 |
 
 Potentielle fund er steget igen, fordi Labyrintværkstedets mange tastaturbetjente SVG-vægge hver udløser en automatisk fokuskontrol. Fokusmarkeringen og væggenes Enter-betjening er afprøvet i browseren. Ingen fund er undertrykt eller fjernet fra scanningen.
@@ -29,7 +29,7 @@ Potentielle fund er steget igen, fordi Labyrintværkstedets mange tastaturbetjen
 
 ### Verifikation
 
-- Ny IBM-scanning af alle 82 tilbageværende HTML-filer: 0 konstaterede fejl, 1329 potentielle fund, 186 manuelle kontroller og 45 anbefalinger.
+- Ny IBM-scanning af alle 82 tilbageværende HTML-filer: 0 konstaterede fejl, 1328 potentielle fund, 185 manuelle kontroller og 45 anbefalinger.
 - Seneste fulde browserkontrol før Labyrintværkstedet dækkede alle daværende sider uden registrerede JavaScript-fejl: [målinger](.a11y-report/fix-tests/browser-all-pages.json). Eksterne ressourcer var blokeret i denne kontrol som i den oprindelige screening.
 - [Regressionstest](tools/test_accessibility.cjs) består på forside, laserfilguide, Online tools og AEON-guide i begge sprogversioner: 320px-bredde, synlige navlinks, springlink-fokus og billeddialoger hvor relevante. Dialogtest dækker åbning med Enter/Space, gentagen Tab, Escape, lukkeknap og tilbageføring af fokus; AEON dækker også næste billede.
 - Garn Bandit: testet SVG-import, fjern/tilføj pind med tastatur, beskyttelse mod dubletter, statusområde og mobilvisning. [Skærmbillede af pindredigering](.a11y-report/fix-tests/garn-pin-editor-320.png).
@@ -41,7 +41,7 @@ Potentielle fund er steget igen, fordi Labyrintværkstedets mange tastaturbetjen
 
 ### Stadig åbent
 
-De 1329 potentielle fund er ikke alle gennemgået manuelt. Faktisk skærmlæser, alle zoom-/højkontrasttilstande, alle ældre billeddialoger, alle redigerings- og eksportforløb, WeDo med en fysisk Bluetooth-hub samt eksterne tjenester mangler fuld test. Den offentlige erklæring bør derfor fortsat beskrive begrænsninger frem for fuld overensstemmelse.
+De 1328 potentielle fund er ikke alle gennemgået manuelt. Faktisk skærmlæser, alle zoom-/højkontrasttilstande, alle ældre billeddialoger, alle redigerings- og eksportforløb, WeDo med en fysisk Bluetooth-hub samt eksterne tjenester mangler fuld test. Den offentlige erklæring bør derfor fortsat beskrive begrænsninger frem for fuld overensstemmelse.
 
 [Opdateret side-for-side-oversigt](.a11y-report/fix-tests/page-status.md) viser aktuelle tal. Resten af denne fil er den oprindelige vurdering **før rettelserne**, bevaret som sammenligningsgrundlag.
 

@@ -1,0 +1,10 @@
+{
+  "name": "fablab-guides",
+  "private": true,
+  "scripts": {
+    "test:wedo": "node tools/test_wedo_accessibility.cjs"
+  },
+  "devDependencies": {
+    "puppeteer": "25.12.0"
+  }
+}

@@ -14,6 +14,9 @@ Dato: 2026-09-27
 
 - Tilføjet `Labyrintvaerksted.html`, som kan generere og redigere laserskårne labyrinter samt eksportere dem som SVG.
 - Tilføjet Labyrintværksted under Populære genveje på forsiden og en tydelig tilbageknap på værkstedssiden.
+- WeDo Blokværksted og Labyrintværksted har begge fået versionsnummeret v1.0 på forsiden og værkstedssiderne.
+- Fjernet genvejen til den engelske PDF-guide fra Populære genveje; selve guidefilen er bevaret.
+- Tilføjet Puppeteer som udviklingsafhængighed, så WeDo-browsertesten kan køres reproducerbart.
 - Forbedret tilgængeligheden på hele sitet, herunder tastaturbetjening, fokusmarkeringer, feltnavne, kontrast, navigation og dialoger.
 - WeDo-blokværkstedets blokke kan nu flyttes, indlejres og slettes med tastaturet.
 - Fjernet syv ubrugte filer fra `old/`; filer, som fortsat bruges gennem de gamle guideforsider, er bevaret.
@@ -127,6 +130,17 @@ Denne udgivelse blev oprindeligt registreret som v1.60.0 i README; værktøjet v
 - `index.html`: Forenklet hurtiglinks og opdateret Vektor-Viktor-linket til v1.60.
 - `styles.css`: Fjernet ubrugte badge-styles.
 - `billeder/tools/printables.webp`: Tilføjet ikon til Printables.
+
+## Test
+
+Installer udviklingsafhængighederne og kør WeDo-browsertesten:
+
+```sh
+npm install
+npm run test:wedo
+```
+
+Testen starter Chrome automatisk og kontrollerer bl.a. tastaturbetjening, fokus, import/eksport og layout ved 320 og 1280 pixels.
 
 ## Versionsstandard
 
