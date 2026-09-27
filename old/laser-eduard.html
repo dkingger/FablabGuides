@@ -19,7 +19,7 @@
     .carousel-controls button:hover, a:hover, .top-button:hover { background-color: #c94f3c; }
     #imageModal { display: none; position: fixed; z-index: 1000; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
     #modalImg { margin: auto; display: block; max-width: 90vw; max-height: 80vh; }
-    #imageModal .close { position: absolute; top: 30px; right: 50px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
+    #imageModal .close { position: absolute; top: 30px; right: 50px; color: #fff; background: transparent; border: 0; padding: 0; line-height: 1; font-size: 40px; font-weight: bold; cursor: pointer; }
   </style>
     <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
@@ -32,8 +32,8 @@
 <body id="top">
 <nav aria-label="Springlink"><a class="legacy-skip" href="#main-content">Spring til hovedindhold</a></nav>
 <main id="main-content" tabindex="-1">
-  <div id="imageModal">
-    <span class="close" onclick="closeModal()">&times;</span>
+  <div id="imageModal" role="dialog" aria-modal="true" aria-label="Forstørret billede" aria-hidden="true">
+    <button type="button" class="close" aria-label="Luk billede" onclick="closeModal()">&times;</button>
     <img id="modalImg" src="" alt="Forstørret billede">
   </div>
 
@@ -41,7 +41,7 @@
   <p>Herunder finder du en trin-for-trin guide til at sætte materialetykkelse på Eduard.</p>
 
   <div class="carousel">
-    <img id="carouselImage" src="" alt="Eduard billede" onclick="openModal(this.src)">
+    <img id="carouselImage" src="" alt="Eduard billede" role="button" tabindex="0" onclick="openModal(this.src)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(this.src)}">
     <div class="caption" id="carouselCaption"></div>
     <div class="carousel-controls">
       <button onclick="prevSlide()">Tilbage</button>
@@ -70,14 +70,24 @@
     function openModal(src) {
       document.getElementById("modalImg").src = src;
       document.getElementById("imageModal").style.display = "block";
+      document.getElementById("imageModal").setAttribute("aria-hidden", "false");
+      document.querySelector("#imageModal .close").focus();
     }
     function closeModal() {
       document.getElementById("imageModal").style.display = "none";
+      document.getElementById("imageModal").setAttribute("aria-hidden", "true");
+      document.getElementById("carouselImage").focus();
     }
     window.onclick = function(event) {
       const modal = document.getElementById("imageModal");
       if (event.target === modal) closeModal();
     };
+    document.addEventListener("keydown", function(event) {
+      const modal = document.getElementById("imageModal");
+      if (modal.style.display !== "block") return;
+      if (event.key === "Escape") { event.preventDefault(); closeModal(); }
+      if (event.key === "Tab") { event.preventDefault(); document.querySelector("#imageModal .close").focus(); }
+    });
     updateSlide();
   </script>
     <script src="/install-app.js" defer></script>

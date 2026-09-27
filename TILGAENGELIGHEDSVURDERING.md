@@ -9,11 +9,11 @@ Dato: 27. september 2026. Målestok: WCAG 2.2 niveau A og AA.
 | Måling | Før | Efter |
 |---|---:|---:|
 | Konstaterede fund | 351 | 0 |
-| Potentielle fund | 1329 | 1328 |
-| Manuelle kontroller | 195 | 185 |
+| Potentielle fund | 1329 | 822 |
+| Manuelle kontroller | 195 | 180 |
 | Anbefalinger | 8 | 45 |
 
-Potentielle fund er steget igen, fordi Labyrintværkstedets mange tastaturbetjente SVG-vægge hver udløser en automatisk fokuskontrol. Fokusmarkeringen og væggenes Enter-betjening er afprøvet i browseren. Ingen fund er undertrykt eller fjernet fra scanningen.
+Gennemgangen af de potentielle fund har reduceret tallet fra 1328 til 822. De 506 fjernede fund kom især fra manglende synlig tekst på guidecarousellernes trin-knapper, kontrast som IBM ikke kunne afgøre på gradienter og halvtransparente flader samt den dekorative 404-video. Ingen fund er undertrykt eller fjernet fra scanningen.
 
 ### Gennemførte rettelser
 
@@ -26,22 +26,44 @@ Potentielle fund er steget igen, fordi Labyrintværkstedets mange tastaturbetjen
 - WeDo har korrigeret kontrast, feltnavne, struktur og fokus. Blokke kan flyttes, indlejres og slettes med tastaturet. Import, eksport, lokal lagring, demoafvikling og stop er testet uden en fysisk hub.
 - Syv ubrugte filer er slettet fra `old/`; de 29 filer, som stadig nås gennem de gamle guideforsider, er bevaret.
 - Labyrintværkstedet er tilføjet med genvej fra forsiden og tilbageknap. Vægge kan redigeres med Enter, og siden har 0 konstaterede IBM-fejl.
+- Guidecarouseller viser nu nummererede trin-knapper på mindst 28 × 28 pixels. Valg, `aria-pressed` og mobilombrydning er bevaret og testet på alle 24 berørte guide-sider.
+- Blå tekst er gjort mørkere, hvid tekst på mørke kort er gjort helt hvid, og genvejspanelets tekstbaggrund er ensfarvet. De 63 direkte målbare kontrastfund består nu WCAG AA; gradientudløste kontrastfund er fjernet ved at bruge ensfarvet baggrund.
+- Seks ældre billedcarouseller kan åbnes med Enter og mellemrum; fokus flyttes til en rigtig lukkeknap, holdes i dialogen og returneres efter Escape. De gamle sprogskift bruger almindelige links og viser igen deres flag fra korrekte billedstier.
 
 ### Verifikation
 
-- Ny IBM-scanning af alle 82 tilbageværende HTML-filer: 0 konstaterede fejl, 1328 potentielle fund, 185 manuelle kontroller og 45 anbefalinger.
+- Ny IBM-scanning af alle 82 tilbageværende HTML-filer: 0 konstaterede fejl, 822 potentielle fund, 180 manuelle kontroller og 45 anbefalinger.
 - Seneste fulde browserkontrol før Labyrintværkstedet dækkede alle daværende sider uden registrerede JavaScript-fejl: [målinger](.a11y-report/fix-tests/browser-all-pages.json). Eksterne ressourcer var blokeret i denne kontrol som i den oprindelige screening.
 - [Regressionstest](tools/test_accessibility.cjs) består på forside, laserfilguide, Online tools og AEON-guide i begge sprogversioner: 320px-bredde, synlige navlinks, springlink-fokus og billeddialoger hvor relevante. Dialogtest dækker åbning med Enter/Space, gentagen Tab, Escape, lukkeknap og tilbageføring af fokus; AEON dækker også næste billede.
 - Garn Bandit: testet SVG-import, fjern/tilføj pind med tastatur, beskyttelse mod dubletter, statusområde og mobilvisning. [Skærmbillede af pindredigering](.a11y-report/fix-tests/garn-pin-editor-320.png).
 - Vektor-Viktor: testet SVG-import, åbning af objektpanel og objektvalg med tastatur, inklusive fokus efter genoptegning af listen.
 - WeDo: testet navngivne felter, springlink, bloktilføjelse, flytning, indlejring og sletning, import/eksport, lokal lagring, demoafvikling, stop samt layout ved 320 og 1280 pixels.
 - Labyrintværkstedet: testet forsidegenvej, tilbageknap og fokus, vægredigering med tastatur, ny labyrint, fortryd/gentag samt layout ved 320 og 1280 pixels.
+- [Potentiale-regressionstest](tools/test_potential_accessibility.cjs) består på 24 guide-sider, seks ældre carouseller og begge gamle sprogskift: nummererede trin, valg, 320px-layout, Enter/mellemrum, fokusafgrænsning, Escape, fokusretur, synlige flag og tastaturfokus.
 - Visuelt kontrolleret laserfilguiden ved 320 pixels, mobilforsiden og desktopvisningen af en genereret guide. [Laserfilguide efter rettelse](.a11y-report/fix-tests/guide-til-laserfiler.html-320.png).
 - JavaScript-syntaks og `git diff --check` er kontrolleret før publicering.
 
+### Gennemgang af de 822 potentielle fund
+
+| IBM-regel | Antal | Vurdering |
+|---|---:|---|
+| Fokusmarkering | 423 | Browsermåling fandt en synlig indikator på 243 direkte matchende elementer. De øvrige 180 er tilfældigt genererede SVG-vægge i Labyrintværkstedet; alle bruger samme testede fokusklasse og Enter-betjening. |
+| Mulig overskrift | 138 | Grupperet kodegennemgang viser hovedsageligt kategorilabels og beholdere, som allerede indeholder en overskrift. Der er ikke foretaget en automatisk ændring af dokumentstrukturen; semantikken bør indgå i den fortsatte manuelle indholdsgennemgang. |
+| Element skjult indtil fokus | 75 | Alle 75 bliver synlige, når de modtager tastaturfokus. |
+| Mulig liste | 47 | 29 er enkeltstående billedtekster, og 18 er nummererede sektionsoverskrifter. De er gennemgået som tekst/overskrifter, ikke lister. |
+| Farve kan være eneste signal | 45 | Kræver fortsat visuel kontrol af tilstande og forced-colors. IBM rejser kontrollen én gang pr. stylesheet eller side frem for på et bestemt dokumenteret brud. |
+| Fokus kan være dækket | 26 | Alle 26 var synlige og udækkede i browsermålingen ved fokus. |
+| Synlig label | 25 | 17 er Vektor-Viktors ikonknapper med navn, titel og tooltip; 8 er WeDo-felter med tilgængeligt navn og synlig blok-/enhedskontekst. Om den synlige kontekst er tilstrækkelig, beholdes som manuel vurdering. |
+| Sensorisk formulering | 23 | Kræver redaktionel gennemgang, især ældre engelske guides med ord som “below”, “left” og “right”. |
+| Alternativ til træk | 13 | WeDo har klik for at tilføje samt pileknapper til at flytte, indlejre og flytte blokke ud. Arbejdsgangen består browsertesten uden træk. |
+| Tekst med viewport-enheder | 6 | Faktisk tekstforstørrelse til 200 % mangler fortsat manuel kontrol på de seks sider. |
+| Spring gentaget indhold over | 1 | Den selvstændige moving-head-komponent under `assets/` indeholder kun ét hovedområde og ingen gentaget navigation. |
+
+De 180 manuelle kontroller består primært af 88 baggrundsbilledkontroller og 80 high-contrast-kontroller. De resterende 12 vedrører native downloadlinks og ældre musehændelser med tilføjet tastaturalternativ.
+
 ### Stadig åbent
 
-De 1328 potentielle fund er ikke alle gennemgået manuelt. Faktisk skærmlæser, alle zoom-/højkontrasttilstande, alle ældre billeddialoger, alle redigerings- og eksportforløb, WeDo med en fysisk Bluetooth-hub samt eksterne tjenester mangler fuld test. Den offentlige erklæring bør derfor fortsat beskrive begrænsninger frem for fuld overensstemmelse.
+De 822 potentielle fund er grupperet og teknisk vurderet, men de åbne punkter ovenfor er ikke en afsluttet manuel WCAG-evaluering. Faktisk skærmlæser, 200 % tekstforstørrelse, alle zoom-/højkontrasttilstande, alle redigerings- og eksportforløb, WeDo med en fysisk Bluetooth-hub samt eksterne tjenester mangler fuld test. Den offentlige erklæring bør derfor fortsat beskrive begrænsninger frem for fuld overensstemmelse.
 
 [Opdateret side-for-side-oversigt](.a11y-report/fix-tests/page-status.md) viser aktuelle tal. Resten af denne fil er den oprindelige vurdering **før rettelserne**, bevaret som sammenligningsgrundlag.
 

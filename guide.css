@@ -5,8 +5,8 @@
     --surface-muted: #dbe2ef;
     --border: rgba(17, 45, 78, 0.12);
     --text: #112d4e;
-    --text-soft: #3f72af;
-    --brand: #3f72af;
+    --text-soft: #35639a;
+    --brand: #35639a;
     --brand-strong: #112d4e;
     --accent: #3f72af;
     --accent-soft: #dbe2ef;
@@ -323,7 +323,7 @@ select {
 .icon-card p {
     margin: 0;
     text-align: center;
-    color: rgba(255, 255, 255, 0.82);
+    color: #fff;
 }
 
 .hero-note-card {
@@ -549,18 +549,23 @@ select {
 }
 
 .thumb-button {
-    width: 14px;
-    height: 14px;
+    width: 28px;
+    height: 28px;
     padding: 0;
     border-radius: 999px;
-    border: none;
-    background: rgba(63, 114, 175, 0.22);
+    border: 1px solid rgba(17, 45, 78, 0.14);
+    background: var(--accent-soft);
+    color: var(--brand-strong);
     cursor: pointer;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 700;
 }
 
 .thumb-button.is-active {
-    width: 38px;
-    background: var(--accent);
+    width: 28px;
+    background: var(--brand);
+    color: #fff;
 }
 
 .placeholder-card,

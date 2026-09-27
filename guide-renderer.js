@@ -280,7 +280,7 @@
         let currentIndex = 0;
 
         thumbTrack.innerHTML = slides.map(function (_slide, slideIndex) {
-            return "<button type=\"button\" class=\"thumb-button interactive\" data-thumb-index=\"" + slideIndex + "\" aria-label=\"" + t.goToStepPrefix + " " + (slideIndex + 1) + "\"></button>";
+            return "<button type=\"button\" class=\"thumb-button interactive\" data-thumb-index=\"" + slideIndex + "\" aria-label=\"" + t.goToStepPrefix + " " + (slideIndex + 1) + "\">" + (slideIndex + 1) + "</button>";
         }).join("");
 
         function renderSlide() {

@@ -2,6 +2,9 @@
   "name": "fablab-guides",
   "private": true,
   "scripts": {
+    "test": "npm run test:accessibility && npm run test:potentials && npm run test:wedo",
+    "test:accessibility": "node tools/test_accessibility.cjs",
+    "test:potentials": "node tools/test_potential_accessibility.cjs",
     "test:wedo": "node tools/test_wedo_accessibility.cjs"
   },
   "devDependencies": {

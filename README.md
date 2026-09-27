@@ -5,10 +5,19 @@
 
 ## Version
 
-Aktuel version: 1.75
+Aktuel version: 1.76
 Dato: 2026-09-27
 
 ## Seneste aendringer
+
+### v1.76 (2026-09-27)
+
+- Gennemgået de 1328 potentielle IBM-fund regel for regel og reduceret dem til 822 uden at undertrykke scannerfund.
+- Erstattet den tekstbærende gradient på forsiden med en ensfarvet baggrund og justeret blå/hvide tekstfarver til dokumenteret WCAG AA-kontrast.
+- Gjort carouseltrin synligt nummererede og mindst 28 × 28 pixels på alle 24 berørte guide-sider, mens valg og mobilombrydning er bevaret.
+- Gjort seks ældre billedcarouseller tastaturbetjente med fokusstyring, Escape og fokusretur samt rettet de gamle sprogskifts links og billedstier.
+- Tilføjet `npm test`, som kontrollerer almindelige sider og dialoger, guidecarouseller, ældre carouseller, sprogskift og hele WeDo-forløbet.
+- Seneste IBM-scanning af 82 HTML-sider: 0 konstaterede fejl, 822 potentielle fund, 180 manuelle kontroller og 45 anbefalinger. Den regelbaserede vurdering står i [`TILGAENGELIGHEDSVURDERING.md`](TILGAENGELIGHEDSVURDERING.md).
 
 ### v1.75 (2026-09-27)
 
@@ -133,14 +142,20 @@ Denne udgivelse blev oprindeligt registreret som v1.60.0 i README; værktøjet v
 
 ## Test
 
-Installer udviklingsafhængighederne og kør WeDo-browsertesten:
+Installer udviklingsafhængighederne, start en lokal server og kør hele browsertestpakken:
 
 ```sh
 npm install
-npm run test:wedo
+python -m http.server 8765
 ```
 
-Testen starter Chrome automatisk og kontrollerer bl.a. tastaturbetjening, fokus, import/eksport og layout ved 320 og 1280 pixels.
+Kør derefter i en anden terminal:
+
+```sh
+npm test
+```
+
+Testene starter Chrome automatisk og kontrollerer bl.a. tastaturbetjening, fokus, carouseller, import/eksport og layout ved 320 og 1280 pixels. Deltestene kan køres med `npm run test:accessibility`, `npm run test:potentials` og `npm run test:wedo`.
 
 ## Versionsstandard
 
@@ -151,8 +166,8 @@ Projektet bruger versionsformatet `MAJOR.MINOR`.
 
 Eksempler:
 
-- `1.75` -> Aktuel release.
-- `1.76` -> Naeste release med nye forbedringer.
+- `1.76` -> Aktuel release.
+- `1.77` -> Naeste release med nye forbedringer.
 - `2.0` -> Stoerre breaking release.
 
 ### Saadan opdateres versionen
