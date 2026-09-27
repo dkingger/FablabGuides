@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Siden blev ikke fundet.">
+    <meta name="author" content="Fablab">
+    <title>404 · FabLab Guides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260808">
+    <link rel="icon" type="image/x-icon" href="billeder/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="billeder/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="billeder/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="billeder/apple-touch-icon.png">
+    <link rel="manifest" href="billeder/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="FabLab">
+    <style>
+        .page-shell {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .error-main {
+            flex: 1;
+            display: grid;
+            place-items: center;
+            padding: 52px 0 56px;
+        }
+
+        .error-card {
+            width: min(100%, 760px);
+            margin: 0 auto;
+            padding: 34px;
+            border-radius: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .error-video-wrap {
+            margin: 0 auto;
+            width: min(100%, 680px);
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(17, 45, 78, 0.1);
+        }
+
+        .error-video {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .error-text {
+            margin-top: 30px;
+        }
+
+        .error-text p {
+            margin: 0;
+        }
+
+        .error-oops {
+            font-size: clamp(1.65rem, 2.6vw, 2.2rem);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--brand-strong);
+            font-weight: 800;
+        }
+
+        .error-line {
+            margin-top: 10px;
+            color: var(--text-soft);
+            font-size: 1.05rem;
+        }
+
+        .error-code {
+            margin-top: 10px;
+            color: var(--text);
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .error-actions {
+            margin-top: 28px;
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (max-width: 760px) {
+            .error-main {
+                padding-top: 28px;
+            }
+
+            .error-card {
+                width: calc(100vw - 32px);
+                max-width: calc(100vw - 32px);
+                padding: 24px;
+                border-radius: 24px;
+            }
+
+            .error-text {
+                margin-top: 22px;
+            }
+
+            .error-actions .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Spring til hovedindhold</a>
+
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="container nav-wrap">
+                <a class="brand interactive" href="index.html" aria-label="Til forsiden">
+                    <span class="brand-text">
+                        <strong>FabLab Guides</strong>
+                    </span>
+                </a>
+
+                <nav class="top-nav" id="site-nav" aria-label="Primær navigation" data-lang="da" data-page=""></nav>
+                <script src="nav.js"></script>
+            </div>
+        </header>
+
+        <main id="main-content" class="error-main">
+            <section class="container">
+                <article class="error-card">
+                    <div class="error-video-wrap">
+                        <video class="error-video" autoplay muted loop playsinline preload="auto" aria-label="Animeret karaktervideo">
+                            <source src="assets/video/character.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="error-text">
+                        <p class="error-oops">Ooops…</p>
+                        <p class="error-line">Nogen må have bidt i netværkskablerne.</p>
+                        <p class="error-code">404 · Siden kunne ikke findes</p>
+                    </div>
+
+                    <div class="error-actions">
+                        <a class="button button-primary interactive" href="index.html">Tilbage til forsiden</a>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-wrap">
+                <div class="footer-license">
+                    <a class="interactive" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">
+                        <img class="cc-license-logo" src="billeder/ikoner/cc-by-sa.svg" alt="Creative Commons BY-SA 4.0">
+                    </a>
+                    <p class="cc-license-text">Al tekst udgivet under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA</a>.</p>
+                </div>
+                <div class="footer-license">
+                    <a class="interactive" href="tilgaengelighedserklaering.html">
+                        <img class="cc-license-logo" src="billeder/ikoner/accessibility-a11y.svg" alt="Tilgængelighedserklæring">
+                    </a>
+                    <p class="cc-license-text">Se sidens <a href="tilgaengelighedserklaering.html">tilgængelighedserklæring</a>.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
