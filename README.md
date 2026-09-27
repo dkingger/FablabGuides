@@ -5,10 +5,19 @@
 
 ## Version
 
-Aktuel version: 1.74
-Dato: 2026-09-23
+Aktuel version: 1.75
+Dato: 2026-09-27
 
 ## Seneste aendringer
+
+### v1.75 (2026-09-27)
+
+- Tilføjet `Labyrintvaerksted.html`, som kan generere og redigere laserskårne labyrinter samt eksportere dem som SVG.
+- Tilføjet Labyrintværksted under Populære genveje på forsiden og en tydelig tilbageknap på værkstedssiden.
+- Forbedret tilgængeligheden på hele sitet, herunder tastaturbetjening, fokusmarkeringer, feltnavne, kontrast, navigation og dialoger.
+- WeDo-blokværkstedets blokke kan nu flyttes, indlejres og slettes med tastaturet.
+- Fjernet syv ubrugte filer fra `old/`; filer, som fortsat bruges gennem de gamle guideforsider, er bevaret.
+- IBM Equal Access finder 0 konstaterede fejl på de 82 nuværende HTML-sider. Potentielle og manuelle kontroller er fortsat beskrevet i [`TILGAENGELIGHEDSVURDERING.md`](TILGAENGELIGHEDSVURDERING.md), så resultatet er ikke i sig selv en fuld WCAG-godkendelse.
 
 ### v1.74 (2026-09-23)
 
@@ -128,8 +137,8 @@ Projektet bruger versionsformatet `MAJOR.MINOR`.
 
 Eksempler:
 
-- `1.74` -> Aktuel release.
-- `1.75` -> Naeste release med nye forbedringer.
+- `1.75` -> Aktuel release.
+- `1.76` -> Naeste release med nye forbedringer.
 - `2.0` -> Stoerre breaking release.
 
 ### Saadan opdateres versionen
