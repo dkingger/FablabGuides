@@ -2,23 +2,18 @@
 
 Dato: 27. september 2026. Målestok: WCAG 2.2 niveau A og AA.
 
-## Status efter rettelser – 27. september 2026
+## Aktuel status – 27. september 2026
 
-**304 konstaterede IBM-fund er fjernet: 351 → 47.** 85 af 88 HTML-filer har nu nul konstaterede IBM-fejl i deres scannede starttilstand. Der er fortsat åbne manuelle kontroller; dette er ikke en WCAG-godkendelse.
+**Den aktuelle IBM Equal Access-scanning har 0 konstaterede fejl på alle 82 HTML-sider.** Syv ubrugte filer er slettet fra `old/`, WeDo-blokværkstedet er rettet, og Labyrintværkstedet er tilføjet. Der er fortsat åbne potentielle og manuelle kontroller; resultatet er derfor ikke i sig selv en fuld WCAG-godkendelse.
 
 | Måling | Før | Efter |
 |---|---:|---:|
-| Konstaterede fund | 351 | 47 |
-| Potentielle fund | 1329 | 1155 |
-| Manuelle kontroller | 195 | 195 |
+| Konstaterede fund | 351 | 0 |
+| Potentielle fund | 1329 | 1329 |
+| Manuelle kontroller | 195 | 186 |
 | Anbefalinger | 8 | 45 |
 
-De resterende konstaterede fund er:
-
-- `wedo-blokvaerksted.html`: 41. Filen er bevaret byte-for-byte; dens kontrolsum er sammenlignet før og efter.
-- `old/google6fee8520323cc3a8.html` og `old/en/google6fee8520323cc3a8.html`: 3 hver. De er tekniske Google-verifikationsfiler, ikke almindelige indholdssider; verifikationsteksten er bevaret uændret.
-
-Anbefalinger er steget, bl.a. fordi navngivne sideområder nu udløser anbefaling om synlig label i stedet for fejl om manglende navn. Ingen fund er undertrykt eller fjernet fra scanningen. IBM returnerer stadig fejlstatus, fordi der er konstaterede og potentielle fund.
+Potentielle fund er steget igen, fordi Labyrintværkstedets mange tastaturbetjente SVG-vægge hver udløser en automatisk fokuskontrol. Fokusmarkeringen og væggenes Enter-betjening er afprøvet i browseren. Ingen fund er undertrykt eller fjernet fra scanningen.
 
 ### Gennemførte rettelser
 
@@ -28,21 +23,25 @@ Anbefalinger er steget, bl.a. fordi navngivne sideområder nu udløser anbefalin
 - Genererede maskinguider har rigtige billedknapper og native dialoger med fokusstyring, lukning, frem/tilbage-knapper og markeret aktivt trin. Online tools har samme robuste Tab-afgrænsning.
 - Garn Bandit har mørkere tekstfarver, navngivne fil- og skyderfelter, synligt uploadfokus, annoncerede statusbeskeder og tilgængelige tilstandsmarkeringer. Pinde kan nu tilføjes med koordinater eller fjernes via en liste uden mus.
 - Vektor-Viktor har korrigerede dekorative ikoner, hovedområde, kontrast og flere feltnavne. Objektlisten bruger knapper med tastaturvalg og bevaret fokus. Hele tegne-/eksportarbejdsgangen er ikke dermed godkendt.
-- Ældre guides har hovedområder, springlinks og fokusmarkeringer; enkelte kontraster og en iframe-titel er rettet. To tomme ScanNCut-pladsholdere linker nu til den aktuelle guide. Ældre specialfunktioner og billeddialoger kræver fortsat særskilt funktionstest.
+- WeDo har korrigeret kontrast, feltnavne, struktur og fokus. Blokke kan flyttes, indlejres og slettes med tastaturet. Import, eksport, lokal lagring, demoafvikling og stop er testet uden en fysisk hub.
+- Syv ubrugte filer er slettet fra `old/`; de 29 filer, som stadig nås gennem de gamle guideforsider, er bevaret.
+- Labyrintværkstedet er tilføjet med genvej fra forsiden og tilbageknap. Vægge kan redigeres med Enter, og siden har 0 konstaterede IBM-fejl.
 
 ### Verifikation
 
-- Ny IBM-scanning af alle 88 HTML-filer: [slutrapporter](.a11y-report/fixes-final/).
-- Ny browserkontrol af alle 88 sider uden registrerede JavaScript-fejl: [målinger](.a11y-report/fix-tests/browser-all-pages.json). Eksterne ressourcer var blokeret i denne kontrol som i den oprindelige screening.
+- Ny IBM-scanning af alle 82 tilbageværende HTML-filer: 0 konstaterede fejl, 1329 potentielle fund, 186 manuelle kontroller og 45 anbefalinger.
+- Seneste fulde browserkontrol før Labyrintværkstedet dækkede alle daværende sider uden registrerede JavaScript-fejl: [målinger](.a11y-report/fix-tests/browser-all-pages.json). Eksterne ressourcer var blokeret i denne kontrol som i den oprindelige screening.
 - [Regressionstest](tools/test_accessibility.cjs) består på forside, laserfilguide, Online tools og AEON-guide i begge sprogversioner: 320px-bredde, synlige navlinks, springlink-fokus og billeddialoger hvor relevante. Dialogtest dækker åbning med Enter/Space, gentagen Tab, Escape, lukkeknap og tilbageføring af fokus; AEON dækker også næste billede.
 - Garn Bandit: testet SVG-import, fjern/tilføj pind med tastatur, beskyttelse mod dubletter, statusområde og mobilvisning. [Skærmbillede af pindredigering](.a11y-report/fix-tests/garn-pin-editor-320.png).
 - Vektor-Viktor: testet SVG-import, åbning af objektpanel og objektvalg med tastatur, inklusive fokus efter genoptegning af listen.
+- WeDo: testet navngivne felter, springlink, bloktilføjelse, flytning, indlejring og sletning, import/eksport, lokal lagring, demoafvikling, stop samt layout ved 320 og 1280 pixels.
+- Labyrintværkstedet: testet forsidegenvej, tilbageknap og fokus, vægredigering med tastatur, ny labyrint, fortryd/gentag samt layout ved 320 og 1280 pixels.
 - Visuelt kontrolleret laserfilguiden ved 320 pixels, mobilforsiden og desktopvisningen af en genereret guide. [Laserfilguide efter rettelse](.a11y-report/fix-tests/guide-til-laserfiler.html-320.png).
-- JavaScript-syntaks og `git diff --check` kontrolleret. Ingen commit eller publicering foretaget.
+- JavaScript-syntaks og `git diff --check` er kontrolleret før publicering.
 
 ### Stadig åbent
 
-De 1155 potentielle fund er ikke alle gennemgået manuelt. Faktisk skærmlæser, alle zoom-/højkontrasttilstande, alle ældre billeddialoger, alle redigerings- og eksportforløb samt eksterne tjenester mangler fuld test. WeDo skal fortsat være uændret. Den offentlige erklæring bør derfor fortsat beskrive begrænsninger frem for fuld overensstemmelse.
+De 1329 potentielle fund er ikke alle gennemgået manuelt. Faktisk skærmlæser, alle zoom-/højkontrasttilstande, alle ældre billeddialoger, alle redigerings- og eksportforløb, WeDo med en fysisk Bluetooth-hub samt eksterne tjenester mangler fuld test. Den offentlige erklæring bør derfor fortsat beskrive begrænsninger frem for fuld overensstemmelse.
 
 [Opdateret side-for-side-oversigt](.a11y-report/fix-tests/page-status.md) viser aktuelle tal. Resten af denne fil er den oprindelige vurdering **før rettelserne**, bevaret som sammenligningsgrundlag.
 

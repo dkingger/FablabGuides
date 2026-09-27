@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Labyrintværksted · SVG til laserskæreren</title>
+<meta name="description" content="Lav en kvadratisk labyrint, klik vægge til og fra, og eksportér sammenhængende skærelinjer som SVG i præcise millimeter.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3548'/%3E%3Cpath d='M7 7h18v18H7V13h12v6h-6M25 13h-6M13 25v-6' fill='none' stroke='%23f2b45d' stroke-width='2.5'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:light;--ink:#1c3345;--muted:#596b78;--line:#dce3e9;--paper:#fff;--bg:#edf2f6;--blue:#1268aa;--orange:#f3b35e;--red:#b02f37;--green:#20705b;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;color:var(--ink);background:var(--bg)}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #2389cb;outline-offset:3px}button{border:1px solid var(--line);background:white;color:var(--ink);border-radius:9px;font-weight:650;transition:background .15s,transform .15s}button:hover:not(:disabled){background:#edf4f9}button:active:not(:disabled){transform:translateY(1px)}.topbar{background:var(--ink);color:white;padding:18px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;gap:13px;align-items:center}.brand svg{width:38px;height:38px;flex:none}.brand h1{font-size:1.25rem;line-height:1.25;margin:0;font-weight:750;letter-spacing:-.02em}.brand p{margin:3px 0 0;color:#c3d0d9;font-size:.875rem}.top-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap}.back-link{display:inline-flex;align-items:center;min-height:36px;padding:7px 11px;border:1px solid #8294a2;border-radius:7px;color:white;text-decoration:none;font-size:.875rem;font-weight:650;white-space:nowrap}.back-link:hover{background:#ffffff18}.top-meta{font-size:.875rem;color:#d4dfe6;border:1px solid #526474;padding:6px 11px;border-radius:6px;white-space:nowrap}.layout{max-width:1460px;margin:0 auto;padding:26px;display:grid;grid-template-columns:310px minmax(0,1fr);gap:24px;align-items:start}.settings{background:white;border:1px solid var(--line);border-radius:14px;overflow:hidden}.section{padding:22px}.section+.section{border-top:1px solid var(--line)}.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:750;margin:0 0 18px}.field{display:block;margin-bottom:18px}.field:last-child{margin-bottom:0}.field-label{display:block;font-size:.875rem;font-weight:650;margin-bottom:7px}.input-wrap{position:relative;display:block}.input-wrap input[type=number]{appearance:textfield}.input-wrap input::-webkit-inner-spin-button,.input-wrap input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.input-wrap input{padding-right:44px}.unit{position:absolute;right:14px;top:12px;color:var(--muted);font-size:.875rem;pointer-events:none}input[type=number]{width:100%;height:45px;border:1px solid #bdcbd6;border-radius:8px;padding:9px 12px;color:var(--ink);background:#fff;font-weight:600}input[type=number]:hover{border-color:#819cad}input[type=range]{accent-color:var(--blue);width:100%;height:23px;margin:10px 0 0}.density-options{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:0 0 18px}.density-options button{min-height:42px;font-size:.875rem;padding:8px 4px}.density-options button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:white}.passage-hint{font-size:.8125rem;color:var(--muted);margin:8px 0 0}.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}.note{font-size:.875rem;line-height:1.5;color:var(--muted);margin:10px 0 0}.small{font-size:.8125rem}.range-labels{display:flex;justify-content:space-between;font-size:.8125rem;color:var(--muted)}.primary{width:100%;min-height:48px;background:var(--ink);border-color:var(--ink);color:white;display:flex;align-items:center;justify-content:center;gap:9px}.primary:hover:not(:disabled){background:#2e5068}.secondary-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}.secondary-actions button{padding:10px 6px;font-size:.875rem}.workspace{min-width:0}.workspace-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.workspace-head h2{font-size:1.125rem;margin:0;letter-spacing:-.02em}.workspace-head p{font-size:.875rem;color:var(--muted);margin:4px 0 0}.history{display:flex;gap:6px}.icon-btn{width:38px;height:38px;display:grid;place-items:center}.icon-btn svg{width:18px;height:18px}.studio{border:1px solid #cedae3;border-radius:14px;overflow:hidden;background:#f8fafc;box-shadow:0 4px 20px #213c5010}.studio-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 18px;background:white;border-bottom:1px solid var(--line)}.badge{font-size:.8125rem;font-weight:700;background:#edf2f6;padding:6px 9px;border-radius:5px;font-variant-numeric:tabular-nums}.check{display:flex;align-items:center;gap:8px;font-size:.875rem;cursor:pointer;user-select:none}.check input{width:17px;height:17px;accent-color:var(--blue)}.board-shell{background-image:radial-gradient(#bdcbd6 .7px,transparent .7px);background-size:18px 18px;padding:12px 20px;display:grid;place-items:center;min-height:350px}#board{display:block;width:100%;max-width:600px;max-height:calc(100vh - 320px);min-height:330px;touch-action:manipulation;overflow:visible}.studio-footer{border-top:1px solid var(--line);background:white;padding:12px 18px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;font-size:.8125rem;color:var(--muted)}.key{display:flex;align-items:center;gap:7px}.swatch{width:13px;height:13px;border-radius:3px;display:inline-block;flex:none}.swatch.solid{background:var(--ink)}.swatch.cut{background:white;border:1px solid #b6c6d1}.swatch.ghost{border:1px dashed #7c9fb6}.dimension{fill:#617586;font-family:inherit;font-size:3.1px;font-weight:600}.dimension-line{fill:none;stroke:#8d9fab;stroke-width:.18}.material{fill:var(--ink)}.loose{fill:#bf4851}.wall-hit{cursor:pointer;fill:transparent;stroke:none;outline:none}.wall-hit:hover,.wall-hit:focus-visible{fill:#388cc84a;stroke:#1268aa;stroke-width:.25}.wall-hit.present:hover,.wall-hit.present:focus-visible{fill:#ef8b8b85;stroke:#c3424b}.guide{stroke:#97b0c1;stroke-width:.18;stroke-dasharray:.75 1;pointer-events:none}.startlabel{font-family:inherit;font-weight:700;pointer-events:none}.status-row{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;margin-top:18px}.status-card{display:flex;align-items:flex-start;gap:10px;font-size:.875rem;line-height:1.45}.status-symbol{font-size:1.125rem;color:var(--green);font-weight:750;line-height:1.25}.status-card strong{display:block}.status-card p{color:var(--muted);margin:3px 0 0}.status-card.bad .status-symbol,.status-card.bad strong{color:var(--red)}.download{background:var(--orange);border-color:#dfa04b;min-height:48px;padding:12px 22px;display:flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap}.download:hover:not(:disabled){background:#f5c17d}.dimensions-readout{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0}.dimensions-readout dt{font-size:.8125rem;color:var(--muted);margin-bottom:4px}.dimensions-readout dd{font-size:1rem;font-weight:700;margin:0}.help{margin:21px 0 0;border-top:1px solid var(--line);padding-top:17px;font-size:.875rem;color:var(--muted);line-height:1.6}.help summary{cursor:pointer;color:var(--ink);font-weight:650}.help p{margin:10px 0 0}.help ol{padding-left:22px;margin:10px 0 0}.help li{margin:6px 0}#inputError{font-size:.875rem;color:var(--red);line-height:1.5;margin:0 0 16px}#inputError:empty{display:none}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;border-radius:10px;padding:12px 20px;font-size:.875rem;box-shadow:0 4px 20px #1c334530;z-index:10;max-width:90vw;text-align:center}.toast[hidden]{display:none}@media(min-width:1400px){.board-shell{padding:18px}#board{max-width:670px;max-height:660px}}@media(max-width:980px){.layout{grid-template-columns:270px minmax(0,1fr);padding:18px;gap:18px}.section{padding:18px}.status-row{grid-template-columns:1fr}.download{width:100%}#board{min-height:280px}.board-shell{padding:8px}}@media(max-width:720px){.topbar{padding:16px 18px;flex-wrap:wrap}.top-actions{width:100%;justify-content:space-between}.top-meta{display:none}.layout{display:flex;flex-direction:column;padding:16px;gap:20px}.settings{width:100%;display:grid;grid-template-columns:1fr 1fr}.section{padding:16px}.section+.section{border-top:0;border-left:1px solid var(--line)}.settings .measurements{display:none}.eyebrow{margin-bottom:12px}.field{margin-bottom:12px}.workspace{width:100%}.workspace-head p{max-width:260px}.board-shell{padding:8px 12px;min-height:300px}#board{max-height:none;min-height:0}.status-row{gap:14px}.studio-bar{padding:12px}.brand h1{font-size:1.15rem}.brand p{font-size:.8125rem}}@media(max-width:450px){.settings{grid-template-columns:1fr}.section+.section{border-left:0;border-top:1px solid var(--line)}.workspace-head{align-items:flex-start}.studio-footer{gap:12px}.topbar{padding:15px}.brand svg{width:33px}.check{font-size:.8125rem}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand"><svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="2" y="2" width="32" height="32" rx="7" stroke="#688092"/><path d="M9 9h18v18H9V15h12v6h-6M27 15h-6M15 27v-6" stroke="#f3b35e" stroke-width="2.5" stroke-linecap="square"/></svg><div><h1>Labyrintværksted</h1><p>Fra idé til laserskåret labyrint</p></div></div><div class="top-actions"><a class="back-link" href="index.html">← Tilbage til forsiden</a><span class="top-meta">SVG · mål i millimeter</span></div></header>
+<main class="layout">
+<aside class="settings" aria-label="Indstillinger">
+<section class="section"><h2 class="eyebrow">01 / Plade & vægge</h2>
+<label class="field"><span class="field-label">Kvadratets sidelængde</span><span class="input-wrap"><input id="size" type="number" min="50" max="300" step="1" value="100" inputmode="decimal" aria-label="Kvadratets sidelængde i millimeter"><span class="unit">mm</span></span></label>
+<div class="cols"><label class="field"><span class="field-label">Rækker</span><input id="rows" type="number" min="1" max="20" step="1" value="10" inputmode="numeric"></label><label class="field"><span class="field-label">Kolonner</span><input id="cols" type="number" min="1" max="20" step="1" value="10" inputmode="numeric"></label></div>
+<span class="field-label" id="densityLabel">Hurtigt valg af tæthed</span><div class="density-options" role="group" aria-labelledby="densityLabel"><button id="density8" type="button" aria-pressed="false">8 × 8</button><button id="density10" type="button" aria-pressed="true">10 × 10</button><button id="density12" type="button" aria-pressed="false">12 × 12</button></div>
+<label class="field"><span class="field-label" id="thicknessLabel">Vægtykkelse set oppefra</span><span class="input-wrap"><input id="thickness" type="number" min="2" max="3" step="0.1" value="2.5" inputmode="decimal"><span class="unit">mm</span></span><input id="thicknessRange" type="range" min="2" max="3" step="0.1" value="2.5" aria-labelledby="thicknessLabel"><span class="range-labels"><span>2 mm</span><span>3 mm</span></span></label>
+<p class="note small">Flere felter giver flere vægge og smallere passager. Nye antal giver et nyt mønster. Rammen har samme tykkelse som væggene.</p>
+</section>
+<section class="section"><h2 class="eyebrow">02 / Dit mønster</h2><p id="inputError" role="alert"></p>
+<button class="primary" id="generate"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h3c5 0 5 10 10 10h3M17 14l3 3-3 3M4 17h3c1.8 0 3-1.3 4-3M14 10c1-1.7 2-3 3-3h3M17 4l3 3-3 3"/></svg>Ny labyrint</button>
+<div class="secondary-actions"><button id="full">Alle vægge</button><button id="empty">Kun ramme</button></div>
+<p class="note">Nye labyrinter får lange ruter med mange sving. Klik på vægge og stiplede linjer for selv at ændre mønsteret.</p>
+</section>
+<section class="section measurements"><dl class="dimensions-readout"><div><dt>Pladens mål</dt><dd id="sizeReadout"></dd></div><div><dt>Fri passage</dt><dd id="passageReadout"></dd></div></dl><p class="note small">Passagen er den frie bredde × højde i hvert felt. Vælg en kugle, der er mindre end den smalleste passage.</p></section>
+</aside>
+<section class="workspace" aria-label="Labyrinteditor">
+<div class="workspace-head"><div><h2>Din labyrint, set oppefra</h2><p>Klik vægge til og fra direkte i tegningen.</p></div><div class="history"><button class="icon-btn" id="undo" title="Fortryd (Ctrl+Z)" aria-label="Fortryd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m9 5-5 5 5 5M5 10h9a6 6 0 0 1 0 12" transform="translate(0 -2)"/></svg></button><button class="icon-btn" id="redo" title="Gentag (Ctrl+Shift+Z)" aria-label="Gentag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m15 5 5 5-5 5M19 10h-9a6 6 0 0 0 0 12" transform="translate(0 -2)"/></svg></button></div></div>
+<div class="studio"><div class="studio-bar"><div><span class="badge" id="boardLabel"></span><p class="passage-hint" id="passageHint"></p></div><label class="check"><input id="guides" type="checkbox" checked>Vis linjer til nye vægge</label></div><div class="board-shell"><svg id="board" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 120 120" aria-label="Redigerbar labyrint set oppefra"></svg></div><div class="studio-footer"><span class="key"><i class="swatch solid"></i>Vægge og ramme</span><span class="key"><i class="swatch cut"></i>Skæres væk</span><span class="key"><i class="swatch ghost"></i>Mulig væg</span></div></div>
+<div class="status-row"><div id="status" class="status-card" role="status" aria-live="polite"><span class="status-symbol" id="statusSymbol">✓</span><div><strong id="statusTitle"></strong><p id="statusText"></p></div></div><button class="download" id="export"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 15v5h16v-5"/></svg>Hent SVG</button></div>
+<details class="help"><summary>Sådan bruger du filen ved laserskæreren</summary><ol><li>Hent SVG og importér den i dit laserprogram. Ydermålet er kvadratets valgte sidelængde i mm.</li><li>De røde, lukkede linjer er skærelinjer. Skær de indre åbninger før yderkanten. Hjælpelinjer, S og M er kun vist her på skærmen.</li><li>Ramme og vægge skæres som ét sammenhængende væglag. Lim laget på en separat, tæt bundplade for at holde kuglen inde. Bundpladen er ikke med i SVG-filen.</li></ol><p>Vægtykkelsen her er bredden set oppefra. Væggenes højde bestemmes af pladens materialetykkelse. SVG'en har ingen kompensation for laserens snitbredde; tilpas den i laserprogrammet efter en prøveskæring.</p></details>
+</section></main><div class="toast" id="toast" role="status" hidden></div>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const NS='http://www.w3.org/2000/svg';
+const fmt = n => Number(n.toFixed(4)).toString();
+const da = n => Number(n.toFixed(2)).toLocaleString('da-DK');
+let state={size:100,rows:10,cols:10,t:2.5,h:[],v:[]};
+let past=[],future=[],latest=null,toastTimer;
+function clone(s){return JSON.parse(JSON.stringify(s));}
+function fullWalls(s,value=true){s.h=Array.from({length:s.rows-1},()=>Array(s.cols).fill(value));s.v=Array.from({length:s.rows},()=>Array(s.cols-1).fill(value));}
+function carveMaze(s){
+ fullWalls(s);let seen=new Set([0]),stack=[0];
+ while(stack.length){const here=stack[stack.length-1],r=Math.floor(here/s.cols),c=here%s.cols,opts=[];
+ if(r>0&&!seen.has(here-s.cols))opts.push([here-s.cols,'h',r-1,c]);
+ if(r<s.rows-1&&!seen.has(here+s.cols))opts.push([here+s.cols,'h',r,c]);
+ if(c>0&&!seen.has(here-1))opts.push([here-1,'v',r,c-1]);
+ if(c<s.cols-1&&!seen.has(here+1))opts.push([here+1,'v',r,c]);
+ if(!opts.length){stack.pop();continue;}const [next,k,y,x]=opts[Math.floor(Math.random()*opts.length)];s[k][y][x]=false;seen.add(next);stack.push(next);
+ }
+}
+// Select a long, winding start-to-goal route while retaining a spanning tree.
+function routeStats(s){
+ const total=s.rows*s.cols,parent=Array(total).fill(-1),queue=[0];parent[0]=0;
+ for(let i=0;i<queue.length&&parent[total-1]<0;i++){
+  const at=queue[i],r=Math.floor(at/s.cols),c=at%s.cols,near=[];
+  if(r>0&&!s.h[r-1][c])near.push(at-s.cols);
+  if(r<s.rows-1&&!s.h[r][c])near.push(at+s.cols);
+  if(c>0&&!s.v[r][c-1])near.push(at-1);
+  if(c<s.cols-1&&!s.v[r][c])near.push(at+1);
+  for(const n of near)if(parent[n]<0){parent[n]=at;queue.push(n);}
+ }
+ if(parent[total-1]<0)return {length:0,turns:0};
+ const route=[];let at=total-1;while(at!==0){route.push(at);at=parent[at];}route.push(0);route.reverse();
+ let turns=0;for(let i=2;i<route.length;i++)if(route[i]-route[i-1]!==route[i-1]-route[i-2])turns++;
+ return {length:route.length,turns};
+}
+function generateMaze(s){
+ let best=null,bestScore=-1;
+ const tries=s.rows>1&&s.cols>1?24:1;
+ for(let i=0;i<tries;i++){
+  const candidate={size:s.size,t:s.t,rows:s.rows,cols:s.cols};carveMaze(candidate);
+  const route=routeStats(candidate),score=route.length*4+route.turns;
+  if(score>bestScore){best=candidate;bestScore=score;}
+ }
+ s.h=best.h;s.v=best.v;
+}
+function metrics(s){return {px:(s.size-(s.cols+1)*s.t)/s.cols,py:(s.size-(s.rows+1)*s.t)/s.rows};}
+function commit(next){past.push(clone(state));if(past.length>100)past.shift();future=[];state=next;syncInputs();render();}
+function syncInputs(){$('size').value=state.size;$('rows').value=state.rows;$('cols').value=state.cols;$('thickness').value=state.t;$('thicknessRange').value=state.t;$('inputError').textContent='';for(const n of [8,10,12])$('density'+n).setAttribute('aria-pressed',String(state.rows===n&&state.cols===n));}
+function readSettings(){
+ let s=clone(state);s.size=Number($('size').value);s.rows=Number($('rows').value);s.cols=Number($('cols').value);s.t=Number($('thickness').value);
+ let error='';
+ if(!Number.isFinite(s.size)||s.size<50||s.size>300)error='Vælg en sidelængde fra 50 til 300 mm.';
+ else if(!Number.isInteger(s.rows)||!Number.isInteger(s.cols)||s.rows<1||s.rows>20||s.cols<1||s.cols>20)error='Vælg 1–20 rækker og 1–20 kolonner.';
+ else if(!Number.isFinite(s.t)||s.t<2||s.t>3)error='Vægtykkelsen skal være mellem 2 og 3 mm.';
+ else if(Math.min(metrics(s).px,metrics(s).py)<1)error='Der er for lidt plads mellem væggene. Vælg færre felter eller en større plade.';
+ $('inputError').textContent=error;return error?null:s;
+}
+function applySettings(){const s=readSettings();if(!s)return;if(s.rows!==state.rows||s.cols!==state.cols)generateMaze(s);if(JSON.stringify(s)!==JSON.stringify(state))commit(s);}
+function setDensity(n){$('rows').value=n;$('cols').value=n;const s=readSettings();if(!s)return;generateMaze(s);commit(s);}
+function remake(mode){const s=readSettings();if(!s)return;if(mode==='maze')generateMaze(s);else fullWalls(s,mode==='full');commit(s);}
+function undo(){if(!past.length)return;future.push(clone(state));state=past.pop();syncInputs();render();}
+function redo(){if(!future.length)return;past.push(clone(state));state=future.pop();syncInputs();render();}
+// Rectangular union on exact alternating wall/passage bands. Internal shared edges never export.
+function geometry(s){
+ const {px,py}=metrics(s),nx=2*s.cols+1,ny=2*s.rows+1;
+ const xs=[0],ys=[0];for(let x=0;x<nx;x++)xs.push(xs[x]+(x%2?px:s.t));for(let y=0;y<ny;y++)ys.push(ys[y]+(y%2?py:s.t));xs[nx]=s.size;ys[ny]=s.size;
+ const grid=Array.from({length:ny},()=>Array(nx).fill(false));
+ for(let y=0;y<ny;y++)for(let x=0;x<nx;x++)if(x===0||y===0||x===nx-1||y===ny-1)grid[y][x]=true;
+ s.h.forEach((row,r)=>row.forEach((on,c)=>{if(on)for(let x=2*c;x<=2*c+2;x++)grid[2*r+2][x]=true;}));
+ s.v.forEach((row,r)=>row.forEach((on,c)=>{if(on)for(let y=2*r;y<=2*r+2;y++)grid[y][2*c+2]=true;}));
+ const component=Array.from({length:ny},()=>Array(nx).fill(-1));let count=0;
+ for(let y=0;y<ny;y++)for(let x=0;x<nx;x++)if(grid[y][x]&&component[y][x]<0){const q=[[x,y]];component[y][x]=count;for(let i=0;i<q.length;i++){const [qx,qy]=q[i];for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const xx=qx+dx,yy=qy+dy;if(xx>=0&&xx<nx&&yy>=0&&yy<ny&&grid[yy][xx]&&component[yy][xx]<0){component[yy][xx]=count;q.push([xx,yy]);}}}count++;}
+ const edges=[],starts=new Map();
+ function edge(ax,ay,bx,by){const id=edges.length;edges.push({a:[ax,ay],b:[bx,by],used:false});const key=ax+','+ay;if(!starts.has(key))starts.set(key,[]);starts.get(key).push(id);}
+ for(let y=0;y<ny;y++)for(let x=0;x<nx;x++)if(grid[y][x]){
+ if(y===0||!grid[y-1][x])edge(x,y,x+1,y);
+ if(x===nx-1||!grid[y][x+1])edge(x+1,y,x+1,y+1);
+ if(y===ny-1||!grid[y+1][x])edge(x+1,y+1,x,y+1);
+ if(x===0||!grid[y][x-1])edge(x,y+1,x,y);
+ }
+ let loops=[];
+ for(let i=0;i<edges.length;i++){if(edges[i].used)continue;let e=edges[i],start=e.a,points=[];
+ while(true){e.used=true;points.push(e.a);if(e.b[0]===start[0]&&e.b[1]===start[1])break;let ids=(starts.get(e.b.join(','))||[]).filter(j=>!edges[j].used);if(!ids.length)throw Error('Åben kontur');
+ // Prefer a right turn at a shared vertex to keep independent outlines distinct.
+ let dx=e.b[0]-e.a[0],dy=e.b[1]-e.a[1];ids.sort((a,b)=>{const rank=j=>{let n=edges[j],xx=n.b[0]-n.a[0],yy=n.b[1]-n.a[1],cross=dx*yy-dy*xx,dot=dx*xx+dy*yy;return cross>0?0:dot>0?1:cross<0?2:3;};return rank(a)-rank(b);});e=edges[ids[0]];
+ }
+ points=points.filter((p,j,a)=>{const prev=a[(j+a.length-1)%a.length],next=a[(j+1)%a.length];return (p[0]-prev[0])*(next[1]-p[1])!==(p[1]-prev[1])*(next[0]-p[0]);});
+ loops.push(points.map(([x,y])=>[xs[x],ys[y]]));
+ }
+ const path=pts=>'M'+pts.map(([x,y])=>fmt(x)+' '+fmt(y)).join('L')+'Z';
+ return {xs,ys,nx,ny,grid,component,count,loops,path,d:loops.map(path).join(' '),px,py};
+}
+function cellReachability(s){const visited=new Set([0]),q=[0];for(let i=0;i<q.length;i++){const at=q[i],r=Math.floor(at/s.cols),c=at%s.cols,near=[];if(r>0&&!s.h[r-1][c])near.push(at-s.cols);if(r<s.rows-1&&!s.h[r][c])near.push(at+s.cols);if(c>0&&!s.v[r][c-1])near.push(at-1);if(c<s.cols-1&&!s.v[r][c])near.push(at+1);for(const n of near)if(!visited.has(n)){visited.add(n);q.push(n);}}return {total:visited.size,goal:visited.has(s.rows*s.cols-1)};}
+function node(tag,attrs={},parent=$('board')){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,v);parent.appendChild(n);return n;}
+function textNode(str,x,y,attrs={}){const n=node('text',{x,y,...attrs});n.textContent=str;return n;}
+function render(){
+ const g=geometry(state);latest=g;const s=state,board=$('board');board.replaceChildren();board.setAttribute('viewBox',`-11 -11 ${s.size+22} ${s.size+22}`);
+ const scale=s.size/100;
+ node('title',{}).textContent='Labyrint. Klik eller brug Tab og Enter for at ændre en væg. Yderrammen er fast.';
+ node('rect',{x:0,y:0,width:s.size,height:s.size,fill:'#fff',rx:0});
+ node('path',{d:g.d,class:'material','fill-rule':'evenodd'});
+ if(g.count>1)for(let y=0;y<g.ny;y++)for(let x=0;x<g.nx;x++)if(g.component[y][x]>0)node('rect',{x:g.xs[x],y:g.ys[y],width:g.xs[x+1]-g.xs[x],height:g.ys[y+1]-g.ys[y],class:'loose'});
+ const midX=c=>(g.xs[2*c+1]+g.xs[2*c+2])/2,midY=r=>(g.ys[2*r+1]+g.ys[2*r+2])/2;
+ const dimensionSize=Math.max(2,3*scale);
+ node('path',{d:`M0 -3V-6H${s.size}V-3M${s.size+3} 0H${s.size+6}V${s.size}H${s.size+3}`,class:'dimension-line'});
+ textNode(da(s.size)+' mm',s.size/2,-7.2,{class:'dimension','text-anchor':'middle',style:`font-size:${dimensionSize}px`});
+ textNode(da(s.size)+' mm',s.size+8,s.size/2,{class:'dimension','text-anchor':'middle',transform:`rotate(90 ${s.size+8} ${s.size/2})`,style:`font-size:${dimensionSize}px`});
+ const fs=Math.min(g.px,g.py)*.28;
+ function mark(label,c,r,color){node('circle',{cx:midX(c),cy:midY(r),r:Math.min(g.px,g.py)*.21,fill:color,'fill-opacity':'.12','pointer-events':'none'});textNode(label,midX(c),midY(r)+fs*.34,{class:'startlabel','text-anchor':'middle','font-size':fs,fill:color});}
+ if(s.rows*s.cols>1){mark('S',0,0,'#176bab');mark('M',s.cols-1,s.rows-1,'#a26516');}
+ const guides=$('guides').checked;
+ function wall(k,r,c){
+ let on=s[k][r][c],x,y,w,h,x1,y1,x2,y2;
+ if(k==='h'){x=g.xs[2*c+1];y=g.ys[2*r+2];w=g.px;h=s.t;x1=x;y1=y+h/2;x2=x+w;y2=y1;}
+ else{x=g.xs[2*c+2];y=g.ys[2*r+1];w=s.t;h=g.py;x1=x+w/2;y1=y;x2=x1;y2=y+h;}
+ if(!on&&guides)node('line',{x1,y1,x2,y2,class:'guide'});
+ const padding=Math.min(g.px,g.py)*.14;
+ let attrs=k==='h'?{x,y:y-padding,width:w,height:h+padding*2}:{x:x-padding,y,width:w+padding*2,height:h};
+ const n=node('rect',{...attrs,rx:.35,class:'wall-hit'+(on?' present':''),role:'button',tabindex:'0','aria-pressed':String(on),'aria-label':`${on?'Fjern':'Tilføj'} ${k==='h'?'vandret':'lodret'} væg ved række ${r+1}, kolonne ${c+1}`,'data-wall':`${k}-${r}-${c}`});
+ const toggle=()=>{let next=clone(state);next[k][r][c]=!next[k][r][c];commit(next);};
+ n.addEventListener('click',toggle);
+ n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();board.querySelector(`[data-wall="${k}-${r}-${c}"]`).focus();}});
+ }
+ s.h.forEach((row,r)=>row.forEach((_,c)=>wall('h',r,c)));s.v.forEach((row,r)=>row.forEach((_,c)=>wall('v',r,c)));
+ $('boardLabel').textContent=`${s.rows} × ${s.cols} felter · ${da(s.t)} mm vægge`;
+ $('passageHint').textContent=`Fri passage: ${da(g.px)} × ${da(g.py)} mm`;
+ $('sizeReadout').textContent=`${da(s.size)} × ${da(s.size)} mm`;
+ $('passageReadout').textContent=`${da(g.px)} × ${da(g.py)} mm`;
+ $('undo').disabled=!past.length;$('redo').disabled=!future.length;
+ const reach=cellReachability(s),bad=g.count>1;
+ $('status').classList.toggle('bad',bad);$('export').disabled=bad;
+ $('statusSymbol').textContent=bad?'!':'✓';
+ $('statusTitle').textContent=bad?`${g.count-1} ${g.count===2?'løs vægdel':'løse vægdele'} – forbind til rammen`:'Ramme og vægge hænger sammen';
+ $('statusText').textContent=bad?'De røde dele vil falde ud ved skæring. Tilføj en forbindelse, eller fjern dem, før du henter SVG.':reach.total===s.rows*s.cols?(s.rows*s.cols===1?'Ét sammenhængende stykke, klar til skæring.':'Alle felter kan nås fra S. Der er en vej til M.'):reach.goal?`Der er en vej fra S til M. ${s.rows*s.cols-reach.total} felter er lukket af.`:'Ingen vej fra S til M. Fjern vægge for at åbne en passage.';
+}
+function exportSVG(s=state){
+ const g=geometry(s);if(g.count!==1)throw Error('Væggene skal hænge sammen med rammen.');
+ const area=p=>p.reduce((a,[x,y],i)=>{let next=p[(i+1)%p.length];return a+x*next[1]-next[0]*y;},0)/2;
+ const paths=[...g.loops].sort((a,b)=>Math.abs(area(a))-Math.abs(area(b)));
+ return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${fmt(s.size)}mm" height="${fmt(s.size)}mm" viewBox="0 0 ${fmt(s.size)} ${fmt(s.size)}">\n<title>Labyrint ${fmt(s.size)} x ${fmt(s.size)} mm</title>\n<desc>Vaeglag i et stykke. ${s.rows} raekker, ${s.cols} kolonner. Vaegbredde ${fmt(s.t)} mm. Ingen snitbreddekompensation. Separat bundplade kraeves.</desc>\n<g id="skaerelinjer" fill="none" stroke="#ff0000" stroke-width="0.1" stroke-linejoin="miter">\n${paths.map((p,i)=>`  <path id="${i===paths.length-1?'yderkant':'aabning-'+(i+1)}" d="${g.path(p)}"/>`).join('\n')}\n</g>\n</svg>\n`;
+}
+function toast(msg){$('toast').textContent=msg;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,3500);}
+function download(){const parsed=readSettings();if(!parsed)return;if(JSON.stringify(parsed)!==JSON.stringify(state)){applySettings();if(latest.count!==1)return;}
+ try{const text=exportSVG(),blob=new Blob([text],{type:'image/svg+xml;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`Labyrint-${fmt(state.size)}mm-${state.rows}x${state.cols}-vaeg-${fmt(state.t)}mm.svg`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);toast(`SVG hentet · ${da(state.size)} × ${da(state.size)} mm`);}catch(e){toast(e.message);}
+}
+['size','rows','cols','thickness'].forEach(id=>$(id).addEventListener('change',applySettings));
+$('thicknessRange').addEventListener('input',()=>{$('thickness').value=$('thicknessRange').value;});
+$('thicknessRange').addEventListener('change',applySettings);
+for(const n of [8,10,12])$('density'+n).addEventListener('click',()=>setDensity(n));
+$('generate').addEventListener('click',()=>remake('maze'));$('full').addEventListener('click',()=>remake('full'));$('empty').addEventListener('click',()=>remake('empty'));
+$('undo').addEventListener('click',undo);$('redo').addEventListener('click',redo);$('export').addEventListener('click',download);$('guides').addEventListener('change',render);
+window.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA/.test(e.target.tagName))return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo();}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();redo();}});
+generateMaze(state);syncInputs();render();
+</script>
+</body>
+</html>
