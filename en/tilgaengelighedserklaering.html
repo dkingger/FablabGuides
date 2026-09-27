@@ -16,6 +16,7 @@
         }
         .a11y-stack {
             display: grid;
+            grid-template-columns: minmax(0, 1fr);
             gap: 18px;
             max-width: 920px;
         }
@@ -25,12 +26,16 @@
             box-shadow: var(--shadow);
             border-radius: var(--radius-lg);
             padding: 28px;
+            min-width: 0;
         }
         .a11y-card h1,
         .a11y-card h2 {
             margin: 0 0 12px;
             color: var(--brand-strong);
             line-height: 1.12;
+        }
+        .a11y-card h1 {
+            overflow-wrap: anywhere;
         }
         .a11y-card p,
         .a11y-card li {
@@ -45,6 +50,11 @@
         }
         .a11y-card li + li {
             margin-top: 8px;
+        }
+        .a11y-card a {
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 0.15em;
         }
         @media (max-width: 760px) {
             .a11y-page {
@@ -83,8 +93,8 @@
                 <article class="a11y-card">
                     <p class="eyebrow">Accessibility</p>
                     <h1>Accessibility Statement</h1>
-                    <p>This statement describes the accessibility of FabLab Guides across guide pages, material pages and online tools.</p>
-                    <p>Last updated: 26.09.2026</p>
+                    <p>This statement describes the accessibility of FabLab Guides, including guide pages, material pages and interactive tools.</p>
+                    <p>Last updated: 27 September 2026</p>
                 </article>
 
                 <article class="a11y-card">
@@ -95,18 +105,39 @@
 
                 <article class="a11y-card">
                     <h2>Status</h2>
-                    <p>The site is partially aligned with accessibility principles. Much of the navigation, contrast and responsive layout works well, but there are still areas we continue to improve.</p>
+                    <p>We cannot yet document that the entire site fully conforms to WCAG 2.2 level AA. The latest automated IBM Equal Access scan covered all 82 HTML pages and found 0 confirmed violations, 822 potential violations, 180 manual checks and 45 recommendations.</p>
+                    <p>A result with 0 confirmed automated violations is not a complete WCAG approval. Potential findings and criteria that require human assessment still need manual review.</p>
+                </article>
+
+                <article class="a11y-card">
+                    <h2>What already works</h2>
                     <ul>
-                        <li>Some interactive elements may need stronger focus states in all views.</li>
-                        <li>Some image series and custom widgets still need extra keyboard navigation.</li>
-                        <li>Some older subpages may still lack consistent alternative text.</li>
+                        <li>The shared navigation, skip links and image dialogs can be operated with a keyboard.</li>
+                        <li>Guide carousels have visible, numbered steps and accessible names.</li>
+                        <li>WeDo blocks can be added, moved, nested and deleted without dragging.</li>
+                        <li>Key pages have been tested for reflow at 320 CSS pixels.</li>
                     </ul>
                 </article>
 
                 <article class="a11y-card">
-                    <h2>Feedback</h2>
-                    <p>If you run into barriers on the site, we would very much like to hear from you so we can fix issues as quickly as possible.</p>
-                    <p>You can contact the FabLab Guides team, and we prioritise issues that affect access to content or navigation.</p>
+                    <h2>Known limitations</h2>
+                    <ul>
+                        <li>The entire site has not yet been reviewed with an actual screen reader, 200% text resizing or every system high contrast mode.</li>
+                        <li>Complex editing and export workflows need further assistive technology testing. WeDo has not been tested with a physical Bluetooth hub.</li>
+                        <li>Some older guides contain direction-based instructions and need editorial review.</li>
+                        <li>External services, files and applications linked from the guides are not fully covered by our testing.</li>
+                    </ul>
+                </article>
+
+                <article class="a11y-card">
+                    <h2>How we tested</h2>
+                    <p>On 27 September 2026, all 82 HTML pages were scanned with IBM Equal Access Accessibility Checker 4.0.34. We also use automated browser tests for keyboard operation, focus, dialogs, interactive tools and layouts at 320 and 1280 CSS pixels.</p>
+                </article>
+
+                <article class="a11y-card">
+                    <h2>Feedback and contact</h2>
+                    <p>If you encounter an error or accessibility barrier, please contact <a href="mailto:johs.dahl@gmail.com">johs.dahl@gmail.com</a>. Include the page address, what you were trying to do, and the assistive technology or browser you used.</p>
+                    <p>We prioritise problems that prevent access to content, navigation or functionality.</p>
                 </article>
             </div>
         </main>

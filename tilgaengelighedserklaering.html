@@ -16,6 +16,7 @@
         }
         .a11y-stack {
             display: grid;
+            grid-template-columns: minmax(0, 1fr);
             gap: 18px;
             max-width: 920px;
         }
@@ -25,12 +26,16 @@
             box-shadow: var(--shadow);
             border-radius: var(--radius-lg);
             padding: 28px;
+            min-width: 0;
         }
         .a11y-card h1,
         .a11y-card h2 {
             margin: 0 0 12px;
             color: var(--brand-strong);
             line-height: 1.12;
+        }
+        .a11y-card h1 {
+            overflow-wrap: anywhere;
         }
         .a11y-card p,
         .a11y-card li {
@@ -45,6 +50,11 @@
         }
         .a11y-card li + li {
             margin-top: 8px;
+        }
+        .a11y-card a {
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 0.15em;
         }
         @media (max-width: 760px) {
             .a11y-page {
@@ -83,8 +93,8 @@
                 <article class="a11y-card">
                     <p class="eyebrow">Tilgængelighed</p>
                     <h1>Tilgængelighedserklæring</h1>
-                    <p>Denne erklæring beskriver tilgængeligheden for FabLab Guides på tværs af guidesider, materialsider og online tools.</p>
-                    <p>Senest opdateret: 26.09.2026</p>
+                    <p>Denne erklæring beskriver tilgængeligheden på FabLab Guides, herunder guidesider, materialsider og interaktive værktøjer.</p>
+                    <p>Senest opdateret: 27. september 2026</p>
                 </article>
 
                 <article class="a11y-card">
@@ -95,18 +105,39 @@
 
                 <article class="a11y-card">
                     <h2>Status</h2>
-                    <p>Siden er delvist i overensstemmelse med tilgængelighedsprincipperne. Store dele af navigation, kontrast og responsivt layout fungerer, men der er fortsat punkter, vi forbedrer.</p>
+                    <p>Vi kan endnu ikke dokumentere, at hele siden er fuldt i overensstemmelse med WCAG 2.2 niveau AA. Den seneste automatiske IBM Equal Access-scanning omfattede alle 82 HTML-sider og fandt 0 konstaterede fejl, 822 potentielle fund, 180 manuelle kontroller og 45 anbefalinger.</p>
+                    <p>Et resultat med 0 konstaterede automatiske fejl er ikke en fuld WCAG-godkendelse. Potentielle fund og kriterier, som kræver menneskelig vurdering, skal fortsat kontrolleres manuelt.</p>
+                </article>
+
+                <article class="a11y-card">
+                    <h2>Det fungerer allerede</h2>
                     <ul>
-                        <li>Nogle interaktive elementer kan have behov for tydeligere fokusmarkering i alle visninger.</li>
-                        <li>Nogle billedserier og custom-widgets kræver fortsat ekstra tastaturnavigation.</li>
-                        <li>Visse ældre undersider kan mangle ensartede alternative tekster.</li>
+                        <li>Den fælles navigation, springlinks og billeddialoger kan betjenes med tastatur.</li>
+                        <li>Guidecarouseller har synlige, nummererede trin og tilgængelige navne.</li>
+                        <li>WeDo-blokke kan tilføjes, flyttes, indlejres og slettes uden træk.</li>
+                        <li>Centrale sider er testet for ombrydning ved 320 CSS-pixels.</li>
                     </ul>
                 </article>
 
                 <article class="a11y-card">
-                    <h2>Feedback</h2>
-                    <p>Hvis du oplever barrierer på siden, vil vi meget gerne høre fra dig, så vi kan rette problemerne hurtigst muligt.</p>
-                    <p>Du kan henvende dig via FabLab Guides-teamet, og vi prioriterer fejl, der påvirker adgang til indhold eller navigation.</p>
+                    <h2>Kendte begrænsninger</h2>
+                    <ul>
+                        <li>Hele siden er endnu ikke gennemgået med en faktisk skærmlæser, 200 % tekstforstørrelse eller alle systemers højkontrasttilstande.</li>
+                        <li>Komplekse redigerings- og eksportforløb kræver yderligere test med hjælpemidler. WeDo er ikke testet med en fysisk Bluetooth-hub.</li>
+                        <li>Nogle ældre vejledninger indeholder retningsbaserede instruktioner, som kræver redaktionel gennemgang.</li>
+                        <li>Eksterne tjenester, filer og programmer, som guiderne linker til, er ikke fuldt omfattet af vores test.</li>
+                    </ul>
+                </article>
+
+                <article class="a11y-card">
+                    <h2>Sådan har vi testet</h2>
+                    <p>Den 27. september 2026 blev alle 82 HTML-sider scannet med IBM Equal Access Accessibility Checker 4.0.34. Derudover bruger vi automatiske browsertests af tastaturbetjening, fokus, dialoger, interaktive værktøjer og layout ved 320 og 1280 CSS-pixels.</p>
+                </article>
+
+                <article class="a11y-card">
+                    <h2>Feedback og kontakt</h2>
+                    <p>Hvis du oplever fejl eller tilgængelighedsbarrierer, skal du rette henvendelse til <a href="mailto:johs.dahl@gmail.com">johs.dahl@gmail.com</a>. Skriv gerne sidens adresse, hvad du forsøgte at gøre, og hvilket hjælpemiddel eller hvilken browser du brugte.</p>
+                    <p>Vi prioriterer problemer, der forhindrer adgang til indhold, navigation eller funktioner.</p>
                 </article>
             </div>
         </main>

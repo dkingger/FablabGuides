@@ -5,10 +5,17 @@
 
 ## Version
 
-Aktuel version: 1.77
+Aktuel version: 1.78
 Dato: 2026-09-27
 
 ## Seneste aendringer
+
+### v1.78 (2026-09-27)
+
+- Opdateret den danske og engelske tilgængelighedserklæring med de aktuelle IBM-resultater og en præcis vurdering af WCAG 2.2 niveau AA.
+- Beskrevet gennemførte forbedringer, resterende manuelle kontroller og testmetoden uden at fremstille 0 automatiske fejl som en fuld WCAG-godkendelse.
+- Tilføjet en konkret feedbackkanal via `johs.dahl@gmail.com`.
+- Rettet erklæringernes mobilvisning, så lange overskrifter og tekst ikke klippes ved 320 CSS-pixels.
 
 ### v1.77 (2026-09-27)
 
@@ -172,8 +179,8 @@ Projektet bruger versionsformatet `MAJOR.MINOR`.
 
 Eksempler:
 
-- `1.77` -> Aktuel release.
-- `1.78` -> Naeste release med nye forbedringer.
+- `1.78` -> Aktuel release.
+- `1.79` -> Naeste release med nye forbedringer.
 - `2.0` -> Stoerre breaking release.
 
 ### Saadan opdateres versionen

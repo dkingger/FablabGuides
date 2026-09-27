@@ -30,6 +30,7 @@ Gennemgangen af de potentielle fund har reduceret tallet fra 1328 til 822. De 50
 - Blå tekst er gjort mørkere, hvid tekst på mørke kort er gjort helt hvid, og genvejspanelets tekstbaggrund er ensfarvet. De 63 direkte målbare kontrastfund består nu WCAG AA; gradientudløste kontrastfund er fjernet ved at bruge ensfarvet baggrund.
 - Seks ældre billedcarouseller kan åbnes med Enter og mellemrum; fokus flyttes til en rigtig lukkeknap, holdes i dialogen og returneres efter Escape. De gamle sprogskift bruger almindelige links og viser igen deres flag fra korrekte billedstier.
 - 305 forkerte relative billedstier i de bevarede ældre guider er rettet. Alle 458 billedreferencer på de 28 ældre HTML-sider peger nu på eksisterende filer.
+- Den danske og engelske tilgængelighedserklæring er opdateret med de aktuelle testtal, gennemførte forbedringer, kendte begrænsninger, testmetode og en konkret feedbackkanal. Erklæringen skelner nu tydeligt mellem 0 automatiske fejl og dokumenteret WCAG 2.2 AA-overensstemmelse.
 
 ### Verifikation
 
@@ -41,6 +42,7 @@ Gennemgangen af de potentielle fund har reduceret tallet fra 1328 til 822. De 50
 - WeDo: testet navngivne felter, springlink, bloktilføjelse, flytning, indlejring og sletning, import/eksport, lokal lagring, demoafvikling, stop samt layout ved 320 og 1280 pixels.
 - Labyrintværkstedet: testet forsidegenvej, tilbageknap og fokus, vægredigering med tastatur, ny labyrint, fortryd/gentag samt layout ved 320 og 1280 pixels.
 - [Potentiale-regressionstest](tools/test_potential_accessibility.cjs) består på 24 guide-sider, seks ældre carouseller og begge gamle sprogskift: nummererede trin, valg, 320px-layout, Enter/mellemrum, fokusafgrænsning, Escape, fokusretur, synlige flag og tastaturfokus. Testen kontrollerer desuden alle 458 billedreferencer på de 28 ældre HTML-sider.
+- Begge tilgængelighedserklæringer er kontrolleret ved 320 og 1280 CSS-pixels uden klippet indhold. Overskrifter ombrydes, og kontaktlinket til `johs.dahl@gmail.com` er kontrolleret i browseren.
 - Visuelt kontrolleret laserfilguiden ved 320 pixels, mobilforsiden og desktopvisningen af en genereret guide. [Laserfilguide efter rettelse](.a11y-report/fix-tests/guide-til-laserfiler.html-320.png).
 - JavaScript-syntaks og `git diff --check` er kontrolleret før publicering.
 
