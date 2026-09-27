@@ -1,0 +1,262 @@
+{
+    "results": [
+        {
+            "ruleId": "html_skipnav_exists",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Potential_1",
+            "message": "Verify there is a way to bypass blocks of content that are repeated on multiple Web pages",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 600,
+                "width": 800
+            },
+            "snippet": "<html lang=\"da\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/html_skipnav_exists.html#%7B%22message%22%3A%22Verify%20there%20is%20a%20way%20to%20bypass%20blocks%20of%20content%20that%20are%20repeated%20on%20multiple%20Web%20pages%22%2C%22snippet%22%3A%22%3Chtml%20lang%3D%5C%22da%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22html_skipnav_exists%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_color_misuse",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/style[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Potential_1",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<style>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_color_misuse.html#%7B%22message%22%3A%22Verify%20color%20is%20not%20used%20as%20the%20only%20visual%20means%20of%20conveying%20information%22%2C%22snippet%22%3A%22%3Cstyle%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22style_color_misuse%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_highcontrast_visible",
+            "value": [
+                "VIOLATION",
+                "MANUAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/style[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Manual_1",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<style>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "manual",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_highcontrast_visible.html#%7B%22message%22%3A%22Confirm%20Windows%20high%20contrast%20mode%20is%20supported%20when%20using%20CSS%20to%20include%2C%20position%20or%20alter%20non-decorative%20content%22%2C%22snippet%22%3A%22%3Cstyle%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22MANUAL%22%5D%2C%22reasonId%22%3A%22Manual_1%22%2C%22ruleId%22%3A%22style_highcontrast_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "skip_main_exists",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "The page does not provide a way to quickly navigate to the main content (ARIA \"main\" landmark or a skip link)",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 600,
+                "width": 800
+            },
+            "snippet": "<body>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/skip_main_exists.html#%7B%22message%22%3A%22The%20page%20does%20not%20provide%20a%20way%20to%20quickly%20navigate%20to%20the%20main%20content%20(ARIA%20%5C%22main%5C%22%20landmark%20or%20a%20skip%20link)%22%2C%22snippet%22%3A%22%3Cbody%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22skip_main_exists%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "frame_src_valid",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/iframe[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Potential_1",
+            "message": "Verify <frame> content is accessible",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 40,
+                "top": 30,
+                "height": 540,
+                "width": 720
+            },
+            "snippet": "<iframe src=\"https://docs.google.com/spreadsheets/d/1dzfG6tl2sPWtUklcDg8JzsIE6SGgJLQzcRkVXOTEBlE/edit?usp=sharing\" style=\"width:90%;height:90%;border:none;border-radius:8px;\" id=\"sheetFrame\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/frame_src_valid.html#%7B%22message%22%3A%22Verify%20%3Cframe%3E%20content%20is%20accessible%22%2C%22snippet%22%3A%22%3Ciframe%20src%3D%5C%22https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1dzfG6tl2sPWtUklcDg8JzsIE6SGgJLQzcRkVXOTEBlE%2Fedit%3Fusp%3Dsharing%5C%22%20style%3D%5C%22width%3A90%25%3Bheight%3A90%25%3Bborder%3Anone%3Bborder-radius%3A8px%3B%5C%22%20id%3D%5C%22sheetFrame%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22frame_src_valid%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "frame_title_exists",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/iframe[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Inline frame does not have a 'title' attribute",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 40,
+                "top": 30,
+                "height": 540,
+                "width": 720
+            },
+            "snippet": "<iframe src=\"https://docs.google.com/spreadsheets/d/1dzfG6tl2sPWtUklcDg8JzsIE6SGgJLQzcRkVXOTEBlE/edit?usp=sharing\" style=\"width:90%;height:90%;border:none;border-radius:8px;\" id=\"sheetFrame\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/frame_title_exists.html#%7B%22message%22%3A%22Inline%20frame%20does%20not%20have%20a%20'title'%20attribute%22%2C%22snippet%22%3A%22%3Ciframe%20src%3D%5C%22https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1dzfG6tl2sPWtUklcDg8JzsIE6SGgJLQzcRkVXOTEBlE%2Fedit%3Fusp%3Dsharing%5C%22%20style%3D%5C%22width%3A90%25%3Bheight%3A90%25%3Bborder%3Anone%3Bborder-radius%3A8px%3B%5C%22%20id%3D%5C%22sheetFrame%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22frame_title_exists%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/iframe[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 40,
+                "top": 30,
+                "height": 540,
+                "width": 720
+            },
+            "snippet": "<iframe src=\"https://docs.google.com/spreadsheets/d/1dzfG6tl2sPWtUklcDg8JzsIE6SGgJLQzcRkVXOTEBlE/edit?usp=sharing\" style=\"width:90%;height:90%;border:none;border-radius:8px;\" id=\"sheetFrame\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ciframe%20src%3D%5C%22https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1dzfG6tl2sPWtUklcDg8JzsIE6SGgJLQzcRkVXOTEBlE%2Fedit%3Fusp%3Dsharing%5C%22%20style%3D%5C%22width%3A90%25%3Bheight%3A90%25%3Bborder%3Anone%3Bborder-radius%3A8px%3B%5C%22%20id%3D%5C%22sheetFrame%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        }
+    ],
+    "numExecuted": 59,
+    "ruleTime": 1,
+    "nls": {
+        "html_skipnav_exists": {
+            "0": "Provide a way to bypass blocks of content that are repeated on multiple Web pages",
+            "Potential_1": "Verify there is a way to bypass blocks of content that are repeated on multiple Web pages"
+        },
+        "style_color_misuse": {
+            "0": "Combine color and descriptive markup to convey information",
+            "Potential_1": "Verify color is not used as the only visual means of conveying information"
+        },
+        "style_highcontrast_visible": {
+            "0": "Windows high contrast mode must be supported when using CSS to include, position or alter non-decorative content",
+            "Manual_1": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content"
+        },
+        "skip_main_exists": {
+            "0": "Pages must provide a way to skip directly to the main content",
+            "Fail_1": "The page does not provide a way to quickly navigate to the main content (ARIA \"main\" landmark or a skip link)"
+        },
+        "frame_src_valid": {
+            "0": "A <frame> containing non-HTML content must be made accessible",
+            "Potential_1": "Verify <frame> content is accessible"
+        },
+        "frame_title_exists": {
+            "0": "Inline frames must have a unique, non-empty 'title' attribute",
+            "Fail_1": "Inline frame does not have a 'title' attribute"
+        },
+        "style_focus_visible": {
+            "0": "The keyboard focus indicator should be visible when default border or outline is modified by CSS",
+            "potential_focus_not_visible": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+        }
+    },
+    "summary": {
+        "counts": {
+            "ignored": 0,
+            "elements": 4,
+            "elementsViolation": 2,
+            "elementsViolationReview": 4,
+            "violation": 2,
+            "potentialviolation": 4,
+            "recommendation": 0,
+            "potentialrecommendation": 0,
+            "manual": 1,
+            "pass": 52
+        },
+        "scanTime": 9,
+        "ruleArchive": "Latest Deployment (latest)",
+        "policies": [
+            "IBM_Accessibility"
+        ],
+        "reportLevels": [
+            "violation",
+            "potentialviolation",
+            "recommendation",
+            "manual"
+        ],
+        "startScan": 1790514631207,
+        "URL": "file:///home/johsdahl/Projects/FablabGuides/old/hemmelig.html"
+    },
+    "scanID": "4d31f8f2-07b2-478b-b5c8-068076ac3e82",
+    "toolID": "accessibility-checker-v4.0.34",
+    "label": "/home/johsdahl/Projects/FablabGuides/old/hemmelig.html"
+}

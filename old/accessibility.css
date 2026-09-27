@@ -1,0 +1,7 @@
+/* Keyboard navigation for the archived guides. */
+.legacy-skip { position: fixed; top: -100px; left: 12px; z-index: 2000; background: #fff; color: #173721; padding: 12px; }
+.legacy-skip:focus { top: 12px; }
+a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible { outline: 3px solid #173721; outline-offset: 4px; box-shadow: 0 0 0 4px white; }
+@media (forced-colors: active) { :focus-visible { outline-color: Highlight; } }
+
+.orange-button { background-color: #a63b18 !important; color: #fff; }

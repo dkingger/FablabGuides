@@ -21,6 +21,7 @@
             align-items: start;
         }
         .guide-main {
+            min-width: 0;
             display: grid;
             gap: 20px;
         }
@@ -31,6 +32,8 @@
             top: 108px;
         }
         .guide-card {
+            min-width: 0;
+            overflow-wrap: anywhere;
             background: var(--surface);
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
@@ -112,7 +115,7 @@
         }
         @media (max-width: 980px) {
             .guide-layout {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
             .guide-side {
                 position: static;
@@ -123,6 +126,8 @@
                 padding-top: 28px;
             }
             .guide-card {
+            min-width: 0;
+            overflow-wrap: anywhere;
                 padding: 24px;
                 border-radius: var(--radius-md);
             }
@@ -153,10 +158,10 @@
     <meta name="apple-mobile-web-app-title" content="FabLab">
 </head>
 <body class="guide-shell">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header">
+        <a class="skip-link" href="#main-content">Skip to main content</a>
         <div class="container nav-wrap">
-            <a class="brand interactive" href="index.html" aria-label="To front page">
+            <a class="brand interactive" href="index.html" aria-label="FabLab Guides – To front page">
                 <span class="brand-mark">
                     <img src="../billeder/Fablab Logo.svg" alt="FabLab logo">
                 </span>
@@ -169,7 +174,7 @@
         </div>
     </header>
 
-    <main id="main-content" class="guide-page">
+    <main tabindex="-1" id="main-content" class="guide-page">
         <section class="hero-section">
             <div class="container hero-grid">
                 <div class="hero-card">
@@ -186,7 +191,7 @@
                     </div>
                 </div>
 
-                <aside class="stat-card guide-download">
+                <aside class="stat-card guide-download" aria-label="Downloads">
                     <span class="section-tag">Use the guide</span>
                     <p>Read the guide online, and download the PDF if you want to keep it offline or print it before your visit.</p>
                     <div class="guide-actions">
@@ -384,8 +389,8 @@
                     </article>
                 </div>
 
-                <aside class="guide-side">
-                    <article class="guide-card">
+                <aside class="guide-side" aria-label="Contents and tips">
+                    <div class="guide-card">
                         <span class="section-tag">Contents</span>
                         <div class="guide-anchor-list">
                             <a class="interactive" href="#checklist">Quick checklist</a>
@@ -400,15 +405,15 @@
                             <a class="interactive" href="#file-formats">9. Recommended file formats</a>
                             <a class="interactive" href="#remember">Remember</a>
                         </div>
-                    </article>
+                    </div>
 
-                    <article class="guide-card">
+                    <div class="guide-card">
                         <span class="section-tag">Download</span>
                         <p>The matching PDF can sit alongside the readable web version, so the visitor can choose the format that fits best.</p>
                         <div class="guide-actions">
                             <a class="button button-primary interactive" href="../billeder/laser/fablab_laser_guide_english.pdf" target="_blank" rel="noopener">Download PDF</a>
                         </div>
-                    </article>
+                    </div>
                 </aside>
             </div>
         </section>

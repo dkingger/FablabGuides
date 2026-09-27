@@ -1,0 +1,48 @@
+{
+    "counts": {
+        "ignored": 0,
+        "violation": 1,
+        "recommendation": 0,
+        "pass": 1570,
+        "potentialviolation": 86,
+        "potentialrecommendation": 4,
+        "manual": 2,
+        "elements": 73,
+        "elementsViolation": 1,
+        "elementsViolationReview": 73
+    },
+    "startReport": 1790516794501,
+    "endReport": 1790516795200,
+    "toolID": "accessibility-checker-v4.0.34",
+    "policies": [
+        "IBM_Accessibility"
+    ],
+    "reportLevels": [
+        "violation",
+        "potentialviolation",
+        "recommendation",
+        "manual"
+    ],
+    "failLevels": [
+        "violation",
+        "potentialviolation"
+    ],
+    "scanID": "28f23268-a0c1-4d15-b745-dd183fbf114c",
+    "pageScanSummary": [
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/wedo-blokvaerksted.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 73,
+                "elementsViolation": 1,
+                "elementsViolationReview": 73,
+                "violation": 1,
+                "potentialviolation": 86,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 2,
+                "pass": 1570
+            }
+        }
+    ]
+}

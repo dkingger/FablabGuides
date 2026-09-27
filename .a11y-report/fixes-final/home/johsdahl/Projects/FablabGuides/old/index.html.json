@@ -1,0 +1,261 @@
+{
+    "results": [
+        {
+            "ruleId": "style_highcontrast_visible",
+            "value": [
+                "VIOLATION",
+                "MANUAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/link[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Manual_1",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Roboto&display=swap\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "manual",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_highcontrast_visible.html#%7B%22message%22%3A%22Confirm%20Windows%20high%20contrast%20mode%20is%20supported%20when%20using%20CSS%20to%20include%2C%20position%20or%20alter%20non-decorative%20content%22%2C%22snippet%22%3A%22%3Clink%20rel%3D%5C%22stylesheet%5C%22%20href%3D%5C%22https%3A%2F%2Ffonts.googleapis.com%2Fcss2%3Ffamily%3DRoboto%26display%3Dswap%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22MANUAL%22%5D%2C%22reasonId%22%3A%22Manual_1%22%2C%22ruleId%22%3A%22style_highcontrast_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_color_misuse",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/style[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Potential_1",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<style>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_color_misuse.html#%7B%22message%22%3A%22Verify%20color%20is%20not%20used%20as%20the%20only%20visual%20means%20of%20conveying%20information%22%2C%22snippet%22%3A%22%3Cstyle%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22style_color_misuse%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "element_mouseevent_keyboard",
+            "value": [
+                "RECOMMENDATION",
+                "MANUAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/img[1]",
+                "aria": "/document[1]/img[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Manual_1",
+            "message": "Confirm the <img> element with mouse event handler(s) 'onclick' has a corresponding keyboard handler(s)",
+            "messageArgs": [
+                "img",
+                "onclick"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 646,
+                "top": 20,
+                "height": 26,
+                "width": 134
+            },
+            "snippet": "<img title=\"Switch to English/Danish\" onclick=\"window.location.href='en/index.html'\" style=\"height:28px; cursor:pointer;\" alt=\"Switch language\" src=\"billeder/dkgbflag.png\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "manual",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/element_mouseevent_keyboard.html#%7B%22message%22%3A%22Confirm%20the%20%3Cimg%3E%20element%20with%20mouse%20event%20handler(s)%20'onclick'%20has%20a%20corresponding%20keyboard%20handler(s)%22%2C%22snippet%22%3A%22%3Cimg%20title%3D%5C%22Switch%20to%20English%2FDanish%5C%22%20onclick%3D%5C%22window.location.href%3D'en%2Findex.html'%5C%22%20style%3D%5C%22height%3A28px%3B%20cursor%3Apointer%3B%5C%22%20alt%3D%5C%22Switch%20language%5C%22%20src%3D%5C%22billeder%2Fdkgbflag.png%5C%22%3E%22%2C%22value%22%3A%5B%22RECOMMENDATION%22%2C%22MANUAL%22%5D%2C%22reasonId%22%3A%22Manual_1%22%2C%22ruleId%22%3A%22element_mouseevent_keyboard%22%2C%22msgArgs%22%3A%5B%22img%22%2C%22onclick%22%5D%7D"
+        },
+        {
+            "ruleId": "script_onclick_misuse",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/img[1]",
+                "aria": "/document[1]/img[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Potential_1",
+            "message": "Possible use of a script to emulate a link",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 646,
+                "top": 20,
+                "height": 26,
+                "width": 134
+            },
+            "snippet": "<img title=\"Switch to English/Danish\" onclick=\"window.location.href='en/index.html'\" style=\"height:28px; cursor:pointer;\" alt=\"Switch language\" src=\"billeder/dkgbflag.png\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/script_onclick_misuse.html#%7B%22message%22%3A%22Possible%20use%20of%20a%20script%20to%20emulate%20a%20link%22%2C%22snippet%22%3A%22%3Cimg%20title%3D%5C%22Switch%20to%20English%2FDanish%5C%22%20onclick%3D%5C%22window.location.href%3D'en%2Findex.html'%5C%22%20style%3D%5C%22height%3A28px%3B%20cursor%3Apointer%3B%5C%22%20alt%3D%5C%22Switch%20language%5C%22%20src%3D%5C%22billeder%2Fdkgbflag.png%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22script_onclick_misuse%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "element_tabbable_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/header[1]/a[1]",
+                "aria": "/document[1]/banner[1]/link[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_visible",
+            "message": "Confirm the element should be tabbable and if so, it becomes visible when it has keyboard focus",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 12,
+                "top": -100,
+                "height": 50,
+                "width": 187
+            },
+            "snippet": "<a href=\"#main-content\" class=\"legacy-skip\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/element_tabbable_visible.html#%7B%22message%22%3A%22Confirm%20the%20element%20should%20be%20tabbable%20and%20if%20so%2C%20it%20becomes%20visible%20when%20it%20has%20keyboard%20focus%22%2C%22snippet%22%3A%22%3Ca%20href%3D%5C%22%23main-content%5C%22%20class%3D%5C%22legacy-skip%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_visible%22%2C%22ruleId%22%3A%22element_tabbable_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[1]/div[1]/button[1]",
+                "aria": "/document[1]/main[1]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 208,
+                "top": 411,
+                "height": 48,
+                "width": 197
+            },
+            "snippet": "<button onclick=\"showMachineGuides()\" class=\"guide-button\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20onclick%3D%5C%22showMachineGuides()%5C%22%20class%3D%5C%22guide-button%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/div[1]/div[1]/a[1]",
+                "aria": "/document[1]/main[1]/link[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 429,
+                "top": 407,
+                "height": 56,
+                "width": 164
+            },
+            "snippet": "<a rel=\"noopener\" target=\"_blank\" class=\"guide-button orange-button\" href=\"https://place2book.com/da/sw2/sales/efx8f7isvj\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Ca%20rel%3D%5C%22noopener%5C%22%20target%3D%5C%22_blank%5C%22%20class%3D%5C%22guide-button%20orange-button%5C%22%20href%3D%5C%22https%3A%2F%2Fplace2book.com%2Fda%2Fsw2%2Fsales%2Fefx8f7isvj%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        }
+    ],
+    "numExecuted": 193,
+    "ruleTime": 5,
+    "nls": {
+        "style_color_misuse": {
+            "0": "Combine color and descriptive markup to convey information",
+            "Potential_1": "Verify color is not used as the only visual means of conveying information"
+        },
+        "style_highcontrast_visible": {
+            "0": "Windows high contrast mode must be supported when using CSS to include, position or alter non-decorative content",
+            "Manual_1": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content"
+        },
+        "element_mouseevent_keyboard": {
+            "0": "All interactive content with mouse event handlers must have equivalent keyboard access",
+            "Manual_1": "Confirm the <{0}> element with mouse event handler(s) '{1}' has a corresponding keyboard handler(s)"
+        },
+        "script_onclick_misuse": {
+            "0": "Scripts should not be used to emulate links",
+            "Potential_1": "Possible use of a script to emulate a link"
+        },
+        "element_tabbable_visible": {
+            "0": "A tabbable element should be visible on the screen when it has keyboard focus",
+            "potential_visible": "Confirm the element should be tabbable and if so, it becomes visible when it has keyboard focus"
+        },
+        "style_focus_visible": {
+            "0": "The keyboard focus indicator should be visible when default border or outline is modified by CSS",
+            "potential_focus_not_visible": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+        }
+    },
+    "summary": {
+        "counts": {
+            "ignored": 0,
+            "elements": 6,
+            "elementsViolation": 0,
+            "elementsViolationReview": 6,
+            "violation": 0,
+            "potentialviolation": 5,
+            "recommendation": 0,
+            "potentialrecommendation": 2,
+            "manual": 2,
+            "pass": 184
+        },
+        "scanTime": 25,
+        "ruleArchive": "Latest Deployment (latest)",
+        "policies": [
+            "IBM_Accessibility"
+        ],
+        "reportLevels": [
+            "violation",
+            "potentialviolation",
+            "recommendation",
+            "manual"
+        ],
+        "startScan": 1790516272237,
+        "URL": "file:///home/johsdahl/Projects/FablabGuides/old/index.html"
+    },
+    "scanID": "1c20c24a-d5b3-421c-badc-0f9f83ae24b8",
+    "toolID": "accessibility-checker-v4.0.34",
+    "label": "/home/johsdahl/Projects/FablabGuides/old/index.html"
+}

@@ -1,0 +1,36 @@
+{
+    "results": [],
+    "numExecuted": 42,
+    "ruleTime": 1,
+    "nls": {},
+    "summary": {
+        "counts": {
+            "ignored": 0,
+            "elements": 0,
+            "elementsViolation": 0,
+            "elementsViolationReview": 0,
+            "violation": 0,
+            "potentialviolation": 0,
+            "recommendation": 0,
+            "potentialrecommendation": 0,
+            "manual": 0,
+            "pass": 42
+        },
+        "scanTime": 7,
+        "ruleArchive": "Latest Deployment (latest)",
+        "policies": [
+            "IBM_Accessibility"
+        ],
+        "reportLevels": [
+            "violation",
+            "potentialviolation",
+            "recommendation",
+            "manual"
+        ],
+        "startScan": 1790516267098,
+        "URL": "file:///home/johsdahl/Projects/FablabGuides/old/brother-scanncut.html"
+    },
+    "scanID": "1c20c24a-d5b3-421c-badc-0f9f83ae24b8",
+    "toolID": "accessibility-checker-v4.0.34",
+    "label": "/home/johsdahl/Projects/FablabGuides/old/brother-scanncut.html"
+}

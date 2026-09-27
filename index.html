@@ -18,11 +18,11 @@
     <meta name="apple-mobile-web-app-title" content="FabLab">
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Spring til hovedindhold</a>
     <div class="page-shell">
         <header class="site-header">
+            <a class="skip-link" href="#main-content">Spring til hovedindhold</a>
             <div class="container nav-wrap">
-                <a class="brand interactive" href="index.html" aria-label="Til forsiden">
+                <a class="brand interactive" href="index.html">
                     <span class="brand-text">
                         <strong>FabLab Guides</strong>
                     </span>
@@ -33,7 +33,7 @@
             </div>
         </header>
 
-        <main id="main-content">
+        <main tabindex="-1" id="main-content">
             <section class="hero-section">
                 <div class="container hero-grid">
                     <div class="hero-copy">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
 
-                    <aside class="hero-panel">
+                    <aside class="hero-panel" aria-label="Populære genveje">
                         <div class="hero-panel-card interactive accent-panel">
                             <p class="panel-kicker">Populære genveje</p>
                             <div class="panel-links">

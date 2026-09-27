@@ -1,0 +1,160 @@
+[
+  {
+    "path": "online-tools.html",
+    "nav": [
+      {
+        "text": "Guides",
+        "left": 191.28125,
+        "right": 260.375,
+        "navScroll": 0
+      },
+      {
+        "text": "Maskiner",
+        "left": 266.375,
+        "right": 347.234375,
+        "navScroll": 0
+      },
+      {
+        "text": "Materialer",
+        "left": 212.234375,
+        "right": 299.890625,
+        "navScroll": 141
+      },
+      {
+        "text": "The Heads",
+        "left": 305.890625,
+        "right": 395.546875,
+        "navScroll": 141
+      },
+      {
+        "text": "Find dit FabLab",
+        "left": 195.546875,
+        "right": 315.890625,
+        "navScroll": 347
+      },
+      {
+        "text": "English",
+        "left": 250.890625,
+        "right": 319.859375,
+        "navScroll": 418
+      }
+    ]
+  },
+  {
+    "path": "guide-til-laserfiler.html",
+    "nav": [
+      {
+        "text": "Guides",
+        "left": 150.28125,
+        "right": 219.375,
+        "navScroll": 0
+      },
+      {
+        "text": "Maskiner",
+        "left": 225.375,
+        "right": 306.234375,
+        "navScroll": 0
+      },
+      {
+        "text": "Materialer",
+        "left": 171.234375,
+        "right": 258.890625,
+        "navScroll": 141
+      },
+      {
+        "text": "The Heads",
+        "left": 264.890625,
+        "right": 354.546875,
+        "navScroll": 141
+      },
+      {
+        "text": "Find dit FabLab",
+        "left": 154.546875,
+        "right": 274.890625,
+        "navScroll": 347
+      },
+      {
+        "text": "English",
+        "left": 209.890625,
+        "right": 278.859375,
+        "navScroll": 418
+      }
+    ]
+  },
+  {
+    "path": "index.html",
+    "nav": [
+      {
+        "text": "Guides",
+        "left": 127.03125,
+        "right": 196.125,
+        "navScroll": 0
+      },
+      {
+        "text": "Maskiner",
+        "left": 202.125,
+        "right": 282.984375,
+        "navScroll": 0
+      },
+      {
+        "text": "Materialer",
+        "left": 288.984375,
+        "right": 376.640625,
+        "navScroll": 0
+      },
+      {
+        "text": "The Heads",
+        "left": 178.640625,
+        "right": 268.296875,
+        "navScroll": 204
+      },
+      {
+        "text": "Find dit FabLab",
+        "left": 274.296875,
+        "right": 394.640625,
+        "navScroll": 204
+      },
+      {
+        "text": "English",
+        "left": 250.640625,
+        "right": 319.609375,
+        "navScroll": 354
+      }
+    ]
+  },
+  {
+    "path": "laser-aeon.html",
+    "nav": [
+      {
+        "text": "Alle guides",
+        "left": 142.53125,
+        "right": 235.375,
+        "navScroll": 0
+      },
+      {
+        "text": "Maskiner",
+        "left": 241.375,
+        "right": 322.234375,
+        "navScroll": 0
+      },
+      {
+        "text": "Materialer",
+        "left": 187.234375,
+        "right": 274.890625,
+        "navScroll": 141
+      },
+      {
+        "text": "Nuværende site",
+        "left": 280.890625,
+        "right": 404.671875,
+        "navScroll": 141
+      },
+      {
+        "text": "English",
+        "left": 250.671875,
+        "right": 319.640625,
+        "navScroll": 301
+      }
+    ]
+  }
+]

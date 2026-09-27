@@ -15,7 +15,7 @@
             padding: 42px 0 72px;
         }
         .hero-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
         }
         .guide-layout {
             display: grid;
@@ -24,6 +24,7 @@
             align-items: start;
         }
         .guide-main {
+            min-width: 0;
             display: grid;
             gap: 20px;
         }
@@ -34,6 +35,8 @@
             top: 108px;
         }
         .guide-card {
+            min-width: 0;
+            overflow-wrap: anywhere;
             background: var(--surface);
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
@@ -96,6 +99,7 @@
             font-size: 1.02rem;
         }
         .tool-title-row {
+            flex-wrap: wrap;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -153,6 +157,12 @@
         .image-lightbox {
             position: fixed;
             inset: 0;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            margin: 0;
+            border: 0;
             display: none;
             align-items: center;
             justify-content: center;
@@ -160,15 +170,8 @@
             background: rgba(10, 20, 16, 0.82);
             z-index: 1100;
         }
-        .image-lightbox.is-open {
+        .image-lightbox[open] {
             display: flex;
-        }
-        .image-lightbox-backdrop {
-            position: absolute;
-            inset: 0;
-            border: 0;
-            background: transparent;
-            cursor: zoom-out;
         }
         .image-lightbox-content {
             position: relative;
@@ -202,7 +205,7 @@
         }
         @media (max-width: 980px) {
             .guide-layout {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
             }
             .guide-side {
                 position: static;
@@ -213,9 +216,34 @@
                 padding-top: 28px;
             }
             .guide-card {
+            min-width: 0;
+            overflow-wrap: anywhere;
                 padding: 24px;
                 border-radius: var(--radius-md);
             }
+        }
+        /* Local accessibility styles: keep other guides unchanged. */
+        .eyebrow, .section-tag, .button-secondary {
+            color: var(--brand-strong);
+            background: #e6edf5;
+        }
+        .guide-side h2.section-tag { font-size: 0.78rem; margin-bottom: 16px; }
+        .tool-image-button {
+            padding: 0;
+            border: 0;
+            border-radius: 12px;
+            background: transparent;
+            flex: 0 0 auto;
+            cursor: zoom-in;
+        }
+        .tool-image-button .tool-logo { display: block; }
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid #112d4e;
+            outline-offset: 4px;
+            box-shadow: 0 0 0 4px #fff;
+        }
+        @media (forced-colors: active) {
+            a:focus-visible, button:focus-visible { outline-color: Highlight; }
         }
     </style>
     <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
@@ -226,10 +254,10 @@
     <meta name="apple-mobile-web-app-title" content="FabLab">
 </head>
 <body class="guide-shell">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header">
+        <a class="skip-link" href="#main-content">Skip to main content</a>
         <div class="container nav-wrap">
-            <a class="brand interactive" href="index.html" aria-label="To front page">
+            <a class="brand interactive" href="index.html" aria-label="FabLab Guides – To front page">
                 <span class="brand-mark">
                     <img src="../billeder/Fablab Logo.svg" alt="FabLab logo">
                 </span>
@@ -242,7 +270,7 @@
         </div>
     </header>
 
-    <main id="main-content" class="guide-page">
+    <main tabindex="-1" id="main-content" class="guide-page">
         <section class="hero-section">
             <div class="container hero-grid">
                 <div class="hero-card">
@@ -316,7 +344,7 @@
                                     <img class="tool-logo" src="../billeder/tools/box_studio.png" alt="Box Studio" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://box-studio.cc/about/en" target="_blank" rel="noopener">Box Studio</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>Free box generator with kerf compensation, finger joints, 3D preview, hinged lids and optional internal dividers.</p>
@@ -350,7 +378,7 @@
                                     <img class="tool-logo" src="../billeder/tools/geardxf.png" alt="GearDXF" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://geardxf.com/" target="_blank" rel="noopener">GearDXF</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>Modern generator and simulator for spur gears, internal ring gears and racks, including backlash compensation.</p>
@@ -368,7 +396,7 @@
                                     <img class="tool-logo" src="../billeder/tools/living_hinge_generator.png" alt="Living Hinge Generator" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://livinghingegenerator.com/" target="_blank" rel="noopener">Living Hinge Generator</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>Generates adjustable living-hinge patterns with straight, wave, hexagonal or cross-shaped cuts and an instant preview.</p>
@@ -409,7 +437,7 @@
                                     <img class="tool-logo" src="../billeder/tools/tinkercad.png" alt="Autodesk Tinkercad" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://www.tinkercad.com/" target="_blank" rel="noopener">Tinkercad</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>Free, beginner-friendly 3D modelling from Autodesk, where models are built by combining and adjusting simple shapes.</p>
@@ -420,7 +448,7 @@
                                     <img class="tool-logo" src="../billeder/tools/jscad.png" alt="JSCAD" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://jscad.app/" target="_blank" rel="noopener">JSCAD</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>Open source tool for parametric 2D and 3D models that are described with JavaScript and displayed directly in the browser.</p>
@@ -431,7 +459,7 @@
                                     <img class="tool-logo" src="../billeder/tools/sketchforge.png" alt="SketchForge" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://sketchforge3d.com/" target="_blank" rel="noopener">SketchForge</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>Free, open source 3D editor with a simple workflow for shapes, combinations, adjustments and browser-based export.</p>
@@ -442,7 +470,7 @@
                                     <img class="tool-logo" src="../billeder/tools/onshape.png" alt="Onshape" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://www.onshape.com/en/products/free" target="_blank" rel="noopener">Onshape</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>Professional parametric cloud CAD with parts, assemblies, version control and collaboration. The free plan is for non-commercial use and documents are public.</p>
@@ -460,7 +488,7 @@
                                     <img class="tool-logo" src="../billeder/tools/makerworld_makerlab.svg" alt="MakerWorld MakerLab" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://makerworld.com/en/makerlab?utm_source=fablabguides.dk" target="_blank" rel="noopener">MakerWorld MakerLab</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>A collection of browser-based design tools that help you create and customise models for 3D printing.</p>
@@ -478,7 +506,7 @@
                                     <img class="tool-logo" src="../billeder/tools/wokwi.png" alt="Wokwi" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://wokwi.com/" target="_blank" rel="noopener">Wokwi</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>Online simulator for Arduino, ESP32, STM32 and Raspberry Pi Pico, where code and electronics can be tested together.</p>
@@ -489,7 +517,7 @@
                                     <img class="tool-logo" src="../billeder/tools/circuitverse.png" alt="CircuitVerse" loading="lazy">
                                     <div class="tool-heading">
                                         <h3><a href="https://circuitverse.org/" target="_blank" rel="noopener">CircuitVerse</a></h3>
-                                        <span class="new-badge" aria-label="New tool">New</span>
+                                        <span class="new-badge">New</span>
                                     </div>
                                 </div>
                                 <p>Free open source simulator for digital logic circuits with logic gates, truth tables, timing diagrams and subcircuits.</p>
@@ -538,9 +566,9 @@
                     </article>
                 </div>
 
-                <aside class="guide-side">
-                    <article class="guide-card">
-                        <span class="section-tag">Contents</span>
+                <aside class="guide-side" aria-labelledby="contents-heading tips-heading">
+                    <article class="guide-card" aria-labelledby="contents-heading">
+                        <h2 class="section-tag" id="contents-heading">Contents</h2>
                         <div class="guide-anchor-list">
                             <a class="interactive" href="#intro">What are online tools?</a>
                             <a class="interactive guide-anchor-link" href="#boxes"><span>Boxes</span><span class="new-badge new-badge--small">New</span></a>
@@ -554,8 +582,8 @@
                         </div>
                     </article>
 
-                    <article class="guide-card">
-                        <span class="section-tag">Tips in practice</span>
+                    <article class="guide-card" aria-labelledby="tips-heading">
+                        <h2 class="section-tag" id="tips-heading">Tips in practice</h2>
                         <ul>
                             <li>Always add kerf compensation if the tool supports it.</li>
                             <li>Check that units are mm before exporting.</li>
@@ -589,13 +617,12 @@
         </div>
     </footer>
 
-    <div class="image-lightbox" id="image-lightbox" aria-hidden="true">
-        <button class="image-lightbox-backdrop" type="button" data-lightbox-close aria-label="Close large image"></button>
-        <div class="image-lightbox-content" role="dialog" aria-modal="true" aria-label="Large image">
+    <dialog class="image-lightbox" id="image-lightbox" aria-label="Large image">
+        <div class="image-lightbox-content">
             <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="Close">&times;</button>
             <img id="image-lightbox-img" src="" alt="">
         </div>
-    </div>
+    </dialog>
 
     <script>
         (function () {
@@ -608,45 +635,49 @@
             function openLightbox(img) {
                 lightboxImg.src = img.src;
                 lightboxImg.alt = img.alt || 'Generator image';
-                lightbox.classList.add('is-open');
-                lightbox.setAttribute('aria-hidden', 'false');
+                lightbox.showModal();
                 document.body.style.overflow = 'hidden';
             }
 
             function closeLightbox() {
-                lightbox.classList.remove('is-open');
-                lightbox.setAttribute('aria-hidden', 'true');
-                lightboxImg.src = '';
-                document.body.style.overflow = '';
+                lightbox.close();
             }
 
-            logos.forEach(function (img) {
-                img.setAttribute('role', 'button');
-                img.setAttribute('tabindex', '0');
+            lightbox.addEventListener('close', function () {
+                lightboxImg.removeAttribute('src');
+                document.body.style.overflow = '';
+            });
 
-                img.addEventListener('click', function () {
+            logos.forEach(function (img) {
+                var button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'tool-image-button';
+                button.setAttribute('aria-label', 'Enlarge image: ' + img.alt);
+                button.setAttribute('aria-haspopup', 'dialog');
+                img.parentNode.insertBefore(button, img);
+                button.appendChild(img);
+                button.addEventListener('click', function () {
                     openLightbox(img);
                 });
+            });
 
-                img.addEventListener('keydown', function (event) {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        openLightbox(img);
-                    }
-                });
+
+            // Keep Tab on the dialog controls, including when it has only one button.
+            lightbox.addEventListener('keydown', function (event) {
+                if (event.key !== 'Tab') return;
+                var controls = Array.from(lightbox.querySelectorAll('button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]')).filter(function (el) { return el.getClientRects().length; });
+                if (!controls.length) return;
+                var first = controls[0], last = controls[controls.length - 1];
+                if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+                else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
             });
 
             lightbox.addEventListener('click', function (event) {
-                if (event.target && event.target.matches('[data-lightbox-close]')) {
+                if (event.target === lightbox || event.target.closest('[data-lightbox-close]')) {
                     closeLightbox();
                 }
             });
 
-            document.addEventListener('keydown', function (event) {
-                if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
-                    closeLightbox();
-                }
-            });
         })();
     </script>
 

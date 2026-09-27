@@ -108,10 +108,10 @@
     <meta name="apple-mobile-web-app-title" content="FabLab">
 </head>
 <body class="guide-shell">
-    <a class="skip-link" href="#main-content">Spring til hovedindhold</a>
     <header class="site-header">
+        <a class="skip-link" href="#main-content">Spring til hovedindhold</a>
         <div class="container nav-wrap">
-            <a class="brand interactive" href="index.html" aria-label="Til forsiden">
+            <a class="brand interactive" href="index.html" aria-label="FabLab Guides – Til forsiden">
                 <span class="brand-text">
                     <strong>FabLab Guides</strong>
                 </span>
@@ -121,25 +121,25 @@
         </div>
     </header>
 
-    <main id="main-content" class="moving-head-page">
+    <main tabindex="-1" id="main-content" class="moving-head-page">
         <section class="hero-section">
             <div class="container hero-grid">
-                <article class="hero-card interactive">
+                <div class="hero-card interactive">
                     <p class="eyebrow">Cursor Character</p>
                     <h1>Hvem er vi?</h1>
                     <p class="lead">Denne side og resten af FabLab Guides er lavet og vedligeholdt af Rene og Johannes.</p>
-                    <div class="hero-pills" aria-label="Feature oversigt">
+                    <div class="hero-pills">
                         <span class="pill">Open Source</span>
                         <span class="pill">Open Denmark</span>
                         <span class="pill">Creative Commons</span>
                     </div>
-                </article>
+                </div>
             </div>
         </section>
 
         <section class="container moving-head-layout" aria-label="The Heads demo">
             <div class="moving-head-main">
-                <article class="moving-head-stage interactive">
+                <div class="moving-head-stage interactive">
                     <h2>Johannes Dahl</h2>
                     <div class="flg-cursor-character" data-flg-character role="img" aria-label="FabLab figur, der følger markøren" style="--flg-character-width: 560px">
                         <img class="flg-cursor-character__fallback" src="assets/cursor-character/frames/center.webp" width="1280" height="720" alt="FabLab figur i neutral position">
@@ -150,24 +150,24 @@
                         <img class="flg-cursor-character__fallback" src="assets/moving-head/frames/center.webp" width="880" height="720" alt="Moving Head figur i neutral position">
                         <canvas class="flg-cursor-character__canvas" aria-hidden="true"></canvas>
                     </div>
-                </article>
+                </div>
             </div>
 
-            <aside class="moving-head-side">
-                <article class="moving-head-card interactive">
+            <aside class="moving-head-side" aria-label="Om projektet">
+                <div class="moving-head-card interactive">
                     <h2>Om os</h2>
                     <p>Vi hedder Rene og Johannes, og vi udvikler og vedligeholder FabLab Guides sammen.</p>
                     <p>Vores fokus er at gøre guides enkle, visuelle, gratis og nemme at bruge for alle.</p>
-                </article>
+                </div>
 
-                <article class="moving-head-note interactive">
+                <div class="moving-head-note interactive">
                     <h2>Tips</h2>
                     <ul>
                         <li>Flyt markøren rundt om figuren for at se hovedet dreje.</li>
                         <li>Hold markøren helt inde ved ansigtet for neutral center-ramme.</li>
                         <li>På touchskærme forbliver den i rolig fallback-tilstand.</li>
                     </ul>
-                </article>
+                </div>
             </aside>
         </section>
     </main>

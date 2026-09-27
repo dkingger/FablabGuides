@@ -1,0 +1,7736 @@
+[
+  {
+    "path": "index.html",
+    "tabs": [
+      {
+        "tag": "A",
+        "text": "Spring til hovedindhold",
+        "outline": "rgb(255, 255, 255) solid 2px",
+        "top": -77.26875305175781,
+        "bottom": -27.675003051757812
+      },
+      {
+        "tag": "A",
+        "text": "FabLab Guides",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 22.03125,
+        "bottom": 64.9375
+      },
+      {
+        "tag": "A",
+        "text": "Guides",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 20,
+        "bottom": 66.984375
+      },
+      {
+        "tag": "A",
+        "text": "Maskiner",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 20,
+        "bottom": 66.984375
+      },
+      {
+        "tag": "A",
+        "text": "Materialer",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 20,
+        "bottom": 68.015625
+      },
+      {
+        "tag": "A",
+        "text": "The Heads",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 20,
+        "bottom": 68.015625
+      },
+      {
+        "tag": "A",
+        "text": "Find dit FabLab",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 20,
+        "bottom": 69.109375
+      },
+      {
+        "tag": "A",
+        "text": "English",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 20,
+        "bottom": 69.109375
+      },
+      {
+        "tag": "A",
+        "text": "Se guides",
+        "outline": "rgb(255, 255, 255) solid 3px",
+        "top": 509.671875,
+        "bottom": 561.671875
+      },
+      {
+        "tag": "A",
+        "text": "Online værktøjer",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 509.671875,
+        "bottom": 561.671875
+      },
+      {
+        "tag": "A",
+        "text": "Vektor-Viktor v1.74",
+        "outline": "rgba(255, 255, 255, 0.9) solid 3px",
+        "top": 212.515625,
+        "bottom": 272.109375
+      },
+      {
+        "tag": "A",
+        "text": "Garn Bandit v1.0",
+        "outline": "rgba(255, 255, 255, 0.9) solid 3px",
+        "top": 284.109375,
+        "bottom": 343.703125
+      },
+      {
+        "tag": "A",
+        "text": "WeDo Blokværksted",
+        "outline": "rgba(255, 255, 255, 0.9) solid 3px",
+        "top": 355.75,
+        "bottom": 415.34375
+      },
+      {
+        "tag": "A",
+        "text": "The Heads",
+        "outline": "rgba(255, 255, 255, 0.9) solid 3px",
+        "top": 427.34375,
+        "bottom": 486.9375
+      },
+      {
+        "tag": "A",
+        "text": "Guide til laserfiler",
+        "outline": "rgba(255, 255, 255, 0.9) solid 3px",
+        "top": 498.9375,
+        "bottom": 558.53125
+      },
+      {
+        "tag": "A",
+        "text": "Online tools",
+        "outline": "rgba(255, 255, 255, 0.9) solid 3px",
+        "top": 570.53125,
+        "bottom": 630.125
+      }
+    ],
+    "ax": [
+      {
+        "role": "RootWebArea",
+        "name": "FabLab"
+      },
+      {
+        "role": "banner",
+        "name": ""
+      },
+      {
+        "role": "main",
+        "name": ""
+      },
+      {
+        "role": "contentinfo",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Spring til hovedindhold"
+      },
+      {
+        "role": "link",
+        "name": "FabLab Guides"
+      },
+      {
+        "role": "navigation",
+        "name": "Primær navigation"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Creative Commons BY-SA 4.0"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Tilgængelighedserklæring"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Spring til hovedindhold"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Guides"
+      },
+      {
+        "role": "link",
+        "name": "Maskiner"
+      },
+      {
+        "role": "link",
+        "name": "Materialer"
+      },
+      {
+        "role": "link",
+        "name": "The Heads"
+      },
+      {
+        "role": "link",
+        "name": "Find dit FabLab"
+      },
+      {
+        "role": "link",
+        "name": "English"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Velkommen til FabLab Guides"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Se guides"
+      },
+      {
+        "role": "link",
+        "name": "Online værktøjer"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "complementary",
+        "name": "Populære genveje"
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "KOM HURTIGT I GANG Find den rigtige guide Vælg mellem 3D-print, laser og vinyl på få sekunder."
+      },
+      {
+        "role": "link",
+        "name": "ARBEJD VIDERE Digitale ressourcer Find online værktøjer, filguides og Vektor-Viktor samlet ét sted."
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Overskuelige indgange til de mest brugte værktøjer."
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Find hjælp til filer, maskiner og digitale arbejdsgange."
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "FabLabs.io"
+      },
+      {
+        "role": "link",
+        "name": "CFU Maker-kortet"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Laserfiler"
+      },
+      {
+        "role": "link",
+        "name": "Online tools"
+      },
+      {
+        "role": "link",
+        "name": "Vektor-Viktor"
+      },
+      {
+        "role": "image",
+        "name": "Creative Commons BY-SA 4.0"
+      },
+      {
+        "role": "StaticText",
+        "name": "Al tekst udgivet under "
+      },
+      {
+        "role": "link",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "StaticText",
+        "name": "."
+      },
+      {
+        "role": "image",
+        "name": "Tilgængelighedserklæring"
+      },
+      {
+        "role": "StaticText",
+        "name": "Se sidens "
+      },
+      {
+        "role": "link",
+        "name": "tilgængelighedserklæring"
+      },
+      {
+        "role": "StaticText",
+        "name": "."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Spring til hovedindhold"
+      },
+      {
+        "role": "StaticText",
+        "name": "FabLab Guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Maskiner"
+      },
+      {
+        "role": "StaticText",
+        "name": "Materialer"
+      },
+      {
+        "role": "StaticText",
+        "name": "The Heads"
+      },
+      {
+        "role": "StaticText",
+        "name": "Find dit FabLab"
+      },
+      {
+        "role": "StaticText",
+        "name": "English"
+      },
+      {
+        "role": "StaticText",
+        "name": "GUIDES TIL MASKINER OG ONLINE TOOLS"
+      },
+      {
+        "role": "StaticText",
+        "name": "Velkommen til FabLab Guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Find guides til maskiner som 3D-printere, laserskærere, vinylskærere og waterjet samt online manualer og digitale værktøjer, der hjælper dig fra idé til færdig fil."
+      },
+      {
+        "role": "StaticText",
+        "name": "Se guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Online værktøjer"
+      },
+      {
+        "role": "StaticText",
+        "name": "GUIDEBIBLIOTEK"
+      },
+      {
+        "role": "StaticText",
+        "name": "Start med den rigtige guide"
+      },
+      {
+        "role": "StaticText",
+        "name": "Find korte trin-for-trin indgange til maskiner, software og filer."
+      },
+      {
+        "role": "StaticText",
+        "name": "DIGITALE VÆRKTØJER"
+      },
+      {
+        "role": "StaticText",
+        "name": "Fra idé til fil"
+      },
+      {
+        "role": "StaticText",
+        "name": "Brug online værktøjer og Vektor-Viktor til at klargøre dine designs."
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Vektor-Viktor v1.74"
+      },
+      {
+        "role": "link",
+        "name": "Garn Bandit v1.0"
+      },
+      {
+        "role": "link",
+        "name": "WeDo Blokværksted"
+      },
+      {
+        "role": "link",
+        "name": "The Heads"
+      },
+      {
+        "role": "link",
+        "name": "Guide til laserfiler"
+      },
+      {
+        "role": "link",
+        "name": "Online tools"
+      },
+      {
+        "role": "link",
+        "name": "Guide to laser files (EN)"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Ny i digital fabrikation?"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "list",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "GUIDES"
+      },
+      {
+        "role": "StaticText",
+        "name": "Overskuelige indgange til de mest brugte værktøjer."
+      },
+      {
+        "role": "StaticText",
+        "name": "Her finder du de mest brugte guides til 3D-print, laserskæring, vinylskæring og tekstiltryk. Vælg den maskine, software eller teknik, du skal bruge, og følg guiden trin for trin."
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "RESSOURCER"
+      },
+      {
+        "role": "StaticText",
+        "name": "Find hjælp til filer, maskiner og digitale arbejdsgange."
+      },
+      {
+        "role": "StaticText",
+        "name": "Brug siden som et opslagsværk, når du skal klargøre filer, vælge software eller finde et browserbaseret værktøj til dit næste projekt."
+      },
+      {
+        "role": "StaticText",
+        "name": "FILGUIDES"
+      },
+      {
+        "role": "StaticText",
+        "name": "Klargør dine filer"
+      },
+      {
+        "role": "StaticText",
+        "name": "Se anbefalinger til vektorfiler, eksportformater og kontrol før skæring."
+      },
+      {
+        "role": "StaticText",
+        "name": "VÆRKTØJER"
+      },
+      {
+        "role": "StaticText",
+        "name": "Design direkte i browseren"
+      },
+      {
+        "role": "StaticText",
+        "name": "Brug Vektor-Viktor og andre online værktøjer til hurtige prototyper."
+      },
+      {
+        "role": "StaticText",
+        "name": "FIND MAKERSPACE"
+      },
+      {
+        "role": "StaticText",
+        "name": "Find et FabLab eller maker-aktivitet"
+      },
+      {
+        "role": "StaticText",
+        "name": "Brug de eksterne kort til at finde FabLabs og maker-aktiviteter i nærheden."
+      },
+      {
+        "role": "StaticText",
+        "name": "FabLabs.io"
+      },
+      {
+        "role": "StaticText",
+        "name": "CFU Maker-kortet"
+      },
+      {
+        "role": "StaticText",
+        "name": "GENVEJE"
+      },
+      {
+        "role": "StaticText",
+        "name": "Laserfiler"
+      },
+      {
+        "role": "StaticText",
+        "name": "Online tools"
+      },
+      {
+        "role": "StaticText",
+        "name": "Vektor-Viktor"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Al tekst udgivet under "
+      },
+      {
+        "role": "StaticText",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Se sidens "
+      },
+      {
+        "role": "StaticText",
+        "name": "tilgængelighedserklæring"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "FabLab Guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Maskiner"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Materialer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "The Heads"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Find dit FabLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "English"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "GUIDES TIL MASKINER OG ONLINE TOOLS"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Velkommen til "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "FabLab Guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Find guides til maskiner som 3D-printere, laserskærere, vinylskærere og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "waterjet samt online manualer og digitale værktøjer, der hjælper dig fra idé til "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "færdig fil."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Se guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Online værktøjer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "GUIDEBIBLIOTEK"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Start med den rigtige guide"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Find korte trin-for-trin indgange til "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "maskiner, software og filer."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "DIGITALE VÆRKTØJER"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Fra idé til fil"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Brug online værktøjer og Vektor-"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Viktor til at klargøre dine designs."
+      },
+      {
+        "role": "StaticText",
+        "name": "POPULÆRE GENVEJE"
+      },
+      {
+        "role": "StaticText",
+        "name": "Vektor-Viktor v1.74"
+      },
+      {
+        "role": "StaticText",
+        "name": "Garn Bandit v1.0"
+      },
+      {
+        "role": "StaticText",
+        "name": "WeDo Blokværksted"
+      },
+      {
+        "role": "StaticText",
+        "name": "The Heads"
+      },
+      {
+        "role": "StaticText",
+        "name": "Guide til laserfiler"
+      },
+      {
+        "role": "StaticText",
+        "name": "Online tools"
+      },
+      {
+        "role": "StaticText",
+        "name": "Guide to laser files (EN)"
+      },
+      {
+        "role": "StaticText",
+        "name": "NYE BRUGERE"
+      },
+      {
+        "role": "StaticText",
+        "name": "Ny i digital fabrikation?"
+      },
+      {
+        "role": "StaticText",
+        "name": "Start med en guide, der passer til den maskine, filtype eller software, du arbejder med."
+      },
+      {
+        "role": "StaticText",
+        "name": "Guidesne samler de vigtigste trin, så du kan forberede filer, vælge værktøjer og undgå de mest almindelige fejl."
+      },
+      {
+        "role": "StaticText",
+        "name": "Brug gerne online værktøjerne til at lave hurtige prototyper, før du går videre til en færdig fil."
+      },
+      {
+        "role": "StaticText",
+        "name": "Hav gerne klar:"
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "KOM HURTIGT I GANG"
+      },
+      {
+        "role": "StaticText",
+        "name": "Find den rigtige guide"
+      },
+      {
+        "role": "StaticText",
+        "name": "Vælg mellem 3D-print, laser og vinyl på få sekunder."
+      },
+      {
+        "role": "StaticText",
+        "name": "ARBEJD VIDERE"
+      },
+      {
+        "role": "StaticText",
+        "name": "Digitale ressourcer"
+      },
+      {
+        "role": "StaticText",
+        "name": "Find online værktøjer, filguides og Vektor-Viktor samlet ét sted."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "GUIDES"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Overskuelige "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "indgange til de "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "mest brugte "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "værktøjer."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Her finder du de mest brugte guides til 3D-print, laserskæring, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "vinylskæring og tekstiltryk. Vælg den maskine, software eller "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "teknik, du skal bruge, og følg guiden trin for trin."
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Fra slicer til færdigt print"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Prusa Slicer ikon PrusaSlicer"
+      },
+      {
+        "role": "link",
+        "name": "Prusa Mini ikon Prusa Mini"
+      },
+      {
+        "role": "link",
+        "name": "Prusa MK3S ikon Prusa MK3S"
+      },
+      {
+        "role": "link",
+        "name": "Prusa MK4 ikon Prusa MK4"
+      },
+      {
+        "role": "link",
+        "name": "Prusa XL ikon Prusa XL"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Maskiner og software samlet samme sted"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Guide til laserfiler ikon Guide til laserfiler"
+      },
+      {
+        "role": "link",
+        "name": "LightBurn ikon LightBurn"
+      },
+      {
+        "role": "link",
+        "name": "Eduard ikon Eduard"
+      },
+      {
+        "role": "link",
+        "name": "AEON ikon AEON"
+      },
+      {
+        "role": "link",
+        "name": "Epilog ikon Epilog"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Design, klargøring og skæring"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Brother Scan'n'Cut ikon Brother Scan'n'Cut"
+      },
+      {
+        "role": "link",
+        "name": "CanvasWorkspace ikon CanvasWorkspace"
+      },
+      {
+        "role": "link",
+        "name": "GCC Expert 24 ikon GCC Expert 24 II"
+      },
+      {
+        "role": "link",
+        "name": "Sure Cuts A Lot ikon Sure Cuts A Lot"
+      },
+      {
+        "role": "link",
+        "name": "Tekstilvinyl ikon Tekstilvinyl"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Tryk, maling og fiksering"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Tekstilvinyl ikon Tekstilvinyl"
+      },
+      {
+        "role": "link",
+        "name": "Serigrafi ikon Serigrafi"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "RESSOURCER"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Find hjælp til filer, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "maskiner og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "digitale "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "arbejdsgange."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Brug siden som et opslagsværk, når du skal klargøre filer, vælge software eller finde "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "et browserbaseret værktøj til dit næste projekt."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "FILGUIDES"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Klargør dine filer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Se anbefalinger til vektorfiler, eksportformater og kontrol før "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "skæring."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "VÆRKTØJER"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Design direkte i browseren"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Brug Vektor-Viktor og andre online værktøjer til hurtige prototyper."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "FIND MAKERSPACE"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Find et FabLab eller maker-aktivitet"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Brug de eksterne kort til at finde FabLabs og maker-aktiviteter i "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "nærheden."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "FabLabs.io"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CFU Maker-kortet"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "GENVEJE"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Laserfiler"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Online tools"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Vektor-Viktor"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "tilgængelighedserklæring"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "POPULÆRE GENVEJE"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Vektor-Viktor v1.74"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Garn Bandit v1.0"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "WeDo Blokværksted"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "The Heads"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Guide til laserfiler"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Online tools"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Guide to laser files (EN)"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NYE BRUGERE"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Ny i digital fabrikation?"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Start med en guide, der passer til den maskine, filtype eller software, du arbejder med."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Guidesne samler de vigtigste trin, så du kan forberede filer, vælge værktøjer og undgå de mest almindelige fejl."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Brug gerne online værktøjerne til at lave hurtige prototyper, før du går videre til en færdig fil."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Hav gerne klar:"
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "din idé, skitse eller fil"
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "egen computer, hvis du vil arbejde videre med designet"
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "lidt tålmodighed, hvis der er kø ved maskinerne"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "KOM HURTIGT I GANG"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Find den rigtige guide"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Vælg mellem 3D-print, laser og vinyl på få sekunder."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "ARBEJD VIDERE"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Digitale ressourcer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Find online værktøjer, filguides og Vektor-Viktor samlet ét sted."
+      },
+      {
+        "role": "StaticText",
+        "name": "3D-PRINT"
+      },
+      {
+        "role": "StaticText",
+        "name": "Fra slicer til færdigt print"
+      },
+      {
+        "role": "StaticText",
+        "name": "Start med software og vælg derefter den printer, du står ved."
+      },
+      {
+        "role": "image",
+        "name": "Prusa Slicer ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "PrusaSlicer"
+      },
+      {
+        "role": "image",
+        "name": "Prusa Mini ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Prusa Mini"
+      },
+      {
+        "role": "image",
+        "name": "Prusa MK3S ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Prusa MK3S"
+      },
+      {
+        "role": "image",
+        "name": "Prusa MK4 ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Prusa MK4"
+      },
+      {
+        "role": "image",
+        "name": "Prusa XL ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Prusa XL"
+      },
+      {
+        "role": "StaticText",
+        "name": "LASERSKÆRER"
+      },
+      {
+        "role": "StaticText",
+        "name": "Maskiner og software samlet samme sted"
+      },
+      {
+        "role": "StaticText",
+        "name": "Et enkelt overblik over LightBurn og de laserstationer, brugerne møder i rummet."
+      },
+      {
+        "role": "image",
+        "name": "Guide til laserfiler ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Guide til laserfiler"
+      },
+      {
+        "role": "image",
+        "name": "LightBurn ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "LightBurn"
+      },
+      {
+        "role": "image",
+        "name": "Eduard ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Eduard"
+      },
+      {
+        "role": "image",
+        "name": "AEON ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "AEON"
+      },
+      {
+        "role": "image",
+        "name": "Epilog ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Epilog"
+      },
+      {
+        "role": "StaticText",
+        "name": "VINYLSKÆRER"
+      },
+      {
+        "role": "StaticText",
+        "name": "Design, klargøring og skæring"
+      },
+      {
+        "role": "StaticText",
+        "name": "Et roligt flow, hvor software og hardware vises side om side."
+      },
+      {
+        "role": "image",
+        "name": "Brother Scan'n'Cut ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Brother Scan'n'Cut"
+      },
+      {
+        "role": "image",
+        "name": "CanvasWorkspace ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "CanvasWorkspace"
+      },
+      {
+        "role": "image",
+        "name": "GCC Expert 24 ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "GCC Expert 24 II"
+      },
+      {
+        "role": "image",
+        "name": "Sure Cuts A Lot ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Sure Cuts A Lot"
+      },
+      {
+        "role": "image",
+        "name": "Tekstilvinyl ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Tekstilvinyl"
+      },
+      {
+        "role": "StaticText",
+        "name": "TEKSTILTRYK"
+      },
+      {
+        "role": "StaticText",
+        "name": "Tryk, maling og fiksering"
+      },
+      {
+        "role": "StaticText",
+        "name": "Guides til tekstiltryk med varmepresse, tekstilfolie og serigrafi."
+      },
+      {
+        "role": "image",
+        "name": "Tekstilvinyl ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Tekstilvinyl"
+      },
+      {
+        "role": "image",
+        "name": "Serigrafi ikon"
+      },
+      {
+        "role": "StaticText",
+        "name": "Serigrafi"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "din idé, skitse eller fil"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "egen computer, hvis du vil arbejde videre med designet"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "lidt tålmodighed, hvis der er kø ved maskinerne"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "3D-PRINT"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Fra slicer til færdigt print"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Start med software og vælg "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "derefter den printer, du står "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "ved."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "PrusaSlicer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Prusa Mini"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Prusa MK3S"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Prusa MK4"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Prusa XL"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "LASERSKÆRER"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Maskiner og software "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "samlet samme sted"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Et enkelt overblik over "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "LightBurn og de "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "laserstationer, brugerne "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "møder i rummet."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Guide til "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "laserfiler"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "LightBurn"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Eduard"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "AEON"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Epilog"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "VINYLSKÆRER"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Design, klargøring og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "skæring"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Et roligt flow, hvor software "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "og hardware vises side om "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "side."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Brother "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Scan'n'Cut"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CanvasWorkspace"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "GCC Expert 24 II"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Sure Cuts A Lot"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tekstilvinyl"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "TEKSTILTRYK"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tryk, maling og fiksering"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Guides til tekstiltryk med "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "varmepresse, tekstilfolie og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "serigrafi."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tekstilvinyl"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Serigrafi"
+      }
+    ]
+  },
+  {
+    "path": "online-tools.html",
+    "tabs": [
+      {
+        "tag": "A",
+        "text": "Spring til hovedindhold",
+        "outline": "rgb(255, 255, 255) solid 2px",
+        "top": -77.26875305175781,
+        "bottom": -27.675003051757812
+      },
+      {
+        "tag": "A",
+        "text": "FabLab Guides – Til forsiden",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 20,
+        "bottom": 87.53125
+      },
+      {
+        "tag": "A",
+        "text": "Guides",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.328125,
+        "bottom": 78.203125
+      },
+      {
+        "tag": "A",
+        "text": "Maskiner",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.328125,
+        "bottom": 78.203125
+      },
+      {
+        "tag": "A",
+        "text": "Materialer",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.203125,
+        "bottom": 78.765625
+      },
+      {
+        "tag": "A",
+        "text": "The Heads",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.203125,
+        "bottom": 78.765625
+      },
+      {
+        "tag": "A",
+        "text": "Find dit FabLab",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.203125,
+        "bottom": 78.765625
+      },
+      {
+        "tag": "A",
+        "text": "English",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.203125,
+        "bottom": 78.796875
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Forstør billede: MakerCase",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 978.28125,
+        "bottom": 1122.28125
+      },
+      {
+        "tag": "A",
+        "text": "MakerCase",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1039.234375,
+        "bottom": 1060.234375
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Forstør billede: Boxes.py",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1256.515625,
+        "bottom": 1400.515625
+      },
+      {
+        "tag": "A",
+        "text": "Boxes.py",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1317.46875,
+        "bottom": 1338.46875
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Forstør billede: Make a box",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1534.75,
+        "bottom": 1678.75
+      },
+      {
+        "tag": "A",
+        "text": "Make a box",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1595.703125,
+        "bottom": 1616.703125
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Forstør billede: Laser Cutter Box",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1787.390625,
+        "bottom": 1931.390625
+      },
+      {
+        "tag": "A",
+        "text": "Laser Cutter Box",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1848.34375,
+        "bottom": 1869.34375
+      }
+    ],
+    "ax": [
+      {
+        "role": "RootWebArea",
+        "name": "Online tools | FabLab"
+      },
+      {
+        "role": "banner",
+        "name": ""
+      },
+      {
+        "role": "main",
+        "name": ""
+      },
+      {
+        "role": "contentinfo",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Spring til hovedindhold"
+      },
+      {
+        "role": "link",
+        "name": "FabLab Guides – Til forsiden"
+      },
+      {
+        "role": "navigation",
+        "name": "Primær navigation"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Creative Commons BY-SA 4.0"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Tilgængelighedserklæring"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Til forsiden"
+      },
+      {
+        "role": "link",
+        "name": "Se guide til laserfiler"
+      },
+      {
+        "role": "StaticText",
+        "name": "Spring til hovedindhold"
+      },
+      {
+        "role": "image",
+        "name": "FabLab logo"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Guides"
+      },
+      {
+        "role": "link",
+        "name": "Maskiner"
+      },
+      {
+        "role": "link",
+        "name": "Materialer"
+      },
+      {
+        "role": "link",
+        "name": "The Heads"
+      },
+      {
+        "role": "link",
+        "name": "Find dit FabLab"
+      },
+      {
+        "role": "link",
+        "name": "English"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Online tools"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Design og simulering"
+      },
+      {
+        "role": "StaticText",
+        "name": "Klar til FabLab"
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "complementary",
+        "name": "INDHOLD TIPS I PRAKSIS"
+      },
+      {
+        "role": "image",
+        "name": "Creative Commons BY-SA 4.0"
+      },
+      {
+        "role": "StaticText",
+        "name": "Al tekst udgivet under "
+      },
+      {
+        "role": "link",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "StaticText",
+        "name": "."
+      },
+      {
+        "role": "image",
+        "name": "Tilgængelighedserklæring"
+      },
+      {
+        "role": "StaticText",
+        "name": "Se sidens "
+      },
+      {
+        "role": "link",
+        "name": "tilgængelighedserklæring"
+      },
+      {
+        "role": "StaticText",
+        "name": "."
+      },
+      {
+        "role": "StaticText",
+        "name": "Til forsiden"
+      },
+      {
+        "role": "StaticText",
+        "name": "Se guide til laserfiler"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Spring til hovedindhold"
+      },
+      {
+        "role": "StaticText",
+        "name": "FabLab Guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Maskiner"
+      },
+      {
+        "role": "StaticText",
+        "name": "Materialer"
+      },
+      {
+        "role": "StaticText",
+        "name": "The Heads"
+      },
+      {
+        "role": "StaticText",
+        "name": "Find dit FabLab"
+      },
+      {
+        "role": "StaticText",
+        "name": "English"
+      },
+      {
+        "role": "StaticText",
+        "name": "DIGITALE VÆRKTØJER"
+      },
+      {
+        "role": "StaticText",
+        "name": "Online tools"
+      },
+      {
+        "role": "StaticText",
+        "name": "En dansk oversigt over browserbaserede værktøjer til laserskæring, 3D-design, elektronik og simulering. Udvalgt til FabLab-brugere, der vil hurtigt fra idé til prototype."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Design og simulering"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Klar til FabLab"
+      },
+      {
+        "role": "heading",
+        "name": "Hvad er online værktøjer?"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Kasser"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Tandhjul"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Fleksible samlinger"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Labyrinter"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "CAD"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "3D-design"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Elektronik og simulering"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Andre værktøjer"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": "INDHOLD"
+      },
+      {
+        "role": "article",
+        "name": "TIPS I PRAKSIS"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Al tekst udgivet under "
+      },
+      {
+        "role": "StaticText",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Se sidens "
+      },
+      {
+        "role": "StaticText",
+        "name": "tilgængelighedserklæring"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Til forsiden"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Se guide til laserfiler"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "FabLab Guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Maskiner"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Materialer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "The Heads"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Find dit FabLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "English"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "DIGITALE VÆRKTØJER"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Online tools"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "En dansk oversigt over browserbaserede værktøjer til laserskæring, 3D-design, elektronik og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "simulering. Udvalgt til FabLab-brugere, der vil hurtigt fra idé til prototype."
+      },
+      {
+        "role": "StaticText",
+        "name": "Hvad er online værktøjer?"
+      },
+      {
+        "role": "StaticText",
+        "name": "Online værktøjer kan automatisk lave filer ud fra dine mål og indstillinger eller lade dig afprøve elektronik direkte i browseren. Det er en hurtig vej til kasser, tandhjul, 3D-modeller og digitale kredsløb uden at starte helt fra nul."
+      },
+      {
+        "role": "StaticText",
+        "name": "De fleste værktøjer er bedst til prototyper og hurtige iterationer. Tjek altid målsætning, samlinger og kerf i en testfil, før du bruger dyrt materiale."
+      },
+      {
+        "role": "StaticText",
+        "name": "Kasser"
+      },
+      {
+        "role": "StaticText",
+        "name": "Værktøjer til bokse med fingersamlinger, indsatsrum og specialformer."
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: MakerCase"
+      },
+      {
+        "role": "heading",
+        "name": "MakerCase"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: SVG, DXF"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Boxes.py"
+      },
+      {
+        "role": "heading",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: AI, DXF, GCODE, PDF, PLT, PS, SVG"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Make a box"
+      },
+      {
+        "role": "heading",
+        "name": "Make a box"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: PDF"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Laser Cutter Box"
+      },
+      {
+        "role": "heading",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: DXF"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Template Maker"
+      },
+      {
+        "role": "heading",
+        "name": "Template Maker"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: PDF, SVG, DXF"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Box Studio"
+      },
+      {
+        "role": "heading",
+        "name": "Box Studio"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: SVG"
+      },
+      {
+        "role": "StaticText",
+        "name": "Tandhjul"
+      },
+      {
+        "role": "StaticText",
+        "name": "Værktøjer til involute gears, hvor funktion og geometri er vigtig."
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Involute Spur Gear Builder"
+      },
+      {
+        "role": "heading",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: DXF"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Gear Designer"
+      },
+      {
+        "role": "heading",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: DXF"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: GearDXF"
+      },
+      {
+        "role": "heading",
+        "name": "GearDXF"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: DXF, SVG, PDF"
+      },
+      {
+        "role": "StaticText",
+        "name": "Fleksible samlinger"
+      },
+      {
+        "role": "StaticText",
+        "name": "Lav bøjelige mønstre i stive pladematerialer til eksempelvis rundinger, låg og kabinetter."
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Living Hinge Generator"
+      },
+      {
+        "role": "heading",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: SVG, DXF"
+      },
+      {
+        "role": "StaticText",
+        "name": "Labyrinter"
+      },
+      {
+        "role": "StaticText",
+        "name": "Generatorer til puslespil, spilplader og kreative mazes."
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Laser-Cut Maze Designer"
+      },
+      {
+        "role": "heading",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: SVG"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Maze Generator"
+      },
+      {
+        "role": "heading",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: PDF, SVG, PNG"
+      },
+      {
+        "role": "StaticText",
+        "name": "CAD"
+      },
+      {
+        "role": "StaticText",
+        "name": "Browserbaserede CAD-værktøjer til at tegne præcise 2D- og 3D-modeller til prototyper, laserskæring og 3D-print."
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Autodesk Tinkercad"
+      },
+      {
+        "role": "heading",
+        "name": "Tinkercad"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "God til: De første CAD-modeller og enkle emner til 3D-print"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: JSCAD"
+      },
+      {
+        "role": "heading",
+        "name": "JSCAD"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "God til: Kodebaseret og parametrisk CAD"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: SketchForge"
+      },
+      {
+        "role": "heading",
+        "name": "SketchForge"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Import og eksport: Blandt andet STL og SVG"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Onshape"
+      },
+      {
+        "role": "heading",
+        "name": "Onshape"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "God til: Avanceret CAD og samarbejde i browseren"
+      },
+      {
+        "role": "StaticText",
+        "name": "3D-design"
+      },
+      {
+        "role": "StaticText",
+        "name": "Browserbaserede værktøjer til at skabe modeller samt platforme, hvor du kan finde filer til 3D-print."
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Printables"
+      },
+      {
+        "role": "heading",
+        "name": "Printables"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "God til: At finde filer til 3D-print"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: MakerWorld"
+      },
+      {
+        "role": "heading",
+        "name": "MakerWorld"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "God til: At finde filer og printprofiler til 3D-print"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: MakerWorld MakerLab"
+      },
+      {
+        "role": "heading",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Output: Afhænger af det valgte værktøj"
+      },
+      {
+        "role": "StaticText",
+        "name": "Elektronik og simulering"
+      },
+      {
+        "role": "StaticText",
+        "name": "Byg, programmér og afprøv digitale kredsløb virtuelt, før du samler dem fysisk."
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Wokwi"
+      },
+      {
+        "role": "heading",
+        "name": "Wokwi"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Brug: Mikrocontrollere, kode og elektroniske komponenter"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: CircuitVerse"
+      },
+      {
+        "role": "heading",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Eksport: Højopløste billeder, blandt andet SVG"
+      },
+      {
+        "role": "StaticText",
+        "name": "Andre værktøjer"
+      },
+      {
+        "role": "StaticText",
+        "name": "Specialgeneratorer, der ikke passer i de øvrige kategorier."
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Vector Ruler Generator"
+      },
+      {
+        "role": "heading",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: SVG"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "heading",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: SVG"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: SVGnest"
+      },
+      {
+        "role": "heading",
+        "name": "SVGnest"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: SVG (import/eksport)"
+      },
+      {
+        "role": "button",
+        "name": "Forstør billede: Deepnest"
+      },
+      {
+        "role": "heading",
+        "name": "Deepnest (app)"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Filtype: Afhænger af importformat"
+      },
+      {
+        "role": "heading",
+        "name": "INDHOLD"
+      },
+      {
+        "role": "link",
+        "name": "Hvad er online værktøjer?"
+      },
+      {
+        "role": "link",
+        "name": "Kasser"
+      },
+      {
+        "role": "link",
+        "name": "Tandhjul"
+      },
+      {
+        "role": "link",
+        "name": "Fleksible samlinger"
+      },
+      {
+        "role": "link",
+        "name": "Labyrinter"
+      },
+      {
+        "role": "link",
+        "name": "CAD"
+      },
+      {
+        "role": "link",
+        "name": "3D-design"
+      },
+      {
+        "role": "link",
+        "name": "Elektronik og simulering"
+      },
+      {
+        "role": "link",
+        "name": "Andre værktøjer"
+      },
+      {
+        "role": "heading",
+        "name": "TIPS I PRAKSIS"
+      },
+      {
+        "role": "list",
+        "name": ""
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "tilgængelighedserklæring"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Hvad er online værktøjer?"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Online værktøjer kan automatisk lave filer ud fra dine mål og indstillinger eller lade "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "dig afprøve elektronik direkte i browseren. Det er en hurtig vej til kasser, tandhjul, 3D-"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "modeller og digitale kredsløb uden at starte helt fra nul."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "De fleste værktøjer er bedst til prototyper og hurtige iterationer. Tjek altid "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "målsætning, samlinger og kerf i en testfil, før du bruger dyrt materiale."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Kasser"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Værktøjer til bokse med fingersamlinger, indsatsrum og specialformer."
+      },
+      {
+        "role": "image",
+        "name": "MakerCase"
+      },
+      {
+        "role": "link",
+        "name": "MakerCase"
+      },
+      {
+        "role": "StaticText",
+        "name": "Nem generator til klassiske projektkasser med 3D-forhåndsvisning. God til hurtig opstart."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: SVG, DXF"
+      },
+      {
+        "role": "image",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "link",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "StaticText",
+        "name": "Meget fleksibel open source generator med mange kassetyper og avancerede indstillinger."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: AI, DXF, GCODE, PDF, PLT, PS, SVG"
+      },
+      {
+        "role": "image",
+        "name": "Make a box"
+      },
+      {
+        "role": "link",
+        "name": "Make a box"
+      },
+      {
+        "role": "StaticText",
+        "name": "En enkel og intuitiv generator til bokse med symmetriske fingersamlinger."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: PDF"
+      },
+      {
+        "role": "image",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "link",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "StaticText",
+        "name": "Letvægtsgenerator med live preview og forskellige bokstyper, inkl. skråning og skillevægge."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: DXF"
+      },
+      {
+        "role": "image",
+        "name": "Template Maker"
+      },
+      {
+        "role": "link",
+        "name": "Template Maker"
+      },
+      {
+        "role": "StaticText",
+        "name": "Fokus på pap- og emballageskabeloner. God til foldede konstruktioner og hurtige mockups."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: PDF, SVG, DXF"
+      },
+      {
+        "role": "image",
+        "name": "Box Studio"
+      },
+      {
+        "role": "link",
+        "name": "Box Studio"
+      },
+      {
+        "role": "StaticText",
+        "name": "Gratis kassegenerator med kerf-kompensation, fingersamlinger, 3D-forhåndsvisning, hængslet låg og mulighed for indvendige rum."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: SVG"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tandhjul"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Værktøjer til involute gears, hvor funktion og geometri er vigtig."
+      },
+      {
+        "role": "image",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "link",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "StaticText",
+        "name": "Browser-værktøj til tandhjul, interne gears og rack-and-pinion med mange parametre."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: DXF"
+      },
+      {
+        "role": "image",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "link",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "StaticText",
+        "name": "Hurtig generator til simple tandhjul ved at justere modul og antal tænder."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: DXF"
+      },
+      {
+        "role": "image",
+        "name": "GearDXF"
+      },
+      {
+        "role": "link",
+        "name": "GearDXF"
+      },
+      {
+        "role": "StaticText",
+        "name": "Moderne generator og simulator til tandhjul, indvendige ringhjul og tandstænger med blandt andet frigangskompensation."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: DXF, SVG, PDF"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Fleksible samlinger"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Lav bøjelige mønstre i stive pladematerialer til eksempelvis rundinger, låg og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "kabinetter."
+      },
+      {
+        "role": "image",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "link",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "StaticText",
+        "name": "Genererer justerbare living-hinge-mønstre med lige, bølgede, sekskantede eller krydsede udskæringer og viser resultatet med det samme."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: SVG, DXF"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Labyrinter"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Generatorer til puslespil, spilplader og kreative mazes."
+      },
+      {
+        "role": "image",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "link",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "StaticText",
+        "name": "Genererer laserklare filer til trælabyrinter og mekaniske maze-projekter."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: SVG"
+      },
+      {
+        "role": "image",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "link",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "StaticText",
+        "name": "Bygger rektangulære, triangulære, cirkulære og heksagonale labyrinter."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: PDF, SVG, PNG"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CAD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Browserbaserede CAD-værktøjer til at tegne præcise 2D- og 3D-modeller til "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "prototyper, laserskæring og 3D-print."
+      },
+      {
+        "role": "image",
+        "name": "Autodesk Tinkercad"
+      },
+      {
+        "role": "link",
+        "name": "Tinkercad"
+      },
+      {
+        "role": "StaticText",
+        "name": "Gratis og begyndervenlig 3D-modellering fra Autodesk, hvor modeller bygges ved at kombinere og tilpasse simple former."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "God til: De første CAD-modeller og enkle emner til 3D-print"
+      },
+      {
+        "role": "image",
+        "name": "JSCAD"
+      },
+      {
+        "role": "link",
+        "name": "JSCAD"
+      },
+      {
+        "role": "StaticText",
+        "name": "Open source-værktøj til parametriske 2D- og 3D-modeller, der beskrives med JavaScript og vises direkte i browseren."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "God til: Kodebaseret og parametrisk CAD"
+      },
+      {
+        "role": "image",
+        "name": "SketchForge"
+      },
+      {
+        "role": "link",
+        "name": "SketchForge"
+      },
+      {
+        "role": "StaticText",
+        "name": "Gratis, open source 3D-editor med en enkel arbejdsgang til former, sammensætning, tilpasning og eksport direkte i browseren."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Import og eksport: Blandt andet STL og SVG"
+      },
+      {
+        "role": "image",
+        "name": "Onshape"
+      },
+      {
+        "role": "link",
+        "name": "Onshape"
+      },
+      {
+        "role": "StaticText",
+        "name": "Professionel, parametrisk cloud-CAD med dele, assemblies, versionsstyring og samarbejde. Gratisplanen er til ikke-kommerciel brug, og dokumenter er offentlige."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "God til: Avanceret CAD og samarbejde i browseren"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "3D-design"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Browserbaserede værktøjer til at skabe modeller samt platforme, hvor du kan finde "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "filer til 3D-print."
+      },
+      {
+        "role": "image",
+        "name": "Printables"
+      },
+      {
+        "role": "link",
+        "name": "Printables"
+      },
+      {
+        "role": "StaticText",
+        "name": "Platform med et stort udvalg af færdige 3D-modeller, som kan downloades og printes eller tilpasses til egne projekter."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "God til: At finde filer til 3D-print"
+      },
+      {
+        "role": "image",
+        "name": "MakerWorld"
+      },
+      {
+        "role": "link",
+        "name": "MakerWorld"
+      },
+      {
+        "role": "StaticText",
+        "name": "Platform med 3D-modeller fra et stort brugerfællesskab, ofte med printprofiler, billeder og erfaringer fra andre brugere."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "God til: At finde filer og printprofiler til 3D-print"
+      },
+      {
+        "role": "image",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "link",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "StaticText",
+        "name": "En samling af browserbaserede designværktøjer, der hjælper med at skabe og tilpasse modeller til 3D-print."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Output: Afhænger af det valgte værktøj"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Elektronik og simulering"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Byg, programmér og afprøv digitale kredsløb virtuelt, før du samler dem fysisk."
+      },
+      {
+        "role": "image",
+        "name": "Wokwi"
+      },
+      {
+        "role": "link",
+        "name": "Wokwi"
+      },
+      {
+        "role": "StaticText",
+        "name": "Online simulator til blandt andet Arduino, ESP32, STM32 og Raspberry Pi Pico, hvor kode og elektronik kan testes sammen."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Brug: Mikrocontrollere, kode og elektroniske komponenter"
+      },
+      {
+        "role": "image",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "link",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "StaticText",
+        "name": "Gratis open source-simulator til digitale logikkredsløb med logiske porte, sandhedstabeller, timingdiagrammer og delkredsløb."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Eksport: Højopløste billeder, blandt andet SVG"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Andre værktøjer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Specialgeneratorer, der ikke passer i de øvrige kategorier."
+      },
+      {
+        "role": "image",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "link",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "StaticText",
+        "name": "Lav dine egne linealer med valgfri længde og markeringer."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: SVG"
+      },
+      {
+        "role": "image",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "link",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "StaticText",
+        "name": "Genererer puslespilsmønstre uden manuel tegning af hver brik."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: SVG"
+      },
+      {
+        "role": "image",
+        "name": "SVGnest"
+      },
+      {
+        "role": "link",
+        "name": "SVGnest"
+      },
+      {
+        "role": "StaticText",
+        "name": "Automatisk nesting, så emner placeres med mindst muligt materialespild."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: SVG (import/eksport)"
+      },
+      {
+        "role": "image",
+        "name": "Deepnest"
+      },
+      {
+        "role": "link",
+        "name": "Deepnest (app)"
+      },
+      {
+        "role": "StaticText",
+        "name": "Desktop-udgave med flere avancerede nestingfunktioner."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Filtype: Afhænger af importformat"
+      },
+      {
+        "role": "StaticText",
+        "name": "INDHOLD"
+      },
+      {
+        "role": "StaticText",
+        "name": "Hvad er online værktøjer?"
+      },
+      {
+        "role": "StaticText",
+        "name": "Kasser"
+      },
+      {
+        "role": "StaticText",
+        "name": "Tandhjul"
+      },
+      {
+        "role": "StaticText",
+        "name": "Fleksible samlinger"
+      },
+      {
+        "role": "StaticText",
+        "name": "Labyrinter"
+      },
+      {
+        "role": "StaticText",
+        "name": "CAD"
+      },
+      {
+        "role": "StaticText",
+        "name": "3D-design"
+      },
+      {
+        "role": "StaticText",
+        "name": "Elektronik og simulering"
+      },
+      {
+        "role": "StaticText",
+        "name": "Andre værktøjer"
+      },
+      {
+        "role": "StaticText",
+        "name": "TIPS I PRAKSIS"
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "MakerCase"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Nem generator til klassiske projektkasser med 3D-forhåndsvisning. God til "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "hurtig opstart."
+      },
+      {
+        "role": "StaticText",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Meget fleksibel open source generator med mange kassetyper og avancerede "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "indstillinger."
+      },
+      {
+        "role": "StaticText",
+        "name": "Make a box"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "En enkel og intuitiv generator til bokse med symmetriske fingersamlinger."
+      },
+      {
+        "role": "StaticText",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Letvægtsgenerator med live preview og forskellige bokstyper, inkl. skråning og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "skillevægge."
+      },
+      {
+        "role": "StaticText",
+        "name": "Template Maker"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Fokus på pap- og emballageskabeloner. God til foldede konstruktioner og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "hurtige mockups."
+      },
+      {
+        "role": "StaticText",
+        "name": "Box Studio"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gratis kassegenerator med kerf-kompensation, fingersamlinger, 3D-"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "forhåndsvisning, hængslet låg og mulighed for indvendige rum."
+      },
+      {
+        "role": "StaticText",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Browser-værktøj til tandhjul, interne gears og rack-and-pinion med mange "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "parametre."
+      },
+      {
+        "role": "StaticText",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Hurtig generator til simple tandhjul ved at justere modul og antal tænder."
+      },
+      {
+        "role": "StaticText",
+        "name": "GearDXF"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Moderne generator og simulator til tandhjul, indvendige ringhjul og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "tandstænger med blandt andet frigangskompensation."
+      },
+      {
+        "role": "StaticText",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Genererer justerbare living-hinge-mønstre med lige, bølgede, sekskantede "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "eller krydsede udskæringer og viser resultatet med det samme."
+      },
+      {
+        "role": "StaticText",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Genererer laserklare filer til trælabyrinter og mekaniske maze-projekter."
+      },
+      {
+        "role": "StaticText",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Bygger rektangulære, triangulære, cirkulære og heksagonale labyrinter."
+      },
+      {
+        "role": "StaticText",
+        "name": "Tinkercad"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gratis og begyndervenlig 3D-modellering fra Autodesk, hvor modeller bygges "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "ved at kombinere og tilpasse simple former."
+      },
+      {
+        "role": "StaticText",
+        "name": "JSCAD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Open source-værktøj til parametriske 2D- og 3D-modeller, der beskrives med "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "JavaScript og vises direkte i browseren."
+      },
+      {
+        "role": "StaticText",
+        "name": "SketchForge"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gratis, open source 3D-editor med en enkel arbejdsgang til former, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "sammensætning, tilpasning og eksport direkte i browseren."
+      },
+      {
+        "role": "StaticText",
+        "name": "Onshape"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Professionel, parametrisk cloud-CAD med dele, assemblies, versionsstyring og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "samarbejde. Gratisplanen er til ikke-kommerciel brug, og dokumenter er "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "offentlige."
+      },
+      {
+        "role": "StaticText",
+        "name": "Printables"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Platform med et stort udvalg af færdige 3D-modeller, som kan downloades og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "printes eller tilpasses til egne projekter."
+      },
+      {
+        "role": "StaticText",
+        "name": "MakerWorld"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Platform med 3D-modeller fra et stort brugerfællesskab, ofte med printprofiler, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "billeder og erfaringer fra andre brugere."
+      },
+      {
+        "role": "StaticText",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "En samling af browserbaserede designværktøjer, der hjælper med at skabe og "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "tilpasse modeller til 3D-print."
+      },
+      {
+        "role": "StaticText",
+        "name": "Wokwi"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Online simulator til blandt andet Arduino, ESP32, STM32 og Raspberry Pi Pico, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "hvor kode og elektronik kan testes sammen."
+      },
+      {
+        "role": "StaticText",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gratis open source-simulator til digitale logikkredsløb med logiske porte, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "sandhedstabeller, timingdiagrammer og delkredsløb."
+      },
+      {
+        "role": "StaticText",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Lav dine egne linealer med valgfri længde og markeringer."
+      },
+      {
+        "role": "StaticText",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Genererer puslespilsmønstre uden manuel tegning af hver brik."
+      },
+      {
+        "role": "StaticText",
+        "name": "SVGnest"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Automatisk nesting, så emner placeres med mindst muligt materialespild."
+      },
+      {
+        "role": "StaticText",
+        "name": "Deepnest (app)"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Desktop-udgave med flere avancerede nestingfunktioner."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "INDHOLD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Hvad er online værktøjer?"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Kasser"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tandhjul"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Fleksible samlinger"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Labyrinter"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CAD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "3D-design"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Elektronik og simulering"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Andre værktøjer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "TIPS I PRAKSIS"
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "Læg altid kerf-kompensation ind, hvis værktøjet understøtter det."
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "Kontroller at enheder er mm før eksport."
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "Undgå dobbeltlinjer i den færdige fil."
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "Gem både originalen og en eksportfil til maskinen."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "MakerCase"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Make a box"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Template Maker"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Box Studio"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "GearDXF"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tinkercad"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "JSCAD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "SketchForge"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Onshape"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Printables"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "MakerWorld"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Wokwi"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "SVGnest"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Deepnest (app)"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Læg altid kerf-kompensation ind, hvis værktøjet "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "understøtter det."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Kontroller at enheder er mm før eksport."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Undgå dobbeltlinjer i den færdige fil."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gem både originalen og en eksportfil til maskinen."
+      }
+    ]
+  },
+  {
+    "path": "en/online-tools.html",
+    "tabs": [
+      {
+        "tag": "A",
+        "text": "Skip to main content",
+        "outline": "rgb(255, 255, 255) solid 2px",
+        "top": -77.26875305175781,
+        "bottom": -27.675003051757812
+      },
+      {
+        "tag": "A",
+        "text": "FabLab Guides – To front page",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 20,
+        "bottom": 86.125
+      },
+      {
+        "tag": "A",
+        "text": "Guides",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.734375,
+        "bottom": 76.375
+      },
+      {
+        "tag": "A",
+        "text": "Machines",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.734375,
+        "bottom": 76.375
+      },
+      {
+        "tag": "A",
+        "text": "Materials",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.671875,
+        "bottom": 76.65625
+      },
+      {
+        "tag": "A",
+        "text": "The Heads",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.671875,
+        "bottom": 76.65625
+      },
+      {
+        "tag": "A",
+        "text": "Find your FabLab",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.671875,
+        "bottom": 76.65625
+      },
+      {
+        "tag": "A",
+        "text": "Dansk",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 29.484375,
+        "bottom": 77.5
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Enlarge image: MakerCase",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 977.28125,
+        "bottom": 1121.28125
+      },
+      {
+        "tag": "A",
+        "text": "MakerCase",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1038.234375,
+        "bottom": 1059.234375
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Enlarge image: Boxes.py",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1255.515625,
+        "bottom": 1399.515625
+      },
+      {
+        "tag": "A",
+        "text": "Boxes.py",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1316.46875,
+        "bottom": 1337.46875
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Enlarge image: Make a box",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1533.75,
+        "bottom": 1677.75
+      },
+      {
+        "tag": "A",
+        "text": "Make a box",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1595.390625,
+        "bottom": 1616.390625
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Enlarge image: Laser Cutter Box",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1787.078125,
+        "bottom": 1931.078125
+      },
+      {
+        "tag": "A",
+        "text": "Laser Cutter Box",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 1848.03125,
+        "bottom": 1869.03125
+      }
+    ],
+    "ax": [
+      {
+        "role": "RootWebArea",
+        "name": "Online tools | FabLab"
+      },
+      {
+        "role": "banner",
+        "name": ""
+      },
+      {
+        "role": "main",
+        "name": ""
+      },
+      {
+        "role": "contentinfo",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Skip to main content"
+      },
+      {
+        "role": "link",
+        "name": "FabLab Guides – To front page"
+      },
+      {
+        "role": "navigation",
+        "name": "Primary navigation"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Creative Commons BY-SA 4.0"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Accessibility statement"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "To front page"
+      },
+      {
+        "role": "link",
+        "name": "See guide to laser files"
+      },
+      {
+        "role": "StaticText",
+        "name": "Skip to main content"
+      },
+      {
+        "role": "image",
+        "name": "FabLab logo"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Guides"
+      },
+      {
+        "role": "link",
+        "name": "Machines"
+      },
+      {
+        "role": "link",
+        "name": "Materials"
+      },
+      {
+        "role": "link",
+        "name": "The Heads"
+      },
+      {
+        "role": "link",
+        "name": "Find your FabLab"
+      },
+      {
+        "role": "link",
+        "name": "Dansk"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Online tools"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "10 new tools"
+      },
+      {
+        "role": "StaticText",
+        "name": "Design and simulation"
+      },
+      {
+        "role": "StaticText",
+        "name": "Ready for FabLab"
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": ""
+      },
+      {
+        "role": "complementary",
+        "name": "CONTENTS TIPS IN PRACTICE"
+      },
+      {
+        "role": "image",
+        "name": "Creative Commons BY-SA 4.0"
+      },
+      {
+        "role": "StaticText",
+        "name": "All text published under "
+      },
+      {
+        "role": "link",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "StaticText",
+        "name": "."
+      },
+      {
+        "role": "image",
+        "name": "Accessibility statement"
+      },
+      {
+        "role": "StaticText",
+        "name": "See the site's "
+      },
+      {
+        "role": "link",
+        "name": "accessibility statement"
+      },
+      {
+        "role": "StaticText",
+        "name": "."
+      },
+      {
+        "role": "StaticText",
+        "name": "To front page"
+      },
+      {
+        "role": "StaticText",
+        "name": "See guide to laser files"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Skip to main content"
+      },
+      {
+        "role": "StaticText",
+        "name": "FabLab Guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Machines"
+      },
+      {
+        "role": "StaticText",
+        "name": "Materials"
+      },
+      {
+        "role": "StaticText",
+        "name": "The Heads"
+      },
+      {
+        "role": "StaticText",
+        "name": "Find your FabLab"
+      },
+      {
+        "role": "StaticText",
+        "name": "Dansk"
+      },
+      {
+        "role": "StaticText",
+        "name": "DIGITAL TOOLS"
+      },
+      {
+        "role": "StaticText",
+        "name": "Online tools"
+      },
+      {
+        "role": "StaticText",
+        "name": "An overview of browser-based tools for laser cutting, 3D design, electronics and simulation. Selected for FabLab users who want to move quickly from idea to prototype."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "10 new tools"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Design and simulation"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Ready for FabLab"
+      },
+      {
+        "role": "heading",
+        "name": "What are online tools?"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Boxes"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Gears"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Flexible joints"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Mazes"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "CAD"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "3D design"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Electronics and simulation"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Other tools"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "article",
+        "name": "CONTENTS"
+      },
+      {
+        "role": "article",
+        "name": "TIPS IN PRACTICE"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "All text published under "
+      },
+      {
+        "role": "StaticText",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "See the site's "
+      },
+      {
+        "role": "StaticText",
+        "name": "accessibility statement"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "To front page"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "See guide to laser files"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "FabLab Guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Machines"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Materials"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "The Heads"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Find your FabLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Dansk"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "DIGITAL TOOLS"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Online tools"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "An overview of browser-based tools for laser cutting, 3D design, electronics and simulation. "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Selected for FabLab users who want to move quickly from idea to prototype."
+      },
+      {
+        "role": "StaticText",
+        "name": "What are online tools?"
+      },
+      {
+        "role": "StaticText",
+        "name": "Online tools can automatically create files from your dimensions and settings or let you test electronics directly in the browser. They are a quick path to boxes, gears, 3D models and digital circuits without starting entirely from scratch."
+      },
+      {
+        "role": "StaticText",
+        "name": "Most tools are best for prototypes and quick iterations. Always check dimensions, joints and kerf in a test file before using expensive materials."
+      },
+      {
+        "role": "StaticText",
+        "name": "Boxes"
+      },
+      {
+        "role": "StaticText",
+        "name": "Tools for boxes with finger joints, insert compartments and special shapes."
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: MakerCase"
+      },
+      {
+        "role": "heading",
+        "name": "MakerCase"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: SVG, DXF"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Boxes.py"
+      },
+      {
+        "role": "heading",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: AI, DXF, GCODE, PDF, PLT, PS, SVG"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Make a box"
+      },
+      {
+        "role": "heading",
+        "name": "Make a box"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: PDF"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Laser Cutter Box"
+      },
+      {
+        "role": "heading",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: DXF"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Template Maker"
+      },
+      {
+        "role": "heading",
+        "name": "Template Maker"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: PDF, SVG, DXF"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Box Studio"
+      },
+      {
+        "role": "heading",
+        "name": "Box Studio"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: SVG"
+      },
+      {
+        "role": "StaticText",
+        "name": "Gears"
+      },
+      {
+        "role": "StaticText",
+        "name": "Tools for involute gears, where function and geometry are important."
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Involute Spur Gear Builder"
+      },
+      {
+        "role": "heading",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: DXF"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Gear Designer"
+      },
+      {
+        "role": "heading",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: DXF"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: GearDXF"
+      },
+      {
+        "role": "heading",
+        "name": "GearDXF"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: DXF, SVG, PDF"
+      },
+      {
+        "role": "StaticText",
+        "name": "Flexible joints"
+      },
+      {
+        "role": "StaticText",
+        "name": "Create flexible patterns in rigid sheet materials for curves, lids and enclosures."
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Living Hinge Generator"
+      },
+      {
+        "role": "heading",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: SVG, DXF"
+      },
+      {
+        "role": "StaticText",
+        "name": "Mazes"
+      },
+      {
+        "role": "StaticText",
+        "name": "Generators for puzzles, game boards and creative mazes."
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Laser-Cut Maze Designer"
+      },
+      {
+        "role": "heading",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: SVG"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Maze Generator"
+      },
+      {
+        "role": "heading",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: PDF, SVG, PNG"
+      },
+      {
+        "role": "StaticText",
+        "name": "CAD"
+      },
+      {
+        "role": "StaticText",
+        "name": "Browser-based CAD tools for creating precise 2D and 3D models for prototypes, laser cutting and 3D printing."
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Autodesk Tinkercad"
+      },
+      {
+        "role": "heading",
+        "name": "Tinkercad"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Good for: First CAD models and simple parts for 3D printing"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: JSCAD"
+      },
+      {
+        "role": "heading",
+        "name": "JSCAD"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Good for: Code-based and parametric CAD"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: SketchForge"
+      },
+      {
+        "role": "heading",
+        "name": "SketchForge"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Import and export: Including STL and SVG"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Onshape"
+      },
+      {
+        "role": "heading",
+        "name": "Onshape"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Good for: Advanced CAD and browser-based collaboration"
+      },
+      {
+        "role": "StaticText",
+        "name": "3D design"
+      },
+      {
+        "role": "StaticText",
+        "name": "Browser-based tools for creating models and preparing ideas for 3D printing."
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: MakerWorld MakerLab"
+      },
+      {
+        "role": "heading",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Output: Depends on the selected tool"
+      },
+      {
+        "role": "StaticText",
+        "name": "Electronics and simulation"
+      },
+      {
+        "role": "StaticText",
+        "name": "Build, program and test digital circuits virtually before assembling them physically."
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Wokwi"
+      },
+      {
+        "role": "heading",
+        "name": "Wokwi"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Use: Microcontrollers, code and electronic components"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: CircuitVerse"
+      },
+      {
+        "role": "heading",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Export: High-resolution images, including SVG"
+      },
+      {
+        "role": "StaticText",
+        "name": "Other tools"
+      },
+      {
+        "role": "StaticText",
+        "name": "Special generators that don't fit in the other categories."
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Vector Ruler Generator"
+      },
+      {
+        "role": "heading",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: SVG"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "heading",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: SVG"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: SVGnest"
+      },
+      {
+        "role": "heading",
+        "name": "SVGnest"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: SVG (import/export)"
+      },
+      {
+        "role": "button",
+        "name": "Enlarge image: Deepnest"
+      },
+      {
+        "role": "heading",
+        "name": "Deepnest (app)"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "File type: Depends on import format"
+      },
+      {
+        "role": "heading",
+        "name": "CONTENTS"
+      },
+      {
+        "role": "link",
+        "name": "What are online tools?"
+      },
+      {
+        "role": "link",
+        "name": "Boxes NEW"
+      },
+      {
+        "role": "link",
+        "name": "Gears NEW"
+      },
+      {
+        "role": "link",
+        "name": "Flexible joints NEW"
+      },
+      {
+        "role": "link",
+        "name": "Mazes"
+      },
+      {
+        "role": "link",
+        "name": "CAD NEW"
+      },
+      {
+        "role": "link",
+        "name": "3D design NEW"
+      },
+      {
+        "role": "link",
+        "name": "Electronics and simulation NEW"
+      },
+      {
+        "role": "link",
+        "name": "Other tools"
+      },
+      {
+        "role": "heading",
+        "name": "TIPS IN PRACTICE"
+      },
+      {
+        "role": "list",
+        "name": ""
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "accessibility statement"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "What are online tools?"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Online tools can automatically create files from your dimensions and settings or let "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "you test electronics directly in the browser. They are a quick path to boxes, gears, 3D "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "models and digital circuits without starting entirely from scratch."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Most tools are best for prototypes and quick iterations. Always check dimensions, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "joints and kerf in a test file before using expensive materials."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Boxes"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tools for boxes with finger joints, insert compartments and special shapes."
+      },
+      {
+        "role": "image",
+        "name": "MakerCase"
+      },
+      {
+        "role": "link",
+        "name": "MakerCase"
+      },
+      {
+        "role": "StaticText",
+        "name": "Simple generator for classic project boxes with 3D preview. Great for quick starts."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: SVG, DXF"
+      },
+      {
+        "role": "image",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "link",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "StaticText",
+        "name": "Very flexible open source generator with many box types and advanced settings."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: AI, DXF, GCODE, PDF, PLT, PS, SVG"
+      },
+      {
+        "role": "image",
+        "name": "Make a box"
+      },
+      {
+        "role": "link",
+        "name": "Make a box"
+      },
+      {
+        "role": "StaticText",
+        "name": "A simple and intuitive generator for boxes with symmetrical finger joints."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: PDF"
+      },
+      {
+        "role": "image",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "link",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "StaticText",
+        "name": "Lightweight generator with live preview and different box types, including angled sides and dividers."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: DXF"
+      },
+      {
+        "role": "image",
+        "name": "Template Maker"
+      },
+      {
+        "role": "link",
+        "name": "Template Maker"
+      },
+      {
+        "role": "StaticText",
+        "name": "Focus on cardboard and packaging templates. Good for folded constructions and quick mockups."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: PDF, SVG, DXF"
+      },
+      {
+        "role": "image",
+        "name": "Box Studio"
+      },
+      {
+        "role": "link",
+        "name": "Box Studio"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Free box generator with kerf compensation, finger joints, 3D preview, hinged lids and optional internal dividers."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: SVG"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gears"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tools for involute gears, where function and geometry are important."
+      },
+      {
+        "role": "image",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "link",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "StaticText",
+        "name": "Browser tool for gears, internal gears and rack-and-pinion with many parameters."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: DXF"
+      },
+      {
+        "role": "image",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "link",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "StaticText",
+        "name": "Quick generator for simple gears by adjusting module and number of teeth."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: DXF"
+      },
+      {
+        "role": "image",
+        "name": "GearDXF"
+      },
+      {
+        "role": "link",
+        "name": "GearDXF"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Modern generator and simulator for spur gears, internal ring gears and racks, including backlash compensation."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: DXF, SVG, PDF"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Flexible joints"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Create flexible patterns in rigid sheet materials for curves, lids and enclosures."
+      },
+      {
+        "role": "image",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "link",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Generates adjustable living-hinge patterns with straight, wave, hexagonal or cross-shaped cuts and an instant preview."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: SVG, DXF"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Mazes"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Generators for puzzles, game boards and creative mazes."
+      },
+      {
+        "role": "image",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "link",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "StaticText",
+        "name": "Generates laser-ready files for wooden mazes and mechanical maze projects."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: SVG"
+      },
+      {
+        "role": "image",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "link",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "StaticText",
+        "name": "Builds rectangular, triangular, circular and hexagonal mazes."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: PDF, SVG, PNG"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CAD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Browser-based CAD tools for creating precise 2D and 3D models for prototypes, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "laser cutting and 3D printing."
+      },
+      {
+        "role": "image",
+        "name": "Autodesk Tinkercad"
+      },
+      {
+        "role": "link",
+        "name": "Tinkercad"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Free, beginner-friendly 3D modelling from Autodesk, where models are built by combining and adjusting simple shapes."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Good for: First CAD models and simple parts for 3D printing"
+      },
+      {
+        "role": "image",
+        "name": "JSCAD"
+      },
+      {
+        "role": "link",
+        "name": "JSCAD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Open source tool for parametric 2D and 3D models that are described with JavaScript and displayed directly in the browser."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Good for: Code-based and parametric CAD"
+      },
+      {
+        "role": "image",
+        "name": "SketchForge"
+      },
+      {
+        "role": "link",
+        "name": "SketchForge"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Free, open source 3D editor with a simple workflow for shapes, combinations, adjustments and browser-based export."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Import and export: Including STL and SVG"
+      },
+      {
+        "role": "image",
+        "name": "Onshape"
+      },
+      {
+        "role": "link",
+        "name": "Onshape"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Professional parametric cloud CAD with parts, assemblies, version control and collaboration. The free plan is for non-commercial use and documents are public."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Good for: Advanced CAD and browser-based collaboration"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "3D design"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Browser-based tools for creating models and preparing ideas for 3D printing."
+      },
+      {
+        "role": "image",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "link",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "A collection of browser-based design tools that help you create and customise models for 3D printing."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Output: Depends on the selected tool"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Electronics and simulation"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Build, program and test digital circuits virtually before assembling them physically."
+      },
+      {
+        "role": "image",
+        "name": "Wokwi"
+      },
+      {
+        "role": "link",
+        "name": "Wokwi"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Online simulator for Arduino, ESP32, STM32 and Raspberry Pi Pico, where code and electronics can be tested together."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Use: Microcontrollers, code and electronic components"
+      },
+      {
+        "role": "image",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "link",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Free open source simulator for digital logic circuits with logic gates, truth tables, timing diagrams and subcircuits."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Export: High-resolution images, including SVG"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Other tools"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Special generators that don't fit in the other categories."
+      },
+      {
+        "role": "image",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "link",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "StaticText",
+        "name": "Create your own rulers with optional length and markings."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: SVG"
+      },
+      {
+        "role": "image",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "link",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "StaticText",
+        "name": "Generates jigsaw puzzle patterns without manually drawing each piece."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: SVG"
+      },
+      {
+        "role": "image",
+        "name": "SVGnest"
+      },
+      {
+        "role": "link",
+        "name": "SVGnest"
+      },
+      {
+        "role": "StaticText",
+        "name": "Automatic nesting, so parts are placed with minimal material waste."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: SVG (import/export)"
+      },
+      {
+        "role": "image",
+        "name": "Deepnest"
+      },
+      {
+        "role": "link",
+        "name": "Deepnest (app)"
+      },
+      {
+        "role": "StaticText",
+        "name": "Desktop version with more advanced nesting functions."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "File type: Depends on import format"
+      },
+      {
+        "role": "StaticText",
+        "name": "CONTENTS"
+      },
+      {
+        "role": "StaticText",
+        "name": "What are online tools?"
+      },
+      {
+        "role": "StaticText",
+        "name": "Boxes"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Gears"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Flexible joints"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Mazes"
+      },
+      {
+        "role": "StaticText",
+        "name": "CAD"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "3D design"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Electronics and simulation"
+      },
+      {
+        "role": "StaticText",
+        "name": "NEW"
+      },
+      {
+        "role": "StaticText",
+        "name": "Other tools"
+      },
+      {
+        "role": "StaticText",
+        "name": "TIPS IN PRACTICE"
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "listitem",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "MakerCase"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Simple generator for classic project boxes with 3D preview. Great for quick "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "starts."
+      },
+      {
+        "role": "StaticText",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Very flexible open source generator with many box types and advanced "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "settings."
+      },
+      {
+        "role": "StaticText",
+        "name": "Make a box"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "A simple and intuitive generator for boxes with symmetrical finger joints."
+      },
+      {
+        "role": "StaticText",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Lightweight generator with live preview and different box types, including "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "angled sides and dividers."
+      },
+      {
+        "role": "StaticText",
+        "name": "Template Maker"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Focus on cardboard and packaging templates. Good for folded constructions "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "and quick mockups."
+      },
+      {
+        "role": "StaticText",
+        "name": "Box Studio"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Free box generator with kerf compensation, finger joints, 3D preview, hinged "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "lids and optional internal dividers."
+      },
+      {
+        "role": "StaticText",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Browser tool for gears, internal gears and rack-and-pinion with many "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "parameters."
+      },
+      {
+        "role": "StaticText",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Quick generator for simple gears by adjusting module and number of teeth."
+      },
+      {
+        "role": "StaticText",
+        "name": "GearDXF"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Modern generator and simulator for spur gears, internal ring gears and racks, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "including backlash compensation."
+      },
+      {
+        "role": "StaticText",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Generates adjustable living-hinge patterns with straight, wave, hexagonal or "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "cross-shaped cuts and an instant preview."
+      },
+      {
+        "role": "StaticText",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Generates laser-ready files for wooden mazes and mechanical maze projects."
+      },
+      {
+        "role": "StaticText",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Builds rectangular, triangular, circular and hexagonal mazes."
+      },
+      {
+        "role": "StaticText",
+        "name": "Tinkercad"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Free, beginner-friendly 3D modelling from Autodesk, where models are built by "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "combining and adjusting simple shapes."
+      },
+      {
+        "role": "StaticText",
+        "name": "JSCAD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Open source tool for parametric 2D and 3D models that are described with "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "JavaScript and displayed directly in the browser."
+      },
+      {
+        "role": "StaticText",
+        "name": "SketchForge"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Free, open source 3D editor with a simple workflow for shapes, combinations, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "adjustments and browser-based export."
+      },
+      {
+        "role": "StaticText",
+        "name": "Onshape"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Professional parametric cloud CAD with parts, assemblies, version control and "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "collaboration. The free plan is for non-commercial use and documents are "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "public."
+      },
+      {
+        "role": "StaticText",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "A collection of browser-based design tools that help you create and customise "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "models for 3D printing."
+      },
+      {
+        "role": "StaticText",
+        "name": "Wokwi"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Online simulator for Arduino, ESP32, STM32 and Raspberry Pi Pico, where code "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "and electronics can be tested together."
+      },
+      {
+        "role": "StaticText",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Free open source simulator for digital logic circuits with logic gates, truth tables, "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "timing diagrams and subcircuits."
+      },
+      {
+        "role": "StaticText",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Create your own rulers with optional length and markings."
+      },
+      {
+        "role": "StaticText",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Generates jigsaw puzzle patterns without manually drawing each piece."
+      },
+      {
+        "role": "StaticText",
+        "name": "SVGnest"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Automatic nesting, so parts are placed with minimal material waste."
+      },
+      {
+        "role": "StaticText",
+        "name": "Deepnest (app)"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Desktop version with more advanced nesting functions."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CONTENTS"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "What are online tools?"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Boxes"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gears"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Flexible joints"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Mazes"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CAD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "3D design"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Electronics and simulation"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "NEW"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Other tools"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "TIPS IN PRACTICE"
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "Always add kerf compensation if the tool supports it."
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "Check that units are mm before exporting."
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "Avoid duplicate lines in the finished file."
+      },
+      {
+        "role": "ListMarker",
+        "name": "• "
+      },
+      {
+        "role": "StaticText",
+        "name": "Save both the original and an export file for the machine."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "MakerCase"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Boxes.py"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Make a box"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Laser Cutter Box"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Template Maker"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Box Studio"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Involute Spur Gear Builder"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gear Designer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "GearDXF"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Living Hinge Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Laser-Cut Maze Designer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Maze Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tinkercad"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "JSCAD"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "SketchForge"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Onshape"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "MakerWorld MakerLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Wokwi"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CircuitVerse"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Vector Ruler Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Jigsaw Puzzle Generator"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "SVGnest"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Deepnest (app)"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Always add kerf compensation if the tool supports "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "it."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Check that units are mm before exporting."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Avoid duplicate lines in the finished file."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Save both the original and an export file for the "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "machine."
+      }
+    ]
+  },
+  {
+    "path": "laser-aeon.html",
+    "tabs": [
+      {
+        "tag": "A",
+        "text": "Spring til hovedindhold",
+        "outline": "rgb(255, 255, 255) solid 2px",
+        "top": -77.26875305175781,
+        "bottom": -27.675003051757812
+      },
+      {
+        "tag": "A",
+        "text": "Til forsiden",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 20,
+        "bottom": 91.3125
+      },
+      {
+        "tag": "A",
+        "text": "Alle guides",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 31.515625,
+        "bottom": 79.796875
+      },
+      {
+        "tag": "A",
+        "text": "Maskiner",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 31.515625,
+        "bottom": 79.796875
+      },
+      {
+        "tag": "A",
+        "text": "Materialer",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 31.515625,
+        "bottom": 79.796875
+      },
+      {
+        "tag": "A",
+        "text": "Nuværende site",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 31.375,
+        "bottom": 80.421875
+      },
+      {
+        "tag": "A",
+        "text": "English",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 31.28125,
+        "bottom": 80.875
+      },
+      {
+        "tag": "A",
+        "text": "Gå til guiden",
+        "outline": "rgb(255, 255, 255) solid 3px",
+        "top": 610.921875,
+        "bottom": 662.921875
+      },
+      {
+        "tag": "A",
+        "text": "Til guideoversigten",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 610.921875,
+        "bottom": 662.921875
+      },
+      {
+        "tag": "IMG",
+        "text": "",
+        "outline": "rgb(17, 45, 78) solid 3px",
+        "top": 951.3125,
+        "bottom": 1441.921875
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Gå til trin 1",
+        "outline": "rgb(0, 0, 0) solid 3px",
+        "top": 1584.84375,
+        "bottom": 1598.84375
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Gå til trin 2",
+        "outline": "rgb(0, 0, 0) solid 3px",
+        "top": 1584.84375,
+        "bottom": 1598.84375
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Gå til trin 3",
+        "outline": "rgb(0, 0, 0) solid 3px",
+        "top": 1584.84375,
+        "bottom": 1598.84375
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Gå til trin 4",
+        "outline": "rgb(0, 0, 0) solid 3px",
+        "top": 1584.84375,
+        "bottom": 1598.84375
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Gå til trin 5",
+        "outline": "rgb(0, 0, 0) solid 3px",
+        "top": 1584.84375,
+        "bottom": 1598.84375
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Tilbage",
+        "outline": "rgb(63, 114, 175) solid 3px",
+        "top": 1599.234375,
+        "bottom": 1651.234375
+      }
+    ],
+    "ax": [
+      {
+        "role": "RootWebArea",
+        "name": "AEON | FabLab"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Spring til hovedindhold"
+      },
+      {
+        "role": "banner",
+        "name": ""
+      },
+      {
+        "role": "main",
+        "name": ""
+      },
+      {
+        "role": "contentinfo",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Spring til hovedindhold"
+      },
+      {
+        "role": "link",
+        "name": "Til forsiden"
+      },
+      {
+        "role": "navigation",
+        "name": "Guide navigation"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Creative Commons BY-SA 4.0"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Accessibility statement"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Til forsiden"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Spring til hovedindhold"
+      },
+      {
+        "role": "image",
+        "name": "FabLab logo"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Guides"
+      },
+      {
+        "role": "link",
+        "name": "Alle guides"
+      },
+      {
+        "role": "link",
+        "name": "Maskiner"
+      },
+      {
+        "role": "link",
+        "name": "Materialer"
+      },
+      {
+        "role": "link",
+        "name": "Nuværende site"
+      },
+      {
+        "role": "link",
+        "name": "English"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "AEON"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "5 trin"
+      },
+      {
+        "role": "StaticText",
+        "name": "Auto Focus"
+      },
+      {
+        "role": "StaticText",
+        "name": "Klik for at forstørre"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Sektion"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Trin"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Kategori"
+      },
+      {
+        "role": "link",
+        "name": "Gå til guiden"
+      },
+      {
+        "role": "link",
+        "name": "Til guideoversigten"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Andre guides i samme kategori"
+      },
+      {
+        "role": "link",
+        "name": "LightBurn ikon LightBurn Kom sikkert fra tegning til skæring i LightBurn."
+      },
+      {
+        "role": "link",
+        "name": "Eduard ikon Eduard Sæt korrekt Z-højde på Eduard."
+      },
+      {
+        "role": "link",
+        "name": "Epilog ikon Epilog Placeholder for kommende Epilog-guide."
+      },
+      {
+        "role": "image",
+        "name": "Creative Commons BY-SA 4.0"
+      },
+      {
+        "role": "StaticText",
+        "name": "Al tekst udgivet under "
+      },
+      {
+        "role": "link",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "StaticText",
+        "name": "."
+      },
+      {
+        "role": "image",
+        "name": "Accessibility statement"
+      },
+      {
+        "role": "StaticText",
+        "name": "Se sidens "
+      },
+      {
+        "role": "link",
+        "name": "tilgængelighedserklæring"
+      },
+      {
+        "role": "StaticText",
+        "name": "."
+      },
+      {
+        "role": "StaticText",
+        "name": "Til forsiden"
+      },
+      {
+        "role": "StaticText",
+        "name": "FabLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Alle guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Maskiner"
+      },
+      {
+        "role": "StaticText",
+        "name": "Materialer"
+      },
+      {
+        "role": "StaticText",
+        "name": "Nuværende site"
+      },
+      {
+        "role": "StaticText",
+        "name": "English"
+      },
+      {
+        "role": "StaticText",
+        "name": "MASKINGUIDE"
+      },
+      {
+        "role": "StaticText",
+        "name": "AEON"
+      },
+      {
+        "role": "StaticText",
+        "name": "En kort AEON-guide til korrekt fokus og auto focus-funktionen, samlet i samme redesign-design som resten af guiderne."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "5 trin"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Auto Focus"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Klik for at forstørre"
+      },
+      {
+        "role": "StaticText",
+        "name": "1"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Sektion"
+      },
+      {
+        "role": "StaticText",
+        "name": "5"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Trin"
+      },
+      {
+        "role": "StaticText",
+        "name": "Laserskærer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Kategori"
+      },
+      {
+        "role": "StaticText",
+        "name": "Gå til guiden"
+      },
+      {
+        "role": "StaticText",
+        "name": "Til guideoversigten"
+      },
+      {
+        "role": "image",
+        "name": "AEON"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "Sæt materialetykkelse på AEON"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "5 trin"
+      },
+      {
+        "role": "StaticText",
+        "name": "Maskine"
+      },
+      {
+        "role": "figure",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "button",
+        "name": "Tilbage"
+      },
+      {
+        "role": "button",
+        "name": "Næste"
+      },
+      {
+        "role": "StaticText",
+        "name": "Andre guides i samme kategori"
+      },
+      {
+        "role": "image",
+        "name": "LightBurn ikon"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "image",
+        "name": "Eduard ikon"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "image",
+        "name": "Epilog ikon"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Al tekst udgivet under "
+      },
+      {
+        "role": "StaticText",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Se sidens "
+      },
+      {
+        "role": "StaticText",
+        "name": "tilgængelighedserklæring"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Til forsiden"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "FabLab"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Alle guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Maskiner"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Materialer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Nuværende site"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "English"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "MASKINGUIDE"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "AEON"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "En kort AEON-guide til korrekt fokus og auto focus-funktionen, samlet i "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "samme redesign-design som resten af guiderne."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "1"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "5"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Laserskærer"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gå til guiden"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Til guideoversigten"
+      },
+      {
+        "role": "StaticText",
+        "name": "Sæt korrekt fokus på AEON-laseren."
+      },
+      {
+        "role": "StaticText",
+        "name": "FOKUS"
+      },
+      {
+        "role": "StaticText",
+        "name": "Sæt materialetykkelse på AEON"
+      },
+      {
+        "role": "StaticText",
+        "name": "Få styr på forskellen mellem forkert og korrekt højde, og afslut med auto focus."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "5 trin"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Maskine"
+      },
+      {
+        "role": "image",
+        "name": "1. Forkert højde – fokuspennen er ikke indenfor materialet"
+      },
+      {
+        "role": "Figcaption",
+        "name": ""
+      },
+      {
+        "role": "button",
+        "name": "Gå til trin 1"
+      },
+      {
+        "role": "button",
+        "name": "Gå til trin 2"
+      },
+      {
+        "role": "button",
+        "name": "Gå til trin 3"
+      },
+      {
+        "role": "button",
+        "name": "Gå til trin 4"
+      },
+      {
+        "role": "button",
+        "name": "Gå til trin 5"
+      },
+      {
+        "role": "StaticText",
+        "name": "Tilbage"
+      },
+      {
+        "role": "StaticText",
+        "name": "Næste"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Andre guides i samme kategori"
+      },
+      {
+        "role": "StaticText",
+        "name": "LightBurn"
+      },
+      {
+        "role": "StaticText",
+        "name": "Kom sikkert fra tegning til skæring i LightBurn."
+      },
+      {
+        "role": "StaticText",
+        "name": "Eduard"
+      },
+      {
+        "role": "StaticText",
+        "name": "Sæt korrekt Z-højde på Eduard."
+      },
+      {
+        "role": "StaticText",
+        "name": "Epilog"
+      },
+      {
+        "role": "StaticText",
+        "name": "Placeholder for kommende Epilog-guide."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "CC BY-SA"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "tilgængelighedserklæring"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Sæt korrekt fokus på AEON-laseren."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "FOKUS"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Sæt materialetykkelse på AEON"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Få styr på forskellen mellem forkert og korrekt højde, og afslut med auto focus."
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "1 / 5"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tilbage"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Næste"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "LightBurn"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Kom sikkert fra tegning til skæring "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "i LightBurn."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Eduard"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Sæt korrekt Z-højde på Eduard."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Epilog"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Placeholder for kommende "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Epilog-guide."
+      },
+      {
+        "role": "StaticText",
+        "name": "1. Forkert højde – fokuspennen er ikke indenfor materialet"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "1 / 5"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "1. Forkert højde – fokuspennen er ikke indenfor materialet"
+      }
+    ]
+  },
+  {
+    "path": "garn-bandit.html",
+    "tabs": [
+      {
+        "tag": "A",
+        "text": "Tilbage til FabLab Guides",
+        "outline": "rgb(58, 125, 68) solid 2px",
+        "top": 62,
+        "bottom": 78
+      },
+      {
+        "tag": "BUTTON",
+        "text": "🖼\n        Billede\n        PNG / JPGAutomatisk kantsporing",
+        "outline": "rgb(45, 98, 53) auto 3px",
+        "top": 177,
+        "bottom": 302.8125
+      },
+      {
+        "tag": "BUTTON",
+        "text": "✦\n        SVG\n        Vektor-filDirekte rendering",
+        "outline": "rgb(106, 143, 110) auto 3px",
+        "top": 177,
+        "bottom": 302.8125
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 327.8125,
+        "bottom": 501.75
+      },
+      {
+        "tag": "BODY",
+        "text": "← FabLab Guides\n  Garn Bandit\n  Silhuet → 3D pinde → Print → Vikl med ",
+        "outline": "rgb(30, 51, 32) none 3px",
+        "top": 0,
+        "bottom": 928
+      },
+      {
+        "tag": "A",
+        "text": "Tilbage til FabLab Guides",
+        "outline": "rgb(58, 125, 68) solid 2px",
+        "top": 62,
+        "bottom": 78
+      },
+      {
+        "tag": "BUTTON",
+        "text": "🖼\n        Billede\n        PNG / JPGAutomatisk kantsporing",
+        "outline": "rgb(45, 98, 53) auto 3px",
+        "top": 177,
+        "bottom": 302.8125
+      },
+      {
+        "tag": "BUTTON",
+        "text": "✦\n        SVG\n        Vektor-filDirekte rendering",
+        "outline": "rgb(106, 143, 110) auto 3px",
+        "top": 177,
+        "bottom": 302.8125
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 327.8125,
+        "bottom": 501.75
+      },
+      {
+        "tag": "BODY",
+        "text": "← FabLab Guides\n  Garn Bandit\n  Silhuet → 3D pinde → Print → Vikl med ",
+        "outline": "rgb(30, 51, 32) none 3px",
+        "top": 0,
+        "bottom": 928
+      },
+      {
+        "tag": "A",
+        "text": "Tilbage til FabLab Guides",
+        "outline": "rgb(58, 125, 68) solid 2px",
+        "top": 62,
+        "bottom": 78
+      },
+      {
+        "tag": "BUTTON",
+        "text": "🖼\n        Billede\n        PNG / JPGAutomatisk kantsporing",
+        "outline": "rgb(45, 98, 53) auto 3px",
+        "top": 177,
+        "bottom": 302.8125
+      },
+      {
+        "tag": "BUTTON",
+        "text": "✦\n        SVG\n        Vektor-filDirekte rendering",
+        "outline": "rgb(106, 143, 110) auto 3px",
+        "top": 177,
+        "bottom": 302.8125
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 327.8125,
+        "bottom": 501.75
+      },
+      {
+        "tag": "BODY",
+        "text": "← FabLab Guides\n  Garn Bandit\n  Silhuet → 3D pinde → Print → Vikl med ",
+        "outline": "rgb(30, 51, 32) none 3px",
+        "top": 0,
+        "bottom": 928
+      },
+      {
+        "tag": "A",
+        "text": "Tilbage til FabLab Guides",
+        "outline": "rgb(58, 125, 68) solid 2px",
+        "top": 62,
+        "bottom": 78
+      }
+    ],
+    "ax": [
+      {
+        "role": "RootWebArea",
+        "name": "Garn Bandit – STL-generator | FabLab Guides"
+      },
+      {
+        "role": "banner",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "1 — VÆLG FILTYPE"
+      },
+      {
+        "role": "button",
+        "name": "🖼 BILLEDE PNG / JPG AUTOMATISK KANTSPORING"
+      },
+      {
+        "role": "button",
+        "name": "✦ SVG VEKTOR-FIL DIREKTE RENDERING"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "3 — FORHÅNDSVISNING"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "link",
+        "name": "Tilbage til FabLab Guides"
+      },
+      {
+        "role": "heading",
+        "name": "Garn Bandit"
+      },
+      {
+        "role": "StaticText",
+        "name": "SILHUET → 3D PINDE → PRINT → VIKL MED GARN"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "1 — VÆLG FILTYPE"
+      },
+      {
+        "role": "StaticText",
+        "name": "🖼"
+      },
+      {
+        "role": "StaticText",
+        "name": "BILLEDE"
+      },
+      {
+        "role": "StaticText",
+        "name": "PNG / JPG"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "StaticText",
+        "name": "AUTOMATISK KANTSPORING"
+      },
+      {
+        "role": "StaticText",
+        "name": "✦"
+      },
+      {
+        "role": "StaticText",
+        "name": "SVG"
+      },
+      {
+        "role": "StaticText",
+        "name": "VEKTOR-FIL"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "StaticText",
+        "name": "DIREKTE RENDERING"
+      },
+      {
+        "role": "button",
+        "name": "Choose File"
+      },
+      {
+        "role": "StaticText",
+        "name": "⬡"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": " 10 mm høje · ⌀ 2,5 mm · min. 5 mm mellem centre"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": " 3 mm tyk · silhuettens form"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": " Enkle ikoner / bogstaver uden huller fungerer bedst"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "3 — FORHÅNDSVISNING"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "← FabLab Guides"
+      },
+      {
+        "role": "StaticText",
+        "name": "Garn "
+      },
+      {
+        "role": "emphasis",
+        "name": ""
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "SILHUET → 3D PINDE → PRINT → VIKL MED GARN"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "🖼"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "BILLEDE"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "PNG / JPG"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "\n"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "AUTOMATISK KANTSPORING"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "✦"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "SVG"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "VEKTOR-FIL"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "\n"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "DIREKTE RENDERING"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "⬡"
+      },
+      {
+        "role": "strong",
+        "name": ""
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "StaticText",
+        "name": "Mørkt motiv på lys baggrund virker bedst"
+      },
+      {
+        "role": "StaticText",
+        "name": "Pinde spec:"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": " 10 mm høje · ⌀ 2,5 mm · min. 5 mm mellem centre"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "\n"
+      },
+      {
+        "role": "StaticText",
+        "name": "Bundplade:"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": " 3 mm tyk · silhuettens form"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "\n"
+      },
+      {
+        "role": "StaticText",
+        "name": "SVG-tip:"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": " Enkle ikoner / bogstaver uden huller fungerer bedst"
+      },
+      {
+        "role": "StaticText",
+        "name": "◈"
+      },
+      {
+        "role": "StaticText",
+        "name": "Upload en fil for at se"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "StaticText",
+        "name": "silhuet og pinde placering"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "← FabLab Guides"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Garn "
+      },
+      {
+        "role": "StaticText",
+        "name": "Bandit"
+      },
+      {
+        "role": "StaticText",
+        "name": "Klik eller træk PNG/JPG hertil"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "\n"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Mørkt motiv på lys baggrund virker bedst"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Pinde spec:"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Bundplade:"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "SVG-tip:"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "◈"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Upload en fil for at se"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "\n"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "silhuet og pinde placering"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Bandit"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Klik eller træk PNG/JPG hertil"
+      }
+    ]
+  },
+  {
+    "path": "vektor-viktor.html",
+    "tabs": [
+      {
+        "tag": "A",
+        "text": "Tilbage til FabLab Guides",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 10.5,
+        "bottom": 46.5
+      },
+      {
+        "tag": "INPUT",
+        "text": "",
+        "outline": "rgb(247, 249, 251) none 3px",
+        "top": 10.5,
+        "bottom": 46.5
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 10.5,
+        "bottom": 46.5
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 10.5,
+        "bottom": 46.5
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 10.5,
+        "bottom": 46.5
+      },
+      {
+        "tag": "SELECT",
+        "text": "A4 (297×210)\n    A3 (420×297)\n    ScanNCut (300×300)",
+        "outline": "rgb(232, 237, 242) none 3px",
+        "top": 10.5,
+        "bottom": 46.5
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 10.5,
+        "bottom": 46.5
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Vælg (V)",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 66,
+        "bottom": 107.953125
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Rektangel",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 110.953125,
+        "bottom": 152.890625
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Ellipse",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 155.890625,
+        "bottom": 197.84375
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Linje",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 200.84375,
+        "bottom": 242.78125
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Pen (klik-klik)",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 245.78125,
+        "bottom": 287.734375
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Frithånd",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 290.734375,
+        "bottom": 332.671875
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Bezier",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 335.671875,
+        "bottom": 377.625
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Noder",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 380.625,
+        "bottom": 422.5625
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Polygon",
+        "outline": "rgb(16, 16, 16) auto 1px",
+        "top": 425.5625,
+        "bottom": 467.5
+      }
+    ],
+    "ax": [
+      {
+        "role": "RootWebArea",
+        "name": "Vektor-Viktor"
+      },
+      {
+        "role": "banner",
+        "name": ""
+      },
+      {
+        "role": "button",
+        "name": "Vælg (V)"
+      },
+      {
+        "role": "button",
+        "name": "Rektangel"
+      },
+      {
+        "role": "button",
+        "name": "Ellipse"
+      },
+      {
+        "role": "button",
+        "name": "Linje"
+      },
+      {
+        "role": "button",
+        "name": "Pen (klik-klik)"
+      },
+      {
+        "role": "button",
+        "name": "Frithånd"
+      },
+      {
+        "role": "button",
+        "name": "Bezier"
+      },
+      {
+        "role": "button",
+        "name": "Noder"
+      },
+      {
+        "role": "button",
+        "name": "Polygon"
+      },
+      {
+        "role": "button",
+        "name": "Regelmæssig polygon"
+      },
+      {
+        "role": "button",
+        "name": "Tekst"
+      },
+      {
+        "role": "button",
+        "name": "Importer billede eller SVG"
+      },
+      {
+        "role": "button",
+        "name": "Forskudt linje"
+      },
+      {
+        "role": "button",
+        "name": "Array (mangegør)"
+      },
+      {
+        "role": "button",
+        "name": "Slet valgte objekter"
+      },
+      {
+        "role": "button",
+        "name": "Ryd alle objekter"
+      },
+      {
+        "role": "button",
+        "name": "Om Vektor-Viktor"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "heading",
+        "name": "EGENSKABER"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "button",
+        "name": "Gem til laser"
+      },
+      {
+        "role": "button",
+        "name": "Gem til Scan'n'Cut"
+      },
+      {
+        "role": "button",
+        "name": "Nulstil zoom"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "Rød/grøn = linje · Fed sort = tekst/fyld"
+      },
+      {
+        "role": "StaticText",
+        "name": "Tak til Réne fra Fredericia MakerSpace"
+      },
+      {
+        "role": "link",
+        "name": "Tilbage til FabLab Guides"
+      },
+      {
+        "role": "heading",
+        "name": "V Vektor-Viktor v1.74"
+      },
+      {
+        "role": "LabelText",
+        "name": ""
+      },
+      {
+        "role": "textbox",
+        "name": "PROJEKT"
+      },
+      {
+        "role": "button",
+        "name": "Fortryd (Ctrl+Z)"
+      },
+      {
+        "role": "button",
+        "name": "Zoom ud"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "button",
+        "name": "Zoom ind"
+      },
+      {
+        "role": "combobox",
+        "name": "Sidestørrelse"
+      },
+      {
+        "role": "button",
+        "name": "Snap til hjørner/midtpunkter (magnet)"
+      },
+      {
+        "role": "StaticText",
+        "name": "Rød/grøn = linje · Sort = fyld · Zoom med scroll"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "EGENSKABER"
+      },
+      {
+        "role": "button",
+        "name": "Laser-tilstand"
+      },
+      {
+        "role": "paragraph",
+        "name": ""
+      },
+      {
+        "role": "button",
+        "name": "Objekter"
+      },
+      {
+        "role": "StaticText",
+        "name": "Gem til laser"
+      },
+      {
+        "role": "StaticText",
+        "name": "Gem til Scan'n'Cut"
+      },
+      {
+        "role": "StaticText",
+        "name": "Nulstil zoom"
+      },
+      {
+        "role": "StaticText",
+        "name": "Værktøj: Vælg"
+      },
+      {
+        "role": "StaticText",
+        "name": "Objekter: 0"
+      },
+      {
+        "role": "StaticText",
+        "name": "Valgt: 0"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Rød/grøn = linje · Fed sort = tekst/fyld"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Tak til Réne fra Fredericia MakerSpace"
+      },
+      {
+        "role": "image",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "V"
+      },
+      {
+        "role": "StaticText",
+        "name": "Vektor-Viktor"
+      },
+      {
+        "role": "StaticText",
+        "name": "v1.74"
+      },
+      {
+        "role": "StaticText",
+        "name": "PROJEKT"
+      },
+      {
+        "role": "generic",
+        "name": ""
+      },
+      {
+        "role": "image",
+        "name": ""
+      },
+      {
+        "role": "image",
+        "name": ""
+      },
+      {
+        "role": "StaticText",
+        "name": "100%"
+      },
+      {
+        "role": "image",
+        "name": ""
+      },
+      {
+        "role": "MenuListPopup",
+        "name": ""
+      },
+      {
+        "role": "image",
+        "name": ""
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Rød/grøn = linje · Sort = fyld · Zoom med scroll"
+      },
+      {
+        "role": "image",
+        "name": ""
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "EGENSKABER"
+      },
+      {
+        "role": "StaticText",
+        "name": "Laser-tilstand"
+      },
+      {
+        "role": "StaticText",
+        "name": "Vælg et objekt for egenskaber."
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "LineBreak",
+        "name": "\n"
+      },
+      {
+        "role": "StaticText",
+        "name": "Træk en kasse eller hold "
+      },
+      {
+        "role": "StaticText",
+        "name": "Shift"
+      },
+      {
+        "role": "StaticText",
+        "name": " for flere. Brug Justering og Boolske operationer når 2+ er valgt."
+      },
+      {
+        "role": "StaticText",
+        "name": "Objekter"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gem til laser"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Gem til Scan'n'Cut"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Nulstil zoom"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Værktøj: Vælg"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Objekter: 0"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Valgt: 0"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "V"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Vektor-Viktor"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "v1.74"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "PROJEKT"
+      },
+      {
+        "role": "StaticText",
+        "name": "Mit projekt"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "100%"
+      },
+      {
+        "role": "option",
+        "name": "A4 (297×210)"
+      },
+      {
+        "role": "option",
+        "name": "A3 (420×297)"
+      },
+      {
+        "role": "option",
+        "name": "ScanNCut (300×300)"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Laser-tilstand"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Vælg et objekt for egenskaber."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "\n"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "\n"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Træk en kasse eller hold "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Shift"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": " for flere. "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Brug Justering og Boolske operationer når "
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "2+ er valgt."
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Objekter"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "Mit projekt"
+      }
+    ]
+  }
+]

@@ -11,10 +11,10 @@
     --bg: #f0f4ee;
     --surface: #dde8d8;
     --border: #b0c8a8;
-    --accent: #3a7d44;
+    --accent: #2d6235;
     --accent2: #2d6235;
     --text: #1e3320;
-    --muted: #6a8f6e;
+    --muted: #405f45;
     --pin: #5a9e6a;
     --plate: #8fc49a;
   }
@@ -79,7 +79,7 @@
   .mode-btn .mode-icon { font-size: 1.6rem; opacity: 0.7; }
   .mode-btn.active .mode-icon { opacity: 1; }
   .mode-btn .mode-name { font-weight: 500; }
-  .mode-btn .mode-desc { font-size: 0.6rem; opacity: 0.7; text-align: center; line-height: 1.4; }
+  .mode-btn .mode-desc { font-size: 0.6rem; opacity: 1; text-align: center; line-height: 1.4; }
 
   /* Upload zone */
   .upload-zone {
@@ -119,7 +119,7 @@
   }
   .base-btn:hover { border-color: var(--accent); color: var(--accent); }
   .base-btn.active { border-color: var(--accent); background: #cce8d0; color: var(--accent2); }
-  .base-btn-sub { display: block; font-size: 0.56rem; opacity: 0.75; text-transform: none; letter-spacing: 0.01em; margin-top: 0.1rem; }
+  .base-btn-sub { display: block; font-size: 0.56rem; opacity: 1; text-transform: none; letter-spacing: 0.01em; margin-top: 0.1rem; }
 
   /* Canvas / preview */
   .canvas-wrap {
@@ -203,27 +203,49 @@
     .panel { border-right: none; border-bottom: 1px solid var(--border); }
     header { padding: 1.5rem; flex-direction: column; gap: 0.5rem; }
   }
+
+  .skip-link { position: absolute; top: -100px; left: 16px; z-index: 100; background: white; padding: 12px; color: var(--text); }
+  .skip-link:focus { top: 12px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, .upload-zone:focus-within { outline: 3px solid var(--text); outline-offset: 4px; }
+  .status-msg.ok { color: #2d6235; }
+  .status-msg.err { color: #9c3030; }
+  .panel { min-width: 0; }
+  .pin-editor { min-width: 0; border: 1px solid var(--border); padding: 16px; font-size: .78rem; }
+  .pin-editor:not([hidden]) { display: grid; gap: 12px; }
+  .pin-editor input, .pin-editor select { min-width: 0; width: 100%; padding: 8px; color: var(--text); background: white; border: 1px solid var(--accent); }
+  .pin-editor .control-row { flex-wrap: wrap; }
+  .pin-editor .control-row input { flex: 1 1 60px; }
+
+  .mode-btn, .slider-wrap, input[type=range] { min-width: 0; }
+  @media (max-width: 600px) {
+    .panel { padding: 24px 16px; }
+    .control-row { flex-direction: column; align-items: stretch; }
+    .legend { flex-wrap: wrap; }
+    .mode-select { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  }
+  @media (forced-colors: active) { :focus-visible, .upload-zone:focus-within { outline-color: Highlight; } }
 </style>
 </head>
 <body>
 
 <header>
+  <a class="skip-link" href="#main-content">Spring til værktøjet</a>
   <a class="back-link" href="index.html" aria-label="Tilbage til FabLab Guides">← FabLab Guides</a>
   <h1>Garn <em>Bandit</em></h1>
   <span class="tagline">Silhuet → 3D pinde → Print → Vikl med garn</span>
 </header>
 
-<div class="main">
+<main class="main" id="main-content" tabindex="-1">
   <div class="panel">
     <div class="panel-title">1 — Vælg filtype</div>
 
     <div class="mode-select">
-      <button class="mode-btn active" id="modeBtnImg" onclick="setMode('image')">
+      <button class="mode-btn active" id="modeBtnImg" aria-pressed="true" onclick="setMode('image')">
         <span class="mode-icon">🖼</span>
         <span class="mode-name">Billede</span>
         <span class="mode-desc">PNG / JPG<br>Automatisk kantsporing</span>
       </button>
-      <button class="mode-btn" id="modeBtnSvg" onclick="setMode('svg')">
+      <button class="mode-btn" id="modeBtnSvg" aria-pressed="false" onclick="setMode('svg')">
         <span class="mode-icon">✦</span>
         <span class="mode-name">SVG</span>
         <span class="mode-desc">Vektor-fil<br>Direkte rendering</span>
@@ -231,7 +253,7 @@
     </div>
 
     <div class="upload-zone" id="uploadZone">
-      <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp">
+      <input type="file" id="fileInput" aria-label="Vælg billede eller SVG-fil" aria-describedby="uploadHint" accept="image/png,image/jpeg,image/webp">
       <span class="upload-icon">⬡</span>
       <p id="uploadHint"><strong>Klik eller træk PNG/JPG hertil</strong><br>Mørkt motiv på lys baggrund virker bedst</p>
     </div>
@@ -240,7 +262,7 @@
       <div class="panel-title" style="margin-top:1.5rem" id="step2label">2 — Juster kantdetektionen</div>
 
       <div class="control-row img-only" id="rowThreshold">
-        <span class="control-label">Tærskelværdi</span>
+        <label class="control-label" for="threshold">Tærskelværdi</label>
         <div class="slider-wrap">
           <input type="range" id="threshold" min="10" max="245" value="128">
           <span class="slider-val" id="threshVal">128</span>
@@ -248,7 +270,7 @@
       </div>
 
       <div class="control-row img-only" id="rowSmoothing">
-        <span class="control-label">Glat kanten</span>
+        <label class="control-label" for="smoothing">Glat kanten</label>
         <div class="slider-wrap">
           <input type="range" id="smoothing" min="0" max="20" value="4">
           <span class="slider-val" id="smoothVal">4</span>
@@ -256,7 +278,7 @@
       </div>
 
       <div class="control-row">
-        <span class="control-label">Model bredde (mm)</span>
+        <label class="control-label" for="modelSize">Model bredde (mm)</label>
         <div class="slider-wrap">
           <input type="range" id="modelSize" min="50" max="300" value="150">
           <span class="slider-val" id="sizeVal">150 mm</span>
@@ -266,20 +288,33 @@
       <div class="control-row">
         <span class="control-label">Bundplade</span>
         <div class="base-toggle" id="baseToggle">
-          <button type="button" class="base-btn active" data-base="frame">Kant<span class="base-btn-sub">hurtigere print</span></button>
-          <button type="button" class="base-btn" data-base="solid">Hel bund<span class="base-btn-sub">mere stabil</span></button>
+          <button type="button" class="base-btn active" data-base="frame" aria-pressed="true">Kant<span class="base-btn-sub">hurtigere print</span></button>
+          <button type="button" class="base-btn" data-base="solid" aria-pressed="false">Hel bund<span class="base-btn-sub">mere stabil</span></button>
         </div>
       </div>
 
       <div class="control-row">
-        <span class="control-label">Pinde afstand (mm)</span>
+        <label class="control-label" for="pinSpacing">Pinde afstand (mm)</label>
         <div class="slider-wrap">
           <input type="range" id="pinSpacing" min="5" max="30" value="8">
           <span class="slider-val" id="pinVal">8 mm</span>
         </div>
       </div>
 
-      <div class="stats" id="stats" style="display:none">
+      <fieldset class="pin-editor" id="pinEditor" hidden>
+      <legend>Rediger pinde med tastatur</legend>
+      <p id="pinCoordinatesHint">Position i mm fra motivets øverste venstre hjørne. Pinden skal være inden for silhuetten og mindst 5 mm fra andre pinde.</p>
+      <div class="control-row">
+        <label for="pinX">X (mm)</label><input id="pinX" type="number" min="0" step="0.1" value="10" aria-describedby="pinCoordinatesHint">
+        <label for="pinY">Y (mm)</label><input id="pinY" type="number" min="0" step="0.1" value="10" aria-describedby="pinCoordinatesHint">
+      </div>
+      <button type="button" class="btn btn-secondary" id="addPin">Tilføj pind ved position</button>
+      <label for="pinSelect">Eksisterende pinde</label>
+      <select id="pinSelect"></select>
+      <button type="button" class="btn btn-secondary" id="removePin">Fjern valgt pind</button>
+    </fieldset>
+
+    <div class="stats" id="stats" style="display:none">
         <div class="stat"><span class="stat-val" id="pinCount">0</span><span class="stat-label">Antal pinde</span></div>
         <div class="stat"><span class="stat-val" id="areaSize">0</span><span class="stat-label">Areal mm²</span></div>
         <div class="stat"><span class="stat-val" id="printTime">0</span><span class="stat-label">Ca. print min</span></div>
@@ -291,7 +326,7 @@
       </div>
 
       <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
-      <div class="status-msg" id="statusMsg"></div>
+      <div class="status-msg" id="statusMsg" role="status" aria-live="polite"></div>
     </div>
 
     <div class="info-box">
@@ -327,7 +362,7 @@
       <span>＋ Klik inden for silhuetten for at tilføje &nbsp;·&nbsp; Klik på en pind for at fjerne</span>
     </div>
   </div>
-</div>
+</main>
 
 <canvas id="workCanvas" style="display:none"></canvas>
 
@@ -367,13 +402,16 @@ const baseToggle       = document.getElementById('baseToggle');
 baseToggle.querySelectorAll('.base-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     baseMode = btn.dataset.base;
-    baseToggle.querySelectorAll('.base-btn').forEach(b => b.classList.toggle('active', b === btn));
+    baseToggle.querySelectorAll('.base-btn').forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-pressed', String(b === btn)); });
   });
 });
 
 // ─── MODE SWITCH ──────────────────────────────────────────────────────────────
 function setMode(m) {
   mode = m;
+  document.getElementById('modeBtnImg').setAttribute('aria-pressed', String(m === 'image'));
+  document.getElementById('modeBtnSvg').setAttribute('aria-pressed', String(m === 'svg'));
+  thresholdSlider.disabled = smoothingSlider.disabled = m === 'svg';
   document.getElementById('modeBtnImg').classList.toggle('active', m === 'image');
   document.getElementById('modeBtnSvg').classList.toggle('active', m === 'svg');
   document.querySelectorAll('.img-only').forEach(el => el.classList.toggle('hidden', m === 'svg'));
@@ -808,21 +846,32 @@ function handlePreviewClick(e, containerEl, dispW, dispH) {
   const dispX = e.clientX - rect.left;
   const dispY = e.clientY - rect.top;
   const { mx, my } = displayToMask(dispX, dispY, dispW, dispH);
+  editPinAt(mx, my, true);
+}
 
+function editPinAt(mx, my, removeNearby) {
+  if (!currentMask) return;
   const mmPx      = currentMaskW / parseInt(modelSizeSlider.value);
   const flangeR   = 1.85 * mmPx;
   const hitR      = Math.max(8, flangeR * 1.5); // lidt generøs hit-radius
 
   const hitIdx = hitPin(mx, my, hitR);
 
+  if (hitIdx >= 0 && !removeNearby) {
+    setStatus('For tæt på en eksisterende pind (min. 5 mm)', '');
+    return;
+  }
   if (hitIdx >= 0) {
     // ── Fjern pind ──
     pinPositions.splice(hitIdx, 1);
   } else {
     // ── Tilføj pind – kun hvis klikket er inden for masken ──
-    if (mx < 0||mx >= currentMaskW||my < 0||my >= currentMaskH) return;
+    if (mx < 0||mx >= currentMaskW||my < 0||my >= currentMaskH) {
+      setStatus('Positionen ligger uden for motivet', 'err');
+      return;
+    }
     if (currentMask[my*currentMaskW+mx] === 0) {
-      setStatus('Klik inden for motivets silhuet for at tilføje en pind', '');
+      setStatus('Vælg en position inden for motivets silhuet for at tilføje en pind', '');
       return;
     }
 
@@ -849,14 +898,17 @@ function handlePreviewClick(e, containerEl, dispW, dispH) {
         break;
       }
     }
-    if (!placed && !pinPositions.some(p => {
-      const dx=p.x-mx,dy=p.y-my; return Math.sqrt(dx*dx+dy*dy)<minDist;
-    })) {
-      setStatus('Kunne ikke placere pind her – prøv lidt længere inde i motivet', '');
+    if (!placed) {
+      setStatus('Kunne ikke placere pind her – vælg en position længere inde i motivet og mindst 5 mm fra andre pinde', '');
       return;
     }
   }
 
+  refreshPins();
+  setStatus('Pinde opdateret. Antal: ' + pinPositions.length, 'ok');
+}
+
+function refreshPins() {
   // Gentegn
   if (mode === 'image') {
     drawPreview(currentMask, currentMaskW, currentMaskH, contourPoints, pinPositions);
@@ -883,7 +935,40 @@ function showEditHint() {
   document.getElementById('editHint').style.display = 'block';
 }
 
+document.getElementById('addPin').addEventListener('click', () => {
+  const x = document.getElementById('pinX'), y = document.getElementById('pinY');
+  if (!x.reportValidity() || !y.reportValidity()) return;
+  if (!currentMask || !Number.isFinite(x.valueAsNumber) || !Number.isFinite(y.valueAsNumber)) {
+    setStatus('Angiv både X og Y som tal', 'err'); return;
+  }
+  const scale = currentMaskW / parseInt(modelSizeSlider.value);
+  editPinAt(Math.round(x.valueAsNumber * scale), Math.round(y.valueAsNumber * scale), false);
+});
+document.getElementById('removePin').addEventListener('click', () => {
+  const index = Number(document.getElementById('pinSelect').value);
+  if (!Number.isInteger(index) || index < 0 || index >= pinPositions.length) return;
+  pinPositions.splice(index, 1);
+  refreshPins();
+  setStatus('Pind fjernet. Antal: ' + pinPositions.length, 'ok');
+});
+
 function updateStats() {
+  const editor = document.getElementById('pinEditor');
+  editor.hidden = !currentMask;
+  const scale = currentMaskW / parseInt(modelSizeSlider.value);
+  const select = document.getElementById('pinSelect');
+  const previous = select.selectedIndex;
+  select.replaceChildren(...pinPositions.map((pin, index) => {
+    const option = document.createElement('option');
+    option.value = String(index);
+    option.textContent = 'Pind ' + (index + 1) + ': X ' + (pin.x / scale).toFixed(1) + ', Y ' + (pin.y / scale).toFixed(1) + ' mm';
+    return option;
+  }));
+  select.selectedIndex = Math.max(0, Math.min(previous, pinPositions.length - 1));
+  document.getElementById('removePin').disabled = !pinPositions.length;
+  document.getElementById('pinX').max = String(parseInt(modelSizeSlider.value));
+  document.getElementById('pinY').max = String(currentMaskH / scale);
+
   document.getElementById('pinCount').textContent  = pinPositions.length;
   document.getElementById('areaSize').textContent  = Math.round(pinPositions.length*8*8);
   document.getElementById('printTime').textContent = Math.round(pinPositions.length*0.3+5);

@@ -60,7 +60,7 @@
             margin-top: 30px;
         }
 
-        .error-text p {
+        .error-text > * {
             margin: 0;
         }
 
@@ -114,12 +114,11 @@
     </style>
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Spring til hovedindhold</a>
-
     <div class="page-shell">
         <header class="site-header">
+            <a class="skip-link" href="#main-content">Spring til hovedindhold</a>
             <div class="container nav-wrap">
-                <a class="brand interactive" href="index.html" aria-label="Til forsiden">
+                <a class="brand interactive" href="index.html">
                     <span class="brand-text">
                         <strong>FabLab Guides</strong>
                     </span>
@@ -130,7 +129,7 @@
             </div>
         </header>
 
-        <main id="main-content" class="error-main">
+        <main tabindex="-1" id="main-content" class="error-main">
             <section class="container">
                 <article class="error-card">
                     <div class="error-video-wrap">
@@ -140,9 +139,9 @@
                     </div>
 
                     <div class="error-text">
-                        <p class="error-oops">Ooops…</p>
+                        <h1 class="error-oops">Ooops…</h1>
                         <p class="error-line">Nogen må have bidt i netværkskablerne.</p>
-                        <p class="error-code">404 · Siden kunne ikke findes</p>
+                        <h2 class="error-code">404 · Siden kunne ikke findes</h2>
                     </div>
 
                     <div class="error-actions">

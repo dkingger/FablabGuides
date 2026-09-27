@@ -80,8 +80,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
     <link rel="manifest" href="/billeder/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="FabLab">
+<link rel="stylesheet" href="accessibility.css">
 </head>
 <body>
+<nav aria-label="Springlink"><a class="legacy-skip" href="#main-content">Spring til hovedindhold</a></nav>
+<main id="main-content" tabindex="-1">
     <a name="top"></a>
     <h1>Prusa MK3S</h1>
     <p>MK3S er en solid og alsidig 3D-printer fra Prusa, som er velegnet til både begyndere og erfarne brugere. Den er kendt for sin pålidelighed, gode kvalitet og automatiske features.</p>
@@ -178,5 +181,6 @@
         updatePrintCarousel();
     </script>
     <script src="/install-app.js" defer></script>
+</main>
 </body>
 </html>

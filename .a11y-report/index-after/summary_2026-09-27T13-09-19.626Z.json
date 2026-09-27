@@ -1,0 +1,48 @@
+{
+    "counts": {
+        "ignored": 0,
+        "violation": 0,
+        "recommendation": 1,
+        "pass": 1244,
+        "potentialviolation": 38,
+        "potentialrecommendation": 5,
+        "manual": 5,
+        "elements": 41,
+        "elementsViolation": 0,
+        "elementsViolationReview": 38
+    },
+    "startReport": 1790514559626,
+    "endReport": 1790514560290,
+    "toolID": "accessibility-checker-v4.0.34",
+    "policies": [
+        "IBM_Accessibility"
+    ],
+    "reportLevels": [
+        "violation",
+        "potentialviolation",
+        "recommendation",
+        "manual"
+    ],
+    "failLevels": [
+        "violation",
+        "potentialviolation"
+    ],
+    "scanID": "2fd61173-d6ed-4e65-8ec3-24e29386930f",
+    "pageScanSummary": [
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/index.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 41,
+                "elementsViolation": 0,
+                "elementsViolationReview": 38,
+                "violation": 0,
+                "potentialviolation": 38,
+                "recommendation": 1,
+                "potentialrecommendation": 5,
+                "manual": 5,
+                "pass": 1244
+            }
+        }
+    ]
+}

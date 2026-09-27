@@ -69,15 +69,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
     <link rel="manifest" href="/billeder/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="FabLab">
+<link rel="stylesheet" href="../accessibility.css">
 </head>
 <body>
     <div class="lang-switch" style="position: absolute; top: 20px; right: 20px;">
         <img src="../billeder/dkgbflag.png" alt="Switch language" style="height:28px; cursor:pointer;" onclick="window.location.href='../index.html'" title="Switch to English/Danish">
     </div>
     <header>
+<a class="legacy-skip" href="#main-content">Skip to main content</a>
         <img src="../billeder/Fablab Logo.svg" alt="Fablab Logo" style="height: 80px;">
         <h1>Fablab</h1>
     </header>
+<main id="main-content" tabindex="-1">
     <div class="content">
         <section id="about">
             <h2>FabLab</h2>
@@ -169,7 +172,8 @@
         </div>
         <button class="back-button" onclick="showMachineGuides()">Back to machines</button>
     </div>
-    <footer>
+    </main>
+<footer>
         &copy; 2025 Fablab. All rights reserved.
     </footer>
     <script src="/install-app.js" defer></script>

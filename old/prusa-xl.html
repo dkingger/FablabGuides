@@ -72,8 +72,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
     <link rel="manifest" href="/billeder/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="FabLab">
+<link rel="stylesheet" href="accessibility.css">
 </head>
 <body>
+<nav aria-label="Springlink"><a class="legacy-skip" href="#main-content">Spring til hovedindhold</a></nav>
+<main id="main-content" tabindex="-1">
   <h1>Prusa XL</h1>
   <p style="text-align: center;">Herunder kan du se trin-for-trin hvordan du bruger Prusa XL.</p>
 
@@ -170,5 +173,6 @@
     updatePrintCarousel();
   </script>
     <script src="/install-app.js" defer></script>
+</main>
 </body>
 </html>

@@ -215,12 +215,17 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 .canvas-wrap{display:block!important;position:relative;overflow:auto!important}
 .canvas-stage{position:relative;display:block;min-width:100%;min-height:100%}
 .canvas-stage #drawSvg{position:absolute!important;margin:0!important;flex:none!important}
+
+.layer-item { display: block; width: 100%; text-align: left; font-family: inherit; }
+:root { --accent: #087a49; --accent-hover: #06633b; }
+:focus-visible { outline: 3px solid #112d4e !important; outline-offset: 3px; }
+@media (forced-colors: active) { :focus-visible { outline-color: Highlight !important; } }
 </style>
 </head>
 <body>
 <header>
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
-    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
   <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.74</span></h1>
   <div class="project-name-wrap">
@@ -228,15 +233,15 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
   </div>
   <button type="button" id="btnUndoHeader" class="header-btn" title="Fortryd (Ctrl+Z)">
-    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 14L4 9l5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h10a7 7 0 1 1 0 14h-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M9 14L4 9l5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h10a7 7 0 1 1 0 14h-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
   <div class="header-zoom">
     <button type="button" id="btnZoomOut" class="header-btn" title="Zoom ud">
-      <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11h6M21 21l-4.3-4.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11h6M21 21l-4.3-4.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <span id="zoomLabel" class="zoom-label" title="Dobbeltklik for at nulstille zoom til 100 %" style="cursor:pointer">100%</span>
     <button type="button" id="btnZoomIn" class="header-btn" title="Zoom ind">
-      <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M21 21l-4.3-4.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 8v6M8 11h6M21 21l-4.3-4.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </div>
   <select id="pageSize" class="page-size-select" title="Sidestørrelse">
@@ -246,14 +251,14 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   </select>
 
   <button type="button" id="btnSnap" class="header-btn active" title="Snap til hjørner/midtpunkter (magnet)">
-    <svg viewBox="0 0 24 24" width="18" height="18"><path d="M7 7h4v4H7zM13 7h4v4h-4zM7 13h4v4H7zM15 15l4 4M15 19l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M7 7h4v4H7zM13 7h4v4h-4zM7 13h4v4H7zM15 15l4 4M15 19l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
   <span class="hint">Rød/grøn = linje · Sort = fyld · Zoom med scroll</span>
 </header>
 
 
 
-<div class="main">
+<main class="main" id="main-content" tabindex="-1">
   <div class="toolbar">
     <button class="tool-btn active" data-tool="select" title="Vælg (V)" aria-label="Vælg (V)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l7 16 2.5-6.5L20 11z"/></svg><span class="tip">Vælg (V)</span></button>
     <button class="tool-btn" data-tool="rect" title="Rektangel" aria-label="Rektangel"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="1"/></svg><span class="tip">Rektangel</span></button>
@@ -277,7 +282,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
     <button class="tool-btn" data-tool="about" title="Om Vektor-Viktor" aria-label="Om Vektor-Viktor"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 10.5v5"/><circle cx="12" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg><span class="tip">Om Vektor-Viktor</span></button>
   </div>
   <div class="canvas-wrap">
-    <svg id="drawSvg" width="841" height="595" viewBox="0 0 297 210">
+    <svg role="img" aria-label="Tegneflade med vektorobjekter" id="drawSvg" width="841" height="595" viewBox="0 0 297 210">
       <rect id="pageBg" width="297" height="210" fill="#ffffff"/>
       <g id="pageGrid" pointer-events="none"></g>
       <g id="objects"></g><g id="temp"></g><g id="handles"></g>
@@ -302,7 +307,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
       <label>Type</label>
       <div id="objType" style="font-weight:600;font-size:.9rem;margin-bottom:8px">–</div>
       <label>Størrelse (B × H mm)</label>
-      <div class="prop-row"><input type="number" id="propW" step="0.1" min="0"><input type="number" id="propH" step="0.1" min="0"></div>
+      <div class="prop-row"><input type="number" id="propW" aria-label="Bredde (mm)" step="0.1" min="0"><input type="number" id="propH" aria-label="Højde (mm)" step="0.1" min="0"></div>
 
       <div id="rectProps" class="hidden">
         <label style="margin-top:8px">Hjørneradius (mm)</label>
@@ -390,19 +395,19 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
       <label>Boolske operationer</label>
       <p style="font-size:.7rem;color:var(--text-dim);margin-bottom:6px">Ved <b>Forskel</b>: den <b>øverste</b> figur trækkes fra den under. Brug lag-rækkefølge på én figur ad gangen.</p>
       <button class="btn btn-bool" id="btnUnion" title="Forening (Union)">
-        <svg viewBox="0 0 24 24" width="16" height="16" style="flex-shrink:0"><circle cx="9" cy="12" r="6" fill="currentColor" opacity=".9"/><circle cx="15" cy="12" r="6" fill="currentColor" opacity=".9"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" style="flex-shrink:0"><circle cx="9" cy="12" r="6" fill="currentColor" opacity=".9"/><circle cx="15" cy="12" r="6" fill="currentColor" opacity=".9"/></svg>
         Forening
       </button>
       <button class="btn btn-bool" id="btnSubtract" title="Forskel (Difference)">
-        <svg viewBox="0 0 24 24" width="16" height="16" style="flex-shrink:0"><circle cx="9" cy="12" r="6" fill="currentColor"/><circle cx="15" cy="12" r="6" fill="#fff" stroke="currentColor" stroke-width="1.2"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" style="flex-shrink:0"><circle cx="9" cy="12" r="6" fill="currentColor"/><circle cx="15" cy="12" r="6" fill="#fff" stroke="currentColor" stroke-width="1.2"/></svg>
         Forskel
       </button>
       <button class="btn btn-bool" id="btnIntersect" title="Gennemsnit (Intersection)">
-        <svg viewBox="0 0 24 24" width="16" height="16" style="flex-shrink:0"><circle cx="9" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="15" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M12 8.2a6 6 0 0 1 0 7.6 6 6 0 0 1 0-7.6z" fill="currentColor"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" style="flex-shrink:0"><circle cx="9" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="15" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M12 8.2a6 6 0 0 1 0 7.6 6 6 0 0 1 0-7.6z" fill="currentColor"/></svg>
         Gennemsnit
       </button>
       <button class="btn btn-bool" id="btnXor" title="Udelukkelse (Exclusion)">
-        <svg viewBox="0 0 24 24" width="16" height="16" style="flex-shrink:0"><circle cx="9" cy="12" r="6" fill="currentColor"/><circle cx="15" cy="12" r="6" fill="currentColor"/><path d="M12 8.2a6 6 0 0 1 0 7.6 6 6 0 0 1 0-7.6z" fill="#fff"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" style="flex-shrink:0"><circle cx="9" cy="12" r="6" fill="currentColor"/><circle cx="15" cy="12" r="6" fill="currentColor"/><path d="M12 8.2a6 6 0 0 1 0 7.6 6 6 0 0 1 0-7.6z" fill="#fff"/></svg>
         Udelukkelse
       </button>
     </div>
@@ -414,8 +419,8 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 
 
   </div>
-</div>
-<div class="statusbar">
+</main>
+<div class="statusbar" role="status">
   <span id="statusTool">Værktøj: Vælg</span>
   <span id="statusCount">Objekter: 0</span>
   <span id="statusSel">Valgt: 0</span>
@@ -428,8 +433,8 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
     <h2 id="offsetModalTitle">Forskudt linje</h2>
     <div class="prop-group">
       <label class="offset-options"><input type="checkbox" id="offsetExpand" checked><span>Udvid udad</span></label>
-      <div class="offset-options"><span>Afstand (mm)</span><input type="number" id="offsetDistance" min="0.01" max="100" step="0.01" value="5"></div>
-      <div class="offset-options"><span>Hjørner</span><select id="offsetJoin"><option value="round">Runde</option><option value="miter">Skarpe</option><option value="bevel">Affasede</option></select></div>
+      <div class="offset-options"><span>Afstand (mm)</span><input type="number" id="offsetDistance" aria-label="Afstand (mm)" min="0.01" max="100" step="0.01" value="5"></div>
+      <div class="offset-options"><span>Hjørner</span><select id="offsetJoin" aria-label="Hjørner"><option value="round">Runde</option><option value="miter">Skarpe</option><option value="bevel">Affasede</option></select></div>
       <div class="offset-options"><span>Mitergrænse</span><input type="number" id="offsetMiter" min="1" max="20" step="0.1" value="4"></div>
       <div class="offset-options"><span>Huller</span><select id="offsetHoles"><option value="remove">Fjern</option><option value="keep">Behold</option></select></div>
       <div class="offset-options"><span>Linjetype</span><select id="offsetMode"><option value="green" selected>Grøn linje</option><option value="cut">Rød linje</option></select></div>
@@ -452,15 +457,15 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
       </div>
       <div id="arrayGridFields">
         <label>Kolonner × Rækker</label>
-        <div class="prop-row"><input type="number" id="arrCols" min="1" max="50" value="3"><input type="number" id="arrRows" min="1" max="50" value="3"></div>
+        <div class="prop-row"><input type="number" id="arrCols" aria-label="Antal kolonner" min="1" max="50" value="3"><input type="number" id="arrRows" aria-label="Antal rækker" min="1" max="50" value="3"></div>
         <label>Afstand X / Y</label>
-        <div class="prop-row"><input type="number" id="arrGapX" step="1" value="20"><input type="number" id="arrGapY" step="1" value="20"></div>
+        <div class="prop-row"><input type="number" id="arrGapX" aria-label="Vandret afstand (mm)" step="1" value="20"><input type="number" id="arrGapY" aria-label="Lodret afstand (mm)" step="1" value="20"></div>
       </div>
       <div id="arrayCircleFields" class="hidden">
         <label>Antal kopier</label>
-        <input type="number" id="arrCount" class="prop-select" min="2" max="72" value="6" style="margin-bottom:6px">
+        <input type="number" id="arrCount" aria-label="Antal kopier" class="prop-select" min="2" max="72" value="6" style="margin-bottom:6px">
         <label>Radius</label>
-        <input type="number" id="arrRadius" class="prop-select" min="1" step="1" value="80" style="margin-bottom:6px">
+        <input type="number" id="arrRadius" aria-label="Radius (mm)" class="prop-select" min="1" step="1" value="80" style="margin-bottom:6px">
         <label>Startvinkel (°)</label>
         <input type="number" id="arrAngle" class="prop-select" step="1" value="0" style="margin-bottom:6px">
         <label style="display:flex;align-items:center;gap:6px;cursor:pointer">
@@ -1010,10 +1015,15 @@ function renderLayers(){
   const list=document.getElementById('layerList');list.innerHTML='';
   const L={rect:'Rektangel',ellipse:'Ellipse',line:'Linje',path:'Sti',polygon:'Polygon',image:'Billede',traced:'Sporing',text:'Tekst',group:'Gruppe'};
   objects.slice().reverse().forEach(o=>{
-    const item=document.createElement('div');
+    const item=document.createElement('button');
+    item.type='button';
+    item.setAttribute('aria-pressed', String(selectedIds.includes(o.id)));
     item.className='layer-item'+(selectedIds.includes(o.id)?' selected':'');
     item.textContent=(L[o.type]||o.type)+'  #'+o.id.replace('obj','');
-    item.onclick=ev=>{if(ev.shiftKey)toggleSelect(o.id);else selectOnly(o.id)};
+    item.onclick=ev=>{if(ev.shiftKey)toggleSelect(o.id);else selectOnly(o.id);
+      document.querySelector('[data-layer-id="'+o.id+'"]')?.focus();
+    };
+    item.dataset.layerId=o.id;
     list.appendChild(item);
   });
 }

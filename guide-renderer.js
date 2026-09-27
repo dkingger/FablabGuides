@@ -23,9 +23,9 @@
             accessibilityHref: 'tilgaengelighedserklaering.html',
             accessibilityIcon: 'billeder/ikoner/accessibility-a11y.svg',
             toFront: 'Til forsiden',
-            closeImg: 'Luk billede',
+            closeImg: 'Luk billede', enlargeImg: 'Forstør billede', imageDialog: 'Billedvisning', overview: 'Om guiden',
             relatedTitle: 'Andre guides i samme kategori',
-            brandAriaLabel: 'Til forsiden',
+            brandAriaLabel: 'FabLab Guides – Til forsiden',
             currentSiteHref: 'old/index.html',
             langSwitchText: 'English', langSwitchHrefPrefix: 'en/'
         },
@@ -51,9 +51,9 @@
             accessibilityHref: '../en/tilgaengelighedserklaering.html',
             accessibilityIcon: '../billeder/ikoner/accessibility-a11y.svg',
             toFront: 'Front page',
-            closeImg: 'Close image',
+            closeImg: 'Close image', enlargeImg: 'Enlarge image', imageDialog: 'Image viewer', overview: 'About this guide',
             relatedTitle: 'Other guides in the same category',
-            brandAriaLabel: 'To front page',
+            brandAriaLabel: 'FabLab Guides – To front page',
             currentSiteHref: '../old/en/index.html',
             langSwitchText: 'Dansk', langSwitchHrefPrefix: '../'
         }
@@ -163,7 +163,7 @@
             + (contentBlocks.length ? "<div class=\"guide-content-blocks\">" + contentBlocks.map(renderContentBlock).join("") + "</div>" : "")
             + (slides.length ? "<div class=\"carousel-shell\" data-carousel='" + escapeHtml(JSON.stringify(slides)) + "'>"
             + "<figure class=\"carousel-figure\">"
-            + "<img class=\"carousel-image interactive\" src=\"\" alt=\"\" tabindex=\"0\">"
+            + "<button type=\"button\" class=\"carousel-image-button\" aria-haspopup=\"dialog\"><img class=\"carousel-image\" src=\"\" alt=\"\"></button>"
             + "<figcaption class=\"figure-footer\">"
             + "<p class=\"caption\"></p>"
             + "<span class=\"progress\"></span>"
@@ -245,6 +245,7 @@
         modalState.onIndexChange = onIndexChange;
 
         renderModalSlide();
+        modal.showModal();
         modal.classList.add("is-open");
         document.body.style.overflow = "hidden";
     }
@@ -255,6 +256,7 @@
             return;
         }
 
+        modal.close();
         modal.classList.remove("is-open");
         document.body.style.overflow = "";
         modalState.slides = [];
@@ -269,6 +271,7 @@
         }
 
         const image = carouselElement.querySelector(".carousel-image");
+        const imageButton = carouselElement.querySelector(".carousel-image-button");
         const caption = carouselElement.querySelector(".caption");
         const progress = carouselElement.querySelector(".progress");
         const thumbTrack = carouselElement.querySelector(".thumb-track");
@@ -284,11 +287,13 @@
             const activeSlide = slides[currentIndex];
             image.src = activeSlide.src;
             image.alt = activeSlide.caption;
+            imageButton.setAttribute("aria-label", t.enlargeImg + ": " + activeSlide.caption);
             caption.textContent = activeSlide.caption;
             progress.textContent = (currentIndex + 1) + " / " + slides.length;
 
             thumbTrack.querySelectorAll(".thumb-button").forEach(function (thumbButton, thumbIndex) {
                 thumbButton.classList.toggle("is-active", thumbIndex === currentIndex);
+                thumbButton.setAttribute("aria-pressed", String(thumbIndex === currentIndex));
             });
         }
 
@@ -312,21 +317,11 @@
             renderSlide();
         });
 
-        image.addEventListener("click", function () {
+        imageButton.addEventListener("click", function () {
             openModal(slides, currentIndex, function (newIndex) {
                 currentIndex = newIndex;
                 renderSlide();
             });
-        });
-
-        image.addEventListener("keydown", function (event) {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                openModal(slides, currentIndex, function (newIndex) {
-                    currentIndex = newIndex;
-                    renderSlide();
-                });
-            }
         });
 
         renderSlide();
@@ -364,8 +359,8 @@
 
         app.innerHTML = ""
             + "<div class=\"guide-shell\">"
-            + "<a class=\"skip-link\" href=\"#main-content\">" + t.skipLink + "</a>"
             + "<header class=\"site-header\">"
+            + "<a class=\"skip-link\" href=\"#main-content\">" + t.skipLink + "</a>"
             + "<div class=\"container nav-wrap\">"
             + "<a class=\"brand interactive\" href=\"index.html\" aria-label=\"" + t.brandAriaLabel + "\">"
             + "<span class=\"brand-mark\"><img src=\"/billeder/Fablab Logo.svg\" alt=\"FabLab logo\"></span>"
@@ -380,7 +375,7 @@
             + "</nav>"
             + "</div>"
             + "</header>"
-            + "<main id=\"main-content\">"
+            + "<main id=\"main-content\" tabindex=\"-1\">"
             + "<section class=\"hero-section\">"
             + "<div class=\"container hero-grid\">"
             + "<div class=\"hero-card interactive\">"
@@ -391,7 +386,7 @@
             + "<div class=\"stats-grid\">" + renderHeroStats(guide) + "</div>"
             + "<div class=\"hero-actions\"><a class=\"button button-primary interactive\" href=\"#guide-content\">" + t.goToGuide + "</a><a class=\"button button-secondary interactive\" href=\"index.html#guides\">" + t.guideOverview + "</a></div>"
             + "</div>"
-            + "<aside class=\"hero-side\">"
+            + "<aside class=\"hero-side\" aria-label=\"" + t.overview + "\">"
             + "<div class=\"icon-card interactive\"><div class=\"icon-frame\"><img src=\"" + escapeHtml(guide.icon) + "\" alt=\"" + escapeHtml(guide.title) + "\"></div><p>" + escapeHtml(guide.shortDescription || guide.description) + "</p></div>"
             + "</aside>"
             + "</div>"
@@ -400,13 +395,30 @@
             + renderRelatedCards(allGuides, guide)
             + "</main>"
             + "<footer class=\"site-footer\"><div class=\"container footer-wrap\"><div class=\"footer-license\"><a class=\"interactive\" href=\"" + t.footerLicenseHref + "\" target=\"_blank\" rel=\"license noopener\"><img class=\"cc-license-logo\" src=\"" + t.footerLicenseIcon + "\" alt=\"Creative Commons BY-SA 4.0\"></a><p class=\"cc-license-text\">" + t.footerLicenseText + " <a href=\"" + t.footerLicenseHref + "\" target=\"_blank\" rel=\"license noopener\">" + t.footerLicenseLabel + "</a>.</p></div><div class=\"footer-license\"><a class=\"interactive\" href=\"" + t.accessibilityHref + "\"><img class=\"cc-license-logo\" src=\"" + t.accessibilityIcon + "\" alt=\"Accessibility statement\"></a><p class=\"cc-license-text\">" + t.accessibilityText + " <a href=\"" + t.accessibilityHref + "\">" + t.accessibilityLabel + "</a>.</p></div><div class=\"footer-actions\"><a class=\"button button-secondary interactive\" href=\"index.html\">" + t.toFront + "</a></div></div></footer>"
-            + "<div class=\"modal\" id=\"image-modal\" aria-hidden=\"true\"><div class=\"modal-panel\"><button class=\"modal-close interactive\" type=\"button\" aria-label=\"" + t.closeImg + "\">&times;</button><img src=\"\" alt=\"\"><p class=\"modal-caption\"></p></div></div>"
+            + "<dialog class=\"modal\" id=\"image-modal\" aria-label=\"" + t.imageDialog + "\"><div class=\"modal-panel\"><button class=\"modal-close interactive\" type=\"button\" aria-label=\"" + t.closeImg + "\">&times;</button><img src=\"\" alt=\"\"><p class=\"modal-caption\" aria-live=\"polite\"></p><div class=\"modal-actions\"><button type=\"button\" class=\"button button-secondary\" data-modal-step=\"-1\">" + t.prev + "</button><button type=\"button\" class=\"button button-primary\" data-modal-step=\"1\">" + t.next + "</button></div></div></dialog>"
             + "</div>";
 
         app.querySelectorAll("[data-carousel]").forEach(initializeCarousel);
 
         const modal = document.getElementById("image-modal");
+
+            // Keep Tab on the dialog controls, including when it has only one button.
+            modal.addEventListener('keydown', function (event) {
+                if (event.key !== 'Tab') return;
+                var controls = Array.from(modal.querySelectorAll('button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]')).filter(function (el) { return el.getClientRects().length; });
+                if (!controls.length) return;
+                var first = controls[0], last = controls[controls.length - 1];
+                if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+                else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+            });
+
+        modal.addEventListener("close", function () {
+            modal.classList.remove("is-open");
+            document.body.style.overflow = "";
+        });
         modal.addEventListener("click", function (event) {
+            const stepButton = event.target.closest("[data-modal-step]");
+            if (stepButton) { stepModal(Number(stepButton.dataset.modalStep)); return; }
             if (event.target.classList.contains("modal-close") || event.target === modal) {
                 closeModal();
                 return;

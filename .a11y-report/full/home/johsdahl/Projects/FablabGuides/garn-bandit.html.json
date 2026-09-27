@@ -1,0 +1,654 @@
+{
+    "results": [
+        {
+            "ruleId": "style_color_misuse",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/style[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Potential_1",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<style>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_color_misuse.html#%7B%22message%22%3A%22Verify%20color%20is%20not%20used%20as%20the%20only%20visual%20means%20of%20conveying%20information%22%2C%22snippet%22%3A%22%3Cstyle%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22style_color_misuse%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_highcontrast_visible",
+            "value": [
+                "VIOLATION",
+                "MANUAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/style[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Manual_1",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<style>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "manual",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_highcontrast_visible.html#%7B%22message%22%3A%22Confirm%20Windows%20high%20contrast%20mode%20is%20supported%20when%20using%20CSS%20to%20include%2C%20position%20or%20alter%20non-decorative%20content%22%2C%22snippet%22%3A%22%3Cstyle%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22MANUAL%22%5D%2C%22reasonId%22%3A%22Manual_1%22%2C%22ruleId%22%3A%22style_highcontrast_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/header[1]/a[1]",
+                "aria": "/document[1]/banner[1]/link[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 4.50 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 400",
+            "messageArgs": [
+                "4.50",
+                12,
+                400,
+                "#3a7d44",
+                "#f0f4ee",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 24,
+                "top": 24,
+                "height": 16,
+                "width": 106
+            },
+            "snippet": "<a aria-label=\"Tilbage til FabLab Guides\" href=\"index.html\" class=\"back-link\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%204.50%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Ca%20aria-label%3D%5C%22Tilbage%20til%20FabLab%20Guides%5C%22%20href%3D%5C%22index.html%5C%22%20class%3D%5C%22back-link%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%224.50%22%2C12%2C400%2C%22%233a7d44%22%2C%22%23f0f4ee%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/header[1]/span[1]",
+                "aria": "/document[1]/banner[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.27 with its background is less than the WCAG AA minimum requirements for text of size 11.52px and weight of 400",
+            "messageArgs": [
+                "3.27",
+                11.52,
+                400,
+                "#6a8f6e",
+                "#f0f4ee",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 24,
+                "top": 99,
+                "height": 15,
+                "width": 333
+            },
+            "snippet": "<span class=\"tagline\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.27%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2011.52px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22tagline%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.27%22%2C11.52%2C400%2C%22%236a8f6e%22%2C%22%23f0f4ee%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.27 with its background is less than the WCAG AA minimum requirements for text of size 10.4px and weight of 400",
+            "messageArgs": [
+                "3.27",
+                10.4,
+                400,
+                "#6a8f6e",
+                "#f0f4ee",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 40,
+                "top": 171,
+                "height": 13,
+                "width": 720
+            },
+            "snippet": "<div class=\"panel-title\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.27%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2010.4px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22panel-title%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.27%22%2C10.4%2C400%2C%22%236a8f6e%22%2C%22%23f0f4ee%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "aria_content_in_landmark",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Content is not within a landmark element",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 40,
+                "top": 208,
+                "height": 126,
+                "width": 354
+            },
+            "snippet": "<button onclick=\"setMode('image')\" id=\"modeBtnImg\" class=\"mode-btn active\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_content_in_landmark.html#%7B%22message%22%3A%22Content%20is%20not%20within%20a%20landmark%20element%22%2C%22snippet%22%3A%22%3Cbutton%20onclick%3D%5C%22setMode('image')%5C%22%20id%3D%5C%22modeBtnImg%5C%22%20class%3D%5C%22mode-btn%20active%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22aria_content_in_landmark%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/button[1]",
+                "aria": "/document[1]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 40,
+                "top": 208,
+                "height": 126,
+                "width": 354
+            },
+            "snippet": "<button onclick=\"setMode('image')\" id=\"modeBtnImg\" class=\"mode-btn active\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20onclick%3D%5C%22setMode('image')%5C%22%20id%3D%5C%22modeBtnImg%5C%22%20class%3D%5C%22mode-btn%20active%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/button[1]/span[3]",
+                "aria": "/document[1]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.03 with its background is less than the WCAG AA minimum requirements for text of size 9.6px and weight of 400",
+            "messageArgs": [
+                "3.03",
+                9.6,
+                400,
+                "#5d8a64",
+                "#cce8d0",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 145,
+                "top": 288,
+                "height": 27,
+                "width": 145
+            },
+            "snippet": "<span class=\"mode-desc\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.03%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%209.6px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22mode-desc%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.03%22%2C9.6%2C400%2C%22%235d8a64%22%2C%22%23cce8d0%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/button[2]",
+                "aria": "/document[1]/button[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 406,
+                "top": 208,
+                "height": 126,
+                "width": 354
+            },
+            "snippet": "<button onclick=\"setMode('svg')\" id=\"modeBtnSvg\" class=\"mode-btn\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cbutton%20onclick%3D%5C%22setMode('svg')%5C%22%20id%3D%5C%22modeBtnSvg%5C%22%20class%3D%5C%22mode-btn%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/button[2]/span[2]",
+                "aria": "/document[1]/button[2]"
+            },
+            "ruleTime": 1,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.88 with its background is less than the WCAG AA minimum requirements for text of size 11.2px and weight of 500",
+            "messageArgs": [
+                "2.88",
+                11.2,
+                500,
+                "#6a8f6e",
+                "#dde8d8",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 572,
+                "top": 267,
+                "height": 14,
+                "width": 23
+            },
+            "snippet": "<span class=\"mode-name\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.88%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2011.2px%20and%20weight%20of%20500%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22mode-name%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.88%22%2C11.2%2C500%2C%22%236a8f6e%22%2C%22%23dde8d8%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[2]/button[2]/span[3]",
+                "aria": "/document[1]/button[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.02 with its background is less than the WCAG AA minimum requirements for text of size 9.6px and weight of 400",
+            "messageArgs": [
+                "2.02",
+                9.6,
+                400,
+                "#8daa8e",
+                "#dde8d8",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 528,
+                "top": 288,
+                "height": 27,
+                "width": 112
+            },
+            "snippet": "<span class=\"mode-desc\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.02%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%209.6px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22mode-desc%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.02%22%2C9.6%2C400%2C%22%238daa8e%22%2C%22%23dde8d8%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_block_heading",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[3]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_heading",
+            "message": "Confirm this text '⬡' is used as a heading and if so, modify to use a heading element or role",
+            "messageArgs": [
+                "⬡"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 40,
+                "top": 358,
+                "height": 176,
+                "width": 720
+            },
+            "snippet": "<div id=\"uploadZone\" class=\"upload-zone\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_block_heading.html#%7B%22message%22%3A%22Confirm%20this%20text%20'%E2%AC%A1'%20is%20used%20as%20a%20heading%20and%20if%20so%2C%20modify%20to%20use%20a%20heading%20element%20or%20role%22%2C%22snippet%22%3A%22%3Cdiv%20id%3D%5C%22uploadZone%5C%22%20class%3D%5C%22upload-zone%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_heading%22%2C%22ruleId%22%3A%22text_block_heading%22%2C%22msgArgs%22%3A%5B%22%E2%AC%A1%22%5D%7D"
+        },
+        {
+            "ruleId": "input_label_exists",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[3]/input[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Form control element <input> has no associated label",
+            "messageArgs": [
+                "input"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 41,
+                "top": 359,
+                "height": 174,
+                "width": 718
+            },
+            "snippet": "<input accept=\"image/png,image/jpeg,image/webp\" id=\"fileInput\" type=\"file\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/input_label_exists.html#%7B%22message%22%3A%22Form%20control%20element%20%3Cinput%3E%20has%20no%20associated%20label%22%2C%22snippet%22%3A%22%3Cinput%20accept%3D%5C%22image%2Fpng%2Cimage%2Fjpeg%2Cimage%2Fwebp%5C%22%20id%3D%5C%22fileInput%5C%22%20type%3D%5C%22file%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22input_label_exists%22%2C%22msgArgs%22%3A%5B%22input%22%5D%7D"
+        },
+        {
+            "ruleId": "aria_content_in_landmark",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[3]/input[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Content is not within a landmark element",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 41,
+                "top": 359,
+                "height": 174,
+                "width": 718
+            },
+            "snippet": "<input accept=\"image/png,image/jpeg,image/webp\" id=\"fileInput\" type=\"file\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_content_in_landmark.html#%7B%22message%22%3A%22Content%20is%20not%20within%20a%20landmark%20element%22%2C%22snippet%22%3A%22%3Cinput%20accept%3D%5C%22image%2Fpng%2Cimage%2Fjpeg%2Cimage%2Fwebp%5C%22%20id%3D%5C%22fileInput%5C%22%20type%3D%5C%22file%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22aria_content_in_landmark%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[3]/p[1]",
+                "aria": "/document[1]/paragraph[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.88 with its background is less than the WCAG AA minimum requirements for text of size 12.48px and weight of 400",
+            "messageArgs": [
+                "2.88",
+                12.48,
+                400,
+                "#6a8f6e",
+                "#dde8d8",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 73,
+                "top": 453,
+                "height": 40,
+                "width": 654
+            },
+            "snippet": "<p id=\"uploadHint\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.88%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012.48px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cp%20id%3D%5C%22uploadHint%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.88%22%2C12.48%2C400%2C%22%236a8f6e%22%2C%22%23dde8d8%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[1]/div[3]/p[1]/strong[1]",
+                "aria": "/document[1]/paragraph[1]/strong[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.96 with its background is less than the WCAG AA minimum requirements for text of size 12.48px and weight of 500",
+            "messageArgs": [
+                "3.96",
+                12.48,
+                500,
+                "#3a7d44",
+                "#dde8d8",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 295,
+                "top": 454,
+                "height": 16,
+                "width": 210
+            },
+            "snippet": "<strong>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.96%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012.48px%20and%20weight%20of%20500%22%2C%22snippet%22%3A%22%3Cstrong%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.96%22%2C12.48%2C500%2C%22%233a7d44%22%2C%22%23dde8d8%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 3.27 with its background is less than the WCAG AA minimum requirements for text of size 10.4px and weight of 400",
+            "messageArgs": [
+                "3.27",
+                10.4,
+                400,
+                "#6a8f6e",
+                "#f0f4ee",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 40,
+                "top": 717,
+                "height": 13,
+                "width": 720
+            },
+            "snippet": "<div class=\"panel-title\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%203.27%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2010.4px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cdiv%20class%3D%5C%22panel-title%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%223.27%22%2C10.4%2C400%2C%22%236a8f6e%22%2C%22%23f0f4ee%22%2Cfalse%2Cfalse%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/div[1]/div[2]/div[2]/div[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "fail_contrast",
+            "message": "Text contrast of 2.88 with its background is less than the WCAG AA minimum requirements for text of size 12px and weight of 400",
+            "messageArgs": [
+                "2.88",
+                12,
+                400,
+                "#6a8f6e",
+                "#dde8d8",
+                false,
+                false
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 277,
+                "top": 1009,
+                "height": 210,
+                "width": 246
+            },
+            "snippet": "<div id=\"placeholder\" class=\"canvas-placeholder\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Text%20contrast%20of%202.88%20with%20its%20background%20is%20less%20than%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012px%20and%20weight%20of%20400%22%2C%22snippet%22%3A%22%3Cdiv%20id%3D%5C%22placeholder%5C%22%20class%3D%5C%22canvas-placeholder%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22fail_contrast%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%222.88%22%2C12%2C400%2C%22%236a8f6e%22%2C%22%23dde8d8%22%2Cfalse%2Cfalse%5D%7D"
+        }
+    ],
+    "numExecuted": 230,
+    "ruleTime": 16,
+    "nls": {
+        "aria_content_in_landmark": {
+            "0": "All content must reside within an element with a landmark role",
+            "Fail_1": "Content is not within a landmark element"
+        },
+        "style_color_misuse": {
+            "0": "Combine color and descriptive markup to convey information",
+            "Potential_1": "Verify color is not used as the only visual means of conveying information"
+        },
+        "style_highcontrast_visible": {
+            "0": "Windows high contrast mode must be supported when using CSS to include, position or alter non-decorative content",
+            "Manual_1": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content"
+        },
+        "style_focus_visible": {
+            "0": "The keyboard focus indicator should be visible when default border or outline is modified by CSS",
+            "potential_focus_not_visible": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+        },
+        "text_contrast_sufficient": {
+            "0": "The contrast ratio of text with its background must meet WCAG AA requirements",
+            "fail_contrast": "Text contrast of {0} with its background is less than the WCAG AA minimum requirements for text of size {1}px and weight of {2}"
+        },
+        "input_label_exists": {
+            "0": "Each form control must have an associated label",
+            "Fail_1": "Form control element <{0}> has no associated label"
+        },
+        "text_block_heading": {
+            "0": "Heading text should use a heading element or role",
+            "potential_heading": "Confirm this text '{0}' is used as a heading and if so, modify to use a heading element or role"
+        }
+    },
+    "summary": {
+        "counts": {
+            "ignored": 0,
+            "elements": 15,
+            "elementsViolation": 12,
+            "elementsViolationReview": 15,
+            "violation": 13,
+            "potentialviolation": 4,
+            "recommendation": 0,
+            "potentialrecommendation": 2,
+            "manual": 1,
+            "pass": 210
+        },
+        "scanTime": 44,
+        "ruleArchive": "Latest Deployment (latest)",
+        "policies": [
+            "IBM_Accessibility"
+        ],
+        "reportLevels": [
+            "violation",
+            "potentialviolation",
+            "recommendation",
+            "manual"
+        ],
+        "startScan": 1790514622826,
+        "URL": "file:///home/johsdahl/Projects/FablabGuides/garn-bandit.html"
+    },
+    "scanID": "4d31f8f2-07b2-478b-b5c8-068076ac3e82",
+    "toolID": "accessibility-checker-v4.0.34",
+    "label": "/home/johsdahl/Projects/FablabGuides/garn-bandit.html"
+}

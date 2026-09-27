@@ -1,0 +1,1248 @@
+{
+    "counts": {
+        "ignored": 0,
+        "violation": 1,
+        "recommendation": 44,
+        "pass": 52729,
+        "potentialviolation": 1130,
+        "potentialrecommendation": 245,
+        "manual": 184,
+        "elements": 1398,
+        "elementsViolation": 1,
+        "elementsViolationReview": 1202
+    },
+    "startReport": 1790516887717,
+    "endReport": 1790516902258,
+    "toolID": "accessibility-checker-v4.0.34",
+    "policies": [
+        "IBM_Accessibility"
+    ],
+    "reportLevels": [
+        "violation",
+        "potentialviolation",
+        "recommendation",
+        "manual"
+    ],
+    "failLevels": [
+        "violation",
+        "potentialviolation"
+    ],
+    "scanID": "04abc656-c12d-4148-818d-8468e8ba7bf4",
+    "pageScanSummary": [
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/404.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 7,
+                "elementsViolation": 0,
+                "elementsViolationReview": 5,
+                "violation": 0,
+                "potentialviolation": 4,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 333
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/assets/moving-head/moving-head.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 2,
+                "elementsViolation": 0,
+                "elementsViolationReview": 2,
+                "violation": 0,
+                "potentialviolation": 1,
+                "recommendation": 0,
+                "potentialrecommendation": 0,
+                "manual": 1,
+                "pass": 31
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/brother-scanncut.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 11,
+                "elementsViolation": 0,
+                "elementsViolationReview": 8,
+                "violation": 0,
+                "potentialviolation": 5,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 581
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/canvasworkspace.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 33,
+                "elementsViolation": 0,
+                "elementsViolationReview": 30,
+                "violation": 0,
+                "potentialviolation": 27,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 1096
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/cursor-character-demo.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 2,
+                "elementsViolation": 0,
+                "elementsViolationReview": 2,
+                "violation": 0,
+                "potentialviolation": 2,
+                "recommendation": 0,
+                "potentialrecommendation": 0,
+                "manual": 1,
+                "pass": 96
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/brother-scanncut.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 11,
+                "elementsViolation": 0,
+                "elementsViolationReview": 8,
+                "violation": 0,
+                "potentialviolation": 5,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 581
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/canvasworkspace.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 33,
+                "elementsViolation": 0,
+                "elementsViolationReview": 30,
+                "violation": 0,
+                "potentialviolation": 27,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 1096
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/gcc-expert24.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 30,
+                "elementsViolation": 0,
+                "elementsViolationReview": 27,
+                "violation": 0,
+                "potentialviolation": 24,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 946
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/guide-to-laser-files.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 26,
+                "elementsViolation": 0,
+                "elementsViolationReview": 22,
+                "violation": 0,
+                "potentialviolation": 18,
+                "recommendation": 2,
+                "potentialrecommendation": 5,
+                "manual": 5,
+                "pass": 1324
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/index.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 47,
+                "elementsViolation": 0,
+                "elementsViolationReview": 38,
+                "violation": 0,
+                "potentialviolation": 37,
+                "recommendation": 1,
+                "potentialrecommendation": 10,
+                "manual": 4,
+                "pass": 1408
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/laser-aeon.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 17,
+                "elementsViolation": 0,
+                "elementsViolationReview": 14,
+                "violation": 0,
+                "potentialviolation": 11,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 738
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/laser-eduard.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 17,
+                "elementsViolation": 0,
+                "elementsViolationReview": 14,
+                "violation": 0,
+                "potentialviolation": 11,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 738
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/laser-epilog.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 11,
+                "elementsViolation": 0,
+                "elementsViolationReview": 8,
+                "violation": 0,
+                "potentialviolation": 5,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 581
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/laser-lightburn.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 25,
+                "elementsViolation": 0,
+                "elementsViolationReview": 22,
+                "violation": 0,
+                "potentialviolation": 19,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 866
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/maskiner.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 38,
+                "elementsViolation": 0,
+                "elementsViolationReview": 36,
+                "violation": 0,
+                "potentialviolation": 43,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 2,
+                "pass": 1977
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/materialer.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 9,
+                "elementsViolation": 0,
+                "elementsViolationReview": 7,
+                "violation": 0,
+                "potentialviolation": 7,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 2,
+                "pass": 369
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/moving-head.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 7,
+                "elementsViolation": 0,
+                "elementsViolationReview": 6,
+                "violation": 0,
+                "potentialviolation": 3,
+                "recommendation": 1,
+                "potentialrecommendation": 0,
+                "manual": 3,
+                "pass": 371
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/online-tools.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 53,
+                "elementsViolation": 0,
+                "elementsViolationReview": 28,
+                "violation": 0,
+                "potentialviolation": 26,
+                "recommendation": 0,
+                "potentialrecommendation": 25,
+                "manual": 2,
+                "pass": 2213
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/prusa-mk3s.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 29,
+                "elementsViolation": 0,
+                "elementsViolationReview": 26,
+                "violation": 0,
+                "potentialviolation": 23,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 1016
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/prusa-mk4.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 28,
+                "elementsViolation": 0,
+                "elementsViolationReview": 25,
+                "violation": 0,
+                "potentialviolation": 22,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 1016
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/prusa-xl.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 34,
+                "elementsViolation": 0,
+                "elementsViolationReview": 31,
+                "violation": 0,
+                "potentialviolation": 28,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 1112
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/prusamini.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 23,
+                "elementsViolation": 0,
+                "elementsViolationReview": 20,
+                "violation": 0,
+                "potentialviolation": 17,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 936
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/prusaslicer.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 22,
+                "elementsViolation": 0,
+                "elementsViolationReview": 19,
+                "violation": 0,
+                "potentialviolation": 16,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 818
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/serigrafi.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 12,
+                "elementsViolation": 0,
+                "elementsViolationReview": 7,
+                "violation": 0,
+                "potentialviolation": 4,
+                "recommendation": 1,
+                "potentialrecommendation": 4,
+                "manual": 3,
+                "pass": 958
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/surecutalot.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 24,
+                "elementsViolation": 0,
+                "elementsViolationReview": 21,
+                "violation": 0,
+                "potentialviolation": 18,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 850
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/tekstilvinyl.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 19,
+                "elementsViolation": 0,
+                "elementsViolationReview": 13,
+                "violation": 0,
+                "potentialviolation": 10,
+                "recommendation": 1,
+                "potentialrecommendation": 5,
+                "manual": 3,
+                "pass": 1133
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/tilgaengelighedserklaering.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 5,
+                "elementsViolation": 0,
+                "elementsViolationReview": 5,
+                "violation": 0,
+                "potentialviolation": 4,
+                "recommendation": 0,
+                "potentialrecommendation": 0,
+                "manual": 2,
+                "pass": 298
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/en/wazer.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 18,
+                "elementsViolation": 0,
+                "elementsViolationReview": 15,
+                "violation": 0,
+                "potentialviolation": 12,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 689
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/garn-bandit.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 5,
+                "elementsViolation": 0,
+                "elementsViolationReview": 5,
+                "violation": 0,
+                "potentialviolation": 5,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 1,
+                "pass": 246
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/gcc-expert24.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 30,
+                "elementsViolation": 0,
+                "elementsViolationReview": 27,
+                "violation": 0,
+                "potentialviolation": 24,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 946
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/guide-til-laserfiler.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 24,
+                "elementsViolation": 0,
+                "elementsViolationReview": 20,
+                "violation": 0,
+                "potentialviolation": 15,
+                "recommendation": 2,
+                "potentialrecommendation": 5,
+                "manual": 5,
+                "pass": 1324
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/index.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 40,
+                "elementsViolation": 0,
+                "elementsViolationReview": 37,
+                "violation": 0,
+                "potentialviolation": 36,
+                "recommendation": 1,
+                "potentialrecommendation": 5,
+                "manual": 5,
+                "pass": 1246
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/laser-aeon.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 17,
+                "elementsViolation": 0,
+                "elementsViolationReview": 14,
+                "violation": 0,
+                "potentialviolation": 11,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 738
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/laser-eduard.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 17,
+                "elementsViolation": 0,
+                "elementsViolationReview": 14,
+                "violation": 0,
+                "potentialviolation": 11,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 738
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/laser-epilog.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 11,
+                "elementsViolation": 0,
+                "elementsViolationReview": 8,
+                "violation": 0,
+                "potentialviolation": 5,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 581
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/laser-lightburn.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 25,
+                "elementsViolation": 0,
+                "elementsViolationReview": 22,
+                "violation": 0,
+                "potentialviolation": 19,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 866
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/maskiner.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 38,
+                "elementsViolation": 0,
+                "elementsViolationReview": 36,
+                "violation": 0,
+                "potentialviolation": 42,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 2,
+                "pass": 1977
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/materiale-tykkelse-skalering.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 19,
+                "elementsViolation": 0,
+                "elementsViolationReview": 13,
+                "violation": 0,
+                "potentialviolation": 11,
+                "recommendation": 4,
+                "potentialrecommendation": 2,
+                "manual": 2,
+                "pass": 731
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/materialer.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 9,
+                "elementsViolation": 0,
+                "elementsViolationReview": 7,
+                "violation": 0,
+                "potentialviolation": 6,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 2,
+                "pass": 369
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/moving-head.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 7,
+                "elementsViolation": 0,
+                "elementsViolationReview": 6,
+                "violation": 0,
+                "potentialviolation": 3,
+                "recommendation": 1,
+                "potentialrecommendation": 0,
+                "manual": 3,
+                "pass": 371
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/brother-scanncut.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 0,
+                "elementsViolation": 0,
+                "elementsViolationReview": 0,
+                "violation": 0,
+                "potentialviolation": 0,
+                "recommendation": 0,
+                "potentialrecommendation": 0,
+                "manual": 0,
+                "pass": 42
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/canvasworkspace.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 6,
+                "elementsViolation": 0,
+                "elementsViolationReview": 6,
+                "violation": 0,
+                "potentialviolation": 6,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 217
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/brother-scanncut.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 0,
+                "elementsViolation": 0,
+                "elementsViolationReview": 0,
+                "violation": 0,
+                "potentialviolation": 0,
+                "recommendation": 0,
+                "potentialrecommendation": 0,
+                "manual": 0,
+                "pass": 42
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/canvasworkspace.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 9,
+                "elementsViolation": 0,
+                "elementsViolationReview": 9,
+                "violation": 0,
+                "potentialviolation": 9,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 217
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/gcc-expert24.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 6,
+                "elementsViolation": 0,
+                "elementsViolationReview": 6,
+                "violation": 0,
+                "potentialviolation": 6,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 1,
+                "pass": 148
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/index.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 6,
+                "elementsViolation": 0,
+                "elementsViolationReview": 6,
+                "violation": 0,
+                "potentialviolation": 5,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 2,
+                "pass": 184
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/laser-aeon.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 10,
+                "elementsViolation": 0,
+                "elementsViolationReview": 10,
+                "violation": 0,
+                "potentialviolation": 9,
+                "recommendation": 0,
+                "potentialrecommendation": 3,
+                "manual": 2,
+                "pass": 162
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/laser-eduard.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 10,
+                "elementsViolation": 0,
+                "elementsViolationReview": 10,
+                "violation": 0,
+                "potentialviolation": 9,
+                "recommendation": 0,
+                "potentialrecommendation": 3,
+                "manual": 2,
+                "pass": 162
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/laser-epilog.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 3,
+                "elementsViolation": 0,
+                "elementsViolationReview": 3,
+                "violation": 0,
+                "potentialviolation": 2,
+                "recommendation": 0,
+                "potentialrecommendation": 0,
+                "manual": 1,
+                "pass": 97
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/laser-lightburn.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 10,
+                "elementsViolation": 0,
+                "elementsViolationReview": 10,
+                "violation": 0,
+                "potentialviolation": 9,
+                "recommendation": 0,
+                "potentialrecommendation": 3,
+                "manual": 2,
+                "pass": 162
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/prusa-mk3s.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 8,
+                "elementsViolation": 0,
+                "elementsViolationReview": 8,
+                "violation": 0,
+                "potentialviolation": 8,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 270
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/prusa-mk4.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 9,
+                "elementsViolation": 0,
+                "elementsViolationReview": 9,
+                "violation": 0,
+                "potentialviolation": 9,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 228
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/prusa-xl.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 9,
+                "elementsViolation": 0,
+                "elementsViolationReview": 9,
+                "violation": 0,
+                "potentialviolation": 10,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 217
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/prusamini.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 9,
+                "elementsViolation": 0,
+                "elementsViolationReview": 9,
+                "violation": 0,
+                "potentialviolation": 9,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 228
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/prusaslicer.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 7,
+                "elementsViolation": 0,
+                "elementsViolationReview": 7,
+                "violation": 0,
+                "potentialviolation": 6,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 1,
+                "pass": 152
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/en/surecutalot.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 6,
+                "elementsViolation": 0,
+                "elementsViolationReview": 6,
+                "violation": 0,
+                "potentialviolation": 6,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 1,
+                "pass": 148
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/gcc-expert24.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 5,
+                "elementsViolation": 0,
+                "elementsViolationReview": 5,
+                "violation": 0,
+                "potentialviolation": 5,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 1,
+                "pass": 148
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/index.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 6,
+                "elementsViolation": 0,
+                "elementsViolationReview": 6,
+                "violation": 0,
+                "potentialviolation": 5,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 2,
+                "pass": 184
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/laser-aeon.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 9,
+                "elementsViolation": 0,
+                "elementsViolationReview": 9,
+                "violation": 0,
+                "potentialviolation": 8,
+                "recommendation": 0,
+                "potentialrecommendation": 3,
+                "manual": 2,
+                "pass": 162
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/laser-eduard.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 9,
+                "elementsViolation": 0,
+                "elementsViolationReview": 9,
+                "violation": 0,
+                "potentialviolation": 8,
+                "recommendation": 0,
+                "potentialrecommendation": 3,
+                "manual": 2,
+                "pass": 162
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/laser-epilog.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 3,
+                "elementsViolation": 0,
+                "elementsViolationReview": 3,
+                "violation": 0,
+                "potentialviolation": 2,
+                "recommendation": 0,
+                "potentialrecommendation": 0,
+                "manual": 1,
+                "pass": 97
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/laser-lightburn.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 9,
+                "elementsViolation": 0,
+                "elementsViolationReview": 9,
+                "violation": 0,
+                "potentialviolation": 8,
+                "recommendation": 0,
+                "potentialrecommendation": 3,
+                "manual": 2,
+                "pass": 162
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/prusa-mk3s.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 8,
+                "elementsViolation": 0,
+                "elementsViolationReview": 8,
+                "violation": 0,
+                "potentialviolation": 8,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 270
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/prusa-mk4.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 8,
+                "elementsViolation": 0,
+                "elementsViolationReview": 8,
+                "violation": 0,
+                "potentialviolation": 8,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 228
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/prusa-xl.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 8,
+                "elementsViolation": 0,
+                "elementsViolationReview": 8,
+                "violation": 0,
+                "potentialviolation": 8,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 217
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/prusamini.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 8,
+                "elementsViolation": 0,
+                "elementsViolationReview": 8,
+                "violation": 0,
+                "potentialviolation": 8,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 1,
+                "pass": 228
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/prusaslicer.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 5,
+                "elementsViolation": 0,
+                "elementsViolationReview": 5,
+                "violation": 0,
+                "potentialviolation": 4,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 1,
+                "pass": 152
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/old/surecutalot.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 5,
+                "elementsViolation": 0,
+                "elementsViolationReview": 5,
+                "violation": 0,
+                "potentialviolation": 5,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 1,
+                "pass": 148
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/online-tools.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 56,
+                "elementsViolation": 0,
+                "elementsViolationReview": 29,
+                "violation": 0,
+                "potentialviolation": 27,
+                "recommendation": 0,
+                "potentialrecommendation": 27,
+                "manual": 2,
+                "pass": 2217
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/prusa-mk3s.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 28,
+                "elementsViolation": 0,
+                "elementsViolationReview": 25,
+                "violation": 0,
+                "potentialviolation": 22,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 1016
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/prusa-mk4.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 28,
+                "elementsViolation": 0,
+                "elementsViolationReview": 25,
+                "violation": 0,
+                "potentialviolation": 22,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 1016
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/prusa-xl.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 34,
+                "elementsViolation": 0,
+                "elementsViolationReview": 31,
+                "violation": 0,
+                "potentialviolation": 28,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 1112
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/prusamini.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 23,
+                "elementsViolation": 0,
+                "elementsViolationReview": 20,
+                "violation": 0,
+                "potentialviolation": 17,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 936
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/prusaslicer.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 22,
+                "elementsViolation": 0,
+                "elementsViolationReview": 19,
+                "violation": 0,
+                "potentialviolation": 16,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 818
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/serigrafi.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 12,
+                "elementsViolation": 0,
+                "elementsViolationReview": 7,
+                "violation": 0,
+                "potentialviolation": 4,
+                "recommendation": 1,
+                "potentialrecommendation": 4,
+                "manual": 3,
+                "pass": 958
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/surecutalot.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 24,
+                "elementsViolation": 0,
+                "elementsViolationReview": 21,
+                "violation": 0,
+                "potentialviolation": 18,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 850
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/tekstilvinyl.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 17,
+                "elementsViolation": 0,
+                "elementsViolationReview": 11,
+                "violation": 0,
+                "potentialviolation": 8,
+                "recommendation": 1,
+                "potentialrecommendation": 5,
+                "manual": 3,
+                "pass": 1133
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/tilgaengelighedserklaering.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 5,
+                "elementsViolation": 0,
+                "elementsViolationReview": 5,
+                "violation": 0,
+                "potentialviolation": 3,
+                "recommendation": 0,
+                "potentialrecommendation": 0,
+                "manual": 2,
+                "pass": 299
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/vektor-viktor.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 32,
+                "elementsViolation": 0,
+                "elementsViolationReview": 32,
+                "violation": 0,
+                "potentialviolation": 70,
+                "recommendation": 0,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 975
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/wazer.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 18,
+                "elementsViolation": 0,
+                "elementsViolationReview": 15,
+                "violation": 0,
+                "potentialviolation": 12,
+                "recommendation": 1,
+                "potentialrecommendation": 2,
+                "manual": 3,
+                "pass": 689
+            }
+        },
+        {
+            "label": "/home/johsdahl/Projects/FablabGuides/wedo-blokvaerksted.html",
+            "counts": {
+                "ignored": 0,
+                "elements": 73,
+                "elementsViolation": 1,
+                "elementsViolationReview": 73,
+                "violation": 1,
+                "potentialviolation": 86,
+                "recommendation": 0,
+                "potentialrecommendation": 4,
+                "manual": 2,
+                "pass": 1572
+            }
+        }
+    ]
+}

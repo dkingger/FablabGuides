@@ -832,3 +832,42 @@ img {
         align-items: flex-start;
     }
 }
+
+/* Accessibility: readable badges and keyboard focus across shared pages. */
+.eyebrow, .section-tag { color: var(--brand-strong, #112d4e); }
+.button-secondary {
+    color: var(--brand-strong, #112d4e);
+    background: #e6edf5;
+}
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex="0"]:focus-visible {
+    outline: 3px solid #112d4e;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px #fff;
+}
+@media (forced-colors: active) {
+    :focus-visible { outline-color: Highlight; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+}
+@media (max-width: 760px) {
+    .site-header { position: static; }
+    .container.nav-wrap {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 12px 16px;
+    }
+    .top-nav {
+        width: 100%;
+        flex-wrap: wrap;
+        overflow: visible;
+    }
+    .top-nav .nav-link { white-space: normal; }
+    .hero-grid, .section-stack, .related-grid, .category-grid {
+        min-width: 0;
+    }
+    .section-card, .category-card, .guide-content-blocks, .guide-text-block {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+}

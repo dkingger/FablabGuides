@@ -80,8 +80,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
     <link rel="manifest" href="/billeder/site.webmanifest">
     <meta name="apple-mobile-web-app-title" content="FabLab">
+<link rel="stylesheet" href="../accessibility.css">
 </head>
 <body>
+<nav aria-label="Skip link"><a class="legacy-skip" href="#main-content">Skip to main content</a></nav>
+<main id="main-content" tabindex="-1">
     <a name="top"></a>
     <h1>Prusa MK4</h1>
     <p>The Prusa MK4 is an advanced 3D printer with many automatic features. Below you will find guides for changing filament and starting a print.</p>
@@ -168,5 +171,6 @@
         updatePrintCarousel();
     </script>
     <script src="/install-app.js" defer></script>
+</main>
 </body>
 </html>

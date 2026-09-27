@@ -1,0 +1,12 @@
+const fs=require('fs');const puppeteer=require('/home/johsdahl/.npm/_npx/5501af16bfa30e9f/node_modules/puppeteer');
+(async()=>{const b=await puppeteer.launch({headless:true,args:['--no-sandbox']});let out={date:new Date().toISOString(),browser:await b.version(),pages:[]};
+try{for(const path of JSON.parse(fs.readFileSync('/tmp/fablab-pages.json'))){
+const p=await b.newPage();let errors=[];p.on('pageerror',e=>errors.push(e.message));
+await p.setRequestInterception(true);p.on('request',r=>{if(r.url().startsWith('http://127.0.0.1:8765/')||r.url().startsWith('data:'))r.continue();else r.abort()});
+try{await p.setViewport({width:1280,height:900});await p.goto('http://127.0.0.1:8765/'+path,{waitUntil:'networkidle0',timeout:15000});
+let row={path,errors,structure:await p.evaluate(()=>({title:document.title,lang:document.documentElement.lang,headings:[...document.querySelectorAll('h1,h2,h3')].map(e=>({level:e.tagName,text:e.textContent.trim()})),images:[...document.images].map(e=>({src:e.getAttribute('src'),alt:e.getAttribute('alt')})),inputs:document.querySelectorAll('input,select,textarea').length,canvases:document.querySelectorAll('canvas').length,media:document.querySelectorAll('video,audio,iframe').length})),layouts:[]};
+for(const width of [1280,375,320]){await p.setViewport({width,height:900});row.layouts.push(await p.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,overflow:[...document.querySelectorAll('h1,h2,h3,p,a,button,input,select,canvas')].filter(e=>{let r=e.getBoundingClientRect();let s=getComputedStyle(e);return r.width&&r.height&&s.visibility!=='hidden'&&(r.right>innerWidth+2||r.left< -2)&&!e.closest('[hidden],dialog:not([open])')&&!e.classList.contains('skip-link')}).slice(0,25).map(e=>({tag:e.tagName,text:e.textContent.trim().slice(0,90),right:Math.round(e.getBoundingClientRect().right)}))})));}
+await p.setViewport({width:1280,height:900});await p.addStyleTag({content:'* {line-height:1.5!important;letter-spacing:.12em!important;word-spacing:.16em!important} p {margin-bottom:2em!important}'});row.textSpacing=await p.evaluate(()=>({scrollWidth:document.documentElement.scrollWidth,width:innerWidth}));
+out.pages.push(row);console.log(path);fs.writeFileSync('/tmp/fablab-browser-audit.json',JSON.stringify(out,null,2));
+}catch(e){out.pages.push({path,error:e.message});}finally{await p.close()}
+}}finally{fs.writeFileSync('/tmp/fablab-browser-audit.json',JSON.stringify(out,null,2));await b.close()}})();

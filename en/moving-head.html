@@ -108,10 +108,10 @@
     <meta name="apple-mobile-web-app-title" content="FabLab">
 </head>
 <body class="guide-shell">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header">
+        <a class="skip-link" href="#main-content">Skip to main content</a>
         <div class="container nav-wrap">
-            <a class="brand interactive" href="index.html" aria-label="To front page">
+            <a class="brand interactive" href="index.html" aria-label="FabLab Guides – To front page">
                 <span class="brand-text">
                     <strong>FabLab Guides</strong>
                 </span>
@@ -121,25 +121,25 @@
         </div>
     </header>
 
-    <main id="main-content" class="moving-head-page">
+    <main tabindex="-1" id="main-content" class="moving-head-page">
         <section class="hero-section">
             <div class="container hero-grid">
-                <article class="hero-card interactive">
+                <div class="hero-card interactive">
                     <p class="eyebrow">Cursor Character</p>
                     <h1>Who are we?</h1>
                     <p class="lead">This site and the rest of FabLab Guides are created and maintained by Rene and Johannes.</p>
-                    <div class="hero-pills" aria-label="Feature overview">
+                    <div class="hero-pills">
                         <span class="pill">Open Source</span>
                         <span class="pill">Open Denmark</span>
                         <span class="pill">Creative Commons</span>
                     </div>
-                </article>
+                </div>
             </div>
         </section>
 
         <section class="container moving-head-layout" aria-label="The Heads demo">
             <div class="moving-head-main">
-                <article class="moving-head-stage interactive">
+                <div class="moving-head-stage interactive">
                     <h2>Johannes Dahl</h2>
                     <div class="flg-cursor-character" data-flg-character role="img" aria-label="FabLab figure following the cursor" style="--flg-character-width: 560px">
                         <img class="flg-cursor-character__fallback" src="../assets/cursor-character/frames/center.webp" width="1280" height="720" alt="FabLab figure in neutral position">
@@ -150,24 +150,24 @@
                         <img class="flg-cursor-character__fallback" src="../assets/moving-head/frames/center.webp" width="880" height="720" alt="Moving Head figure in neutral position">
                         <canvas class="flg-cursor-character__canvas" aria-hidden="true"></canvas>
                     </div>
-                </article>
+                </div>
             </div>
 
-            <aside class="moving-head-side">
-                <article class="moving-head-card interactive">
+            <aside class="moving-head-side" aria-label="About the project">
+                <div class="moving-head-card interactive">
                     <h2>About us</h2>
                     <p>We are Rene and Johannes, and we create and maintain FabLab Guides together.</p>
                     <p>Our focus is to keep the guides simple, visual, free and easy to use for everyone.</p>
-                </article>
+                </div>
 
-                <article class="moving-head-note interactive">
+                <div class="moving-head-note interactive">
                     <h2>Tips</h2>
                     <ul>
                         <li>Move the cursor around the figure to see the head rotate.</li>
                         <li>Keep the cursor close to the face for the neutral center frame.</li>
                         <li>On touch screens the figure stays in a calm fallback state.</li>
                     </ul>
-                </article>
+                </div>
             </aside>
         </section>
     </main>

@@ -1,0 +1,48 @@
+{
+  "external_references": {
+    "guide-renderer.js": [
+      "old/en/index.html",
+      "old/index.html"
+    ]
+  },
+  "kept": [
+    "old/accessibility.css",
+    "old/brother-scanncut.html",
+    "old/canvasworkspace.html",
+    "old/en/brother-scanncut.html",
+    "old/en/canvasworkspace.html",
+    "old/en/gcc-expert24.html",
+    "old/en/index.html",
+    "old/en/laser-aeon.html",
+    "old/en/laser-eduard.html",
+    "old/en/laser-epilog.html",
+    "old/en/laser-lightburn.html",
+    "old/en/prusa-mk3s.html",
+    "old/en/prusa-mk4.html",
+    "old/en/prusa-xl.html",
+    "old/en/prusamini.html",
+    "old/en/prusaslicer.html",
+    "old/en/surecutalot.html",
+    "old/gcc-expert24.html",
+    "old/index.html",
+    "old/laser-aeon.html",
+    "old/laser-eduard.html",
+    "old/laser-epilog.html",
+    "old/laser-lightburn.html",
+    "old/prusa-mk3s.html",
+    "old/prusa-mk4.html",
+    "old/prusa-xl.html",
+    "old/prusamini.html",
+    "old/prusaslicer.html",
+    "old/surecutalot.html"
+  ],
+  "delete": [
+    "old/en/google6fee8520323cc3a8.html",
+    "old/en/laser.html",
+    "old/en/under-udvikling.html",
+    "old/google6fee8520323cc3a8.html",
+    "old/hemmelig.html",
+    "old/laser.html",
+    "old/under-udvikling.html"
+  ]
+}

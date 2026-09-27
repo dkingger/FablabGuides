@@ -1,0 +1,1400 @@
+{
+    "results": [
+        {
+            "ruleId": "style_highcontrast_visible",
+            "value": [
+                "VIOLATION",
+                "MANUAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/link[3]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Manual_1",
+            "message": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "manual",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_highcontrast_visible.html#%7B%22message%22%3A%22Confirm%20Windows%20high%20contrast%20mode%20is%20supported%20when%20using%20CSS%20to%20include%2C%20position%20or%20alter%20non-decorative%20content%22%2C%22snippet%22%3A%22%3Clink%20rel%3D%5C%22stylesheet%5C%22%20href%3D%5C%22https%3A%2F%2Ffonts.googleapis.com%2Fcss2%3Ffamily%3DPlus%2BJakarta%2BSans%3Awght%40400%3B500%3B600%3B700%3B800%26display%3Dswap%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22MANUAL%22%5D%2C%22reasonId%22%3A%22Manual_1%22%2C%22ruleId%22%3A%22style_highcontrast_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_color_misuse",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/head[1]/style[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Potential_1",
+            "message": "Verify color is not used as the only visual means of conveying information",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 0,
+                "width": 0
+            },
+            "snippet": "<style>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_color_misuse.html#%7B%22message%22%3A%22Verify%20color%20is%20not%20used%20as%20the%20only%20visual%20means%20of%20conveying%20information%22%2C%22snippet%22%3A%22%3Cstyle%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22Potential_1%22%2C%22ruleId%22%3A%22style_color_misuse%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "img_alt_background",
+            "value": [
+                "RECOMMENDATION",
+                "MANUAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]",
+                "aria": "/document[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Manual_1",
+            "message": "Verify important background image information has a text alternative in system high contrast mode",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 0,
+                "top": 0,
+                "height": 9428,
+                "width": 800
+            },
+            "snippet": "<body class=\"guide-shell\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "manual",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/img_alt_background.html#%7B%22message%22%3A%22Verify%20important%20background%20image%20information%20has%20a%20text%20alternative%20in%20system%20high%20contrast%20mode%22%2C%22snippet%22%3A%22%3Cbody%20class%3D%5C%22guide-shell%5C%22%3E%22%2C%22value%22%3A%5B%22RECOMMENDATION%22%2C%22MANUAL%22%5D%2C%22reasonId%22%3A%22Manual_1%22%2C%22ruleId%22%3A%22img_alt_background%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_content_in_landmark",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Content is not within a landmark element",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 12,
+                "top": -77,
+                "height": 50,
+                "width": 191
+            },
+            "snippet": "<a href=\"#main-content\" class=\"skip-link\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_content_in_landmark.html#%7B%22message%22%3A%22Content%20is%20not%20within%20a%20landmark%20element%22%2C%22snippet%22%3A%22%3Ca%20href%3D%5C%22%23main-content%5C%22%20class%3D%5C%22skip-link%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22aria_content_in_landmark%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "element_tabbable_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/a[1]",
+                "aria": "/document[1]/link[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_visible",
+            "message": "Confirm the element should be tabbable and if so, it becomes visible when it has keyboard focus",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 12,
+                "top": -77,
+                "height": 50,
+                "width": 191
+            },
+            "snippet": "<a href=\"#main-content\" class=\"skip-link\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/element_tabbable_visible.html#%7B%22message%22%3A%22Confirm%20the%20element%20should%20be%20tabbable%20and%20if%20so%2C%20it%20becomes%20visible%20when%20it%20has%20keyboard%20focus%22%2C%22snippet%22%3A%22%3Ca%20href%3D%5C%22%23main-content%5C%22%20class%3D%5C%22skip-link%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_visible%22%2C%22ruleId%22%3A%22element_tabbable_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "label_name_visible",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/header[1]/div[1]/a[1]",
+                "aria": "/document[1]/banner[1]/link[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Accessible name does not match or contain the visible label text",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 24,
+                "top": 20,
+                "height": 68,
+                "width": 228
+            },
+            "snippet": "<a aria-label=\"To front page\" href=\"index.html\" class=\"brand interactive\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/label_name_visible.html#%7B%22message%22%3A%22Accessible%20name%20does%20not%20match%20or%20contain%20the%20visible%20label%20text%22%2C%22snippet%22%3A%22%3Ca%20aria-label%3D%5C%22To%20front%20page%5C%22%20href%3D%5C%22index.html%5C%22%20class%3D%5C%22brand%20interactive%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22label_name_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 12.48px and weight of 700",
+            "messageArgs": [
+                "4.01",
+                12.48,
+                700
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 67,
+                "top": 310,
+                "height": 40,
+                "width": 141
+            },
+            "snippet": "<span class=\"eyebrow\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012.48px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22eyebrow%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%224.01%22%2C12.48%2C700%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[2]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[2]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 1059,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"MakerCase\" src=\"../billeder/tools/makecase.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22MakerCase%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fmakecase.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[2]/div[1]/div[2]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[2]/button[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 1311,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Boxes.py\" src=\"../billeder/tools/boxes_py.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Boxes.py%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fboxes_py.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[2]/div[1]/div[3]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[2]/button[3]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 1564,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Make a box\" src=\"../billeder/tools/make_a_box.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Make%20a%20box%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fmake_a_box.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[2]/div[1]/div[4]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[2]/button[4]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 1816,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Laser Cutter Box\" src=\"../billeder/tools/laser_cutter_box.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Laser%20Cutter%20Box%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Flaser_cutter_box.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[2]/div[1]/div[5]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[2]/button[5]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 2095,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Template Maker\" src=\"../billeder/tools/template_maker_nl.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Template%20Maker%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Ftemplate_maker_nl.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[2]/div[1]/div[6]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[2]/button[6]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 2373,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Box Studio\" src=\"../billeder/tools/box_studio.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Box%20Studio%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fbox_studio.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[2]/div[1]/div[6]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[2]/generic[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 324,
+                "top": 2433,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[3]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[3]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 2797,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Involute Spur Gear Builder\" src=\"../billeder/tools/involute_spur_gear_builder.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Involute%20Spur%20Gear%20Builder%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Finvolute_spur_gear_builder.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[3]/div[1]/div[2]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[3]/button[2]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 3050,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Gear Designer\" src=\"../billeder/tools/gear_designer.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Gear%20Designer%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fgear_designer.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[3]/div[1]/div[3]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[3]/button[3]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 3303,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"GearDXF\" src=\"../billeder/tools/geardxf.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22GearDXF%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fgeardxf.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[3]/div[1]/div[3]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[3]/generic[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 307,
+                "top": 3363,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[4]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[4]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 3727,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Living Hinge Generator\" src=\"../billeder/tools/living_hinge_generator.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Living%20Hinge%20Generator%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fliving_hinge_generator.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[4]/div[1]/div[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[4]/generic[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 418,
+                "top": 3787,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "text_sensory_misuse",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[4]/div[1]/div[1]/p[1]",
+                "aria": "/document[1]/main[1]/article[4]/paragraph[2]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_other",
+            "message": "Confirm the user instruction is still understandable without the word(s) '-shaped'",
+            "messageArgs": [
+                "-shaped"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 3879,
+                "height": 52,
+                "width": 656
+            },
+            "snippet": "<p>",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_sensory_misuse.html#%7B%22message%22%3A%22Confirm%20the%20user%20instruction%20is%20still%20understandable%20without%20the%20word(s)%20'-shaped'%22%2C%22snippet%22%3A%22%3Cp%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_other%22%2C%22ruleId%22%3A%22text_sensory_misuse%22%2C%22msgArgs%22%3A%5B%22-shaped%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[5]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[5]/button[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 4152,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Laser-Cut Maze Designer\" src=\"../billeder/tools/lazer-cut_maze_designer.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Laser-Cut%20Maze%20Designer%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Flazer-cut_maze_designer.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[5]/div[1]/div[2]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[5]/button[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 4404,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Maze Generator\" src=\"../billeder/tools/maze_generator.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Maze%20Generator%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fmaze_generator.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[6]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[6]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 4829,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Autodesk Tinkercad\" src=\"../billeder/tools/tinkercad.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Autodesk%20Tinkercad%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Ftinkercad.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[6]/div[1]/div[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[6]/generic[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 314,
+                "top": 4889,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[6]/div[1]/div[2]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[6]/button[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 5107,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"JSCAD\" src=\"../billeder/tools/jscad.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22JSCAD%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fjscad.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[6]/div[1]/div[2]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[6]/generic[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 290,
+                "top": 5167,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[6]/div[1]/div[3]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[6]/button[3]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 5385,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"SketchForge\" src=\"../billeder/tools/sketchforge.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22SketchForge%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fsketchforge.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[6]/div[1]/div[3]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[6]/generic[3]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 341,
+                "top": 5445,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[6]/div[1]/div[4]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[6]/button[4]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 5664,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Onshape\" src=\"../billeder/tools/onshape.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Onshape%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fonshape.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[6]/div[1]/div[4]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[6]/generic[4]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 308,
+                "top": 5724,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[7]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[7]/button[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 6088,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"MakerWorld MakerLab\" src=\"../billeder/tools/makerworld_makerlab.svg\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22MakerWorld%20MakerLab%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fmakerworld_makerlab.svg%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[7]/div[1]/div[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[7]/generic[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 414,
+                "top": 6148,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[8]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[8]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 6513,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Wokwi\" src=\"../billeder/tools/wokwi.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Wokwi%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fwokwi.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[8]/div[1]/div[1]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[8]/generic[1]"
+            },
+            "ruleTime": 1,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 290,
+                "top": 6573,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[8]/div[1]/div[2]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[8]/button[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 6791,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"CircuitVerse\" src=\"../billeder/tools/circuitverse.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22CircuitVerse%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fcircuitverse.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_attribute_valid",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[8]/div[1]/div[2]/div[1]/div[1]/span[1]",
+                "aria": "/document[1]/main[1]/article[8]/generic[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_invalid_implicit_role_attr",
+            "message": "The ARIA attributes \"aria-label\" are not valid for the element <span> with implicit ARIA role \"generic\"",
+            "messageArgs": [
+                "aria-label",
+                "span",
+                "generic"
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 334,
+                "top": 6851,
+                "height": 24,
+                "width": 48
+            },
+            "snippet": "<span aria-label=\"New tool\" class=\"new-badge\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_attribute_valid.html#%7B%22message%22%3A%22The%20ARIA%20attributes%20%5C%22aria-label%5C%22%20are%20not%20valid%20for%20the%20element%20%3Cspan%3E%20with%20implicit%20ARIA%20role%20%5C%22generic%5C%22%22%2C%22snippet%22%3A%22%3Cspan%20aria-label%3D%5C%22New%20tool%5C%22%20class%3D%5C%22new-badge%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_invalid_implicit_role_attr%22%2C%22ruleId%22%3A%22aria_attribute_valid%22%2C%22msgArgs%22%3A%5B%22aria-label%22%2C%22span%22%2C%22generic%22%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[9]/div[1]/div[1]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[9]/button[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 7215,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Vector Ruler Generator\" src=\"../billeder/tools/vector_ruler_generator.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Vector%20Ruler%20Generator%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fvector_ruler_generator.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[9]/div[1]/div[2]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[9]/button[2]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 7468,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Jigsaw Puzzle Generator\" src=\"../billeder/tools/jigsaw_puzzle_generator.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Jigsaw%20Puzzle%20Generator%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fjigsaw_puzzle_generator.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[9]/div[1]/div[3]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[9]/button[3]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 7721,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"SVGnest\" src=\"../billeder/tools/SVGnest.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22SVGnest%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2FSVGnest.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "style_focus_visible",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/div[1]/article[9]/div[1]/div[4]/div[1]/img[1]",
+                "aria": "/document[1]/main[1]/article[9]/button[4]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_focus_not_visible",
+            "message": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 72,
+                "top": 7973,
+                "height": 144,
+                "width": 144
+            },
+            "snippet": "<img tabindex=\"0\" role=\"button\" loading=\"lazy\" alt=\"Deepnest\" src=\"../billeder/tools/deepnest.png\" class=\"tool-logo\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/style_focus_visible.html#%7B%22message%22%3A%22Check%20the%20keyboard%20focus%20indicator%20is%20visible%20when%20using%20CSS%20declaration%20for%20'border'%20or%20'outline'%22%2C%22snippet%22%3A%22%3Cimg%20tabindex%3D%5C%220%5C%22%20role%3D%5C%22button%5C%22%20loading%3D%5C%22lazy%5C%22%20alt%3D%5C%22Deepnest%5C%22%20src%3D%5C%22..%2Fbilleder%2Ftools%2Fdeepnest.png%5C%22%20class%3D%5C%22tool-logo%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_focus_not_visible%22%2C%22ruleId%22%3A%22style_focus_visible%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "aria_complementary_labelled",
+            "value": [
+                "VIOLATION",
+                "FAIL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/aside[1]",
+                "aria": "/document[1]/main[1]/complementary[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "Fail_1",
+            "message": "Element with \"complementary\" role does not have a label",
+            "messageArgs": [],
+            "apiArgs": [],
+            "bounds": {
+                "left": 24,
+                "top": 8252,
+                "height": 693,
+                "width": 752
+            },
+            "snippet": "<aside class=\"guide-side\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "violation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/aria_complementary_labelled.html#%7B%22message%22%3A%22Element%20with%20%5C%22complementary%5C%22%20role%20does%20not%20have%20a%20label%22%2C%22snippet%22%3A%22%3Caside%20class%3D%5C%22guide-side%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22FAIL%22%5D%2C%22reasonId%22%3A%22Fail_1%22%2C%22ruleId%22%3A%22aria_complementary_labelled%22%2C%22msgArgs%22%3A%5B%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/aside[1]/article[1]/span[1]",
+                "aria": "/document[1]/main[1]/complementary[1]/article[1]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 12.48px and weight of 700",
+            "messageArgs": [
+                "4.01",
+                12.48,
+                700
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 55,
+                "top": 8283,
+                "height": 40,
+                "width": 108
+            },
+            "snippet": "<span class=\"section-tag\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012.48px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22section-tag%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%224.01%22%2C12.48%2C700%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/main[1]/section[2]/div[1]/aside[1]/article[2]/span[1]",
+                "aria": "/document[1]/main[1]/complementary[1]/article[2]"
+            },
+            "ruleTime": 0,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 12.48px and weight of 700",
+            "messageArgs": [
+                "4.01",
+                12.48,
+                700
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 55,
+                "top": 8731,
+                "height": 40,
+                "width": 156
+            },
+            "snippet": "<span class=\"section-tag\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2012.48px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Cspan%20class%3D%5C%22section-tag%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%224.01%22%2C12.48%2C700%5D%7D"
+        },
+        {
+            "ruleId": "text_contrast_sufficient",
+            "value": [
+                "VIOLATION",
+                "POTENTIAL"
+            ],
+            "path": {
+                "dom": "/html[1]/body[1]/footer[1]/div[1]/div[3]/a[1]",
+                "aria": "/document[1]/contentinfo[1]/link[3]"
+            },
+            "ruleTime": 1,
+            "reasonId": "potential_graphic_background",
+            "message": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size 16px and weight of 700",
+            "messageArgs": [
+                "4.01",
+                16,
+                700
+            ],
+            "apiArgs": [],
+            "bounds": {
+                "left": 57,
+                "top": 9299,
+                "height": 52,
+                "width": 149
+            },
+            "snippet": "<a href=\"index.html\" class=\"button button-secondary interactive\">",
+            "source": null,
+            "category": "Accessibility",
+            "level": "potentialviolation",
+            "ignored": false,
+            "help": "https://able.ibm.com/rules/archives/2026.07.13/doc/en-US/text_contrast_sufficient.html#%7B%22message%22%3A%22Verify%20the%20contrast%20ratio%20of%20the%20text%20against%20the%20lightest%20and%20the%20darkest%20colors%20of%20the%20background%20meets%20the%20WCAG%20AA%20minimum%20requirements%20for%20text%20of%20size%2016px%20and%20weight%20of%20700%22%2C%22snippet%22%3A%22%3Ca%20href%3D%5C%22index.html%5C%22%20class%3D%5C%22button%20button-secondary%20interactive%5C%22%3E%22%2C%22value%22%3A%5B%22VIOLATION%22%2C%22POTENTIAL%22%5D%2C%22reasonId%22%3A%22potential_graphic_background%22%2C%22ruleId%22%3A%22text_contrast_sufficient%22%2C%22msgArgs%22%3A%5B%224.01%22%2C16%2C700%5D%7D"
+        }
+    ],
+    "numExecuted": 2202,
+    "ruleTime": 107,
+    "nls": {
+        "img_alt_background": {
+            "0": "Background images that convey important information must have a text alternative that describes the image",
+            "Manual_1": "Verify important background image information has a text alternative in system high contrast mode"
+        },
+        "aria_content_in_landmark": {
+            "0": "All content must reside within an element with a landmark role",
+            "Fail_1": "Content is not within a landmark element"
+        },
+        "style_color_misuse": {
+            "0": "Combine color and descriptive markup to convey information",
+            "Potential_1": "Verify color is not used as the only visual means of conveying information"
+        },
+        "style_highcontrast_visible": {
+            "0": "Windows high contrast mode must be supported when using CSS to include, position or alter non-decorative content",
+            "Manual_1": "Confirm Windows high contrast mode is supported when using CSS to include, position or alter non-decorative content"
+        },
+        "element_tabbable_visible": {
+            "0": "A tabbable element should be visible on the screen when it has keyboard focus",
+            "potential_visible": "Confirm the element should be tabbable and if so, it becomes visible when it has keyboard focus"
+        },
+        "style_focus_visible": {
+            "0": "The keyboard focus indicator should be visible when default border or outline is modified by CSS",
+            "potential_focus_not_visible": "Check the keyboard focus indicator is visible when using CSS declaration for 'border' or 'outline'"
+        },
+        "text_contrast_sufficient": {
+            "0": "The contrast ratio of text with its background must meet WCAG AA requirements",
+            "potential_graphic_background": "Verify the contrast ratio of the text against the lightest and the darkest colors of the background meets the WCAG AA minimum requirements for text of size {1}px and weight of {2}"
+        },
+        "aria_attribute_valid": {
+            "0": "ARIA attributes should be valid for the element and ARIA role to which they are assigned",
+            "Fail_invalid_implicit_role_attr": "The ARIA attributes \"{0}\" are not valid for the element <{1}> with implicit ARIA role \"{2}\""
+        },
+        "label_name_visible": {
+            "0": "Accessible name must match or contain the visible label text",
+            "Fail_1": "Accessible name does not match or contain the visible label text"
+        },
+        "text_sensory_misuse": {
+            "0": "Instructions should be meaningful without relying solely on shape, size, or location words",
+            "potential_other": "Confirm the user instruction is still understandable without the word(s) '{0}'"
+        },
+        "aria_complementary_labelled": {
+            "0": "Each element with \"complementary\" role must have a label that describes its purpose",
+            "Fail_1": "Element with \"complementary\" role does not have a label"
+        }
+    },
+    "summary": {
+        "counts": {
+            "ignored": 0,
+            "elements": 69,
+            "elementsViolation": 13,
+            "elementsViolationReview": 44,
+            "violation": 13,
+            "potentialviolation": 30,
+            "recommendation": 0,
+            "potentialrecommendation": 25,
+            "manual": 2,
+            "pass": 2132
+        },
+        "scanTime": 253,
+        "ruleArchive": "Latest Deployment (latest)",
+        "policies": [
+            "IBM_Accessibility"
+        ],
+        "reportLevels": [
+            "violation",
+            "potentialviolation",
+            "recommendation",
+            "manual"
+        ],
+        "startScan": 1790514620129,
+        "URL": "file:///home/johsdahl/Projects/FablabGuides/en/online-tools.html"
+    },
+    "scanID": "4d31f8f2-07b2-478b-b5c8-068076ac3e82",
+    "toolID": "accessibility-checker-v4.0.34",
+    "label": "/home/johsdahl/Projects/FablabGuides/en/online-tools.html"
+}
