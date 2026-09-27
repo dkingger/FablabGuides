@@ -5,10 +5,16 @@
 
 ## Version
 
-Aktuel version: 1.76
+Aktuel version: 1.77
 Dato: 2026-09-27
 
 ## Seneste aendringer
+
+### v1.77 (2026-09-27)
+
+- Rettet 305 relative billedstier i de bevarede ældre guider, så billederne igen indlæses fra den fælles `billeder/`-mappe.
+- Udvidet `npm test` med kontrol af alle 458 billedreferencer på de 28 ældre HTML-sider.
+- Genkontrolleret alle 82 HTML-sider med IBM Equal Access: fortsat 0 konstaterede fejl, 822 potentielle fund, 180 manuelle kontroller og 45 anbefalinger.
 
 ### v1.76 (2026-09-27)
 
@@ -166,8 +172,8 @@ Projektet bruger versionsformatet `MAJOR.MINOR`.
 
 Eksempler:
 
-- `1.76` -> Aktuel release.
-- `1.77` -> Naeste release med nye forbedringer.
+- `1.77` -> Aktuel release.
+- `1.78` -> Naeste release med nye forbedringer.
 - `2.0` -> Stoerre breaking release.
 
 ### Saadan opdateres versionen

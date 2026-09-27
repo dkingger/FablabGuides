@@ -1,5 +1,6 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const path = require('node:path');
 const puppeteer = require(process.env.PUPPETEER_MODULE || 'puppeteer');
 
 const base = process.argv[2] || 'http://127.0.0.1:8765';
@@ -29,6 +30,28 @@ const legacyCarousels = [
     'old/en/laser-lightburn.html'
 ];
 
+const legacyPages = fs.readdirSync('old')
+    .filter(file => file.endsWith('.html'))
+    .map(file => `old/${file}`)
+    .concat(fs.readdirSync('old/en')
+        .filter(file => file.endsWith('.html'))
+        .map(file => `old/en/${file}`));
+
+let legacyImageCount = 0;
+for (const pagePath of legacyPages) {
+    const source = fs.readFileSync(pagePath, 'utf8');
+    for (const match of source.matchAll(/["']([^"']*billeder\/[^"']+)["']/g)) {
+        const reference = decodeURIComponent(match[1].split(/[?#]/, 1)[0]);
+        if (/^https?:\/\//.test(reference)) continue;
+        const assetPath = reference.startsWith('/')
+            ? path.join('.', reference)
+            : path.resolve(path.dirname(pagePath), reference);
+        assert(fs.existsSync(assetPath), `${pagePath}: missing image ${match[1]}`);
+        legacyImageCount += 1;
+    }
+}
+console.log(`PASS ${legacyImageCount} image references across ${legacyPages.length} legacy pages`);
+
 (async () => {
     const browser = await puppeteer.launch(launchOptions);
     try {
@@ -52,6 +75,30 @@ const legacyCarousels = [
             await page.close();
         }
         console.log(`PASS ${guideCount} guide pages: numbered step buttons, selection and 320px layout`);
+
+        for (const pagePath of legacyPages) {
+            const page = await browser.newPage();
+            const localFailures = [];
+            page.on('response', response => {
+                const url = new URL(response.url());
+                if (url.origin === new URL(base).origin && response.status() >= 400 && url.pathname !== '/favicon.ico') {
+                    localFailures.push(`HTTP ${response.status()} ${url.pathname}`);
+                }
+            });
+            page.on('requestfailed', request => {
+                const url = new URL(request.url());
+                if (url.origin === new URL(base).origin) localFailures.push(`request failed ${url.pathname}`);
+            });
+            await page.goto(`${base}/${pagePath}`, { waitUntil: 'domcontentloaded' });
+            await new Promise(resolve => setTimeout(resolve, 100));
+            const brokenImages = await page.$$eval('img[src]', images => images
+                .filter(image => image.getAttribute('src') && image.complete && image.naturalWidth === 0)
+                .map(image => image.getAttribute('src')));
+            assert.deepEqual(localFailures, [], `${pagePath}: local resource failures`);
+            assert.deepEqual(brokenImages, [], `${pagePath}: broken rendered images`);
+            await page.close();
+        }
+        console.log(`PASS ${legacyPages.length} legacy pages: local resources and rendered images`);
 
         for (const pagePath of legacyCarousels) {
             const page = await browser.newPage();
