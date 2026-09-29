@@ -12,6 +12,8 @@ Dato: 2026-09-27
 
 ### Vektor-Viktor – boolske huller (2026-09-29)
 
+- Forskel bevarer nu farvetilstanden fra den nederste figur: en rød cirkel skærer et hul i et sort rektangel uden at ændre rektanglet til røde konturer.
+
 - Rettet Forskel på fyldte figurer: en mindre cirkel inde i en sort firkant bliver nu et hul.
 - Resultatets konturer samles i én SVG-sti med `fill-rule="evenodd"`, så huller bevares ved eksport og efterfølgende boolske operationer.
 

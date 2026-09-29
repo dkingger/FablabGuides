@@ -4679,6 +4679,10 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         return;
       }
 
+      // Difference keeps the material object's mode, not the cutter's color
+      // or the mode of whichever object happened to be selected last.
+      const resultMode = op === 'subtract' ? (sel[0].data?.mode || detectMode(sel[0])) : currentMode;
+
       // Rektangler forenes eksakt som vektorer. Det bevarer mål og 90° hjørner 1:1.
       if(op==='union' && exactRectUnion(sel)) return;
 
@@ -5011,7 +5015,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       const resultPath = document.createElementNS(SVG_NS, 'path');
       resultPath.setAttribute('d', subpaths.join(' '));
       resultPath.setAttribute('fill-rule', 'evenodd');
-      applyMode(resultPath, currentMode);
+      applyMode(resultPath, resultMode);
       const resultPaths = [resultPath];
 
       const idsToRemove = sel.map(o => o.id);
@@ -5023,7 +5027,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
 
       const newIds = [];
       resultPaths.forEach(path => {
-        const id = addObject('traced', path, { mode: currentMode }, true);
+        const id = addObject('traced', path, { mode: resultMode }, true);
         newIds.push(id);
       });
       selectedIds = newIds;
