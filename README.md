@@ -10,6 +10,13 @@ Dato: 2026-09-27
 
 ## Seneste aendringer
 
+### Labyrintværksted v1.1 (2026-09-29)
+
+- Tilføjet bundplade med 5 mm huller, som placeres i labyrinten med mus eller tastatur.
+- Hullerne vises på begge plader og kontrolleres for overlap med vægge og afstand til andre huller.
+- Labyrint og bundplade kan eksporteres separat eller samlet som SVG med millimetermål.
+- Bevaret tilbageknappen til forsiden og opdateret værkstedets versionsnummer og forsidegenvej.
+
 ### v1.78 (2026-09-27)
 
 - Opdateret den danske og engelske tilgængelighedserklæring med de aktuelle IBM-resultater og en præcis vurdering af WCAG 2.2 niveau AA.
