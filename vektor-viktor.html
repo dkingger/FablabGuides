@@ -4980,7 +4980,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       }
 
       // Build result paths BEFORE removing originals, so we never lose data on failure
-      const resultPaths = [];
+      const subpaths = [];
       contours.sort((a, b) => b.length - a.length);
       contours.forEach(pts => {
         if (pts.length < 4) return;
@@ -4993,22 +4993,26 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         });
         if ((maxx - minx) < 1.2 && (maxy - miny) < 1.2) return;
 
-        const path = document.createElementNS(SVG_NS, 'path');
         let d = 'M ' + (simplified[0].x / SCALE + minX).toFixed(2) + ' ' + (simplified[0].y / SCALE + minY).toFixed(2);
         for (let i = 1; i < simplified.length; i++) {
           d += ' L ' + (simplified[i].x / SCALE + minX).toFixed(2) + ' ' + (simplified[i].y / SCALE + minY).toFixed(2);
         }
         d += ' Z';
-        path.setAttribute('d', d);
-        path.setAttribute('fill-rule', 'evenodd');
-        applyMode(path, currentMode);
-        resultPaths.push(path);
+        subpaths.push(d);
       });
 
-      if (!resultPaths.length) {
+      if (!subpaths.length) {
         alert('Resultatet blev tomt efter filtrering.');
         return;
       }
+
+      // Holes must share a path with their outer contour: evenodd cannot
+      // subtract the fill of a separate SVG element.
+      const resultPath = document.createElementNS(SVG_NS, 'path');
+      resultPath.setAttribute('d', subpaths.join(' '));
+      resultPath.setAttribute('fill-rule', 'evenodd');
+      applyMode(resultPath, currentMode);
+      const resultPaths = [resultPath];
 
       const idsToRemove = sel.map(o => o.id);
       pushUndo();

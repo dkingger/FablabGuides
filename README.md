@@ -10,6 +10,11 @@ Dato: 2026-09-27
 
 ## Seneste aendringer
 
+### Vektor-Viktor – boolske huller (2026-09-29)
+
+- Rettet Forskel på fyldte figurer: en mindre cirkel inde i en sort firkant bliver nu et hul.
+- Resultatets konturer samles i én SVG-sti med `fill-rule="evenodd"`, så huller bevares ved eksport og efterfølgende boolske operationer.
+
 ### Labyrintværksted v1.1 (2026-09-29)
 
 - Tilføjet bundplade med 5 mm huller, som placeres i labyrinten med mus eller tastatur.
