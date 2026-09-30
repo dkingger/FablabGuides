@@ -298,12 +298,12 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 
   <div class="props">
     <h2>Egenskaber</h2>
-    <div class="prop-group">
-      <label>Laser-tilstand</label>
+    <div class="prop-group" id="colorProps">
+      <label>Farver</label>
       <div class="mode-row">
         <button class="mode-btn cut active" data-mode="cut"><div class="swatch"></div>Rød linje</button>
         <button class="mode-btn green" data-mode="green"><div class="swatch"></div>Grøn linje</button>
-        <button class="mode-btn engrave" data-mode="engrave"><div class="swatch"></div>Fed sort</button>
+        <button class="mode-btn engrave" data-mode="engrave"><div class="swatch"></div>Fyldt sort</button>
       </div>
     </div>
     <div class="prop-group" id="noSelection">
@@ -430,7 +430,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <span id="statusTool">Værktøj: Vælg</span>
   <span id="statusCount">Objekter: 0</span>
   <span id="statusSel">Valgt: 0</span>
-  <span>Rød/grøn = linje · Fed sort = tekst/fyld</span>
+  <span id="colorHint">Rød/grøn = linje · Fyldt sort = tekst/fyld</span>
   <span class="credit">Tak til Réne fra Fredericia MakerSpace</span>
 </div>
 <div class="modal-overlay" id="offsetModal" aria-hidden="true">
@@ -681,6 +681,7 @@ function updatePageGrid(){
 
 function setPageSize(size){
   if(!PAGE_SIZES[size]) return;
+  if(size==='ScanNCut' && pageSize!==size)currentMode='engrave';
   pageSize = size;
   const p = PAGE_SIZES[size];
   BASE_VB = { x:0, y:0, w:p.w, h:p.h };
@@ -700,13 +701,22 @@ function isScanNCutPageSize(){
 }
 
 function updateModeButtonsForPageSize(){
-  const locked=isScanNCutPageSize();
-  const buttons=document.querySelectorAll('.mode-btn');
-  buttons.forEach(btn=>{
-    btn.disabled=locked;
-    if(locked)btn.classList.toggle('active',btn.dataset.mode==='cut');
+  const scan=isScanNCutPageSize();
+  if(scan && currentMode==='green')currentMode='cut';
+  document.querySelectorAll('.mode-btn').forEach(btn=>{
+    const mode=btn.dataset.mode;
+    btn.hidden=scan && mode==='green';
+    btn.style.display=btn.hidden?'none':'';
+    btn.classList.toggle('active',mode===currentMode);
+    btn.setAttribute('aria-pressed',String(mode===currentMode));
+    if(mode==='cut'){
+      btn.lastChild.textContent=scan?'Fyldt hvid':'Rød linje';
+      const swatch=btn.querySelector('.swatch');
+      swatch.style.background=scan?'#ffffff':'';
+      swatch.style.borderColor=scan?'#000000':'';
+    }
   });
-  if(locked)currentMode='cut';
+  document.getElementById('colorHint').textContent=scan?'Fyldt hvid / Fyldt sort':'Rød/grøn = linje · Fyldt sort = tekst/fyld';
 }
 
 function refreshObjectModesForPageSize(){
@@ -879,13 +889,13 @@ document.getElementById('pageSize')?.addEventListener('change', e => setPageSize
 
 function uid(){return 'obj'+(nextId++)}
 function strokeFor(m){
-  // På ScanNCut-måtten er farver låst: ALT er sort kontur, også tidligere fyld/gravering.
-  if(isScanNCutPageSize())return ENG;
+  // Kontrastkonturer gør både hvide og sorte fyld synlige på ScanNCut-måtten.
+  if(isScanNCutPageSize())return m==='engrave'?'#ffffff':ENG;
   if(m==='engrave')return 'none';
   return m==='green'?GREEN:CUT;
 }
 function fillFor(m){
-  if(isScanNCutPageSize())return 'none';
+  if(isScanNCutPageSize())return m==='engrave'?ENG:'#ffffff';
   return m==='engrave'?ENG:'none';
 }
 function clearInlinePaint(el){
@@ -963,7 +973,7 @@ function applyModeToUseReference(useEl,m,seen){
 }
 function applyModeRecursive(obj,m){
   if(!obj || obj.type==='image') return;
-  const effectiveMode=isScanNCutPageSize()?'cut':m;
+  const effectiveMode=isScanNCutPageSize() && m==='green'?'cut':m;
   // Brug selve DOM-strukturen frem for kun obj.type. Det gør også importerede
   // SVG-dele robuste, hvis de indeholder <use>, <tspan> eller et internt <g>.
   const isContainer=obj.el && ['g','svg','symbol'].includes((obj.el.tagName||'').toLowerCase());
@@ -1100,10 +1110,10 @@ document.querySelectorAll('.tool-btn').forEach(btn=>{
 
 document.querySelectorAll('.mode-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    if(isScanNCutPageSize())return;
     currentMode=btn.dataset.mode;
     document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
+    updateModeButtonsForPageSize();
     if(selectedIds.length){
       pushUndo();
       selectedIds.forEach(id=>{
@@ -1150,13 +1160,8 @@ function refreshUI(){
       showProps(obj);
       if(obj.type==='image')document.getElementById('traceBtnWrap').classList.remove('hidden');
       const mode=obj.data.mode||detectMode(obj);
-      if(isScanNCutPageSize()){
-        document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode==='cut'));
-        currentMode='cut';
-      }else{
-        document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
-        currentMode=mode;
-      }
+      currentMode=mode;
+      updateModeButtonsForPageSize();
     }
   }
   updateCount();
@@ -1164,7 +1169,10 @@ function refreshUI(){
 function detectMode(obj){
   const f=obj.el.getAttribute('fill');
   const hf=f&&f!=='none'&&f!=='transparent';
-  if(hf)return 'engrave';
+  if(hf){
+    if(isScanNCutPageSize() && ['#fff','#ffffff','white','rgb(255, 255, 255)'].includes(f.toLowerCase()))return 'cut';
+    return 'engrave';
+  }
   const s=(obj.el.getAttribute('stroke')||'').toLowerCase();
   if(s===GREEN.toLowerCase())return 'green';
   return 'cut';
@@ -1540,7 +1548,7 @@ function addObject(type,el,data,skipUndo){
   const record={id,type,el,data:Object.assign({mode},data||{})};
   objects.push(record);
   objectsG.appendChild(el);
-  if(isScanNCutPageSize() && type!=='image')applyModeRecursive(record,'cut');
+  if(isScanNCutPageSize() && type!=='image')applyModeRecursive(record,mode);
   if(!skipUndo) selectOnly(id);
   updateCount();return id;
 }
@@ -1797,7 +1805,7 @@ function promoteShapeFromGroup(groupObj, shapeEl){
     const mode=detectMode({el:clone});
     const id=addObject(type, clone, {mode, importedSvg:true}, true);
     const obj=objects.find(o=>o.id===id);
-    if(obj&&isScanNCutPageSize())applyModeRecursive(obj,'cut');
+    if(obj&&isScanNCutPageSize())applyModeRecursive(obj,mode);
     // If group is empty, remove it
     if(!groupObj.el.children.length){
       const gi=objects.findIndex(o=>o.id===groupObj.id);
@@ -1904,7 +1912,7 @@ function ungroupSelected(){
     objects.push({id,type,el,data:{mode,importedSvg:true}});
     objectsG.appendChild(el);
     const obj=objects[objects.length-1];
-    if(isScanNCutPageSize())applyModeRecursive(obj,'cut');
+    if(isScanNCutPageSize())applyModeRecursive(obj,mode);
     newIds.push(id);
   });
 
@@ -2928,9 +2936,9 @@ function commitInlineText(){
   el.setAttribute('data-vv-text',txt);
   el.setAttribute('data-vv-curve-angle','0');
   applyMode(el, currentMode);
-  if(currentMode==='engrave' && !isScanNCutPageSize()){
-    el.setAttribute('fill', ENG);
-    el.setAttribute('stroke','none');
+  if(currentMode==='engrave' || isScanNCutPageSize()){
+    el.setAttribute('fill', fillFor(currentMode));
+    el.setAttribute('stroke',strokeFor(currentMode));
   } else {
     el.setAttribute('fill','none');
     el.setAttribute('stroke', strokeFor(currentMode));
@@ -3808,9 +3816,9 @@ function importSvgText(text){
   group.setAttribute('transform','matrix('+[m.a,m.b,m.c,m.d,m.e,m.f].map(n=>Number(n.toFixed(12))).join(' ')+')');
   group.setAttribute('data-vv-source-width-mm',String(m.w));
   group.setAttribute('data-vv-source-height-mm',String(m.h));
-  const importedId=addObject('group',group,{group:true,importedSvg:true,sourceWidthMm:m.w,sourceHeightMm:m.h,exactPhysicalSize:m.exact,mode:isScanNCutPageSize()?'cut':currentMode});
+  const importedId=addObject('group',group,{group:true,importedSvg:true,sourceWidthMm:m.w,sourceHeightMm:m.h,exactPhysicalSize:m.exact,mode:currentMode});
   const importedObj=objects.find(o=>o.id===importedId);
-  if(importedObj && isScanNCutPageSize())applyModeRecursive(importedObj,'cut');
+  if(importedObj && isScanNCutPageSize())applyModeRecursive(importedObj,currentMode);
   document.querySelector('[data-tool="select"]').click();
 }
 
@@ -3819,12 +3827,16 @@ function importRasterFile(file){
   reader.onload=ev=>{
     const img=new Image();
     img.onload=()=>{
-      let w=img.width,h=img.height;const max=600;
-      if(w>max||h>max){if(w>h){h=Math.round(h*max/w);w=max}else{w=Math.round(w*max/h);h=max}}
+      // Rasterbilleder fortolkes ved 96 dpi og formindskes kun, aldrig forstørres.
+      const page=PAGE_SIZES[pageSize];
+      const sourceW=img.naturalWidth*25.4/96;
+      const sourceH=img.naturalHeight*25.4/96;
+      const scale=Math.min(1,Math.min(200,page.w)/sourceW,Math.min(200,page.h)/sourceH);
+      const w=sourceW*scale,h=sourceH*scale;
       const image=document.createElementNS(SVG_NS,'image');
       image.setAttributeNS('http://www.w3.org/1999/xlink','href',ev.target.result);
       image.setAttribute('href',ev.target.result);
-      image.setAttribute('x',50);image.setAttribute('y',50);image.setAttribute('width',w);image.setAttribute('height',h);
+      image.setAttribute('x',(page.w-w)/2);image.setAttribute('y',(page.h-h)/2);image.setAttribute('width',w);image.setAttribute('height',h);
       addObject('image',image,{dataUrl:ev.target.result});
       document.querySelector('[data-tool="select"]').click();
     };
@@ -6013,7 +6025,7 @@ function initRightPanelAccordions(){
   }
 
   Array.from(panel.children).forEach(group=>{
-    if(!group.classList||!group.classList.contains('prop-group')||group.id==='noSelection')return;
+    if(!group.classList||!group.classList.contains('prop-group')||['noSelection','colorProps'].includes(group.id))return;
     const firstLabel=Array.from(group.children).find(el=>el.tagName&&el.tagName.toLowerCase()==='label');
     if(!firstLabel)return;
     const title=titleById[group.id] || (firstLabel.textContent||'Menu').trim() || 'Menu';
