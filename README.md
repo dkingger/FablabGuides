@@ -10,6 +10,14 @@ Dato: 2026-09-27
 
 ## Seneste aendringer
 
+### Vektor-Viktor v1.77 (2026-09-30)
+
+- Tilføjet eget favicon fra Vektor-Viktor-logoet: ICO (16, 32 og 48 pixels), PNG (16 og 32 pixels), Apple-touch-ikon (180 pixels) og Android/Chrome-ikoner (192 og 512 pixels).
+- Ikonerne ligger i `assets/favicon-vektor-viktor/` og er tilknyttet i værktøjets HTML-head.
+- Rettet værktøjets versionsmærke fra v1.74 til v1.77 og opdateret genvejene på både den danske og engelske forside. Den engelske genvej fører fortsat til det danske værktøj.
+- Versionen inkluderer rettelserne fra 29. september til huller og bevarelse af grundfigurens farve ved boolesk Forskel.
+- Denne opdatering ændrer ikke værktøjets layout eller funktionalitet. Vektor-Viktors versionsnummer føres særskilt fra FablabGuides' samlede versionsnummer ovenfor.
+
 ### Vektor-Viktor – boolske huller (2026-09-29)
 
 - Forskel bevarer nu farvetilstanden fra den nederste figur: en rød cirkel skærer et hul i et sort rektangel uden at ændre rektanglet til røde konturer.
