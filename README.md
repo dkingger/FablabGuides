@@ -10,6 +10,10 @@ Dato: 2026-09-27
 
 ## Seneste aendringer
 
+### Vektor-Viktor – enklere favicon (2026-09-30)
+
+- Opdateret Vektor-Viktors favicon til et enklere ikon i alle seks favicon-filer. Versionsnummeret er fortsat v1.77.
+
 ### Vektor-Viktor v1.77 (2026-09-30)
 
 - Tilføjet eget favicon fra Vektor-Viktor-logoet: ICO (16, 32 og 48 pixels), PNG (16 og 32 pixels), Apple-touch-ikon (180 pixels) og Android/Chrome-ikoner (192 og 512 pixels).
