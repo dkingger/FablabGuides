@@ -157,12 +157,14 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 .header-btn:active{transform:translateY(1px)}
 .header-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 12px rgba(22,163,106,.25)}
 .header-btn.back-btn{margin-right:2px}
-.project-name-wrap{gap:7px;margin-left:6px;padding-left:12px;border-left:1px solid rgba(255,255,255,.09)}
-.project-name-wrap label{color:#9ca7b2;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
-#projectName{width:176px;height:36px;padding:7px 10px;color:#f7f9fb;background:#2b3138;border:1px solid rgba(255,255,255,.10);border-radius:8px;font-size:.82rem;box-shadow:inset 0 1px 1px rgba(0,0,0,.14)}
+.project-name-wrap{gap:7px;margin-left:6px;padding-left:12px;border-left:1px solid rgba(255,255,255,.09);flex:0 0 auto;min-width:0}
+.project-name-wrap label{color:#9ca7b2;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;flex:0 0 auto}
+#projectName{width:190px;min-width:190px;max-width:190px;flex:0 0 190px;height:36px;padding:7px 10px;color:#f7f9fb;background:#2b3138;border:1px solid rgba(255,255,255,.10);border-radius:8px;font-size:.82rem;box-shadow:inset 0 1px 1px rgba(0,0,0,.14)}
 #projectName:hover{border-color:rgba(255,255,255,.18)}
 #projectName:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(22,163,106,.16)}
 #projectName::placeholder{color:#77828d}
+.project-file-actions{display:flex;align-items:center;gap:6px;margin-left:8px;padding-left:8px;border-left:1px solid rgba(255,255,255,.09);flex:0 0 auto;position:relative}
+.project-file-actions .header-btn.wide{height:36px;padding:0 10px;font-size:.7rem;white-space:nowrap;flex:0 0 auto}
 .header-zoom{gap:4px;padding:0 7px;border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08)}
 .zoom-label{min-width:46px;color:#c0c9d2;font-size:.72rem;font-weight:650}
 .page-size-select{height:36px;margin-left:2px;padding:0 30px 0 10px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:#2b3138;color:#e8edf2;font-size:.75rem;font-weight:650}
@@ -214,14 +216,14 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 .preview-box{background:#f3f5f7;border-color:#d5dce2}
 .slider-row input[type=range]{accent-color:var(--accent)}
 .statusbar{background:#20252b;border-top-color:rgba(255,255,255,.08);color:#9ca7b2}
-@media (max-width:900px){.props{width:260px}header .hint{display:none}#projectName{width:140px}}
+@media (max-width:1180px){header .hint{display:none}#projectName{width:160px;min-width:160px;max-width:160px;flex-basis:160px}.project-file-actions .header-btn.wide{padding:0 8px;font-size:.66rem}}
+@media (max-width:900px){.props{width:260px}#projectName{width:140px;min-width:140px;max-width:140px;flex-basis:140px}}
 
 
 /* Stabilt zoom/pan-arbejdsområde: et usynligt stage giver plads til at zoome mod markøren og panorere i alle retninger. */
 .canvas-wrap{display:block!important;position:relative;overflow:auto!important}
 .canvas-stage{position:relative;display:block;min-width:100%;min-height:100%}
 .canvas-stage #drawSvg{position:absolute!important;margin:0!important;flex:none!important}
-
 .layer-item { display: block; width: 100%; text-align: left; font-family: inherit; }
 :root { --accent: #087a49; --accent-hover: #06633b; }
 :focus-visible { outline: 3px solid #112d4e !important; outline-offset: 3px; }
@@ -233,10 +235,15 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
     <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.77</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.80</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
+  </div>
+  <div class="project-file-actions" aria-label="Projektfiler">
+    <button type="button" id="btnSaveProject" class="header-btn wide" title="Gem redigerbart Vektor-Viktor-projekt">Gem projekt</button>
+    <button type="button" id="btnOpenProject" class="header-btn wide" title="Åbn et gemt Vektor-Viktor-projekt">Åbn projekt</button>
+    <input type="file" id="projectFileInput" class="hidden" accept=".vvproj,.json,application/json">
   </div>
   <button type="button" id="btnUndoHeader" class="header-btn" title="Fortryd (Ctrl+Z)">
     <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M9 14L4 9l5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h10a7 7 0 1 1 0 14h-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -343,12 +350,12 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
         <input type="number" id="propFontSize" class="prop-select" min="8" max="400" step="1" value="28" style="margin-bottom:0">
         <label style="margin-top:8px">Tekst</label>
         <input type="text" id="propTextContent" class="prop-select" placeholder="Tekst..." style="margin-bottom:6px">
-        <label>Tekstbue (°)</label>
+        <label>Tekstbue (%)</label>
         <div class="prop-row" style="align-items:center;margin-bottom:0">
-          <input type="range" id="propTextCurveRange" min="-180" max="180" step="1" value="0" style="flex:1;accent-color:var(--accent)">
-          <input type="number" id="propTextCurve" min="-180" max="180" step="1" value="0" style="max-width:72px">
+          <input type="range" id="propTextCurveRange" min="-100" max="100" step="1" value="0" style="flex:1;accent-color:var(--accent)">
+          <input type="number" id="propTextCurve" min="-100" max="100" step="1" value="0" style="max-width:72px">
         </div>
-        <p style="font-size:.68rem;color:var(--text-dim);margin-top:5px">0° = lige · positiv bøjer opad · negativ bøjer nedad.</p>
+        <p style="font-size:.68rem;color:var(--text-dim);margin-top:5px">0 = lige · + bøjer opad · − bøjer nedad. Tekstens bredde bevares, mens midten løftes/sænkes.</p>
       </div>
       <div id="traceBtnWrap" class="hidden" style="margin-top:10px">
         <button class="btn btn-trace" id="btnTraceImage">Spor til vektor</button>
@@ -1208,7 +1215,14 @@ function setRectCornerRadiusMm(obj,radius){
   }
 }
 function getTextCurve(el){
-  return Math.max(-180,Math.min(180,parseFloat(el?.getAttribute('data-vv-curve-angle'))||0));
+  // v1.75: bue angives som en intuitiv procentværdi i stedet for en samlet vinkel.
+  // Ældre dokumenter med data-vv-curve-angle migreres automatisk ved visning.
+  const pct=el?.getAttribute('data-vv-curve-percent');
+  if(pct!==null && pct!==undefined){
+    return Math.max(-100,Math.min(100,parseFloat(pct)||0));
+  }
+  const legacy=Math.max(-180,Math.min(180,parseFloat(el?.getAttribute('data-vv-curve-angle'))||0));
+  return Math.max(-100,Math.min(100,legacy/1.8));
 }
 function textRawContent(obj){
   if(!obj)return '';
@@ -1229,8 +1243,8 @@ function rebuildCurvedText(obj){
   const content=textRawContent(obj);
   if(obj.data)obj.data.text=content;
   el.setAttribute('data-vv-text',content);
-  const angle=getTextCurve(el);
-  if(Math.abs(angle)<0.001){
+  const curve=getTextCurve(el);
+  if(Math.abs(curve)<0.001){
     el.textContent=content;
     return;
   }
@@ -1244,21 +1258,32 @@ function rebuildCurvedText(obj){
   if(!ctx){el.textContent=content;return;}
   ctx.font=textCanvasFont(el,fs);
   const chars=[...content];
-  const widths=chars.map(ch=>Math.max(0.01,ctx.measureText(ch===' '?'\u00a0':ch).width)+(letterSpacing||0));
+  const widths=chars.map(ch=>Math.max(0.01,ctx.measureText(ch===' '? '\u00a0':ch).width)+(letterSpacing||0));
   const total=Math.max(0.01,widths.reduce((a,b)=>a+b,0));
-  const theta=Math.max(0.001,Math.abs(angle)*Math.PI/180);
-  const radius=total/theta;
-  const sign=angle>=0?1:-1;
+
+  // Ny kurvemodel: enderne beholder deres vandrette placering, og kun buens
+  // højde ændres. Det giver en langt mere naturlig bøjning end at klemme hele
+  // teksten ind i en fast vinkel. 100 % svarer til en tydelig, men stadig
+  // stabil bue på 35 % af tekstens lige bredde.
+  const sign=curve>=0?1:-1;
+  const sagitta=Math.min(total*0.48, Math.abs(curve)/100 * total*0.35);
+  if(sagitta<0.0001){el.textContent=content;return;}
+  const radius=(total*total)/(8*sagitta)+sagitta/2;
+  const halfAngle=Math.asin(Math.min(1,total/(2*radius)));
   const centerX=anchor==='middle'?x:(anchor==='end'?x-total/2:x+total/2);
+  // SVG-y vokser nedad. Positiv bue skal derfor have cirklens centrum under
+  // teksten, så tekstens midte løftes op.
+  const centerY=sign>0 ? y+(radius-sagitta) : y-(radius-sagitta);
+
   el.textContent='';
   el.setAttribute('xml:space','preserve');
-  let cursor=-total/2;
+  let cursor=0;
   chars.forEach((ch,i)=>{
     const w=widths[i];
-    const s=cursor+w/2;
-    const phi=s/radius;
+    const fraction=(cursor+w/2)/total;
+    const phi=-halfAngle+(2*halfAngle*fraction);
     const px=centerX+radius*Math.sin(phi);
-    const py=y+sign*radius*(1-Math.cos(phi));
+    const py=sign>0 ? centerY-radius*Math.cos(phi) : centerY+radius*Math.cos(phi);
     const rot=sign*phi*180/Math.PI;
     const t=document.createElementNS(SVG_NS,'tspan');
     t.setAttribute('x',px.toFixed(4));
@@ -1984,10 +2009,11 @@ function applyTextProps(saveUndo){
   const font=document.getElementById('propFont').value;
   const size=Math.max(8,parseFloat(document.getElementById('propFontSize').value)||28);
   const content=document.getElementById('propTextContent').value;
-  const curve=Math.max(-180,Math.min(180,parseFloat(document.getElementById('propTextCurve').value)||0));
+  const curve=Math.max(-100,Math.min(100,parseFloat(document.getElementById('propTextCurve').value)||0));
   obj.el.setAttribute('font-family',font);
   obj.el.setAttribute('font-size',size);
-  obj.el.setAttribute('data-vv-curve-angle',String(curve));
+  obj.el.setAttribute('data-vv-curve-percent',String(curve));
+  obj.el.removeAttribute('data-vv-curve-angle');
   if(obj.data){obj.data.text=content;obj.data.font=font;obj.data.curve=curve}
   obj.el.setAttribute('data-vv-text',content||'');
   rebuildCurvedText(obj);
@@ -2006,7 +2032,7 @@ function syncTextCurve(source){
   const num=document.getElementById('propTextCurve');
   const range=document.getElementById('propTextCurveRange');
   if(!num||!range)return;
-  let v=parseFloat(source.value)||0;v=Math.max(-180,Math.min(180,v));
+  let v=parseFloat(source.value)||0;v=Math.max(-100,Math.min(100,v));
   num.value=v;range.value=v;
 }
 document.getElementById('propFont')?.addEventListener('change',()=>applyTextProps(true));
@@ -2065,7 +2091,7 @@ function pasteClipboard(){
     try{
       const parser=new DOMParser();
       // wrap in svg so parse works for all shapes
-      const doc=parser.parseFromString('<svg xmlns="'+SVG_NS+'">'+item.html+'</svg>','image/svg+xml');
+      const doc=parser.parseFromString('<svg xmlns="'+SVG_NS+'" xmlns:xlink="http://www.w3.org/1999/xlink">'+item.html.replace(/&nbsp;/g,'&#160;')+'</svg>','image/svg+xml');
       const el=doc.documentElement.firstElementChild;
       if(!el) return;
       const imported=document.importNode(el,true);
@@ -2082,6 +2108,62 @@ function pasteClipboard(){
     refreshUI();
   }
 }
+
+const VV_CLIPBOARD_MIME='application/x-vektor-viktor';
+const VV_CLIPBOARD_MARKER='__VEKTOR_VIKTOR_OBJECTS__';
+
+document.addEventListener('copy',e=>{
+  if(isTypingTarget(e.target) || !selectedIds.length)return;
+  copySelected();
+  if(!clipboardData.length)return;
+  try{
+    const serialized=JSON.stringify(clipboardData);
+    if(e.clipboardData){
+      // Custom MIME virker i browsere, der bevarer brugerdefinerede clipboard-typer.
+      // Text-markøren er fallback og gør samtidig, at et gammelt billede i OS-
+      // udklipsholderen ikke utilsigtet vinder over en netop kopieret figur.
+      try{e.clipboardData.setData(VV_CLIPBOARD_MIME,serialized);}catch(_){ }
+      e.clipboardData.setData('text/plain',VV_CLIPBOARD_MARKER);
+      e.preventDefault();
+    }
+  }catch(err){console.warn('Kunne ikke kopiere objekter:',err);}
+});
+
+document.addEventListener('paste',e=>{
+  if(isTypingTarget(e.target))return;
+  const dt=e.clipboardData;
+  if(!dt)return;
+
+  // 1) Et rigtigt rasterbillede i udklipsholderen har førsteprioritet.
+  // Det dækker bl.a. screenshots, "Kopiér billede" fra browseren og billeder
+  // kopieret fra billedprogrammer.
+  const items=Array.from(dt.items||[]);
+  const imageItem=items.find(item=>item.kind==='file' && /^image\//i.test(item.type||''));
+  if(imageItem){
+    const blob=imageItem.getAsFile();
+    if(blob){
+      e.preventDefault();
+      pushUndo();
+      importRasterBlob(blob);
+      return;
+    }
+  }
+
+  // 2) Interne Vektor-Viktor-objekter.
+  let vvPayload='';
+  try{vvPayload=dt.getData(VV_CLIPBOARD_MIME)||'';}catch(_){ }
+  if(vvPayload){
+    try{
+      const parsed=JSON.parse(vvPayload);
+      if(Array.isArray(parsed))clipboardData=parsed;
+    }catch(_){ }
+  }
+  const plain=dt.getData('text/plain')||'';
+  if(vvPayload || plain===VV_CLIPBOARD_MARKER){
+    e.preventDefault();
+    pasteClipboard();
+  }
+});
 
 function selectionCenter(){
   const objs=selectedIds.map(id=>objects.find(o=>o.id===id)).filter(Boolean);
@@ -2152,8 +2234,9 @@ document.addEventListener('keydown',e=>{
   // V = select tool only without Ctrl/Cmd (Ctrl+V = paste)
   if((e.key==='v'||e.key==='V') && !(e.ctrlKey||e.metaKey)) document.querySelector('[data-tool="select"]')?.click();
   if((e.ctrlKey||e.metaKey) && (e.key==='z'||e.key==='Z')){e.preventDefault();undo();}
-  if((e.ctrlKey||e.metaKey) && (e.key==='c'||e.key==='C')){e.preventDefault();copySelected();}
-  if((e.ctrlKey||e.metaKey) && (e.key==='v'||e.key==='V')){e.preventDefault();pasteClipboard();}
+  // Ctrl/Cmd+C og Ctrl/Cmd+V håndteres af browserens copy/paste-events nedenfor.
+  // Det gør det muligt både at kopiere Vektor-Viktor-objekter og at indsætte
+  // rigtige billeder direkte fra systemets udklipsholder.
   if((e.ctrlKey||e.metaKey) && (e.key==='d'||e.key==='D')){e.preventDefault();copySelected();pasteClipboard();}
   if((e.ctrlKey||e.metaKey) && !e.shiftKey && (e.key==='g'||e.key==='G')){e.preventDefault();groupSelected();}
   if((e.ctrlKey||e.metaKey) && e.shiftKey && (e.key==='g'||e.key==='G')){e.preventDefault();ungroupSelected();}
@@ -2934,7 +3017,7 @@ function commitInlineText(){
   el.setAttribute('font-weight','bold');
   el.textContent = txt;
   el.setAttribute('data-vv-text',txt);
-  el.setAttribute('data-vv-curve-angle','0');
+  el.setAttribute('data-vv-curve-percent','0');
   applyMode(el, currentMode);
   if(currentMode==='engrave' || isScanNCutPageSize()){
     el.setAttribute('fill', fillFor(currentMode));
@@ -3734,31 +3817,45 @@ function parsePreserveAspectRatio(sourceSvg){
 function exactSvgImportMatrix(sourceSvg,bb){
   const vb=readSvgViewBox(sourceSvg);
   const physical=getSvgPhysicalSizeMm(sourceSvg,vb);
-  // Med viewBox + fysisk width/height kan vi bevare SVG'ens originale mm-mål 1:1.
+  // Kun SVG'er med eksplicit width/height har et egentligt fysisk mål, som vi
+  // må bevare 1:1 (fx MakerCase). SVG'er med kun viewBox har ingen sikker mm-
+  // størrelse og må derfor gerne skaleres NED, hvis de ellers er større end siden.
+  const declaredW=svgLengthToMm(sourceSvg.getAttribute('width'));
+  const declaredH=svgLengthToMm(sourceSvg.getAttribute('height'));
+  const hasDeclaredPhysical=!!(declaredW||declaredH);
+  const margin=Math.max(6,Math.min(15,Math.min(BASE_VB.w,BASE_VB.h)*0.05));
+  const maxW=Math.max(1,BASE_VB.w-2*margin), maxH=Math.max(1,BASE_VB.h-2*margin);
+
   if(vb && physical.w && physical.h){
     const par=parsePreserveAspectRatio(sourceSvg);
-    const viewportX=(BASE_VB.w-physical.w)/2;
-    const viewportY=(BASE_VB.h-physical.h)/2;
-    if(par.none){
-      const sx=physical.w/vb.w, sy=physical.h/vb.h;
-      return {a:sx,b:0,c:0,d:sy,e:viewportX-vb.x*sx,f:viewportY-vb.y*sy,w:physical.w,h:physical.h,exact:true};
+    let targetW=physical.w, targetH=physical.h;
+    if(!hasDeclaredPhysical){
+      const fit=Math.min(1,maxW/targetW,maxH/targetH);
+      targetW*=fit;targetH*=fit;
     }
-    const sx=physical.w/vb.w, sy=physical.h/vb.h;
+    const viewportX=(BASE_VB.w-targetW)/2;
+    const viewportY=(BASE_VB.h-targetH)/2;
+    if(par.none){
+      const sx=targetW/vb.w, sy=targetH/vb.h;
+      return {a:sx,b:0,c:0,d:sy,e:viewportX-vb.x*sx,f:viewportY-vb.y*sy,w:targetW,h:targetH,exact:hasDeclaredPhysical};
+    }
+    const sx=targetW/vb.w, sy=targetH/vb.h;
     const scale=par.meet?Math.min(sx,sy):Math.max(sx,sy);
     const usedW=vb.w*scale, usedH=vb.h*scale;
-    const e=viewportX+(physical.w-usedW)*par.ax-vb.x*scale;
-    const f=viewportY+(physical.h-usedH)*par.ay-vb.y*scale;
-    return {a:scale,b:0,c:0,d:scale,e,f,w:physical.w,h:physical.h,exact:true};
+    const e=viewportX+(targetW-usedW)*par.ax-vb.x*scale;
+    const f=viewportY+(targetH-usedH)*par.ay-vb.y*scale;
+    return {a:scale,b:0,c:0,d:scale,e,f,w:targetW,h:targetH,exact:hasDeclaredPhysical};
   }
-  // Ingen viewBox: SVG-user-units er CSS px. Bevar dem ved standardens 96 dpi.
-  // Centrer kun objektet; der sker INGEN automatisk fit-to-page-skalering.
-  const scale=SVG_MM_PER_PX;
-  const contentW=bb.width*scale, contentH=bb.height*scale;
+  // Ingen viewBox: user-units er CSS-px. Bevar eksplicitte fysiske mål.
+  let scale=SVG_MM_PER_PX;
+  let contentW=bb.width*scale, contentH=bb.height*scale;
+  const fit=hasDeclaredPhysical?1:Math.min(1,maxW/Math.max(0.001,contentW),maxH/Math.max(0.001,contentH));
+  scale*=fit;contentW*=fit;contentH*=fit;
   return {
     a:scale,b:0,c:0,d:scale,
     e:(BASE_VB.w-contentW)/2-bb.x*scale,
     f:(BASE_VB.h-contentH)/2-bb.y*scale,
-    w:physical.w||contentW,h:physical.h||contentH,exact:false
+    w:contentW,h:contentH,exact:false
   };
 }
 function isVisibleSvgPaint(v){
@@ -3822,27 +3919,62 @@ function importSvgText(text){
   document.querySelector('[data-tool="select"]').click();
 }
 
-function importRasterFile(file){
+function importRasterBlob(blob){
+  if(!blob)return;
   const reader=new FileReader();
   reader.onload=ev=>{
+    const dataUrl=String(ev.target.result||'');
+    if(!dataUrl.startsWith('data:image/'))return;
     const img=new Image();
     img.onload=()=>{
-      // Rasterbilleder fortolkes ved 96 dpi og formindskes kun, aldrig forstørres.
-      const page=PAGE_SIZES[pageSize];
-      const sourceW=img.naturalWidth*25.4/96;
-      const sourceH=img.naturalHeight*25.4/96;
-      const scale=Math.min(1,Math.min(200,page.w)/sourceW,Math.min(200,page.h)/sourceH);
-      const w=sourceW*scale,h=sourceH*scale;
+      // Gem rasteren som PNG allerede ved import. Det gør screenshots, WebP,
+      // clipboard-SVG m.m. ensartede og langt mere kompatible med LightBurn.
+      let embeddedDataUrl=dataUrl;
+      try{
+        const c=document.createElement('canvas');
+        c.width=Math.max(1,img.naturalWidth||img.width||1);
+        c.height=Math.max(1,img.naturalHeight||img.height||1);
+        const ctx=c.getContext('2d');
+        if(ctx){
+          ctx.drawImage(img,0,0,c.width,c.height);
+          embeddedDataUrl=c.toDataURL('image/png');
+        }
+      }catch(err){console.warn('Kunne ikke normalisere billede til PNG:',err);}
+
+      // Rasterbilleder har ikke et pålideligt fysisk mm-mål i browseren. Brug
+      // CSS/SVG-standardens 96 px pr. inch som naturlig størrelse, og skaler kun
+      // NED hvis billedet ellers ville gå uden for den aktuelle tegneflade.
+      const PX_TO_MM=25.4/96;
+      let w=Math.max(0.1,img.width*PX_TO_MM);
+      let h=Math.max(0.1,img.height*PX_TO_MM);
+      const margin=Math.max(6,Math.min(15,Math.min(BASE_VB.w,BASE_VB.h)*0.05));
+      const maxW=Math.max(1,BASE_VB.w-2*margin);
+      const maxH=Math.max(1,BASE_VB.h-2*margin);
+      const fit=Math.min(1,maxW/w,maxH/h);
+      w*=fit;h*=fit;
+      const x=(BASE_VB.w-w)/2;
+      const y=(BASE_VB.h-h)/2;
       const image=document.createElementNS(SVG_NS,'image');
-      image.setAttributeNS('http://www.w3.org/1999/xlink','href',ev.target.result);
-      image.setAttribute('href',ev.target.result);
-      image.setAttribute('x',(page.w-w)/2);image.setAttribute('y',(page.h-h)/2);image.setAttribute('width',w);image.setAttribute('height',h);
-      addObject('image',image,{dataUrl:ev.target.result});
-      document.querySelector('[data-tool="select"]').click();
+      // Gem ALTID rasterbilledet som en indlejret data-URL. Så følger billedets
+      // pixels med i den eksporterede SVG og kan læses af fx LightBurn uden en
+      // separat billedfil.
+      image.setAttributeNS('http://www.w3.org/1999/xlink','href',embeddedDataUrl);
+      image.setAttribute('href',embeddedDataUrl);
+      image.setAttribute('x',x.toFixed(4));image.setAttribute('y',y.toFixed(4));
+      image.setAttribute('width',w.toFixed(4));image.setAttribute('height',h.toFixed(4));
+      image.setAttribute('preserveAspectRatio','xMidYMid meet');
+      const id=addObject('image',image,{dataUrl:embeddedDataUrl,sourcePixelWidth:img.width,sourcePixelHeight:img.height,embedded:true});
+      selectedIds=[id];
+      document.querySelector('[data-tool="select"]')?.click();
+      refreshUI();
     };
-    img.src=ev.target.result;
+    img.onerror=()=>alert('Billedet fra udklipsholderen kunne ikke læses.');
+    img.src=dataUrl;
   };
-  reader.readAsDataURL(file);
+  reader.readAsDataURL(blob);
+}
+function importRasterFile(file){
+  importRasterBlob(file);
 }
 document.getElementById('imageFile').addEventListener('change',e=>{
   const file=e.target.files[0];if(!file)return;
@@ -5053,6 +5185,90 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       refreshUI();
     }
 
+function ensureEmbeddedRasterImages(root){
+  if(!root)return;
+  Array.from(root.querySelectorAll('image')).forEach(img=>{
+    const id=img.getAttribute('data-id');
+    const live=id?objects.find(o=>String(o.id)===String(id)):null;
+    let href=img.getAttribute('href')||img.getAttributeNS('http://www.w3.org/1999/xlink','href')||'';
+    // Rasterbilleder, der er importeret/pastet gennem Vektor-Viktor, har altid
+    // den originale data-URL liggende på objektet. Brug den som sikkerhedsnet,
+    // så eksporten aldrig ender med en midlertidig blob:-URL eller tom reference.
+    const stored=live&&live.data&&typeof live.data.dataUrl==='string'?live.data.dataUrl:'';
+    if(stored.startsWith('data:image/'))href=stored;
+    if(href.startsWith('data:image/')){
+      img.setAttribute('href',href);
+      img.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href',href);
+      img.removeAttribute('crossorigin');
+      img.setAttribute('preserveAspectRatio',img.getAttribute('preserveAspectRatio')||'xMidYMid meet');
+    }
+  });
+}
+
+// LightBurn er mere stabil med indlejrede PNG-billeder end med fx WebP,
+// SVG-billeder i <image> eller andre clipboard-formater. Ved laser-eksport
+// rasteriseres alle indlejrede billeder derfor til en ægte PNG data-URL.
+function rasterDataUrlToPng(dataUrl){
+  return new Promise(resolve=>{
+    if(!/^data:image\//i.test(dataUrl||'')){resolve(dataUrl);return;}
+    const im=new Image();
+    im.onload=()=>{
+      try{
+        const w=Math.max(1,im.naturalWidth||im.width||1);
+        const h=Math.max(1,im.naturalHeight||im.height||1);
+        const c=document.createElement('canvas');
+        c.width=w;c.height=h;
+        const ctx=c.getContext('2d');
+        if(!ctx){resolve(dataUrl);return;}
+        ctx.clearRect(0,0,w,h);
+        ctx.drawImage(im,0,0,w,h);
+        resolve(c.toDataURL('image/png'));
+      }catch(err){
+        console.warn('Kunne ikke konvertere rasterbillede til PNG:',err);
+        resolve(dataUrl);
+      }
+    };
+    im.onerror=()=>resolve(dataUrl);
+    im.src=dataUrl;
+  });
+}
+
+async function makeRasterImagesLightBurnCompatible(root){
+  if(!root)return;
+  const imgs=Array.from(root.querySelectorAll('image'));
+  for(const img of imgs){
+    const id=img.getAttribute('data-id');
+    const live=id?objects.find(o=>String(o.id)===String(id)):null;
+    let href=img.getAttribute('href')||img.getAttributeNS('http://www.w3.org/1999/xlink','href')||'';
+    const stored=live&&live.data&&typeof live.data.dataUrl==='string'?live.data.dataUrl:'';
+    if(/^data:image\//i.test(stored))href=stored;
+    if(!/^data:image\//i.test(href))continue;
+
+    // Konverter altid til PNG/base64, så LightBurn ikke skal forstå WebP,
+    // clipboard-SVG eller andre mindre kompatible billedformater.
+    const png=await rasterDataUrlToPng(href);
+    img.setAttribute('href',png);
+    img.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href',png);
+    img.removeAttribute('crossorigin');
+    img.setAttribute('preserveAspectRatio',img.getAttribute('preserveAspectRatio')||'xMidYMid meet');
+
+    // Nogle SVG-importere (inkl. ældre LightBurn-versioner) håndterer transform
+    // mere pålideligt på en <g> end direkte på <image>. Flyt derfor en evt.
+    // billed-transform op på en wrapper uden at ændre det visuelle resultat.
+    const tr=img.getAttribute('transform');
+    if(tr && tr.trim()){
+      const parent=img.parentNode;
+      if(parent){
+        const g=document.createElementNS(SVG_NS,'g');
+        g.setAttribute('transform',tr);
+        parent.insertBefore(g,img);
+        img.removeAttribute('transform');
+        g.appendChild(img);
+      }
+    }
+  }
+}
+
 function prepareSvgExport(){
   const clone=svg.cloneNode(true);
   clone.querySelector('#pageBg')?.remove();
@@ -5070,12 +5286,56 @@ function prepareSvgExport(){
   clone.setAttribute('height',BASE_VB.h+'mm');
   clone.removeAttribute('style');
   clone.setAttribute('preserveAspectRatio','xMinYMin meet');
+  // Bevar rasterbilleder som indlejrede data-URL'er i selve SVG-filen. LightBurn
+  // kan dermed gravere billedet direkte, også hvis brugeren ikke har trykket
+  // "Spor til vektor" først.
+  ensureEmbeddedRasterImages(clone);
   return clone;
 }
 
 
+function serializeSvgForLightBurn(root){
+  let xml=new XMLSerializer().serializeToString(root);
+
+  // XMLSerializer may rename the standard xlink prefix to ns1/ns2 on SVG <image>
+  // elements. That XML is technically valid, but LightBurn's SVG importer is much
+  // happier with the conventional literal xlink:href spelling. Normalize any
+  // generated namespace aliases back to xlink and keep the namespace on the root.
+  const aliasPrefixes=[];
+  xml=xml.replace(/\sxmlns:([A-Za-z_][\w.-]*)="http:\/\/www\.w3\.org\/1999\/xlink"/g,(m,prefix)=>{
+    if(prefix!=='xlink')aliasPrefixes.push(prefix);
+    return prefix==='xlink'?m:'';
+  });
+  aliasPrefixes.forEach(prefix=>{
+    const re=new RegExp('\\b'+prefix.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+':href=', 'g');
+    xml=xml.replace(re,'xlink:href=');
+  });
+
+  // Ensure the document has the canonical xlink namespace even if the DOM
+  // serializer decided it was unnecessary.
+  if(!/\sxmlns:xlink=/.test(xml)){
+    xml=xml.replace(/<svg\b/,'<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+  }
+
+  // LightBurn compatibility: every embedded bitmap gets BOTH modern href and
+  // legacy xlink:href. Browsers often collapse these aliases in the live DOM,
+  // so this must be done on the final serialized XML string.
+  xml=xml.replace(/<image\b[^>]*>/g,tag=>{
+    const match=tag.match(/\s(?:xlink:href|href)="(data:image\/[^"]+)"/i);
+    if(!match)return tag;
+    const dataUrl=match[1];
+    let cleaned=tag.replace(/\s(?:xlink:href|href)="[^"]*"/gi,'');
+    const close=/\/>$/.test(cleaned)?'/>':'>';
+    cleaned=cleaned.slice(0,-close.length);
+    return cleaned+' href="'+dataUrl+'" xlink:href="'+dataUrl+'"'+close;
+  });
+
+  return xml;
+}
+
 function downloadSvg(root,filename){
-  const blob=new Blob([new XMLSerializer().serializeToString(root)],{type:'image/svg+xml'});
+  const svgText=serializeSvgForLightBurn(root);
+  const blob=new Blob([svgText],{type:'image/svg+xml'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
   a.href=url;
@@ -5975,7 +6235,7 @@ function convertAllTextsInDocument(){
   return {converted, failed};
 }
 
-function exportSvgWithTextAsPaths(filename){
+async function exportSvgWithTextAsPaths(filename){
   // Først konverter live tekst på lærredet, så brugeren kan se resultatet
   const liveTexts=objects.filter(o=>o.type==='text');
   if(liveTexts.length){
@@ -5986,6 +6246,9 @@ function exportSvgWithTextAsPaths(filename){
     }
   }
   const clone=prepareSvgExport();
+  // Gør indlejrede rasterbilleder eksplicit LightBurn-kompatible før filen
+  // serialiseres: PNG/base64 + både href og legacy xlink:href.
+  await makeRasterImagesLightBurnCompatible(clone);
   // Sikkerhedsnet: konverter evt. resterende <text> i eksport-klonen
   const result=convertTextsToOutlines(clone);
   if(result.failed && !result.converted && result.total>0){
@@ -6004,6 +6267,142 @@ function getProjectFileName(ext){
 }
 function saveProjectFile(){
   exportSvgWithTextAsPaths(getProjectFileName('svg'));
+}
+
+function serializeEditableProject(){
+  return {
+    format:'Vektor-Viktor Project',
+    formatVersion:1,
+    appVersion:'1.80',
+    savedAt:new Date().toISOString(),
+    projectName:(document.getElementById('projectName')?.value||'Mit projekt').trim()||'Mit projekt',
+    pageSize,
+    currentMode,
+    nextId,
+    objects:objects.map(o=>({
+      id:o.id,
+      type:o.type,
+      data:JSON.parse(JSON.stringify(o.data||{})),
+      html:new XMLSerializer().serializeToString(o.el)
+    }))
+  };
+}
+
+function downloadEditableProject(){
+  const data=serializeEditableProject();
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=getProjectFileName('vvproj');
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function sanitizeProjectSvgElement(el){
+  if(!el || el.nodeType!==1)return null;
+  const forbidden=new Set(['script','foreignobject','iframe','object','embed']);
+  const all=[el,...el.querySelectorAll('*')];
+  for(const node of all){
+    const tag=(node.tagName||'').toLowerCase();
+    if(forbidden.has(tag)){
+      if(node!==el)node.remove();
+      else return null;
+      continue;
+    }
+    Array.from(node.attributes||[]).forEach(attr=>{
+      const n=attr.name.toLowerCase();
+      const v=String(attr.value||'').trim().toLowerCase();
+      if(n.startsWith('on'))node.removeAttribute(attr.name);
+      if((n==='href'||n==='xlink:href') && v.startsWith('javascript:'))node.removeAttribute(attr.name);
+    });
+  }
+  return el;
+}
+
+function parseProjectObjectHtml(html){
+  const parser=new DOMParser();
+  const doc=parser.parseFromString('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'+String(html||'').replace(/&nbsp;/g,'&#160;')+'</svg>','image/svg+xml');
+  if(doc.querySelector('parsererror'))return null;
+  const root=doc.documentElement.firstElementChild;
+  if(!root)return null;
+  const clean=sanitizeProjectSvgElement(root);
+  return clean?document.importNode(clean,true):null;
+}
+
+function loadEditableProject(data){
+  if(!data || data.format!=='Vektor-Viktor Project' || !Array.isArray(data.objects)){
+    throw new Error('Filen er ikke et gyldigt Vektor-Viktor-projekt.');
+  }
+
+  // Validate every object before replacing the current drawing.
+  const parsedObjects=data.objects.map(item=>{
+    const el=item && parseProjectObjectHtml(item.html);
+    if(!el)throw new Error('Projektet indeholder en figur, der ikke kunne læses. Den aktuelle tegning er bevaret.');
+    return {item,el};
+  });
+
+  // Luk evt. aktiv node-/tegnestatus før projektet udskiftes.
+  nodeEdit=null; nodeDrag=null; nodeMarqueeState=null;
+  document.getElementById('nodeMarqueeBox')?.remove();
+  cancelDraw();
+  selectedIds=[];
+  handlesG.innerHTML='';
+  tempG.innerHTML='';
+  objects.forEach(o=>o.el.remove());
+  objects=[];
+  undoStack=[];
+
+  const name=String(data.projectName||'Mit projekt').slice(0,160);
+  const nameInput=document.getElementById('projectName');
+  if(nameInput)nameInput.value=name;
+
+  const wantedPage=PAGE_SIZES[data.pageSize]?data.pageSize:'A4';
+  setPageSize(wantedPage);
+  const pageSelect=document.getElementById('pageSize');
+  if(pageSelect)pageSelect.value=wantedPage;
+
+  currentMode=['cut','green','engrave'].includes(data.currentMode)?data.currentMode:'cut';
+  if(isScanNCutPageSize() && currentMode==='green')currentMode='cut';
+
+  let maxCounter=0;
+  let restored=0;
+  parsedObjects.forEach(({item,el})=>{
+    let id=String(item.id||'').trim();
+    if(!id)id='obj'+(++maxCounter);
+    const m=id.match(/^obj(\d+)$/);
+    if(m)maxCounter=Math.max(maxCounter,Number(m[1])||0);
+    el.dataset.id=id;
+    el.style.pointerEvents='all';
+    el.setAttribute('pointer-events','all');
+    objectsG.appendChild(el);
+    objects.push({
+      id,
+      type:String(item.type||el.tagName||'path').toLowerCase(),
+      el,
+      data:(item.data && typeof item.data==='object')?item.data:{}
+    });
+    restored++;
+  });
+  nextId=Math.max(Number(data.nextId)||0,maxCounter+1,1);
+
+  updateModeButtonsForPageSize();
+  refreshObjectModesForPageSize();
+  enforceConstantStrokeRendering();
+  updateCount();
+  refreshUI();
+  zoomReset();
+  return restored;
+}
+
+async function openEditableProjectFile(file){
+  if(!file)return;
+  const text=await file.text();
+  let data;
+  try{data=JSON.parse(text);}catch(err){throw new Error('Projektfilen kunne ikke læses som JSON.');}
+  return loadEditableProject(data);
 }
 
 function initRightPanelAccordions(){
@@ -6068,6 +6467,27 @@ function initRightPanelAccordions(){
 }
 
 initRightPanelAccordions();
+document.getElementById('btnSaveProject')?.addEventListener('click',()=>downloadEditableProject());
+document.getElementById('btnOpenProject')?.addEventListener('click',()=>{
+  const input=document.getElementById('projectFileInput');
+  if(input){ input.value=''; input.click(); }
+});
+document.getElementById('projectFileInput')?.addEventListener('change',async e=>{
+  const file=e.target.files&&e.target.files[0];
+  if(!file)return;
+  try{
+    const restored=await openEditableProjectFile(file);
+    // Kort status i statuslinjen i stedet for en modal.
+    const status=document.getElementById('statusTool');
+    if(status){
+      const old=status.textContent;
+      status.textContent='Projekt åbnet · '+restored+' objekt'+(restored===1?'':'er');
+      setTimeout(()=>{ if(status.textContent.startsWith('Projekt åbnet'))status.textContent=old; },2200);
+    }
+  }catch(err){
+    alert(err&&err.message?err.message:'Projektet kunne ikke åbnes.');
+  }
+});
 document.getElementById('btnExport').onclick=()=>saveProjectFile();
 document.getElementById('btnExportFcm').onclick=()=>exportFcmFile();
 document.getElementById('projectName')?.addEventListener('keydown', e=>{

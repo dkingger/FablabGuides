@@ -10,6 +10,16 @@ Dato: 2026-09-27
 
 ## Seneste aendringer
 
+### Vektor-Viktor v1.80 (2026-10-02)
+
+Nu med gem/åben projekt, buet tekst og fejlrettelser.
+
+- Gem og åbn redigerbare projekter som `.vvproj`, inklusive tekst, figurer, billeder og sideformat. Rettet genåbning af buet tekst med mellemrum og indlejrede billeder; ugyldige projektfiler bevarer den aktuelle tegning.
+- Forbedret buet tekst med procentstyring samt kopiering og indsættelse fra udklipsholderen.
+- Forbedret billedimport og SVG-eksport med indlejrede PNG-billeder til LightBurn.
+- Bevaret tidligere rettelser til boolesk Forskel, afrundede hjørner, zoomnulstilling, ScanNCut-farver og tilgængelighed samt værktøjets favicon.
+- Opdateret versionsnummeret på både den danske og engelske forside.
+
 ### Vektor-Viktor – enklere favicon (2026-09-30)
 
 - Opdateret Vektor-Viktors favicon til et enklere ikon i alle seks favicon-filer. Versionsnummeret er fortsat v1.77.
