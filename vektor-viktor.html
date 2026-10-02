@@ -6435,7 +6435,9 @@ function initRightPanelAccordions(){
     const toggle=document.createElement('button');
     toggle.type='button';
     toggle.className='accordion-toggle';
-    toggle.setAttribute('aria-expanded','false');
+    const defaultOpen=group.id==='selectionProps';
+    group.classList.toggle('open',defaultOpen);
+    toggle.setAttribute('aria-expanded',String(defaultOpen));
     toggle.innerHTML='<span>'+title.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[ch]))+'</span><span class="accordion-chevron" aria-hidden="true">⌄</span>';
     toggle.addEventListener('click',()=>{
       const shouldOpen=!group.classList.contains('open');
