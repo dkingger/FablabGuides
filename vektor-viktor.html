@@ -47,9 +47,11 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 .canvas-wrap #drawSvg{flex-shrink:0;margin:24px}
 
 #drawSvg{background:#fff;box-shadow:0 4px 28px rgba(0,0,0,.25);cursor:crosshair;border:1px solid #6a7d72}
-/* Editor-only contrast edges. Page CSS is not included in SVG/project exports. */
-#drawSvg #objects :is(rect,ellipse,circle,path,polygon,polyline,text,use):is([fill="#000000" i],[fill="#000" i],[fill="black" i]){
-  filter:drop-shadow(.35px 0 0 #fff) drop-shadow(-.35px 0 0 #fff) drop-shadow(0 .35px 0 #fff) drop-shadow(0 -.35px 0 #fff);
+/* One screen-pixel contrast stroke; document paint remains unchanged on export. */
+#drawSvg #objects :is(rect,ellipse,circle,path,polygon,polyline,text,use):is([fill="#000000" i],[fill="#000" i],[fill="black" i])[stroke="none"]{
+  stroke:#fff!important;
+  stroke-width:1px!important;
+  vector-effect:non-scaling-stroke;
 }
 .page-size-select{margin-left:12px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--panel2);color:var(--text);font-size:.8rem;font-weight:600;cursor:pointer}
 .page-size-select:focus{outline:none;border-color:var(--accent)}
@@ -742,10 +744,22 @@ function getVB(){
   const v = (svg.getAttribute('viewBox')||('0 0 '+BASE_VB.w+' '+BASE_VB.h)).trim().split(/[\s,]+/).map(Number);
   return { x:v[0]||0, y:v[1]||0, w:v[2]||BASE_VB.w, h:v[3]||BASE_VB.h };
 }
+function prepareEditorContrastEdge(el){
+  if(!el || !el.style)return;
+  const fill=(el.getAttribute('fill')||'').toLowerCase();
+  if(['#000000','#000','black'].includes(fill) && el.getAttribute('stroke')==='none'){
+    // Keep the original attributes for export. Let the editor stylesheet supply
+    // the preview stroke, including on projects saved with inline paint styles.
+    el.style.removeProperty('stroke');
+    el.style.removeProperty('stroke-width');
+    el.setAttribute('vector-effect','non-scaling-stroke');
+  }
+}
 function enforceConstantStrokeRendering(){
   // Imported SVG'er kan have egne styles. Gentag derfor de visuelle SVG-egenskaber,
   // så zoom aldrig skalerer stregen på tekst eller øvrige konturer.
   objectsG.querySelectorAll('path,rect,ellipse,circle,line,polygon,polyline,text,use').forEach(el=>{
+    prepareEditorContrastEdge(el);
     el.setAttribute('vector-effect','non-scaling-stroke');
     el.setAttribute('shape-rendering','geometricPrecision');
     if(el.tagName.toLowerCase()==='text') el.setAttribute('text-rendering','geometricPrecision');
@@ -936,6 +950,7 @@ function applyMode(el,m){
   el.setAttribute('shape-rendering','geometricPrecision');
   if(el.tagName && (el.tagName.toLowerCase()==='text'||el.tagName.toLowerCase()==='tspan')) el.setAttribute('text-rendering','geometricPrecision');
   el.setAttribute('pointer-events','all');
+  prepareEditorContrastEdge(el);
   if(m==='engrave' && !isScanNCutPageSize() && el.tagName && el.tagName.toLowerCase()==='text')el.setAttribute('font-weight','800');
 }
 function applyLineMode(el,m){
@@ -1140,6 +1155,7 @@ function selectOnly(id){selectedIds=[id];refreshUI()}
 function toggleSelect(id){const i=selectedIds.indexOf(id);if(i>=0)selectedIds.splice(i,1);else selectedIds.push(id);refreshUI()}
 function deselectAll(){selectedIds=[];refreshUI()}
 function refreshUI(){
+  enforceConstantStrokeRendering();
   clearOffsetPreview();
   objects.forEach(o=>{o.el.style.filter='';});
   handlesG.innerHTML='';
