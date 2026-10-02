@@ -47,6 +47,10 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 .canvas-wrap #drawSvg{flex-shrink:0;margin:24px}
 
 #drawSvg{background:#fff;box-shadow:0 4px 28px rgba(0,0,0,.25);cursor:crosshair;border:1px solid #6a7d72}
+/* Editor-only contrast edges. Page CSS is not included in SVG/project exports. */
+#drawSvg #objects :is(rect,ellipse,circle,path,polygon,polyline,text,use):is([fill="#000000" i],[fill="#000" i],[fill="black" i]){
+  filter:drop-shadow(.35px 0 0 #fff) drop-shadow(-.35px 0 0 #fff) drop-shadow(0 .35px 0 #fff) drop-shadow(0 -.35px 0 #fff);
+}
 .page-size-select{margin-left:12px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--panel2);color:var(--text);font-size:.8rem;font-weight:600;cursor:pointer}
 .page-size-select:focus{outline:none;border-color:var(--accent)}
 #inlineTextInput{position:absolute;z-index:40;min-width:96px;width:auto;max-width:360px;height:44px;padding:4px 12px;border:1.5px solid var(--accent);border-radius:4px;font-size:20px;font-family:Arial,sans-serif;font-weight:600;background:#fff;color:#111;outline:none;box-shadow:0 1px 6px rgba(0,0,0,.18);caret-color:var(--accent);line-height:1.2}
