@@ -363,7 +363,6 @@
             + "<a class=\"skip-link\" href=\"#main-content\">" + t.skipLink + "</a>"
             + "<div class=\"container nav-wrap\">"
             + "<a class=\"brand interactive\" href=\"index.html\" aria-label=\"" + t.brandAriaLabel + "\">"
-            + "<span class=\"brand-mark\"><img src=\"/billeder/Fablab Logo.svg\" alt=\"FabLab logo\"></span>"
             + "<span class=\"brand-text\"><strong>FabLab</strong><span>Guides</span></span>"
             + "</a>"
             + "<nav class=\"top-nav\" aria-label=\"Guide navigation\">"
