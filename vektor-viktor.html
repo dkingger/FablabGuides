@@ -85,6 +85,14 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 .mode-btn.active{border-color:var(--accent);color:var(--text);background:#e3f5ea}
 .mode-btn:hover{border-color:var(--accent)}
 .mode-btn:disabled{opacity:.5;cursor:not-allowed}
+.scan-color-row{display:flex;align-items:center;gap:10px;margin-top:6px}
+#scanFillColor{width:54px;height:38px;padding:2px;border:1px solid var(--border);border-radius:8px;background:#fff;cursor:pointer}
+#scanFillColor::-webkit-color-swatch-wrapper{padding:2px}
+#scanFillColor::-webkit-color-swatch{border:none;border-radius:5px}
+#scanFillHex{flex:1;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;font-weight:700;color:var(--text);background:#fff;border:1px solid var(--border);border-radius:7px;padding:8px 9px;text-align:center}
+.scan-color-help{font-size:.68rem;color:var(--text-dim);line-height:1.4;margin-top:7px}
+.scan-color-actions{display:flex;gap:6px;margin-top:8px}
+.scan-color-actions .btn{flex:1}
 .btn{padding:8px 12px;border:none;border-radius:6px;font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;width:100%}
 .btn-primary{background:var(--accent);color:#fff}
 .btn-primary:hover{background:var(--accent-hover)}
@@ -123,6 +131,8 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 .align-btn{padding:8px 4px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text);cursor:pointer;font-size:.85rem}
 .align-btn:hover{border-color:var(--accent);background:var(--panel2)}
 .align-btn.wide{grid-column:span 1;font-size:.7rem;font-weight:600}
+.align-btn svg.align-icon{width:24px;height:24px;display:block;margin:auto;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.align-btn.wide svg.align-icon{width:27px;height:23px}
 .array-tabs{display:flex;gap:4px;margin-bottom:8px}
 .array-tabs button{flex:1;padding:6px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text-dim);font-size:.75rem;font-weight:600;cursor:pointer}
 .array-tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -192,7 +202,8 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 .handle-box{fill:var(--accent);stroke:#fff;stroke-width:1.25}
 /* Hold tegnelinjer visuelt konstante ved zoom. Især tekst må ikke blive tykkere/tyndere. */
 #objects path,#objects rect,#objects ellipse,#objects circle,#objects line,#objects polygon,#objects polyline,#objects text,#objects use{vector-effect:non-scaling-stroke;shape-rendering:geometricPrecision}
-#objects text{text-rendering:geometricPrecision;-webkit-font-smoothing:antialiased}
+#objects text{text-rendering:geometricPrecision;-webkit-font-smoothing:antialiased;font-synthesis:none}
+#objects text tspan{font-family:inherit;font-weight:inherit;font-style:inherit;font-synthesis:none}
 .props{width:294px;padding:15px 14px 18px;gap:10px;background:#f5f7f9;border-left:1px solid #cfd6dc;box-shadow:-3px 0 16px rgba(15,23,31,.08);scrollbar-color:#bcc5cd transparent;scrollbar-width:thin}
 .props h2{padding:2px 2px 4px;color:#596674;font-size:.67rem;font-weight:800;letter-spacing:.12em}
 .prop-group{padding:11px;background:#fff;border:1px solid #dde3e8;border-radius:11px;box-shadow:0 1px 2px rgba(21,30,39,.03)}
@@ -230,6 +241,22 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 .canvas-wrap{display:block!important;position:relative;overflow:auto!important}
 .canvas-stage{position:relative;display:block;min-width:100%;min-height:100%}
 .canvas-stage #drawSvg{position:absolute!important;margin:0!important;flex:none!important}
+
+/* Projekt-gemmestatus og diskret gemmepåmindelse */
+.save-state{display:inline-flex;align-items:center;white-space:nowrap;font-size:.65rem;font-weight:700;line-height:1;padding:5px 7px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);color:#aeb8c2;flex:0 0 auto}
+.save-state.saved{color:#8ee5b8;border-color:rgba(63,190,123,.28);background:rgba(35,164,99,.12)}
+.save-state.dirty{color:#ffd38a;border-color:rgba(255,179,71,.3);background:rgba(255,166,43,.12)}
+.save-state.new{color:#aeb8c2}
+.save-reminder-toast{position:fixed;right:18px;bottom:42px;z-index:220;display:flex;align-items:center;gap:10px;max-width:430px;padding:12px 12px 12px 14px;border-radius:12px;background:#20252b;color:#f7f9fb;border:1px solid rgba(255,255,255,.12);box-shadow:0 14px 38px rgba(0,0,0,.32);transform:translateY(16px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease}
+.save-reminder-toast.show{visibility:visible;transform:translateY(0);opacity:1;pointer-events:auto}
+.save-reminder-text{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.save-reminder-text strong{font-size:.78rem}
+.save-reminder-text span{font-size:.69rem;color:#b8c2cc;line-height:1.3}
+.save-reminder-action{height:30px;padding:0 10px;border:0;border-radius:7px;background:var(--accent);color:#fff;font-size:.7rem;font-weight:750;cursor:pointer;white-space:nowrap}
+.save-reminder-action:hover{background:var(--accent-hover)}
+.save-reminder-close{width:28px;height:28px;border:0;border-radius:7px;background:transparent;color:#aeb8c2;font-size:1.1rem;cursor:pointer}
+.save-reminder-close:hover{background:rgba(255,255,255,.08);color:#fff}
+@media (max-width:1320px){.save-state{display:none}}
 .layer-item { display: block; width: 100%; text-align: left; font-family: inherit; }
 :root { --accent: #087a49; --accent-hover: #06633b; }
 :focus-visible { outline: 3px solid #112d4e !important; outline-offset: 3px; }
@@ -241,10 +268,11 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
     <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.80</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.91</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
+    <span id="saveStateIndicator" class="save-state new" title="Projektet er endnu ikke gemt som projektfil">○ Nyt projekt</span>
   </div>
   <div class="project-file-actions" aria-label="Projektfiler">
     <button type="button" id="btnSaveProject" class="header-btn wide" title="Gem redigerbart Vektor-Viktor-projekt">Gem projekt</button>
@@ -269,7 +297,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
     <option value="ScanNCut">ScanNCut (300×300)</option>
   </select>
 
-  <button type="button" id="btnSnap" class="header-btn active" title="Snap til hjørner/midtpunkter (magnet)">
+  <button type="button" id="btnSnap" class="header-btn" title="Snap til hjørner/midtpunkter (magnet)">
     <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M7 7h4v4H7zM13 7h4v4h-4zM7 13h4v4H7zM15 15l4 4M15 19l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
   <span class="hint">Rød/grøn = linje · Sort = fyld · Zoom med scroll</span>
@@ -279,26 +307,26 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 
 <main class="main" id="main-content" tabindex="-1">
   <div class="toolbar">
-    <button class="tool-btn active" data-tool="select" title="Vælg (V)" aria-label="Vælg (V)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l7 16 2.5-6.5L20 11z"/></svg><span class="tip">Vælg (V)</span></button>
-    <button class="tool-btn" data-tool="rect" title="Rektangel" aria-label="Rektangel"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="1"/></svg><span class="tip">Rektangel</span></button>
-    <button class="tool-btn" data-tool="ellipse" title="Ellipse" aria-label="Ellipse"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="7"/></svg><span class="tip">Ellipse</span></button>
-    <button class="tool-btn" data-tool="line" title="Linje" aria-label="Linje"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="19" x2="19" y2="5"/></svg><span class="tip">Linje</span></button>
-    <button class="tool-btn" data-tool="pen" title="Pen (klik-klik)" aria-label="Pen (klik-klik)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11a2 2 0 0 0-3-3L5 16l-1 4z"/></svg><span class="tip">Pen (klik-klik)</span></button>
-    <button class="tool-btn" data-tool="freehand" title="Frithånd" aria-label="Frithånd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17c4-6 6-4 8-2s5 3 10-6"/></svg><span class="tip">Frithånd</span></button>
-    <button class="tool-btn" data-tool="bezier" title="Bezier" aria-label="Bezier"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18C4 10 10 6 12 6s8 4 8 12"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/><circle cx="12" cy="6" r="1.5" fill="currentColor"/><circle cx="20" cy="18" r="1.5" fill="currentColor"/></svg><span class="tip">Bezier</span></button>
-    <button class="tool-btn" data-tool="node" title="Noder" aria-label="Noder"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/><circle cx="4" cy="12" r="2.5" fill="currentColor"/><circle cx="20" cy="12" r="2.5" fill="currentColor"/><circle cx="12" cy="4" r="2.5" fill="currentColor"/><circle cx="12" cy="20" r="2.5" fill="currentColor"/></svg><span class="tip">Noder</span></button>
-    <button class="tool-btn" data-tool="polygon" title="Polygon (klik punkter)" aria-label="Polygon"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 21,9 18,20 6,20 3,9"/></svg><span class="tip">Polygon (klik)</span></button>
-    <button class="tool-btn" data-tool="ngon" title="Regelmæssig polygon (trekant+). +/- ændrer sider" aria-label="Regelmæssig polygon"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 20.5,8.5 17.5,18.5 6.5,18.5 3.5,8.5"/></svg><span class="tip">Reg. polygon (+/-)</span></button>
-    <button class="tool-btn" data-tool="text" title="Tekst" aria-label="Tekst"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M12 5v14M9 19h6"/></svg><span class="tip">Tekst</span></button>
+    <button class="tool-btn active" data-tool="select" title="Vælg (V)" aria-label="Vælg (V)"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l7 16 2.5-6.5L20 11z"/></svg><span class="tip">Vælg (V)</span></button>
+    <button class="tool-btn" data-tool="rect" title="Rektangel" aria-label="Rektangel"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="1"/></svg><span class="tip">Rektangel</span></button>
+    <button class="tool-btn" data-tool="ellipse" title="Ellipse" aria-label="Ellipse"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="7"/></svg><span class="tip">Ellipse</span></button>
+    <button class="tool-btn" data-tool="line" title="Linje" aria-label="Linje"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="19" x2="19" y2="5"/></svg><span class="tip">Linje</span></button>
+    <button class="tool-btn" data-tool="pen" title="Pen (klik-klik)" aria-label="Pen (klik-klik)"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11a2 2 0 0 0-3-3L5 16l-1 4z"/></svg><span class="tip">Pen (klik-klik)</span></button>
+    <button class="tool-btn" data-tool="freehand" title="Frithånd" aria-label="Frithånd"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17c4-6 6-4 8-2s5 3 10-6"/></svg><span class="tip">Frithånd</span></button>
+    <button class="tool-btn" data-tool="bezier" title="Bezier" aria-label="Bezier"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18C4 10 10 6 12 6s8 4 8 12"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/><circle cx="12" cy="6" r="1.5" fill="currentColor"/><circle cx="20" cy="18" r="1.5" fill="currentColor"/></svg><span class="tip">Bezier</span></button>
+    <button class="tool-btn" data-tool="node" title="Noder" aria-label="Noder"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/><circle cx="4" cy="12" r="2.5" fill="currentColor"/><circle cx="20" cy="12" r="2.5" fill="currentColor"/><circle cx="12" cy="4" r="2.5" fill="currentColor"/><circle cx="12" cy="20" r="2.5" fill="currentColor"/></svg><span class="tip">Noder</span></button>
+    <button class="tool-btn" data-tool="polygon" title="Polygon (klik punkter)" aria-label="Polygon"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 21,9 18,20 6,20 3,9"/></svg><span class="tip">Polygon (klik)</span></button>
+    <button class="tool-btn" data-tool="ngon" title="Regelmæssig polygon (trekant+). +/- ændrer sider" aria-label="Regelmæssig polygon"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 20.5,8.5 17.5,18.5 6.5,18.5 3.5,8.5"/></svg><span class="tip">Reg. polygon (+/-)</span></button>
+    <button class="tool-btn" data-tool="text" title="Tekst" aria-label="Tekst"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V5h16v2M12 5v14M9 19h6"/></svg><span class="tip">Tekst</span></button>
     <div class="tool-sep"></div>
-    <button class="tool-btn" data-tool="image" title="Importer billede/SVG" aria-label="Importer billede eller SVG"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M3 16l5-4 4 3 5-5 4 4"/></svg><span class="tip">Importer billede/SVG</span></button>
-    <button class="tool-btn" data-tool="offset" title="Forskudt linje" aria-label="Forskudt linje"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h8a4 4 0 0 1 4 4v8"/><path d="M5 9h7a3 3 0 0 1 3 3v7"/><path d="M3 13h5a3 3 0 0 1 3 3v5"/></svg><span class="tip">Forskudt linje</span></button>
-    <button class="tool-btn" data-tool="array" title="Array (mangegør)" aria-label="Array (mangegør)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg><span class="tip">Array (mangegør)</span></button>
+    <button class="tool-btn" data-tool="image" title="Importer billede/SVG" aria-label="Importer billede eller SVG"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M3 16l5-4 4 3 5-5 4 4"/></svg><span class="tip">Importer billede/SVG</span></button>
+    <button class="tool-btn" data-tool="offset" title="Forskudt linje" aria-label="Forskudt linje"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h8a4 4 0 0 1 4 4v8"/><path d="M5 9h7a3 3 0 0 1 3 3v7"/><path d="M3 13h5a3 3 0 0 1 3 3v5"/></svg><span class="tip">Forskudt linje</span></button>
+    <button class="tool-btn" data-tool="array" title="Array (mangegør)" aria-label="Array (mangegør)"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg><span class="tip">Array (mangegør)</span></button>
     <div class="tool-sep"></div>
-    <button class="tool-btn" data-tool="delete" title="Slet" aria-label="Slet valgte objekter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M9 7V5h6v2M8 7l1 13h6l1-13"/></svg><span class="tip">Slet</span></button>
-    <button class="tool-btn" data-tool="clear" title="Ryd alt" aria-label="Ryd alle objekter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M8 6V4h8v2M6 6l1 14h10l1-14"/></svg><span class="tip">Ryd alt</span></button>
+    <button class="tool-btn" data-tool="delete" title="Slet" aria-label="Slet valgte objekter"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M9 7V5h6v2M8 7l1 13h6l1-13"/></svg><span class="tip">Slet</span></button>
+    <button class="tool-btn" data-tool="clear" title="Ryd alt" aria-label="Ryd alle objekter"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M8 6V4h8v2M6 6l1 14h10l1-14"/></svg><span class="tip">Ryd alt</span></button>
     <div class="tool-sep"></div>
-    <button class="tool-btn" data-tool="about" title="Om Vektor-Viktor" aria-label="Om Vektor-Viktor"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 10.5v5"/><circle cx="12" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg><span class="tip">Om Vektor-Viktor</span></button>
+    <button class="tool-btn" data-tool="about" title="Om Vektor-Viktor" aria-label="Om Vektor-Viktor"><svg aria-hidden="true" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 10.5v5"/><circle cx="12" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg><span class="tip">Om Vektor-Viktor</span></button>
   </div>
   <div class="canvas-wrap">
     <svg role="img" aria-label="Tegneflade med vektorobjekter" id="drawSvg" width="841" height="595" viewBox="0 0 297 210">
@@ -311,13 +339,24 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 
   <div class="props">
     <h2>Egenskaber</h2>
-    <div class="prop-group" id="colorProps">
-      <label>Farver</label>
+    <div class="prop-group" id="laserModePanel">
+      <label>Laser-tilstand</label>
       <div class="mode-row">
-        <button class="mode-btn cut active" data-mode="cut"><div class="swatch"></div>Rød linje</button>
-        <button class="mode-btn green" data-mode="green"><div class="swatch"></div>Grøn linje</button>
-        <button class="mode-btn engrave" data-mode="engrave"><div class="swatch"></div>Fyldt sort</button>
+        <button class="mode-btn cut active" data-mode="cut" title="Skær – rød linje"><div class="swatch"></div>Skær</button>
+        <button class="mode-btn green" data-mode="green" title="Tegn – grøn linje"><div class="swatch"></div>Tegn</button>
+        <button class="mode-btn engrave" data-mode="engrave" title="Graver – sort fyld"><div class="swatch"></div>Graver</button>
       </div>
+    </div>
+    <div class="prop-group hidden" id="scanColorPanel">
+      <label>Foliefarve / klistermærke</label>
+      <div class="scan-color-row">
+        <input type="color" id="scanFillColor" value="#ff5a5f" title="Vælg farve">
+        <span id="scanFillHex">#FF5A5F</span>
+      </div>
+      <div class="scan-color-actions">
+        <button type="button" class="btn btn-secondary" id="btnClearScanFill">Ingen udfyldning</button>
+      </div>
+      <p class="scan-color-help">Farven er kun en forhåndsvisning på Scan N Cut-måtten. FCM-filen gemmes stadig som rene skærelinjer.</p>
     </div>
     <div class="prop-group" id="noSelection">
       <p style="color:var(--text-dim);font-size:.8rem;line-height:1.45">Vælg et objekt for egenskaber.<br><br>Træk en kasse eller hold <b style="color:var(--text)">Shift</b> for flere. Brug Justering og Boolske operationer når 2+ er valgt.</p>
@@ -335,22 +374,26 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 
       <div id="textProps" class="hidden">
         <label style="margin-top:8px">Skrifttype</label>
-        <select id="propFont" class="prop-select">
-          <option value="Arial, Helvetica, sans-serif">Arial</option>
-          <option value="Helvetica, Arial, sans-serif">Helvetica</option>
-          <option value="'Times New Roman', Times, serif">Times New Roman</option>
-          <option value="Georgia, serif">Georgia</option>
-          <option value="Garamond, serif">Garamond</option>
-          <option value="'Courier New', Courier, monospace">Courier New</option>
-          <option value="Verdana, Geneva, sans-serif">Verdana</option>
-          <option value="Tahoma, Geneva, sans-serif">Tahoma</option>
-          <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
-          <option value="Impact, Charcoal, sans-serif">Impact</option>
-          <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
-          <option value="'Palatino Linotype', Palatino, serif">Palatino</option>
-          <option value="'Lucida Console', Monaco, monospace">Lucida Console</option>
-          <option value="'Segoe UI', system-ui, sans-serif">Segoe UI</option>
-          <option value="system-ui, sans-serif">System</option>
+        <select id="propFont" class="prop-select" title="Vælg skrifttype">
+          <option value="Arial, Helvetica, sans-serif" style="font-family:Arial,Helvetica,sans-serif">Arial</option>
+          <option value="'Arial Black', Arial, sans-serif" style="font-family:'Arial Black',Arial,sans-serif">Arial Black</option>
+          <option value="Helvetica, Arial, sans-serif" style="font-family:Helvetica,Arial,sans-serif">Helvetica</option>
+          <option value="Calibri, Arial, sans-serif" style="font-family:Calibri,Arial,sans-serif">Calibri</option>
+          <option value="'Segoe UI', system-ui, sans-serif" style="font-family:'Segoe UI',sans-serif">Segoe UI</option>
+          <option value="Verdana, Geneva, sans-serif" style="font-family:Verdana,Geneva,sans-serif">Verdana</option>
+          <option value="Tahoma, Geneva, sans-serif" style="font-family:Tahoma,Geneva,sans-serif">Tahoma</option>
+          <option value="'Trebuchet MS', sans-serif" style="font-family:'Trebuchet MS',sans-serif">Trebuchet MS</option>
+          <option value="'Century Gothic', Arial, sans-serif" style="font-family:'Century Gothic',Arial,sans-serif">Century Gothic</option>
+          <option value="Impact, Charcoal, sans-serif" style="font-family:Impact,Charcoal,sans-serif">Impact</option>
+          <option value="'Times New Roman', Times, serif" style="font-family:'Times New Roman',Times,serif">Times New Roman</option>
+          <option value="Georgia, serif" style="font-family:Georgia,serif">Georgia</option>
+          <option value="Garamond, serif" style="font-family:Garamond,serif">Garamond</option>
+          <option value="'Palatino Linotype', Palatino, serif" style="font-family:'Palatino Linotype',Palatino,serif">Palatino</option>
+          <option value="'Bookman Old Style', Georgia, serif" style="font-family:'Bookman Old Style',Georgia,serif">Bookman Old Style</option>
+          <option value="'Courier New', Courier, monospace" style="font-family:'Courier New',Courier,monospace">Courier New</option>
+          <option value="'Lucida Console', Monaco, monospace" style="font-family:'Lucida Console',Monaco,monospace">Lucida Console</option>
+          <option value="'Comic Sans MS', cursive" style="font-family:'Comic Sans MS',cursive">Comic Sans MS</option>
+          <option value="system-ui, sans-serif" style="font-family:system-ui,sans-serif">System</option>
         </select>
         <label>Skriftstørrelse</label>
         <input type="number" id="propFontSize" class="prop-select" min="8" max="400" step="1" value="28" style="margin-bottom:0">
@@ -385,16 +428,16 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 
       <label>Justering</label>
       <div class="align-grid">
-        <button type="button" class="align-btn" data-align="left" title="Venstre">⬅</button>
-        <button type="button" class="align-btn" data-align="hcenter" title="Centrer vandret">↔</button>
-        <button type="button" class="align-btn" data-align="right" title="Højre">➡</button>
-        <button type="button" class="align-btn" data-align="top" title="Top">⬆</button>
-        <button type="button" class="align-btn" data-align="vcenter" title="Centrer lodret">↕</button>
-        <button type="button" class="align-btn" data-align="bottom" title="Bund">⬇</button>
+        <button type="button" class="align-btn" data-align="left" title="Juster til venstre" aria-label="Juster til venstre"><svg aria-hidden="true" class="align-icon" viewBox="0 0 24 24"><path d="M4 3v18"/><rect x="7" y="5" width="11" height="4" rx=".7"/><rect x="7" y="13" width="7" height="4" rx=".7"/></svg></button>
+        <button type="button" class="align-btn" data-align="hcenter" title="Centrer vandret" aria-label="Centrer vandret"><svg aria-hidden="true" class="align-icon" viewBox="0 0 24 24"><path d="M12 3v18" stroke-dasharray="2 2"/><rect x="5" y="5" width="14" height="4" rx=".7"/><rect x="8" y="13" width="8" height="4" rx=".7"/></svg></button>
+        <button type="button" class="align-btn" data-align="right" title="Juster til højre" aria-label="Juster til højre"><svg aria-hidden="true" class="align-icon" viewBox="0 0 24 24"><path d="M20 3v18"/><rect x="6" y="5" width="11" height="4" rx=".7"/><rect x="10" y="13" width="7" height="4" rx=".7"/></svg></button>
+        <button type="button" class="align-btn" data-align="top" title="Juster til top" aria-label="Juster til top"><svg aria-hidden="true" class="align-icon" viewBox="0 0 24 24"><path d="M3 4h18"/><rect x="5" y="7" width="4" height="11" rx=".7"/><rect x="13" y="7" width="4" height="7" rx=".7"/></svg></button>
+        <button type="button" class="align-btn" data-align="vcenter" title="Centrer lodret" aria-label="Centrer lodret"><svg aria-hidden="true" class="align-icon" viewBox="0 0 24 24"><path d="M3 12h18" stroke-dasharray="2 2"/><rect x="5" y="5" width="4" height="14" rx=".7"/><rect x="13" y="8" width="4" height="8" rx=".7"/></svg></button>
+        <button type="button" class="align-btn" data-align="bottom" title="Juster til bund" aria-label="Juster til bund"><svg aria-hidden="true" class="align-icon" viewBox="0 0 24 24"><path d="M3 20h18"/><rect x="5" y="6" width="4" height="11" rx=".7"/><rect x="13" y="10" width="4" height="7" rx=".7"/></svg></button>
       </div>
       <div class="align-grid" style="margin-top:6px">
-        <button type="button" class="align-btn wide" data-align="dist-h" title="Fordel vandret">⇔ Fordel H</button>
-        <button type="button" class="align-btn wide" data-align="dist-v" title="Fordel lodret">⇕ Fordel V</button>
+        <button type="button" class="align-btn wide" data-align="dist-h" title="Fordel vandret med ens afstand" aria-label="Fordel vandret"><svg aria-hidden="true" class="align-icon" viewBox="0 0 28 24"><rect x="2" y="6" width="4" height="12" rx=".6"/><rect x="12" y="6" width="4" height="12" rx=".6"/><rect x="22" y="6" width="4" height="12" rx=".6"/><path d="M7.5 12h3M17.5 12h3"/><path d="m9 10 1.5 2L9 14M19 10l1.5 2-1.5 2"/></svg></button>
+        <button type="button" class="align-btn wide" data-align="dist-v" title="Fordel lodret med ens afstand" aria-label="Fordel lodret"><svg aria-hidden="true" class="align-icon" viewBox="0 0 28 24"><rect x="8" y="1" width="12" height="4" rx=".6"/><rect x="8" y="10" width="12" height="4" rx=".6"/><rect x="8" y="19" width="12" height="4" rx=".6"/><path d="M14 6.5v2M14 15.5v2"/><path d="m12 7.5 2 1 2-1M12 16.5l2 1 2-1"/></svg></button>
       </div>
     </div>
     <div class="prop-group hidden" id="groupProps">
@@ -432,7 +475,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
     </div>
 
     <div class="prop-group"><label>Objekter</label><div class="layer-list" id="layerList"></div></div>
-    <button class="btn btn-primary" id="btnExport" title="Konverterer tekst til stier og gemmer SVG (klar til ScanNCut/laser)">Gem til laser</button>
+    <button class="btn btn-primary" id="btnExport" title="Konverterer tekst til stier og gemmer SVG klar til laser">Gem til laser</button>
     <button class="btn btn-secondary" id="btnExportFcm" title="Gemmer en ScanNCut-kompatibel FCM-fil">Gem til Scan'n'Cut</button>
     <button class="btn btn-secondary" id="btnZoomFit">Nulstil zoom</button>
 
@@ -443,7 +486,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <span id="statusTool">Værktøj: Vælg</span>
   <span id="statusCount">Objekter: 0</span>
   <span id="statusSel">Valgt: 0</span>
-  <span id="colorHint">Rød/grøn = linje · Fyldt sort = tekst/fyld</span>
+  <span>Rød = Skær · Grøn = Tegn · Sort = Graver</span>
   <span class="credit">Tak til Réne fra Fredericia MakerSpace</span>
 </div>
 <div class="modal-overlay" id="offsetModal" aria-hidden="true">
@@ -452,7 +495,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
     <h2 id="offsetModalTitle">Forskudt linje</h2>
     <div class="prop-group">
       <label class="offset-options"><input type="checkbox" id="offsetExpand" checked><span>Udvid udad</span></label>
-      <div class="offset-options"><span>Afstand (mm)</span><input type="number" id="offsetDistance" aria-label="Afstand (mm)" min="0.01" max="100" step="0.01" value="5"></div>
+      <div class="offset-options"><span>Afstand (mm)</span><input type="number" id="offsetDistance" min="0.01" max="100" step="0.01" value="5" aria-label="Afstand (mm)"></div>
       <div class="offset-options"><span>Hjørner</span><select id="offsetJoin" aria-label="Hjørner"><option value="round">Runde</option><option value="miter">Skarpe</option><option value="bevel">Affasede</option></select></div>
       <div class="offset-options"><span>Mitergrænse</span><input type="number" id="offsetMiter" min="1" max="20" step="0.1" value="4"></div>
       <div class="offset-options"><span>Huller</span><select id="offsetHoles"><option value="remove">Fjern</option><option value="keep">Behold</option></select></div>
@@ -543,7 +586,7 @@ let freehandPts=[], bezierAnchors=[], bezierDragging=false, bezierHandle=null, n
 let offsetPreviewEls=[], offsetPreviewActive=false;
 
 
-let snapEnabled = true;
+let snapEnabled = false;
 
 function svgPtRaw(e){const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse())}
 function svgPt(e){
@@ -692,9 +735,185 @@ function updatePageGrid(){
   }
 }
 
+let currentScanFillColor='#ff5a5f';
+
+function normalizeHexColor(value,fallback){
+  const v=String(value||'').trim();
+  if(/^#[0-9a-f]{6}$/i.test(v))return v.toLowerCase();
+  if(/^#[0-9a-f]{3}$/i.test(v))return '#'+v.slice(1).split('').map(c=>c+c).join('').toLowerCase();
+  return fallback||'#ff5a5f';
+}
+function ensureScanPreviewDefs(){
+  let defs=svg.querySelector('#vvScanPreviewDefs');
+  if(defs)return defs;
+  defs=document.createElementNS(SVG_NS,'defs');
+  defs.id='vvScanPreviewDefs';
+  svg.insertBefore(defs, svg.firstChild);
+  return defs;
+}
+function ensureScanImageTintFilter(color){
+  const c=normalizeHexColor(color);
+  const defs=ensureScanPreviewDefs();
+  const id='vvScanTint_'+c.slice(1).toLowerCase();
+  let filter=defs.querySelector('#'+id);
+  if(filter)return id;
+  filter=document.createElementNS(SVG_NS,'filter');
+  filter.setAttribute('id',id);
+  filter.setAttribute('x','0%');
+  filter.setAttribute('y','0%');
+  filter.setAttribute('width','100%');
+  filter.setAttribute('height','100%');
+  const lum=document.createElementNS(SVG_NS,'feColorMatrix');
+  lum.setAttribute('in','SourceGraphic');
+  lum.setAttribute('type','luminanceToAlpha');
+  lum.setAttribute('result','lumAlpha');
+  const inv=document.createElementNS(SVG_NS,'feComponentTransfer');
+  inv.setAttribute('in','lumAlpha');
+  inv.setAttribute('result','invAlpha');
+  const funcA=document.createElementNS(SVG_NS,'feFuncA');
+  funcA.setAttribute('type','table');
+  funcA.setAttribute('tableValues','1 0');
+  inv.appendChild(funcA);
+  const flood=document.createElementNS(SVG_NS,'feFlood');
+  flood.setAttribute('flood-color',c);
+  flood.setAttribute('flood-opacity','1');
+  flood.setAttribute('result','flood');
+  const comp=document.createElementNS(SVG_NS,'feComposite');
+  comp.setAttribute('in','flood');
+  comp.setAttribute('in2','invAlpha');
+  comp.setAttribute('operator','in');
+  comp.setAttribute('result','tint');
+  const merge=document.createElementNS(SVG_NS,'feMerge');
+  const mn=document.createElementNS(SVG_NS,'feMergeNode');
+  mn.setAttribute('in','tint');
+  merge.appendChild(mn);
+  filter.appendChild(lum);
+  filter.appendChild(inv);
+  filter.appendChild(flood);
+  filter.appendChild(comp);
+  filter.appendChild(merge);
+  defs.appendChild(filter);
+  return id;
+}
+function applyScanPreviewFillToImageElement(el,color){
+  if(!el)return;
+  const c=color?normalizeHexColor(color):null;
+  if(!c){
+    el.removeAttribute('filter');
+    if(el.style)el.style.removeProperty('filter');
+    return;
+  }
+  const id=ensureScanImageTintFilter(c);
+  el.setAttribute('filter','url(#'+id+')');
+  if(el.style)el.style.setProperty('filter','url(#'+id+')');
+}
+function applyScanPreviewFillToUseReference(useEl,color,seen){
+  seen=seen||new Set();
+  const ref=resolveUseReference(useEl);
+  if(!ref||seen.has(ref))return;
+  seen.add(ref);
+
+  const c=color?normalizeHexColor(color):null;
+  const drawableSelector='path,rect,ellipse,circle,polygon,text,tspan,line,polyline,use';
+  const targets=[];
+  const tag=(ref.tagName||'').toLowerCase();
+  if(['path','rect','ellipse','circle','polygon','text','tspan','line','polyline','use'].includes(tag))targets.push(ref);
+  targets.push(...Array.from(ref.querySelectorAll?.(drawableSelector)||[]));
+
+  targets.forEach(node=>{
+    const t=(node.tagName||'').toLowerCase();
+    setSvgPaintImportant(node,'stroke',ENG);
+    setSvgPaintImportant(node,'stroke-width',String(STROKE_MM));
+    node.setAttribute('vector-effect','non-scaling-stroke');
+    if(t==='line'||t==='polyline')setSvgPaintImportant(node,'fill','none');
+    else setSvgPaintImportant(node,'fill',c||'none');
+    if(t==='use')applyScanPreviewFillToUseReference(node,c,seen);
+  });
+}
+function applyScanPreviewFillToElement(el,color){
+  if(!el)return;
+  const c=color?normalizeHexColor(color):null;
+  const tag=(el.tagName||'').toLowerCase();
+  if(tag==='image'){
+    applyScanPreviewFillToImageElement(el,c);
+    return;
+  }
+  const drawables=['path','rect','ellipse','circle','polygon','text','tspan','use'];
+  const lines=['line','polyline'];
+  const targets=[];
+  if(drawables.includes(tag)||lines.includes(tag))targets.push(el);
+  targets.push(...Array.from(el.querySelectorAll?.('path,rect,ellipse,circle,polygon,text,tspan,line,polyline,use,image')||[]));
+  const seenUses=new Set();
+  targets.forEach(node=>{
+    const nodeTag=(node.tagName||'').toLowerCase();
+    if(nodeTag==='image'){
+      applyScanPreviewFillToImageElement(node,c);
+      return;
+    }
+    const t=(node.tagName||'').toLowerCase();
+    // Bevar selve ScanNCut-skærelinjen sort. Farven er kun visuelt fyld.
+    setSvgPaintImportant(node,'stroke',ENG);
+    setSvgPaintImportant(node,'stroke-width',String(STROKE_MM));
+    node.setAttribute('vector-effect','non-scaling-stroke');
+    if(lines.includes(t)){
+      setSvgPaintImportant(node,'fill','none');
+    }else{
+      setSvgPaintImportant(node,'fill',c||'none');
+      // Bevar huller i sporede compound paths.
+      if(t==='path' && node.getAttribute('fill-rule'))node.setAttribute('fill-rule',node.getAttribute('fill-rule'));
+    }
+    // Mange Illustrator/Inkscape/SVG-biblioteker viser geometri via <use>.
+    // Farve på <use> alene kan blive overstyret af den refererede figur i <defs>/<symbol>,
+    // så preview-farven skal også sættes på den faktiske refererede geometri.
+    if(t==='use'&&!seenUses.has(node)){
+      seenUses.add(node);
+      applyScanPreviewFillToUseReference(node,c,new Set());
+    }
+  });
+}
+function applyScanPreviewFill(obj){
+  if(!obj)return;
+  const color=obj.data&&obj.data.scanFillColor?obj.data.scanFillColor:null;
+  applyScanPreviewFillToElement(obj.el,color);
+}
+function refreshScanPreviewFills(){
+  if(!isScanNCutPageSize())return;
+  objects.forEach(obj=>applyScanPreviewFill(obj));
+}
+function updateScanColorControls(){
+  const panel=document.getElementById('scanColorPanel');
+  if(!panel)return;
+  const input=document.getElementById('scanFillColor');
+  const hex=document.getElementById('scanFillHex');
+  const color=normalizeHexColor(currentScanFillColor);
+  currentScanFillColor=color;
+  if(input)input.value=color;
+  if(hex)hex.textContent=color.toUpperCase();
+}
+function applySelectedScanFill(color){
+  if(!isScanNCutPageSize())return;
+  const c=color?normalizeHexColor(color):null;
+  if(c)currentScanFillColor=c;
+  if(!selectedIds.length){
+    updateScanColorControls();
+    return;
+  }
+  pushUndo();
+  selectedIds.forEach(id=>{
+    const obj=objects.find(o=>o.id===id);
+    if(!obj)return;
+    obj.data=obj.data||{};
+    if(c)obj.data.scanFillColor=c;
+    else delete obj.data.scanFillColor;
+    // Først nulstil til rigtig ScanNCut-linjestil, derefter læg preview-farven på.
+    applyModeRecursive(obj,'cut');
+    applyScanPreviewFill(obj);
+  });
+  refreshUI();
+}
+
 function setPageSize(size){
   if(!PAGE_SIZES[size]) return;
-  if(size==='ScanNCut' && pageSize!==size)currentMode='engrave';
   pageSize = size;
   const p = PAGE_SIZES[size];
   BASE_VB = { x:0, y:0, w:p.w, h:p.h };
@@ -704,7 +923,10 @@ function setPageSize(size){
   svg.setAttribute('viewBox', '0 0 '+p.w+' '+p.h);
   updatePageGrid();
   updateModeButtonsForPageSize();
+  updateExportButtonsForPageSize();
   refreshObjectModesForPageSize();
+  refreshScanPreviewFills();
+  updateScanColorControls();
   applyZoomSize();
   centerCanvasView();
 }
@@ -713,26 +935,38 @@ function isScanNCutPageSize(){
   return pageSize==='ScanNCut';
 }
 
+function updateExportButtonsForPageSize(){
+  const scan=isScanNCutPageSize();
+  const laserBtn=document.getElementById('btnExport');
+  const scanBtn=document.getElementById('btnExportFcm');
+  if(laserBtn) laserBtn.classList.toggle('hidden',scan);
+  if(scanBtn) scanBtn.classList.toggle('hidden',!scan);
+}
+
 function updateModeButtonsForPageSize(){
   const scan=isScanNCutPageSize();
-  if(scan && currentMode==='green')currentMode='cut';
-  document.querySelectorAll('.mode-btn').forEach(btn=>{
-    const mode=btn.dataset.mode;
-    btn.hidden=scan && mode==='green';
-    btn.style.display=btn.hidden?'none':'';
-    btn.classList.toggle('active',mode===currentMode);
-    btn.setAttribute('aria-pressed',String(mode===currentMode));
-    if(mode==='cut'){
-      btn.lastChild.textContent=scan?'Fyldt hvid':'Rød linje';
-      const swatch=btn.querySelector('.swatch');
-      swatch.style.background=scan?'#ffffff':'';
-      swatch.style.borderColor=scan?'#000000':'';
-    }
+  const laserPanel=document.getElementById('laserModePanel');
+  const scanPanel=document.getElementById('scanColorPanel');
+  if(laserPanel)laserPanel.classList.toggle('hidden',scan);
+  if(scanPanel)scanPanel.classList.toggle('hidden',!scan);
+  const buttons=document.querySelectorAll('.mode-btn');
+  buttons.forEach(btn=>{
+    btn.disabled=scan;
+    const active=btn.dataset.mode===(scan?'cut':currentMode);
+    btn.classList.toggle('active',active);
+    btn.setAttribute('aria-pressed',String(active));
   });
-  document.getElementById('colorHint').textContent=scan?'Fyldt hvid / Fyldt sort':'Rød/grøn = linje · Fyldt sort = tekst/fyld';
+  if(scan)currentMode='cut';
+  updateScanColorControls();
 }
 
 function refreshObjectModesForPageSize(){
+  if(!isScanNCutPageSize()){
+    objectsG.querySelectorAll('image').forEach(el=>{
+      if((el.getAttribute('filter')||'').includes('#vvScanTint_'))el.removeAttribute('filter');
+      if((el.style.filter||'').includes('#vvScanTint_'))el.style.removeProperty('filter');
+    });
+  }
   objects.forEach(obj=>{
     if(obj.type==='image')return;
     const mode=(obj.data&&obj.data.mode)||detectMode(obj);
@@ -914,13 +1148,13 @@ document.getElementById('pageSize')?.addEventListener('change', e => setPageSize
 
 function uid(){return 'obj'+(nextId++)}
 function strokeFor(m){
-  // Kontrastkonturer gør både hvide og sorte fyld synlige på ScanNCut-måtten.
-  if(isScanNCutPageSize())return m==='engrave'?'#ffffff':ENG;
+  // På ScanNCut-måtten er farver låst: ALT er sort kontur, også tidligere fyld/gravering.
+  if(isScanNCutPageSize())return ENG;
   if(m==='engrave')return 'none';
   return m==='green'?GREEN:CUT;
 }
 function fillFor(m){
-  if(isScanNCutPageSize())return m==='engrave'?ENG:'#ffffff';
+  if(isScanNCutPageSize())return 'none';
   return m==='engrave'?ENG:'none';
 }
 function clearInlinePaint(el){
@@ -951,7 +1185,6 @@ function applyMode(el,m){
   if(el.tagName && (el.tagName.toLowerCase()==='text'||el.tagName.toLowerCase()==='tspan')) el.setAttribute('text-rendering','geometricPrecision');
   el.setAttribute('pointer-events','all');
   prepareEditorContrastEdge(el);
-  if(m==='engrave' && !isScanNCutPageSize() && el.tagName && el.tagName.toLowerCase()==='text')el.setAttribute('font-weight','800');
 }
 function applyLineMode(el,m){
   clearInlinePaint(el);
@@ -999,7 +1232,7 @@ function applyModeToUseReference(useEl,m,seen){
 }
 function applyModeRecursive(obj,m){
   if(!obj || obj.type==='image') return;
-  const effectiveMode=isScanNCutPageSize() && m==='green'?'cut':m;
+  const effectiveMode=isScanNCutPageSize()?'cut':m;
   // Brug selve DOM-strukturen frem for kun obj.type. Det gør også importerede
   // SVG-dele robuste, hvis de indeholder <use>, <tspan> eller et internt <g>.
   const isContainer=obj.el && ['g','svg','symbol'].includes((obj.el.tagName||'').toLowerCase());
@@ -1017,7 +1250,8 @@ function applyModeRecursive(obj,m){
     applyMode(obj.el,effectiveMode);
     if((obj.el.tagName||'').toLowerCase()==='use')applyModeToUseReference(obj.el,effectiveMode);
   }
-  obj.data.mode=effectiveMode;
+  // Scan N Cut er en visning/eksporttilstand og må ikke overskrive objektets laser-tilstand.
+  if(!isScanNCutPageSize())obj.data.mode=effectiveMode;
 }
 const applyModeToEl=applyMode;
 function handleSizeSvg(){
@@ -1136,10 +1370,10 @@ document.querySelectorAll('.tool-btn').forEach(btn=>{
 
 document.querySelectorAll('.mode-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
+    if(isScanNCutPageSize())return;
     currentMode=btn.dataset.mode;
     document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    updateModeButtonsForPageSize();
     if(selectedIds.length){
       pushUndo();
       selectedIds.forEach(id=>{
@@ -1151,9 +1385,39 @@ document.querySelectorAll('.mode-btn').forEach(btn=>{
   });
 });
 
+document.getElementById('scanFillColor')?.addEventListener('input',e=>{
+  const color=normalizeHexColor(e.target.value);
+  currentScanFillColor=color;
+  const hex=document.getElementById('scanFillHex');
+  if(hex)hex.textContent=color.toUpperCase();
+});
+document.getElementById('scanFillColor')?.addEventListener('change',e=>{
+  applySelectedScanFill(e.target.value);
+  markProjectDirty();
+});
+document.getElementById('btnClearScanFill')?.addEventListener('click',()=>{
+  applySelectedScanFill(null);
+  markProjectDirty();
+});
+
 function selectOnly(id){selectedIds=[id];refreshUI()}
 function toggleSelect(id){const i=selectedIds.indexOf(id);if(i>=0)selectedIds.splice(i,1);else selectedIds.push(id);refreshUI()}
 function deselectAll(){selectedIds=[];refreshUI()}
+function objectCanUngroup(obj){
+  if(!obj)return false;
+  if(obj.type==='group')return true;
+  if(obj.type==='path' || obj.type==='traced'){
+    try{
+      const d=obj.el?.getAttribute('d')||'';
+      if(!d)return false;
+      const pts=parsePathNodes(d);
+      const subs=new Set();
+      pts.forEach(p=>subs.add(Number.isInteger(p.subpath)?p.subpath:0));
+      return subs.size>1;
+    }catch(_){ return false; }
+  }
+  return false;
+}
 function refreshUI(){
   enforceConstantStrokeRendering();
   clearOffsetPreview();
@@ -1176,7 +1440,7 @@ function refreshUI(){
   const gb=document.getElementById('btnGroup');if(gb)gb.classList.toggle('hidden',n<2);
   const ugb=document.getElementById('btnUngroup');if(ugb){
     const selectedObj=n===1?objects.find(o=>o.id===selectedIds[0]):null;
-    ugb.classList.toggle('hidden',!(selectedObj&&selectedObj.type==='group'));
+    ugb.classList.toggle('hidden',!(selectedObj&&objectCanUngroup(selectedObj)));
   }
 
 
@@ -1187,19 +1451,22 @@ function refreshUI(){
       showProps(obj);
       if(obj.type==='image')document.getElementById('traceBtnWrap').classList.remove('hidden');
       const mode=obj.data.mode||detectMode(obj);
-      currentMode=mode;
-      updateModeButtonsForPageSize();
+      if(isScanNCutPageSize()){
+        document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode==='cut'));
+        currentMode='cut';
+      }else{
+        document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+        currentMode=mode;
+      }
     }
   }
+  updateModeButtonsForPageSize();
   updateCount();
 }
 function detectMode(obj){
   const f=obj.el.getAttribute('fill');
   const hf=f&&f!=='none'&&f!=='transparent';
-  if(hf){
-    if(isScanNCutPageSize() && ['#fff','#ffffff','white','rgb(255, 255, 255)'].includes(f.toLowerCase()))return 'cut';
-    return 'engrave';
-  }
+  if(hf)return 'engrave';
   const s=(obj.el.getAttribute('stroke')||'').toLowerCase();
   if(s===GREEN.toLowerCase())return 'green';
   return 'cut';
@@ -1250,6 +1517,36 @@ function textRawContent(obj){
   const saved=obj.el.getAttribute('data-vv-text');
   if(saved!==null)return saved;
   return obj.el.textContent||'';
+}
+function applyLiveTextFont(obj, rebuildCurve=false){
+  if(!obj||obj.type!=='text'||!obj.el)return;
+  const el=obj.el;
+  const family=el.getAttribute('font-family')||'Arial, Helvetica, sans-serif';
+  // font-family som SVG-attribut kan i nogle browsere tabe til tidligere inline/CSS-regler.
+  // Brug samme værdi som inline CSS, så lærredet viser præcis den skrifttype der eksporteres.
+  if(el.style)el.style.setProperty('font-family',family,'important');
+  el.setAttribute('font-family',family);
+  el.setAttribute('text-rendering','geometricPrecision');
+  el.querySelectorAll?.('tspan').forEach(t=>{
+    if(t.style)t.style.setProperty('font-family','inherit','important');
+    t.setAttribute('font-family','inherit');
+    t.setAttribute('text-rendering','geometricPrecision');
+  });
+  const size=Math.max(1,parseFloat(el.getAttribute('font-size'))||12);
+  const weight=el.getAttribute('font-weight')||'normal';
+  const style=el.getAttribute('font-style')||'normal';
+  const content=textRawContent(obj)||' ';
+  if(document.fonts&&document.fonts.load){
+    const cssFont=style+' '+weight+' '+size+'px '+family;
+    document.fonts.load(cssFont,content).then(()=>{
+      if(!objects.includes(obj) || el.getAttribute('font-family')!==family)return;
+      if(rebuildCurve&&Math.abs(getTextCurve(el))>0.001)rebuildCurvedText(obj);
+      el.style.setProperty('font-family',family,'important');
+    }).catch(()=>{});
+  }
+}
+function refreshLiveTextFonts(){
+  objects.filter(o=>o.type==='text').forEach(o=>applyLiveTextFont(o,false));
 }
 function textCanvasFont(el,size){
   const family=el.getAttribute('font-family')||'Arial, Helvetica, sans-serif';
@@ -1407,22 +1704,95 @@ function getWorldBBox(obj){
     return el.getBBox();
   }
 }
-// Robust hit-test for selection. SVG paths with fill="none" can otherwise be
-// frustrating to grab because the browser only reports a hit on the visible stroke.
-// In select mode we deliberately treat the object's whole visual bounding box as a
-// draggable hit area, so a press anywhere inside the figure's area can start a move.
+// Flytning i markeringsværktøjet må kun starte tæt på figurens synlige kontur.
+// Det gør det muligt at lægge tekst/billeder oven på fx en stor nøglerings-firkant
+// og stadig gribe det øverste indhold i midten af figuren.
+function pointSegmentDistance(p,a,b){
+  const vx=b.x-a.x,vy=b.y-a.y,wx=p.x-a.x,wy=p.y-a.y;
+  const vv=vx*vx+vy*vy;
+  if(vv<1e-12)return Math.hypot(p.x-a.x,p.y-a.y);
+  const t=Math.max(0,Math.min(1,(wx*vx+wy*vy)/vv));
+  return Math.hypot(p.x-(a.x+t*vx),p.y-(a.y+t*vy));
+}
+function matrixPoint(m,p){return {x:m.a*p.x+m.c*p.y+m.e,y:m.b*p.x+m.d*p.y+m.f};}
+function bboxContainsPoint(b,p,tol=0){return !!b&&p.x>=b.x-tol&&p.x<=b.x+b.width+tol&&p.y>=b.y-tol&&p.y<=b.y+b.height+tol;}
+function geometryNearPoint(el,pt,tol){
+  if(!el||el.nodeType!==1)return false;
+  const tag=(el.tagName||'').toLowerCase();
+  if(tag==='image'||tag==='text'){
+    try{
+      const objLike={el,type:tag};
+      return bboxContainsPoint(getWorldBBox(objLike),pt,0);
+    }catch(_){return false;}
+  }
+  if(tag==='g'||tag==='svg'||tag==='a'){
+    const kids=Array.from(el.querySelectorAll('path,rect,ellipse,circle,line,polygon,polyline,text,image,use')).reverse();
+    return kids.some(k=>geometryNearPoint(k,pt,tol));
+  }
+  if(tag==='use'){
+    // <use> kan ikke altid samples direkte. Brug den synlige kant af dens bbox som fallback.
+    try{
+      const r=el.getBoundingClientRect(),inv=svg.getScreenCTM().inverse();
+      const p1=svg.createSVGPoint();p1.x=r.left;p1.y=r.top;
+      const p2=svg.createSVGPoint();p2.x=r.right;p2.y=r.bottom;
+      const a=p1.matrixTransform(inv),b=p2.matrixTransform(inv);
+      const box={x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),width:Math.abs(b.x-a.x),height:Math.abs(b.y-a.y)};
+      if(!bboxContainsPoint(box,pt,tol))return false;
+      const edges=[[{x:box.x,y:box.y},{x:box.x+box.width,y:box.y}],
+        [{x:box.x+box.width,y:box.y},{x:box.x+box.width,y:box.y+box.height}],
+        [{x:box.x+box.width,y:box.y+box.height},{x:box.x,y:box.y+box.height}],
+        [{x:box.x,y:box.y+box.height},{x:box.x,y:box.y}]];
+      return edges.some(e=>pointSegmentDistance(pt,e[0],e[1])<=tol);
+    }catch(_){return false;}
+  }
+  try{
+    if(typeof el.getTotalLength==='function'&&typeof el.getPointAtLength==='function'){
+      const len=el.getTotalLength();
+      if(isFinite(len)&&len>0){
+        const m=matrixRelativeToObjects(el);
+        if(!m)return false;
+        const scale=Math.max(Math.hypot(m.a,m.b),Math.hypot(m.c,m.d),0.001);
+        const worldLen=len*scale;
+        const samples=Math.max(8,Math.min(1800,Math.ceil(worldLen/Math.max(tol*0.6,0.18))));
+        let prev=matrixPoint(m,el.getPointAtLength(0));
+        for(let i=1;i<=samples;i++){
+          const cur=matrixPoint(m,el.getPointAtLength(len*i/samples));
+          if(pointSegmentDistance(pt,prev,cur)<=tol)return true;
+          prev=cur;
+        }
+      }
+    }
+  }catch(_){ }
+  // Fallback: kun tæt på bbox-kanten – aldrig hele indersiden.
+  try{
+    const r=el.getBoundingClientRect(),inv=svg.getScreenCTM().inverse();
+    const a0=svg.createSVGPoint();a0.x=r.left;a0.y=r.top;
+    const b0=svg.createSVGPoint();b0.x=r.right;b0.y=r.bottom;
+    const a=a0.matrixTransform(inv),b=b0.matrixTransform(inv);
+    const box={x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),width:Math.abs(b.x-a.x),height:Math.abs(b.y-a.y)};
+    if(!bboxContainsPoint(box,pt,tol))return false;
+    return Math.min(Math.abs(pt.x-box.x),Math.abs(pt.x-(box.x+box.width)),Math.abs(pt.y-box.y),Math.abs(pt.y-(box.y+box.height)))<=tol;
+  }catch(_){return false;}
+}
+function objectMoveHit(obj,pt,tol){
+  if(!obj)return false;
+  // Rasterbilleder, tekst og sporede billeder skal være nemme at gribe.
+  // For en sporing må hele dens synlige arbejdsområde bruges som grebsflade,
+  // så man ikke behøver ramme en tynd kontur for at flytte den.
+  if(obj.type==='image'||obj.type==='text'||obj.type==='traced'){
+    try{return bboxContainsPoint(getWorldBBox(obj),pt,0);}catch(_){return false;}
+  }
+  return geometryNearPoint(obj.el,pt,tol);
+}
 function findTopmostObjectAtPoint(pt){
-  const tol=Math.max(0.35, 2.5/(BASE_PPM*Math.max(zoomLevel,0.01)));
+  // Ca. 7 skærmpixels uanset zoom.
+  const tol=Math.max(0.35,7/(BASE_PPM*Math.max(zoomLevel,0.01)));
   const children=Array.from(objectsG.children).reverse();
   for(const el of children){
     const id=el.getAttribute&&el.getAttribute('data-id');
     if(!id)continue;
     const obj=objects.find(o=>o.id===id);
-    if(!obj)continue;
-    let b;
-    try{b=getWorldBBox(obj);}catch(_){continue;}
-    if(!b||!isFinite(b.x)||!isFinite(b.y)||!isFinite(b.width)||!isFinite(b.height))continue;
-    if(pt.x>=b.x-tol && pt.x<=b.x+b.width+tol && pt.y>=b.y-tol && pt.y<=b.y+b.height+tol)return obj;
+    if(obj&&objectMoveHit(obj,pt,tol))return obj;
   }
   return null;
 }
@@ -1590,10 +1960,14 @@ function addObject(type,el,data,skipUndo){
     if(type!=='image'&&type!=='line'&&type!=='text'&&type!=='path'&&type!=='group')applyMode(el,mode);
     else if(type==='line')applyLineMode(el,mode);
   }
-  const record={id,type,el,data:Object.assign({mode},data||{})};
+  const defaults=isScanNCutPageSize()&&!skipUndo?{mode,scanFillColor:currentScanFillColor}:{mode};
+  const record={id,type,el,data:Object.assign(defaults,data||{})};
   objects.push(record);
   objectsG.appendChild(el);
-  if(isScanNCutPageSize() && type!=='image')applyModeRecursive(record,mode);
+  if(isScanNCutPageSize() && type!=='image'){
+    applyModeRecursive(record,'cut');
+    applyScanPreviewFill(record);
+  }
   if(!skipUndo) selectOnly(id);
   updateCount();return id;
 }
@@ -1850,7 +2224,7 @@ function promoteShapeFromGroup(groupObj, shapeEl){
     const mode=detectMode({el:clone});
     const id=addObject(type, clone, {mode, importedSvg:true}, true);
     const obj=objects.find(o=>o.id===id);
-    if(obj&&isScanNCutPageSize())applyModeRecursive(obj,mode);
+    if(obj&&isScanNCutPageSize())applyModeRecursive(obj,'cut');
     // If group is empty, remove it
     if(!groupObj.el.children.length){
       const gi=objects.findIndex(o=>o.id===groupObj.id);
@@ -1863,107 +2237,260 @@ function promoteShapeFromGroup(groupObj, shapeEl){
   }
 }
 
+function ownSvgTransformMatrix(el){
+  try{
+    const c=el?.transform?.baseVal?.consolidate();
+    return c?c.matrix:null;
+  }catch(_){return null;}
+}
+function useBaseMatrixRelativeToObjects(useEl){
+  try{
+    const parent=useEl.parentElement;
+    let base=parent&&parent!==objectsG?matrixRelativeToObjects(parent):svg.createSVGMatrix();
+    if(!base)base=svg.createSVGMatrix();
+    const own=ownSvgTransformMatrix(useEl);
+    return own?base.multiply(own):base;
+  }catch(_){return matrixRelativeToObjects(useEl);}
+}
+function makeExpandedUseForUngroup(useEl){
+  const ref=resolveUseReference(useEl);
+  if(!ref)return null;
+  const holder=document.createElementNS(SVG_NS,'g');
+  holder.setAttribute('data-vv-temp-use-expand','1');
+  const base=useBaseMatrixRelativeToObjects(useEl);
+  if(base)holder.setAttribute('transform',matrixTransformString(base));
+  const x=parseFloat(useEl.getAttribute('x'))||0,y=parseFloat(useEl.getAttribute('y'))||0;
+  const tag=(ref.tagName||'').toLowerCase();
+  if(tag==='symbol'||tag==='svg'){
+    const viewport=document.createElementNS(SVG_NS,'svg');
+    viewport.setAttribute('x',x);viewport.setAttribute('y',y);
+    const vb=ref.getAttribute('viewBox');
+    if(vb)viewport.setAttribute('viewBox',vb);
+    const vbNums=(vb||'').trim().split(/[\s,]+/).map(Number);
+    const fallbackW=(vbNums.length===4&&isFinite(vbNums[2]))?vbNums[2]:100;
+    const fallbackH=(vbNums.length===4&&isFinite(vbNums[3]))?vbNums[3]:100;
+    viewport.setAttribute('width',useEl.getAttribute('width')||ref.getAttribute('width')||fallbackW);
+    viewport.setAttribute('height',useEl.getAttribute('height')||ref.getAttribute('height')||fallbackH);
+    const par=useEl.getAttribute('preserveAspectRatio')||ref.getAttribute('preserveAspectRatio');
+    if(par)viewport.setAttribute('preserveAspectRatio',par);
+    Array.from(ref.childNodes).forEach(n=>viewport.appendChild(n.cloneNode(true)));
+    holder.appendChild(viewport);
+  }else{
+    const shift=document.createElementNS(SVG_NS,'g');
+    if(x||y)shift.setAttribute('transform','translate('+x+' '+y+')');
+    shift.appendChild(ref.cloneNode(true));
+    holder.appendChild(shift);
+  }
+  objectsG.appendChild(holder);
+  return holder;
+}
+function pathSubpathBBox(arr){
+  const xs=[],ys=[];
+  arr.forEach(p=>{
+    xs.push(p.x);ys.push(p.y);
+    if(p.h1){xs.push(p.h1.x);ys.push(p.h1.y);}
+    if(p.h2){xs.push(p.h2.x);ys.push(p.h2.y);}
+    if(p.arc){xs.push(p.x-p.arc.rx,p.x+p.arc.rx);ys.push(p.y-p.arc.ry,p.y+p.arc.ry);}
+  });
+  if(!xs.length)return null;
+  const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  return {x:minX,y:minY,width:maxX-minX,height:maxY-minY,area:Math.max(0,maxX-minX)*Math.max(0,maxY-minY)};
+}
+function bboxStrictlyContains(a,b){
+  if(!a||!b||a===b)return false;
+  const eps=1e-6;
+  return b.x>=a.x-eps&&b.y>=a.y-eps&&b.x+b.width<=a.x+a.width+eps&&b.y+b.height<=a.y+a.height+eps&&a.area>b.area+eps;
+}
+function snapshotUngroupLeaf(node,leafSnapshots,opts){
+  opts=opts||{};
+  const splitAllSubpaths=!!opts.splitAllSubpaths;
+  const tag=(node.tagName||'').toLowerCase();
+  const snap={clone:node.cloneNode(true),matrix:matrixRelativeToObjects(node),presentation:preserveComputedPresentation(node),tag};
+  if(tag==='path'){
+    const fill=String((snap.presentation&&snap.presentation.fill)||node.getAttribute('fill')||'none').trim().toLowerCase();
+    const d=node.getAttribute('d')||'';
+    const pts=parsePathNodes(d);
+    const groups=new Map();
+    pts.forEach(p=>{
+      const sp=Number.isInteger(p.subpath)?p.subpath:0;
+      if(!groups.has(sp))groups.set(sp,[]);
+      groups.get(sp).push({...p,h1:p.h1?{...p.h1}:null,h2:p.h2?{...p.h2}:null,arc:p.arc?{...p.arc}:null});
+    });
+    if(groups.size>1){
+      const parts=Array.from(groups.values()).filter(a=>a.length).map((arr,i)=>({i,arr,box:pathSubpathBBox(arr),parent:null,root:null}));
+      const lineOnly=fill==='none'||fill==='transparent'||fill==='rgba(0, 0, 0, 0)'||fill==='rgba(0,0,0,0)';
+      if(splitAllSubpaths || lineOnly){
+        // Bruges bl.a. til sporede billeder: hver delsti bliver et selvstændigt redigerbart objekt,
+        // også hvis den tidligere var et "hul" i en evenodd-silhuet.
+        parts.forEach(part=>{
+          part.arr[0].move=true;
+          const clone=node.cloneNode(true);
+          clone.setAttribute('d',nodesToPathD(part.arr,part.arr.some(p=>p.close)));
+          clone.removeAttribute('fill-rule');
+          clone.removeAttribute('clip-rule');
+          leafSnapshots.push({...snap,clone});
+        });
+        return;
+      }
+      // Ved fyldte compound paths bevares huller sammen med den ydre form.
+      // Kun topologisk adskilte hovedkomponenter bliver til hver sit objekt.
+      parts.forEach(part=>{
+        const containers=parts.filter(other=>other!==part&&bboxStrictlyContains(other.box,part.box)).sort((a,b)=>a.box.area-b.box.area);
+        part.parent=containers.length?containers[0]:null;
+      });
+      const rootOf=part=>{let r=part,guard=0;while(r.parent&&guard++<parts.length+1)r=r.parent;return r;};
+      parts.forEach(p=>p.root=rootOf(p));
+      const roots=parts.filter(p=>p.root===p);
+      if(roots.length>1){
+        roots.forEach(root=>{
+          const members=parts.filter(p=>p.root===root);
+          const clone=node.cloneNode(true);
+          clone.setAttribute('d',members.map(p=>{p.arr[0].move=true;return nodesToPathD(p.arr,p.arr.some(n=>n.close));}).join(' '));
+          leafSnapshots.push({...snap,clone});
+        });
+        return;
+      }
+    }
+  }
+  leafSnapshots.push(snap);
+}
+
 function ungroupSelected(){
   if(selectedIds.length!==1)return;
   const index=objects.findIndex(o=>o.id===selectedIds[0]);
-  const group=objects[index];
-  if(!group||group.type!=='group')return;
+  const source=objects[index];
+  if(!source)return;
 
-  // Imported SVG files very often have several nested <g> layers. "Opløs gruppe"
-  // should therefore dissolve the WHOLE imported hierarchy in one click, not just
-  // move the first child group out as another group.
-  const editableTags=new Set(['path','polygon','polyline','rect','ellipse','circle','line','text','use']);
-  // <style> flyttes bevidst IKKE med efter opløsning. Dens beregnede udseende
-  // fryses på de enkelte dele, så gamle CSS-klasser ikke kan styre dem bagefter.
-  const supportTags=new Set(['defs']);
-  const leafSnapshots=[];
-  const supportNodes=[];
+  // 1) Almindelig importerede SVG-grupper
+  if(source.type==='group'){
+    const group=source;
+    const editableTags=new Set(['path','polygon','polyline','rect','ellipse','circle','line','text','use']);
+    const supportTags=new Set(['defs']);
+    const leafSnapshots=[];
+    const supportNodes=[];
 
-  // Snapshot while the original hierarchy is still attached to the live SVG so
-  // getCTM()/computedStyle include every ancestor transform and inherited style.
-  const walk=node=>{
-    if(!node || node.nodeType!==1)return;
-    const tag=(node.tagName||'').toLowerCase();
-    if(supportTags.has(tag)){
-      supportNodes.push(node.cloneNode(true));
+    const walk=node=>{
+      if(!node || node.nodeType!==1)return;
+      const tag=(node.tagName||'').toLowerCase();
+      if(supportTags.has(tag)){
+        supportNodes.push(node.cloneNode(true));
+        return;
+      }
+      if(tag==='use'){
+        const expanded=makeExpandedUseForUngroup(node);
+        if(expanded){
+          Array.from(expanded.children||[]).forEach(walk);
+          expanded.remove();
+          return;
+        }
+        snapshotUngroupLeaf(node,leafSnapshots);
+        return;
+      }
+      if(editableTags.has(tag)){
+        snapshotUngroupLeaf(node,leafSnapshots);
+        return;
+      }
+      Array.from(node.children||[]).forEach(walk);
+    };
+    Array.from(group.el.children).forEach(walk);
+
+    if(!leafSnapshots.length){
+      alert('SVG-gruppen indeholder ingen dele, som kan opløses individuelt.');
       return;
     }
-    if(editableTags.has(tag)){
-      leafSnapshots.push({
-        clone:node.cloneNode(true),
-        matrix:matrixRelativeToObjects(node),
-        presentation:preserveComputedPresentation(node),
-        tag
+
+    pushUndo();
+    objects.splice(index,1);
+    group.el.remove();
+
+    const existingSupportIds=new Set(Array.from(objectsG.querySelectorAll('[data-vv-support="true"] [id], [data-vv-support="true"][id]')).map(n=>n.id));
+    supportNodes.forEach(node=>{
+      if(node.id && existingSupportIds.has(node.id))return;
+      node.removeAttribute('data-id');
+      node.setAttribute('data-vv-support','true');
+      node.style.pointerEvents='none';
+      objectsG.insertBefore(node,objectsG.firstChild);
+      if(node.id)existingSupportIds.add(node.id);
+    });
+
+    const newIds=[];
+    leafSnapshots.forEach(snap=>{
+      let el=snap.clone;
+      detachImportedCss(el);
+      el.removeAttribute('transform');
+      if(snap.matrix) el.setAttribute('transform',matrixTransformString(snap.matrix));
+
+      Object.entries(snap.presentation||{}).forEach(([attr,val])=>{
+        if(val===undefined||val===null||val==='')return;
+        if(attr==='transform'||attr==='transform-origin'||attr==='transform-box')return;
+        el.setAttribute(attr,val);
       });
-      return;
-    }
-    // Containers (<g>, nested <svg>, <a>, etc.) are intentionally not kept as
-    // objects; recurse until the actual drawable leaves are reached.
-    Array.from(node.children||[]).forEach(walk);
-  };
-  Array.from(group.el.children).forEach(walk);
 
-  // If an unusual SVG contains no supported leaves, fall back to the old direct
-  // child behaviour rather than deleting the artwork.
-  if(!leafSnapshots.length){
-    alert('SVG-gruppen indeholder ingen dele, som kan opløses individuelt.');
+      el=normalizeImportedShape(el);
+      let type=elementType(el);
+      const mode=el.getAttribute('data-vv-mode')||detectMode({el});
+      el.removeAttribute('data-vv-type');
+      el.removeAttribute('data-vv-mode');
+      clearObjectIds(el);
+      const id=uid();
+      el.dataset.id=id;
+      el.style.pointerEvents='all';
+      el.setAttribute('pointer-events','all');
+      objects.push({id,type,el,data:{mode,importedSvg:true}});
+      objectsG.appendChild(el);
+      const obj=objects[objects.length-1];
+      if(isScanNCutPageSize())applyModeRecursive(obj,'cut');
+      newIds.push(id);
+    });
+
+    selectedIds=newIds;
+    refreshUI();
+    updateCount();
     return;
   }
 
-  pushUndo();
-  objects.splice(index,1);
-  group.el.remove();
+  // 2) Sporede billeder / compound paths med flere delstier.
+  if(source.type==='traced' || source.type==='path'){
+    const leafSnapshots=[];
+    snapshotUngroupLeaf(source.el, leafSnapshots, {splitAllSubpaths:true});
+    if(leafSnapshots.length<=1){
+      alert('Objektet kan ikke opdeles i flere dele.');
+      return;
+    }
 
-  // Keep defs available for gradients, clip paths etc. without making them
-  // selectable. Duplicate IDs are avoided when the same support block appears twice.
-  const existingSupportIds=new Set(Array.from(objectsG.querySelectorAll('[data-vv-support="true"] [id], [data-vv-support="true"][id]')).map(n=>n.id));
-  supportNodes.forEach(node=>{
-    if(node.id && existingSupportIds.has(node.id))return;
-    node.removeAttribute('data-id');
-    node.setAttribute('data-vv-support','true');
-    node.style.pointerEvents='none';
-    objectsG.insertBefore(node,objectsG.firstChild);
-    if(node.id)existingSupportIds.add(node.id);
-  });
+    pushUndo();
+    objects.splice(index,1);
+    source.el.remove();
 
-  const newIds=[];
-  leafSnapshots.forEach(snap=>{
-    let el=snap.clone;
-
-    // Først kobles den opløste del helt fri af den importerede SVG's CSS. Dens
-    // fulde synlige transform er allerede gemt i snap.matrix, og dens beregnede
-    // farver/egenskaber ligger i snap.presentation.
-    detachImportedCss(el);
-    el.removeAttribute('transform');
-    if(snap.matrix) el.setAttribute('transform',matrixTransformString(snap.matrix));
-
-    Object.entries(snap.presentation||{}).forEach(([attr,val])=>{
-      if(val===undefined||val===null||val==='')return;
-      // CSS-transform fryses via matrixen ovenfor og må aldrig kopieres tilbage.
-      if(attr==='transform'||attr==='transform-origin'||attr==='transform-box')return;
-      el.setAttribute(attr,val);
+    const newIds=[];
+    leafSnapshots.forEach(snap=>{
+      let el=snap.clone;
+      el.removeAttribute('transform');
+      if(snap.matrix) el.setAttribute('transform',matrixTransformString(snap.matrix));
+      Object.entries(snap.presentation||{}).forEach(([attr,val])=>{
+        if(val===undefined||val===null||val==='')return;
+        if(attr==='transform'||attr==='transform-origin'||attr==='transform-box')return;
+        el.setAttribute(attr,val);
+      });
+      clearObjectIds(el);
+      const id=uid();
+      el.dataset.id=id;
+      el.style.pointerEvents='all';
+      el.setAttribute('pointer-events','all');
+      let type=elementType(el);
+      if(source.type==='traced' && type==='path') type='traced';
+      const mode=(source.data&&source.data.mode) || detectMode({el});
+      objects.push({id,type,el,data:{...source.data,mode}});
+      objectsG.appendChild(el);
+      if(isScanNCutPageSize())applyModeRecursive(objects[objects.length-1],'cut');
+      newIds.push(id);
     });
 
-    el=normalizeImportedShape(el);
-    const type=elementType(el);
-    const mode=el.getAttribute('data-vv-mode')||detectMode({el});
-    el.removeAttribute('data-vv-type');
-    el.removeAttribute('data-vv-mode');
-    clearObjectIds(el);
-    const id=uid();
-    el.dataset.id=id;
-    el.style.pointerEvents='all';
-    el.setAttribute('pointer-events','all');
-    objects.push({id,type,el,data:{mode,importedSvg:true}});
-    objectsG.appendChild(el);
-    const obj=objects[objects.length-1];
-    if(isScanNCutPageSize())applyModeRecursive(obj,mode);
-    newIds.push(id);
-  });
-
-  selectedIds=newIds;
-  refreshUI();
-  updateCount();
+    selectedIds=newIds;
+    refreshUI();
+    updateCount();
+    return;
+  }
 }
 
 function applyProps(saveUndo){
@@ -2031,12 +2558,14 @@ function applyTextProps(saveUndo){
   const content=document.getElementById('propTextContent').value;
   const curve=Math.max(-100,Math.min(100,parseFloat(document.getElementById('propTextCurve').value)||0));
   obj.el.setAttribute('font-family',font);
+  if(obj.el.style)obj.el.style.setProperty('font-family',font,'important');
   obj.el.setAttribute('font-size',size);
   obj.el.setAttribute('data-vv-curve-percent',String(curve));
   obj.el.removeAttribute('data-vv-curve-angle');
   if(obj.data){obj.data.text=content;obj.data.font=font;obj.data.curve=curve}
   obj.el.setAttribute('data-vv-text',content||'');
   rebuildCurvedText(obj);
+  applyLiveTextFont(obj,true);
   refreshUI();
 }
 ['propTextCurveRange','propTextCurve','propCornerRadius'].forEach(id=>{
@@ -2333,19 +2862,10 @@ function onDown(e){
       }
       return;
     }
-    // 2) Object click. If SVG hit-testing misses (typical for fill="none"),
-    // fall back to the topmost object's visual bounding box.
-    let target = e.target.closest ? e.target.closest('[data-id]') : null;
-    if(!target && e.target.getAttribute && e.target.getAttribute('data-id')) target = e.target;
-    let hitObj=null;
-    let id=null;
-    if(target){
-      id = target.getAttribute('data-id') || target.dataset.id;
-      hitObj = objects.find(o=>o.id===id)||null;
-    }else{
-      hitObj=findTopmostObjectAtPoint(pt);
-      if(hitObj)id=hitObj.id;
-    }
+    // 2) Objektklik. Brug vores eget kontur-hit-test i stedet for SVG's
+    // pointer-events, så en stor figur ikke opsluger klik på tekst/billeder i midten.
+    const hitObj=findTopmostObjectAtPoint(pt);
+    const id=hitObj?hitObj.id:null;
     if(id){
       if(e.shiftKey) toggleSelect(id);
       else {
@@ -2986,7 +3506,11 @@ function startInlineText(svgP, clientX, clientY, existingObj){
   input.style.left = Math.max(4, left) + 'px';
   input.style.top = Math.max(4, top) + 'px';
   input.style.width = '144px';
-  input.style.fontSize = '20px';
+  const editSize=existingObj?(parseFloat(existingObj.el.getAttribute('font-size'))||28):(parseFloat(document.getElementById('propFontSize')?.value)||28);
+  input.style.fontSize = Math.max(16,Math.min(48,editSize)) + 'px';
+  const editFont=existingObj?(existingObj.el.getAttribute('font-family')||'Arial, sans-serif'):(document.getElementById('propFont')?.value||'Arial, sans-serif');
+  input.style.fontFamily=editFont;
+  input.style.fontWeight=existingObj?(existingObj.el.getAttribute('font-weight')||'normal'):'normal';
 
   input.value = existingObj ? textRawContent(existingObj) : '';
   input.dataset.svgX = svgP.x;
@@ -3032,16 +3556,19 @@ function commitInlineText(){
   const el = document.createElementNS(SVG_NS,'text');
   el.setAttribute('x', x);
   el.setAttribute('y', y);
-  el.setAttribute('font-size','12');
-  el.setAttribute('font-family','Arial, sans-serif');
-  el.setAttribute('font-weight','bold');
+  const chosenFont=document.getElementById('propFont')?.value || 'Arial, Helvetica, sans-serif';
+  const chosenSize=Math.max(8,parseFloat(document.getElementById('propFontSize')?.value)||28);
+  el.setAttribute('font-size',String(chosenSize));
+  el.setAttribute('font-family',chosenFont);
+  el.style.setProperty('font-family',chosenFont,'important');
+  el.setAttribute('font-weight','normal');
   el.textContent = txt;
   el.setAttribute('data-vv-text',txt);
   el.setAttribute('data-vv-curve-percent','0');
   applyMode(el, currentMode);
-  if(currentMode==='engrave' || isScanNCutPageSize()){
-    el.setAttribute('fill', fillFor(currentMode));
-    el.setAttribute('stroke',strokeFor(currentMode));
+  if(currentMode==='engrave' && !isScanNCutPageSize()){
+    el.setAttribute('fill', ENG);
+    el.setAttribute('stroke','none');
   } else {
     el.setAttribute('fill','none');
     el.setAttribute('stroke', strokeFor(currentMode));
@@ -3933,9 +4460,9 @@ function importSvgText(text){
   group.setAttribute('transform','matrix('+[m.a,m.b,m.c,m.d,m.e,m.f].map(n=>Number(n.toFixed(12))).join(' ')+')');
   group.setAttribute('data-vv-source-width-mm',String(m.w));
   group.setAttribute('data-vv-source-height-mm',String(m.h));
-  const importedId=addObject('group',group,{group:true,importedSvg:true,sourceWidthMm:m.w,sourceHeightMm:m.h,exactPhysicalSize:m.exact,mode:currentMode});
+  const importedId=addObject('group',group,{group:true,importedSvg:true,sourceWidthMm:m.w,sourceHeightMm:m.h,exactPhysicalSize:m.exact,mode:isScanNCutPageSize()?'cut':currentMode});
   const importedObj=objects.find(o=>o.id===importedId);
-  if(importedObj && isScanNCutPageSize())applyModeRecursive(importedObj,currentMode);
+  if(importedObj && isScanNCutPageSize())applyModeRecursive(importedObj,'cut');
   document.querySelector('[data-tool="select"]').click();
 }
 
@@ -4120,16 +4647,67 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       const simplifyPx = 0.12 + Math.pow((100 - detail) / 100, 1.7) * 2.4;
       const minAreaPx = 0.35 + Math.pow((100 - detail) / 100, 2) * 20;
 
+      // IMPORTANT: A white area inside a dark silhouette (eyes, mouth, letters etc.)
+      // is returned by marching-squares as its own closed contour. If every contour
+      // is exported as an independent filled path, the hole is filled black again.
+      // Build a nesting tree and keep each dark outer contour together with its
+      // immediate white child contours in ONE compound path using evenodd fill.
+      const traceItems = contours
+        .map((pts, index) => ({ pts, index, absArea: Math.abs(contourArea(pts)), parent: -1, depth: 0, simplified: null }))
+        .filter(it => it.pts.length >= 4 && it.absArea >= minAreaPx);
+
+      traceItems.forEach(it => {
+        let simplified = simplifyClosedContour(it.pts, simplifyPx);
+        if (simplified.length < 3) simplified = it.pts;
+        it.simplified = simplified;
+      });
+
+      // Find the smallest larger contour that contains this contour.
+      // That becomes its direct parent in the contour tree.
+      for (let i = 0; i < traceItems.length; i++) {
+        const child = traceItems[i];
+        const probe = child.pts[0];
+        let best = -1, bestArea = Infinity;
+        for (let j = 0; j < traceItems.length; j++) {
+          if (i === j) continue;
+          const candidate = traceItems[j];
+          if (candidate.absArea <= child.absArea) continue;
+          if (candidate.absArea >= bestArea) continue;
+          if (pointInContour(probe, candidate.pts)) {
+            best = j;
+            bestArea = candidate.absArea;
+          }
+        }
+        child.parent = best;
+      }
+
+      const getTraceDepth = i => {
+        let d = 0, p = traceItems[i].parent, guard = 0;
+        while (p >= 0 && guard++ < traceItems.length) {
+          d++;
+          p = traceItems[p].parent;
+        }
+        return d;
+      };
+      traceItems.forEach((it, i) => { it.depth = getTraceDepth(i); });
+
       let added = 0;
-      contours.forEach(pts => {
-        if (pts.length < 4 || Math.abs(contourArea(pts)) < minAreaPx) return;
-        let simplified = simplifyClosedContour(pts, simplifyPx);
-        if (simplified.length < 3) simplified = pts;
-        if (simplified.length < 3) return;
+      traceItems.forEach((outer, i) => {
+        // Even depths are dark regions. Odd depths are holes and are attached to
+        // their direct dark parent instead of becoming filled objects themselves.
+        if (outer.depth % 2 !== 0 || !outer.simplified || outer.simplified.length < 3) return;
+
+        const parts = [preciseClosedPathD(outer.simplified, scaleX, scaleY, ox, oy, smooth)];
+        traceItems.forEach((hole, j) => {
+          if (hole.parent === i && hole.depth === outer.depth + 1 && hole.depth % 2 === 1 && hole.simplified && hole.simplified.length >= 3) {
+            parts.push(preciseClosedPathD(hole.simplified, scaleX, scaleY, ox, oy, smooth));
+          }
+        });
 
         const path = document.createElementNS(SVG_NS, 'path');
-        path.setAttribute('d', preciseClosedPathD(simplified, scaleX, scaleY, ox, oy, smooth));
+        path.setAttribute('d', parts.join(' '));
         path.setAttribute('fill-rule', 'evenodd');
+        path.setAttribute('clip-rule', 'evenodd');
         applyMode(path, currentMode);
         addObject('traced', path, { mode: currentMode }, true);
         added++;
@@ -5690,6 +6268,38 @@ function fcmTransformSubpath(sub,matrix){
 }
 
 function fcmScalePoint(p){return {x:Math.round(p.x*100),y:Math.round(p.y*100)};}
+function fcmPointLineDistance(p,a,b){
+  const dx=b.x-a.x,dy=b.y-a.y;
+  const den=Math.hypot(dx,dy);
+  if(den<1e-12)return Math.hypot(p.x-a.x,p.y-a.y);
+  return Math.abs(dy*p.x-dx*p.y+b.x*a.y-b.y*a.x)/den;
+}
+function fcmFlattenCubic(p0,c1,c2,p3,tol,out,depth){
+  depth=depth||0;
+  const flat=Math.max(fcmPointLineDistance(c1,p0,p3),fcmPointLineDistance(c2,p0,p3));
+  if(flat<=tol||depth>=12){out.push({x:p3.x,y:p3.y});return;}
+  const mid=(a,b)=>({x:(a.x+b.x)/2,y:(a.y+b.y)/2});
+  const p01=mid(p0,c1),p12=mid(c1,c2),p23=mid(c2,p3);
+  const p012=mid(p01,p12),p123=mid(p12,p23),p0123=mid(p012,p123);
+  fcmFlattenCubic(p0,p01,p012,p0123,tol,out,depth+1);
+  fcmFlattenCubic(p0123,p123,p23,p3,tol,out,depth+1);
+}
+function fcmFlattenTextSubpath(sub,tolMm){
+  const tol=Math.max(0.015,Number(tolMm)||0.035);
+  let current={x:sub.start.x,y:sub.start.y};
+  const segments=[];
+  (sub.segments||[]).forEach(seg=>{
+    if(seg.type==='C'){
+      const pts=[];
+      fcmFlattenCubic(current,seg.c1,seg.c2,seg.end,tol,pts,0);
+      pts.forEach(p=>segments.push({type:'L',end:p}));
+    }else{
+      segments.push({type:'L',end:{x:seg.end.x,y:seg.end.y}});
+    }
+    current={x:seg.end.x,y:seg.end.y};
+  });
+  return {start:{x:sub.start.x,y:sub.start.y},closed:!!sub.closed,segments};
+}
 function fcmCollectPaths(root){
   const paths=[],skipped=[];
   let ownerCounter=0;
@@ -5712,10 +6322,15 @@ function fcmCollectPaths(root){
     if(!['path','polygon','polyline','rect','ellipse','circle','line'].includes(tag))return;
     try{
       const mode=fcmModeForElement(node);
+      const keepTogether=node.getAttribute && node.getAttribute('data-vv-fcm-keep-together')==='1';
       fcmShapeSubpaths(node).forEach(sub=>{
-        const transformed=fcmTransformSubpath(sub,current);
+        let transformed=fcmTransformSubpath(sub,current);
+        // Tekstkonturer er allerede vektoriseret fra browser-fonten. CanvasWorkspace/ScanNCut
+        // kan vise små artefakter på de mange korte Béziersegmenter, så FCM-udgaven flades
+        // adaptivt ud til meget præcise linjestykker (ca. 0,035 mm tolerance).
+        if(keepTogether)transformed=fcmFlattenTextSubpath(transformed,0.035);
         if(!transformed.segments.length)return;
-        paths.push({owner,mode,closed:!!transformed.closed,start:fcmScalePoint(transformed.start),segments:transformed.segments.map(seg=>{
+        paths.push({owner,mode,keepTogether,closed:!!transformed.closed,start:fcmScalePoint(transformed.start),segments:transformed.segments.map(seg=>{
           if(seg.type==='C')return {type:'C',c1:fcmScalePoint(seg.c1),c2:fcmScalePoint(seg.c2),end:fcmScalePoint(seg.end)};
           return {type:'L',end:fcmScalePoint(seg.end)};
         })});
@@ -5768,6 +6383,12 @@ function fcmSplitPathsIntoPieces(paths){
   });
   const pieces=[];
   byOwner.forEach(records=>{
+    // Tekst, som er konverteret til stier, består ofte af mange delstier (ét bogstav eller hul pr. delsti).
+    // På ScanNCut skal de blive i én samlet gruppe/piece, så ord ikke bliver splittet i enkeltbogstaver.
+    if(records.some(path=>path.keepTogether)){
+      pieces.push(records.slice());
+      return;
+    }
     const closed=[],open=[];
     records.forEach((path,index)=>{
       const poly=fcmPathPoints(path);
@@ -5823,7 +6444,7 @@ function fcmWritePath(path){
   w.u32(fcmFlagsForPath(path));
   w.u32(groups.length);
   w.u32(0);
-  w.u32(0);
+  w.u32(0x3f000000);
   w.i32(path.start.x);w.i32(path.start.y);
   groups.forEach(group=>{
     w.u32(group.type);
@@ -6054,11 +6675,11 @@ function curvedTextOutlinePath(textEl){
     if(typeof simplifyClosedContour==='function')simplified=simplifyClosedContour(contour,Math.max(0.45,scale*0.055));
     else if(typeof rdpSimplify==='function')simplified=rdpSimplify(contour,Math.max(0.45,scale*0.055));
     if(simplified.length<3)return;
-    if(typeof preciseClosedPathD==='function')parts.push(preciseClosedPathD(simplified,1/scale,1/scale,minX,minY,22));
+    if(typeof preciseClosedPathD==='function')parts.push(preciseClosedPathD(simplified,1/scale,1/scale,minX,minY,10));
     else{let d='M '+(simplified[0].x/scale+minX).toFixed(3)+' '+(simplified[0].y/scale+minY).toFixed(3);for(let i=1;i<simplified.length;i++)d+=' L '+(simplified[i].x/scale+minX).toFixed(3)+' '+(simplified[i].y/scale+minY).toFixed(3);parts.push(d+' Z');}
   });
   if(!parts.length)return null;
-  const path=document.createElementNS(SVG_NS,'path');path.setAttribute('d',parts.join(' '));path.setAttribute('fill-rule','evenodd');path.setAttribute('pointer-events','all');applyMode(path,detectTextMode(textEl));
+  const path=document.createElementNS(SVG_NS,'path');path.setAttribute('d',parts.join(' '));path.setAttribute('fill-rule','evenodd');path.setAttribute('pointer-events','all');path.setAttribute('data-vv-fcm-keep-together','1');applyMode(path,detectTextMode(textEl));
   if(textEl.getAttribute('transform'))path.setAttribute('transform',textEl.getAttribute('transform'));
   return path;
 }
@@ -6077,7 +6698,7 @@ function textOutlinePath(textEl){
 
   const fontSize=Math.max(1, firstSvgNumber(textEl.getAttribute('font-size')||getSvgStyleValue(textEl,'font-size','28'), 28));
   const family=textEl.getAttribute('font-family') || getSvgStyleValue(textEl,'font-family','Arial, Helvetica, sans-serif') || 'Arial, Helvetica, sans-serif';
-  const weight=textEl.getAttribute('font-weight') || getSvgStyleValue(textEl,'font-weight','bold') || 'bold';
+  const weight=textEl.getAttribute('font-weight') || getSvgStyleValue(textEl,'font-weight','normal') || 'normal';
   const style=textEl.getAttribute('font-style') || 'normal';
   const letterSpacing=firstSvgNumber(textEl.getAttribute('letter-spacing')||'0', 0);
   const lines=text.split('\n');
@@ -6173,7 +6794,7 @@ function textOutlinePath(textEl){
     }
     if(simplified.length<3) return;
     if(typeof preciseClosedPathD==='function'){
-      parts.push(preciseClosedPathD(simplified,1/scale,1/scale,minX,minY,22));
+      parts.push(preciseClosedPathD(simplified,1/scale,1/scale,minX,minY,10));
     } else {
       let d='M '+(simplified[0].x/scale+minX).toFixed(3)+' '+(simplified[0].y/scale+minY).toFixed(3);
       for(let i=1;i<simplified.length;i++)d+=' L '+(simplified[i].x/scale+minX).toFixed(3)+' '+(simplified[i].y/scale+minY).toFixed(3);
@@ -6186,6 +6807,7 @@ function textOutlinePath(textEl){
   path.setAttribute('d', parts.join(' '));
   path.setAttribute('fill-rule','evenodd');
   path.setAttribute('pointer-events','all');
+  path.setAttribute('data-vv-fcm-keep-together','1');
   // Apply laser mode so ScanNCut/laser sees red cut stroke or black engrave fill
   const mode=detectTextMode(textEl);
   applyMode(path, mode);
@@ -6239,6 +6861,7 @@ function convertAllTextsInDocument(){
       const path=textOutlinePath(obj.el);
       if(!path){ failed++; return; }
       path.setAttribute('data-id', obj.id);
+      path.setAttribute('data-vv-fcm-keep-together','1');
       obj.el.replaceWith(path);
       obj.el=path;
       obj.type='path';
@@ -6289,11 +6912,141 @@ function saveProjectFile(){
   exportSvgWithTextAsPaths(getProjectFileName('svg'));
 }
 
+// --- Projekt-gemmestatus og påmindelser ---
+const PROJECT_SAVE_REMINDER_MS = 10 * 60 * 1000;
+let projectDirty = false;
+let projectDirtySince = 0;
+let projectLastReminderAt = 0;
+let projectHasBeenSaved = false;
+let projectDirtyTrackingSuspended = false;
+let projectSaveTrackingReady = false;
+let projectSaveObserver = null;
+let projectCleanSnapshot = null;
+function projectDesignSnapshot(){
+  const data=serializeEditableProject();
+  delete data.savedAt;
+  delete data.currentMode;
+  return JSON.stringify(data);
+}
+let projectSaveReminderTimer = null;
+
+function updateProjectSaveIndicator(){
+  const el=document.getElementById('saveStateIndicator');
+  if(!el)return;
+  el.classList.remove('saved','dirty','new');
+  if(projectDirty){
+    el.classList.add('dirty');
+    el.textContent='● Ikke gemt';
+    el.title='Der er ændringer siden projektet sidst blev gemt';
+  }else if(projectHasBeenSaved){
+    el.classList.add('saved');
+    el.textContent='✓ Gemt';
+    el.title='Projektet er gemt som projektfil';
+  }else{
+    el.classList.add('new');
+    el.textContent='○ Nyt projekt';
+    el.title='Projektet er endnu ikke gemt som projektfil';
+  }
+}
+
+function markProjectDirty(){
+  if(!projectSaveTrackingReady || projectDirtyTrackingSuspended)return;
+  if(!projectDirty){
+    projectDirty=true;
+    projectDirtySince=Date.now();
+    projectLastReminderAt=0;
+  }
+  updateProjectSaveIndicator();
+}
+
+function setProjectClean(saved=true){
+  projectSaveObserver?.takeRecords();
+  projectCleanSnapshot=projectDesignSnapshot();
+  projectDirty=false;
+  projectDirtySince=0;
+  projectLastReminderAt=0;
+  if(saved)projectHasBeenSaved=true;
+  hideSaveReminder();
+  updateProjectSaveIndicator();
+}
+
+function ensureSaveReminderToast(){
+  let toast=document.getElementById('saveReminderToast');
+  if(toast)return toast;
+  toast=document.createElement('div');
+  toast.id='saveReminderToast';
+  toast.className='save-reminder-toast';
+  toast.setAttribute('role','status');
+  toast.setAttribute('aria-live','polite');
+  toast.innerHTML='<div class="save-reminder-text"><strong>Husk at gemme projektet</strong><span>Du har arbejdet i mindst 10 minutter med ændringer, der ikke er gemt.</span></div><button type="button" class="save-reminder-action">Gem projekt nu</button><button type="button" class="save-reminder-close" aria-label="Luk påmindelse">×</button>';
+  toast.querySelector('.save-reminder-action').addEventListener('click',()=>{
+    downloadEditableProject();
+    hideSaveReminder();
+  });
+  toast.querySelector('.save-reminder-close').addEventListener('click',()=>hideSaveReminder());
+  document.body.appendChild(toast);
+  return toast;
+}
+
+function showSaveReminder(){
+  if(!projectDirty)return;
+  const toast=ensureSaveReminderToast();
+  const name=(document.getElementById('projectName')?.value||'projektet').trim()||'projektet';
+  const detail=toast.querySelector('.save-reminder-text span');
+  if(detail)detail.textContent='“'+name+'” har ændringer, der ikke er gemt. Gem nu, så arbejdet ikke bliver væk.';
+  toast.classList.add('show');
+}
+
+function hideSaveReminder(){
+  document.getElementById('saveReminderToast')?.classList.remove('show');
+}
+
+function checkProjectSaveReminder(){
+  if(!projectDirty || !projectDirtySince)return;
+  const now=Date.now();
+  if(now-projectDirtySince < PROJECT_SAVE_REMINDER_MS)return;
+  if(projectLastReminderAt && now-projectLastReminderAt < PROJECT_SAVE_REMINDER_MS)return;
+  projectLastReminderAt=now;
+  showSaveReminder();
+}
+
+function initProjectSaveReminder(){
+  if(projectSaveTrackingReady)return;
+  updateProjectSaveIndicator();
+
+  // Observer kun egenskaber, der ændrer det gemte design. Zoom/visnings-attributter ignoreres.
+  const geometryAttrs=[
+    'x','y','width','height','rx','ry','cx','cy','r','x1','y1','x2','y2',
+    'points','d','transform','fill','fill-opacity','stroke','stroke-width','stroke-opacity',
+    'opacity','style','font-family','font-size','font-weight','font-style','text-anchor','href'
+  ];
+  projectSaveObserver=new MutationObserver(mutations=>{
+    if(projectDirtyTrackingSuspended || !projectSaveTrackingReady)return;
+    if(projectDesignSnapshot()!==projectCleanSnapshot)markProjectDirty();
+  });
+  projectSaveObserver.observe(objectsG,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:geometryAttrs});
+
+  document.getElementById('projectName')?.addEventListener('input',markProjectDirty);
+  document.getElementById('pageSize')?.addEventListener('change',markProjectDirty);
+
+
+  window.addEventListener('beforeunload',e=>{
+    if(!projectDirty)return;
+    e.preventDefault();
+    e.returnValue='';
+  });
+
+  projectSaveReminderTimer=setInterval(checkProjectSaveReminder,30000);
+  projectCleanSnapshot=projectDesignSnapshot();
+  projectSaveTrackingReady=true;
+  updateProjectSaveIndicator();
+}
+
 function serializeEditableProject(){
   return {
     format:'Vektor-Viktor Project',
     formatVersion:1,
-    appVersion:'1.80',
+    appVersion:'1.91',
     savedAt:new Date().toISOString(),
     projectName:(document.getElementById('projectName')?.value||'Mit projekt').trim()||'Mit projekt',
     pageSize,
@@ -6318,6 +7071,7 @@ function downloadEditableProject(){
   document.body.appendChild(a);
   a.click();
   a.remove();
+  setProjectClean(true);
   setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
@@ -6364,6 +7118,8 @@ function loadEditableProject(data){
     return {item,el};
   });
 
+  projectDirtyTrackingSuspended=true;
+
   // Luk evt. aktiv node-/tegnestatus før projektet udskiftes.
   nodeEdit=null; nodeDrag=null; nodeMarqueeState=null;
   document.getElementById('nodeMarqueeBox')?.remove();
@@ -6385,7 +7141,7 @@ function loadEditableProject(data){
   if(pageSelect)pageSelect.value=wantedPage;
 
   currentMode=['cut','green','engrave'].includes(data.currentMode)?data.currentMode:'cut';
-  if(isScanNCutPageSize() && currentMode==='green')currentMode='cut';
+  if(isScanNCutPageSize())currentMode='cut';
 
   let maxCounter=0;
   let restored=0;
@@ -6410,10 +7166,16 @@ function loadEditableProject(data){
 
   updateModeButtonsForPageSize();
   refreshObjectModesForPageSize();
+  refreshScanPreviewFills();
   enforceConstantStrokeRendering();
   updateCount();
   refreshUI();
+  refreshLiveTextFonts();
   zoomReset();
+  queueMicrotask(()=>{
+    projectDirtyTrackingSuspended=false;
+    setProjectClean(true);
+  });
   return restored;
 }
 
@@ -6444,7 +7206,7 @@ function initRightPanelAccordions(){
   }
 
   Array.from(panel.children).forEach(group=>{
-    if(!group.classList||!group.classList.contains('prop-group')||['noSelection','colorProps'].includes(group.id))return;
+    if(!group.classList||!group.classList.contains('prop-group')||['noSelection','laserModePanel','scanColorPanel'].includes(group.id))return;
     const firstLabel=Array.from(group.children).find(el=>el.tagName&&el.tagName.toLowerCase()==='label');
     if(!firstLabel)return;
     const title=titleById[group.id] || (firstLabel.textContent||'Menu').trim() || 'Menu';
@@ -6524,6 +7286,7 @@ updateCount();
 svg.classList.add('select-mode');
 document.querySelector('.canvas-wrap').classList.add('select-mode');
 svg.style.cursor='default';
+initProjectSaveReminder();
 </script>
 
 </body>

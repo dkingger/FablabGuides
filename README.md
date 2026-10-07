@@ -10,6 +10,14 @@ Dato: 2026-09-27
 
 ## Seneste aendringer
 
+### Vektor-Viktor v1.91 (2026-10-07)
+
+- Indarbejdet Renes v1.91 med ScanNCut-foliefarver som forhåndsvisning, flere skrifttyper, nye justeringsikoner, forbedret opdeling af SVG-objekter og billedsporing med huller.
+- Tilføjet gemmestatus, påmindelse efter 10 minutter med ugemte ændringer og advarsel ved lukning. Markering og zoom ændrer ikke gemmestatus; markering ændrer heller ikke eksisterende foliefarver.
+- Tekstkonturer holdes samlet i FCM-eksport. Eksportknappen følger det valgte sideformat.
+- Bevaret rettelser til booleske huller og grundfigurens farve, afrundede hjørner, projektfiler med buet tekst og billeder, ugyldige projektfiler, zoomnulstilling, tilgængelighed og favicon.
+- Opdateret begge forsidegenveje til v1.91 og tilføjet `npm run test:vektor` til testpakken. FCM er kontrolleret som filgenerering; fysisk ScanNCut/CanvasWorkspace-kompatibilitet er ikke afprøvet.
+
 ### Vektor-Viktor v1.80 (2026-10-02)
 
 Nu med gem/åben projekt, buet tekst og fejlrettelser.
