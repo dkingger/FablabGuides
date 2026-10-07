@@ -268,7 +268,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
     <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.91</span></h1>
+  <h1><span class="logo">V</span> Vektor-Viktor <span class="version-badge">v1.92</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
@@ -354,6 +354,7 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
         <span id="scanFillHex">#FF5A5F</span>
       </div>
       <div class="scan-color-actions">
+        <button type="button" class="btn btn-primary" id="btnApplyScanFill">Anvend farve</button>
         <button type="button" class="btn btn-secondary" id="btnClearScanFill">Ingen udfyldning</button>
       </div>
       <p class="scan-color-help">Farven er kun en forhåndsvisning på Scan N Cut-måtten. FCM-filen gemmes stadig som rene skærelinjer.</p>
@@ -547,9 +548,9 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
     <p>Juster tærsklen så de mørke dele bliver sorte i forhåndsvisningen. Tryk derefter «Spor nu».</p>
     <div class="preview-box" id="tracePreview"><span style="color:#666">Indlæser…</span></div>
     <div class="slider-row"><label>Tærskel</label><input type="range" id="traceThreshold" min="0" max="255" value="128"><span id="threshVal">128</span></div>
-    <div class="slider-row"><label>Detaljer</label><input type="range" id="traceDetail" min="0" max="100" value="90"><span id="detailVal">90</span></div>
-    <div class="slider-row"><label>Udglatning</label><input type="range" id="traceSmooth" min="0" max="100" value="12"><span id="smoothVal">12</span></div>
-    <p style="font-size:.7rem;margin-top:-2px;margin-bottom:8px">Høj detalje bevarer små former. Lav udglatning giver den mest præcise kant.</p>
+    <div class="slider-row"><label>Detaljer</label><input type="range" id="traceDetail" min="0" max="100" value="80"><span id="detailVal">80</span></div>
+    <div class="slider-row"><label>Udglatning</label><input type="range" id="traceSmooth" min="0" max="100" value="60"><span id="smoothVal">60</span></div>
+    <p style="font-size:.7rem;margin-top:-2px;margin-bottom:8px">Runde kanter samles til færre, glatte kurver. Mere udglatning giver færre punkter; højere detalje bevarer små former.</p>
     <div class="modal-actions">
       <button class="btn btn-secondary" id="traceCancel">Annuller</button>
       <button class="btn btn-primary" id="traceDo">Spor nu</button>
@@ -890,7 +891,7 @@ function updateScanColorControls(){
   if(input)input.value=color;
   if(hex)hex.textContent=color.toUpperCase();
 }
-function applySelectedScanFill(color){
+function applySelectedScanFill(color,saveUndo=true){
   if(!isScanNCutPageSize())return;
   const c=color?normalizeHexColor(color):null;
   if(c)currentScanFillColor=c;
@@ -898,10 +899,10 @@ function applySelectedScanFill(color){
     updateScanColorControls();
     return;
   }
-  pushUndo();
-  selectedIds.forEach(id=>{
-    const obj=objects.find(o=>o.id===id);
-    if(!obj)return;
+  const targets=objects.filter(obj=>selectedIds.includes(obj.id) && (obj.data?.scanFillColor||null)!==c);
+  if(!targets.length){updateScanColorControls();return;}
+  if(saveUndo)pushUndo();
+  targets.forEach(obj=>{
     obj.data=obj.data||{};
     if(c)obj.data.scanFillColor=c;
     else delete obj.data.scanFillColor;
@@ -910,6 +911,7 @@ function applySelectedScanFill(color){
     applyScanPreviewFill(obj);
   });
   refreshUI();
+  return true;
 }
 
 function setPageSize(size){
@@ -1385,19 +1387,27 @@ document.querySelectorAll('.mode-btn').forEach(btn=>{
   });
 });
 
+// Update the object during native color picking, with one undo per gesture.
+let scanFillEditSelection=null;
+function applyScanColorInput(value){
+  const selection=selectedIds.join(',');
+  if(applySelectedScanFill(value,scanFillEditSelection!==selection))scanFillEditSelection=selection;
+}
 document.getElementById('scanFillColor')?.addEventListener('input',e=>{
-  const color=normalizeHexColor(e.target.value);
-  currentScanFillColor=color;
-  const hex=document.getElementById('scanFillHex');
-  if(hex)hex.textContent=color.toUpperCase();
+  applyScanColorInput(e.target.value);
 });
 document.getElementById('scanFillColor')?.addEventListener('change',e=>{
-  applySelectedScanFill(e.target.value);
-  markProjectDirty();
+  applyScanColorInput(e.target.value);
+  scanFillEditSelection=null;
+});
+document.getElementById('scanFillColor')?.addEventListener('blur',()=>{
+  scanFillEditSelection=null;
+});
+document.getElementById('btnApplyScanFill')?.addEventListener('click',()=>{
+  applySelectedScanFill(document.getElementById('scanFillColor').value);
 });
 document.getElementById('btnClearScanFill')?.addEventListener('click',()=>{
   applySelectedScanFill(null);
-  markProjectDirty();
 });
 
 function selectOnly(id){selectedIds=[id];refreshUI()}
@@ -4644,7 +4654,6 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       contours.sort((a, b) => Math.abs(contourArea(b)) - Math.abs(contourArea(a)));
 
       // Detail controls simplification and removal of tiny speckles.
-      const simplifyPx = 0.12 + Math.pow((100 - detail) / 100, 1.7) * 2.4;
       const minAreaPx = 0.35 + Math.pow((100 - detail) / 100, 2) * 20;
 
       // IMPORTANT: A white area inside a dark silhouette (eyes, mouth, letters etc.)
@@ -4653,14 +4662,8 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       // Build a nesting tree and keep each dark outer contour together with its
       // immediate white child contours in ONE compound path using evenodd fill.
       const traceItems = contours
-        .map((pts, index) => ({ pts, index, absArea: Math.abs(contourArea(pts)), parent: -1, depth: 0, simplified: null }))
+        .map((pts, index) => ({ pts, index, absArea: Math.abs(contourArea(pts)), parent: -1, depth: 0 }))
         .filter(it => it.pts.length >= 4 && it.absArea >= minAreaPx);
-
-      traceItems.forEach(it => {
-        let simplified = simplifyClosedContour(it.pts, simplifyPx);
-        if (simplified.length < 3) simplified = it.pts;
-        it.simplified = simplified;
-      });
 
       // Find the smallest larger contour that contains this contour.
       // That becomes its direct parent in the contour tree.
@@ -4691,16 +4694,18 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       };
       traceItems.forEach((it, i) => { it.depth = getTraceDepth(i); });
 
+      if(!traceItems.length){alert('Konturer blev filtreret væk. Prøv en anden tærskel.');return;}
+      pushUndo();
       let added = 0;
       traceItems.forEach((outer, i) => {
         // Even depths are dark regions. Odd depths are holes and are attached to
         // their direct dark parent instead of becoming filled objects themselves.
-        if (outer.depth % 2 !== 0 || !outer.simplified || outer.simplified.length < 3) return;
+        if (outer.depth % 2 !== 0 || outer.pts.length < 3) return;
 
-        const parts = [preciseClosedPathD(outer.simplified, scaleX, scaleY, ox, oy, smooth)];
+        const parts = [tracedClosedPathD(outer.pts, scaleX, scaleY, ox, oy, detail, smooth)];
         traceItems.forEach((hole, j) => {
-          if (hole.parent === i && hole.depth === outer.depth + 1 && hole.depth % 2 === 1 && hole.simplified && hole.simplified.length >= 3) {
-            parts.push(preciseClosedPathD(hole.simplified, scaleX, scaleY, ox, oy, smooth));
+          if (hole.parent === i && hole.depth === outer.depth + 1 && hole.depth % 2 === 1 && hole.pts.length >= 3) {
+            parts.push(tracedClosedPathD(hole.pts, scaleX, scaleY, ox, oy, detail, smooth));
           }
         });
 
@@ -4709,12 +4714,13 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         path.setAttribute('fill-rule', 'evenodd');
         path.setAttribute('clip-rule', 'evenodd');
         applyMode(path, currentMode);
-        addObject('traced', path, { mode: currentMode }, true);
+        const traceData={mode:currentMode};
+        if(srcObj.data?.scanFillColor)traceData.scanFillColor=srcObj.data.scanFillColor;
+        addObject('traced', path, traceData, true);
         added++;
       });
 
 
-      pushUndo();
       const idx = objects.findIndex(o => o.id === traceSourceId);
       if (idx >= 0) {
         objects[idx].el.remove();
@@ -4868,6 +4874,92 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       const p2 = rdpSimplify(arc(b,a), eps);
       const joined = p1.slice(0,-1).concat(p2.slice(0,-1));
       return joined.length >= 3 ? joined : pts.slice();
+    }
+
+    // Fit several raster-edge samples to each cubic, in document millimetres.
+    // Unlike per-vertex smoothing this actually reduces the machine's segments.
+    function tracedClosedPathD(points, sx, sy, ox, oy, detail, smoothing) {
+      const pixelSize=Math.max(Math.abs(sx),Math.abs(sy));
+      const tolerance = Math.max(0.02 + (100-detail)*0.001 + smoothing*0.001,
+        pixelSize*(0.15+smoothing*0.006));
+      const tangentSpan=Math.max(tolerance*4,pixelSize*3);
+      const raw=points.map(p=>({x:p.x*sx+ox,y:p.y*sy+oy}));
+      const P=simplifyClosedContour(raw,tolerance*0.2);
+      const n=P.length;
+      if(n<3)return '';
+      const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+      const unit=(x,y)=>{const l=Math.hypot(x,y)||1;return {x:x/l,y:y/l};};
+      const point=i=>P[(i+n)%n];
+      // Look beyond individual pixel steps when estimating a tangent or corner.
+      const neighbour=(i,dir)=>{
+        let j=i,travel=0;
+        for(let k=0;k<n-1 && travel<tangentSpan;k++){
+          const next=j+dir;travel+=dist(point(j),point(next));j=next;
+        }
+        return point(j);
+      };
+      const tangent=i=>{const a=neighbour(i,-1),b=neighbour(i,1);return unit(b.x-a.x,b.y-a.y);};
+      const corners=[];
+      for(let i=0;i<n;i++){
+        const a=neighbour(i,-1),b=point(i),c=neighbour(i,1);
+        const u=unit(b.x-a.x,b.y-a.y),v=unit(c.x-b.x,c.y-b.y);
+        if(u.x*v.x+u.y*v.y<0.5)corners.push(i);
+      }
+      // Quarter-loop boundaries keep the least-squares solve well conditioned.
+      const breaks=[...new Set([0,Math.floor(n/4),Math.floor(n/2),Math.floor(3*n/4),...corners])].sort((a,b)=>a-b);
+      const cornerSet=new Set(corners);
+      const fmt=p=>p.x.toFixed(3)+' '+p.y.toFixed(3);
+      let d='M '+fmt(P[0]);
+      const fit=(Q,t0,t1,depth=0)=>{
+        const first=Q[0],last=Q[Q.length-1];
+        if(Q.length<=2 || Q.every(p=>pointSegmentDistance(p,first,last)<=tolerance)){
+          d+=' L '+fmt(last);return;
+        }
+        const lengths=[0];
+        for(let i=1;i<Q.length;i++)lengths.push(lengths[i-1]+dist(Q[i-1],Q[i]));
+        const total=lengths[lengths.length-1];
+        let aa=0,ab=0,bb=0,ar=0,br=0;
+        const params=lengths.map(l=>l/total);
+        for(let i=0;i<Q.length;i++){
+          const t=params[i],v=1-t,b0=v*v*v,b1=3*v*v*t,b2=3*v*t*t,b3=t*t*t;
+          const ax=b1*t0.x,ay=b1*t0.y,bx=-b2*t1.x,by=-b2*t1.y;
+          const rx=Q[i].x-(b0+b1)*first.x-(b2+b3)*last.x;
+          const ry=Q[i].y-(b0+b1)*first.y-(b2+b3)*last.y;
+          aa+=ax*ax+ay*ay;ab+=ax*bx+ay*by;bb+=bx*bx+by*by;
+          ar+=ax*rx+ay*ry;br+=bx*rx+by*ry;
+        }
+        const det=aa*bb-ab*ab;
+        let a=det>1e-12?(ar*bb-br*ab)/det:total/3;
+        let b=det>1e-12?(br*aa-ar*ab)/det:total/3;
+        if(a<=0 || b<=0 || a>total || b>total)a=b=dist(first,last)/3;
+        const c1={x:first.x+a*t0.x,y:first.y+a*t0.y};
+        const c2={x:last.x-b*t1.x,y:last.y-b*t1.y};
+        let error=0,split=Math.floor(Q.length/2);
+        for(let i=1;i<Q.length-1;i++){
+          const t=params[i],v=1-t;
+          const q={x:v*v*v*first.x+3*v*v*t*c1.x+3*v*t*t*c2.x+t*t*t*last.x,
+                   y:v*v*v*first.y+3*v*v*t*c1.y+3*v*t*t*c2.y+t*t*t*last.y};
+          const e=dist(q,Q[i]);if(e>error){error=e;split=i;}
+        }
+        if(error<=tolerance){d+=' C '+fmt(c1)+' '+fmt(c2)+' '+fmt(last);return;}
+        if(depth>=24){for(let i=1;i<Q.length;i++)d+=' L '+fmt(Q[i]);return;}
+        let left=split-1,right=split+1;
+        while(left>0 && dist(Q[left],Q[split])<tangentSpan)left--;
+        while(right<Q.length-1 && dist(Q[right],Q[split])<tangentSpan)right++;
+        const aPoint=Q[left],bPoint=Q[right];
+        const middle=unit(bPoint.x-aPoint.x,bPoint.y-aPoint.y);
+        fit(Q.slice(0,split+1),t0,middle,depth+1);
+        fit(Q.slice(split),middle,t1,depth+1);
+      };
+      for(let k=0;k<breaks.length;k++){
+        const start=breaks[k],end=k+1<breaks.length?breaks[k+1]:n;
+        const Q=[];for(let i=start;i<=end;i++)Q.push(point(i));
+        const a=Q[0],b=Q[Q.length-1];
+        const t0=cornerSet.has(start)?unit(Q[1].x-a.x,Q[1].y-a.y):tangent(start);
+        const t1=cornerSet.has(end%n)?unit(b.x-Q[Q.length-2].x,b.y-Q[Q.length-2].y):tangent(end%n);
+        fit(Q,t0,t1);
+      }
+      return d+' Z';
     }
 
     function preciseClosedPathD(pts, sx, sy, ox, oy, smoothing) {
@@ -5430,6 +5522,12 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       // Difference keeps the material object's mode, not the cutter's color
       // or the mode of whichever object happened to be selected last.
       const resultMode = op === 'subtract' ? (sel[0].data?.mode || detectMode(sel[0])) : currentMode;
+      const resultData = { mode: resultMode };
+      // Foliefarven er separat fra laser-tilstanden. Bevar grundfigurens
+      // forhåndsvisning, også når den ikke har nogen udfyldning.
+      if (op === 'subtract' && sel[0].data?.scanFillColor) {
+        resultData.scanFillColor = sel[0].data.scanFillColor;
+      }
 
       // Rektangler forenes eksakt som vektorer. Det bevarer mål og 90° hjørner 1:1.
       if(op==='union' && exactRectUnion(sel)) return;
@@ -5775,7 +5873,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
 
       const newIds = [];
       resultPaths.forEach(path => {
-        const id = addObject('traced', path, { mode: resultMode }, true);
+        const id = addObject('traced', path, { ...resultData }, true);
         newIds.push(id);
       });
       selectedIds = newIds;
@@ -7046,7 +7144,7 @@ function serializeEditableProject(){
   return {
     format:'Vektor-Viktor Project',
     formatVersion:1,
-    appVersion:'1.91',
+    appVersion:'1.92',
     savedAt:new Date().toISOString(),
     projectName:(document.getElementById('projectName')?.value||'Mit projekt').trim()||'Mit projekt',
     pageSize,

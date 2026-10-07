@@ -10,6 +10,16 @@ Dato: 2026-09-27
 
 ## Seneste aendringer
 
+### Vektor-Viktor v1.92 (2026-10-07)
+
+- Billedsporing tilpasser nu længere Bézierkurver til konturen i stedet for at oprette en kurve ved hvert enkelt punkt. Tilpasningen tager højde for både billedopløsning og figurens millimetermål; tekstkonturering er uændret.
+- Standardindstillingerne er nu Detaljer 80 og Udglatning 60. Mere udglatning tillader større forenkling. Eksisterende sporinger skal spores igen fra originalbilledet for at få færre punkter.
+- Testbillede med en cirkel på 80 mm ved 600 × 600 pixels: 409 → 29 segmenter; oval: 318 → 10. Største målte afvigelse fra de ideelle testfigurer var henholdsvis 0,176 og 0,204 mm. Resultater afhænger af billedet; skæretid på maskine er ikke målt.
+- FCM-eksport bevarer de tilpassede kurver. Regressionstests dækker flere billedopløsninger, huller, hjørner, gem/åbn og fortrydelse af sporing.
+- Farvevælgeren anvender nu foliefarven løbende på markeringen efter skift fra A4 til ScanNCut. Knappen Anvend farve kan også påføre den allerede valgte farve. Ét farvevalg kan fortrydes samlet.
+- Begge forsider og projektfilens versionsfelt viser v1.92.
+- Forskel bevarer den nederste figurs ScanNCut-foliefarve. Billedsporing bevarer også kildens foliefarve, og fortrydelse gendanner billedet uden at efterlade den sporede kopi.
+
 ### Vektor-Viktor v1.91 (2026-10-07)
 
 - Indarbejdet Renes v1.91 med ScanNCut-foliefarver som forhåndsvisning, flere skrifttyper, nye justeringsikoner, forbedret opdeling af SVG-objekter og billedsporing med huller.

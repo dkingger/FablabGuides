@@ -6,7 +6,7 @@
     "test:accessibility": "node tools/test_accessibility.cjs",
     "test:potentials": "node tools/test_potential_accessibility.cjs",
     "test:wedo": "node tools/test_wedo_accessibility.cjs",
-    "test:vektor": "node tools/test_vektor_viktor.cjs"
+    "test:vektor": "node tools/test_vektor_viktor.cjs && node tools/test_vektor_trace.cjs"
   },
   "devDependencies": {
     "puppeteer": "25.12.0"
