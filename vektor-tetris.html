@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vektors blokpause</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101820;color:#edf5fa}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:20px}main{width:min(100%,620px)}header{margin-bottom:20px}h1{font-size:clamp(24px,5vw,36px);margin:0 0 6px}h1 span{color:#ffd426}p{color:#b8c8d5;line-height:1.5;margin:6px 0}.game{display:flex;gap:24px;align-items:flex-start}canvas{display:block;background:#071019;border:1px solid #385061;border-radius:8px;max-width:100%}#board{width:min(60%,300px);height:auto}aside{flex:1;min-width:100px}dl{margin:0 0 18px}dt{color:#b8c8d5;font-size:14px}dd{font-size:26px;font-weight:700;margin:0 0 12px}#next{width:100px;margin:8px 0 18px}button,a{touch-action:manipulation}button{font:inherit;color:#edf5fa;background:#243b4b;border:1px solid #527084;border-radius:8px;padding:10px 14px;cursor:pointer}button:hover{background:#35556b}button:focus-visible,a:focus-visible{outline:3px solid #ffd426;outline-offset:3px}#start{background:#ffd426;color:#17222b;border:0;font-weight:700;width:100%;margin-bottom:10px}#pause{width:100%}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.controls button{flex:1;min-width:48px}#status{min-height:48px;color:#ffd426}footer{font-size:13px;margin-top:18px}a{color:#98d9ff}@media(max-width:420px){body{padding:12px}.game{gap:14px}button{padding:10px}dd{font-size:22px}}
+dialog{width:min(92vw,540px);max-height:90svh;overflow:auto;padding:24px;border:1px solid #527084;border-radius:16px;background:#101820;color:#edf5fa;text-align:center}dialog::backdrop{background:rgba(0,0,0,.8)}dialog img{display:block;width:100%;max-height:45svh;object-fit:contain;margin:0 auto 16px}dialog h2{color:#ffd426;margin:8px 0;font-size:clamp(22px,5vw,30px)}dialog p{margin:12px 0}dialog .end-actions{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:16px;margin-top:20px}
+</style>
+</head>
+<body>
+<main>
+<header><h1>Vektors <span>blokpause</span></h1><p>Du fandt det hemmelige Tetris-spil. Tag en lille pause!</p></header>
+<div class="game">
+<canvas tabindex="0" id="board" width="300" height="600" aria-label="Tetris-spillefelt med 10 kolonner og 20 rækker"></canvas>
+<aside><dl><dt>Point</dt><dd id="score">0</dd><dt>Linjer</dt><dd id="lines">0</dd><dt>Niveau</dt><dd id="level">1</dd></dl><p>Næste brik</p><canvas id="next" width="120" height="120" aria-label="Næste brik"></canvas><button id="start">Start spil</button><button id="pause" disabled>Pause</button><p id="status" role="status" aria-live="polite">Klar til en blokpause?</p></aside>
+</div>
+<div class="controls" aria-label="Spilkontroller"><button data-action="left" aria-label="Flyt til venstre">←</button><button data-action="rotate" aria-label="Drej brikken">↻</button><button data-action="right" aria-label="Flyt til højre">→</button><button data-action="down" aria-label="Flyt ned">↓</button><button data-action="drop">Slip</button></div>
+<p>← → flytter · ↑ drejer · ↓ sænker · mellemrum slipper · P holder pause.</p>
+<footer><a href="vektor-viktor.html">Tilbage til Vektor-Viktor</a></footer>
+</main>
+<dialog id="gameOver" aria-labelledby="gameOverTitle" aria-describedby="gameOverMessage">
+  <img src="assets/images/R_and_J_angry.png" alt="To utilfredse makere peger på dig">
+  <h2 id="gameOverTitle">Se at komme tilbage til arbejdet!</h2>
+  <p id="gameOverMessage">Man bliver ikke en god maker af at spille Tetris.</p>
+  <p id="finalScore"></p>
+  <div class="end-actions"><a href="vektor-viktor.html">Tilbage til arbejdet</a><button id="playAgain">Bare ét spil mere …</button></div>
+</dialog>
+<script src="vektor-tetris.js"></script>
+</body>
+</html>

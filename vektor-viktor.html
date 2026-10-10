@@ -114,6 +114,10 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 .about-modal{position:relative;max-width:420px}
 .about-modal img{display:block;width:100%;max-height:220px;object-fit:contain;border:1px solid var(--border);border-radius:8px;margin:0 auto 14px;background:#f0f0f0}
 .about-modal p{line-height:1.5}
+.about-logo{position:relative;width:220px;max-width:100%;margin:0 auto 14px}
+.about-logo img{margin:0;max-height:none;box-sizing:border-box}
+.about-secret{position:absolute;left:63.5%;top:58%;width:13%;height:13%;border-radius:50%}
+.about-secret:focus-visible{outline:2px solid #ffd426;outline-offset:3px}
 .modal-close{position:absolute;top:8px;right:8px;width:30px;height:30px;border:0;border-radius:6px;background:transparent;color:var(--text-dim);font-size:1.35rem;line-height:1;cursor:pointer}
 .modal-close:hover{background:var(--panel2);color:var(--text)}
 .preview-box{width:100%;height:220px;background:#f0f0f0;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:14px}
@@ -560,9 +564,12 @@ header .hint{color:#9ca7b2;font-size:.7rem;margin-left:auto}
 <div class="modal-overlay" id="aboutModal" aria-hidden="true">
   <div class="modal about-modal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle">
     <button type="button" class="modal-close" id="aboutCloseIcon" aria-label="Luk Om-vinduet">×</button>
-    <img src="https://www.fablabguides.dk/billeder/vektor-viktor.png" alt="Vektor-Viktor">
+    <div class="about-logo">
+      <img src="billeder/vektor-viktor.png" alt="Vektor-Viktor">
+      <a class="about-secret" href="vektor-tetris.html" target="_blank" rel="noopener" aria-label="Spil Tetris (åbner i en ny fane)"></a>
+    </div>
     <h2 id="aboutModalTitle">Om Vektor-Viktor</h2>
-    <p>Vektor-Viktor er oprindeligt udviklet af <strong>Rene Gade</strong> fra Fredericia MakerSpace. Værktøjet er senere udbygget med tilføjelser af <strong>Johannes van Roest Dahl</strong>.</p>
+    <p>Vektor-Viktor er oprindeligt udviklet af <strong>Réne Gade Christensen</strong> fra Fredericia MakerSpace. Værktøjet er senere udbygget med tilføjelser af <strong>Johannes van Roest Dahl</strong>.</p>
     <div class="modal-actions">
       <button class="btn btn-primary" id="aboutClose">Luk</button>
     </div>
