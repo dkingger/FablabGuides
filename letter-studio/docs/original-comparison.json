@@ -1,0 +1,50 @@
+[
+  {
+    "case": "letter-a",
+    "file": "bodies/part-01-body-mm.stl",
+    "identical": true,
+    "sha256": "8686bf514aae901c9b36a6dd5d60f15550eeb3d50d3bedaf9008696daf1150a7"
+  },
+  {
+    "case": "letter-a",
+    "file": "faces/part-01-face-mm.stl",
+    "identical": true,
+    "sha256": "1d8f503e5967e6e267f59126008ce032f949442bb0bd5b6106bf6c4ff76b9e2e"
+  },
+  {
+    "case": "stand-wires",
+    "file": "bodies/part-01-body-mm.stl",
+    "identical": true,
+    "sha256": "a6e86a2f4e91f6dc4dea84e7d1dc9f6843f631fe3550dd99f1d5c57ac7a7ac05"
+  },
+  {
+    "case": "stand-wires",
+    "file": "faces/part-01-face-mm.stl",
+    "identical": true,
+    "sha256": "1d8f503e5967e6e267f59126008ce032f949442bb0bd5b6106bf6c4ff76b9e2e"
+  },
+  {
+    "case": "stand-wires",
+    "file": "desk-stand/desk-base-mm.stl",
+    "identical": true,
+    "sha256": "8f86796d21d58e0a005a74d87df55a543b83d852aaab273a62d5fe49d1960303"
+  },
+  {
+    "case": "stand-wires",
+    "file": "desk-stand/desk-bottom-cover-mm.stl",
+    "identical": true,
+    "sha256": "12be486738918d3fda9e4ff297096b6592470f290b0f70718c45bef30d183a88"
+  },
+  {
+    "case": "stand-wires",
+    "file": "desk-stand/test-first/test-foot-mm.stl",
+    "identical": true,
+    "sha256": "66ad2d823373161206bb6a3563a9f5b9217e463839ec52499dd9e1d777826d58"
+  },
+  {
+    "case": "stand-wires",
+    "file": "desk-stand/test-first/test-socket-mm.stl",
+    "identical": true,
+    "sha256": "6e8fc4feb8b2e6d70adef2256262b0b49f4559c61180215bd6e4f5182521e823"
+  }
+]

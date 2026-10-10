@@ -1,0 +1,1216 @@
+[
+  {
+    "file": "danish-text.zip",
+    "meshes": [
+      {
+        "file": "bodies/part-01-body-mm.stl",
+        "triangles": 3316,
+        "extents_mm": [
+          83.96961975097656,
+          60.47595202922821,
+          30.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            1.1920928955078125e-07,
+            0.0
+          ],
+          [
+            83.96961975097656,
+            60.4759521484375,
+            30.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 34071.74606216141,
+        "euler_number": -6
+      },
+      {
+        "file": "faces/part-01-face-mm.stl",
+        "triangles": 80,
+        "extents_mm": [
+          78.46366858482361,
+          56.07595157623291,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            3.3059542179107666,
+            2.1999998092651367,
+            0.0
+          ],
+          [
+            81.76962280273438,
+            58.27595138549805,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 5948.313578546452,
+        "euler_number": 0
+      },
+      {
+        "file": "bodies/part-02-body-mm.stl",
+        "triangles": 233888,
+        "extents_mm": [
+          66.47088398784399,
+          66.47088623046875,
+          30.0
+        ],
+        "bounds_mm": [
+          [
+            2.2426247596740723e-06,
+            0.0,
+            0.0
+          ],
+          [
+            66.47088623046875,
+            66.47088623046875,
+            30.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 30689.577292960228,
+        "euler_number": -604
+      },
+      {
+        "file": "faces/part-02-face-mm.stl",
+        "triangles": 4644,
+        "extents_mm": [
+          60.254274129867554,
+          60.230793476104736,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            3.111269235610962,
+            3.1151156425476074,
+            0.0
+          ],
+          [
+            63.365543365478516,
+            63.345909118652344,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 4908.184615620027,
+        "euler_number": -2
+      },
+      {
+        "file": "bodies/part-03-body-mm.stl",
+        "triangles": 130234,
+        "extents_mm": [
+          63.39241141080856,
+          77.00253283977509,
+          30.0
+        ],
+        "bounds_mm": [
+          [
+            -4.947185516357422e-06,
+            1.1920928955078125e-07,
+            0.0
+          ],
+          [
+            63.39240646362305,
+            77.00253295898438,
+            30.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 26187.723689759117,
+        "euler_number": -398
+      },
+      {
+        "file": "faces/part-03-face-mm.stl",
+        "triangles": 3120,
+        "extents_mm": [
+          57.06753659248352,
+          72.60246753692627,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            3.162440061569214,
+            2.1999998092651367,
+            0.0
+          ],
+          [
+            60.229976654052734,
+            74.8024673461914,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 4205.013584617965,
+        "euler_number": -2
+      }
+    ],
+    "3mf": [
+      {
+        "file": "all-bodies-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 3,
+            "triangles": 367438,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "all-faces-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 3,
+            "triangles": 7844,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "dimensions-fit.zip",
+    "meshes": [
+      {
+        "file": "bodies/part-01-body-mm.stl",
+        "triangles": 2184,
+        "extents_mm": [
+          115.30475616455078,
+          110.0,
+          40.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            115.30475616455078,
+            110.0,
+            40.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 64012.39778880355,
+        "euler_number": -6
+      },
+      {
+        "file": "faces/part-01-face-mm.stl",
+        "triangles": 48,
+        "extents_mm": [
+          107.8334596157074,
+          104.80000162124634,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            3.735647439956665,
+            2.5999999046325684,
+            0.0
+          ],
+          [
+            111.56910705566406,
+            107.4000015258789,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 15370.074931054683,
+        "euler_number": 0
+      }
+    ],
+    "3mf": [
+      {
+        "file": "all-bodies-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 2184,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "all-faces-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 48,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "letter-a.zip",
+    "meshes": [
+      {
+        "file": "bodies/part-01-body-mm.stl",
+        "triangles": 2286,
+        "extents_mm": [
+          104.82250213623047,
+          100.0,
+          35.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            104.82250213623047,
+            100.0,
+            35.0
+          ]
+        ],
+        "watertight": false,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 7,
+        "volume_mm3": 44863.83301090493,
+        "euler_number": -14
+      },
+      {
+        "file": "faces/part-01-face-mm.stl",
+        "triangles": 48,
+        "extents_mm": [
+          98.50064277648926,
+          95.6000030040741,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            3.1609325408935547,
+            2.200000047683716,
+            0.0
+          ],
+          [
+            101.66157531738281,
+            97.80000305175781,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 12941.196060856259,
+        "euler_number": 0
+      }
+    ],
+    "3mf": [
+      {
+        "file": "all-bodies-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 2286,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "all-faces-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 48,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "lightbox.zip",
+    "meshes": [
+      {
+        "file": "bodies/part-01-body-mm.stl",
+        "triangles": 13024,
+        "extents_mm": [
+          180.0,
+          140.0,
+          35.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            180.0,
+            140.0,
+            35.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 101795.53314005276,
+        "euler_number": -30
+      },
+      {
+        "file": "faces/part-01-face-mm.stl",
+        "triangles": 268,
+        "extents_mm": [
+          174.7999939918518,
+          134.7999939918518,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            2.5999999046325684,
+            2.5999999046325684,
+            0.0
+          ],
+          [
+            177.39999389648438,
+            137.39999389648438,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 70613.25916720723,
+        "euler_number": 2
+      },
+      {
+        "file": "masks/opaque-mask-mm.stl",
+        "triangles": 4952,
+        "extents_mm": [
+          174.7999939918518,
+          134.7999939918518,
+          0.800000011920929
+        ],
+        "bounds_mm": [
+          [
+            2.5999999046325684,
+            2.5999999046325684,
+            0.0
+          ],
+          [
+            177.39999389648438,
+            137.39999389648438,
+            0.800000011920929
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 13227.902420964545,
+        "euler_number": -2
+      },
+      {
+        "file": "faces/combined-face-stack-mm.stl",
+        "triangles": 5080,
+        "extents_mm": [
+          174.7999939918518,
+          134.7999939918518,
+          3.799999952316284
+        ],
+        "bounds_mm": [
+          [
+            2.5999999046325684,
+            2.5999999046325684,
+            0.0
+          ],
+          [
+            177.39999389648438,
+            137.39999389648438,
+            3.799999952316284
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 83841.16060261625,
+        "euler_number": 2
+      }
+    ],
+    "3mf": [
+      {
+        "file": "all-bodies-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 13024,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "all-faces-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 268,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "combined-face-stack-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 5080,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "reopened-a.zip",
+    "meshes": [
+      {
+        "file": "bodies/part-01-body-mm.stl",
+        "triangles": 2286,
+        "extents_mm": [
+          104.82250213623047,
+          100.0,
+          35.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            104.82250213623047,
+            100.0,
+            35.0
+          ]
+        ],
+        "watertight": false,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 7,
+        "volume_mm3": 44863.83301090493,
+        "euler_number": -14
+      },
+      {
+        "file": "faces/part-01-face-mm.stl",
+        "triangles": 48,
+        "extents_mm": [
+          98.50064277648926,
+          95.6000030040741,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            3.1609325408935547,
+            2.200000047683716,
+            0.0
+          ],
+          [
+            101.66157531738281,
+            97.80000305175781,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 12941.196060856259,
+        "euler_number": 0
+      }
+    ],
+    "3mf": [
+      {
+        "file": "all-bodies-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 2286,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "all-faces-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 48,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "split-lightbox.zip",
+    "meshes": [
+      {
+        "file": "split-parts/Back-1-body-Body-mm.stl",
+        "triangles": 6868,
+        "extents_mm": [
+          180.0,
+          140.0,
+          35.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            180.0,
+            140.0,
+            35.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 92142.06152691769,
+        "euler_number": -14
+      },
+      {
+        "file": "split-parts/Back-2-body-Body-mm.stl",
+        "triangles": 6796,
+        "extents_mm": [
+          180.0,
+          140.0,
+          35.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            180.0,
+            140.0,
+            35.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 92142.03656743099,
+        "euler_number": -14
+      },
+      {
+        "file": "split-parts/Face-1-Diffuser-mm.stl",
+        "triangles": 140,
+        "extents_mm": [
+          177.39999389648438,
+          134.79998779296875,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            177.39999389648438,
+            134.79998779296875,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 71702.6232930968,
+        "euler_number": 2
+      },
+      {
+        "file": "split-parts/Face-1-Opaque-mask-mm.stl",
+        "triangles": 192,
+        "extents_mm": [
+          177.39999389648438,
+          134.79998779296875,
+          0.7999999523162842
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            3.0
+          ],
+          [
+            177.39999389648438,
+            134.79998779296875,
+            3.799999952316284
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 14446.765220640484,
+        "euler_number": 2
+      },
+      {
+        "file": "split-parts/Face-2-Diffuser-mm.stl",
+        "triangles": 140,
+        "extents_mm": [
+          177.39999389648438,
+          134.79998779296875,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            177.39999389648438,
+            134.79998779296875,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 71702.62358022845,
+        "euler_number": 2
+      },
+      {
+        "file": "split-parts/Face-2-Opaque-mask-mm.stl",
+        "triangles": 4784,
+        "extents_mm": [
+          177.39999389648438,
+          134.79998779296875,
+          0.7999999523162842
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            3.0
+          ],
+          [
+            177.39999389648438,
+            134.79998779296875,
+            3.799999952316284
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 15496.922260452367,
+        "euler_number": 0
+      },
+      {
+        "file": "split-parts/Joint-1-key-1-Butterfly-key-mm.stl",
+        "triangles": 116,
+        "extents_mm": [
+          18.0,
+          10.0,
+          4.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            18.0,
+            10.0,
+            4.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 537.1671475334583,
+        "euler_number": 2
+      },
+      {
+        "file": "split-parts/Joint-1-key-2-Butterfly-key-mm.stl",
+        "triangles": 116,
+        "extents_mm": [
+          18.0,
+          10.0,
+          4.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            18.0,
+            10.0,
+            4.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 537.1671584673336,
+        "euler_number": 2
+      },
+      {
+        "file": "test-first/joint-test-100-left-mm.stl",
+        "triangles": 28,
+        "extents_mm": [
+          12.0,
+          16.0,
+          6.199999809265137
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            12.0,
+            16.0,
+            6.199999809265137
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 906.8999762535095,
+        "euler_number": 2
+      },
+      {
+        "file": "test-first/joint-test-100-right-mm.stl",
+        "triangles": 28,
+        "extents_mm": [
+          12.0,
+          16.0,
+          6.199999809265137
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            12.0,
+            16.0,
+            6.199999809265137
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 906.8999762535095,
+        "euler_number": 2
+      },
+      {
+        "file": "test-first/joint-test-100-key-mm.stl",
+        "triangles": 116,
+        "extents_mm": [
+          18.0,
+          10.0,
+          4.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            18.0,
+            10.0,
+            4.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 537.1671475334583,
+        "euler_number": 2
+      }
+    ],
+    "3mf": [
+      {
+        "file": "split-parts/Back-1-body-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 6868,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "split-parts/Back-2-body-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 6796,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "split-parts/Face-1-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 2,
+            "triangles": 332,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "split-parts/Face-2-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 2,
+            "triangles": 4924,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "split-parts/Joint-1-key-1-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 116,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "split-parts/Joint-1-key-2-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 116,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "svg-hole.zip",
+    "meshes": [
+      {
+        "file": "bodies/part-01-body-mm.stl",
+        "triangles": 13024,
+        "extents_mm": [
+          180.0,
+          140.0,
+          35.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            180.0,
+            140.0,
+            35.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 101795.53314005276,
+        "euler_number": -30
+      },
+      {
+        "file": "faces/part-01-face-mm.stl",
+        "triangles": 268,
+        "extents_mm": [
+          174.7999939918518,
+          134.7999939918518,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            2.5999999046325684,
+            2.5999999046325684,
+            0.0
+          ],
+          [
+            177.39999389648438,
+            137.39999389648438,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 70613.25916720723,
+        "euler_number": 2
+      },
+      {
+        "file": "masks/opaque-mask-mm.stl",
+        "triangles": 300,
+        "extents_mm": [
+          174.7999939918518,
+          134.7999939918518,
+          0.800000011920929
+        ],
+        "bounds_mm": [
+          [
+            2.5999999046325684,
+            2.5999999046325684,
+            0.0
+          ],
+          [
+            177.39999389648438,
+            137.39999389648438,
+            0.800000011920929
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 12765.402634807911,
+        "euler_number": 2
+      },
+      {
+        "file": "faces/combined-face-stack-mm.stl",
+        "triangles": 436,
+        "extents_mm": [
+          174.7999939918518,
+          134.7999939918518,
+          3.799999952316284
+        ],
+        "bounds_mm": [
+          [
+            2.5999999046325684,
+            2.5999999046325684,
+            0.0
+          ],
+          [
+            177.39999389648438,
+            137.39999389648438,
+            3.799999952316284
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 83378.66085091855,
+        "euler_number": 2
+      }
+    ],
+    "3mf": [
+      {
+        "file": "all-bodies-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 13024,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "all-faces-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 268,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "combined-face-stack-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 436,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "danish-text.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 12,
+        "triangles": 375282,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  },
+  {
+    "file": "dimensions-fit.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 4,
+        "triangles": 2232,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  },
+  {
+    "file": "letter-a.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 4,
+        "triangles": 2334,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  },
+  {
+    "file": "lightbox.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 5,
+        "triangles": 18244,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  },
+  {
+    "file": "reopened-a.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 4,
+        "triangles": 2334,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  },
+  {
+    "file": "split-lightbox.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 14,
+        "triangles": 19152,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  },
+  {
+    "file": "svg-hole.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 5,
+        "triangles": 13592,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  }
+]

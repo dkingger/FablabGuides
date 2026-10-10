@@ -1,0 +1,16 @@
+services:
+  letter-studio:
+    image: nginx:stable-alpine
+    ports:
+      - "${LETTER_STUDIO_BIND:-127.0.0.1}:${LETTER_STUDIO_PORT:-8087}:80"
+    volumes:
+      - ./public:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true

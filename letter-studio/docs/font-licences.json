@@ -1,0 +1,1239 @@
+[
+  {
+    "file": "alfa.ttf",
+    "glyphs": 671,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2016 The Alfa Slab One Project Authors (http://www.jmsole.cl | info@jmsole.cl), with Reserved Font Name \"Alfa Slab\"."
+      ],
+      "1": [
+        "Alfa Slab One"
+      ],
+      "5": [
+        "Version 2.000"
+      ],
+      "7": [
+        "Alfa Slab is a trademark of JM Sole."
+      ],
+      "8": [
+        "JM Sole"
+      ],
+      "9": [
+        "JM Sole"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "anton.ttf",
+    "glyphs": 978,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2020 The Anton Project Authors (https://github.com/googlefonts/AntonFont.git)"
+      ],
+      "1": [
+        "Anton"
+      ],
+      "5": [
+        "Version 2.116; ttfautohint (v1.8.3)"
+      ],
+      "8": [
+        "Vernon Adams"
+      ],
+      "9": [
+        "Vernon Adams"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "https://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "archivo.ttf",
+    "glyphs": 423,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2017 The Archivo Black Project Authors (https://github.com/Omnibus-Type/ArchivoBlack)"
+      ],
+      "1": [
+        "Archivo Black"
+      ],
+      "5": [
+        "Version 1.006"
+      ],
+      "8": [
+        "Hector Gatti"
+      ],
+      "9": [
+        "Hector Gatti"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "bebas.ttf",
+    "glyphs": 461,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2019 The Bebas Neue Project Authors (https://github.com/dharmatype/Bebas-Neue)"
+      ],
+      "1": [
+        "Bebas Neue"
+      ],
+      "5": [
+        "Version 2.000"
+      ],
+      "7": [
+        "Bebas Neue is a trademark of Dharma Type."
+      ],
+      "8": [
+        "Ryoichi Tsunekawa"
+      ],
+      "9": [
+        "Ryoichi Tsunekawa"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "berkshire.ttf",
+    "glyphs": 371,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2012 by Brian J. Bonislawsky DBA Astigmatic (AOETI) (astigma@astigmatic.com), with Reserved\rFont Name \"Berkshire Swash\""
+      ],
+      "1": [
+        "Berkshire Swash"
+      ],
+      "5": [
+        "Version 1.001"
+      ],
+      "7": [
+        "Berkshire Swash is a trademark of Astigmatic."
+      ],
+      "8": [
+        "Astigmatic (AOETI)"
+      ],
+      "9": [
+        "Astigmatic (AOETI)"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License,\rVersion 1.1. This license is available with a FAQ at:\rhttp://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "bold.ttf",
+    "glyphs": 5898,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.\nCopyright (c) 2006 by Tavmjong Bah. All Rights Reserved.\nDejaVu changes are in public domain\n"
+      ],
+      "1": [
+        "DejaVu Sans"
+      ],
+      "5": [
+        "Version 2.37"
+      ],
+      "8": [
+        "DejaVu fonts team"
+      ],
+      "13": [
+        "Fonts are (c) Bitstream (see below). DejaVu changes are in public domain. Glyphs imported from Arev fonts are (c) Tavmjung Bah (see below)\n\nBitstream Vera Fonts Copyright\n------------------------------\n\nCopyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is\na trademark of Bitstream, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof the fonts accompanying this license (\"Fonts\") and associated\ndocumentation files (the \"Font Software\"), to reproduce and distribute the\nFont Software, including without limitation the rights to use, copy, merge,\npublish, distribute, and/or sell copies of the Font Software, and to permit\npersons to whom the Font Software is furnished to do so, subject to the\nfollowing conditions:\n\nThe above copyright and trademark notices and this permission notice shall\nbe included in all copies of one or more of the Font Software typefaces.\n\nThe Font Software may be modified, altered, or added to, and in particular\nthe designs of glyphs or characters in the Fonts may be modified and\nadditional glyphs or characters may be added to the Fonts, only if the fonts\nare renamed to names not containing either the words \"Bitstream\" or the word\n\"Vera\".\n\nThis License becomes null and void to the extent applicable to Fonts or Font\nSoftware that has been modified and is distributed under the \"Bitstream\nVera\" names.\n\nThe Font Software may be sold as part of a larger software package but no\ncopy of one or more of the Font Software typefaces may be sold by itself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS\nOR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT,\nTRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL BITSTREAM OR THE GNOME\nFOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING\nANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES,\nWHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF\nTHE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE\nFONT SOFTWARE.\n\nExcept as contained in this notice, the names of Gnome, the Gnome\nFoundation, and Bitstream Inc., shall not be used in advertising or\notherwise to promote the sale, use or other dealings in this Font Software\nwithout prior written authorization from the Gnome Foundation or Bitstream\nInc., respectively. For further information, contact: fonts at gnome dot\norg. \n\nArev Fonts Copyright\n------------------------------\n\nCopyright (c) 2006 by Tavmjong Bah. All Rights Reserved.\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the fonts accompanying this license (\"Fonts\") and\nassociated documentation files (the \"Font Software\"), to reproduce\nand distribute the modifications to the Bitstream Vera Font Software,\nincluding without limitation the rights to use, copy, merge, publish,\ndistribute, and/or sell copies of the Font Software, and to permit\npersons to whom the Font Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright and trademark notices and this permission notice\nshall be included in all copies of one or more of the Font Software\ntypefaces.\n\nThe Font Software may be modified, altered, or added to, and in\nparticular the designs of glyphs or characters in the Fonts may be\nmodified and additional glyphs or characters may be added to the\nFonts, only if the fonts are renamed to names not containing either\nthe words \"Tavmjong Bah\" or the word \"Arev\".\n\nThis License becomes null and void to the extent applicable to Fonts\nor Font Software that has been modified and is distributed under the \n\"Tavmjong Bah Arev\" names.\n\nThe Font Software may be sold as part of a larger software package but\nno copy of one or more of the Font Software typefaces may be sold by\nitself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL\nTAVMJONG BAH BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.\n\nExcept as contained in this notice, the name of Tavmjong Bah shall not\nbe used in advertising or otherwise to promote the sale, use or other\ndealings in this Font Software without prior written authorization\nfrom Tavmjong Bah. For further information, contact: tavmjong @ free\n. fr."
+      ],
+      "14": [
+        "http://dejavu.sourceforge.net/wiki/index.php/License"
+      ]
+    }
+  },
+  {
+    "file": "bungee.ttf",
+    "glyphs": 1082,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2023 The Bungee Project Authors (https://github.com/djrrb/Bungee)"
+      ],
+      "1": [
+        "Bungee"
+      ],
+      "5": [
+        "Version 2.000"
+      ],
+      "7": [
+        "Bungee is a trademark of The Font Bureau."
+      ],
+      "8": [
+        "David Jonathan Ross"
+      ],
+      "9": [
+        "David Jonathan Ross"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org"
+      ],
+      "14": [
+        "https://openfontlicense.org"
+      ]
+    }
+  },
+  {
+    "file": "chewy.ttf",
+    "glyphs": 228,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2010 by Font Diner, Inc DBA Sideshow. All rights reserved."
+      ],
+      "1": [
+        "Chewy"
+      ],
+      "5": [
+        "Version 1.001"
+      ],
+      "7": [
+        "Chewy is a trademark of Font Diner, Inc DBA Sideshow."
+      ],
+      "8": [
+        "Font Diner, Inc DBA Sideshow"
+      ],
+      "9": [
+        "Squid"
+      ],
+      "13": [
+        "Licensed under the Apache License, Version 2.0"
+      ],
+      "14": [
+        "http://www.apache.org/licenses/LICENSE-2.0"
+      ]
+    }
+  },
+  {
+    "file": "coiny.ttf",
+    "glyphs": 684,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2015, Marcelo Magalhaes"
+      ],
+      "1": [
+        "Coiny"
+      ],
+      "5": [
+        "Version 001.001"
+      ],
+      "13": [
+        "Copyright (c) 2015, Marcelo Magalhães (<www.marcelomagalhaes.net|marcelommp@gmail.com>),\nwith Reserved Font Name Coiny Regular.\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttp://scripts.sil.org/OFL\n\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded, \nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n\"Font Software\" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n\"Reserved Font Name\" refers to any names specified as such after the\ncopyright statement(s).\n\n\"Original Version\" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n\"Modified Version\" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n\"Author\" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE."
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "cookie.ttf",
+    "glyphs": 251,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011 by Ania Kruk (hello@aniakruk.com), with Reserved Font Name Cookie."
+      ],
+      "1": [
+        "Cookie"
+      ],
+      "5": [
+        "Version 1.004"
+      ],
+      "7": [
+        "Cookie Regular is a trademark of Ania Kruk."
+      ],
+      "8": [
+        "Ania Kruk"
+      ],
+      "9": [
+        "Ania Kruk"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "courgette.ttf",
+    "glyphs": 406,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2012, Sorkin Type Co (www.sorkintype.com) with Reserved Font Name \"Courgette\"."
+      ],
+      "1": [
+        "Courgette"
+      ],
+      "5": [
+        "Version 1.002"
+      ],
+      "7": [
+        "Courgette is a trademark of Sorkin Type Co."
+      ],
+      "8": [
+        "Sorkin Type Co."
+      ],
+      "9": [
+        "Karolina Lach"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "damion.ttf",
+    "glyphs": 366,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2014 The Damion Project Authors (https://github.com/googlefonts/damionFont)"
+      ],
+      "1": [
+        "Damion"
+      ],
+      "5": [
+        "Version 1.100; ttfautohint (v1.8.4.7-5d5b)"
+      ],
+      "7": [
+        "Damion is a trademark of vernon adams."
+      ],
+      "8": [
+        "Vernon Adams"
+      ],
+      "9": [
+        "Vernon Adams"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org"
+      ],
+      "14": [
+        "https://openfontlicense.org"
+      ]
+    }
+  },
+  {
+    "file": "dmserif.ttf",
+    "glyphs": 333,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2014 - 2017 Adobe Systems Incorporated (http://www.adobe.com/), with Reserved Font Name 'Source'. Copyright 2019 Google LLC."
+      ],
+      "1": [
+        "DM Serif Display"
+      ],
+      "5": [
+        "Version 5.200; ttfautohint (v1.8.3)"
+      ],
+      "7": [
+        "Source is a trademark of Adobe Systems Incorporated in the United States and/or other countries."
+      ],
+      "8": [
+        "Colophon Foundry"
+      ],
+      "9": [
+        "Colophon Foundry, Frank Grießhammer"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "grandhotel.ttf",
+    "glyphs": 367,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2012 by Brian J. Bonislawsky DBA Astigmatic (AOETI) (astigma@astigmatic.com), with Reserved\rFont Name \"Grand Hotel\""
+      ],
+      "1": [
+        "Grand Hotel"
+      ],
+      "5": [
+        "Version 001.000"
+      ],
+      "7": [
+        "Grand Hotel is a trademark of Astigmatic (AOETI)."
+      ],
+      "8": [
+        "Astigmatic (AOETI)"
+      ],
+      "9": [
+        "Brian J. Bonislawsky & Jim Lyles for Astigmatic (AOETI)"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License,\rVersion 1.1. This license is available with a FAQ at:\rhttp://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "kaushan.ttf",
+    "glyphs": 397,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011, Pablo Impallari (www.impallari.com|impallari@gmail.com),\rCopyright (c) 2011, Igino Marini. (www.ikern.com|mail@iginomarini.com),\rwith Reserved Font Name Kaushan Script."
+      ],
+      "1": [
+        "Kaushan Script"
+      ],
+      "5": [
+        "Version 1.002"
+      ],
+      "7": [
+        "Kaushan Script is a trademark of Pablo Impallari."
+      ],
+      "8": [
+        "Pablo Impallari"
+      ],
+      "9": [
+        "Pablo Impallari"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "leckerli.ttf",
+    "glyphs": 215,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011 Gesine Todt (www.gesine-todt.de), with Reserved Font Names \"Leckerli\""
+      ],
+      "1": [
+        "Leckerli One"
+      ],
+      "5": [
+        "Version 1.001"
+      ],
+      "7": [
+        "\"Leckerli\" and \"Leckerli One\" is a trademark of Gesine Todt."
+      ],
+      "8": [
+        "Gesine Todt"
+      ],
+      "9": [
+        "Gesine Todt"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "lilitaone.ttf",
+    "glyphs": 225,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011 Juan Montoreano (juan@remolacha.biz), with Reserved Font Names \"Lilita One\""
+      ],
+      "1": [
+        "Lilita One"
+      ],
+      "5": [
+        "Version 1.002"
+      ],
+      "7": [
+        "Lilita is a trademark of Juan Montoreano."
+      ],
+      "8": [
+        "Juan Montoreano"
+      ],
+      "9": [
+        "Juan Montoreano"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "lilyscript.ttf",
+    "glyphs": 242,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2012, Julia Petretta (www.juliapetretta.com julia.petretta@googlemail.com), with Reserved Font Name 'Lily'"
+      ],
+      "1": [
+        "Lily Script One"
+      ],
+      "5": [
+        "Version 1.002;PS 001.001;hotconv 1.0.70;makeotf.lib2.5.58329"
+      ],
+      "7": [
+        "Lily Script is a trademark of Julia Petretta."
+      ],
+      "8": [
+        "Julia Petretta"
+      ],
+      "9": [
+        "Julia Petretta"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http//scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http//scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "lobster.ttf",
+    "glyphs": 828,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2010 The Lobster Project Authors (https://github.com/impallari/The-Lobster-Font), with Reserved Font Name \"Lobster\"."
+      ],
+      "1": [
+        "Lobster"
+      ],
+      "5": [
+        "Version 2.100"
+      ],
+      "7": [
+        "Lobster is a trademark of Pablo Impallari."
+      ],
+      "8": [
+        "Impallari Type"
+      ],
+      "9": [
+        "Impallari Type"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "lobstertwo.ttf",
+    "glyphs": 257,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011 by Pablo Impallari. www.impallari.com. All rights reserved."
+      ],
+      "1": [
+        "Lobster Two"
+      ],
+      "5": [
+        "Version 1.006"
+      ],
+      "7": [
+        "Lobster Two Bold Italic is a trademark of Pablo Impallari. www.impallari.com."
+      ],
+      "8": [
+        "Pablo Impallari. www.impallari.com"
+      ],
+      "9": [
+        "Pablo Impallari"
+      ],
+      "13": [
+        "Copyright (c) 2011, Pablo Impallari (www.impallari.com|impallari@gmail.com),\r\nwith Reserved Font Name Lobster.\r\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\r\nThis license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "molle.ttf",
+    "glyphs": 263,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011, Sorkin Type Co (www.sorkintype.com) with Reserved Font Name \"Molle\""
+      ],
+      "1": [
+        "Molle"
+      ],
+      "5": [
+        "Version 1.002"
+      ],
+      "7": [
+        "Molle is a trademark of Sorkin Type Co."
+      ],
+      "8": [
+        "Elena Albertoni"
+      ],
+      "9": [
+        "Elena Albertoni"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "mono.ttf",
+    "glyphs": 3322,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.\nDejaVu changes are in public domain\n"
+      ],
+      "1": [
+        "DejaVu Sans Mono"
+      ],
+      "5": [
+        "Version 2.37"
+      ],
+      "8": [
+        "DejaVu fonts team"
+      ],
+      "13": [
+        "Fonts are (c) Bitstream (see below). DejaVu changes are in public domain.\n\nBitstream Vera Fonts Copyright\n------------------------------\n\nCopyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is a trademark of Bitstream, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of the fonts accompanying this license (\"Fonts\") and associated documentation files (the \"Font Software\"), to reproduce and distribute the Font Software, including without limitation the rights to use, copy, merge, publish, distribute, and/or sell copies of the Font Software, and to permit persons to whom the Font Software is furnished to do so, subject to the following conditions:\n\nThe above copyright and trademark notices and this permission notice shall be included in all copies of one or more of the Font Software typefaces.\n\nThe Font Software may be modified, altered, or added to, and in particular the designs of glyphs or characters in the Fonts may be modified and additional glyphs or  or characters may be added to the Fonts, only if the fonts are renamed to names not containing either the words \"Bitstream\" or the word \"Vera\".\n\nThis License becomes null and void to the extent applicable to Fonts or Font Software that has been modified and is distributed under the \"Bitstream Vera\" names.\n\nThe Font Software may be sold as part of a larger software package but no copy of one or more of the Font Software typefaces may be sold by itself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL BITSTREAM OR THE GNOME FOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.\n\nExcept as contained in this notice, the names of Gnome, the Gnome Foundation, and Bitstream Inc., shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Font Software without prior written authorization from the Gnome Foundation or Bitstream Inc., respectively. For further information, contact: fonts at gnome dot org. \n"
+      ],
+      "14": [
+        "http://dejavu.sourceforge.net/wiki/index.php/License"
+      ]
+    }
+  },
+  {
+    "file": "monobold.ttf",
+    "glyphs": 3261,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.\nDejaVu changes are in public domain\n"
+      ],
+      "1": [
+        "DejaVu Sans Mono"
+      ],
+      "5": [
+        "Version 2.37"
+      ],
+      "8": [
+        "DejaVu fonts team"
+      ],
+      "13": [
+        "Fonts are (c) Bitstream (see below). DejaVu changes are in public domain.\n\nBitstream Vera Fonts Copyright\n------------------------------\n\nCopyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is a trademark of Bitstream, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of the fonts accompanying this license (\"Fonts\") and associated documentation files (the \"Font Software\"), to reproduce and distribute the Font Software, including without limitation the rights to use, copy, merge, publish, distribute, and/or sell copies of the Font Software, and to permit persons to whom the Font Software is furnished to do so, subject to the following conditions:\n\nThe above copyright and trademark notices and this permission notice shall be included in all copies of one or more of the Font Software typefaces.\n\nThe Font Software may be modified, altered, or added to, and in particular the designs of glyphs or characters in the Fonts may be modified and additional glyphs or  or characters may be added to the Fonts, only if the fonts are renamed to names not containing either the words \"Bitstream\" or the word \"Vera\".\n\nThis License becomes null and void to the extent applicable to Fonts or Font Software that has been modified and is distributed under the \"Bitstream Vera\" names.\n\nThe Font Software may be sold as part of a larger software package but no copy of one or more of the Font Software typefaces may be sold by itself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL BITSTREAM OR THE GNOME FOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.\n\nExcept as contained in this notice, the names of Gnome, the Gnome Foundation, and Bitstream Inc., shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Font Software without prior written authorization from the Gnome Foundation or Bitstream Inc., respectively. For further information, contact: fonts at gnome dot org. \n"
+      ],
+      "14": [
+        "http://dejavu.sourceforge.net/wiki/index.php/License"
+      ]
+    }
+  },
+  {
+    "file": "monobolditalic.ttf",
+    "glyphs": 2683,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.\nDejaVu changes are in public domain\n"
+      ],
+      "1": [
+        "DejaVu Sans Mono"
+      ],
+      "5": [
+        "Version 2.37"
+      ],
+      "8": [
+        "DejaVu fonts team"
+      ],
+      "13": [
+        "Fonts are (c) Bitstream (see below). DejaVu changes are in public domain.\n\nBitstream Vera Fonts Copyright\n------------------------------\n\nCopyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is a trademark of Bitstream, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of the fonts accompanying this license (\"Fonts\") and associated documentation files (the \"Font Software\"), to reproduce and distribute the Font Software, including without limitation the rights to use, copy, merge, publish, distribute, and/or sell copies of the Font Software, and to permit persons to whom the Font Software is furnished to do so, subject to the following conditions:\n\nThe above copyright and trademark notices and this permission notice shall be included in all copies of one or more of the Font Software typefaces.\n\nThe Font Software may be modified, altered, or added to, and in particular the designs of glyphs or characters in the Fonts may be modified and additional glyphs or  or characters may be added to the Fonts, only if the fonts are renamed to names not containing either the words \"Bitstream\" or the word \"Vera\".\n\nThis License becomes null and void to the extent applicable to Fonts or Font Software that has been modified and is distributed under the \"Bitstream Vera\" names.\n\nThe Font Software may be sold as part of a larger software package but no copy of one or more of the Font Software typefaces may be sold by itself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL BITSTREAM OR THE GNOME FOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.\n\nExcept as contained in this notice, the names of Gnome, the Gnome Foundation, and Bitstream Inc., shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Font Software without prior written authorization from the Gnome Foundation or Bitstream Inc., respectively. For further information, contact: fonts at gnome dot org. \n"
+      ],
+      "14": [
+        "http://dejavu.sourceforge.net/wiki/index.php/License"
+      ]
+    }
+  },
+  {
+    "file": "monoitalic.ttf",
+    "glyphs": 2683,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.\nDejaVu changes are in public domain\n"
+      ],
+      "1": [
+        "DejaVu Sans Mono"
+      ],
+      "5": [
+        "Version 2.37"
+      ],
+      "8": [
+        "DejaVu fonts team"
+      ],
+      "13": [
+        "Fonts are (c) Bitstream (see below). DejaVu changes are in public domain.\n\nBitstream Vera Fonts Copyright\n------------------------------\n\nCopyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is a trademark of Bitstream, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of the fonts accompanying this license (\"Fonts\") and associated documentation files (the \"Font Software\"), to reproduce and distribute the Font Software, including without limitation the rights to use, copy, merge, publish, distribute, and/or sell copies of the Font Software, and to permit persons to whom the Font Software is furnished to do so, subject to the following conditions:\n\nThe above copyright and trademark notices and this permission notice shall be included in all copies of one or more of the Font Software typefaces.\n\nThe Font Software may be modified, altered, or added to, and in particular the designs of glyphs or characters in the Fonts may be modified and additional glyphs or  or characters may be added to the Fonts, only if the fonts are renamed to names not containing either the words \"Bitstream\" or the word \"Vera\".\n\nThis License becomes null and void to the extent applicable to Fonts or Font Software that has been modified and is distributed under the \"Bitstream Vera\" names.\n\nThe Font Software may be sold as part of a larger software package but no copy of one or more of the Font Software typefaces may be sold by itself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL BITSTREAM OR THE GNOME FOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.\n\nExcept as contained in this notice, the names of Gnome, the Gnome Foundation, and Bitstream Inc., shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Font Software without prior written authorization from the Gnome Foundation or Bitstream Inc., respectively. For further information, contact: fonts at gnome dot org. \n"
+      ],
+      "14": [
+        "http://dejavu.sourceforge.net/wiki/index.php/License"
+      ]
+    }
+  },
+  {
+    "file": "msrounded.ttf",
+    "glyphs": 320,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2016 The Fredoka Project Authors (https://github.com/hafontia/Fredoka-One)"
+      ],
+      "1": [
+        "MS Rounded Bold"
+      ],
+      "5": [
+        "Version 2.001"
+      ],
+      "8": [
+        "Milena B. Brandão, Ben Nathan"
+      ],
+      "9": [
+        "Ben Nathan"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "norican.ttf",
+    "glyphs": 362,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2011 The Norican Project Authors (https://github.com/googlefonts/NoricanFont)"
+      ],
+      "1": [
+        "Norican"
+      ],
+      "5": [
+        "Version 1.100; ttfautohint (v1.8.4.7-5d5b);gftools[0.9.33]"
+      ],
+      "7": [
+        "Mooli is a trademark of vernon adams."
+      ],
+      "8": [
+        "Vernon Adams"
+      ],
+      "9": [
+        "Vernon Adams"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "https://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "oleo.ttf",
+    "glyphs": 233,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2012, Soytutype (contact@soytutype.com.ar|soytutype@gmail.com), with reserved fontname 'Oleo'"
+      ],
+      "1": [
+        "Oleo Script"
+      ],
+      "5": [
+        "Version 1.002"
+      ],
+      "7": [
+        "Oleo Script is a trademark of Soytutype."
+      ],
+      "8": [
+        "Soytutype"
+      ],
+      "9": [
+        "Soytutype"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL."
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "oleoswash.ttf",
+    "glyphs": 233,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2012, Soytutype (contact@soytutype.com.ar|soytutype@gmail.com), with reserved fontname 'Oleo'"
+      ],
+      "1": [
+        "Oleo Script Swash Caps"
+      ],
+      "5": [
+        "Version 1.002"
+      ],
+      "7": [
+        "Oleo Script is a trademark of Soytutype."
+      ],
+      "8": [
+        "Soytutype"
+      ],
+      "9": [
+        "Soytutype"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL."
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "pacifico.ttf",
+    "glyphs": 805,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2018 The Pacifico Project Authors (https://github.com/googlefonts/Pacifico)"
+      ],
+      "1": [
+        "Pacifico"
+      ],
+      "5": [
+        "Version 3.001"
+      ],
+      "8": [
+        "Vernon Adams"
+      ],
+      "9": [
+        "Vernon Adams"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "pattaya.ttf",
+    "glyphs": 803,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2015, Cadson Demak (info@cadsondemak.com), Copyright (c) 2010, Pablo Impallari (www.impallari.com|impallari@gmail.com), Copyright (c) 2010, 2011, Alexei Vanyashin (www.cyreal.org|a@cyreal.org), with Reserved Font Name Lobster."
+      ],
+      "1": [
+        "Pattaya"
+      ],
+      "5": [
+        "Version 2.001"
+      ],
+      "8": [
+        "Pablo Impallari"
+      ],
+      "9": [
+        "Pablo Impallari / Thai characters Designed by Thanarat Vachiruckul and Suppakit Chalermlarp"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "patuaone.ttf",
+    "glyphs": 231,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011 by LatinoType Limitada (info@latinotype.com),  with Reserved Font Names \"Patua\" and \"Patua One\""
+      ],
+      "1": [
+        "Patua One"
+      ],
+      "5": [
+        "Version 1.002"
+      ],
+      "7": [
+        "Patua is a trademark of LatinoType Limitada"
+      ],
+      "8": [
+        "Luciano Vergara"
+      ],
+      "9": [
+        "luciano Vergara"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "playball.ttf",
+    "glyphs": 554,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2011 The Playball Project Authors (https://github.com/googlefonts/play-ball)"
+      ],
+      "1": [
+        "Playball"
+      ],
+      "5": [
+        "Version 1.010"
+      ],
+      "8": [
+        "Robert E. Leuschke"
+      ],
+      "9": [
+        "Robert E. Leuschke"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "https://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "racingsansone.ttf",
+    "glyphs": 441,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2012, Pablo Impallari (www.impallari.com|impallari@gmail.com) and Rodrigo Fuenzalida (www.rfuenzalida.com), with Reserved Font Name Racing Sans."
+      ],
+      "1": [
+        "Racing Sans One"
+      ],
+      "5": [
+        "Version 1.001; ttfautohint (v0.8) -G 200 -r 50"
+      ],
+      "7": [
+        "Racing Sans is a trademark of Pablo Impallari"
+      ],
+      "8": [
+        "Pablo Impallari, Rodrigo Fuenzalida"
+      ],
+      "9": [
+        "Pablo Impallari, Rodrigo Fuenzalida"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "regular.ttf",
+    "glyphs": 5918,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.\nCopyright (c) 2006 by Tavmjong Bah. All Rights Reserved.\nDejaVu changes are in public domain\n"
+      ],
+      "1": [
+        "DejaVu Sans"
+      ],
+      "5": [
+        "Version 2.37"
+      ],
+      "8": [
+        "DejaVu fonts team"
+      ],
+      "13": [
+        "Fonts are (c) Bitstream (see below). DejaVu changes are in public domain. Glyphs imported from Arev fonts are (c) Tavmjung Bah (see below)\n\nBitstream Vera Fonts Copyright\n------------------------------\n\nCopyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is\na trademark of Bitstream, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof the fonts accompanying this license (\"Fonts\") and associated\ndocumentation files (the \"Font Software\"), to reproduce and distribute the\nFont Software, including without limitation the rights to use, copy, merge,\npublish, distribute, and/or sell copies of the Font Software, and to permit\npersons to whom the Font Software is furnished to do so, subject to the\nfollowing conditions:\n\nThe above copyright and trademark notices and this permission notice shall\nbe included in all copies of one or more of the Font Software typefaces.\n\nThe Font Software may be modified, altered, or added to, and in particular\nthe designs of glyphs or characters in the Fonts may be modified and\nadditional glyphs or characters may be added to the Fonts, only if the fonts\nare renamed to names not containing either the words \"Bitstream\" or the word\n\"Vera\".\n\nThis License becomes null and void to the extent applicable to Fonts or Font\nSoftware that has been modified and is distributed under the \"Bitstream\nVera\" names.\n\nThe Font Software may be sold as part of a larger software package but no\ncopy of one or more of the Font Software typefaces may be sold by itself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS\nOR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT,\nTRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL BITSTREAM OR THE GNOME\nFOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING\nANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES,\nWHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF\nTHE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE\nFONT SOFTWARE.\n\nExcept as contained in this notice, the names of Gnome, the Gnome\nFoundation, and Bitstream Inc., shall not be used in advertising or\notherwise to promote the sale, use or other dealings in this Font Software\nwithout prior written authorization from the Gnome Foundation or Bitstream\nInc., respectively. For further information, contact: fonts at gnome dot\norg. \n\nArev Fonts Copyright\n------------------------------\n\nCopyright (c) 2006 by Tavmjong Bah. All Rights Reserved.\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the fonts accompanying this license (\"Fonts\") and\nassociated documentation files (the \"Font Software\"), to reproduce\nand distribute the modifications to the Bitstream Vera Font Software,\nincluding without limitation the rights to use, copy, merge, publish,\ndistribute, and/or sell copies of the Font Software, and to permit\npersons to whom the Font Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright and trademark notices and this permission notice\nshall be included in all copies of one or more of the Font Software\ntypefaces.\n\nThe Font Software may be modified, altered, or added to, and in\nparticular the designs of glyphs or characters in the Fonts may be\nmodified and additional glyphs or characters may be added to the\nFonts, only if the fonts are renamed to names not containing either\nthe words \"Tavmjong Bah\" or the word \"Arev\".\n\nThis License becomes null and void to the extent applicable to Fonts\nor Font Software that has been modified and is distributed under the \n\"Tavmjong Bah Arev\" names.\n\nThe Font Software may be sold as part of a larger software package but\nno copy of one or more of the Font Software typefaces may be sold by\nitself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL\nTAVMJONG BAH BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.\n\nExcept as contained in this notice, the name of Tavmjong Bah shall not\nbe used in advertising or otherwise to promote the sale, use or other\ndealings in this Font Software without prior written authorization\nfrom Tavmjong Bah. For further information, contact: tavmjong @ free\n. fr."
+      ],
+      "14": [
+        "http://dejavu.sourceforge.net/wiki/index.php/License"
+      ]
+    }
+  },
+  {
+    "file": "righteous.ttf",
+    "glyphs": 369,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011 by Brian J. Bonislawsky DBA Astigmatic (AOETI) (astigma@astigmatic.com), with Reserved\rFont Name \"Righteous\""
+      ],
+      "1": [
+        "Righteous"
+      ],
+      "5": [
+        "Version 1.000"
+      ],
+      "7": [
+        "Righteous is a trademark of Astigmatic (AOETI)."
+      ],
+      "8": [
+        "Astigmatic (AOETI)"
+      ],
+      "9": [
+        "Astigmatic (AOETI)"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License,\rVersion 1.1. This license is available with a FAQ at:\rhttp://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "rowdies.ttf",
+    "glyphs": 595,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright 2018 The Rowdies Project Authors (https://github.com/magictype/rowdies)"
+      ],
+      "1": [
+        "Rowdies"
+      ],
+      "5": [
+        "Version 1.000; ttfautohint (v1.8.3)"
+      ],
+      "9": [
+        "Jaikishan Patel"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "https://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "satisfy.ttf",
+    "glyphs": 226,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011 by Font Diner, Inc. All rights reserved."
+      ],
+      "1": [
+        "Satisfy"
+      ],
+      "5": [
+        "Version 1.001"
+      ],
+      "7": [
+        "Satisfy is a trademark of Font Diner, Inc."
+      ],
+      "8": [
+        "Font Diner, Inc"
+      ],
+      "9": [
+        "Font Diner, Inc"
+      ],
+      "13": [
+        "Licensed under the Apache License, Version 2.0"
+      ],
+      "14": [
+        "http://www.apache.org/licenses/LICENSE-2.0"
+      ]
+    }
+  },
+  {
+    "file": "serif.ttf",
+    "glyphs": 3447,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.\nDejaVu changes are in public domain\n"
+      ],
+      "1": [
+        "DejaVu Serif"
+      ],
+      "5": [
+        "Version 2.37"
+      ],
+      "8": [
+        "DejaVu fonts team"
+      ],
+      "13": [
+        "Fonts are (c) Bitstream (see below). DejaVu changes are in public domain.\n\nBitstream Vera Fonts Copyright\n------------------------------\n\nCopyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is a trademark of Bitstream, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of the fonts accompanying this license (\"Fonts\") and associated documentation files (the \"Font Software\"), to reproduce and distribute the Font Software, including without limitation the rights to use, copy, merge, publish, distribute, and/or sell copies of the Font Software, and to permit persons to whom the Font Software is furnished to do so, subject to the following conditions:\n\nThe above copyright and trademark notices and this permission notice shall be included in all copies of one or more of the Font Software typefaces.\n\nThe Font Software may be modified, altered, or added to, and in particular the designs of glyphs or characters in the Fonts may be modified and additional glyphs or  or characters may be added to the Fonts, only if the fonts are renamed to names not containing either the words \"Bitstream\" or the word \"Vera\".\n\nThis License becomes null and void to the extent applicable to Fonts or Font Software that has been modified and is distributed under the \"Bitstream Vera\" names.\n\nThe Font Software may be sold as part of a larger software package but no copy of one or more of the Font Software typefaces may be sold by itself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL BITSTREAM OR THE GNOME FOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.\n\nExcept as contained in this notice, the names of Gnome, the Gnome Foundation, and Bitstream Inc., shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Font Software without prior written authorization from the Gnome Foundation or Bitstream Inc., respectively. For further information, contact: fonts at gnome dot org. \n"
+      ],
+      "14": [
+        "http://dejavu.sourceforge.net/wiki/index.php/License"
+      ]
+    }
+  },
+  {
+    "file": "serifbold.ttf",
+    "glyphs": 3443,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.\nDejaVu changes are in public domain\n"
+      ],
+      "1": [
+        "DejaVu Serif"
+      ],
+      "5": [
+        "Version 2.37"
+      ],
+      "8": [
+        "DejaVu fonts team"
+      ],
+      "13": [
+        "Fonts are (c) Bitstream (see below). DejaVu changes are in public domain.\n\nBitstream Vera Fonts Copyright\n------------------------------\n\nCopyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is a trademark of Bitstream, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of the fonts accompanying this license (\"Fonts\") and associated documentation files (the \"Font Software\"), to reproduce and distribute the Font Software, including without limitation the rights to use, copy, merge, publish, distribute, and/or sell copies of the Font Software, and to permit persons to whom the Font Software is furnished to do so, subject to the following conditions:\n\nThe above copyright and trademark notices and this permission notice shall be included in all copies of one or more of the Font Software typefaces.\n\nThe Font Software may be modified, altered, or added to, and in particular the designs of glyphs or characters in the Fonts may be modified and additional glyphs or  or characters may be added to the Fonts, only if the fonts are renamed to names not containing either the words \"Bitstream\" or the word \"Vera\".\n\nThis License becomes null and void to the extent applicable to Fonts or Font Software that has been modified and is distributed under the \"Bitstream Vera\" names.\n\nThe Font Software may be sold as part of a larger software package but no copy of one or more of the Font Software typefaces may be sold by itself.\n\nTHE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL BITSTREAM OR THE GNOME FOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.\n\nExcept as contained in this notice, the names of Gnome, the Gnome Foundation, and Bitstream Inc., shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Font Software without prior written authorization from the Gnome Foundation or Bitstream Inc., respectively. For further information, contact: fonts at gnome dot org. \n"
+      ],
+      "14": [
+        "http://dejavu.sourceforge.net/wiki/index.php/License"
+      ]
+    }
+  },
+  {
+    "file": "shrikhand.ttf",
+    "glyphs": 421,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2015 Jonny Pinhorn (jonpinhorn.typedesign@gmail.com)"
+      ],
+      "1": [
+        "Shrikhand"
+      ],
+      "5": [
+        "Version 1.001;PS 1.001;hotconv 1.0.88;makeotf.lib2.5.647800"
+      ],
+      "7": [
+        "Shrikhand is a trademark of Jonny Pinhorn."
+      ],
+      "8": [
+        "Jonny Pinhorn"
+      ],
+      "9": [
+        "Jonny Pinhorn"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  },
+  {
+    "file": "yellowtail.ttf",
+    "glyphs": 369,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011 by Brian J. Bonislawsky DBA Astigmatic (AOETI). All rights reserved. Available under the Apache 2.0 licence.\nhttp://www.apache.org/licenses/LICENSE-2.0.html"
+      ],
+      "1": [
+        "Yellowtail"
+      ],
+      "5": [
+        "Version 001.002 "
+      ]
+    }
+  },
+  {
+    "file": "yesteryear.ttf",
+    "glyphs": 369,
+    "danish_characters": true,
+    "name_records": {
+      "0": [
+        "Copyright (c) 2011 by Brian J. Bonislawsky DBA Astigmatic (AOETI) (astigma@astigmatic.com), with Reserved\rFont Name \"Yesteryear\""
+      ],
+      "1": [
+        "Yesteryear"
+      ],
+      "5": [
+        "Version 1.000"
+      ],
+      "7": [
+        "Yesteryear is a trademark of Astigmatic (AOETI)."
+      ],
+      "8": [
+        "Astigmatic (AOETI)"
+      ],
+      "9": [
+        "Astigmatic (AOETI)"
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License,\rVersion 1.1. This license is available with a FAQ at:\rhttp://scripts.sil.org/OFL"
+      ],
+      "14": [
+        "http://scripts.sil.org/OFL"
+      ]
+    }
+  }
+]

@@ -1,0 +1,3 @@
+const search=document.getElementById('helpSearch'),sections=[...document.querySelectorAll('.help-section')];
+search.addEventListener('input',()=>{const terms=search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);let count=0;for(const s of sections){const matches=terms.every(t=>s.textContent.toLowerCase().includes(t));s.hidden=!matches;if(matches)count++;}document.getElementById('searchStatus').textContent=terms.length?(count?`${count} matching sections`:'No matching sections. Try fewer words.'):'';});
+for(const link of document.querySelectorAll('.help-nav a'))link.addEventListener('click',()=>{search.value='';search.dispatchEvent(new Event('input'));});

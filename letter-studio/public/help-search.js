@@ -1,0 +1,3 @@
+const search=document.getElementById('helpSearch'),sections=[...document.querySelectorAll('.help-section')];
+search.addEventListener('input',()=>{const terms=search.value.toLocaleLowerCase('da').trim().split(/\s+/).filter(Boolean);let count=0;for(const s of sections){s.hidden=!terms.every(t=>s.textContent.toLocaleLowerCase('da').includes(t));if(!s.hidden)count++;}document.getElementById('searchStatus').textContent=terms.length?(count?`${count} afsnit fundet`:'Ingen afsnit fundet. Prøv færre ord.'):'';});
+for(const link of document.querySelectorAll('.help-nav a'))link.addEventListener('click',()=>{search.value='';search.dispatchEvent(new Event('input'));});

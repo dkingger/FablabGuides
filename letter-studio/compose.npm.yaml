@@ -1,0 +1,10 @@
+services:
+  letter-studio:
+    networks:
+      proxy:
+        aliases:
+          - johannes-letter-studio
+networks:
+  proxy:
+    external: true
+    name: ${NPM_NETWORK:-nginx-proxy-manager_default}

@@ -1,0 +1,5748 @@
+{
+  "controls": [
+    {
+      "id": "designFile",
+      "type": "file",
+      "label": "",
+      "value": ""
+    },
+    {
+      "id": "projectMode",
+      "type": "select-one",
+      "label": "Hvad vil du lave?",
+      "value": "letters",
+      "options": [
+        {
+          "value": "letters",
+          "label": "Kanalbogstaver"
+        },
+        {
+          "value": "lightbox",
+          "label": "Motiv i en lyskasse"
+        }
+      ]
+    },
+    {
+      "id": "boxShape",
+      "type": "select-one",
+      "label": "Kabinettets form",
+      "value": "contour",
+      "options": [
+        {
+          "value": "contour",
+          "label": "Følg motivet · kontur"
+        },
+        {
+          "value": "rectangle",
+          "label": "Rektangel / afrundet rektangel"
+        }
+      ]
+    },
+    {
+      "id": "boxAlign",
+      "type": "select-one",
+      "label": "Tekstjustering",
+      "value": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Venstre"
+        },
+        {
+          "value": "center",
+          "label": "Centreret"
+        },
+        {
+          "value": "right",
+          "label": "Højre"
+        }
+      ]
+    },
+    {
+      "id": "svgFile",
+      "type": "file",
+      "label": "",
+      "value": ""
+    },
+    {
+      "id": "letterText",
+      "type": "textarea",
+      "label": "Bogstaver eller et kort ord",
+      "value": "MS"
+    },
+    {
+      "id": "font",
+      "type": "select-one",
+      "label": "Skrifttype",
+      "value": "bold",
+      "options": [
+        {
+          "value": "bold",
+          "label": "DejaVu Sans Bold"
+        },
+        {
+          "value": "regular",
+          "label": "DejaVu Sans"
+        },
+        {
+          "value": "serif",
+          "label": "DejaVu Serif"
+        },
+        {
+          "value": "serifbold",
+          "label": "DejaVu Serif Bold"
+        },
+        {
+          "value": "mono",
+          "label": "DejaVu Sans Mono"
+        },
+        {
+          "value": "monobold",
+          "label": "DejaVu Sans Mono Bold"
+        },
+        {
+          "value": "monoitalic",
+          "label": "DejaVu Sans Mono Italic"
+        },
+        {
+          "value": "monobolditalic",
+          "label": "DejaVu Sans Mono Bold Italic"
+        },
+        {
+          "value": "msrounded",
+          "label": "MS Rounded Bold (Fredoka)"
+        },
+        {
+          "value": "coiny",
+          "label": "Coiny"
+        },
+        {
+          "value": "chewy",
+          "label": "Chewy"
+        },
+        {
+          "value": "anton",
+          "label": "Anton"
+        },
+        {
+          "value": "bebas",
+          "label": "Bebas Neue"
+        },
+        {
+          "value": "archivo",
+          "label": "Archivo Black"
+        },
+        {
+          "value": "rowdies",
+          "label": "Rowdies Bold"
+        },
+        {
+          "value": "righteous",
+          "label": "Righteous"
+        },
+        {
+          "value": "bungee",
+          "label": "Bungee"
+        },
+        {
+          "value": "alfa",
+          "label": "Alfa Slab One"
+        },
+        {
+          "value": "dmserif",
+          "label": "DM Serif Display"
+        },
+        {
+          "value": "lobster",
+          "label": "Lobster"
+        },
+        {
+          "value": "pacifico",
+          "label": "Pacifico"
+        },
+        {
+          "value": "oleo",
+          "label": "Oleo Script"
+        },
+        {
+          "value": "yellowtail",
+          "label": "Yellowtail"
+        },
+        {
+          "value": "damion",
+          "label": "Damion"
+        },
+        {
+          "value": "courgette",
+          "label": "Courgette"
+        },
+        {
+          "value": "kaushan",
+          "label": "Kaushan Script"
+        },
+        {
+          "value": "oleoswash",
+          "label": "Oleo Script Swash Caps"
+        },
+        {
+          "value": "pattaya",
+          "label": "Pattaya"
+        },
+        {
+          "value": "berkshire",
+          "label": "Berkshire Swash"
+        },
+        {
+          "value": "leckerli",
+          "label": "Leckerli One"
+        },
+        {
+          "value": "lilyscript",
+          "label": "Lily Script One"
+        },
+        {
+          "value": "lobstertwo",
+          "label": "Lobster Two Bold Italic"
+        },
+        {
+          "value": "norican",
+          "label": "Norican"
+        },
+        {
+          "value": "molle",
+          "label": "Molle"
+        },
+        {
+          "value": "satisfy",
+          "label": "Satisfy"
+        },
+        {
+          "value": "cookie",
+          "label": "Cookie"
+        },
+        {
+          "value": "yesteryear",
+          "label": "Yesteryear"
+        },
+        {
+          "value": "grandhotel",
+          "label": "Grand Hotel"
+        },
+        {
+          "value": "playball",
+          "label": "Playball"
+        },
+        {
+          "value": "shrikhand",
+          "label": "Shrikhand"
+        },
+        {
+          "value": "lilitaone",
+          "label": "Lilita One"
+        },
+        {
+          "value": "racingsansone",
+          "label": "Racing Sans One"
+        },
+        {
+          "value": "patuaone",
+          "label": "Patua One"
+        }
+      ]
+    },
+    {
+      "id": "fontSearch",
+      "type": "search",
+      "label": "",
+      "value": ""
+    },
+    {
+      "id": "fontCategory",
+      "type": "select-one",
+      "label": "",
+      "value": "all",
+      "options": [
+        {
+          "value": "all",
+          "label": "Alle stile"
+        },
+        {
+          "value": "sans",
+          "label": "Uden seriffer"
+        },
+        {
+          "value": "display",
+          "label": "Fed og dekorativ"
+        },
+        {
+          "value": "serif",
+          "label": "Med seriffer"
+        },
+        {
+          "value": "script",
+          "label": "Håndskrift"
+        },
+        {
+          "value": "mono",
+          "label": "Fast tegnbredde"
+        }
+      ]
+    },
+    {
+      "id": "fontFile",
+      "type": "file",
+      "label": "",
+      "value": ""
+    },
+    {
+      "id": "textSpacing",
+      "type": "number",
+      "label": "Bogstavafstand · %",
+      "value": "0"
+    },
+    {
+      "id": "textSpacingSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "textWidth",
+      "type": "number",
+      "label": "Bogstavbredde · %",
+      "value": "100"
+    },
+    {
+      "id": "textWidthSlider",
+      "type": "range",
+      "label": "",
+      "value": "100"
+    },
+    {
+      "id": "textSlant",
+      "type": "number",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "textSlantSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "textRotation",
+      "type": "number",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "textRotationSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "textOutline",
+      "type": "number",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "textOutlineSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "textLineGap",
+      "type": "number",
+      "label": "Linjeafstand · %",
+      "value": "130"
+    },
+    {
+      "id": "textLineGapSlider",
+      "type": "range",
+      "label": "",
+      "value": "130"
+    },
+    {
+      "id": "textAlign",
+      "type": "select-one",
+      "label": "Linjejustering",
+      "value": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Venstre"
+        },
+        {
+          "value": "center",
+          "label": "Centreret"
+        },
+        {
+          "value": "right",
+          "label": "Højre"
+        }
+      ]
+    },
+    {
+      "id": "mergeMode",
+      "type": "select-one",
+      "label": "Automatisk tilpasning",
+      "value": "size",
+      "options": [
+        {
+          "value": "spacing",
+          "label": "Mindsk kun afstanden"
+        },
+        {
+          "value": "level",
+          "label": "Tillad lodret forskydning · op til 20 %"
+        },
+        {
+          "value": "size",
+          "label": "Tillad forskydning og skalering · ±15 %"
+        }
+      ]
+    },
+    {
+      "id": "mergeJoint",
+      "type": "number",
+      "label": "Mindste overlapbredde mm",
+      "value": "2"
+    },
+    {
+      "id": "mergeJointSlider",
+      "type": "range",
+      "label": "",
+      "value": "2"
+    },
+    {
+      "id": "",
+      "type": "number",
+      "label": "X %",
+      "value": "0"
+    },
+    {
+      "id": "letter-0-xSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "",
+      "type": "number",
+      "label": "Niveau %",
+      "value": "0"
+    },
+    {
+      "id": "letter-0-ySlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "",
+      "type": "number",
+      "label": "Størrelse %",
+      "value": "100"
+    },
+    {
+      "id": "letter-0-scaleSlider",
+      "type": "range",
+      "label": "",
+      "value": "100"
+    },
+    {
+      "id": "",
+      "type": "number",
+      "label": "X %",
+      "value": "0"
+    },
+    {
+      "id": "letter-1-xSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "",
+      "type": "number",
+      "label": "Niveau %",
+      "value": "0"
+    },
+    {
+      "id": "letter-1-ySlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "",
+      "type": "number",
+      "label": "Størrelse %",
+      "value": "100"
+    },
+    {
+      "id": "letter-1-scaleSlider",
+      "type": "range",
+      "label": "",
+      "value": "100"
+    },
+    {
+      "id": "shapeSearch",
+      "type": "search",
+      "label": "Find en figur",
+      "value": ""
+    },
+    {
+      "id": "layout",
+      "type": "select-one",
+      "label": "Samling af bogstaver",
+      "value": "individual",
+      "options": [
+        {
+          "value": "individual",
+          "label": "Separate kabinetter"
+        },
+        {
+          "value": "merged",
+          "label": "Sammenføjet ord · bogstaverne rører hinanden"
+        },
+        {
+          "value": "connected",
+          "label": "Ét stykke · fælles printet bagplade"
+        }
+      ]
+    },
+    {
+      "id": "assemblyMargin",
+      "type": "number",
+      "label": "Bagpladens margen mm",
+      "value": "3"
+    },
+    {
+      "id": "assemblyMarginSlider",
+      "type": "range",
+      "label": "",
+      "value": "3"
+    },
+    {
+      "id": "assemblyThickness",
+      "type": "number",
+      "label": "Bagrammens tykkelse mm",
+      "value": "2"
+    },
+    {
+      "id": "assemblyThicknessSlider",
+      "type": "range",
+      "label": "",
+      "value": "2"
+    },
+    {
+      "id": "height",
+      "type": "number",
+      "label": "Teksthøjde · mm",
+      "value": "120"
+    },
+    {
+      "id": "heightSlider",
+      "type": "range",
+      "label": "",
+      "value": "120"
+    },
+    {
+      "id": "depth",
+      "type": "number",
+      "label": "Samlet dybde mm",
+      "value": "35"
+    },
+    {
+      "id": "depthSlider",
+      "type": "range",
+      "label": "",
+      "value": "35"
+    },
+    {
+      "id": "boxSizing",
+      "type": "select-one",
+      "label": "Kassens mål",
+      "value": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Tilpas omkring motiv og margener"
+        },
+        {
+          "value": "fixed",
+          "label": "Fast bredde og højde · tilpas motivet indvendigt"
+        }
+      ]
+    },
+    {
+      "id": "boxWidth",
+      "type": "number",
+      "label": "Kabinettets bredde · mm",
+      "value": "220"
+    },
+    {
+      "id": "boxWidthSlider",
+      "type": "range",
+      "label": "",
+      "value": "220"
+    },
+    {
+      "id": "boxHeight",
+      "type": "number",
+      "label": "Kabinettets højde · mm",
+      "value": "120"
+    },
+    {
+      "id": "boxHeightSlider",
+      "type": "range",
+      "label": "",
+      "value": "120"
+    },
+    {
+      "id": "boxMargin",
+      "type": "number",
+      "label": "Mindste kant · mm",
+      "value": "10"
+    },
+    {
+      "id": "boxMarginSlider",
+      "type": "range",
+      "label": "",
+      "value": "10"
+    },
+    {
+      "id": "boxRadius",
+      "type": "number",
+      "label": "Hjørneradius · mm",
+      "value": "8"
+    },
+    {
+      "id": "boxRadiusSlider",
+      "type": "range",
+      "label": "",
+      "value": "8"
+    },
+    {
+      "id": "maskThickness",
+      "type": "number",
+      "label": "Tykkelse på uigennemsigtig baggrund · mm",
+      "value": "0.8"
+    },
+    {
+      "id": "maskThicknessSlider",
+      "type": "range",
+      "label": "",
+      "value": "0.8"
+    },
+    {
+      "id": "bedX",
+      "type": "number",
+      "label": "X mm",
+      "value": "256"
+    },
+    {
+      "id": "bedXSlider",
+      "type": "range",
+      "label": "",
+      "value": "256"
+    },
+    {
+      "id": "bedY",
+      "type": "number",
+      "label": "Y mm",
+      "value": "256"
+    },
+    {
+      "id": "bedYSlider",
+      "type": "range",
+      "label": "",
+      "value": "256"
+    },
+    {
+      "id": "bedZ",
+      "type": "number",
+      "label": "Z mm",
+      "value": "256"
+    },
+    {
+      "id": "bedZSlider",
+      "type": "range",
+      "label": "",
+      "value": "256"
+    },
+    {
+      "id": "splitMode",
+      "type": "select-one",
+      "label": "Fordel på flere printplader",
+      "value": "off",
+      "options": [
+        {
+          "value": "off",
+          "label": "Behold i ét stykke"
+        },
+        {
+          "value": "keys",
+          "label": "Separate sommerfuglenøgler · prototype"
+        },
+        {
+          "value": "dovetail",
+          "label": "Integrerede han-/hun-svalehalesamlinger · prototype"
+        }
+      ]
+    },
+    {
+      "id": "splitStrategy",
+      "type": "select-one",
+      "label": "Hvor skal fronten deles?",
+      "value": "gaps",
+      "options": [
+        {
+          "value": "gaps",
+          "label": "Mellem bogstaver og figurer"
+        },
+        {
+          "value": "even",
+          "label": "Ens sektioner · kan skære gennem motivet"
+        }
+      ]
+    },
+    {
+      "id": "splitMargin",
+      "type": "number",
+      "label": "Afstand til pladekant · mm",
+      "value": "8"
+    },
+    {
+      "id": "splitMarginSlider",
+      "type": "range",
+      "label": "",
+      "value": "8"
+    },
+    {
+      "id": "splitFit",
+      "type": "number",
+      "label": "Samlingens frigang pr. side · mm",
+      "value": "0"
+    },
+    {
+      "id": "splitFitSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "construction",
+      "type": "select-one",
+      "label": "Konstruktionstype",
+      "value": "separate",
+      "options": [
+        {
+          "value": "pushin",
+          "label": "Indstiksfront · indvendig krave"
+        },
+        {
+          "value": "separate",
+          "label": "Separat front · integreret bagplade"
+        },
+        {
+          "value": "integrated",
+          "label": "Integreret printet front · aftagelig bagplade"
+        },
+        {
+          "value": "frontframe",
+          "label": "Aftagelig kappe i fuld dybde · printet eller skåret front"
+        },
+        {
+          "value": "reartray",
+          "label": "Bagbakke og aftagelig skal"
+        },
+        {
+          "value": "trimcap",
+          "label": "Printet kabinet og dækkappe · akrylfront"
+        },
+        {
+          "value": "inset",
+          "label": "Indsatte bogstaver · bred kant"
+        }
+      ]
+    },
+    {
+      "id": "bodyStyle",
+      "type": "select-one",
+      "label": "Kabinettets form",
+      "value": "straight",
+      "options": [
+        {
+          "value": "straight",
+          "label": "Lige sider"
+        },
+        {
+          "value": "wider-back",
+          "label": "Bredere bagside"
+        },
+        {
+          "value": "wider-front",
+          "label": "Bredere front"
+        }
+      ]
+    },
+    {
+      "id": "taperAngle",
+      "type": "number",
+      "label": "Sidevinkel · grader fra lodret",
+      "value": "10"
+    },
+    {
+      "id": "taperAngleSlider",
+      "type": "range",
+      "label": "",
+      "value": "10"
+    },
+    {
+      "id": "faceMethod",
+      "type": "select-one",
+      "label": "Hvordan vil du fremstille fronten?",
+      "value": "print",
+      "options": [
+        {
+          "value": "print",
+          "label": "3D-print fronten"
+        },
+        {
+          "value": "cnc",
+          "label": "CNC-skåret akrylfront"
+        },
+        {
+          "value": "laser",
+          "label": "Laserskåret akrylfront"
+        }
+      ]
+    },
+    {
+      "id": "acrylic",
+      "type": "number",
+      "label": "Printet fronttykkelse mm",
+      "value": "3"
+    },
+    {
+      "id": "acrylicSlider",
+      "type": "range",
+      "label": "",
+      "value": "3"
+    },
+    {
+      "id": "facePosition",
+      "type": "select-one",
+      "label": "Frontplacering",
+      "value": "flush",
+      "options": [
+        {
+          "value": "flush",
+          "label": "Plan med kanten"
+        },
+        {
+          "value": "recessed",
+          "label": "Forsænket i kabinettet"
+        }
+      ]
+    },
+    {
+      "id": "faceRecess",
+      "type": "number",
+      "label": "Forsænkning under kanten mm",
+      "value": "3"
+    },
+    {
+      "id": "faceRecessSlider",
+      "type": "range",
+      "label": "",
+      "value": "3"
+    },
+    {
+      "id": "bitDiameter",
+      "type": "number",
+      "label": "Fræserdiameter mm",
+      "value": "3.175"
+    },
+    {
+      "id": "bitDiameterSlider",
+      "type": "range",
+      "label": "",
+      "value": "3.175"
+    },
+    {
+      "id": "insetFaceOffset",
+      "type": "number",
+      "label": "Frontens højde i forhold til kanten · mm",
+      "value": "0"
+    },
+    {
+      "id": "insetFaceOffsetSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "insetSkirtWall",
+      "type": "number",
+      "label": "Skørtets vægtykkelse · mm",
+      "value": "1.2"
+    },
+    {
+      "id": "insetSkirtWallSlider",
+      "type": "range",
+      "label": "",
+      "value": "1.2"
+    },
+    {
+      "id": "insetSkirtExtra",
+      "type": "number",
+      "label": "Ekstra skørtdybde · mm",
+      "value": "0"
+    },
+    {
+      "id": "insetSkirtExtraSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "frontFlange",
+      "type": "select-one",
+      "label": "Flangens placering",
+      "value": "inner",
+      "options": [
+        {
+          "value": "inner",
+          "label": "Inden i kabinettet"
+        },
+        {
+          "value": "outer",
+          "label": "Uden på kabinettet"
+        }
+      ]
+    },
+    {
+      "id": "frontDepth",
+      "type": "number",
+      "label": "Flangedybde · mm",
+      "value": "5"
+    },
+    {
+      "id": "frontDepthSlider",
+      "type": "range",
+      "label": "",
+      "value": "5"
+    },
+    {
+      "id": "frontWall",
+      "type": "number",
+      "label": "Flangens vægtykkelse · mm",
+      "value": "1.6"
+    },
+    {
+      "id": "frontWallSlider",
+      "type": "range",
+      "label": "",
+      "value": "1.6"
+    },
+    {
+      "id": "frontFlangeColour",
+      "type": "select-one",
+      "label": "Flangens farve",
+      "value": "body",
+      "options": [
+        {
+          "value": "body",
+          "label": "Som kabinettet"
+        },
+        {
+          "value": "face",
+          "label": "Som fronten"
+        }
+      ]
+    },
+    {
+      "id": "frontFit",
+      "type": "number",
+      "label": "Frigang pr. side · mm",
+      "value": "0.2"
+    },
+    {
+      "id": "frontFitSlider",
+      "type": "range",
+      "label": "",
+      "value": "0.2"
+    },
+    {
+      "id": "frontChamfer",
+      "type": "number",
+      "label": "Indføringsfas · mm",
+      "value": "0.4"
+    },
+    {
+      "id": "frontChamferSlider",
+      "type": "range",
+      "label": "",
+      "value": "0.4"
+    },
+    {
+      "id": "facePattern",
+      "type": "select-one",
+      "label": "Frontmønster",
+      "value": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "Lukket front"
+        },
+        {
+          "value": "round",
+          "label": "Runde huller · forskudte"
+        },
+        {
+          "value": "hex",
+          "label": "Sekskantede huller · bikube"
+        }
+      ]
+    },
+    {
+      "id": "faceHoleSize",
+      "type": "number",
+      "label": "Hulstørrelse · mm",
+      "value": "4"
+    },
+    {
+      "id": "faceHoleSizeSlider",
+      "type": "range",
+      "label": "",
+      "value": "4"
+    },
+    {
+      "id": "faceHoleGap",
+      "type": "number",
+      "label": "Massiv afstand mellem huller · mm",
+      "value": "1.2"
+    },
+    {
+      "id": "faceHoleGapSlider",
+      "type": "range",
+      "label": "",
+      "value": "1.2"
+    },
+    {
+      "id": "facePatternBorder",
+      "type": "number",
+      "label": "Massiv kant · mm",
+      "value": "3"
+    },
+    {
+      "id": "facePatternBorderSlider",
+      "type": "range",
+      "label": "",
+      "value": "3"
+    },
+    {
+      "id": "bodyMaterial",
+      "type": "select-one",
+      "label": "Filamenttype",
+      "value": "unspecified",
+      "options": [
+        {
+          "value": "unspecified",
+          "label": "Ikke angivet"
+        },
+        {
+          "value": "PLA",
+          "label": "PLA"
+        },
+        {
+          "value": "PETG",
+          "label": "PETG"
+        },
+        {
+          "value": "ASA",
+          "label": "ASA"
+        },
+        {
+          "value": "ABS",
+          "label": "ABS"
+        },
+        {
+          "value": "other",
+          "label": "Andet filament"
+        }
+      ]
+    },
+    {
+      "id": "bodyColor",
+      "type": "color",
+      "label": "Farve i forhåndsvisning",
+      "value": "#23445a"
+    },
+    {
+      "id": "bodyAppearance",
+      "type": "select-one",
+      "label": "Overflade i forhåndsvisning",
+      "value": "matte",
+      "options": [
+        {
+          "value": "matte",
+          "label": "Uigennemsigtig · mat"
+        },
+        {
+          "value": "gloss",
+          "label": "Uigennemsigtig · blank"
+        },
+        {
+          "value": "translucent",
+          "label": "Lysgennemtrængelig / diffuser"
+        },
+        {
+          "value": "clear",
+          "label": "Klar"
+        }
+      ]
+    },
+    {
+      "id": "bodyProduct",
+      "type": "text",
+      "label": "Mærke / produkt valgfrit",
+      "value": ""
+    },
+    {
+      "id": "bodyColourRef",
+      "type": "text",
+      "label": "Farvenavn / kode valgfrit",
+      "value": ""
+    },
+    {
+      "id": "capMaterial",
+      "type": "select-one",
+      "label": "Filamenttype",
+      "value": "unspecified",
+      "options": [
+        {
+          "value": "unspecified",
+          "label": "Ikke angivet"
+        },
+        {
+          "value": "PLA",
+          "label": "PLA"
+        },
+        {
+          "value": "PETG",
+          "label": "PETG"
+        },
+        {
+          "value": "ASA",
+          "label": "ASA"
+        },
+        {
+          "value": "ABS",
+          "label": "ABS"
+        },
+        {
+          "value": "other",
+          "label": "Andet filament"
+        }
+      ]
+    },
+    {
+      "id": "capColor",
+      "type": "color",
+      "label": "Farve i forhåndsvisning",
+      "value": "#20252b"
+    },
+    {
+      "id": "capAppearance",
+      "type": "select-one",
+      "label": "Overflade i forhåndsvisning",
+      "value": "matte",
+      "options": [
+        {
+          "value": "matte",
+          "label": "Uigennemsigtig · mat"
+        },
+        {
+          "value": "gloss",
+          "label": "Uigennemsigtig · blank"
+        },
+        {
+          "value": "translucent",
+          "label": "Lysgennemtrængelig / diffuser"
+        },
+        {
+          "value": "clear",
+          "label": "Klar"
+        }
+      ]
+    },
+    {
+      "id": "capProduct",
+      "type": "text",
+      "label": "Mærke / produkt valgfrit",
+      "value": ""
+    },
+    {
+      "id": "capColourRef",
+      "type": "text",
+      "label": "Farvenavn / kode valgfrit",
+      "value": ""
+    },
+    {
+      "id": "faceMaterial",
+      "type": "select-one",
+      "label": "Filamenttype",
+      "value": "unspecified",
+      "options": [
+        {
+          "value": "unspecified",
+          "label": "Ikke angivet"
+        },
+        {
+          "value": "PLA",
+          "label": "PLA"
+        },
+        {
+          "value": "PETG",
+          "label": "PETG"
+        },
+        {
+          "value": "ASA",
+          "label": "ASA"
+        },
+        {
+          "value": "ABS",
+          "label": "ABS"
+        },
+        {
+          "value": "other",
+          "label": "Andet filament"
+        }
+      ]
+    },
+    {
+      "id": "acrylicType",
+      "type": "select-one",
+      "label": "Akryltype",
+      "value": "unspecified",
+      "options": [
+        {
+          "value": "unspecified",
+          "label": "Ikke angivet"
+        },
+        {
+          "value": "cast",
+          "label": "Støbt akryl"
+        },
+        {
+          "value": "extruded",
+          "label": "Ekstruderet akryl"
+        },
+        {
+          "value": "other",
+          "label": "Anden akrylkvalitet"
+        }
+      ]
+    },
+    {
+      "id": "faceColor",
+      "type": "color",
+      "label": "Farve i forhåndsvisning",
+      "value": "#f2f2ed"
+    },
+    {
+      "id": "faceAppearance",
+      "type": "select-one",
+      "label": "Overflade i forhåndsvisning",
+      "value": "matte",
+      "options": [
+        {
+          "value": "matte",
+          "label": "Uigennemsigtig · mat"
+        },
+        {
+          "value": "gloss",
+          "label": "Uigennemsigtig · blank"
+        },
+        {
+          "value": "translucent",
+          "label": "Lysgennemtrængelig / diffuser"
+        },
+        {
+          "value": "clear",
+          "label": "Klar"
+        }
+      ]
+    },
+    {
+      "id": "faceProduct",
+      "type": "text",
+      "label": "Mærke / produkt valgfrit",
+      "value": ""
+    },
+    {
+      "id": "faceColourRef",
+      "type": "text",
+      "label": "Farvenavn / kode valgfrit",
+      "value": ""
+    },
+    {
+      "id": "faceColourMode",
+      "type": "select-one",
+      "label": "Frontens farvefordeling",
+      "value": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "Én farve"
+        },
+        {
+          "value": "bands",
+          "label": "Farvebånd"
+        },
+        {
+          "value": "svg",
+          "label": "Brug importerede SVG-farver"
+        }
+      ]
+    },
+    {
+      "id": "faceColourCount",
+      "type": "number",
+      "label": "Antal farver",
+      "value": "3"
+    },
+    {
+      "id": "faceColourCountSlider",
+      "type": "range",
+      "label": "",
+      "value": "3"
+    },
+    {
+      "id": "faceColourDirection",
+      "type": "select-one",
+      "label": "Båndretning",
+      "value": "horizontal",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "Vandret · nedefra og op"
+        },
+        {
+          "value": "vertical",
+          "label": "Lodret · fra venstre mod højre"
+        }
+      ]
+    },
+    {
+      "id": "facePalette0",
+      "type": "color",
+      "label": "Farve 1",
+      "value": "#ffffff"
+    },
+    {
+      "id": "facePalette1",
+      "type": "color",
+      "label": "Farve 2",
+      "value": "#e53935"
+    },
+    {
+      "id": "facePalette2",
+      "type": "color",
+      "label": "Farve 3",
+      "value": "#1565c0"
+    },
+    {
+      "id": "facePalette3",
+      "type": "color",
+      "label": "Farve 4",
+      "value": "#fdd835"
+    },
+    {
+      "id": "facePalette4",
+      "type": "color",
+      "label": "Farve 5",
+      "value": "#43a047"
+    },
+    {
+      "id": "facePalette5",
+      "type": "color",
+      "label": "Farve 6",
+      "value": "#8e24aa"
+    },
+    {
+      "id": "facePalette6",
+      "type": "color",
+      "label": "Farve 7",
+      "value": "#f57c00"
+    },
+    {
+      "id": "facePalette7",
+      "type": "color",
+      "label": "Farve 8",
+      "value": "#212121"
+    },
+    {
+      "id": "faceColourBuild",
+      "type": "select-one",
+      "label": "Farveopbygning",
+      "value": "backed",
+      "options": [
+        {
+          "value": "backed",
+          "label": "Farve og baglag"
+        },
+        {
+          "value": "full",
+          "label": "Farve i fuld dybde"
+        }
+      ]
+    },
+    {
+      "id": "faceColourDepth",
+      "type": "number",
+      "label": "Farvetykkelse · mm",
+      "value": "0.6"
+    },
+    {
+      "id": "faceColourDepthSlider",
+      "type": "range",
+      "label": "",
+      "value": "0.6"
+    },
+    {
+      "id": "faceColourBacking",
+      "type": "number",
+      "label": "Baglagets tykkelse · mm",
+      "value": "2.4"
+    },
+    {
+      "id": "faceColourBackingSlider",
+      "type": "range",
+      "label": "",
+      "value": "2.4"
+    },
+    {
+      "id": "wall",
+      "type": "number",
+      "label": "Væg mm",
+      "value": "2"
+    },
+    {
+      "id": "wallSlider",
+      "type": "range",
+      "label": "",
+      "value": "2"
+    },
+    {
+      "id": "base",
+      "type": "number",
+      "label": "Tilbage mm",
+      "value": "2"
+    },
+    {
+      "id": "baseSlider",
+      "type": "range",
+      "label": "",
+      "value": "2"
+    },
+    {
+      "id": "clearance",
+      "type": "number",
+      "label": "Frontfrigang pr. side mm",
+      "value": "0.2"
+    },
+    {
+      "id": "clearanceSlider",
+      "type": "range",
+      "label": "",
+      "value": "0.2"
+    },
+    {
+      "id": "ledge",
+      "type": "number",
+      "label": "Anlægsbredde mm",
+      "value": "1.5"
+    },
+    {
+      "id": "ledgeSlider",
+      "type": "range",
+      "label": "",
+      "value": "1.5"
+    },
+    {
+      "id": "ledgeT",
+      "type": "number",
+      "label": "Anlægstykkelse mm",
+      "value": "1.2"
+    },
+    {
+      "id": "ledgeTSlider",
+      "type": "range",
+      "label": "",
+      "value": "1.2"
+    },
+    {
+      "id": "capRetention",
+      "type": "select-one",
+      "label": "Fastgørelse af dækkappe",
+      "value": "slip",
+      "options": [
+        {
+          "value": "slip",
+          "label": "Løs pasning · lim / ekstra befæstelser"
+        },
+        {
+          "value": "friction",
+          "label": "Uden skruer · skørt med friktionspasning"
+        }
+      ]
+    },
+    {
+      "id": "capFit",
+      "type": "number",
+      "label": "Frigang pr. side mm",
+      "value": "0"
+    },
+    {
+      "id": "capFitSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "capGap",
+      "type": "number",
+      "label": "Dækkappens frigang pr. side · mm",
+      "value": "0.25"
+    },
+    {
+      "id": "capGapSlider",
+      "type": "range",
+      "label": "",
+      "value": "0.25"
+    },
+    {
+      "id": "capWall",
+      "type": "number",
+      "label": "Skørtets vægtykkelse · mm",
+      "value": "1.6"
+    },
+    {
+      "id": "capWallSlider",
+      "type": "range",
+      "label": "",
+      "value": "1.6"
+    },
+    {
+      "id": "capSkirt",
+      "type": "number",
+      "label": "Skørtdybde · mm",
+      "value": "8"
+    },
+    {
+      "id": "capSkirtSlider",
+      "type": "range",
+      "label": "",
+      "value": "8"
+    },
+    {
+      "id": "capLip",
+      "type": "number",
+      "label": "Frontlæbens tykkelse · mm",
+      "value": "1.2"
+    },
+    {
+      "id": "capLipSlider",
+      "type": "range",
+      "label": "",
+      "value": "1.2"
+    },
+    {
+      "id": "capOverlap",
+      "type": "number",
+      "label": "Overlap på diffuseren · mm",
+      "value": "1.5"
+    },
+    {
+      "id": "capOverlapSlider",
+      "type": "range",
+      "label": "",
+      "value": "1.5"
+    },
+    {
+      "id": "backFastening",
+      "type": "select-one",
+      "label": "Fastgørelsesmetode",
+      "value": "screws",
+      "options": [
+        {
+          "value": "screws",
+          "label": "Skruer · bageste skruebøsninger"
+        },
+        {
+          "value": "friction",
+          "label": "Uden skruer · krave med friktionspasning"
+        }
+      ]
+    },
+    {
+      "id": "backFit",
+      "type": "number",
+      "label": "Frigang pr. side mm",
+      "value": "0"
+    },
+    {
+      "id": "backFitSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "collarDepth",
+      "type": "number",
+      "label": "Indstiksdybde mm",
+      "value": "4"
+    },
+    {
+      "id": "collarDepthSlider",
+      "type": "range",
+      "label": "",
+      "value": "4"
+    },
+    {
+      "id": "collarWall",
+      "type": "number",
+      "label": "Kravens vægtykkelse mm",
+      "value": "1.2"
+    },
+    {
+      "id": "collarWallSlider",
+      "type": "range",
+      "label": "",
+      "value": "1.2"
+    },
+    {
+      "id": "screwCount",
+      "type": "number",
+      "label": "Skruer pr. kabinet",
+      "value": "4"
+    },
+    {
+      "id": "screwCountSlider",
+      "type": "range",
+      "label": "",
+      "value": "4"
+    },
+    {
+      "id": "bossDiameter",
+      "type": "number",
+      "label": "Skruebøsningens diameter · mm",
+      "value": "8"
+    },
+    {
+      "id": "bossDiameterSlider",
+      "type": "range",
+      "label": "",
+      "value": "8"
+    },
+    {
+      "id": "pilotDiameter",
+      "type": "number",
+      "label": "Forboring · mm",
+      "value": "2.5"
+    },
+    {
+      "id": "pilotDiameterSlider",
+      "type": "range",
+      "label": "",
+      "value": "2.5"
+    },
+    {
+      "id": "screwClearance",
+      "type": "number",
+      "label": "Hul i bagplade · mm",
+      "value": "3.4"
+    },
+    {
+      "id": "screwClearanceSlider",
+      "type": "range",
+      "label": "",
+      "value": "3.4"
+    },
+    {
+      "id": "pilotDepth",
+      "type": "number",
+      "label": "Blindhullets dybde · mm",
+      "value": "8"
+    },
+    {
+      "id": "pilotDepthSlider",
+      "type": "range",
+      "label": "",
+      "value": "8"
+    },
+    {
+      "id": "bossLength",
+      "type": "number",
+      "label": "Bageste skruebøsnings længde · mm",
+      "value": "10"
+    },
+    {
+      "id": "bossLengthSlider",
+      "type": "range",
+      "label": "",
+      "value": "10"
+    },
+    {
+      "id": "bossFaceGap",
+      "type": "number",
+      "label": "Mindste afstand bag fronten · mm",
+      "value": "6"
+    },
+    {
+      "id": "bossFaceGapSlider",
+      "type": "range",
+      "label": "",
+      "value": "6"
+    },
+    {
+      "id": "insetBorder",
+      "type": "number",
+      "label": "Kant omkring fronten · mm",
+      "value": "5"
+    },
+    {
+      "id": "insetBorderSlider",
+      "type": "range",
+      "label": "",
+      "value": "5"
+    },
+    {
+      "id": "standMode",
+      "type": "select-one",
+      "label": "Udstillingsfod",
+      "value": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "Ingen bordfod"
+        },
+        {
+          "value": "desk",
+          "label": "Fod med ledningsføring · bundmontering · prototype"
+        }
+      ]
+    },
+    {
+      "id": "standFastening",
+      "type": "select-one",
+      "label": "Monteringsmetode",
+      "value": "screws",
+      "options": [
+        {
+          "value": "screws",
+          "label": "Skruer · fastgør nedefra"
+        },
+        {
+          "value": "click",
+          "label": "Uden skruer · indskudt kliknøgle · afprøv først"
+        },
+        {
+          "value": "press",
+          "label": "Uden skruer · friktionspasning"
+        }
+      ]
+    },
+    {
+      "id": "standSizing",
+      "type": "select-one",
+      "label": "Fodens størrelse",
+      "value": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Automatisk · motiv plus margen"
+        },
+        {
+          "value": "custom",
+          "label": "Valgfri bredde, dybde og placering"
+        }
+      ]
+    },
+    {
+      "id": "standWidth",
+      "type": "number",
+      "label": "Fodbredde · mm",
+      "value": "200"
+    },
+    {
+      "id": "standWidthSlider",
+      "type": "range",
+      "label": "",
+      "value": "200"
+    },
+    {
+      "id": "standDepth",
+      "type": "number",
+      "label": "Fodens dybde · mm",
+      "value": "70"
+    },
+    {
+      "id": "standDepthSlider",
+      "type": "range",
+      "label": "",
+      "value": "70"
+    },
+    {
+      "id": "standOffsetX",
+      "type": "number",
+      "label": "Flyt fod til venstre/højre · mm",
+      "value": "0"
+    },
+    {
+      "id": "standOffsetXSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "standOffsetZ",
+      "type": "number",
+      "label": "Flyt fod frem/tilbage · mm",
+      "value": "0"
+    },
+    {
+      "id": "standOffsetZSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "standMargin",
+      "type": "number",
+      "label": "Fodens margen · mm",
+      "value": "18"
+    },
+    {
+      "id": "standMarginSlider",
+      "type": "range",
+      "label": "",
+      "value": "18"
+    },
+    {
+      "id": "standHeight",
+      "type": "number",
+      "label": "Fodhøjde · mm",
+      "value": "24"
+    },
+    {
+      "id": "standHeightSlider",
+      "type": "range",
+      "label": "",
+      "value": "24"
+    },
+    {
+      "id": "standLift",
+      "type": "number",
+      "label": "Afstand under motivet · mm",
+      "value": "2"
+    },
+    {
+      "id": "standLiftSlider",
+      "type": "range",
+      "label": "",
+      "value": "2"
+    },
+    {
+      "id": "wireDiameter",
+      "type": "number",
+      "label": "Ledningspassage · mm",
+      "value": "5"
+    },
+    {
+      "id": "wireDiameterSlider",
+      "type": "range",
+      "label": "",
+      "value": "5"
+    },
+    {
+      "id": "standFit",
+      "type": "number",
+      "label": "Fodens frigang pr. side · mm",
+      "value": "0.25"
+    },
+    {
+      "id": "standFitSlider",
+      "type": "range",
+      "label": "",
+      "value": "0.25"
+    },
+    {
+      "id": "standPressFit",
+      "type": "number",
+      "label": "Frigang ved stram pasning pr. side · mm",
+      "value": "0"
+    },
+    {
+      "id": "standPressFitSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "showStand",
+      "type": "checkbox",
+      "label": " Vis fod og bundplade",
+      "value": "on"
+    },
+    {
+      "id": "ledMode",
+      "type": "select-one",
+      "label": "Ledningsindgange bagtil",
+      "value": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "Ingen nye ledningshuller"
+        },
+        {
+          "value": "wires",
+          "label": "Tilføj ledningspassager"
+        }
+      ]
+    },
+    {
+      "id": "ledRouting",
+      "type": "select-one",
+      "label": "Automatisk føringsmetode",
+      "value": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Automatisk · rækker eller hovedstreger"
+        },
+        {
+          "value": "simple",
+          "label": "Enkel lyskasse · rækker eller hovedforløb"
+        },
+        {
+          "value": "horizontal",
+          "label": "Vandrette rækker"
+        },
+        {
+          "value": "vertical",
+          "label": "Lodrette rækker"
+        },
+        {
+          "value": "strokes",
+          "label": "Detaljeret · følg hver streg i motivet"
+        }
+      ]
+    },
+    {
+      "id": "ledCoverage",
+      "type": "select-one",
+      "label": "Lyspræference",
+      "value": "balanced",
+      "options": [
+        {
+          "value": "economy",
+          "label": "Færre LED’er"
+        },
+        {
+          "value": "balanced",
+          "label": "Afbalanceret"
+        },
+        {
+          "value": "even",
+          "label": "Mere ensartet lys"
+        }
+      ]
+    },
+    {
+      "id": "ledRows",
+      "type": "number",
+      "label": "Antal rækker · 0 = automatisk · rækker",
+      "value": "0"
+    },
+    {
+      "id": "ledRowsSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "ledRowSpacing",
+      "type": "number",
+      "label": "Ønsket afstand · 0 = automatisk · mm",
+      "value": "0"
+    },
+    {
+      "id": "ledRowSpacingSlider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "ledSimplify",
+      "type": "number",
+      "label": "Udjævn små forgreninger · mm",
+      "value": "10"
+    },
+    {
+      "id": "ledSimplifySlider",
+      "type": "range",
+      "label": "",
+      "value": "10"
+    },
+    {
+      "id": "ledDensityPreset",
+      "type": "select-one",
+      "label": "LED’er pr. meter",
+      "value": "80",
+      "options": [
+        {
+          "value": "80",
+          "label": "80 LEDs/m"
+        },
+        {
+          "value": "96",
+          "label": "96 LEDs/m"
+        },
+        {
+          "value": "120",
+          "label": "120 LEDs/m"
+        }
+      ]
+    },
+    {
+      "id": "ledDensity",
+      "type": "number",
+      "label": "LED-tæthed · LED’er/m",
+      "value": "80"
+    },
+    {
+      "id": "ledDensitySlider",
+      "type": "range",
+      "label": "",
+      "value": "80"
+    },
+    {
+      "id": "ledWattsPerMeter",
+      "type": "number",
+      "label": "Forbrug · valgfrit · W/m",
+      "value": ""
+    },
+    {
+      "id": "ledWattsPerMeterSlider",
+      "type": "range",
+      "label": "",
+      "value": "50.05"
+    },
+    {
+      "id": "ledVoltage",
+      "type": "number",
+      "label": "Båndspænding · V",
+      "value": "12"
+    },
+    {
+      "id": "ledVoltageSlider",
+      "type": "range",
+      "label": "",
+      "value": "12"
+    },
+    {
+      "id": "ledCutMode",
+      "type": "select-one",
+      "label": "Klippepunkter angivet som",
+      "value": "leds",
+      "options": [
+        {
+          "value": "leds",
+          "label": "LED’er mellem klippemærker"
+        },
+        {
+          "value": "length",
+          "label": "Afstand mellem klippemærker"
+        }
+      ]
+    },
+    {
+      "id": "ledCutLEDs",
+      "type": "number",
+      "label": "LED’er pr. klippegruppe · LED’er",
+      "value": "3"
+    },
+    {
+      "id": "ledCutLEDsSlider",
+      "type": "range",
+      "label": "",
+      "value": "3"
+    },
+    {
+      "id": "ledCutPitch",
+      "type": "number",
+      "label": "Klippeinterval · mm",
+      "value": "37.5"
+    },
+    {
+      "id": "ledCutPitchSlider",
+      "type": "range",
+      "label": "",
+      "value": "37.5"
+    },
+    {
+      "id": "ledWidth",
+      "type": "number",
+      "label": "Båndbredde · mm",
+      "value": "7"
+    },
+    {
+      "id": "ledWidthSlider",
+      "type": "range",
+      "label": "",
+      "value": "7"
+    },
+    {
+      "id": "ledBendRadius",
+      "type": "number",
+      "label": "Bøjeradius · centerlinje · mm",
+      "value": "8"
+    },
+    {
+      "id": "ledBendRadiusSlider",
+      "type": "range",
+      "label": "",
+      "value": "8"
+    },
+    {
+      "id": "ledInset",
+      "type": "number",
+      "label": "Ekstra afstand fra vægge · mm",
+      "value": "1"
+    },
+    {
+      "id": "ledInsetSlider",
+      "type": "range",
+      "label": "",
+      "value": "1"
+    },
+    {
+      "id": "ledThickness",
+      "type": "number",
+      "label": "Monteret båndtykkelse · mm",
+      "value": "2"
+    },
+    {
+      "id": "ledThicknessSlider",
+      "type": "range",
+      "label": "",
+      "value": "2"
+    },
+    {
+      "id": "ledClearance",
+      "type": "number",
+      "label": "Frigang på hver side · mm",
+      "value": "0.5"
+    },
+    {
+      "id": "ledClearanceSlider",
+      "type": "range",
+      "label": "",
+      "value": "0.5"
+    },
+    {
+      "id": "ledWireDiameter",
+      "type": "number",
+      "label": "Ledningsbundtets tværmål · mm",
+      "value": "3"
+    },
+    {
+      "id": "ledWireDiameterSlider",
+      "type": "range",
+      "label": "",
+      "value": "3"
+    },
+    {
+      "id": "ledBendConfirmed",
+      "type": "select-one",
+      "label": "Kontrol af bøjeradius",
+      "value": "unverified",
+      "options": [
+        {
+          "value": "unverified",
+          "label": "Endnu ikke afprøvet"
+        },
+        {
+          "value": "confirmed",
+          "label": "Afprøvet til mit bånd"
+        }
+      ]
+    },
+    {
+      "id": "showLEDPlan",
+      "type": "checkbox",
+      "label": " Vis ledningspassager oven på modellen",
+      "value": "on"
+    },
+    {
+      "id": "ledManualRoutes",
+      "type": "hidden",
+      "label": "",
+      "value": "[]"
+    },
+    {
+      "id": "plateMargin",
+      "type": "number",
+      "label": "Afstand til pladekant · mm",
+      "value": "8"
+    },
+    {
+      "id": "plateMarginSlider",
+      "type": "range",
+      "label": "",
+      "value": "8"
+    },
+    {
+      "id": "plateGap",
+      "type": "number",
+      "label": "Afstand mellem dele · mm",
+      "value": "6"
+    },
+    {
+      "id": "plateGapSlider",
+      "type": "range",
+      "label": "",
+      "value": "6"
+    },
+    {
+      "id": "plateAutoRotate",
+      "type": "checkbox",
+      "label": " Prøv diagonal drejning før opdeling",
+      "value": "on"
+    },
+    {
+      "id": "showGrid",
+      "type": "checkbox",
+      "label": "Gitter",
+      "value": "on"
+    },
+    {
+      "id": "showDimensions",
+      "type": "checkbox",
+      "label": "Mål",
+      "value": "on"
+    },
+    {
+      "id": "viewBackground",
+      "type": "select-one",
+      "label": "Baggrund",
+      "value": "light",
+      "options": [
+        {
+          "value": "light",
+          "label": "Lysegrå"
+        },
+        {
+          "value": "dark",
+          "label": "Koksgrå"
+        }
+      ]
+    },
+    {
+      "id": "litTemperature",
+      "type": "select-one",
+      "label": "LED-hvid",
+      "value": "neutral",
+      "options": [
+        {
+          "value": "warm",
+          "label": "Varm · 3000 K"
+        },
+        {
+          "value": "neutral",
+          "label": "Neutral · 4000 K"
+        },
+        {
+          "value": "cool",
+          "label": "Kold · 6500 K"
+        }
+      ]
+    },
+    {
+      "id": "litBrightness",
+      "type": "range",
+      "label": "Lysstyrke",
+      "value": "45"
+    },
+    {
+      "id": "litEdgeFade",
+      "type": "range",
+      "label": "Udtoning ved kanten",
+      "value": "40"
+    },
+    {
+      "id": "litSurface",
+      "type": "select-one",
+      "label": "Overflade",
+      "value": "smooth",
+      "options": [
+        {
+          "value": "smooth",
+          "label": "Glat diffuser"
+        },
+        {
+          "value": "printed",
+          "label": "Printtekstur"
+        }
+      ]
+    },
+    {
+      "id": "litStudio",
+      "type": "checkbox",
+      "label": " Gulv i visningen",
+      "value": "on"
+    },
+    {
+      "id": "litGlow",
+      "type": "checkbox",
+      "label": " Blødt skær",
+      "value": "on"
+    },
+    {
+      "id": "litVariation",
+      "type": "range",
+      "label": "Variation på fronten",
+      "value": "55"
+    },
+    {
+      "id": "litSideGlow",
+      "type": "range",
+      "label": "Lys gennem siderne",
+      "value": "0"
+    },
+    {
+      "id": "showCap",
+      "type": "checkbox",
+      "label": " Vis dækkappe",
+      "value": "on"
+    },
+    {
+      "id": "showBack",
+      "type": "checkbox",
+      "label": " Vis bagplade",
+      "value": "on"
+    },
+    {
+      "id": "explode",
+      "type": "range",
+      "label": "Adskil ",
+      "value": "0"
+    },
+    {
+      "id": "calibrationTarget",
+      "type": "select-one",
+      "label": "",
+      "value": "",
+      "options": []
+    },
+    {
+      "id": "calibrationValue",
+      "type": "select-one",
+      "label": "",
+      "value": "",
+      "options": []
+    },
+    {
+      "id": "ledEditBody",
+      "type": "select-one",
+      "label": "Kabinet",
+      "value": "",
+      "options": []
+    },
+    {
+      "id": "ledEditRoute",
+      "type": "select-one",
+      "label": "Føring",
+      "value": "",
+      "options": []
+    },
+    {
+      "id": "ledShowHoles",
+      "type": "checkbox",
+      "label": " Ledningspassager",
+      "value": "on"
+    },
+    {
+      "id": "ledHoleDiameter",
+      "type": "number",
+      "label": "Diameter på nyt hul · mm",
+      "value": "5"
+    },
+    {
+      "id": "ledHoleDiameterSlider",
+      "type": "range",
+      "label": "",
+      "value": "5"
+    },
+    {
+      "id": "ledHoleSelect",
+      "type": "select-one",
+      "label": "Ledningshul bagtil",
+      "value": "",
+      "options": []
+    },
+    {
+      "id": "dcFile",
+      "type": "file",
+      "label": "",
+      "value": ""
+    },
+    {
+      "id": "dcSnap",
+      "type": "checkbox",
+      "label": " Fastgør til 1 mm",
+      "value": "on"
+    },
+    {
+      "id": "dcName",
+      "type": "text",
+      "label": "Navn",
+      "value": ""
+    },
+    {
+      "id": "dcText",
+      "type": "textarea",
+      "label": "Tekst",
+      "value": ""
+    },
+    {
+      "id": "dcFont",
+      "type": "select-one",
+      "label": "Skrifttype",
+      "value": "msrounded",
+      "options": [
+        {
+          "value": "msrounded",
+          "label": "MS Rounded Bold (Fredoka)"
+        },
+        {
+          "value": "coiny",
+          "label": "Coiny"
+        },
+        {
+          "value": "chewy",
+          "label": "Chewy"
+        },
+        {
+          "value": "bold",
+          "label": "DejaVu Sans Bold"
+        },
+        {
+          "value": "regular",
+          "label": "DejaVu Sans"
+        },
+        {
+          "value": "serif",
+          "label": "DejaVu Serif"
+        },
+        {
+          "value": "serifbold",
+          "label": "DejaVu Serif Bold"
+        },
+        {
+          "value": "mono",
+          "label": "DejaVu Sans Mono"
+        },
+        {
+          "value": "monobold",
+          "label": "DejaVu Sans Mono Bold"
+        },
+        {
+          "value": "monoitalic",
+          "label": "DejaVu Sans Mono Italic"
+        },
+        {
+          "value": "monobolditalic",
+          "label": "DejaVu Sans Mono Bold Italic"
+        },
+        {
+          "value": "anton",
+          "label": "Anton"
+        },
+        {
+          "value": "bebas",
+          "label": "Bebas Neue"
+        },
+        {
+          "value": "archivo",
+          "label": "Archivo Black"
+        },
+        {
+          "value": "rowdies",
+          "label": "Rowdies Bold"
+        },
+        {
+          "value": "righteous",
+          "label": "Righteous"
+        },
+        {
+          "value": "bungee",
+          "label": "Bungee"
+        },
+        {
+          "value": "alfa",
+          "label": "Alfa Slab One"
+        },
+        {
+          "value": "dmserif",
+          "label": "DM Serif Display"
+        },
+        {
+          "value": "lobster",
+          "label": "Lobster"
+        },
+        {
+          "value": "pacifico",
+          "label": "Pacifico"
+        },
+        {
+          "value": "oleo",
+          "label": "Oleo Script"
+        },
+        {
+          "value": "yellowtail",
+          "label": "Yellowtail"
+        },
+        {
+          "value": "damion",
+          "label": "Damion"
+        },
+        {
+          "value": "courgette",
+          "label": "Courgette"
+        },
+        {
+          "value": "kaushan",
+          "label": "Kaushan Script"
+        },
+        {
+          "value": "oleoswash",
+          "label": "Oleo Script Swash Caps"
+        },
+        {
+          "value": "pattaya",
+          "label": "Pattaya"
+        },
+        {
+          "value": "berkshire",
+          "label": "Berkshire Swash"
+        },
+        {
+          "value": "leckerli",
+          "label": "Leckerli One"
+        },
+        {
+          "value": "lilyscript",
+          "label": "Lily Script One"
+        },
+        {
+          "value": "lobstertwo",
+          "label": "Lobster Two Bold Italic"
+        },
+        {
+          "value": "norican",
+          "label": "Norican"
+        },
+        {
+          "value": "molle",
+          "label": "Molle"
+        },
+        {
+          "value": "satisfy",
+          "label": "Satisfy"
+        },
+        {
+          "value": "cookie",
+          "label": "Cookie"
+        },
+        {
+          "value": "yesteryear",
+          "label": "Yesteryear"
+        },
+        {
+          "value": "grandhotel",
+          "label": "Grand Hotel"
+        },
+        {
+          "value": "playball",
+          "label": "Playball"
+        },
+        {
+          "value": "shrikhand",
+          "label": "Shrikhand"
+        },
+        {
+          "value": "lilitaone",
+          "label": "Lilita One"
+        },
+        {
+          "value": "racingsansone",
+          "label": "Racing Sans One"
+        },
+        {
+          "value": "patuaone",
+          "label": "Patua One"
+        }
+      ]
+    },
+    {
+      "id": "dcSpacing",
+      "type": "number",
+      "label": "Bogstavafstand",
+      "value": ""
+    },
+    {
+      "id": "dcLineGap",
+      "type": "number",
+      "label": "Linjeafstand",
+      "value": ""
+    },
+    {
+      "id": "dcAlign",
+      "type": "select-one",
+      "label": "Linjejustering",
+      "value": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Venstre"
+        },
+        {
+          "value": "center",
+          "label": "Centreret"
+        },
+        {
+          "value": "right",
+          "label": "Højre"
+        }
+      ]
+    },
+    {
+      "id": "dcRole",
+      "type": "select-one",
+      "label": "Formål",
+      "value": "solid",
+      "options": [
+        {
+          "value": "solid",
+          "label": "■ Massivt motiv"
+        },
+        {
+          "value": "face",
+          "label": "▧ Udskæring i front"
+        },
+        {
+          "value": "back",
+          "label": "▧ Udskæring i bagplade"
+        }
+      ]
+    },
+    {
+      "id": "dcColour",
+      "type": "color",
+      "label": "Objektfarve",
+      "value": "#000000"
+    },
+    {
+      "id": "dcWidth",
+      "type": "number",
+      "label": "Bredde · mm",
+      "value": ""
+    },
+    {
+      "id": "dcHeight",
+      "type": "number",
+      "label": "Højde · mm",
+      "value": ""
+    },
+    {
+      "id": "dcProportion",
+      "type": "checkbox",
+      "label": " Bevar proportioner",
+      "value": "on"
+    },
+    {
+      "id": "dcSize",
+      "type": "range",
+      "label": "Størrelse · højde i mm",
+      "value": "250.1"
+    },
+    {
+      "id": "dcX",
+      "type": "number",
+      "label": "Centrum X · mm",
+      "value": ""
+    },
+    {
+      "id": "dcY",
+      "type": "number",
+      "label": "Centrum Y · mm",
+      "value": ""
+    },
+    {
+      "id": "dcRotation",
+      "type": "number",
+      "label": "Drejning · grader",
+      "value": ""
+    },
+    {
+      "id": "dcRotate",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "dcVisible",
+      "type": "checkbox",
+      "label": " Synlig",
+      "value": "on"
+    },
+    {
+      "id": "dcLocked",
+      "type": "checkbox",
+      "label": " Låst",
+      "value": "on"
+    },
+    {
+      "id": "dcEnclosure",
+      "type": "select-one",
+      "label": "Kabinet",
+      "value": "current",
+      "options": [
+        {
+          "value": "current",
+          "label": "Behold nuværende konstruktion"
+        },
+        {
+          "value": "contour",
+          "label": "Én konturformet lyskasse"
+        },
+        {
+          "value": "rectangle",
+          "label": "Én rektangulær lyskasse"
+        }
+      ]
+    },
+    {
+      "id": "dcUseColours",
+      "type": "checkbox",
+      "label": " Print objektfarver",
+      "value": "on"
+    },
+    {
+      "id": "dcPatternEnabled",
+      "type": "checkbox",
+      "label": " Mønsterhuller",
+      "value": "on"
+    },
+    {
+      "id": "dcPattern-size",
+      "type": "number",
+      "label": "Hulstørrelse",
+      "value": ""
+    },
+    {
+      "id": "dcPattern-size-slider",
+      "type": "range",
+      "label": "",
+      "value": "21"
+    },
+    {
+      "id": "dcPattern-gap",
+      "type": "number",
+      "label": "Afstand mellem huller",
+      "value": ""
+    },
+    {
+      "id": "dcPattern-gap-slider",
+      "type": "range",
+      "label": "",
+      "value": "10.4"
+    },
+    {
+      "id": "dcPattern-border",
+      "type": "number",
+      "label": "Massiv kant",
+      "value": ""
+    },
+    {
+      "id": "dcPattern-border-slider",
+      "type": "range",
+      "label": "",
+      "value": "15.4"
+    },
+    {
+      "id": "dcPattern-rotation",
+      "type": "number",
+      "label": "Drej hvert hul",
+      "value": ""
+    },
+    {
+      "id": "dcPattern-rotation-slider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "dcPattern-offsetX",
+      "type": "number",
+      "label": "Vandret forskydning",
+      "value": ""
+    },
+    {
+      "id": "dcPattern-offsetX-slider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "dcPattern-offsetY",
+      "type": "number",
+      "label": "Lodret forskydning",
+      "value": ""
+    },
+    {
+      "id": "dcPattern-offsetY-slider",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "dcPatternGuides",
+      "type": "checkbox",
+      "label": " Vis guide til massiv kant",
+      "value": "on"
+    },
+    {
+      "id": "feedbackKind",
+      "type": "select-one",
+      "label": "Rapporttype",
+      "value": "Noget virkede ikke",
+      "options": [
+        {
+          "value": "Noget virkede ikke",
+          "label": "Noget virkede ikke"
+        },
+        {
+          "value": "Noget er uklart",
+          "label": "Noget er uklart"
+        },
+        {
+          "value": "Printresultat",
+          "label": "Printresultat"
+        },
+        {
+          "value": "Forslag",
+          "label": "Forslag"
+        }
+      ]
+    },
+    {
+      "id": "feedbackText",
+      "type": "textarea",
+      "label": "Din beskrivelse",
+      "value": ""
+    },
+    {
+      "id": "includeDiagnostics",
+      "type": "checkbox",
+      "label": " Medtag den tekniske oversigt nedenfor",
+      "value": "on"
+    },
+    {
+      "id": "nlFile",
+      "type": "file",
+      "label": "",
+      "value": ""
+    },
+    {
+      "id": "nl-text",
+      "type": "text",
+      "label": "Bogstaver eller ord",
+      "value": ""
+    },
+    {
+      "id": "nl-font",
+      "type": "select-one",
+      "label": "Bogstavskrifttype",
+      "value": "",
+      "options": []
+    },
+    {
+      "id": "nlAllFonts",
+      "type": "checkbox",
+      "label": " Vis alle medfølgende skrifttyper",
+      "value": "on"
+    },
+    {
+      "id": "nl-name",
+      "type": "text",
+      "label": "Navn",
+      "value": ""
+    },
+    {
+      "id": "nl-nameFont",
+      "type": "select-one",
+      "label": "Håndskriftstype",
+      "value": "pacifico",
+      "options": [
+        {
+          "value": "pacifico",
+          "label": "Pacifico"
+        },
+        {
+          "value": "norican",
+          "label": "Norican"
+        },
+        {
+          "value": "lobstertwo",
+          "label": "Lobster Two Bold Italic"
+        },
+        {
+          "value": "lobster",
+          "label": "Lobster"
+        },
+        {
+          "value": "oleo",
+          "label": "Oleo Script"
+        },
+        {
+          "value": "yellowtail",
+          "label": "Yellowtail"
+        },
+        {
+          "value": "damion",
+          "label": "Damion"
+        },
+        {
+          "value": "courgette",
+          "label": "Courgette"
+        },
+        {
+          "value": "kaushan",
+          "label": "Kaushan Script"
+        },
+        {
+          "value": "oleoswash",
+          "label": "Oleo Script Swash Caps"
+        },
+        {
+          "value": "pattaya",
+          "label": "Pattaya"
+        },
+        {
+          "value": "berkshire",
+          "label": "Berkshire Swash"
+        },
+        {
+          "value": "leckerli",
+          "label": "Leckerli One"
+        },
+        {
+          "value": "lilyscript",
+          "label": "Lily Script One"
+        },
+        {
+          "value": "molle",
+          "label": "Molle"
+        },
+        {
+          "value": "satisfy",
+          "label": "Satisfy"
+        },
+        {
+          "value": "cookie",
+          "label": "Cookie"
+        },
+        {
+          "value": "yesteryear",
+          "label": "Yesteryear"
+        },
+        {
+          "value": "grandhotel",
+          "label": "Grand Hotel"
+        },
+        {
+          "value": "playball",
+          "label": "Playball"
+        }
+      ]
+    },
+    {
+      "id": "nl-height",
+      "type": "number",
+      "label": "Bogstavhøjde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-height-range",
+      "type": "range",
+      "label": "",
+      "value": "315"
+    },
+    {
+      "id": "nl-depth",
+      "type": "number",
+      "label": "Kabinetdybde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-depth-range",
+      "type": "range",
+      "label": "",
+      "value": "42"
+    },
+    {
+      "id": "nl-nameWidthMm",
+      "type": "number",
+      "label": "Navnebredde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-nameWidthMm-range",
+      "type": "range",
+      "label": "",
+      "value": "500.5"
+    },
+    {
+      "id": "nl-nameRotation",
+      "type": "number",
+      "label": "Drejning · grader",
+      "value": ""
+    },
+    {
+      "id": "nl-nameRotation-range",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "nl-nameXMm",
+      "type": "number",
+      "label": "Venstre/højre · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-nameXMm-range",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "nl-nameYMm",
+      "type": "number",
+      "label": "Op/ned · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-nameYMm-range",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "nl-nameThickness",
+      "type": "number",
+      "label": "Navnetykkelse · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-nameThickness-range",
+      "type": "range",
+      "label": "",
+      "value": "17.8"
+    },
+    {
+      "id": "nl-nameInsertDepth",
+      "type": "number",
+      "label": "Dybde inde i bogstavet · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-nameInsertDepth-range",
+      "type": "range",
+      "label": "",
+      "value": "10.4"
+    },
+    {
+      "id": "nl-nameRaisedHeight",
+      "type": "number",
+      "label": "Højde over initialen · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-nameRaisedHeight-range",
+      "type": "range",
+      "label": "",
+      "value": "7.6"
+    },
+    {
+      "id": "nl-nameSpacing",
+      "type": "number",
+      "label": "Navneafstand · %",
+      "value": ""
+    },
+    {
+      "id": "nl-nameSpacing-range",
+      "type": "range",
+      "label": "",
+      "value": "-7.5"
+    },
+    {
+      "id": "nl-nameClearance",
+      "type": "number",
+      "label": "Frigang · mm pr. side",
+      "value": ""
+    },
+    {
+      "id": "nl-nameClearance-range",
+      "type": "range",
+      "label": "",
+      "value": "0.3"
+    },
+    {
+      "id": "nl-colour",
+      "type": "color",
+      "label": "Bogstavfarve",
+      "value": "#000000"
+    },
+    {
+      "id": "nl-nameColour",
+      "type": "color",
+      "label": "Navnefarve",
+      "value": "#000000"
+    },
+    {
+      "id": "nl-domeRound",
+      "type": "number",
+      "label": "Blødhed · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-domeRound-range",
+      "type": "range",
+      "label": "",
+      "value": "3.3"
+    },
+    {
+      "id": "nl-ridgeRound",
+      "type": "number",
+      "label": "Afrunding af top · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-ridgeRound-range",
+      "type": "range",
+      "label": "",
+      "value": "1.5"
+    },
+    {
+      "id": "nl-studDiameter",
+      "type": "number",
+      "label": "Knopdiameter · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-studDiameter-range",
+      "type": "range",
+      "label": "",
+      "value": "7"
+    },
+    {
+      "id": "nl-studHeight",
+      "type": "number",
+      "label": "Knophøjde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-studHeight-range",
+      "type": "range",
+      "label": "",
+      "value": "4.4"
+    },
+    {
+      "id": "nl-studPitch",
+      "type": "number",
+      "label": "Knopafstand · centrum til centrum",
+      "value": ""
+    },
+    {
+      "id": "nl-studPitch-range",
+      "type": "range",
+      "label": "",
+      "value": "14"
+    },
+    {
+      "id": "nl-studMargin",
+      "type": "number",
+      "label": "Fri plads ved kanter · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-studMargin-range",
+      "type": "range",
+      "label": "",
+      "value": "2.8"
+    },
+    {
+      "id": "nl-studShiftX",
+      "type": "number",
+      "label": "På tværs · % af gitterafstand",
+      "value": ""
+    },
+    {
+      "id": "nl-studShiftX-range",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "nl-studShiftY",
+      "type": "number",
+      "label": "Op/ned · % af gitterafstand",
+      "value": ""
+    },
+    {
+      "id": "nl-studShiftY-range",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "nl-outlineWidth",
+      "type": "number",
+      "label": "Kantbredde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-outlineWidth-range",
+      "type": "range",
+      "label": "",
+      "value": "8"
+    },
+    {
+      "id": "nl-outlineFace",
+      "type": "number",
+      "label": "Hævede bogstaver · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-outlineFace-range",
+      "type": "range",
+      "label": "",
+      "value": "5.4"
+    },
+    {
+      "id": "nl-outlineMode",
+      "type": "select-one",
+      "label": "Sådan printes det",
+      "value": "together",
+      "options": [
+        {
+          "value": "together",
+          "label": "Samlet · tofarvet 3MF"
+        },
+        {
+          "value": "separate",
+          "label": "Separate dele · limes på"
+        }
+      ]
+    },
+    {
+      "id": "nl-stoneRound",
+      "type": "number",
+      "label": "Kantslid · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-stoneRound-range",
+      "type": "range",
+      "label": "",
+      "value": "3.3"
+    },
+    {
+      "id": "nl-stoneRoughness",
+      "type": "number",
+      "label": "Ru sider · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-stoneRoughness-range",
+      "type": "range",
+      "label": "",
+      "value": "1"
+    },
+    {
+      "id": "nl-woodRound",
+      "type": "number",
+      "label": "Kantslid · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-woodRound-range",
+      "type": "range",
+      "label": "",
+      "value": "3.3"
+    },
+    {
+      "id": "nl-woodRoughness",
+      "type": "number",
+      "label": "Ru sider · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-woodRoughness-range",
+      "type": "range",
+      "label": "",
+      "value": "1"
+    },
+    {
+      "id": "nl-textureScale",
+      "type": "number",
+      "label": "Mønsterstørrelse · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-textureScale-range",
+      "type": "range",
+      "label": "",
+      "value": "33"
+    },
+    {
+      "id": "nl-textureAngle",
+      "type": "number",
+      "label": "Retning · grader",
+      "value": ""
+    },
+    {
+      "id": "nl-textureAngle-range",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "nl-printNozzle",
+      "type": "select-one",
+      "label": "Dyse · mm",
+      "value": "0.2",
+      "options": [
+        {
+          "value": "0.2",
+          "label": "0.2 mm"
+        },
+        {
+          "value": "0.4",
+          "label": "0.4 mm"
+        },
+        {
+          "value": "0.6",
+          "label": "0.6 mm"
+        },
+        {
+          "value": "0.8",
+          "label": "0.8 mm"
+        }
+      ]
+    },
+    {
+      "id": "nl-printLayer",
+      "type": "number",
+      "label": "Laghøjde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-printLayer-range",
+      "type": "range",
+      "label": "",
+      "value": "0.24"
+    },
+    {
+      "id": "nl-wall",
+      "type": "number",
+      "label": "Vægtykkelse · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-wall-range",
+      "type": "range",
+      "label": "",
+      "value": "4.4"
+    },
+    {
+      "id": "nl-base",
+      "type": "number",
+      "label": "Bakkebund · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-base-range",
+      "type": "range",
+      "label": "",
+      "value": "5.4"
+    },
+    {
+      "id": "nl-trayRounding",
+      "type": "number",
+      "label": "Kantafrunding · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-trayRounding-range",
+      "type": "range",
+      "label": "",
+      "value": "1.9"
+    },
+    {
+      "id": "nl-bevel",
+      "type": "number",
+      "label": "Affasningsbredde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-bevel-range",
+      "type": "range",
+      "label": "",
+      "value": "4.5"
+    },
+    {
+      "id": "nl-relief",
+      "type": "number",
+      "label": "Hævet højde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-relief-range",
+      "type": "range",
+      "label": "",
+      "value": "8"
+    },
+    {
+      "id": "nl-cell",
+      "type": "number",
+      "label": "Facetstørrelse · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-cell-range",
+      "type": "range",
+      "label": "",
+      "value": "34"
+    },
+    {
+      "id": "nl-spacing",
+      "type": "number",
+      "label": "Bogstavafstand",
+      "value": ""
+    },
+    {
+      "id": "nl-spacing-range",
+      "type": "range",
+      "label": "",
+      "value": "7.5"
+    },
+    {
+      "id": "nl-standStyle",
+      "type": "select-one",
+      "label": "Hvordan skal det stå?",
+      "value": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "Ingen fod"
+        },
+        {
+          "value": "flat",
+          "label": "Afskæring til flad bund"
+        },
+        {
+          "value": "rounded",
+          "label": "Afrundet sokkel"
+        },
+        {
+          "value": "stepped",
+          "label": "Trindelt piedestal"
+        }
+      ]
+    },
+    {
+      "id": "nl-bottomTrim",
+      "type": "number",
+      "label": "Afskæring fra bunden · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-bottomTrim-range",
+      "type": "range",
+      "label": "",
+      "value": "5.5"
+    },
+    {
+      "id": "nl-standDepth",
+      "type": "number",
+      "label": "Foddybde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-standDepth-range",
+      "type": "range",
+      "label": "",
+      "value": "106"
+    },
+    {
+      "id": "nl-standMargin",
+      "type": "number",
+      "label": "Sidemargen · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-standMargin-range",
+      "type": "range",
+      "label": "",
+      "value": "18"
+    },
+    {
+      "id": "nl-standHeight",
+      "type": "number",
+      "label": "Fodhøjde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-standHeight-range",
+      "type": "range",
+      "label": "",
+      "value": "15.5"
+    },
+    {
+      "id": "nl-standEmbed",
+      "type": "number",
+      "label": "Bogstavets indstiksdybde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-standEmbed-range",
+      "type": "range",
+      "label": "",
+      "value": "6.5"
+    },
+    {
+      "id": "nl-standClearance",
+      "type": "number",
+      "label": "Spaltens frigang · mm pr. side",
+      "value": ""
+    },
+    {
+      "id": "nl-standClearance-range",
+      "type": "range",
+      "label": "",
+      "value": "0.3"
+    },
+    {
+      "id": "nl-standColour",
+      "type": "color",
+      "label": "Fodfarve",
+      "value": "#000000"
+    },
+    {
+      "id": "nl-bedX",
+      "type": "number",
+      "label": "Pladebredde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-bedX-range",
+      "type": "range",
+      "label": "",
+      "value": "340"
+    },
+    {
+      "id": "nl-bedY",
+      "type": "number",
+      "label": "Pladedybde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-bedY-range",
+      "type": "range",
+      "label": "",
+      "value": "340"
+    },
+    {
+      "id": "nl-bedZ",
+      "type": "number",
+      "label": "Byggehøjde · mm",
+      "value": ""
+    },
+    {
+      "id": "nl-bedZ-range",
+      "type": "range",
+      "label": "",
+      "value": "340"
+    },
+    {
+      "id": "nl-nameWidth",
+      "type": "number",
+      "label": "Navnebredde · % af initial",
+      "value": ""
+    },
+    {
+      "id": "nl-nameWidth-range",
+      "type": "range",
+      "label": "",
+      "value": "100"
+    },
+    {
+      "id": "nl-nameX",
+      "type": "number",
+      "label": "Venstre/højre · % af initial",
+      "value": ""
+    },
+    {
+      "id": "nl-nameX-range",
+      "type": "range",
+      "label": "",
+      "value": "0"
+    },
+    {
+      "id": "nl-nameY",
+      "type": "number",
+      "label": "Navnets centrum · % fra bunden",
+      "value": ""
+    },
+    {
+      "id": "nl-nameY-range",
+      "type": "range",
+      "label": "",
+      "value": "50"
+    },
+    {
+      "id": "nlGrid",
+      "type": "checkbox",
+      "label": " Gitter",
+      "value": "on"
+    },
+    {
+      "id": "haloSource",
+      "type": "select-one",
+      "label": "Start med",
+      "value": "text",
+      "options": [
+        {
+          "value": "text",
+          "label": "Tekst"
+        },
+        {
+          "value": "svg",
+          "label": "SVG-motiv"
+        }
+      ]
+    },
+    {
+      "id": "haloFile",
+      "type": "file",
+      "label": "Vælg SVG",
+      "value": ""
+    },
+    {
+      "id": "haloText",
+      "type": "text",
+      "label": "Bogstaver eller ord",
+      "value": "A"
+    },
+    {
+      "id": "haloFont",
+      "type": "select-one",
+      "label": "Skrifttype",
+      "value": "archivo",
+      "options": [
+        {
+          "value": "msrounded",
+          "label": "MS Rounded Bold (Fredoka)"
+        },
+        {
+          "value": "coiny",
+          "label": "Coiny"
+        },
+        {
+          "value": "chewy",
+          "label": "Chewy"
+        },
+        {
+          "value": "bold",
+          "label": "DejaVu Sans Bold"
+        },
+        {
+          "value": "regular",
+          "label": "DejaVu Sans"
+        },
+        {
+          "value": "serif",
+          "label": "DejaVu Serif"
+        },
+        {
+          "value": "serifbold",
+          "label": "DejaVu Serif Bold"
+        },
+        {
+          "value": "mono",
+          "label": "DejaVu Sans Mono"
+        },
+        {
+          "value": "monobold",
+          "label": "DejaVu Sans Mono Bold"
+        },
+        {
+          "value": "monoitalic",
+          "label": "DejaVu Sans Mono Italic"
+        },
+        {
+          "value": "monobolditalic",
+          "label": "DejaVu Sans Mono Bold Italic"
+        },
+        {
+          "value": "anton",
+          "label": "Anton"
+        },
+        {
+          "value": "bebas",
+          "label": "Bebas Neue"
+        },
+        {
+          "value": "archivo",
+          "label": "Archivo Black"
+        },
+        {
+          "value": "rowdies",
+          "label": "Rowdies Bold"
+        },
+        {
+          "value": "righteous",
+          "label": "Righteous"
+        },
+        {
+          "value": "bungee",
+          "label": "Bungee"
+        },
+        {
+          "value": "alfa",
+          "label": "Alfa Slab One"
+        },
+        {
+          "value": "dmserif",
+          "label": "DM Serif Display"
+        },
+        {
+          "value": "lobster",
+          "label": "Lobster"
+        },
+        {
+          "value": "pacifico",
+          "label": "Pacifico"
+        },
+        {
+          "value": "oleo",
+          "label": "Oleo Script"
+        },
+        {
+          "value": "yellowtail",
+          "label": "Yellowtail"
+        },
+        {
+          "value": "damion",
+          "label": "Damion"
+        },
+        {
+          "value": "courgette",
+          "label": "Courgette"
+        },
+        {
+          "value": "kaushan",
+          "label": "Kaushan Script"
+        },
+        {
+          "value": "oleoswash",
+          "label": "Oleo Script Swash Caps"
+        },
+        {
+          "value": "pattaya",
+          "label": "Pattaya"
+        },
+        {
+          "value": "berkshire",
+          "label": "Berkshire Swash"
+        },
+        {
+          "value": "leckerli",
+          "label": "Leckerli One"
+        },
+        {
+          "value": "lilyscript",
+          "label": "Lily Script One"
+        },
+        {
+          "value": "lobstertwo",
+          "label": "Lobster Two Bold Italic"
+        },
+        {
+          "value": "norican",
+          "label": "Norican"
+        },
+        {
+          "value": "molle",
+          "label": "Molle"
+        },
+        {
+          "value": "satisfy",
+          "label": "Satisfy"
+        },
+        {
+          "value": "cookie",
+          "label": "Cookie"
+        },
+        {
+          "value": "yesteryear",
+          "label": "Yesteryear"
+        },
+        {
+          "value": "grandhotel",
+          "label": "Grand Hotel"
+        },
+        {
+          "value": "playball",
+          "label": "Playball"
+        },
+        {
+          "value": "shrikhand",
+          "label": "Shrikhand"
+        },
+        {
+          "value": "lilitaone",
+          "label": "Lilita One"
+        },
+        {
+          "value": "racingsansone",
+          "label": "Racing Sans One"
+        },
+        {
+          "value": "patuaone",
+          "label": "Patua One"
+        }
+      ]
+    },
+    {
+      "id": "haloColour",
+      "type": "color",
+      "label": "Kabinetfarve",
+      "value": "#34485e"
+    },
+    {
+      "id": "halo-height",
+      "type": "number",
+      "label": "Højde · mm",
+      "value": "180"
+    },
+    {
+      "id": "halo-height-range",
+      "type": "range",
+      "label": "",
+      "value": "180"
+    },
+    {
+      "id": "halo-depth",
+      "type": "number",
+      "label": "Kabinetdybde · mm",
+      "value": "28"
+    },
+    {
+      "id": "halo-depth-range",
+      "type": "range",
+      "label": "",
+      "value": "28"
+    },
+    {
+      "id": "halo-wall",
+      "type": "number",
+      "label": "Vægtykkelse · mm",
+      "value": "2"
+    },
+    {
+      "id": "halo-wall-range",
+      "type": "range",
+      "label": "",
+      "value": "2"
+    },
+    {
+      "id": "halo-front",
+      "type": "number",
+      "label": "Uigennemsigtig front · mm",
+      "value": "2.4"
+    },
+    {
+      "id": "halo-front-range",
+      "type": "range",
+      "label": "",
+      "value": "2.4"
+    },
+    {
+      "id": "halo-ledWidth",
+      "type": "number",
+      "label": "LED-båndbredde · mm",
+      "value": "7"
+    },
+    {
+      "id": "halo-ledWidth-range",
+      "type": "range",
+      "label": "",
+      "value": "7"
+    },
+    {
+      "id": "halo-ledThickness",
+      "type": "number",
+      "label": "LED-tykkelse · mm",
+      "value": "2"
+    },
+    {
+      "id": "halo-ledThickness-range",
+      "type": "range",
+      "label": "",
+      "value": "2"
+    },
+    {
+      "id": "haloReflector",
+      "type": "select-one",
+      "label": "Hvid reflektorindsats",
+      "value": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Automatisk · farvede kabinetter"
+        },
+        {
+          "value": "always",
+          "label": "Medtag altid"
+        },
+        {
+          "value": "off",
+          "label": "Fra · jeg bruger min egen hvide beklædning"
+        }
+      ]
+    },
+    {
+      "id": "halo-reflectorThickness",
+      "type": "number",
+      "label": "Hvid indsatstykkelse · mm",
+      "value": "1.2"
+    },
+    {
+      "id": "halo-reflectorThickness-range",
+      "type": "range",
+      "label": "",
+      "value": "1.2"
+    },
+    {
+      "id": "halo-reflectorFit",
+      "type": "number",
+      "label": "Indsatsens frigang pr. side · mm",
+      "value": "0.25"
+    },
+    {
+      "id": "halo-reflectorFit-range",
+      "type": "range",
+      "label": "",
+      "value": "0.25"
+    },
+    {
+      "id": "halo-gap",
+      "type": "number",
+      "label": "Vægafstand · mm",
+      "value": "19.05"
+    },
+    {
+      "id": "halo-gap-range",
+      "type": "range",
+      "label": "",
+      "value": "19.05"
+    },
+    {
+      "id": "halo-standoffDiameter",
+      "type": "number",
+      "label": "Afstandsstykkets diameter · mm",
+      "value": "11"
+    },
+    {
+      "id": "halo-standoffDiameter-range",
+      "type": "range",
+      "label": "",
+      "value": "11"
+    },
+    {
+      "id": "halo-edgeClearance",
+      "type": "number",
+      "label": "Mindste kantafstand · mm",
+      "value": "4"
+    },
+    {
+      "id": "halo-edgeClearance-range",
+      "type": "range",
+      "label": "",
+      "value": "4"
+    },
+    {
+      "id": "halo-mountCount",
+      "type": "number",
+      "label": "Beslag pr. del · mindst 3",
+      "value": "3"
+    },
+    {
+      "id": "halo-mountCount-range",
+      "type": "range",
+      "label": "",
+      "value": "3"
+    },
+    {
+      "id": "halo-fit",
+      "type": "number",
+      "label": "Soklens frigang pr. side · mm",
+      "value": "0.25"
+    },
+    {
+      "id": "halo-fit-range",
+      "type": "range",
+      "label": "",
+      "value": "0.25"
+    },
+    {
+      "id": "halo-screw",
+      "type": "number",
+      "label": "Frigang til skrueskaft · mm",
+      "value": "3.4"
+    },
+    {
+      "id": "halo-screw-range",
+      "type": "range",
+      "label": "",
+      "value": "3.4"
+    },
+    {
+      "id": "halo-bedX",
+      "type": "number",
+      "label": "Pladebredde · mm",
+      "value": "256"
+    },
+    {
+      "id": "halo-bedX-range",
+      "type": "range",
+      "label": "",
+      "value": "256"
+    },
+    {
+      "id": "halo-bedY",
+      "type": "number",
+      "label": "Pladedybde · mm",
+      "value": "256"
+    },
+    {
+      "id": "halo-bedY-range",
+      "type": "range",
+      "label": "",
+      "value": "256"
+    },
+    {
+      "id": "halo-bedZ",
+      "type": "number",
+      "label": "Printhøjde · mm",
+      "value": "256"
+    },
+    {
+      "id": "halo-bedZ-range",
+      "type": "range",
+      "label": "",
+      "value": "256"
+    },
+    {
+      "id": "haloPart",
+      "type": "select-one",
+      "label": "Del ",
+      "value": "",
+      "options": []
+    },
+    {
+      "id": "haloMarker",
+      "type": "select-one",
+      "label": "Markør ",
+      "value": "",
+      "options": []
+    },
+    {
+      "id": "haloX",
+      "type": "number",
+      "label": "X mm ",
+      "value": ""
+    },
+    {
+      "id": "haloY",
+      "type": "number",
+      "label": "Y mm ",
+      "value": ""
+    },
+    {
+      "id": "halo-wireDiameter",
+      "type": "number",
+      "label": "Ledningshul i væg · mm",
+      "value": "6"
+    },
+    {
+      "id": "halo-wireDiameter-range",
+      "type": "range",
+      "label": "",
+      "value": "6"
+    },
+    {
+      "id": "welcomeSkip",
+      "type": "checkbox",
+      "label": " Spring dette vindue over næste gang",
+      "value": "on"
+    }
+  ],
+  "buttons": [
+    {
+      "id": "openProjectWelcome",
+      "text": "Projekter"
+    },
+    {
+      "id": "undoDesign",
+      "text": "Fortryd"
+    },
+    {
+      "id": "saveDesign",
+      "text": "Gem design"
+    },
+    {
+      "id": "openDesign",
+      "text": "Åbn design"
+    },
+    {
+      "id": "openStarters",
+      "text": "Eksempler"
+    },
+    {
+      "id": "startTour",
+      "text": "Vejledning"
+    },
+    {
+      "id": "uxMainPrint",
+      "text": "Printfiler"
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "tourAction",
+      "text": ""
+    },
+    {
+      "id": "tourBack",
+      "text": "Tilbage"
+    },
+    {
+      "id": "tourNext",
+      "text": "Næste"
+    },
+    {
+      "id": "tourClose",
+      "text": "Spring introduktionen over"
+    },
+    {
+      "id": "redoDesign",
+      "text": ""
+    },
+    {
+      "id": "simpleUI",
+      "text": "Enkel"
+    },
+    {
+      "id": "advancedUI",
+      "text": "Flere indstillinger"
+    },
+    {
+      "id": "tab-design",
+      "text": "Design"
+    },
+    {
+      "id": "tab-size",
+      "text": "Størrelse"
+    },
+    {
+      "id": "tab-build",
+      "text": "Konstruktion"
+    },
+    {
+      "id": "tab-lighting",
+      "text": "Montering"
+    },
+    {
+      "id": "tab-download",
+      "text": "Print"
+    },
+    {
+      "id": "",
+      "text": "Vis mig hvordan"
+    },
+    {
+      "id": "uiErrorJump",
+      "text": "Gå til indstillingen"
+    },
+    {
+      "id": "firstUseTour",
+      "text": "Vis mig rundt"
+    },
+    {
+      "id": "firstUseExample",
+      "text": "Prøv et eksempel"
+    },
+    {
+      "id": "firstUseDismiss",
+      "text": "Jeg udforsker selv"
+    },
+    {
+      "id": "changeDesign",
+      "text": "Skift model"
+    },
+    {
+      "id": "",
+      "text": "H\nH\nSeparate bogstaver"
+    },
+    {
+      "id": "",
+      "text": "H\nH\nSammenføjede bogstaver"
+    },
+    {
+      "id": "",
+      "text": "HHFælles bagpladeSeparate konturer forbundet med en printet bagplade"
+    },
+    {
+      "id": "",
+      "text": "H\nH\nKonturformet lyskasse"
+    },
+    {
+      "id": "",
+      "text": "H\nH\nRektangulær lyskasse"
+    },
+    {
+      "id": "cancelDesignChange",
+      "text": "Behold det nuværende design"
+    },
+    {
+      "id": "textMode",
+      "text": "Skriv tekst"
+    },
+    {
+      "id": "svgMode",
+      "text": "SVG-fil"
+    },
+    {
+      "id": "browseSVG",
+      "text": "Gennemse…"
+    },
+    {
+      "id": "shapesMode",
+      "text": "Figurer"
+    },
+    {
+      "id": "textUpper",
+      "text": "ABC"
+    },
+    {
+      "id": "textLower",
+      "text": "abc"
+    },
+    {
+      "id": "textTitle",
+      "text": "Abc"
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "resetTextStyle",
+      "text": ""
+    },
+    {
+      "id": "resetLetters",
+      "text": "Nulstil bogstavjusteringer"
+    },
+    {
+      "id": "",
+      "text": "Vælg samlet højde og dybde →"
+    },
+    {
+      "id": "",
+      "text": "Kvadrat"
+    },
+    {
+      "id": "",
+      "text": "Cirkel"
+    },
+    {
+      "id": "",
+      "text": "Oval"
+    },
+    {
+      "id": "",
+      "text": "Rektangel"
+    },
+    {
+      "id": "",
+      "text": "Afrundet rektangel"
+    },
+    {
+      "id": "",
+      "text": "Trekant"
+    },
+    {
+      "id": "",
+      "text": "Rombe"
+    },
+    {
+      "id": "",
+      "text": "Sekskant"
+    },
+    {
+      "id": "",
+      "text": "Ottekant"
+    },
+    {
+      "id": "",
+      "text": "Stjerne"
+    },
+    {
+      "id": "",
+      "text": "Hjerte"
+    },
+    {
+      "id": "",
+      "text": "Pil"
+    },
+    {
+      "id": "",
+      "text": "Bue"
+    },
+    {
+      "id": "",
+      "text": "Automatisk størrelse"
+    },
+    {
+      "id": "",
+      "text": "Fast størrelse"
+    },
+    {
+      "id": "",
+      "text": "Ét stykke"
+    },
+    {
+      "id": "",
+      "text": "Sommerfuglenøgler"
+    },
+    {
+      "id": "",
+      "text": "Svalehalesamlinger"
+    },
+    {
+      "id": "",
+      "text": "MSMellem figurer"
+    },
+    {
+      "id": "",
+      "text": "MSEns sektioner"
+    },
+    {
+      "id": "viewSplitParts",
+      "text": "Klargør og vis opdelte dele"
+    },
+    {
+      "id": "editBuildCanvas",
+      "text": "Redigér lærred"
+    },
+    {
+      "id": "canvasBuildSize",
+      "text": "Størrelse og printer"
+    },
+    {
+      "id": "canvasBuildColours",
+      "text": "Printfarver"
+    },
+    {
+      "id": "changeConstruction",
+      "text": "Skift"
+    },
+    {
+      "id": "",
+      "text": "Indsat frontFastgør indsatserMindre bogstavfronter passer i et bredere kabinet med fælles plads til LED-lys og ledninger."
+    },
+    {
+      "id": "",
+      "text": "Front med flangePrøv pasningenChecked when selected.Printet front med en flange, der passer inden i eller uden på kabinettet. Prøv pasningen før brug."
+    },
+    {
+      "id": "",
+      "text": "Separat frontFastgør frontenSæt fronten i, og fastgør den. Ingen aftagelig bagplade."
+    },
+    {
+      "id": "",
+      "text": "Ydre kappeLim frontenYdersiderne dækker hele bogstavet eller logoet ned til bagsiden; kappe og pålimet front løftes af sammen."
+    },
+    {
+      "id": "",
+      "text": "BagbakkeLim frontenLim fronten på skallen; fjern bakken for at få adgang bagfra."
+    },
+    {
+      "id": "",
+      "text": "Akryl og dækkappeSkær akrylEn printet dækkappe overlapper den udskårne akrylfront."
+    },
+    {
+      "id": "",
+      "text": "Front og væggeBagpladePrint med fronten nedad; montér en separat bagplade."
+    },
+    {
+      "id": "buildAssemblyView",
+      "text": "Vis samling"
+    },
+    {
+      "id": "buildAssembledView",
+      "text": "Samlet"
+    },
+    {
+      "id": "adjustPushIn",
+      "text": "Tilpas utilgængelige kraveindstillinger"
+    },
+    {
+      "id": "",
+      "text": "Lige sider"
+    },
+    {
+      "id": "",
+      "text": "Bredere bagside"
+    },
+    {
+      "id": "",
+      "text": "Bredere front"
+    },
+    {
+      "id": "",
+      "text": "5°"
+    },
+    {
+      "id": "",
+      "text": "10°"
+    },
+    {
+      "id": "",
+      "text": "15°"
+    },
+    {
+      "id": "",
+      "text": "3D-print"
+    },
+    {
+      "id": "",
+      "text": "CNC-skæring"
+    },
+    {
+      "id": "",
+      "text": "Laserskæring"
+    },
+    {
+      "id": "",
+      "text": "Plan"
+    },
+    {
+      "id": "",
+      "text": "Forsænket"
+    },
+    {
+      "id": "",
+      "text": "1/8″ · 3.175 mm"
+    },
+    {
+      "id": "",
+      "text": "3/16″ · 4.7625 mm"
+    },
+    {
+      "id": "",
+      "text": "1/4″ · 6.35 mm"
+    },
+    {
+      "id": "",
+      "text": "Indvendigt"
+    },
+    {
+      "id": "",
+      "text": "Udvendigt"
+    },
+    {
+      "id": "openFacePatterns",
+      "text": "Frontmønstre · redigér på lærredet"
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": ""
+    },
+    {
+      "id": "",
+      "text": "Én farve"
+    },
+    {
+      "id": "",
+      "text": "Farvebånd"
+    },
+    {
+      "id": "",
+      "text": "SVG-farver"
+    },
+    {
+      "id": "",
+      "text": "Vandret"
+    },
+    {
+      "id": "",
+      "text": "Lodret"
+    },
+    {
+      "id": "",
+      "text": "Farve og baglag"
+    },
+    {
+      "id": "",
+      "text": "Farve i fuld dybde"
+    },
+    {
+      "id": "",
+      "text": "Løs pasning"
+    },
+    {
+      "id": "",
+      "text": "Friktionspasning"
+    },
+    {
+      "id": "",
+      "text": "Skruer"
+    },
+    {
+      "id": "",
+      "text": "Prespasning"
+    },
+    {
+      "id": "buildFitTest",
+      "text": "Find den rette pasning · prøver"
+    },
+    {
+      "id": "",
+      "text": "Ingen fod"
+    },
+    {
+      "id": "",
+      "text": "Bordfod"
+    },
+    {
+      "id": "",
+      "text": "Skruer"
+    },
+    {
+      "id": "",
+      "text": "Indskudt kliknøgle"
+    },
+    {
+      "id": "",
+      "text": "Friktionspasning"
+    },
+    {
+      "id": "",
+      "text": "Automatisk størrelse"
+    },
+    {
+      "id": "",
+      "text": "Tilpasset størrelse"
+    },
+    {
+      "id": "",
+      "text": "Ingen ledningshuller"
+    },
+    {
+      "id": "",
+      "text": "Ledningshuller"
+    },
+    {
+      "id": "",
+      "text": "6 mm bånd"
+    },
+    {
+      "id": "",
+      "text": "7 mm bånd"
+    },
+    {
+      "id": "ledOpenEditor",
+      "text": "Redigér LED’er og ledningshuller · stor visning"
+    },
+    {
+      "id": "preparePrintFiles",
+      "text": "Klargør printfiler"
+    },
+    {
+      "id": "preparePlates",
+      "text": "Fordel på printplader"
+    },
+    {
+      "id": "previousStep",
+      "text": "Tilbage"
+    },
+    {
+      "id": "nextStep",
+      "text": "Næste: Størrelse"
+    },
+    {
+      "id": "canvasMode",
+      "text": "Redigér lærred"
+    },
+    {
+      "id": "resetView",
+      "text": "Nulstil visning"
+    },
+    {
+      "id": "frontView",
+      "text": "Forfra · mål"
+    },
+    {
+      "id": "rearView",
+      "text": "Bagfra"
+    },
+    {
+      "id": "isoView",
+      "text": "3D-visning"
+    },
+    {
+      "id": "",
+      "text": "Materialefarver"
+    },
+    {
+      "id": "",
+      "text": "☀ Lys tændt"
+    },
+    {
+      "id": "",
+      "text": "Samlefarver"
+    },
+    {
+      "id": "",
+      "text": "Kabinet\n✓"
+    },
+    {
+      "id": "",
+      "text": "Front\n✓"
+    },
+    {
+      "id": "",
+      "text": "Dækkappe✓"
+    },
+    {
+      "id": "",
+      "text": "Tilbage✓"
+    },
+    {
+      "id": "",
+      "text": "Bordfod✓"
+    },
+    {
+      "id": "",
+      "text": "Samlingsnøgler✓"
+    },
+    {
+      "id": "assembleView",
+      "text": "Samlet"
+    },
+    {
+      "id": "separateView",
+      "text": "Vis samling"
+    },
+    {
+      "id": "makeCalibration",
+      "text": ""
+    },
+    {
+      "id": "applyCalibration",
+      "text": ""
+    },
+    {
+      "id": "ledCloseEditor",
+      "text": "Luk"
+    },
+    {
+      "id": "ledScratch",
+      "text": "Tegn fra bunden"
+    },
+    {
+      "id": "ledDraw",
+      "text": "Erstat føring"
+    },
+    {
+      "id": "ledAdd",
+      "text": "Tilføj føring"
+    },
+    {
+      "id": "ledDelete",
+      "text": "Slet føring"
+    },
+    {
+      "id": "ledZoomIn",
+      "text": "+"
+    },
+    {
+      "id": "ledZoomOut",
+      "text": "−"
+    },
+    {
+      "id": "ledFitView",
+      "text": "Tilpas visning til design"
+    },
+    {
+      "id": "ledPan",
+      "text": "Panorér"
+    },
+    {
+      "id": "ledAddHole",
+      "text": "Placér ledningshul bagtil"
+    },
+    {
+      "id": "ledDeleteHole",
+      "text": "Slet hul"
+    },
+    {
+      "id": "ledUndoPoint",
+      "text": "Fortryd punkt"
+    },
+    {
+      "id": "ledFinish",
+      "text": "Afslut tegning"
+    },
+    {
+      "id": "ledCancelDraw",
+      "text": "Annullér tegning"
+    },
+    {
+      "id": "ledApply",
+      "text": "Anvend og kontrollér"
+    },
+    {
+      "id": "ledReset",
+      "text": "Nulstil føringer og huller"
+    },
+    {
+      "id": "",
+      "text": "Luk"
+    },
+    {
+      "id": "",
+      "text": "1 · Opdelte dele"
+    },
+    {
+      "id": "",
+      "text": "2 · Saml kabinetter"
+    },
+    {
+      "id": "",
+      "text": "3 · Montér fronter"
+    },
+    {
+      "id": "",
+      "text": "4 · Samlet"
+    },
+    {
+      "id": "",
+      "text": "Tilpas visning"
+    },
+    {
+      "id": "",
+      "text": "Fortryd"
+    },
+    {
+      "id": "",
+      "text": "Gentag"
+    },
+    {
+      "id": "",
+      "text": "Annullér"
+    },
+    {
+      "id": "",
+      "text": "Anvend ændringer"
+    },
+    {
+      "id": "",
+      "text": "Tekst"
+    },
+    {
+      "id": "",
+      "text": "Figur"
+    },
+    {
+      "id": "",
+      "text": "Importér SVG"
+    },
+    {
+      "id": "",
+      "text": "Frontmønster"
+    },
+    {
+      "id": "",
+      "text": "Duplikér"
+    },
+    {
+      "id": "",
+      "text": "Forén"
+    },
+    {
+      "id": "",
+      "text": "Træk fra"
+    },
+    {
+      "id": "",
+      "text": "Slet"
+    },
+    {
+      "id": "",
+      "text": "Flyt frem"
+    },
+    {
+      "id": "",
+      "text": "Flyt tilbage"
+    },
+    {
+      "id": "",
+      "text": "Tilpas visning"
+    },
+    {
+      "id": "",
+      "text": "−"
+    },
+    {
+      "id": "",
+      "text": "+"
+    },
+    {
+      "id": "dcPatternDismissHint",
+      "text": "×"
+    },
+    {
+      "id": "",
+      "text": "×"
+    },
+    {
+      "id": "",
+      "text": "Kvadrat"
+    },
+    {
+      "id": "",
+      "text": "Cirkel"
+    },
+    {
+      "id": "",
+      "text": "Oval"
+    },
+    {
+      "id": "",
+      "text": "Rektangel"
+    },
+    {
+      "id": "",
+      "text": "Afrundet rektangel"
+    },
+    {
+      "id": "",
+      "text": "Trekant"
+    },
+    {
+      "id": "",
+      "text": "Rombe"
+    },
+    {
+      "id": "",
+      "text": "Sekskant"
+    },
+    {
+      "id": "",
+      "text": "Ottekant"
+    },
+    {
+      "id": "",
+      "text": "Stjerne"
+    },
+    {
+      "id": "",
+      "text": "Hjerte"
+    },
+    {
+      "id": "",
+      "text": "Pil"
+    },
+    {
+      "id": "",
+      "text": "Bue"
+    },
+    {
+      "id": "",
+      "text": "Motiv"
+    },
+    {
+      "id": "",
+      "text": "Mønster"
+    },
+    {
+      "id": "dcApplyText",
+      "text": "Anvend tekst"
+    },
+    {
+      "id": "",
+      "text": "Venstre"
+    },
+    {
+      "id": "",
+      "text": "Centrér"
+    },
+    {
+      "id": "",
+      "text": "Højre"
+    },
+    {
+      "id": "",
+      "text": "Øverst"
+    },
+    {
+      "id": "",
+      "text": "Midt"
+    },
+    {
+      "id": "",
+      "text": "Nederst"
+    },
+    {
+      "id": "",
+      "text": "Cirkel"
+    },
+    {
+      "id": "",
+      "text": "Kvadrat"
+    },
+    {
+      "id": "",
+      "text": "Hjerte"
+    },
+    {
+      "id": "",
+      "text": "Sekskant"
+    },
+    {
+      "id": "",
+      "text": "Rombe"
+    },
+    {
+      "id": "",
+      "text": "Stjerne"
+    },
+    {
+      "id": "",
+      "text": "Trekant"
+    },
+    {
+      "id": "dcPatternAutoSpace",
+      "text": "Fordel huller automatisk"
+    },
+    {
+      "id": "dcPatternSolid",
+      "text": "Brug lukket front"
+    },
+    {
+      "id": "",
+      "text": "Bevar hele huller"
+    },
+    {
+      "id": "",
+      "text": "Beskær til kanten"
+    },
+    {
+      "id": "",
+      "text": "På linje"
+    },
+    {
+      "id": "",
+      "text": "Forskudt"
+    },
+    {
+      "id": "dcPatternMove",
+      "text": "Flyt mønster på lærredet"
+    },
+    {
+      "id": "dcPatternResetPosition",
+      "text": "Nulstil placering"
+    },
+    {
+      "id": "dcIssuePattern",
+      "text": "Redigér mønster"
+    },
+    {
+      "id": "dcIssueSpace",
+      "text": "Fordel huller automatisk"
+    },
+    {
+      "id": "dcIssueSolid",
+      "text": "Brug lukket front"
+    },
+    {
+      "id": "",
+      "text": "Annullér"
+    },
+    {
+      "id": "",
+      "text": "Anvend ændringer →"
+    },
+    {
+      "id": "",
+      "text": "Luk"
+    },
+    {
+      "id": "",
+      "text": "Indlæs eksempel"
+    },
+    {
+      "id": "",
+      "text": "Indlæs eksempel"
+    },
+    {
+      "id": "",
+      "text": "Indlæs eksempel"
+    },
+    {
+      "id": "",
+      "text": "Luk"
+    },
+    {
+      "id": "downloadFeedback",
+      "text": "Hent diagnoserapport"
+    },
+    {
+      "id": "uxGuideButton",
+      "text": "Vejledning"
+    },
+    {
+      "id": "nlClose",
+      "text": "Tilbage til frontbelyste bogstaver"
+    },
+    {
+      "id": "uxPrintFiles",
+      "text": "Printfiler"
+    },
+    {
+      "id": "nlSave",
+      "text": "Gem design"
+    },
+    {
+      "id": "nlOpen",
+      "text": "Åbn design"
+    },
+    {
+      "id": "",
+      "text": "LYS GENNEM FRONTENSkilte med lys i frontenBogstaver og lyskasser med en lysende front."
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "BLØDT LYS PÅ VÆGGENBagbelyste bogstaverLukkede fronter. Lys bag hvert bogstav."
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "TEKSTUR, FARVE OG KARAKTERDekorative bogstaverMassive, udskårne og personlige bogstaver. Uden LED-lys."
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "START MED DIT MOTIVDesign selvPlacér tekst, figurer og SVG på et lærred."
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "Se alle projekter ↗"
+    },
+    {
+      "id": "uxChangeStyle",
+      "text": "Skift stil"
+    },
+    {
+      "id": "",
+      "text": "Massivt bogstavFlad front · ét stykke"
+    },
+    {
+      "id": "",
+      "text": "BoblebogstaverBlød, oppustet front"
+    },
+    {
+      "id": "",
+      "text": "ByggeklodsknopperHævede runde knopper"
+    },
+    {
+      "id": "",
+      "text": "Kraftig konturHævet navn · bred kant"
+    },
+    {
+      "id": "",
+      "text": "Front med rygSkrånende front · top i midten"
+    },
+    {
+      "id": "",
+      "text": "BogstavbakkeLav, bred og afrundet kant"
+    },
+    {
+      "id": "",
+      "text": "MosbogstavDyb dekorativ fordybning"
+    },
+    {
+      "id": "",
+      "text": "Affaset kantSkrå kant · flad midte"
+    },
+    {
+      "id": "",
+      "text": "Front med teksturFacetter og rombefelter"
+    },
+    {
+      "id": "",
+      "text": "Udskåret stenBrudt overflade · afskallede kanter"
+    },
+    {
+      "id": "",
+      "text": "Udskåret træDybe årer · slidte kanter"
+    },
+    {
+      "id": "",
+      "text": "Initial og navnForsænket navneindsats"
+    },
+    {
+      "id": "uxKeepStyle",
+      "text": "Behold nuværende stil"
+    },
+    {
+      "id": "",
+      "text": "Design"
+    },
+    {
+      "id": "",
+      "text": "Størrelse og pasning"
+    },
+    {
+      "id": "",
+      "text": "Overflade"
+    },
+    {
+      "id": "",
+      "text": "Print"
+    },
+    {
+      "id": "uxStartGuide",
+      "text": "Vis mig hvordan"
+    },
+    {
+      "id": "uxDismissGuide",
+      "text": "×"
+    },
+    {
+      "id": "uxSkipGuide",
+      "text": "Luk"
+    },
+    {
+      "id": "uxGuideNext",
+      "text": "Næste"
+    },
+    {
+      "id": "nlMoveName",
+      "text": "Vælg navn for at flytte"
+    },
+    {
+      "id": "nlCentre",
+      "text": "Centrér navn"
+    },
+    {
+      "id": "nlStraighten",
+      "text": "Ret op"
+    },
+    {
+      "id": "",
+      "text": "Sandsten"
+    },
+    {
+      "id": "",
+      "text": "Mejslet"
+    },
+    {
+      "id": "",
+      "text": "Forvitret"
+    },
+    {
+      "id": "",
+      "text": "Groft udskåret"
+    },
+    {
+      "id": "",
+      "text": "Mejselspor"
+    },
+    {
+      "id": "",
+      "text": "Bark"
+    },
+    {
+      "id": "",
+      "text": "Facetter"
+    },
+    {
+      "id": "",
+      "text": "Rombefelter"
+    },
+    {
+      "id": "nlTextureVariation",
+      "text": "Ny variation"
+    },
+    {
+      "id": "nlTextureSample",
+      "text": "Prøveflise STL · 40 × 40 mm"
+    },
+    {
+      "id": "nlZip",
+      "text": "Separate dele · STL ZIP"
+    },
+    {
+      "id": "nl3mf",
+      "text": "Alle dele på plader · 3MF"
+    },
+    {
+      "id": "uxNext",
+      "text": "Næste: Størrelse og pasning"
+    },
+    {
+      "id": "nlFront",
+      "text": "Forfra"
+    },
+    {
+      "id": "nlIso",
+      "text": "3D"
+    },
+    {
+      "id": "nlFit",
+      "text": "Tilpas visning"
+    },
+    {
+      "id": "",
+      "text": "Vejledning"
+    },
+    {
+      "id": "haloClose",
+      "text": "Tilbage til frontbelyste bogstaver"
+    },
+    {
+      "id": "",
+      "text": "Printfiler"
+    },
+    {
+      "id": "",
+      "text": "LYS GENNEM FRONTENSkilte med lys i frontenBogstaver og lyskasser med en lysende front."
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "BLØDT LYS PÅ VÆGGENBagbelyste bogstaverLukkede fronter. Lys bag hvert bogstav."
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "TEKSTUR, FARVE OG KARAKTERDekorative bogstaverMassive, udskårne og personlige bogstaver. Uden LED-lys."
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "START MED DIT MOTIVDesign selvPlacér tekst, figurer og SVG på et lærred."
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "Se alle projekter ↗"
+    },
+    {
+      "id": "",
+      "text": "Design"
+    },
+    {
+      "id": "",
+      "text": "Størrelse og pasning"
+    },
+    {
+      "id": "",
+      "text": "Montering"
+    },
+    {
+      "id": "",
+      "text": "Print"
+    },
+    {
+      "id": "",
+      "text": "Vis mig hvordan"
+    },
+    {
+      "id": "",
+      "text": "Luk"
+    },
+    {
+      "id": "",
+      "text": "Næste"
+    },
+    {
+      "id": "haloUseMinimum",
+      "text": "Brug kontrolleret størrelse og automatisk montering"
+    },
+    {
+      "id": "",
+      "text": "½″"
+    },
+    {
+      "id": "",
+      "text": "⅝″"
+    },
+    {
+      "id": "",
+      "text": "¾″"
+    },
+    {
+      "id": "",
+      "text": "⅞″"
+    },
+    {
+      "id": "",
+      "text": "1″"
+    },
+    {
+      "id": "haloEdit",
+      "text": "⊙ Redigér monteringspunkter"
+    },
+    {
+      "id": "haloZIP",
+      "text": "STL-filer og skabeloner · ZIP"
+    },
+    {
+      "id": "halo3MF",
+      "text": "Alle dele på plader · 3MF"
+    },
+    {
+      "id": "haloCoupon",
+      "text": "Print en pasningsprøve"
+    },
+    {
+      "id": "haloA4",
+      "text": "A4 PDF"
+    },
+    {
+      "id": "haloLetter",
+      "text": "Bogstav-PDF"
+    },
+    {
+      "id": "haloSVG",
+      "text": "SVG i fuld størrelse"
+    },
+    {
+      "id": "",
+      "text": "Næste: Størrelse og pasning"
+    },
+    {
+      "id": "",
+      "text": "3D bagfra"
+    },
+    {
+      "id": "",
+      "text": "3D forfra"
+    },
+    {
+      "id": "",
+      "text": "3D skråt fra siden"
+    },
+    {
+      "id": "",
+      "text": "Monteringsplan"
+    },
+    {
+      "id": "haloFit",
+      "text": "Tilpas visning"
+    },
+    {
+      "id": "haloAddMount",
+      "text": "+ Beslag"
+    },
+    {
+      "id": "haloAddWire",
+      "text": "+ Ledningsudgang"
+    },
+    {
+      "id": "haloReset",
+      "text": "Placér beslag automatisk"
+    },
+    {
+      "id": "haloRemove",
+      "text": "Fjern"
+    },
+    {
+      "id": "welcomeClose",
+      "text": "×"
+    },
+    {
+      "id": "",
+      "text": "LYS GENNEM FRONTENSkilte med lys i frontenBogstaver og lyskasser med en lysende front.Begynd at designe ↗"
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "BLØDT LYS PÅ VÆGGENBagbelyste bogstaverLukkede fronter. Lys bag hvert bogstav.Begynd at designe ↗"
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "TEKSTUR, FARVE OG KARAKTERDekorative bogstaverMassive, udskårne og personlige bogstaver. Uden LED-lys.Begynd at designe ↗"
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "",
+      "text": "START MED DIT MOTIVDesign selvPlacér tekst, figurer og SVG på et lærred.Begynd at designe ↗"
+    },
+    {
+      "id": "",
+      "text": "i"
+    },
+    {
+      "id": "welcomeLast",
+      "text": ""
+    }
+  ]
+}

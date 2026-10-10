@@ -1,0 +1,621 @@
+[
+  {
+    "file": "decorative.zip",
+    "meshes": [
+      {
+        "file": "letter-01-mm.stl",
+        "triangles": 48,
+        "extents_mm": [
+          106.60111999511719,
+          96.62921147048473,
+          16.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            -4.470348358154297e-08,
+            0.0
+          ],
+          [
+            106.60111999511719,
+            96.62921142578125,
+            16.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 96127.85094694025,
+        "euler_number": 0
+      },
+      {
+        "file": "letter-02-mm.stl",
+        "triangles": 3124,
+        "extents_mm": [
+          93.25842696428299,
+          96.62921147048473,
+          16.0
+        ],
+        "bounds_mm": [
+          [
+            3.516674041748047e-06,
+            -4.470348358154297e-08,
+            0.0
+          ],
+          [
+            93.25843048095703,
+            96.62921142578125,
+            16.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 120014.78549253312,
+        "euler_number": -2
+      },
+      {
+        "file": "letter-03-mm.stl",
+        "triangles": 3080,
+        "extents_mm": [
+          96.62919711321592,
+          100.0,
+          16.0
+        ],
+        "bounds_mm": [
+          [
+            6.683170795440674e-06,
+            0.0,
+            0.0
+          ],
+          [
+            96.62920379638672,
+            100.0,
+            16.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 95133.12214068939,
+        "euler_number": 2
+      }
+    ],
+    "3mf": [
+      {
+        "file": "all-parts-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 3,
+            "triangles": 6252,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "halo.zip",
+    "meshes": [
+      {
+        "file": "H01-body-face-down.stl",
+        "triangles": 2182,
+        "extents_mm": [
+          198.57557678222656,
+          180.0,
+          28.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            198.57557678222656,
+            180.0,
+            28.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 111732.24996691366,
+        "euler_number": 0
+      },
+      {
+        "file": "H01-white-reflector-1-print-white.stl",
+        "triangles": 6960,
+        "extents_mm": [
+          192.1437485218048,
+          175.5,
+          25.000000381469732
+        ],
+        "bounds_mm": [
+          [
+            3.215916395187378,
+            2.25,
+            -3.814697322468419e-07
+          ],
+          [
+            195.3596649169922,
+            177.75,
+            25.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 51553.797098587216,
+        "euler_number": -6
+      },
+      {
+        "file": "H01-M1-standoff.stl",
+        "triangles": 864,
+        "extents_mm": [
+          11.199999809265137,
+          11.199999809265137,
+          23.25
+        ],
+        "bounds_mm": [
+          [
+            -5.599999904632568,
+            -5.599999904632568,
+            0.0
+          ],
+          [
+            5.599999904632568,
+            5.599999904632568,
+            23.25
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 1557.5867865568473,
+        "euler_number": 0
+      },
+      {
+        "file": "H01-M2-standoff.stl",
+        "triangles": 864,
+        "extents_mm": [
+          11.199999809265137,
+          11.199999809265137,
+          23.25
+        ],
+        "bounds_mm": [
+          [
+            -5.599999904632568,
+            -5.599999904632568,
+            0.0
+          ],
+          [
+            5.599999904632568,
+            5.599999904632568,
+            23.25
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 1557.5867865568473,
+        "euler_number": 0
+      },
+      {
+        "file": "H01-M3-standoff.stl",
+        "triangles": 864,
+        "extents_mm": [
+          11.199999809265137,
+          11.199999809265137,
+          23.25
+        ],
+        "bounds_mm": [
+          [
+            -5.599999904632568,
+            -5.599999904632568,
+            0.0
+          ],
+          [
+            5.599999904632568,
+            5.599999904632568,
+            23.25
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 1557.5867865568473,
+        "euler_number": 0
+      }
+    ],
+    "3mf": []
+  },
+  {
+    "file": "imported-font.zip",
+    "meshes": [
+      {
+        "file": "bodies/part-01-body-mm.stl",
+        "triangles": 228068,
+        "extents_mm": [
+          79.95142364501953,
+          80.0,
+          35.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            79.95142364501953,
+            80.0,
+            35.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 45235.580654512974,
+        "euler_number": -590
+      },
+      {
+        "file": "faces/part-01-face-mm.stl",
+        "triangles": 4648,
+        "extents_mm": [
+          73.80275368690491,
+          73.77365493774414,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            3.0743367671966553,
+            3.1150779724121094,
+            0.0
+          ],
+          [
+            76.87709045410156,
+            76.88873291015625,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 6354.392887864907,
+        "euler_number": -2
+      }
+    ],
+    "3mf": [
+      {
+        "file": "all-bodies-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 228068,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "all-faces-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 4648,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "stand-wires.zip",
+    "meshes": [
+      {
+        "file": "bodies/part-01-body-mm.stl",
+        "triangles": 3606,
+        "extents_mm": [
+          104.82250213623047,
+          108.0,
+          35.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            -8.0,
+            0.0
+          ],
+          [
+            104.82250213623047,
+            100.0,
+            35.0
+          ]
+        ],
+        "watertight": false,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 7,
+        "volume_mm3": 50197.10563834747,
+        "euler_number": -26
+      },
+      {
+        "file": "faces/part-01-face-mm.stl",
+        "triangles": 48,
+        "extents_mm": [
+          98.50064277648926,
+          95.6000030040741,
+          3.0
+        ],
+        "bounds_mm": [
+          [
+            3.1609325408935547,
+            2.200000047683716,
+            0.0
+          ],
+          [
+            101.66157531738281,
+            97.80000305175781,
+            3.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 12941.196060856259,
+        "euler_number": 0
+      },
+      {
+        "file": "desk-stand/desk-base-mm.stl",
+        "triangles": 1200,
+        "extents_mm": [
+          140.822509765625,
+          71.0,
+          24.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            140.822509765625,
+            71.0,
+            24.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 65831.87617825106,
+        "euler_number": -6
+      },
+      {
+        "file": "desk-stand/desk-bottom-cover-mm.stl",
+        "triangles": 540,
+        "extents_mm": [
+          134.322509765625,
+          64.5,
+          2.3999996185302734
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            134.322509765625,
+            64.5,
+            2.3999996185302734
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 20706.51983349395,
+        "euler_number": -6
+      },
+      {
+        "file": "desk-stand/test-first/test-foot-mm.stl",
+        "triangles": 464,
+        "extents_mm": [
+          22.0,
+          15.600000381469727,
+          14.0
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            22.0,
+            15.600000381469727,
+            14.0
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 3413.4275584648167,
+        "euler_number": -4
+      },
+      {
+        "file": "desk-stand/test-first/test-socket-mm.stl",
+        "triangles": 300,
+        "extents_mm": [
+          24.5,
+          20.5,
+          9.5
+        ],
+        "bounds_mm": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            24.5,
+            20.5,
+            9.5
+          ]
+        ],
+        "watertight": true,
+        "boundary_edges": 0,
+        "nonmanifold_edges": 0,
+        "volume_mm3": 2942.1599625028734,
+        "euler_number": -2
+      }
+    ],
+    "3mf": [
+      {
+        "file": "all-bodies-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 3606,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "all-faces-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 48,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "desk-stand/desk-base-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 1200,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "desk-stand/desk-bottom-cover-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 540,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "desk-stand/test-first/test-foot-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 464,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      },
+      {
+        "file": "desk-stand/test-first/test-socket-mm.3mf",
+        "models": [
+          {
+            "path": "3D/3dmodel.model",
+            "objects": 1,
+            "triangles": 300,
+            "unit": "millimeter"
+          }
+        ],
+        "metadata": []
+      }
+    ]
+  },
+  {
+    "file": "decorative.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 6,
+        "triangles": 6252,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  },
+  {
+    "file": "halo.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 10,
+        "triangles": 11734,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  },
+  {
+    "file": "imported-font.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 4,
+        "triangles": 232716,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  },
+  {
+    "file": "stand-wires.3mf",
+    "models": [
+      {
+        "path": "3D/3dmodel.model",
+        "objects": 8,
+        "triangles": 5394,
+        "unit": "millimeter"
+      }
+    ],
+    "metadata": [
+      "Metadata/model_settings.config",
+      "Metadata/project_settings.config",
+      "Metadata/Bogstavvaerkstedet.json",
+      "Metadata/READ-ME.txt"
+    ]
+  }
+]

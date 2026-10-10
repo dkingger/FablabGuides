@@ -1,0 +1,714 @@
+[
+  {
+    "url": "https://bogstavvaerkstedet.local/",
+    "local_file": "original/index.html",
+    "downloaded_at": "2026-10-10T18:06:21.955683+00:00",
+    "content_type": "text/html",
+    "size_bytes": 25665,
+    "sha256": "2e98127a73fef8d2d0b4422fa7b0f10a324a296b194bed26c99227270967e593"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/studio.html",
+    "local_file": "original/studio.html",
+    "downloaded_at": "2026-10-10T18:06:21.956216+00:00",
+    "content_type": "text/html",
+    "size_bytes": 36080,
+    "sha256": "b2b3f1290dbeb5ccff616ca3257adb3f9242da432b073abfddcf8b0487688a9c"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/help.html",
+    "local_file": "original/help.html",
+    "downloaded_at": "2026-10-10T18:06:21.956579+00:00",
+    "content_type": "text/html",
+    "size_bytes": 25496,
+    "sha256": "728c610f26bca3c23756c6b6536235ab8b095eef7f336bf666f4c862ac396500"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/updates.html",
+    "local_file": "original/updates.html",
+    "downloaded_at": "2026-10-10T18:06:21.956973+00:00",
+    "content_type": "text/html",
+    "size_bytes": 5128,
+    "sha256": "561a3a5674488982619863929606f14f07884c53f33fc8f51d088e5b8f7ba185"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/privacy.html",
+    "local_file": "original/privacy.html",
+    "downloaded_at": "2026-10-10T18:06:21.957359+00:00",
+    "content_type": "text/html",
+    "size_bytes": 6473,
+    "sha256": "6a2953cc85b8b0351d691c69c12c8e03c761fe29b2b8e12649569a74cf51dfb1"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/app.js?v=102",
+    "local_file": "original/app.js",
+    "downloaded_at": "2026-10-10T18:06:21.958213+00:00",
+    "content_type": "text/javascript",
+    "size_bytes": 1632749,
+    "sha256": "a0abbb80ee51f2599e41190e57f7c0b35b27ac740ba1a10d120fef6a6bfc303c"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/worker.js?v=102",
+    "local_file": "original/worker.js",
+    "downloaded_at": "2026-10-10T18:06:22.256076+00:00",
+    "content_type": "text/javascript",
+    "size_bytes": 670869,
+    "sha256": "37d8563291ab87ec6c0e4f3d5202a302f378babd2e98e7aeca21d511b3e49e4b"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/style.css?v=102",
+    "local_file": "original/style.css",
+    "downloaded_at": "2026-10-10T18:06:22.258524+00:00",
+    "content_type": "text/css",
+    "size_bytes": 76432,
+    "sha256": "e025956de9ab3582ec9436df484fe300402d184d41400caf438a5b5fbd024424"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/studio-polish.css?v=102",
+    "local_file": "original/studio-polish.css",
+    "downloaded_at": "2026-10-10T18:06:22.347918+00:00",
+    "content_type": "text/css",
+    "size_bytes": 52115,
+    "sha256": "b71abf483caf0c6d7bff92d7169a7dcaa2b3620fda061d33555dc2eb07fb0c36"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/launch.css?v=102-gallery2",
+    "local_file": "original/launch.css",
+    "downloaded_at": "2026-10-10T18:06:22.349307+00:00",
+    "content_type": "text/css",
+    "size_bytes": 19301,
+    "sha256": "e785390891eae03bfb95a086323d1b243b5c500bc60365a50f79adcb1458ee0b"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/manifold.wasm",
+    "local_file": "original/manifold.wasm",
+    "downloaded_at": "2026-10-10T18:06:22.353390+00:00",
+    "content_type": "application/wasm",
+    "size_bytes": 541470,
+    "sha256": "73e3b419ad31294f6b1cc478173944e50efc4a34bfdeeff0107bdfc12975f11c"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/harfbuzz.wasm",
+    "local_file": "original/harfbuzz.wasm",
+    "downloaded_at": "2026-10-10T18:06:22.761388+00:00",
+    "content_type": "application/wasm",
+    "size_bytes": 433766,
+    "sha256": "684bda29aee2411d05e6859070a9b1a6b8d061025ededb5a8910098fd0cf10f4"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/help-search.js?v=56",
+    "local_file": "original/help-search.js",
+    "downloaded_at": "2026-10-10T18:06:44.996680+00:00",
+    "content_type": "text/javascript",
+    "size_bytes": 671,
+    "sha256": "233831653743f53cbdcc919c95fbeb50b812e2a047ad1ae67f2202b9948ed56d"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/bevel.webp",
+    "local_file": "original/images/decorative/bevel.webp",
+    "downloaded_at": "2026-10-10T18:06:44.997280+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 5732,
+    "sha256": "3cbe6af76613762503934815570aea3a58d330be8515413483fa7af6eba2ce76"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/brick.webp",
+    "local_file": "original/images/decorative/brick.webp",
+    "downloaded_at": "2026-10-10T18:06:44.997736+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 11658,
+    "sha256": "ddc588f962acdedad687f0cf46ca190b2d69b40bc3bfe62ada76b2f5afbc6329"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/bubble.webp",
+    "local_file": "original/images/decorative/bubble.webp",
+    "downloaded_at": "2026-10-10T18:06:44.998020+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 5786,
+    "sha256": "b1530b96cb1f5d2a85d659d52c741dd1fc77bc414e21759e36941e2cbcf4203e"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/faceted.webp",
+    "local_file": "original/images/decorative/faceted.webp",
+    "downloaded_at": "2026-10-10T18:06:44.998679+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 8006,
+    "sha256": "e167c221107f643321aa6c3e072aa871b8eefb7dd7acc4ae9afc8a7e5130212f"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/monogram.webp",
+    "local_file": "original/images/decorative/monogram.webp",
+    "downloaded_at": "2026-10-10T18:06:44.999254+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 9016,
+    "sha256": "4e62f930bacb735c7e919d07f9f9c3f53ab575af8f72fb9d3df096951e36997d"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/moss.webp",
+    "local_file": "original/images/decorative/moss.webp",
+    "downloaded_at": "2026-10-10T18:06:45.294180+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 8998,
+    "sha256": "073da15d723cdf7dc922dda8964463e7e6449dd54afc8568a894b01cf3049c80"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/outline.webp",
+    "local_file": "original/images/decorative/outline.webp",
+    "downloaded_at": "2026-10-10T18:06:45.295445+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 12072,
+    "sha256": "17e13fe9838fc6bdd4a2d8c47e11f53086f4d54be24e6813de25118ae4a2cb19"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/ridge.webp",
+    "local_file": "original/images/decorative/ridge.webp",
+    "downloaded_at": "2026-10-10T18:06:45.299044+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 6244,
+    "sha256": "c17c169d1b36cae7dbc2f3d1237ca752e1313f2709a16dfebfa30d2ffcb08b18"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/solid.webp",
+    "local_file": "original/images/decorative/solid.webp",
+    "downloaded_at": "2026-10-10T18:06:45.299621+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 5220,
+    "sha256": "82b0c37cf2f8db4571a0d7aabb6ad1f2c1a5c8952888e8c93e8e968977d119a5"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/stone.webp",
+    "local_file": "original/images/decorative/stone.webp",
+    "downloaded_at": "2026-10-10T18:06:45.299775+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 7882,
+    "sha256": "3cfe0df326af4bba1b687e6b36717b0a09ddc13acc743824c1fcd9af862e79bb"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/tray.webp",
+    "local_file": "original/images/decorative/tray.webp",
+    "downloaded_at": "2026-10-10T18:06:45.299996+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 6718,
+    "sha256": "d26e5232e800d2e4ea12aa5a65c9e489ebb1e706d239dfeaad2999c57c9a0b8c"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/decorative/wood.webp",
+    "local_file": "original/images/decorative/wood.webp",
+    "downloaded_at": "2026-10-10T18:06:45.584715+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 11886,
+    "sha256": "0c64e1be3dbe5186753fef7a00f2b157afc43af3c4ad44865ef74b721414ea00"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/prints/k-front-studio-thumb.webp",
+    "local_file": "original/images/prints/k-front-studio-thumb.webp",
+    "downloaded_at": "2026-10-10T18:06:45.585178+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 29740,
+    "sha256": "f938612b9b64b94ea805afcd0938e51a1ca149ed1af474e94975722fae8b7fa9"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/prints/k-front-studio.webp",
+    "local_file": "original/images/prints/k-front-studio.webp",
+    "downloaded_at": "2026-10-10T18:06:45.585674+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 116796,
+    "sha256": "bbdc9de55dd0e99939438203e5c8a6fb257afbf93398605770ff71da1816df2b"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/prints/k-parts-studio.webp",
+    "local_file": "original/images/prints/k-parts-studio.webp",
+    "downloaded_at": "2026-10-10T18:06:45.586360+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 140070,
+    "sha256": "5d9a24af4c5450291624603d34f6a992492d36e77b98c54fc8630036b302960c"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/prints/max-studio-thumb.webp",
+    "local_file": "original/images/prints/max-studio-thumb.webp",
+    "downloaded_at": "2026-10-10T18:06:45.587546+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 29944,
+    "sha256": "a165e6adc2b388f01e1067a65afbb636b8961859f55daae9b5c83718d27187b2"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/prints/max-studio.webp",
+    "local_file": "original/images/prints/max-studio.webp",
+    "downloaded_at": "2026-10-10T18:06:45.588682+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 95502,
+    "sha256": "6f715bcabcb0f846885963d977cea44e04dad670a47697a763729ae59d77b8a7"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/prints/smiley-studio-thumb.webp",
+    "local_file": "original/images/prints/smiley-studio-thumb.webp",
+    "downloaded_at": "2026-10-10T18:06:45.877765+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 24020,
+    "sha256": "348c78b2e7a5c7e2269cd19e1eafad78effae6ea56aad13c364944faf6230049"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/prints/smiley-studio.webp",
+    "local_file": "original/images/prints/smiley-studio.webp",
+    "downloaded_at": "2026-10-10T18:06:45.974649+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 92340,
+    "sha256": "507d58e56042ce35c9599f5fa8d2c1cf770698f88b19ce8cf5ef9c91f401c40e"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/prints/stone-r-studio-thumb.webp",
+    "local_file": "original/images/prints/stone-r-studio-thumb.webp",
+    "downloaded_at": "2026-10-10T18:06:45.977475+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 45370,
+    "sha256": "d514fb768d31888386e9e18d3904cce8eaee503d889476f02621cb39ce5d8c7e"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/prints/stone-r-studio.webp",
+    "local_file": "original/images/prints/stone-r-studio.webp",
+    "downloaded_at": "2026-10-10T18:06:46.074254+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 183772,
+    "sha256": "6fbd92ee7fc0e6d6350dcd2845d202c9906c1ba8c3bf112573fa344e1fd966e0"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/projects/canvas.webp",
+    "local_file": "original/images/projects/canvas.webp",
+    "downloaded_at": "2026-10-10T18:06:46.159287+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 9564,
+    "sha256": "66f153e6eb06480188a679e26551263e2f6984b519b4935a8caf055b9c31e9b7"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/projects/decorative.webp",
+    "local_file": "original/images/projects/decorative.webp",
+    "downloaded_at": "2026-10-10T18:06:46.162549+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 26920,
+    "sha256": "29532790994576327b9de2c92446896a0d51a457c6211714aeeaa76673edfc69"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/projects/frontlit.webp",
+    "local_file": "original/images/projects/frontlit.webp",
+    "downloaded_at": "2026-10-10T18:06:46.266559+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 10290,
+    "sha256": "47673ddc8a642722ba27849c99c89177a4c4ebb5f35ab5de8f8b39034dc18941"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/projects/halo.webp",
+    "local_file": "original/images/projects/halo.webp",
+    "downloaded_at": "2026-10-10T18:06:46.446044+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 9858,
+    "sha256": "495c47c0835c5fa08d4abbf8a0525fd138a005a1bb7b34672e1f5bbcf08b21e3"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/workshop-desk-studio.webp",
+    "local_file": "original/images/workshop-desk-studio.webp",
+    "downloaded_at": "2026-10-10T18:06:46.461103+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 59096,
+    "sha256": "af5f0dc39a1d6abbd095ecf2c37a8621d1cb0586ac145123a4ad38825604830d"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/images/workshop-wow-studio.webp",
+    "local_file": "original/images/workshop-wow-studio.webp",
+    "downloaded_at": "2026-10-10T18:06:46.470311+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 70316,
+    "sha256": "2524cd2aef826e35d14a17c47f075ecd26a8e1090231f424954d93a5913cea6a"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/media/design-to-print.mp4",
+    "local_file": "original/media/design-to-print.mp4",
+    "downloaded_at": "2026-10-10T18:06:46.543422+00:00",
+    "content_type": "video/mp4",
+    "size_bytes": 1111626,
+    "sha256": "fedfe601930a44032e43cae72d57d56653b24896592876fae28f2e6d86ab5449"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/media/design-to-print.vtt",
+    "local_file": "original/media/design-to-print.vtt",
+    "downloaded_at": "2026-10-10T18:06:46.561839+00:00",
+    "content_type": "application/octet-stream",
+    "size_bytes": 560,
+    "sha256": "54f2742706a37f0cdecf8a1b08bff704bc123aba89f5e54440ebe19726c2dc44"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/media/design-to-print.webp",
+    "local_file": "original/media/design-to-print.webp",
+    "downloaded_at": "2026-10-10T18:06:46.645659+00:00",
+    "content_type": "image/webp",
+    "size_bytes": 33928,
+    "sha256": "fb11fe9ae3c2506cf37cc250de0c67fe7fe127e6e8507c7dc03b072b4f220276"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/print-gallery.js?v=1",
+    "local_file": "original/print-gallery.js",
+    "downloaded_at": "2026-10-10T18:06:46.734915+00:00",
+    "content_type": "text/javascript",
+    "size_bytes": 2896,
+    "sha256": "bff36379cc9f67322710af4dd1b918e8ac9d9eb9b98ba9c946d1133f7f4a0de8"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/studio.html?example=split",
+    "local_file": "original/studio.html",
+    "downloaded_at": "2026-10-10T18:06:46.850534+00:00",
+    "content_type": "text/html",
+    "size_bytes": 36080,
+    "sha256": "b2b3f1290dbeb5ccff616ca3257adb3f9242da432b073abfddcf8b0487688a9c"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/studio.html?v=102",
+    "local_file": "original/studio.html",
+    "downloaded_at": "2026-10-10T18:06:46.937187+00:00",
+    "content_type": "text/html",
+    "size_bytes": 36080,
+    "sha256": "b2b3f1290dbeb5ccff616ca3257adb3f9242da432b073abfddcf8b0487688a9c"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/msrounded.ttf",
+    "local_file": "original/msrounded.ttf",
+    "downloaded_at": "2026-10-10T18:06:59.581514+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 49956,
+    "sha256": "a1daf29ceca9f73904a376a943047075eefa22bf55c0758fb6a8cf64769cf18c"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/coiny.ttf",
+    "local_file": "original/coiny.ttf",
+    "downloaded_at": "2026-10-10T18:06:59.582007+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 156520,
+    "sha256": "ef02d723a54abe4819bea54ea8b2ecf72d77d258010bb336cd4862a37705eac7"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/chewy.ttf",
+    "local_file": "original/chewy.ttf",
+    "downloaded_at": "2026-10-10T18:06:59.582393+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 41248,
+    "sha256": "7cf75ea288f82fd20badea8ab4da7a656a96a7277c170811e813b3d3d6294147"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/bold.ttf",
+    "local_file": "original/bold.ttf",
+    "downloaded_at": "2026-10-10T18:06:59.582896+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 708920,
+    "sha256": "5c1247acef7f2b8522a31742c76d6adcb5569bacc0be7ceaa4dc39dd252ce895"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/regular.ttf",
+    "local_file": "original/regular.ttf",
+    "downloaded_at": "2026-10-10T18:06:59.583695+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 759720,
+    "sha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/serif.ttf",
+    "local_file": "original/serif.ttf",
+    "downloaded_at": "2026-10-10T18:06:59.584279+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 380660,
+    "sha256": "8f2c103bfa3fd5de71f1b92b18f21906b5a26871fb7e19a9a4c9af539c3cc7ab"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/serifbold.ttf",
+    "local_file": "original/serifbold.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.016010+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 356668,
+    "sha256": "847b33e13925f19ff87e4d934d6b3cf7cac35ce16424f6f670e40c2f377cf2df"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/mono.ttf",
+    "local_file": "original/mono.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.074010+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 343140,
+    "sha256": "c805f9436dbc268644c1d9584f01a601a653e028e08fd74b9b949f6cf8304d88"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/monobold.ttf",
+    "local_file": "original/monobold.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.179951+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 334268,
+    "sha256": "3a3c502eeff669a231549e80df9f7c49de109bafe303170409e905d0b31a38fe"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/monoitalic.ttf",
+    "local_file": "original/monoitalic.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.301102+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 253448,
+    "sha256": "3d7955616e69721f7edb8e1b7a580f8fbd7d737111c6b54266ddc1d9ef13202f"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/monobolditalic.ttf",
+    "local_file": "original/monobolditalic.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.366207+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 254960,
+    "sha256": "a5251173370e30760e6919711dcd33e149d216ca4814eb74332bda03fcc7e834"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/anton.ttf",
+    "local_file": "original/anton.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.396346+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 170812,
+    "sha256": "a4ba3a92350ebb031da0cb47630ac49eb265082ca1bc0450442f4a83ab947cab"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/bebas.ttf",
+    "local_file": "original/bebas.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.757763+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 61400,
+    "sha256": "08e4623805102d819f58601e46e345648846075e363b2ceb23313c2d1c83ec73"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/archivo.ttf",
+    "local_file": "original/archivo.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.787550+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 90988,
+    "sha256": "dd9a89a019b4849f66ab75455fe7bdf931311042cbb0f0f97acc061539703180"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/rowdies.ttf",
+    "local_file": "original/rowdies.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.872247+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 76280,
+    "sha256": "e56ac3fe30e56243483083a6ba271387e332f77920e850ce7dc1baead4fbede2"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/righteous.ttf",
+    "local_file": "original/righteous.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.968378+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 43104,
+    "sha256": "2ffb3fe5c27d7e6571210b800448c4e234e651b46c6b4426c1bb567e5341348a"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/bungee.ttf",
+    "local_file": "original/bungee.ttf",
+    "downloaded_at": "2026-10-10T18:07:00.980198+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 118996,
+    "sha256": "c4f5361ce120af3e6b9156d0bf379fa19cda2ea0cd18ac01fd99596c6bf66e3f"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/alfa.ttf",
+    "local_file": "original/alfa.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.040300+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 97376,
+    "sha256": "28664afa698a3393bd5a29eec750230a0645c5301d62200e5f2d3a027fb2299d"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/dmserif.ttf",
+    "local_file": "original/dmserif.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.239675+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 76580,
+    "sha256": "8cc3643535edf039aa5d95440a8542735e9197e4f4b8d9303e980fefbf5ab616"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/lobster.ttf",
+    "local_file": "original/lobster.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.271033+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 406076,
+    "sha256": "d6568e697fd50cedc0be04d8aae4127fe95add607e7bff954ca88604be80c205"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/pacifico.ttf",
+    "local_file": "original/pacifico.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.352070+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 329380,
+    "sha256": "5b6c0d5334a7bf77dea52b975c5a0c408878c0f7115ed5b6fb151f634b7bf701"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/oleo.ttf",
+    "local_file": "original/oleo.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.389687+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 34980,
+    "sha256": "1aa003ac938adf9bea644c406ce90eeb1913138aa1d7492242c0ca948c0f48ac"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/yellowtail.ttf",
+    "local_file": "original/yellowtail.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.522019+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 62216,
+    "sha256": "3e06841b13000975f3cc38aa84e326e601a4378a4c52d50b5e9fee3598c5d236"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/damion.ttf",
+    "local_file": "original/damion.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.550602+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 75756,
+    "sha256": "a51fd6c3c517feb9924b98139c2e902a7317caee52c22a2ec9682973969562bf"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/courgette.ttf",
+    "local_file": "original/courgette.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.718862+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 122072,
+    "sha256": "099739d22e66ee2b80656bba63847f9ed419ad7e3969ba2c1d3c437c0d08f3e3"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/kaushan.ttf",
+    "local_file": "original/kaushan.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.771797+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 210672,
+    "sha256": "6d8d379d9bba98178bee476d68114c8f83812c18005ecccf679e70f60e03d8f6"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/oleoswash.ttf",
+    "local_file": "original/oleoswash.ttf",
+    "downloaded_at": "2026-10-10T18:07:01.951083+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 40088,
+    "sha256": "b8811c803202bbc80e6124200666080a62b63df3b52e1833456189ec1f798c31"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/pattaya.ttf",
+    "local_file": "original/pattaya.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.001501+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 420092,
+    "sha256": "02b77f7f5b52e718a91230c8ea153bfe746e1d748dabded4e41d7e6765fa9889"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/berkshire.ttf",
+    "local_file": "original/berkshire.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.022850+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 58400,
+    "sha256": "f0c80837dc6f32b89b10894a7e39295db4a00ab697cada682a3f5942c342fe00"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/leckerli.ttf",
+    "local_file": "original/leckerli.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.034133+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 43212,
+    "sha256": "3f38ed99a07ab426eaa64c7d5773850a5dc8e6719b03125efce2cfbc82b083d7"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/lilyscript.ttf",
+    "local_file": "original/lilyscript.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.283189+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 37572,
+    "sha256": "191c8e3bfd653ae020cf23cd5b4c5a6a2de7412464a290e51461dd084aa62765"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/lobstertwo.ttf",
+    "local_file": "original/lobstertwo.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.331730+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 235632,
+    "sha256": "980ee087455f1f0a96fb2ea74bef441a2bf29048e2c739d11683d330cfc19329"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/norican.ttf",
+    "local_file": "original/norican.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.349035+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 83416,
+    "sha256": "71ee99002e70bb69f8f613bd29d646d6044aaf34612efcff689a11afa4291d04"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/molle.ttf",
+    "local_file": "original/molle.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.417138+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 50964,
+    "sha256": "5693a09a77e5afd28380d269e2cf03ca78c4fd92a8bacd248910221cbfe2ef58"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/satisfy.ttf",
+    "local_file": "original/satisfy.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.492831+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 47928,
+    "sha256": "55bb141a0a23a32278d5fa7fd2e853824faa173b94774660ebeddb106be07c80"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/cookie.ttf",
+    "local_file": "original/cookie.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.668764+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 43800,
+    "sha256": "9daf3cc9e5efe1b65094cdf1f14729ef6f07a70c27ee0679bf7f544a828b080e"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/yesteryear.ttf",
+    "local_file": "original/yesteryear.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.682014+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 64856,
+    "sha256": "17d1b2c57ec648ff9b13d2000bdd9b5c1c326ba14acff4597afe3a730d0a2c94"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/grandhotel.ttf",
+    "local_file": "original/grandhotel.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.822804+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 65012,
+    "sha256": "ec7ae65d49c936cb5ed32534ab74dbd40c56733de5145ac3aae9da362e02b50f"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/playball.ttf",
+    "local_file": "original/playball.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.891505+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 190720,
+    "sha256": "130654dd192f4ccd1c4fa2dc516d03cca93dc8ecdaf30d458283e54dcaef8f40"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/shrikhand.ttf",
+    "local_file": "original/shrikhand.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.966795+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 220804,
+    "sha256": "8ba32f6d6a96fb8dbc92fc1acfbc4d2123d5348063d89b2c3dd784e7afcb81af"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/lilitaone.ttf",
+    "local_file": "original/lilitaone.ttf",
+    "downloaded_at": "2026-10-10T18:07:02.991371+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 28092,
+    "sha256": "f5b641c45c69d772ee4eda687bc9fda411d5cad6b0b45371491da4580cbc8d59"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/racingsansone.ttf",
+    "local_file": "original/racingsansone.ttf",
+    "downloaded_at": "2026-10-10T18:07:03.055528+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 145796,
+    "sha256": "8b5cada83e3e4692f624f1b583a069b34e457e07a4210ceddbb1133b3383673e"
+  },
+  {
+    "url": "https://bogstavvaerkstedet.local/patuaone.ttf",
+    "local_file": "original/patuaone.ttf",
+    "downloaded_at": "2026-10-10T18:07:03.154336+00:00",
+    "content_type": "font/ttf",
+    "size_bytes": 35624,
+    "sha256": "a3faa8b9efdd9d89980b56fa2b080669d66f3f977f07a2a6295498dbe7c26a7c"
+  }
+]
