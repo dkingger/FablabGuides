@@ -17,116 +17,47 @@
         .hero-grid {
             grid-template-columns: minmax(0, 1fr);
         }
-        .guide-layout {
-            display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-            gap: 24px;
-            align-items: start;
+        [hidden] { display: none !important; }
+        .tools-catalog { display: grid; gap: 24px; }
+        .tool-filters {
+            margin-top: 24px;
         }
-        .guide-main {
-            min-width: 0;
-            display: grid;
-            gap: 20px;
+        .tool-filters fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+        .tool-filters legend { padding: 0; font-size: 1.15rem; font-weight: 800; }
+        .tool-filters p { margin: 6px 0 16px; color: var(--text-soft); }
+        .category-options { display: flex; flex-wrap: wrap; gap: 10px; }
+        .category-option {
+            display: flex; align-items: center; gap: 8px; min-height: 44px;
+            padding: 8px 12px; border: 1px solid var(--border);
+            border-radius: 12px; background: var(--surface-strong); cursor: pointer;
+            font-size: .9rem; font-weight: 600;
         }
-        .guide-side {
-            display: grid;
-            gap: 20px;
-            position: sticky;
-            top: 108px;
-        }
-        .guide-card {
-            min-width: 0;
-            overflow-wrap: anywhere;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            border-radius: var(--radius-lg);
-            padding: 30px;
-        }
-        .guide-card h2 {
-            margin: 0 0 12px;
-            color: var(--brand-strong);
-            font-size: 1.45rem;
-            line-height: 1.15;
-        }
-        .guide-card h3 {
-            margin: 22px 0 8px;
-            color: var(--brand-strong);
-            font-size: 1.05rem;
-        }
-        .guide-card p,
-        .guide-card li,
-        .tool-meta {
-            color: var(--text-soft);
-        }
-        .guide-card p {
-            margin: 0 0 14px;
-        }
-        .guide-card ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-        .guide-card li + li {
-            margin-top: 8px;
-        }
-        .guide-anchor-list {
-            display: grid;
-            gap: 10px;
-        }
-        .guide-anchor-list a {
-            color: var(--brand);
-            font-weight: 600;
-        }
-        .tool-list {
-            display: grid;
-            gap: 14px;
-            margin-top: 6px;
-        }
+        .category-option:has(input:checked) { background: #e6edf5; border-color: #7b96b6; }
+        .category-option input { width: 18px; height: 18px; margin: 0; accent-color: var(--brand-strong); cursor: pointer; }
+        .category-count { font-size: .8rem; color: var(--text-soft); }
+        .filter-summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; }
+        .filter-summary p { margin: 0; }
+        .filter-summary button { cursor: pointer; }
+        .filter-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tools-heading { margin: 4px 0 -8px; font-size: 1.45rem; }
+        .tools-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
         .tool-item {
-            border: 1px solid rgba(17, 45, 78, 0.08);
-            border-radius: 16px;
-            background: var(--surface-strong);
-            padding: 14px 16px;
+            min-width: 0; display: flex; flex-direction: column; align-items: flex-start;
+            padding: 24px; border: 1px solid var(--border); border-radius: var(--radius-md);
+            background: var(--surface-strong); box-shadow: var(--shadow); overflow-wrap: anywhere;
         }
-        .tool-item h3 {
-            margin: 0;
-            font-size: 1.02rem;
-        }
-        .tool-title-row {
-            flex-wrap: wrap;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .tool-heading {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-        }
-        .tool-logo {
-            width: 144px;
-            height: 144px;
-            border-radius: 12px;
-            border: 1px solid rgba(17, 45, 78, 0.12);
-            background: #dbe2ef;
-            object-fit: cover;
-            flex: 0 0 auto;
-            cursor: zoom-in;
-        }
-        .tool-item p {
-            margin: 8px 0 0;
-        }
-        .tool-item a {
-            color: var(--brand-strong);
-            text-decoration: underline;
-            text-underline-offset: 2px;
-        }
-        .tool-meta {
-            display: block;
-            margin-top: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
+        .tool-title-row { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+        .tool-item h3 { margin: 0; font-size: 1.12rem; line-height: 1.35; }
+        .tool-logo { width: 88px; height: 88px; object-fit: cover; border: 1px solid var(--border); border-radius: 12px; background: #dbe2ef; }
+        .tool-item p { margin: 14px 0 18px; color: var(--text-soft); font-size: .94rem; }
+        .tool-item a { color: var(--brand-strong); text-decoration: underline; text-underline-offset: 3px; }
+        .tool-meta { display: block; width: 100%; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border); color: var(--text-soft); font-size: .82rem; font-weight: 600; }
+        .tools-empty { padding: 32px; text-align: center; border: 1px dashed var(--border); border-radius: 16px; }
+        @media (max-width: 980px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 600px) {
+            .tools-grid { grid-template-columns: minmax(0, 1fr); }
+            .tool-item { padding: 20px; }
+            .guide-page { padding-top: 28px; }
         }
         .image-lightbox {
             position: fixed;
@@ -177,31 +108,11 @@
             cursor: pointer;
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
         }
-        @media (max-width: 980px) {
-            .guide-layout {
-                grid-template-columns: minmax(0, 1fr);
-            }
-            .guide-side {
-                position: static;
-            }
-        }
-        @media (max-width: 760px) {
-            .guide-page {
-                padding-top: 28px;
-            }
-            .guide-card {
-            min-width: 0;
-            overflow-wrap: anywhere;
-                padding: 24px;
-                border-radius: var(--radius-md);
-            }
-        }
         /* Local accessibility styles: keep other guides unchanged. */
         .eyebrow, .section-tag, .button-secondary {
             color: var(--brand-strong);
             background: #e6edf5;
         }
-        .guide-side h2.section-tag { font-size: 0.78rem; margin-bottom: 16px; }
         .tool-image-button {
             padding: 0;
             border: 0;
@@ -211,13 +122,13 @@
             cursor: zoom-in;
         }
         .tool-image-button .tool-logo { display: block; }
-        a:focus-visible, button:focus-visible {
+        a:focus-visible, button:focus-visible, input:focus-visible {
             outline: 3px solid #112d4e;
             outline-offset: 4px;
             box-shadow: 0 0 0 4px #fff;
         }
         @media (forced-colors: active) {
-            a:focus-visible, button:focus-visible { outline-color: Highlight; }
+            a:focus-visible, button:focus-visible, input:focus-visible { outline-color: Highlight; }
         }
     </style>
     <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
@@ -247,332 +158,266 @@
                 <div class="hero-card">
                     <span class="eyebrow">Digitale værktøjer</span>
                     <h1>Online tools</h1>
-                    <p class="lead">En dansk oversigt over browserbaserede værktøjer til laserskæring, 3D-design, elektronik og simulering. Udvalgt til FabLab-brugere, der vil hurtigt fra idé til prototype.</p>
-                    <div class="hero-pills">
-                        <span class="pill">Design og simulering</span>
-                        <span class="pill">Klar til FabLab</span>
+                    <div class="tool-filters" id="tool-filters" hidden>
+                        <fieldset>
+                            <legend>Vis kategorier</legend>
+                            <p>Fjern fluebenet for at skjule en kategori.</p>
+                            <div class="category-options">
+                            <label class="category-option"><input type="checkbox" value="kasser" checked aria-controls="tools-grid"> Kasser <span class="category-count">6</span></label>
+                            <label class="category-option"><input type="checkbox" value="tandhjul" checked aria-controls="tools-grid"> Tandhjul <span class="category-count">3</span></label>
+                            <label class="category-option"><input type="checkbox" value="fleksible-samlinger" checked aria-controls="tools-grid"> Fleksible samlinger <span class="category-count">1</span></label>
+                            <label class="category-option"><input type="checkbox" value="labyrinter" checked aria-controls="tools-grid"> Labyrinter <span class="category-count">2</span></label>
+                            <label class="category-option"><input type="checkbox" value="cad" checked aria-controls="tools-grid"> CAD <span class="category-count">5</span></label>
+                            <label class="category-option"><input type="checkbox" value="3d-design" checked aria-controls="tools-grid"> 3D-design <span class="category-count">4</span></label>
+                            <label class="category-option"><input type="checkbox" value="elektronik" checked aria-controls="tools-grid"> Elektronik og simulering <span class="category-count">2</span></label>
+                            <label class="category-option"><input type="checkbox" value="andre" checked aria-controls="tools-grid"> Andre værktøjer <span class="category-count">4</span></label>
+                            </div>
+                        </fieldset>
+                        <div class="filter-summary"><p id="tool-count" role="status" aria-live="polite" aria-atomic="true"></p><div class="filter-actions"><button type="button" class="button button-secondary" id="show-all-tools">Vis alle</button><button type="button" class="button button-secondary" id="hide-all-tools">Skjul alle</button></div></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <div class="container guide-layout">
-                <div class="guide-main">
-                    <article class="guide-card" id="intro">
-                        <h2>Hvad er online værktøjer?</h2>
-                        <p>Online værktøjer kan automatisk lave filer ud fra dine mål og indstillinger eller lade dig afprøve elektronik direkte i browseren. Det er en hurtig vej til kasser, tandhjul, 3D-modeller og digitale kredsløb uden at starte helt fra nul.</p>
-                        <p>De fleste værktøjer er bedst til prototyper og hurtige iterationer. Tjek altid målsætning, samlinger og kerf i en testfil, før du bruger dyrt materiale.</p>
-                    </article>
-
-                    <article class="guide-card" id="kasser">
-                        <h2>Kasser</h2>
-                        <p>Værktøjer til bokse med fingersamlinger, indsatsrum og specialformer.</p>
-                        <div class="tool-list">
-                            <div class="tool-item" id="tool-makercase">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/makecase.png" alt="MakerCase" loading="lazy">
-                                    <h3><a href="https://www.makercase.com/" target="_blank" rel="noopener">MakerCase</a></h3>
-                                </div>
-                                <p>Nem generator til klassiske projektkasser med 3D-forhåndsvisning. God til hurtig opstart.</p>
-                                <span class="tool-meta">Filtype: SVG, DXF</span>
-                            </div>
-                            <div class="tool-item" id="tool-boxespy">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/boxes_py.png" alt="Boxes.py" loading="lazy">
-                                    <h3><a href="http://www.festi.info/boxes.py/index.html" target="_blank" rel="noopener">Boxes.py</a></h3>
-                                </div>
-                                <p>Meget fleksibel open source generator med mange kassetyper og avancerede indstillinger.</p>
-                                <span class="tool-meta">Filtype: AI, DXF, GCODE, PDF, PLT, PS, SVG</span>
-                            </div>
-                            <div class="tool-item" id="tool-makeabox">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/make_a_box.png" alt="Make a box" loading="lazy">
-                                    <h3><a href="https://makeabox.io/" target="_blank" rel="noopener">Make a box</a></h3>
-                                </div>
-                                <p>En enkel og intuitiv generator til bokse med symmetriske fingersamlinger.</p>
-                                <span class="tool-meta">Filtype: PDF</span>
-                            </div>
-                            <div class="tool-item" id="tool-lasercutterbox">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/laser_cutter_box.png" alt="Laser Cutter Box" loading="lazy">
-                                    <h3><a href="http://jeromeleary.com/laser/" target="_blank" rel="noopener">Laser Cutter Box</a></h3>
-                                </div>
-                                <p>Letvægtsgenerator med live preview og forskellige bokstyper, inkl. skråning og skillevægge.</p>
-                                <span class="tool-meta">Filtype: DXF</span>
-                            </div>
-                            <div class="tool-item" id="tool-templatemaker">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/template_maker_nl.png" alt="Template Maker" loading="lazy">
-                                    <h3><a href="https://www.templatemaker.nl/" target="_blank" rel="noopener">Template Maker</a></h3>
-                                </div>
-                                <p>Fokus på pap- og emballageskabeloner. God til foldede konstruktioner og hurtige mockups.</p>
-                                <span class="tool-meta">Filtype: PDF, SVG, DXF</span>
-                            </div>
-                            <div class="tool-item" id="tool-boxstudio">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/box_studio.png" alt="Box Studio" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://box-studio.cc/about/en" target="_blank" rel="noopener">Box Studio</a></h3>
-                                    </div>
-                                </div>
-                                <p>Gratis kassegenerator med kerf-kompensation, fingersamlinger, 3D-forhåndsvisning, hængslet låg og mulighed for indvendige rum.</p>
-                                <span class="tool-meta">Filtype: SVG</span>
+        <section aria-label="Værktøjsoversigt">
+            <div class="container tools-catalog">
+                <h2 class="tools-heading">Find dit værktøj</h2>
+                <div class="tools-grid" id="tools-grid">
+                    <div class="tool-item" data-category="kasser" id="tool-makercase">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/makecase.png" alt="MakerCase" loading="lazy">
+                            <h3><a href="https://www.makercase.com/" target="_blank" rel="noopener">MakerCase</a></h3>
+                        </div>
+                        <p>Nem generator til klassiske projektkasser med 3D-forhåndsvisning. God til hurtig opstart.</p>
+                        <span class="tool-meta">Filtype: SVG, DXF</span>
+                    </div>
+                    <div class="tool-item" data-category="kasser" id="tool-boxespy">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/boxes_py.png" alt="Boxes.py" loading="lazy">
+                            <h3><a href="http://www.festi.info/boxes.py/index.html" target="_blank" rel="noopener">Boxes.py</a></h3>
+                        </div>
+                        <p>Meget fleksibel open source generator med mange kassetyper og avancerede indstillinger.</p>
+                        <span class="tool-meta">Filtype: AI, DXF, GCODE, PDF, PLT, PS, SVG</span>
+                    </div>
+                    <div class="tool-item" data-category="kasser" id="tool-makeabox">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/make_a_box.png" alt="Make a box" loading="lazy">
+                            <h3><a href="https://makeabox.io/" target="_blank" rel="noopener">Make a box</a></h3>
+                        </div>
+                        <p>En enkel og intuitiv generator til bokse med symmetriske fingersamlinger.</p>
+                        <span class="tool-meta">Filtype: PDF</span>
+                    </div>
+                    <div class="tool-item" data-category="kasser" id="tool-lasercutterbox">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/laser_cutter_box.png" alt="Laser Cutter Box" loading="lazy">
+                            <h3><a href="http://jeromeleary.com/laser/" target="_blank" rel="noopener">Laser Cutter Box</a></h3>
+                        </div>
+                        <p>Letvægtsgenerator med live preview og forskellige bokstyper, inkl. skråning og skillevægge.</p>
+                        <span class="tool-meta">Filtype: DXF</span>
+                    </div>
+                    <div class="tool-item" data-category="kasser" id="tool-templatemaker">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/template_maker_nl.png" alt="Template Maker" loading="lazy">
+                            <h3><a href="https://www.templatemaker.nl/" target="_blank" rel="noopener">Template Maker</a></h3>
+                        </div>
+                        <p>Fokus på pap- og emballageskabeloner. God til foldede konstruktioner og hurtige mockups.</p>
+                        <span class="tool-meta">Filtype: PDF, SVG, DXF</span>
+                    </div>
+                    <div class="tool-item" data-category="kasser" id="tool-boxstudio">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/box_studio.png" alt="Box Studio" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://box-studio.cc/about/en" target="_blank" rel="noopener">Box Studio</a></h3>
                             </div>
                         </div>
-                    </article>
-
-                    <article class="guide-card" id="tandhjul">
-                        <h2>Tandhjul</h2>
-                        <p>Værktøjer til involute gears, hvor funktion og geometri er vigtig.</p>
-                        <div class="tool-list">
-                            <div class="tool-item" id="tool-involute">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/involute_spur_gear_builder.png" alt="Involute Spur Gear Builder" loading="lazy">
-                                    <h3><a href="http://hessmer.org/gears/InvoluteSpurGearBuilder.html" target="_blank" rel="noopener">Involute Spur Gear Builder</a></h3>
-                                </div>
-                                <p>Browser-værktøj til tandhjul, interne gears og rack-and-pinion med mange parametre.</p>
-                                <span class="tool-meta">Filtype: DXF</span>
-                            </div>
-                            <div class="tool-item" id="tool-geardesigner">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/gear_designer.png" alt="Gear Designer" loading="lazy">
-                                    <h3><a href="http://www.jeromeleary.com/gears/" target="_blank" rel="noopener">Gear Designer</a></h3>
-                                </div>
-                                <p>Hurtig generator til simple tandhjul ved at justere modul og antal tænder.</p>
-                                <span class="tool-meta">Filtype: DXF</span>
-                            </div>
-                            <div class="tool-item" id="tool-geardxf">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/geardxf.png" alt="GearDXF" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://geardxf.com/" target="_blank" rel="noopener">GearDXF</a></h3>
-                                    </div>
-                                </div>
-                                <p>Moderne generator og simulator til tandhjul, indvendige ringhjul og tandstænger med blandt andet frigangskompensation.</p>
-                                <span class="tool-meta">Filtype: DXF, SVG, PDF</span>
+                        <p>Gratis kassegenerator med kerf-kompensation, fingersamlinger, 3D-forhåndsvisning, hængslet låg og mulighed for indvendige rum.</p>
+                        <span class="tool-meta">Filtype: SVG</span>
+                    </div>
+                    <div class="tool-item" data-category="tandhjul" id="tool-involute">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/involute_spur_gear_builder.png" alt="Involute Spur Gear Builder" loading="lazy">
+                            <h3><a href="http://hessmer.org/gears/InvoluteSpurGearBuilder.html" target="_blank" rel="noopener">Involute Spur Gear Builder</a></h3>
+                        </div>
+                        <p>Browser-værktøj til tandhjul, interne gears og rack-and-pinion med mange parametre.</p>
+                        <span class="tool-meta">Filtype: DXF</span>
+                    </div>
+                    <div class="tool-item" data-category="tandhjul" id="tool-geardesigner">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/gear_designer.png" alt="Gear Designer" loading="lazy">
+                            <h3><a href="http://www.jeromeleary.com/gears/" target="_blank" rel="noopener">Gear Designer</a></h3>
+                        </div>
+                        <p>Hurtig generator til simple tandhjul ved at justere modul og antal tænder.</p>
+                        <span class="tool-meta">Filtype: DXF</span>
+                    </div>
+                    <div class="tool-item" data-category="tandhjul" id="tool-geardxf">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/geardxf.png" alt="GearDXF" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://geardxf.com/" target="_blank" rel="noopener">GearDXF</a></h3>
                             </div>
                         </div>
-                    </article>
-
-                    <article class="guide-card" id="fleksible-samlinger">
-                        <h2>Fleksible samlinger</h2>
-                        <p>Lav bøjelige mønstre i stive pladematerialer til eksempelvis rundinger, låg og kabinetter.</p>
-                        <div class="tool-list">
-                            <div class="tool-item" id="tool-livinghinge">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/living_hinge_generator.png" alt="Living Hinge Generator" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://livinghingegenerator.com/" target="_blank" rel="noopener">Living Hinge Generator</a></h3>
-                                    </div>
-                                </div>
-                                <p>Genererer justerbare living-hinge-mønstre med lige, bølgede, sekskantede eller krydsede udskæringer og viser resultatet med det samme.</p>
-                                <span class="tool-meta">Filtype: SVG, DXF</span>
+                        <p>Moderne generator og simulator til tandhjul, indvendige ringhjul og tandstænger med blandt andet frigangskompensation.</p>
+                        <span class="tool-meta">Filtype: DXF, SVG, PDF</span>
+                    </div>
+                    <div class="tool-item" data-category="fleksible-samlinger" id="tool-livinghinge">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/living_hinge_generator.png" alt="Living Hinge Generator" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://livinghingegenerator.com/" target="_blank" rel="noopener">Living Hinge Generator</a></h3>
                             </div>
                         </div>
-                    </article>
-
-                    <article class="guide-card" id="labyrinter">
-                        <h2>Labyrinter</h2>
-                        <p>Generatorer til puslespil, spilplader og kreative mazes.</p>
-                        <div class="tool-list">
-                            <div class="tool-item" id="tool-lasercutmaze">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/lazer-cut_maze_designer.png" alt="Laser-Cut Maze Designer" loading="lazy">
-                                    <h3><a href="https://adashrod.github.io/LaserCutMazes/welcome" target="_blank" rel="noopener">Laser-Cut Maze Designer</a></h3>
-                                </div>
-                                <p>Genererer laserklare filer til trælabyrinter og mekaniske maze-projekter.</p>
-                                <span class="tool-meta">Filtype: SVG</span>
-                            </div>
-                            <div class="tool-item" id="tool-mazegenerator">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/maze_generator.png" alt="Maze Generator" loading="lazy">
-                                    <h3><a href="http://www.mazegenerator.net/" target="_blank" rel="noopener">Maze Generator</a></h3>
-                                </div>
-                                <p>Bygger rektangulære, triangulære, cirkulære og heksagonale labyrinter.</p>
-                                <span class="tool-meta">Filtype: PDF, SVG, PNG</span>
+                        <p>Genererer justerbare living-hinge-mønstre med lige, bølgede, sekskantede eller krydsede udskæringer og viser resultatet med det samme.</p>
+                        <span class="tool-meta">Filtype: SVG, DXF</span>
+                    </div>
+                    <div class="tool-item" data-category="labyrinter" id="tool-lasercutmaze">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/lazer-cut_maze_designer.png" alt="Laser-Cut Maze Designer" loading="lazy">
+                            <h3><a href="https://adashrod.github.io/LaserCutMazes/welcome" target="_blank" rel="noopener">Laser-Cut Maze Designer</a></h3>
+                        </div>
+                        <p>Genererer laserklare filer til trælabyrinter og mekaniske maze-projekter.</p>
+                        <span class="tool-meta">Filtype: SVG</span>
+                    </div>
+                    <div class="tool-item" data-category="labyrinter" id="tool-mazegenerator">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/maze_generator.png" alt="Maze Generator" loading="lazy">
+                            <h3><a href="http://www.mazegenerator.net/" target="_blank" rel="noopener">Maze Generator</a></h3>
+                        </div>
+                        <p>Bygger rektangulære, triangulære, cirkulære og heksagonale labyrinter.</p>
+                        <span class="tool-meta">Filtype: PDF, SVG, PNG</span>
+                    </div>
+                    <div class="tool-item" data-category="cad" id="tool-tinkercad">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/tinkercad.png" alt="Autodesk Tinkercad" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://www.tinkercad.com/" target="_blank" rel="noopener">Tinkercad</a></h3>
                             </div>
                         </div>
-                    </article>
-
-                    <article class="guide-card" id="cad">
-                        <h2>CAD</h2>
-                        <p>Browserbaserede CAD-værktøjer til at tegne præcise 2D- og 3D-modeller til prototyper, laserskæring og 3D-print.</p>
-                        <div class="tool-list">
-                            <div class="tool-item" id="tool-tinkercad">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/tinkercad.png" alt="Autodesk Tinkercad" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://www.tinkercad.com/" target="_blank" rel="noopener">Tinkercad</a></h3>
-                                    </div>
-                                </div>
-                                <p>Gratis og begyndervenlig 3D-modellering fra Autodesk, hvor modeller bygges ved at kombinere og tilpasse simple former.</p>
-                                <span class="tool-meta">God til: De første CAD-modeller og enkle emner til 3D-print</span>
-                            </div>
-                            <div class="tool-item" id="tool-jscad">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/jscad.png" alt="JSCAD" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://jscad.app/" target="_blank" rel="noopener">JSCAD</a></h3>
-                                    </div>
-                                </div>
-                                <p>Open source-værktøj til parametriske 2D- og 3D-modeller, der beskrives med JavaScript og vises direkte i browseren.</p>
-                                <span class="tool-meta">God til: Kodebaseret og parametrisk CAD</span>
-                            </div>
-                            <div class="tool-item" id="tool-sketchforge">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/sketchforge.png" alt="SketchForge" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://sketchforge3d.com/" target="_blank" rel="noopener">SketchForge</a></h3>
-                                    </div>
-                                </div>
-                                <p>Gratis, open source 3D-editor med en enkel arbejdsgang til former, sammensætning, tilpasning og eksport direkte i browseren.</p>
-                                <span class="tool-meta">Import og eksport: Blandt andet STL og SVG</span>
-                            </div>
-                            <div class="tool-item" id="tool-onshape">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/onshape.png" alt="Onshape" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://www.onshape.com/en/products/free" target="_blank" rel="noopener">Onshape</a></h3>
-                                    </div>
-                                </div>
-                                <p>Professionel, parametrisk cloud-CAD med dele, assemblies, versionsstyring og samarbejde. Gratisplanen er til ikke-kommerciel brug, og dokumenter er offentlige.</p>
-                                <span class="tool-meta">God til: Avanceret CAD og samarbejde i browseren</span>
+                        <p>Gratis og begyndervenlig 3D-modellering fra Autodesk, hvor modeller bygges ved at kombinere og tilpasse simple former.</p>
+                        <span class="tool-meta">God til: De første CAD-modeller og enkle emner til 3D-print</span>
+                    </div>
+                    <div class="tool-item" data-category="cad" id="tool-jscad">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/jscad.png" alt="JSCAD" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://jscad.app/" target="_blank" rel="noopener">JSCAD</a></h3>
                             </div>
                         </div>
-                    </article>
-
-                    <article class="guide-card" id="3d-design">
-                        <h2>3D-design</h2>
-                        <p>Browserbaserede værktøjer til at skabe modeller samt platforme, hvor du kan finde filer til 3D-print.</p>
-                        <div class="tool-list">
-                            <div class="tool-item" id="tool-printables">
-                                <div class="tool-title-row">
-                                    <!-- Printables icon: selfh.st/icons, CC BY 4.0 -->
-                                    <img class="tool-logo" src="billeder/tools/printables.webp" alt="Printables" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://www.printables.com/" target="_blank" rel="noopener">Printables</a></h3>
-                                    </div>
-                                </div>
-                                <p>Platform med et stort udvalg af færdige 3D-modeller, som kan downloades og printes eller tilpasses til egne projekter.</p>
-                                <span class="tool-meta">God til: At finde filer til 3D-print</span>
-                            </div>
-                            <div class="tool-item" id="tool-makerworld">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/makerworld_makerlab.svg" alt="MakerWorld" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://makerworld.com/" target="_blank" rel="noopener">MakerWorld</a></h3>
-                                    </div>
-                                </div>
-                                <p>Platform med 3D-modeller fra et stort brugerfællesskab, ofte med printprofiler, billeder og erfaringer fra andre brugere.</p>
-                                <span class="tool-meta">God til: At finde filer og printprofiler til 3D-print</span>
-                            </div>
-                            <div class="tool-item" id="tool-makerlab">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/makerworld_makerlab.svg" alt="MakerWorld MakerLab" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://makerworld.com/en/makerlab?utm_source=fablabguides.dk" target="_blank" rel="noopener">MakerWorld MakerLab</a></h3>
-                                    </div>
-                                </div>
-                                <p>En samling af browserbaserede designværktøjer, der hjælper med at skabe og tilpasse modeller til 3D-print.</p>
-                                <span class="tool-meta">Output: Afhænger af det valgte værktøj</span>
+                        <p>Open source-værktøj til parametriske 2D- og 3D-modeller, der beskrives med JavaScript og vises direkte i browseren.</p>
+                        <span class="tool-meta">God til: Kodebaseret og parametrisk CAD</span>
+                    </div>
+                    <div class="tool-item" data-category="cad" id="tool-sketchforge">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/sketchforge.png" alt="SketchForge" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://sketchforge3d.com/" target="_blank" rel="noopener">SketchForge</a></h3>
                             </div>
                         </div>
-                    </article>
-
-                    <article class="guide-card" id="elektronik">
-                        <h2>Elektronik og simulering</h2>
-                        <p>Byg, programmér og afprøv digitale kredsløb virtuelt, før du samler dem fysisk.</p>
-                        <div class="tool-list">
-                            <div class="tool-item" id="tool-wokwi">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/wokwi.png" alt="Wokwi" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://wokwi.com/" target="_blank" rel="noopener">Wokwi</a></h3>
-                                    </div>
-                                </div>
-                                <p>Online simulator til blandt andet Arduino, ESP32, STM32 og Raspberry Pi Pico, hvor kode og elektronik kan testes sammen.</p>
-                                <span class="tool-meta">Brug: Mikrocontrollere, kode og elektroniske komponenter</span>
-                            </div>
-                            <div class="tool-item" id="tool-circuitverse">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/circuitverse.png" alt="CircuitVerse" loading="lazy">
-                                    <div class="tool-heading">
-                                        <h3><a href="https://circuitverse.org/" target="_blank" rel="noopener">CircuitVerse</a></h3>
-                                    </div>
-                                </div>
-                                <p>Gratis open source-simulator til digitale logikkredsløb med logiske porte, sandhedstabeller, timingdiagrammer og delkredsløb.</p>
-                                <span class="tool-meta">Eksport: Højopløste billeder, blandt andet SVG</span>
+                        <p>Gratis, open source 3D-editor med en enkel arbejdsgang til former, sammensætning, tilpasning og eksport direkte i browseren.</p>
+                        <span class="tool-meta">Import og eksport: Blandt andet STL og SVG</span>
+                    </div>
+                    <div class="tool-item" data-category="cad" id="tool-onshape">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/onshape.png" alt="Onshape" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://www.onshape.com/en/products/free" target="_blank" rel="noopener">Onshape</a></h3>
                             </div>
                         </div>
-                    </article>
-
-                    <article class="guide-card" id="andre">
-                        <h2>Andre værktøjer</h2>
-                        <p>Specialgeneratorer, der ikke passer i de øvrige kategorier.</p>
-                        <div class="tool-list">
-                            <div class="tool-item" id="tool-vectorruler">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/vector_ruler_generator.png" alt="Vector Ruler Generator" loading="lazy">
-                                    <h3><a href="http://robbbb.github.io/VectorRuler/" target="_blank" rel="noopener">Vector Ruler Generator</a></h3>
-                                </div>
-                                <p>Lav dine egne linealer med valgfri længde og markeringer.</p>
-                                <span class="tool-meta">Filtype: SVG</span>
-                            </div>
-                            <div class="tool-item" id="tool-jigsaw">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/jigsaw_puzzle_generator.png" alt="Jigsaw Puzzle Generator" loading="lazy">
-                                    <h3><a href="https://jigsawify.com/jigsaw-puzzle-generator" target="_blank" rel="noopener">Jigsaw Puzzle Generator</a></h3>
-                                </div>
-                                <p>Genererer puslespilsmønstre uden manuel tegning af hver brik.</p>
-                                <span class="tool-meta">Filtype: SVG</span>
-                            </div>
-                            <div class="tool-item" id="tool-svgnest">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/SVGnest.png" alt="SVGnest" loading="lazy">
-                                    <h3><a href="https://svgnest.com/" target="_blank" rel="noopener">SVGnest</a></h3>
-                                </div>
-                                <p>Automatisk nesting, så emner placeres med mindst muligt materialespild.</p>
-                                <span class="tool-meta">Filtype: SVG (import/eksport)</span>
-                            </div>
-                            <div class="tool-item" id="tool-deepnest">
-                                <div class="tool-title-row">
-                                    <img class="tool-logo" src="billeder/tools/deepnest.png" alt="Deepnest" loading="lazy">
-                                    <h3><a href="https://deepnest.io/" target="_blank" rel="noopener">Deepnest (app)</a></h3>
-                                </div>
-                                <p>Desktop-udgave med flere avancerede nestingfunktioner.</p>
-                                <span class="tool-meta">Filtype: Afhænger af importformat</span>
+                        <p>Professionel, parametrisk cloud-CAD med dele, assemblies, versionsstyring og samarbejde. Gratisplanen er til ikke-kommerciel brug, og dokumenter er offentlige.</p>
+                        <span class="tool-meta">God til: Avanceret CAD og samarbejde i browseren</span>
+                    </div>
+                    <div class="tool-item" data-category="cad 3d-design" id="tool-mesh2solid">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/mesh2solid.webp" alt="Mesh2Solid – CAD-model med farvemarkerede flader" loading="lazy">
+                            <h3><a href="https://mesh2solid.thavision.com/" target="_blank" rel="noopener">Mesh2Solid</a></h3>
+                        </div>
+                        <p>Konverterer mesh-filer til CAD-solider, så eksempelvis en STL-fil kan gemmes som STEP og redigeres videre i CAD. Filerne behandles lokalt i browseren. Gratis til private hobbyprojekter; kommerciel brug kræver Pro.</p>
+                        <span class="tool-meta">Import: STL, 3MF, OBJ · Eksport: STEP</span>
+                    </div>
+                    <div class="tool-item" data-category="3d-design" id="tool-printables">
+                        <div class="tool-title-row">
+                            <!-- Printables icon: selfh.st/icons, CC BY 4.0 -->
+                            <img class="tool-logo" src="billeder/tools/printables.webp" alt="Printables" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://www.printables.com/" target="_blank" rel="noopener">Printables</a></h3>
                             </div>
                         </div>
-                    </article>
+                        <p>Platform med et stort udvalg af færdige 3D-modeller, som kan downloades og printes eller tilpasses til egne projekter.</p>
+                        <span class="tool-meta">God til: At finde filer til 3D-print</span>
+                    </div>
+                    <div class="tool-item" data-category="3d-design" id="tool-makerworld">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/makerworld_makerlab.svg" alt="MakerWorld" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://makerworld.com/" target="_blank" rel="noopener">MakerWorld</a></h3>
+                            </div>
+                        </div>
+                        <p>Platform med 3D-modeller fra et stort brugerfællesskab, ofte med printprofiler, billeder og erfaringer fra andre brugere.</p>
+                        <span class="tool-meta">God til: At finde filer og printprofiler til 3D-print</span>
+                    </div>
+                    <div class="tool-item" data-category="3d-design" id="tool-makerlab">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/makerworld_makerlab.svg" alt="MakerWorld MakerLab" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://makerworld.com/en/makerlab?utm_source=fablabguides.dk" target="_blank" rel="noopener">MakerWorld MakerLab</a></h3>
+                            </div>
+                        </div>
+                        <p>En samling af browserbaserede designværktøjer, der hjælper med at skabe og tilpasse modeller til 3D-print.</p>
+                        <span class="tool-meta">Output: Afhænger af det valgte værktøj</span>
+                    </div>
+                    <div class="tool-item" data-category="elektronik" id="tool-wokwi">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/wokwi.png" alt="Wokwi" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://wokwi.com/" target="_blank" rel="noopener">Wokwi</a></h3>
+                            </div>
+                        </div>
+                        <p>Online simulator til blandt andet Arduino, ESP32, STM32 og Raspberry Pi Pico, hvor kode og elektronik kan testes sammen.</p>
+                        <span class="tool-meta">Brug: Mikrocontrollere, kode og elektroniske komponenter</span>
+                    </div>
+                    <div class="tool-item" data-category="elektronik" id="tool-circuitverse">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/circuitverse.png" alt="CircuitVerse" loading="lazy">
+                            <div class="tool-heading">
+                                <h3><a href="https://circuitverse.org/" target="_blank" rel="noopener">CircuitVerse</a></h3>
+                            </div>
+                        </div>
+                        <p>Gratis open source-simulator til digitale logikkredsløb med logiske porte, sandhedstabeller, timingdiagrammer og delkredsløb.</p>
+                        <span class="tool-meta">Eksport: Højopløste billeder, blandt andet SVG</span>
+                    </div>
+                    <div class="tool-item" data-category="andre" id="tool-vectorruler">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/vector_ruler_generator.png" alt="Vector Ruler Generator" loading="lazy">
+                            <h3><a href="http://robbbb.github.io/VectorRuler/" target="_blank" rel="noopener">Vector Ruler Generator</a></h3>
+                        </div>
+                        <p>Lav dine egne linealer med valgfri længde og markeringer.</p>
+                        <span class="tool-meta">Filtype: SVG</span>
+                    </div>
+                    <div class="tool-item" data-category="andre" id="tool-jigsaw">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/jigsaw_puzzle_generator.png" alt="Jigsaw Puzzle Generator" loading="lazy">
+                            <h3><a href="https://jigsawify.com/jigsaw-puzzle-generator" target="_blank" rel="noopener">Jigsaw Puzzle Generator</a></h3>
+                        </div>
+                        <p>Genererer puslespilsmønstre uden manuel tegning af hver brik.</p>
+                        <span class="tool-meta">Filtype: SVG</span>
+                    </div>
+                    <div class="tool-item" data-category="andre" id="tool-svgnest">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/SVGnest.png" alt="SVGnest" loading="lazy">
+                            <h3><a href="https://svgnest.com/" target="_blank" rel="noopener">SVGnest</a></h3>
+                        </div>
+                        <p>Automatisk nesting, så emner placeres med mindst muligt materialespild.</p>
+                        <span class="tool-meta">Filtype: SVG (import/eksport)</span>
+                    </div>
+                    <div class="tool-item" data-category="andre" id="tool-deepnest">
+                        <div class="tool-title-row">
+                            <img class="tool-logo" src="billeder/tools/deepnest.png" alt="Deepnest" loading="lazy">
+                            <h3><a href="https://deepnest.io/" target="_blank" rel="noopener">Deepnest (app)</a></h3>
+                        </div>
+                        <p>Desktop-udgave med flere avancerede nestingfunktioner.</p>
+                        <span class="tool-meta">Filtype: Afhænger af importformat</span>
+                    </div>
                 </div>
-
-                <aside class="guide-side" aria-labelledby="contents-heading tips-heading">
-                    <article class="guide-card" aria-labelledby="contents-heading">
-                        <h2 class="section-tag" id="contents-heading">Indhold</h2>
-                        <div class="guide-anchor-list">
-                            <a class="interactive" href="#intro">Hvad er online værktøjer?</a>
-                            <a class="interactive" href="#kasser">Kasser</a>
-                            <a class="interactive" href="#tandhjul">Tandhjul</a>
-                            <a class="interactive" href="#fleksible-samlinger">Fleksible samlinger</a>
-                            <a class="interactive" href="#labyrinter">Labyrinter</a>
-                            <a class="interactive" href="#cad">CAD</a>
-                            <a class="interactive" href="#3d-design">3D-design</a>
-                            <a class="interactive" href="#elektronik">Elektronik og simulering</a>
-                            <a class="interactive" href="#andre">Andre værktøjer</a>
-                        </div>
-                    </article>
-
-                    <article class="guide-card" aria-labelledby="tips-heading">
-                        <h2 class="section-tag" id="tips-heading">Tips i praksis</h2>
-                        <ul>
-                            <li>Læg altid kerf-kompensation ind, hvis værktøjet understøtter det.</li>
-                            <li>Kontroller at enheder er mm før eksport.</li>
-                            <li>Undgå dobbeltlinjer i den færdige fil.</li>
-                            <li>Gem både originalen og en eksportfil til maskinen.</li>
-                        </ul>
-                    </article>
-                </aside>
+                <p class="tools-empty" id="tools-empty" hidden>Ingen kategorier er valgt. Sæt et flueben ovenfor, eller vælg “Vis alle”.</p>
             </div>
         </section>
     </main>
@@ -605,6 +450,7 @@
         </div>
     </dialog>
 
+    <script src="online-tools.js" defer></script>
     <script>
         (function () {
             var lightbox = document.getElementById('image-lightbox');
