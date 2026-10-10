@@ -869,6 +869,7 @@
   "Together · two-colour 3MF": "Samlet · tofarvet 3MF",
   "Separate pieces · glue on": "Separate dele · limes på",
   "How this style prints": "Sådan printes denne stil",
+  "Border width expands around the text and can join nearby letters. Use a script and reduce spacing for one connected name. The 3MF can keep both colours registered as one object, or arrange separate pieces for gluing.": "Kantbredden udvider sig omkring teksten og kan forbinde bogstaver tæt på hinanden. Brug en håndskriftsskrifttype og reducer afstanden for ét sammenhængende navn. 3MF-filen kan bevare begge farver registreret som ét objekt eller arrangere separate dele til limning.",
   "Sandstone": "Sandsten",
   "Chiseled": "Mejslet",
   "Weathered": "Forvitret",
