@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="da">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../../media/favicon.svg" rel="icon" type="image/svg+xml"/>
+<title>Alternativ til Meshmixer til opdeling af modeller (2026)</title>
+<meta content="Meshmixer er ikke opdateret siden 2018. Her er hvad folk brugte det til — planesnit, reparation, adskillelse af skaller — og hvad der løser opgaverne i dag, både gratis og betalt, inkl. et værktøj der kører i browseren." name="description"/>
+
+<meta content="article" property="og:type"/>
+<meta content="Model Splitter" property="og:site_name"/>
+<meta content="Alternativ til Meshmixer til opdeling af modeller (2026)" property="og:title"/>
+<meta content="Hvad Meshmixer gjorde til opdeling og reparation, og hvad der løser de opgaver i dag." property="og:description"/>
+<meta content="https://modelsplitter.com/how-to/meshmixer-alternative-for-splitting-models/" property="og:url"/>
+<meta content="../../../media/band-cut.jpg" property="og:image"/>
+<link href="../_style.css" rel="stylesheet"/>
+<style>
+.table { overflow-x:auto; margin:20px 0; }
+table { border-collapse:collapse; width:100%; text-align:left; font-size:15px; }
+th, td { padding:10px 12px 10px 0; border-bottom:1px solid var(--edge); vertical-align:top; }
+th { color:var(--muted); font-weight:600; }
+td:first-child { font-weight:650; white-space:nowrap; }
+</style>
+
+<!-- Leftovers from before 2026-10-07, when the Reddit pixel loaded on every
+         visit and MailerLite's script on every page: their cookie and ID stay
+         in a returning visitor's browser until something removes them, and the
+         cookie went back to us with every request. Cleared on every load; the
+         ID comes back only for somebody who presses Join, and goes again on
+         their next visit. -->
+
+<style>#countedDetails,#launchInvite,#launchList,#say,#forumOpen,#proOpen,#kickstarterOpenSidebar,#launchOpenSidebar{display:none!important}</style></head>
+<body>
+<header><a href="../../index.html">Model Splitter</a><span>·</span><a href="../index.html">How-to</a><span>·</span><a href="../../guide/index.html">Værktøjsguide</a></header>
+<main>
+<article>
+<h1>Alternativ til Meshmixer til opdeling af modeller (2026)</h1>
+<p class="lead">Meshmixers sidste version var 3.5 fra 2018. Her er hvad det kunne til opdeling og reparation, og hvad der løser de opgaver i dag.</p>
+<p>I et årti var Meshmixer svaret på spørgsmålet: "hvordan skærer jeg denne STL i to". Det var gratis, havde Plane Cut, Inspector til reparation af defekte meshes, Separate Shells og Make Solid, og alle havde en kopi. Autodesk stoppede udviklingen i 2018. Det kan stadig downloades, men er ikke supporteret, Mac-versionen er tydeligt aldrende, og de to ting det aldrig løste rigtig godt — snit der ikke er flade, og stifter man ikke selv skal bygge — er netop det folk oftest spørger efter.</p>
+<h2>Hvad Meshmixer gjorde for dig</h2>
+<ul>
+<li><strong>Plane Cut</strong> — a flat cut through the model, keep one side or both. Fine for a base; less fine across a face or a sleeve.</li>
+<li><strong>Inspector</strong> — find holes, flipped normals and floating fragments, and auto-repair them.</li>
+<li><strong>Separate Shells</strong> and <strong>Make Solid</strong> — pull a multi-part model apart, or fuse a mess into one printable solid.</li>
+<li><strong>Sculpt</strong> brushes, <strong>Hollow</strong>, <strong>Supports</strong> — of which the slicer now does the last two better.</li>
+<li>Pins for the split: there was no tool. You added cylinders from the Meshmix primitives, positioned them by eye, and booleaned them into one half and out of the other.</li>
+</ul>
+<h2>Hvad løser de opgaver i dag</h2>
+<div class="table"><table>
+<thead><tr><th>Værktøj</th><th>Pris</th><th>Kører på</th><th>Snitform</th><th>Samlinger</th><th>Reparation</th></tr></thead>
+<tbody>
+<tr><td>Meshmixer 3.5</td><td>Gratis</td><td>Windows, ældre Mac</td><td>Plan</td><td>Manuelt</td><td>Inspector</td></tr>
+<tr><td>Slicer-skæreværktøjer<br/><small>PrusaSlicer, Bambu Studio, OrcaSlicer</small></td><td>Gratis</td><td>Desktop</td><td>Plan, roterbar</td><td>Plugs og dyvler</td><td>Ved import</td></tr>
+<tr><td>Blender</td><td>Gratis</td><td>Desktop</td><td>Alt, med indsats</td><td>Manuelt</td><td>Manuelt</td></tr>
+<tr><td>LuBan</td><td>$625 livstid eller $25/måned</td><td>Windows</td><td>Planer plus genereret buet snit</td><td>Automatisk</td><td>—</td></tr>
+<tr><td>Split3r</td><td>Ca. €60</td><td>Windows</td><td>Plan</td><td>Automatisk</td><td>Separat app</td></tr>
+<tr><td>Model Splitter</td><td>Gratis</td><td>Browser — Windows, Mac, Linux</td><td>Plan, eller en tegnet samling der følger overfladen</td><td>Stifter, løse tappe, magneter</td><td>Indbygget</td></tr>
+</tbody></table></div>
+<p>Two honest observations from that table. If all you need is a flat cut with a dowel, your slicer already has it, and there is no reason to install anything. And if you want to draw the cut yourself — around an arm, along the edge of the armour, through the fold where nobody will see it — the choice is Blender with an afternoon, or Model Splitter with a mouse.</p>
+<figure>
+<video autoplay="" loop="" muted="" playsinline="" poster="../../../media/band-cut.jpg" src="../../../media/band-cut.mp4"></video>
+<figcaption>Meshmixer-opgaven løst på en anden måde: en løkke tegnet rundt om armen og trukket ind i rustningens kant, med automatisk stift og hulrum på skærefladen.</figcaption>
+</figure>
+<h2>Meshmixer-opgaver, én for én</h2>
+<h3>Plane Cut</h3>
+<p>Vælg <strong>Plan</strong> i Skæreværktøj, vælg en akse eller den aktuelle visning, og træk det på plads. Tilt-kontrollen roterer planet, og hvis det krydser flere adskilte områder, kan du vælge hvilke ringe der skal skæres. <strong>Multi-plan</strong> laver flere på én gang, og <strong>Auto multi-plan</strong> beregner færrest mulige snit, så delene passer til printerens byggeplade ud fra forudindstilling eller mål.</p>
+<h3>Skæring hvor et plan ikke dur</h3>
+<p>Vælg <strong>Bånd</strong>, tegn en løkke rundt om delen, og træk linjen ind i folden eller kanten, hvor samlingen kan skjules. <strong>Linje</strong> er ét hurtigt strøg; <strong>Reb</strong> er til at gå kontrolleret rundt om bagsiden. Samlingen følger overfladen, og delene kommer ud med stifter. Se trin-for-trin i <a href="../split-stl-too-big-for-print-bed/index.html">Sådan opdeler du en STL, der er for stor til din byggeplade</a>.</p>
+<h3>Inspector</h3>
+<p><strong>Inspicér &amp; reparér</strong> rapporterer huller, vendte og dublerede flader samt løse skaller. <strong>Reparér — kun sikker</strong> rydder op uden at ændre formen; <strong>Avanceret</strong> lapper huller og sammenføjede overflader og kan ændre formen lokalt, så kontrollér resultatet.</p>
+<h3>Separate Shells</h3>
+<p><strong>Adskil løse dele</strong> gør hver løsrevet klump til sit eget objekt. <strong>Boolsk → Union</strong> samler dem igen.</p>
+<h3>Make Solid, boolske operationer og primitiver</h3>
+<p><strong>Former</strong> tilføjer kube, kugle, rør, kegle eller ring; <strong>Boolsk</strong> laver union, differens og snitflade på to lukkede solids. Det er samme værktøjskasse, blot uden det trin hvor Meshmixer først voxeliserede modellen.</p>
+<h3>Skulptér</h3>
+<p><strong>Udglat</strong>, <strong>Pust op</strong> og <strong>Udjævn</strong> med maske er gode til små rettelser — en scanningartefakt eller en samling der skal blendes — ikke til at skulpturere fra bunden. Blender er stadig det stærkeste rene skulpturværktøj.</p>
+<h2>Spørgsmål</h2>
+<details><summary>Kan man stadig få Meshmixer?</summary><p>Ja. Autodesk hoster stadig 3.5-downloadet, og det virker på Windows. Det er ikke supporteret og er ikke opdateret siden 2018; på nyere macOS er det svingende. Hvis det gør det du har brug for, er der intet her der siger, at du skal stoppe med det.</p></details>
+<details><summary>Skal jeg uploade modellen?</summary><p>Nej. Model Splitter kører i browseren; filen åbnes på din egen maskine, og snittet sker der. Intet sendes væk.</p></details>
+<details><summary>Hvad med meget store modeller og scanninger?</summary><p>Scanninger med en million trekanter eller mere kan skæres, men tager længere tid. <strong>Reducér til skæring</strong> laver en lettere arbejdskopi til preview, mens originalen bevares til eksport.</p></details>
+<details><summary>Forsvinder gratisversionen?</summary><p>Nej. Alt er gratis i beta, og en gratis udgave består bagefter. <a aria-hidden="true" hidden="">ModelSplitter Pro</a>, den betalte udgave med avancerede værktøjer — én betaling, intet abonnement — lanceres på Kickstarter den 3. november.</p></details>
+<section class="cta">
+<h2>Prøv den på modellen du ellers ville åbne i Meshmixer</h2>
+<p>Gratis, ingen tilmelding, intet at installere.</p>
+<a class="try" href="../../index.html?utm_source=how-to&amp;utm_medium=page&amp;utm_campaign=meshmixer">Åbn Model Splitter</a>
+</section>
+</article>
+<footer>Mangler der noget Meshmixer kunne, som du ikke finder her? <a href="../../guide/index.html">Fuld værktøjsguide</a>.</footer>
+</main>
+
+</body>
+</html>

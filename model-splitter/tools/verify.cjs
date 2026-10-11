@@ -1,0 +1,26 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),puppeteer=require('puppeteer');
+const base='http://127.0.0.1:8776/model-splitter/public/',out='/tmp/modelsplitter-qa';fs.mkdirSync(out,{recursive:true});
+(async()=>{const browser=await puppeteer.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader']});const errors=[],blocked=[],missing=[],requests=[];try{
+ const page=await browser.newPage();await page.setViewport({width:1440,height:1000});await page.setRequestInterception(true);
+ page.on('request',r=>{requests.push(r.url());if(/^https?:/.test(r.url())&&(!r.url().startsWith('http://127.0.0.1:8776/')||r.url().includes('/api/'))){blocked.push(r.url());r.abort();}else r.continue();});
+ page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)missing.push(r.url());});
+ await page.evaluateOnNewDocument(()=>{window.qaBlobs=[];const baseCreateObjectURL=URL.createObjectURL;URL.createObjectURL=function(blob){window.qaBlobs.push(blob);return baseCreateObjectURL.call(this,blob);};});
+ await page.goto(base);await page.waitForFunction(()=>!document.querySelector('#welcomeDemo').disabled);
+ await page.click('#welcomeDemo');await page.waitForFunction(()=>!document.querySelector('#export').disabled);
+ const snap=async name=>page.screenshot({path:path.join(out,name+'.png')});await snap('demo');
+ for(const id of ['countedDetails','launchInvite','launchList','say','forumOpen','launchOpenSidebar'])assert.equal(await page.$eval('#'+id,e=>getComputedStyle(e).display),'none');
+ const exportFile=async(selector,name)=>{const before=await page.evaluate(()=>qaBlobs.length);await page.$eval(selector,e=>e.click());await page.waitForFunction(n=>qaBlobs.length>n,{},before);const bytes=await page.evaluate(async n=>Array.from(new Uint8Array(await qaBlobs[n].arrayBuffer())),before);fs.writeFileSync(path.join(out,name),Buffer.from(bytes));return bytes;};
+ const initial=await exportFile('#export','egg.stl');assert.equal(initial.length,84+new DataView(Uint8Array.from(initial).buffer).getUint32(80,true)*50);
+ await page.select('#mode','plane');await page.$eval('#autoPins',e=>{e.checked=false;e.dispatchEvent(new Event('change',{bubbles:true}));});await page.$eval('#planeZ',e=>e.click());
+ await page.waitForFunction(()=>!document.querySelector('#cut').disabled);await page.$eval('#cut',e=>e.click());await page.waitForFunction(()=>!document.querySelector('#keepBoth').disabled,{timeout:60000});await snap('plane-cut');
+ await page.$eval('#keepBoth',e=>e.click());await page.waitForFunction(()=>[...document.querySelectorAll('#objectList input')].filter(e=>e.type==='text').length>=2,{timeout:15000});
+ await page.select('#exportWhat','all3mf').catch(async()=>console.log('Export options',await page.$eval('#exportWhat',e=>[...e.options].map(x=>[x.value,x.textContent]))));
+ console.log('Export choices',await page.$eval('#exportWhat',e=>[...e.options].map(x=>[x.value,x.textContent])));
+ await exportFile('#export','parts.3mf');
+ await page.$eval('#projectBox',e=>e.open=true);await exportFile('#projectExport','egg.msproj');
+ const input=await page.$('#file');await input.uploadFile(path.join(out,'egg.stl'));await page.waitForFunction(()=>!document.querySelector('#export').disabled);await page.select('#exportWhat','modelStl');const imported=await exportFile('#export','imported.stl');assert.equal(imported.length,84+new DataView(Uint8Array.from(imported).buffer).getUint32(80,true)*50);
+ await (await page.$('#projectFile')).uploadFile(path.join(out,'egg.msproj'));await new Promise(r=>setTimeout(r,1500));await snap('project-restored');assert.ok(await page.$eval('#objectList',e=>[...e.querySelectorAll('input')].filter(x=>x.type==='text').length>=2),'Restored split project should contain both parts');
+ for(const route of ['guide/','how-to/','how-to/split-stl-too-big-for-print-bed/','how-to/meshmixer-alternative-for-splitting-models/'])await page.goto(base+route);
+ assert.deepEqual(errors,[]);assert.deepEqual(blocked,[]);assert.deepEqual(missing,[]);
+ const report={checked:['demo model','STL export and import','plane cut without joints','3MF export','project export and import','local help pages','hidden service controls','no external or API requests'],errors,blocked,missing,requests,files:fs.readdirSync(out)};fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

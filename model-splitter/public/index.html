@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+
+<html lang="da">
+<head><meta content="default-src 'self' blob: data:; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self'; worker-src 'self' blob:; form-action 'none'; base-uri 'self'" http-equiv="Content-Security-Policy"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="HfT30GvNcZhu2k4FLYOwRzyICQJPYfHULzZlL8SQVD0" name="google-site-verification"/>
+<link href="../media/favicon.svg" rel="icon" type="image/svg+xml"/>
+<title>Model Splitter — opdel STL-modeller og saml delene</title>
+<meta content="En gratis 3D-modelopdeler med samlinger i browseren: tegn en samling, skær en STL i dele, og få tappe og hulrum til at passe sammen igen." name="description"/>
+
+
+
+
+
+
+
+
+<meta content="website" property="og:type"/>
+<meta content="Model Splitter" property="og:site_name"/>
+<meta content="Model Splitter — opdel STL-modeller og saml delene" property="og:title"/>
+<meta content="Tegn en samling, skær en STL i dele, og få tappe og hulrum til at passe sammen igen. Gratis i browseren, intet uploades." property="og:description"/>
+<meta content="https://modelsplitter.com/" property="og:url"/>
+<meta content="https://modelsplitter.com/og-image.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Model Splitter: en figur opdelt i farvede dele med samlinger. Opdel enhver model på din måde." property="og:image:alt"/>
+<meta content="https://modelsplitter.com/og-image.jpg" name="twitter:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Model Splitter — opdel STL-modeller og saml delene" name="twitter:title"/>
+<meta content="Tegn en samling, skær en STL i dele, og få tappe og hulrum til at passe sammen igen. Gratis i browseren, intet uploades." name="twitter:description"/>
+
+<style>
+      :root {
+        color-scheme: dark;
+        --bg: #1c1f24;
+        --panel: #23272e;
+        --edge: #343a43;
+        --sunken: #1c1f24;
+        --overlay: rgba(28, 31, 36, 0.9);
+        --text: #e6e9ed;
+        --muted: #9aa3ad;
+        --accent: #f43f5e;
+        /* The colours the two halves are drawn in; the same in both themes,
+           because they belong to the model rather than to the interface. */
+        --part-a: #14b8a6;
+        --part-b: #facc15;
+      }
+      :root[data-theme="light"] {
+        color-scheme: light;
+        --bg: #eef1f5;
+        --panel: #ffffff;
+        --edge: #d5dae1;
+        --sunken: #f6f8fa;
+        --overlay: rgba(255, 255, 255, 0.92);
+        --text: #1b1f24;
+        --muted: #5b6672;
+        --accent: #e11d48;
+      }
+      * { box-sizing: border-box; }
+      #mobileNotice { display: none; }
+      body {
+        margin: 0;
+        height: 100vh;
+        /* Safari's own toolbar shows and hides as the page scrolls, and 100vh
+           there has always meant the tallest the viewport ever gets — with
+           the toolbar showing, the true visible area is shorter than that,
+           and a grid sized to 100vh runs off the bottom of it. 100dvh tracks
+           the toolbar honestly; kept as a second declaration so a browser
+           that has never heard of it keeps the line above instead. Reported
+           from an iPad Pro as the right-hand panel being unreachable. */
+        height: 100dvh;
+        display: grid;
+        grid-template-columns: var(--left-width, 280px) 1fr auto;
+        grid-template-rows: minmax(0, 1fr) auto;
+        /* The Thai faces are named because the generic stack does not reliably
+           reach one. Windows and macOS have Leelawadee UI and Thonburi behind
+           `system-ui`; a Linux box often has nothing, and the page comes out in
+           tofu with no clue why. Naming them costs nothing where the system
+           font already covers Thai — the browser only reaches a later family
+           for the glyphs the earlier ones lack. */
+        font: 14px/1.5 system-ui, -apple-system, "Segoe UI", "Noto Sans Thai",
+          "Leelawadee UI", Thonburi, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      /* Across the foot of all three columns, one row of small links. */
+      #siteFooter {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 10px;
+        padding: 6px 12px;
+        background: var(--panel);
+        border-top: 1px solid var(--edge);
+      }
+      #siteFooter a.secondary, #siteFooter button {
+        width: auto;
+        margin: 0;
+        padding: 4px 12px;
+        font-size: 12px;
+        text-decoration: none;
+      }
+      #toolPanel, main, #objects { grid-row: 1; min-height: 0; }
+      #toolPanel {
+        background: var(--panel);
+        border-right: 1px solid var(--edge);
+        padding: 18px;
+        overflow-y: auto;
+        scrollbar-gutter: stable;
+      }
+      /* Left is what you are doing, right is what you have. Two panels and a
+         viewport is tight on a laptop and the viewport is the point, so this one
+         folds to a strip — and unlike a floating window it never sits over the
+         model you are trying to look at. */
+      /* The column scrolls as a whole, and its windows keep their own height.
+         Clipping it instead put Boolean and Inspect & repair off the bottom of a
+         laptop screen with no way to reach them, and let the flex box take the
+         space out of the object list — sixteen pixels of it on an 800px screen,
+         which is a scrollbar and no objects. A window is either on the screen or
+         reachable by scrolling to it; squashed to a sliver is neither. */
+      #objects {
+        background: var(--panel);
+        border-left: 1px solid var(--edge);
+        width: var(--right-width, 250px);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden auto;
+        scrollbar-gutter: stable;
+      }
+      #objects > * { flex: 0 0 auto; }
+      #objects > details.panel { margin: 0 8px 10px; }
+      #objects.folded { width: 34px; scrollbar-gutter: auto; overflow: hidden; }
+      #objects.folded > :not(#objectsHead) { display: none; }
+      #objects.folded #objectsHead { padding: 10px 0; justify-content: center; }
+      #objects.folded .objects-body { display: none; }
+      /* Every panel is named the same way — accent, small, upper case — so the
+         eye can find "which tool is this" in one colour rather than reading the
+         whole column. Both sidebars, so moving a panel from one to the other
+         changes nothing about how it looks. */
+      #objectsHead, details.panel > summary {
+        color: var(--accent);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      #objectsHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+        padding: 10px 10px 10px 12px;
+        border-bottom: 1px solid var(--edge);
+      }
+      #objects.folded #objectsTitle, #objects.folded #objectAdd { display: none; }
+      #objectAdd, #objectsFold {
+        width: auto;
+        margin: 0;
+        padding: 2px 7px;
+        font-size: 12px;
+        line-height: 1;
+      }
+      /* A long list scrolls inside its own window rather than pushing every
+         other window off the screen. */
+      .objects-body { overflow-y: auto; padding: 8px; max-height: 40vh; }
+      .object {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 5px 6px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        /* Double-click means "rename this" here, and the browser's own meaning
+           — highlight the words under the pointer, and keep going across the
+           row — arrives first and looks like the panel has gone haywire. */
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .object input.name:not([readonly]) {
+        user-select: text;
+        -webkit-user-select: text;
+      }
+      .object.working { border-color: var(--edge); background: var(--bg); }
+      /* The swatch is an <input type=color> wearing the old swatch's clothes:
+         the browser's own picker, with none of its chrome. */
+      .object .swatch {
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+        flex: 0 0 auto;
+        padding: 0;
+        border: 1px solid var(--edge);
+        background: none;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+      .object .swatch::-webkit-color-swatch-wrapper { padding: 0; }
+      .object .swatch::-webkit-color-swatch { border: none; border-radius: 2px; }
+      .object .swatch::-moz-color-swatch { border: none; border-radius: 2px; }
+      .object input.name {
+        flex: 1 1 auto;
+        min-width: 0;
+        background: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: inherit;
+        font: inherit;
+        padding: 2px 4px;
+      }
+      .object input.name:hover { border-color: var(--edge); }
+      .object input.name:focus { border-color: var(--edge); background: var(--panel); outline: none; }
+      .object button {
+        width: auto;
+        margin: 0;
+        padding: 2px 6px;
+        font-size: 12px;
+        line-height: 1.2;
+      }
+      .object .lineage { color: var(--muted); font-size: 11px; }
+      #healthReport b { color: var(--text); font-weight: 600; }
+      #healthReport .bad { color: var(--accent); }
+      #healthReport .verdict { font-size: 13px; margin: 0 0 4px; }
+      #healthReport .list { margin: 4px 0 0; line-height: 1.6; }
+      #healthReport .fault { color: var(--text); }
+      #health button { margin: 0; }
+      .object .pick {
+        flex: 0 0 auto;
+        margin: 0;
+        width: 13px;
+        height: 13px;
+        accent-color: var(--accent);
+        cursor: pointer;
+      }
+      .object.hidden .swatch { opacity: 0.25; }
+      .object.picked { border-color: var(--accent, #f43f5e); }
+      .object .order {
+        color: var(--muted);
+        font-size: 11px;
+        min-width: 10px;
+        text-align: right;
+      }
+      #combine, #move, #health, #sculptBox, #shapes {
+        border-top: 1px solid var(--edge);
+        padding: 10px;
+      }
+      /* Four buttons on one line, so the window costs a row rather than a
+         screenful of the column the model has to share. */
+      #shapeRow, #edgeRow { display: flex; gap: 4px; }
+      #edgeRow { margin-top: 6px; }
+      #shapeRow button, #edgeRow button { margin: 0; padding: 5px 4px; }
+      #edgeSizeField { display: block; margin: 8px 0 0; }
+      #objects.folded #shapes { display: none; }
+      #objects.folded #exportBox, #objects.folded #health,
+      #objects.folded #tools { display: none; }
+      /* At the top of the column, so it needs a rule under it rather than
+         over it — the sections below each carry their own top border. */
+      #exportBox { border-bottom: 1px solid var(--edge); padding: 10px; }
+      #objects.folded #move { display: none; }
+      #move button { margin: 0; padding: 5px 4px; }
+      #sculptBox label { display: block; margin: 0 0 6px; }
+      #sculptFields { margin-top: 10px; }
+      /* A control the brush in hand does not read: dimmed where it is rather
+         than taken away, so the window keeps its shape as you switch. */
+      #sculptFields label.inactive { opacity: 0.35; }
+      #tools button { margin: 0; }
+      #move button.on, #edgeRow button.on, #sculptToggle.on, #maskToggle.on {
+        border-color: var(--accent);
+        color: var(--text);
+      }
+      #objects.folded #combine { display: none; }
+      #combine .sub { margin-bottom: 6px; }
+      /* Each section of the right column is its own window: a title, a rule
+         above it, and its controls under. Without the titles it reads as one
+         long strip and nothing says where the booleans end and the repair
+         begins. */
+      #combine button { margin: 0 0 6px; }
+      .object.hidden input.name { color: var(--muted); }
+      h1 { font-size: 15px; margin: 0 0 4px; letter-spacing: 0.01em; }
+      .sub { color: var(--muted); font-size: 12px; margin-bottom: 18px; }
+      /* A choice offered in the status bar rather than in a dialog over the
+         model: the bar is where this app talks, and "carry on or start fresh"
+         is a sentence with two words you can press. */
+      #status button.inline, #exportWhere button.inline {
+        width: auto;
+        margin: 0 2px;
+        padding: 1px 8px;
+        font-size: 12px;
+        line-height: 1.4;
+        vertical-align: baseline;
+        /* The bar itself is see-through to the mouse, so a drag that ends over
+           it still reaches the model underneath — and a child inherits that,
+           which made "carry on" and "start fresh" two words that looked like
+           buttons and could not be pressed at all: no hover, no cursor, no
+           click. Nick: "i click those buttons they either don't work or are
+           loading i can't tell". */
+        pointer-events: auto;
+      }
+      /* Every panel folds away. With all of them open the sidebar is taller
+         than the screen, and which ones matter depends entirely on how you are
+         cutting — so the label stays visible and the contents do not. */
+      /* Both sidebars can be pulled wider. A tool panel that clips its own
+         labels is a panel nobody reads, and how much room the model wants
+         against how much the controls want is a judgement that changes with the
+         screen, the model and the job — so it is the user's to make, not a
+         number picked here. Placed against the real width of each column rather
+         than against the variable, so folding the right-hand column takes its
+         grip with it. */
+      .fields { display: flex; gap: 6px; }
+      .fields > input { flex: 1 1 0; min-width: 0; }
+      .grip {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 7px;
+        z-index: 6;
+        cursor: col-resize;
+        background: transparent;
+        transition: background 120ms;
+      }
+      .grip:hover, .grip.dragging { background: var(--accent); opacity: 0.55; }
+      details.panel {
+        border: 1px solid var(--edge);
+        border-radius: 6px;
+        padding: 0 12px;
+        margin: 0 0 10px;
+      }
+      details.panel[open] { padding-bottom: 12px; }
+      details.panel > summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        cursor: pointer;
+        list-style: none;
+      }
+      details.panel > summary::-webkit-details-marker { display: none; }
+      details.panel > summary::after {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-right: 1.5px solid var(--accent);
+        border-bottom: 1.5px solid var(--accent);
+        transform: translateY(-2px) rotate(45deg);
+        transition: transform 0.15s;
+      }
+      details.panel[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
+      details.panel > summary:hover { color: var(--text); }
+      label { display: block; margin-bottom: 10px; font-size: 12px; color: var(--muted); }
+      /* The first checkbox in the app: laid out as a row so the box and its
+         words read as one target, rather than the box sitting on its own line. */
+      label.check { display: flex; align-items: center; gap: 7px; margin-top: 10px; cursor: pointer; }
+      label.check input { accent-color: var(--accent); margin: 0; }
+      label.check:has(input:disabled) { opacity: 0.45; cursor: default; }
+      label:last-child { margin-bottom: 0; }
+      .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+      output { color: var(--text); font-variant-numeric: tabular-nums; font-size: 12px; }
+      input[type="range"] { width: 100%; accent-color: var(--accent); }
+      select, input[type="file"], input[type="number"] { width: 100%; background: var(--sunken); color: var(--text); border: 1px solid var(--edge); border-radius: 4px; padding: 6px; font: inherit; font-size: 12px; }
+      /* Which half is which is only knowable from the picture, so the export
+         menu carries the same two colours the halves are drawn in: a stripe
+         down the side of the closed menu, and the rows themselves in the list. */
+      #exportWhat {
+        background-repeat: no-repeat;
+        background-size: 5px 100%;
+        background-position: left center;
+        padding-left: 13px;
+      }
+      #exportWhat.part-a { background-image: linear-gradient(var(--part-a), var(--part-a)); }
+      #exportWhat.part-b { background-image: linear-gradient(var(--part-b), var(--part-b)); }
+      #exportWhat.part-both {
+        background-image: linear-gradient(to bottom, var(--part-a) 50%, var(--part-b) 50%);
+      }
+      #exportWhat option[value="a"] { background: var(--part-a); color: #12161d; }
+      #exportWhat option[value="b"] { background: var(--part-b); color: #12161d; }
+      button, a.secondary {
+        width: 100%;
+        padding: 9px;
+        margin-bottom: 8px;
+        background: var(--accent);
+        color: #ffffff;
+        border: 0;
+        border-radius: 5px;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+      button.secondary, a.secondary { background: var(--edge); color: var(--text); }
+      #paintPreview[aria-pressed="true"] { background: var(--accent); color: #ffffff; }
+      /* Said outright, as #welcome and #busy are. Nothing here sets `display`
+         on a button so the browser's own [hidden] rule would hold — but it held
+         for #welcome too until a `display: flex` was added above it, and this
+         button is hidden until a cut refuses, which is not a state anybody
+         looks at often enough to notice it going wrong. */
+      #keepSeam[hidden] { display: none; }
+      button:disabled { opacity: 0.35; cursor: default; }
+      /* Cut is what the whole column is for, and it sat in the middle of it —
+         below the fold at 1280x720, behind a scroll nothing on the screen asked
+         you to make. Pinned to the bottom of the panel instead, so opening a
+         tool's own box can never push the button that runs it out of sight.
+         Sticky rather than fixed: it is still part of the column, so it scrolls
+         with the last panel on a tall screen and stops at the bottom on a short
+         one, and nothing has to reserve space for it.
+
+         Back and Clear share a line under it. Three full-width buttons is a
+         third of a laptop's sidebar spent on a bar, and only one of the three
+         is the thing you came here to press. */
+      #actions {
+        position: sticky;
+        bottom: 0;
+        z-index: 1;
+        margin: 4px -18px -18px;
+        padding: 10px 18px 14px;
+        background: var(--panel);
+        border-top: 1px solid var(--edge);
+      }
+      /* The column passes behind the bar, and a line of text stopped dead by its
+         edge reads as something drawn wrong. It fades into it instead. */
+      #actions::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: 18px;
+        background: linear-gradient(to top, var(--panel), transparent);
+        pointer-events: none;
+      }
+      #actions button { margin: 0; }
+      #actions #cut { margin-bottom: 6px; }
+      /* Not grey. It went out as a secondary button, and beside the orange Cut a
+         live secondary reads as a dead one — Nick, on a Stamp that was enabled:
+         "its greyed out". It is the one new thing on the page and the one that
+         does something no other button does, so it gets a colour of its own:
+         the amber the inlay piece is drawn in, so the button already says what
+         it makes. Same ink as Cut, since both are calls to action. */
+      #actions #inlay { background: var(--part-b); color: #1b1f24; margin-bottom: 6px; }
+      #actions .pair { display: flex; gap: 6px; }
+      #actions .pair button { font-size: 13px; padding: 8px 4px; }
+      main { position: relative; }
+      /* Every drag in here is already ours — orbit, pan, a drawn seam, the
+         Move/Rotate/Scale gizmo — and without this the browser's own touch
+         gestures (page scroll, pinch-zoom-the-page) compete with them for
+         the same one- and two-finger drags. Three.js's own controls assume
+         this is set; nothing here worked around not having it; touch just
+         quietly lost some of those contests. Reported from an iPad Pro as
+         not being able to move, centre or rotate the object at all. */
+      #viewport { position: absolute; inset: 0; touch-action: none; }
+      /* Over the empty viewport, not in front of it: no backdrop, no dialog,
+         nothing to close. A dashed frame says the whole area takes a dropped
+         file, which it has always done with nothing on screen to say so. */
+      #welcome {
+        position: absolute;
+        inset: 24px 24px 64px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 24px;
+        text-align: center;
+        border: 2px dashed transparent;
+        border-radius: 12px;
+      }
+      /* Nothing in here can be cut off, whatever it grows to. The panel is a
+         fixed box with its content centred, so anything taller than it spills
+         out of both ends and the bottom of the spill goes under the status bar
+         — which is how enlarging the launch invite put its own button out of
+         reach at 1280x720. Scrolling is the safety net; the rule below is what
+         means it is not normally needed. */
+      #welcome { overflow-y: auto; }
+      /* Centred flex content that is taller than its box spills out of both
+         ends, and the top half of the spill cannot be scrolled to: on a short
+         or zoomed window the logo, tagline, headline and first line vanished
+         above the top (a user's screenshot, 2026-10-11). `safe` centres while
+         it fits and starts from the top when it does not, so the overflow only
+         ever goes downward, where the scroll above reaches it. Browsers that
+         do not know `safe` drop the line and keep plain `center`. */
+      #welcome { justify-content: safe center; }
+      /* `display: flex` above outranks the browser's own rule for [hidden], so
+         without this the empty state stays on screen over the model and eats
+         every drag aimed at it. */
+      #welcome[hidden] { display: none; }
+      #launchFormLoad:not([hidden]) { display: block; }
+      #launchList [data-signup-done][hidden], #launchList [data-signup-blocked][hidden] { display: none; }
+      #welcome.dropping { border-color: var(--accent); background: var(--overlay); }
+      #projectList .project { display: flex; align-items: center; gap: 4px; margin-top: 5px; }
+      #projectList .project span {
+        flex: 1 1 auto;
+        min-width: 0;
+        font-size: 12px;
+        color: var(--muted);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      #projectList .project button { width: auto; }
+      .proTag {
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 0 6px;
+        font-size: 9px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      #magnetAdvanced { margin: 8px 0 0; }
+      #magnetAdvanced summary { font-size: 12px; cursor: pointer; opacity: 0.85; }
+      #magnetAdvanced .pair { display: flex; gap: 6px; }
+      #magnetAdvanced .pair label { flex: 1 1 0; }
+      #magnetPocketNote.wrong { color: #ff9a8a; }
+      /* The box lets presses through to the page under it; the button inside it
+         has to take them back, or Stop is a picture of a button. */
+      #busyStop { margin: 10px auto 0; display: block; width: auto; padding: 4px 14px; pointer-events: auto; }
+      #beta {
+        border: 1px solid var(--edge);
+        border-left: 3px solid var(--accent);
+        border-radius: 6px;
+        padding: 7px 9px;
+        margin: 0 0 10px;
+        font-size: 11px;
+        line-height: 1.45;
+      }
+      #beta b { display: block; color: var(--accent); }
+      #beta span { opacity: 0.75; }
+      .betaLine {
+        color: var(--accent);
+        font-size: 12px;
+        margin: -4px 0 10px;
+      }
+      #welcome h2 { margin: 0; font-size: 20px; font-weight: 600; }
+      #welcome p { margin: 0; max-width: 46ch; color: var(--muted); }
+      #welcome p.drop { color: var(--text); }
+      #welcome p.sub { font-size: 12px; }
+      #welcome p.buttons { display: flex; gap: 8px; }
+      #welcome button { width: auto; margin: 0; padding: 7px 14px; font-size: 13px; }
+      #welcome svg { max-width: 100%; }
+      /* Sized by CSS, not by its own pixel count. The renderer sets the
+         canvas's pixel size to the viewport times devicePixelRatio and is
+         asked not to touch its style, so on any screen where that ratio is
+         not 1 — a Mac, a Windows laptop at 125%, a browser zoomed in — the
+         canvas displayed at its pixel size, 1.25× or 2× the panel it sits in,
+         and hung out of the bottom of the page with the model half off
+         screen. Reported from Thailand with a screenshot at 133%. */
+      #viewport canvas { display: block; width: 100%; height: 100%; }
+      #status {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        right: 16px;
+        padding: 9px 13px;
+        background: var(--overlay);
+        border: 1px solid var(--edge);
+        border-radius: 5px;
+        font-size: 12px;
+        color: var(--muted);
+        pointer-events: none;
+      }
+      #status.error { color: #ff9a8a; border-color: #6b3a35; }
+      #status.saved { animation: saved 2.5s ease-out; }
+      @keyframes saved {
+        0%, 40% { color: #9fe0a8; border-color: #3f7a4a; }
+      }
+      #hint {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 16px;
+        padding: 7px 14px;
+        background: var(--overlay);
+        border: 1px solid var(--edge);
+        border-radius: 20px;
+        font-size: 12px;
+        color: var(--muted);
+        pointer-events: none;
+        transition: color 0.12s, border-color 0.12s;
+      }
+      #hint:empty { display: none; }
+      #hint.armed { color: var(--accent); border-color: var(--accent); }
+      #busy {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 13px 18px;
+        background: var(--overlay);
+        border: 1px solid var(--edge);
+        border-radius: 8px;
+        font-size: 13px;
+        color: var(--text);
+        pointer-events: none;
+      }
+      #busy[hidden] { display: none; }
+      #busy .ring {
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--edge);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        /* A rotating transform is animated off the main thread, so this keeps
+           turning while the geometry core blocks it — which is the only reason
+           it is worth showing. */
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      kbd { background: var(--edge); border-radius: 3px; padding: 1px 5px; font-size: 11px; font-family: inherit; }
+      #notice {
+        max-width: 420px;
+        padding: 20px 22px 16px;
+        background: var(--panel);
+        color: var(--text);
+        border: 1px solid var(--edge);
+        border-radius: 8px;
+        font: inherit;
+      }
+      #notice::backdrop { background: rgba(0, 0, 0, 0.45); }
+      #notice h2 { margin: 0 0 10px; font-size: 14px; }
+      /* Red only when the cut refused to run. A cut that worked and wants
+         checking is not an error, and colouring it like one teaches the user to
+         dismiss the box unread. */
+      #notice.error h2 { color: #ff9a8a; }
+      #notice ul { margin: 0 0 16px; padding-left: 18px; color: var(--muted); font-size: 13px; }
+      #notice li { user-select: text; }
+      #notice li + li { margin-top: 7px; }
+      #noticeDetails { display: block; width: 100%; box-sizing: border-box; min-height: 72px; margin: 0 0 14px; resize: vertical; font: inherit; font-size: 12px; line-height: 1.4; color: var(--text); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--edge); border-radius: 5px; padding: 7px 8px; user-select: text; }
+      /* Side by side, and only as wide as their words: the box tells you what
+         is wrong and then offers the one thing that mends it, so the mend must
+         not look like the way out of the box. */
+      /* A seam put aside, and the two things worth doing to one. */
+      #parkedList .seam { display: flex; align-items: center; gap: 4px; margin-top: 5px; }
+      #parkedList .seam span {
+        flex: 1 1 auto;
+        min-width: 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      #parkedList .seam button {
+        width: auto;
+        margin: 0;
+        padding: 2px 7px;
+        font-size: 12px;
+        line-height: 1.3;
+      }
+      /* The badge sits beside the name, and drops below it rather than
+         breaking it in half on a narrow column. */
+      #toolPanel h1 { white-space: nowrap; }
+      #betaBadge {
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 1px 7px;
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      #welcome .tagline {
+        color: var(--accent);
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin: 0 0 2px;
+      }
+      /* Body size, not fine-print size. This sat at 12px — the same as the
+         privacy paragraph above it — so the one thing on the page that asks the
+         visitor for something was set smaller than everything that does not.
+         Nick: "you could make that bigger, its very small". At 14px it matches
+         the copy it sits under, which is as large as it should get: it is beside
+         the way in, not over it, and an invitation that shouts is the
+         advertisement this was written to avoid. */
+      #launchInvite {
+        border: 1px solid var(--edge);
+        border-left: 3px solid var(--accent);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin: 16px auto 0;
+        max-width: 520px;
+        text-align: left;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      /* A heading rather than a bold first line — it was a hair over the body
+         text and read as emphasis, which is why the whole box looked like a
+         footnote with a button in it. */
+      #launchInvite b {
+        display: block;
+        color: var(--accent);
+        font-size: 17px;
+        line-height: 1.3;
+        margin-bottom: 5px;
+      }
+      /* 0.8 on 12px was grey on grey. The copy is the ask; it can be read. */
+      #launchInvite span { opacity: 0.9; }
+      /* The draw, on its own line under the copy: the one reason to join today
+         rather than "later", so it is a link and it is read. */
+      #launchInvite .drawNote { display: block; margin: 8px 0 0; color: var(--accent); font-size: 14px; text-underline-offset: 3px; }
+      /* Its own line, always. A button is inline-block, so it flowed in after
+         the last word of the copy — at the old size the text happened to wrap
+         just before it and it looked deliberate; at 14px it landed beside
+         "updates." Block with a fitted width pins it under the copy at any size
+         or wording, and any translation. */
+      #launchInvite button, #launchInvite a.secondary {
+        display: block;
+        width: fit-content;
+        margin: 12px 0 0;
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+      #launchList { max-width: 420px; }
+      /* Thai sets no spaces between words, so a line can only break where the
+         browser's own dictionary says a word ends. Saying so lets it do that
+         instead of treating a whole clause as one unbreakable token and pushing
+         it out of its button.
+
+         And the script stacks vowels above and tone marks below, which 1.5
+         leading crowds — the marks are what tells two different words apart, so
+         losing them is not cosmetic. Both are scoped to `:lang(th)`, so no
+         other language pays for it. */
+      :lang(th) {
+        line-break: normal;
+        word-break: normal;
+        overflow-wrap: break-word;
+        line-height: 1.75;
+      }
+
+      /* A laptop at 720 has about ninety fewer pixels than the copy wants once
+         the invite is at a readable size. Taken from the padding and the gaps
+         rather than from the type, because shrinking the words to fit is how it
+         came to be too small to read in the first place.
+
+         It has to sit *below* the rules it overrides. Every selector here has
+         the same specificity as its plain counterpart, so the later one wins
+         and a media query written further up the file is silently ignored —
+         which is what happened first time round: the `#welcome` overrides took
+         (its rules are higher up) and the `#launchInvite` ones did nothing. */
+      @media (max-height: 800px) {
+        #welcome { padding: 4px; gap: 6px; }
+        /* The content is centred, so what overflows is split top and bottom —
+           every pixel wanted back off the bottom has to be taken twice over.
+           Hence the fine print tightening its leading as well: nine lines at
+           12px is the tallest thing on the page after the tagline, and 1.35
+           still reads. */
+        #welcome p.sub { line-height: 1.35; }
+        #launchInvite { margin-top: 8px; padding: 11px 14px; line-height: 1.45; }
+        #launchInvite b { font-size: 16px; margin-bottom: 3px; }
+        #launchInvite button { margin-top: 9px; padding: 7px 14px; }
+      }
+
+      #launchConfirm {
+        border: 1px solid var(--accent);
+        border-radius: 6px;
+        padding: 8px 10px;
+        margin: 10px 0 0;
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--accent);
+      }
+      #launchButtons { display: flex; gap: 8px; margin: 12px 0 0; }
+      /* A focused modal has room a cramped sidebar control does not, and the
+         sidebar's 12px labels — sized for a column of them stacked eight deep —
+         read as too small here, where there are only a handful of things to
+         read at all. Nick, on the finished dialog: "the text is tiny". */
+      #say { max-width: 460px; font-size: 15px; }
+      #say .sub { font-size: 13px; }
+      #say .ask { margin: 0 0 8px; color: var(--text); }
+      #say label { font-size: 15px; color: var(--text); }
+      #say textarea {
+        width: 100%;
+        margin: 4px 0 0;
+        resize: vertical;
+        font: inherit;
+        color: inherit;
+        background: var(--field, rgba(255, 255, 255, 0.06));
+        border: 1px solid var(--line, rgba(255, 255, 255, 0.18));
+        border-radius: 6px;
+        padding: 8px 10px;
+      }
+      #sayButtons { display: flex; gap: 8px; margin: 12px 0 0; justify-content: flex-end; }
+      #launchButtons button { width: auto; margin: 0; padding: 8px 14px; font-size: 13px; }
+      #noticeButtons { display: flex; gap: 8px; margin: 0; }
+      #notice button { margin: 0; width: auto; padding: 8px 14px; font-size: 13px; }
+      #noticeAction[hidden], #noticeOther[hidden], #noticeCopy[hidden], #noticeDetails[hidden] { display: none; }
+      #noticeCopy { min-width: 96px; }
+
+      /* Below this, the 280px+250px sidebars alone are wider than the screen.
+         A fixed three-column grid does not fail by shrinking gracefully — an
+         `auto` track sizes to its content's min-content width, and CSS lets
+         text wrap arbitrarily narrow, so the right panel does not get smaller,
+         it gets one word per line while the middle column (the viewport) is
+         squeezed to nothing between two sidebars that refuse to give way.
+         Stacking removes the competition: each panel gets the full width in
+         its own row, so there is nothing left for it to fight over. This is
+         not a phone layout for the editor — nothing here adds touch dragging
+         for seams or keys, and `#welcome` already says the tool wants a mouse
+         — it only stops the page from rendering broken on a screen this
+         narrow, before or after that message is read. Must sit after every
+         rule it overrides — see the note on the query above. */
+      /* Rows, not vh caps: the first version gave the tool panel and objects
+         panel a fixed 38vh/34vh slice each on the theory that everything
+         should fit in one screen with each panel scrolling its own overflow.
+         It does not — the welcome hero, pitch and buttons need more room than
+         whatever vh is left over, so they rendered in a cramped, separately-
+         scrolling sliver with clipped text. A phone page is allowed to be
+         taller than the phone; scrolling the whole page top to bottom is the
+         normal way to read one, so `main` gets a real height up front and
+         everything below it flows in document order and the page scrolls
+         like any other, rather than three boxes each fighting a slice of
+         100vh. `main` also moves ahead of the tool panel: a first-time visitor
+         came for the pitch, not the cut tool's own controls, which mean
+         nothing before a model is loaded anyway. */
+      @media (max-width: 700px) {
+        body {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto minmax(70vh, auto) auto auto auto;
+          height: auto;
+          min-height: 100vh;
+        }
+        #mobileNotice {
+          display: block;
+          grid-row: 1;
+          grid-column: 1 / -1;
+          margin: 0;
+          padding: 8px 14px;
+          font-size: 12px;
+          line-height: 1.5;
+          text-align: center;
+          color: var(--accent);
+          background: var(--panel);
+          border-bottom: 1px solid var(--edge);
+        }
+        main { grid-row: 2; min-width: 0; }
+        /* `#welcome` centres its content with `justify-content: center`,
+           which is fine at desktop size where it always fits. Squeezed onto a
+           phone it does not fit, and centred flex overflow spreads the
+           overrun above and below the box equally — the top half (the logo,
+           tagline and headline) becomes unreachable by scrolling either way,
+           not just cramped. Starting from the top instead means overflow only
+           ever pushes content downward, which the page's normal scroll
+           already reaches. */
+        #welcome { justify-content: flex-start; }
+        #toolPanel {
+          grid-row: 3;
+          border-right: none;
+          border-bottom: 1px solid var(--edge);
+          max-height: none;
+          overflow-y: visible;
+        }
+        #objects {
+          grid-row: 4;
+          width: auto;
+          border-left: none;
+          border-top: 1px solid var(--edge);
+          max-height: none;
+          overflow: visible;
+        }
+        #objects.folded { width: auto; }
+        #siteFooter { grid-row: 5; }
+      }
+      /* Orange so they are seen (Nick, 2026-09-26). */
+      #siteFooter .secondary { background: var(--accent); border-color: var(--accent); color: #fff; }
+      #siteFooter .secondary:hover { filter: brightness(1.08); }
+    </style>
+
+<script crossorigin="" src="assets/index-D4oyVY23.js" type="module"></script>
+<link crossorigin="" href="assets/rolldown-runtime-hePW80VL.js" rel="modulepreload"/>
+<link crossorigin="" href="assets/preload-helper-Czpn1I53.js" rel="modulepreload"/>
+<style>#countedDetails,#launchInvite,#launchList,#say,#forumOpen,#proOpen,#kickstarterOpenSidebar,#launchOpenSidebar{display:none!important}</style><meta content="noindex, nofollow" name="robots"/></head>
+<body>
+<div id="preboot" style="display:none;margin:0;padding:20px;background:#3a1d1d;color:#f5e6e6;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+<p id="prebootText" style="margin:0 0 10px;max-width:60ch"></p>
+<p style="margin:0"><a href="" id="prebootReload" style="color:#ffb4a8">Genindlæs</a></p>
+</div>
+<script>
+      (function (w, d) {
+        // English first, then the languages the app itself ships in. The
+        // catalogue lives inside the module that failed, so these few lines
+        // are the only translated thing available at this point.
+        var SAYINGS = {
+          en: {
+            old: 'Denne browser er for gammel til at køre ModelSplitter. Den kræver en nyere version af Chrome, Edge, Firefox eller Safari på en computer.',
+            slow: 'ModelSplitter blev ikke færdig med at indlæse. Det skyldes normalt en langsom eller afbrudt forbindelse.',
+            reload: 'Genindlæs siden'
+          },
+          th: {
+            old: 'เบราว์เซอร์นี้เก่าเกินไปสำหรับ ModelSplitter ต้องใช้ Chrome, Edge, Firefox หรือ Safari รุ่นปัจจุบันบนคอมพิวเตอร์ตั้งโต๊ะ',
+            slow: 'ModelSplitter โหลดไม่เสร็จ มักเกิดจากอินเทอร์เน็ตช้าหรือหลุดระหว่างโหลด',
+            reload: 'โหลดหน้านี้ใหม่'
+          },
+          es: {
+            old: 'Este navegador es demasiado antiguo para ModelSplitter. Necesita una versión actual de Chrome, Edge, Firefox o Safari en un ordenador de escritorio.',
+            slow: 'ModelSplitter no ha terminado de cargarse. Normalmente se debe a una conexión lenta o interrumpida.',
+            reload: 'Recargar la página'
+          },
+          fr: {
+            old: 'Ce navigateur est trop ancien pour ModelSplitter. Il faut une version actuelle de Chrome, Edge, Firefox ou Safari sur un ordinateur de bureau.',
+            slow: 'ModelSplitter n’a pas fini de se charger. C’est généralement dû à une connexion lente ou interrompue.',
+            reload: 'Recharger la page'
+          },
+          de: {
+            old: 'Dieser Browser ist zu alt für ModelSplitter. Er braucht eine aktuelle Version von Chrome, Edge, Firefox oder Safari auf einem Desktop-Rechner.',
+            slow: 'ModelSplitter wurde nicht fertig geladen. Meist liegt das an einer langsamen oder unterbrochenen Verbindung.',
+            reload: 'Seite neu laden'
+          }
+        };
+        var code = String(w.navigator && w.navigator.language || 'en').slice(0, 2).toLowerCase();
+        var say = SAYINGS[code] || SAYINGS.en;
+
+        var told = false;
+        function tell(reason, wording) {
+          if (told) return;
+          told = true;
+          var box = d.getElementById('preboot');
+          var text = d.getElementById('prebootText');
+          var again = d.getElementById('prebootReload');
+          if (text) text.appendChild(d.createTextNode(wording));
+          if (again) {
+            again.appendChild(d.createTextNode(say.reload));
+            again.setAttribute('href', w.location.href);
+          }
+          if (box) box.style.display = 'block';
+          // Local test copy: startup failures are never reported.
+        }
+
+        // Known before waiting: no modules, or no WebAssembly, and there is
+        // nothing a reload will do about either. Said at once rather than
+        // after a timer, because the answer is certain.
+        var modules = 'noModule' in d.createElement('script');
+        var assembly = typeof w.WebAssembly === 'object';
+        if (!modules || !assembly) {
+          tell(modules ? 'NoWebAssembly' : 'NoModuleSupport', say.old);
+          return;
+        }
+
+        // Otherwise wait, then ask whether the module ever ran. `__msStarted`
+        // is set at the very top of main.js, so this distinguishes "never
+        // parsed" from "parsed and then failed" — the second reports itself
+        // properly from inside and must not be shouted over out here.
+        //
+        // Twenty seconds is chosen to be slower than a slow connection rather
+        // than faster than an impatient visitor: a false alarm here tells
+        // somebody their browser is broken when it is not, which is worse
+        // than saying nothing.
+        w.setTimeout(function () {
+          if (!w.__msStarted) tell('NeverStarted', say.slow);
+        }, 20000);
+      })(window, document);
+    </script>
+<p id="mobileNotice">ModelSplitter er lavet til computer eller tablet med pen — en telefonskærm er for lille til at tegne en præcis samling. Du kan stadig læse om værktøjet herunder.</p>
+<aside id="toolPanel">
+<div class="row" style="align-items: baseline; flex-wrap: wrap">
+<h1 data-verbatim="" translate="no">Model Splitter</h1>
+<span id="betaBadge" title="Lokal testkopi, ikke publiceret">Privat test · FabLab Guides</span>
+<button class="secondary" data-live="" id="theme" style="width: auto; padding: 3px 9px; margin: 0; font-size: 11px" title="Switch the page between dark and light">
+          Lys
+        </button>
+</div>
+<div class="sub">
+        En 3D-modelopdeler med samlinger til STL-filer direkte i browseren. Mal et
+        område, skær langs kanten, og lås halvdelene sammen.
+      </div>
+<div class="sub" data-live="" id="build" style="margin: -12px 0 18px; font-size: 11px; opacity: 0.7"></div>
+<a class="secondary" href="guide/index.html" id="guideOpen" rel="noopener" style="display: block; text-align: center; text-decoration: none" target="_blank" title="Åbn værktøjsguiden i en ny fane">Værktøjsguide (dansk)</a>
+<a class="secondary" href="how-to/index.html" id="howToOpen" rel="noopener" style="margin: 6px 0 0; display: block; text-align: center; text-decoration: none" target="_blank" title="Trin for trin: få modellen til at passe på byggepladen, skjul samlingen, Meshmixer-opgaver">How-to guider (dansk)</a>
+<label id="languageBox" style="margin: 0 0 10px">
+<select id="language" title="Sproget i brugerfladen. Dit valg huskes; statuslinjen er stadig på engelsk foreløbig"></select>
+</label>
+<details class="panel">
+<summary>Model (fil)</summary>
+<label>
+<input accept=".stl,.3mf" id="file" title="Åbn en STL eller 3MF at starte fra — dette erstatter alt på skærmen. Importér øverst i objektpanelet tilføjer i stedet en model ved siden af" type="file"/>
+</label>
+<button class="secondary" disabled="" id="restart" style="margin: 8px 0 0" title="Go back to the model as you loaded it, or as the last repair left it — no seams, no paint, no cuts. Ctrl+Z comes back">
+          Start denne model forfra
+        </button>
+<label style="margin: 10px 0 0">
+<span class="row"><span>Størrelse</span><output data-live="" id="sizeNow">ingen model åben</output></span>
+</label>
+<div style="display: flex; gap: 4px; margin: 4px 0 0">
+<input disabled="" id="sizeX" min="0.01" step="any" title="Hvor bred modellen skal være, i millimeter. De to andre følger med, så formen ikke forvrænges" type="number"/>
+<input disabled="" id="sizeY" min="0.01" step="any" title="Hvor dyb modellen skal være, i millimeter. De to andre følger med, så formen ikke forvrænges" type="number"/>
+<input disabled="" id="sizeZ" min="0.01" step="any" title="Hvor høj modellen skal være, i millimeter. De to andre følger med, så formen ikke forvrænges" type="number"/>
+</div>
+<div class="sub" id="sizeNote" style="margin: 4px 0 0">
+          Skriv i en af dem — X, Y, Z — så følger de andre to med.
+        </div>
+<div style="margin: 12px 0 0">
+<span class="row"><span>Reducér til skæring</span><output data-live="" id="reduceNote">fuld detalje</output></span>
+<div style="display: flex; gap: 4px; margin-top: 4px">
+<button class="secondary" disabled="" id="reduceModel" title="Lav en lettere arbejdskopi for hurtigere forhåndsvisning og snit; originalen forbliver uændret">Reducér til skæring</button>
+<button class="secondary" disabled="" id="restoreDetail" title="Kassér den lettere arbejdskopi og skær med original detalje">Brug fuld detalje</button>
+</div>
+<div class="sub" style="margin: 4px 0 0">Kun arbejdskopien reduceres. Originalen bevares til eksport.</div>
+</div>
+<div style="margin: 12px 0 0">
+<span class="row"><span>Reducér detaljer</span><output data-live="" id="detailNote">0.02 mm</output></span>
+<input disabled="" id="detailSize" max="100" min="0" step="1" style="width: 100%" title="Mindste detalje der bevares, i millimeter. Finere detaljer udjævnes" type="range" value="38"/>
+<button class="secondary" disabled="" id="reduceDetail" style="margin-top: 4px" title="Erstat modellen med en lettere version. Ctrl+Z gendanner den fulde model">Reducér modellen</button>
+<div class="sub" style="margin: 4px 0 0">Erstatter modellen med en lettere version, så den indlæser, maler og skærer hurtigere. Ctrl+Z gendanner den.</div>
+</div>
+<div class="sub" style="margin: 8px 0 0">
+<span>Træk for at bruge værktøjet</span> · <kbd>Shift</kbd><span>+træk for at viske</span> ·
+          <b>højre-træk for at rotere</b><span>, midter-træk for at panorere</span> ·
+          <kbd>Ctrl</kbd>+<kbd>Z</kbd> <span>fortryd</span> ·
+          <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> <span>gentag</span>
+</div>
+</details>
+<details class="panel">
+<summary>Skæreværktøj</summary>
+<label>
+<select id="mode" title="Hvilket værktøj du tegner samlingen med. Snittet følger samlingen uanset hvordan den er tegnet">
+<option disabled="" selected="" value="none">Vælg et skæreværktøj…</option>
+<option value="band">Bånd — en elastisk løkke du kan skubbe rundt</option>
+<option value="rope">Reb — tegn rundt, drej, fortsæt</option>
+<option value="line">Linje — tegn hen over modellen</option>
+<option value="brush">Mal for at skære — vælg hele sektionen</option>
+<option value="plane">Plan — et lige snit</option>
+<option value="multi">Multi-plan — mange snit på én gang</option>
+<option value="auto">Auto multi-plan — snit der passer til min printer</option>
+</select>
+</label>
+<div class="sub" data-live="" id="modeNote" style="margin: 8px 0 0"></div>
+<label id="faceShapeBox">Skæreflade
+          <select id="faceShape" title="Hvilken overflade snittet følger hvor det krydser modellen. Følg samling bevarer linjen du tegnede; bevaret trin holder også niveauet et par millimeter på hver side, så ingen del ender i en tynd kant; fladt plan ignorerer samlingens form og skærer ét plan gennem modellen">
+<option value="follow">Følger samlingen</option>
+<option value="step">Beholder det tegnede trin</option>
+<option value="flat">Fladt plan — erstatter samlingen</option>
+<option value="chamfer">Faset — tilspidset tap, flad midte</option>
+</select>
+</label>
+<div class="sub" data-live="" id="faceNote" style="margin: 6px 0 0"></div>
+<div id="bandFields" style="display: none; margin: 8px 0 0">
+<label>
+<span class="row"><span>Udjævning</span><output for="tension">40</output></span>
+<input id="tension" max="90" min="0" title="Hvor meget strækket du netop trak, glattes ud bagefter. Ved 0 bliver båndet præcis hvor du placerede det" type="range" value="40"/>
+</label>
+<div class="sub" style="margin: 8px 0 0">
+            Træk den orange løkke for at flytte den; klik for at sætte et punkt fast, eller højreklik på et punkt for at frigive det. Normal trækning følger samme overflade. Hold Alt nede mens du trækker et punkt for at placere det på den synlige overflade under markøren.
+          </div>
+</div>
+<button class="secondary" disabled="" hidden="" id="keepSeam" style="margin: 8px 0 0" title="Put this seam aside and draw another — Cut will cut along all of them at once">
+          Behold denne samling, tegn en ny
+        </button>
+<button class="secondary" disabled="" id="startOver" style="margin: 6px 0 0" title="Take this seam off and draw it again. Seams already put aside stay where they are">
+          Start denne samling igen
+        </button>
+<div class="sub" data-live="" id="parkedNote" style="margin: 8px 0 0; display: none"></div>
+<div data-live="" id="parkedList" style="display: none"></div>
+</details>
+<details class="panel" id="brushFields">
+<summary>Mal for at skære</summary>
+<div id="paintControls">
+<p class="sub" id="paintCutHelp">Mal hele sektionen, du vil fjerne, og drej modellen for at nå bagsiden. Hold Shift nede under maling for at fravælge. Forhåndsvis grænsen, og tryk derefter Skær for at adskille og lukke delene.</p>
+<label>Pensel
+          <select id="paintPensel" title="Overflade følger sammenhængende flader og stopper ved folder; Kugle maler alle lag inden for sin radius, også tøj over en krop">
+<option value="surface">Overflade</option>
+<option value="sphere">Kugle</option>
+</select>
+</label>
+<p class="sub" id="paintPenselNote">Overflade følger sammenhængende flader og stopper ved skarpe folder.</p>
+<label>
+<span class="row"><span>Penselstørrelse</span><output for="brush">—</output></span>
+<input id="brush" max="100" min="0" step="0.5" title="Hvor bred penslen er, fra én flade op til en tredjedel af modellen" type="range" value="59"/>
+</label>
+<button aria-pressed="false" class="secondary" disabled="" id="paintPreview" title="Show the boundary loop the current paint would cut along, without cutting">Forhåndsvis malet grænse</button>
+<button class="secondary" disabled="" id="paintCheck" title="Test the cut before you make it: says whether your paint will cut, and why not if it will not. Your paint is not changed, and a cut that passes is used when you press Cut">Kontrollér min maling</button>
+<button class="secondary" disabled="" id="paintFinish" title="Mal et bånd hele vejen rundt om samlingen, og tryk her for at fylde alt båndet afgrænser: hånden under et ærme, foden under en rem. Den største side, resten af modellen, forbliver uændret. Ctrl+Z fortryder">Afslut min maling</button>
+<button class="secondary" disabled="" hidden="" id="paintSmooth" title="Udvid malingen lokalt hvor grænsen rører sig selv; fortryd gendanner den oprindelige markering">Reparér berørende grænse</button>
+<p class="sub" data-live="" id="paintActionNote"></p>
+<div id="brushActions"></div>
+</div>
+<div id="brushWorkingArea"></div>
+</details>
+<details class="panel" id="planeBox" style="display: none">
+<summary>Plan</summary>
+<label>
+<span class="row" style="gap: 6px">
+<button class="secondary" id="planeX" style="margin: 0" title="Stand the plane square across the X axis">X</button>
+<button class="secondary" id="planeY" style="margin: 0" title="Stand the plane square across the Y axis">Y</button>
+<button class="secondary" id="planeZ" style="margin: 0" title="Stand the plane square across the Z axis">Z</button>
+<button class="secondary" id="planeView" style="margin: 0" title="Stand the plane square across the way you are looking now">Visning</button>
+</span>
+</label>
+<label>
+<span class="row" style="gap: 6px">
+<span>Placering</span>
+<span class="row" style="gap: 4px; justify-content: flex-end">
+<input id="planeAt" min="0" step="0.1" style="margin: 0; width: 6em" title="Where the plane is, in millimetres from the end of the model. Type a number to put it there exactly. Byt halvdelene measures from the other end" type="number"/>
+<output data-live="" id="planeLength"></output>
+</span>
+</span>
+<input id="planeOffset" max="100" min="-100" step="0.5" title="Slide the plane along its own axis" type="range" value="0"/>
+</label>
+<label>
+<span class="row"><span>Vinkel</span><output data-live="" id="planeAngle"></output></span>
+<span class="row" style="gap: 6px">
+<input id="planeTurn" max="180" min="-180" step="1" style="margin: 0; width: 5em" title="Hvor meget planet drejes hver gang du trykker på en af akseknapperne. Et negativt tal drejer den den modsatte vej" type="number" value="15"/>
+<button class="secondary" id="turnX" style="margin: 0" title="Drej planet om X-aksen med graderne til venstre">X</button>
+<button class="secondary" id="turnY" style="margin: 0" title="Drej planet om Y-aksen med graderne til venstre">Y</button>
+<button class="secondary" id="turnZ" style="margin: 0" title="Drej planet om Z-aksen med graderne til venstre">Z</button>
+</span>
+</label>
+<button class="secondary" id="planeFlip" style="margin: 0" title="Swap which side of the plane is A and which is B">Byt halvdelene</button>
+<button class="secondary" id="planeTilt" style="margin: 6px 0 0" title="Switch the handles on the plane between sliding it and turning it">Drej planet</button>
+<div class="sub" id="planeRingNote" style="margin: 8px 0 0; display: none"></div>
+<button class="secondary" id="planeAll" style="margin: 6px 0 0; display: none" title="Go back to cutting straight through everything the plane crosses, instead of only the rings you picked">
+          Skær gennem alt
+        </button>
+<div class="sub" style="margin: 8px 0 0">
+          Træk i håndtagene på planet for at placere det, eller brug knapperne ovenfor.
+        </div>
+</details>
+<details class="panel" id="multiBox" style="display: none">
+<summary>Multi-plan</summary>
+<label>
+<span class="row"><span>Snit i hver retning</span></span>
+<span class="fields">
+<input id="autoCutsX" max="40" min="0" step="1" style="margin: 0" title="Hvor mange snit der skal laves på X — tre snit giver fire dele" type="number" value="0"/>
+<input id="autoCutsY" max="40" min="0" step="1" style="margin: 0" title="Hvor mange snit der skal laves på Y — tre snit giver fire dele" type="number" value="0"/>
+<input id="autoCutsZ" max="40" min="0" step="1" style="margin: 0" title="Hvor mange snit der skal laves på Z — tre snit giver fire dele" type="number" value="1"/>
+</span>
+<span class="sub" style="margin: 4px 0 0">X, Y og Z. De fordeler sig jævnt.</span>
+</label>
+</details>
+<details class="panel" id="autoBox" style="display: none">
+<summary>Printer</summary>
+<label>
+<span class="row"><span>Printer</span></span>
+<select id="autoPreset" title="Fill in the bed size for a printer you have, or type your own below">
+<option value="">Indtast min egen størrelse</option>
+</select>
+</label>
+<label>
+<span class="row"><span>Byggevolumen, mm</span></span>
+<span class="fields">
+<input id="autoX" min="1" step="1" style="margin: 0" title="Hvor bred byggepladen er, i millimeter" type="number" value="256"/>
+<input id="autoY" min="1" step="1" style="margin: 0" title="Hvor dyb byggepladen er, forfra og bagud, i millimeter" type="number" value="256"/>
+<input id="autoZ" min="1" step="1" style="margin: 0" title="Hvor højt printeren kan gå, før gantryet står i vejen" type="number" value="256"/>
+</span>
+</label>
+<label>
+<span class="row"><span>Hold fri ved hver kant</span><output for="autoMargin" id="autoMarginOut">5 mm</output></span>
+<input data-unit=" mm" id="autoMargin" max="30" min="0" step="0.5" title="Hvor langt fra hver kant af byggepladen der skal holdes fri — første lag hæfter dårligere helt ude ved kanten, og nivelleringen er dårligst dér. Fratrækkes på begge sider af pladen og i højden" type="range" value="5"/>
+<span class="sub" data-live="" id="autoUsable" style="margin: 4px 0 0"></span>
+</label>
+<button id="autoFromPrinter" title="Work out how many cuts it takes to fit that printer, and space them evenly">Beregn snittene</button>
+<button class="secondary" id="autoOrient" style="margin: 6px 0 0" title="Try every way of standing the model up and take whichever needs fewest pieces on your printer. Undoable">Bedste orientering</button>
+</details>
+<details class="panel" id="planesBox" style="display: none">
+<summary>Snittene</summary>
+<div class="sub" data-live="" id="autoSummary" style="margin: 0 0 8px">Åbn en model for at skære.</div>
+<label id="autoPickBox" style="display: none">
+<span class="row"><span>Valgt snit</span></span>
+<select id="autoPick" title="Hvilket plan håndtagene sidder på — eller klik et plan på modellen">
+</select>
+</label>
+<label id="autoOffsetBox" style="display: none">
+<span class="row"><span>Placering</span><output for="autoOffset" id="autoOffsetOut">0</output></span>
+<input data-unit=" mm" id="autoOffset" step="0.5" title="Slide this plane along its own normal, leaving the others where they are" type="range"/>
+</label>
+<button class="secondary" data-live="" id="autoTilt" style="margin: 6px 0 0; display: none" title="Switch the handles between sliding this plane and turning it">Drej planet</button>
+<button class="secondary" id="autoClear" style="margin: 6px 0 0; display: none" title="Take the planes off. The model is untouched either way">Ryd planerne</button>
+</details>
+<details class="panel" id="jointBox">
+<summary>Samlinger</summary>
+<label class="check" style="margin: 0">
+<span class="row">
+<span>Tilføj samlinger</span>
+<input checked="" id="autoPins" style="width: auto; margin: 0" title="Tilføj den valgte samling til hver skæreflade. Slå fra for almindelige halvdele" type="checkbox"/>
+</span>
+<span class="sub" data-live="" id="autoPinNote" style="margin: 4px 0 0">Stifter fastgjort på den ene halvdel med matchende hulrum i den anden.</span>
+</label>
+<label style="margin: 8px 0 0">
+<span class="row"><span>Type</span></span>
+<select id="jointKind" title="Built-in pins stay on one half. Loose tenons print separately. Magnets sit in blind pockets and let the model come apart again">
+<option value="builtin">Indbyggede stifter — fastgjort</option>
+<option value="tenons">Løse tappe — printes separat</option>
+<option value="magnets">Magnethuller — aftagelig samling</option>
+</select>
+</label>
+<div id="builtInFields">
+<label>
+<span class="row"><span>Form</span></span>
+<select id="keyKind" title="Formen på stift og hulrum, som holder halvdelene sammen"></select>
+</label>
+<label>
+<span class="row"><span>Antal</span><output for="keyCount">1</output></span>
+<input id="keyCount" max="12" min="1" title="Hvor mange stifter der placeres langs hver skæreflade. En flade uden plads tager så mange som muligt" type="range" value="1"/>
+</label>
+<label>
+<span class="row"><span>Radius</span><output for="keyRadius">3</output></span>
+<input data-unit=" mm" id="keyRadius" max="12" min="1" step="0.5" title="Hvor tyk hver indbygget stift er" type="range" value="3"/>
+</label>
+<label>
+<span class="row"><span>Længde</span><output for="keyLength">8</output></span>
+<input data-unit=" mm" id="keyLength" max="30" min="2" step="0.5" title="Hvor langt hver indbygget stift rager ud fra skærefladen" type="range" value="8"/>
+</label>
+<label>
+<span class="row"><span>Pasning</span><output for="clearance">0.2</output></span>
+<input data-unit=" mm" id="clearance" max="0.6" min="0" step="0.05" title="Afstanden rundt om hver indbygget stift, så halvdelene stadig kan samles efter print" type="range" value="0.2"/>
+</label>
+<label class="check" id="swapHalvesBox">
+<span class="row">
+<span>Stifter på den anden halvdel</span>
+<input id="swapHalves" style="width: auto; margin: 0" title="Sæt stifterne på den anden halvdel og hulrummene på denne — så den halvdel du vil printe fladt på sin skæreflade får hulrummene, eller så en tynd halvdel ikke perforeres. Træder i kraft ved næste skæring" type="checkbox"/>
+</span>
+</label>
+</div>
+<label id="magnetSizeBox" style="margin: 8px 0 0; display: none">
+<span class="row"><span>Magnet</span></span>
+<select id="magnetSize" title="Magneten du har eller vil købe. Lommen skæres så den passer med lidt frigang i begge flader af hver samling">
+</select>
+</label>
+<details id="magnetAdvanced" style="display: none">
+<summary>Avanceret pasning</summary>
+<div class="pair">
+<label>
+<span class="row"><span>Magnetdiameter</span></span>
+<input id="magnetDiameter" max="60" min="1" step="0.1" title="Hvor bred magneten er, i millimeter. Mål den hellere end at stole på produktteksten" type="number" value="8"/>
+</label>
+<label>
+<span class="row"><span>Magnettykkelse</span></span>
+<input id="magnetThickness" max="30" min="0.5" step="0.1" title="Hvor tyk magneten er, i millimeter" type="number" value="3"/>
+</label>
+</div>
+<div class="pair" style="margin: 6px 0 0">
+<label>
+<span class="row"><span>Frigang</span></span>
+<input id="magnetClearance" max="1" min="0" step="0.05" title="Ekstra plads omkring magneten pr. side. Hæv den hvis magneten ikke kan sættes i; sænk mod nul for press-fit uden lim" type="number" value="0.15"/>
+</label>
+<label>
+<span class="row"><span>Ekstra dybde</span></span>
+<input id="magnetDepth" max="2" min="0" step="0.05" title="Ekstra dybde ud over magnetens egen tykkelse, så den ligger under fladen i stedet for at stikke op. To magneter der stikker op, holder samlingen åben med dobbelt fejl" type="number" value="0.15"/>
+</label>
+</div>
+<div class="sub" data-live="" id="magnetPocketNote" style="margin: 6px 0 0"></div>
+</details>
+<label id="jointCountBox">
+<span class="row"><span>Pr. samling</span></span>
+<select id="pinCount" title="Hvor mange tappe eller magnetpar der placeres i hver samling. Auto læser fladens størrelse. En mindre flade tager så mange som passer">
+<option value="">Auto — fra fladen</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="6">6</option>
+<option value="8">8</option>
+<option value="10">10</option>
+<option value="12">12</option>
+</select>
+</label>
+<div id="looseFields" style="display: none">
+<label id="pinSizeBox" style="margin: 8px 0 0">
+<span class="row"><span>Størrelse</span></span>
+<select id="pinSize" title="Auto beregner størrelsen på hver tap ud fra fladen den sidder på og tilpasser den til en standardstørrelse. Vælg en størrelse for at bruge samme tap i alle samlinger">
+<option value="">Auto — fra hver flade</option>
+</select>
+</label>
+<label id="pinLengthBox">
+<span class="row"><span>Længde</span></span>
+<input id="pinLength" max="80" min="1" placeholder="Auto" step="0.5" title="Hvor lang hver tap er fra ende til ende, i millimeter; hver del får et hul halvt så dybt. Lad feltet stå tomt for en tap der er dobbelt så lang som den er bred. Sæt den til længden på en købt dyvel, med størrelse sat til diameteren, og brug dyvler i stedet for printede tappe" type="number"/>
+</label>
+<label id="pinKindBox">
+<span class="row"><span>Form</span></span>
+<select id="pinKind" title="En rund tap positionerer delene men lader dem dreje omkring den. Andre former forhindrer denne drejning"></select>
+</label>
+<label>
+<span class="row"><span>Pasning</span><output for="pinClearance" id="pinClearanceOut">0.2</output></span>
+<input data-unit=" mm" id="pinClearance" max="0.6" min="0" step="0.05" title="Afstanden rundt om hver løs tap. Hæv den hvis de skal tvinges i; sænk den hvis de rasler" type="range" value="0.2"/>
+</label>
+</div>
+</details>
+<details class="panel" id="inlayBox" style="display: none">
+<summary>Indlæg</summary>
+<div class="sub" style="margin: 0 0 8px">
+          Presser den tegnede form ned i modellen i stedet for at skære igennem den. Du får
+          modellen med en fordybning samt indlægget som en separat del, klar til print
+          i en anden farve.
+        </div>
+<label>
+<span class="row"><span>Dybde</span><output for="inlayDepth">3</output></span>
+<input data-unit=" mm" id="inlayDepth" max="50" min="0.5" step="0.5" title="Hvor tykt indlægget er: bunden af fordybningen følger overfladen så langt under den" type="range" value="3"/>
+</label>
+<label>
+<span class="row"><span>Pasning</span><output for="inlayFit">0.2</output></span>
+<input data-unit=" mm" id="inlayFit" max="1" min="0" step="0.05" title="Mellemrummet rundt om indlægget, så det stadig kan presses i fordybningen efter print. Fordybningen udvides; indlægget beholder formen du tegnede" type="range" value="0.2"/>
+</label>
+<label class="row" style="margin: 8px 0 0">
+<input checked="" id="inlayFlat" title="A flat floor at the lowest point of the outline, instead of one that follows the surface. Prints flat on the bed, and the base edge is the outline itself" type="checkbox"/>
+<span>Flat floor — prints flat, clean base edge</span>
+</label>
+<div class="sub" style="margin: 8px 0 0">
+          Depth is how thick the inlay is. With Flat floor the piece has one level base to
+          print on, `depth` under the lowest point of the outline, and is thicker in the middle
+          on a bulge. Untick it for a piece of even thickness whose floor follows the surface —
+          a band round a dome — which then needs supports to print.
+        </div>
+</details>
+<details class="panel" id="engraveBox" style="display: none">
+<summary>Samlingsnumre</summary>
+<label class="check" style="margin: 0">
+<span class="row">
+<span>Numrér samlingerne</span>
+<input id="engraveOn" style="width: auto; margin: 0" title="Cut each joint's number into both of the faces that meet there, so two pieces off the same joint can be found by reading them. Only on joints that took a pin, where there is known to be material to cut into" type="checkbox"/>
+</span>
+<span class="sub" style="margin: 4px 0 0">The same number on both mating faces, each read the right way round.</span>
+</label>
+<label style="margin: 8px 0 0">
+<span class="row"><span>Dybde</span><output for="engraveDepth" id="engraveDepthOut">0.6</output></span>
+<input data-unit=" mm" id="engraveDepth" max="1.5" min="0.2" step="0.1" title="Hvor dybt tallet indgraveres. Lavt nok til at kunne læses og ikke mere: en dyb gravering i en tynd flade kan give hul i den printede del" type="range" value="0.6"/>
+</label>
+</details>
+<div id="workingAreaHome">
+<details class="panel" id="workingAreaPanel">
+<summary>Maskeringsværktøj</summary>
+<p class="sub" data-live="" id="workingAreaNext"></p>
+<button class="secondary" disabled="" id="workingAreaPaint" style="margin: 0 0 6px" title="Mal det område du vil arbejde i">Mal</button>
+<div id="workingAreaPaintControls"></div>
+<button class="secondary" disabled="" id="isolate" style="margin: 0" title="Hide everything but the painted part, so the rest stops catching strokes and clicks. The cut still uses the whole model">Isolér den malede del</button>
+<button class="secondary" disabled="" id="showAll" style="margin: 6px 0 0" title="Bring the hidden part of the model back">Vis hele modellen</button>
+<button class="secondary" hidden="" id="workingAreaCutTool" style="margin: 6px 0 0" title="Åbn valg af skæreværktøj">Vælg et skæreværktøj</button>
+<details style="margin-top: 8px">
+<summary>Sådan virker isolering</summary>
+<div class="sub" style="margin: 8px 0 0">
+          Paint the area you want to work in and isolate it: the rest of the
+          model leaves the screen, and stops catching strokes and clicks with
+          it. The cut still uses the whole model.
+        </div>
+</details>
+</details>
+</div>
+<details class="panel">
+<summary>Adskil visning</summary>
+<label>
+<span class="row"><span>Adskillelse</span><output for="explode">15</output></span>
+<input autocomplete="off" data-unit="%" id="explode" max="100" min="0" title="Hvor langt fra hinanden de to halvdele vises. Dette ændrer kun visningen, aldrig delene" type="range" value="15"/>
+</label>
+<button class="secondary" data-live="" disabled="" id="assemble" style="margin: 6px 0 0" title="Close the halves up against each other, or open them out again">Saml</button>
+<button class="secondary" data-live="" id="keyMode" style="margin: 0" title="Switch the handles on built-in pins between sliding them along the cut face and tilting them">Hæld stifterne</button>
+<button class="secondary" disabled="" id="keyReset" style="margin: 6px 0 0" title="Put the joints back where the cut placed them">Nulstil samlinger</button>
+<div class="sub" data-live="" id="keyNote" style="margin: 8px 0 0"></div>
+</details>
+<details class="panel">
+<summary>Fortsæt</summary>
+<div class="sub" style="margin: 0 0 8px">
+          Begge halvdele bliver objekter i panelet. Vælg en af dem for at skære den igen.
+        </div>
+<button disabled="" id="keepBoth" style="margin: 0" title="Keep both halves as finished parts">Behold begge dele</button>
+</details>
+<div id="actions">
+<button disabled="" id="cut" title="Skær modellen langs samlingen og tilpas samlestifterne">Skær</button>
+<button disabled="" id="inlay" title="Tryk den tegnede form ned i modellen til en dybde, og behold den udtagne del som indlæg til print i en anden farve">Indlægssnit</button>
+<div class="pair" id="editingActions">
+<button class="secondary" data-live="" disabled="" id="back" title="Gå tilbage til modellen og samlingen, og lad dette snit ligge">Tilbage til redigering</button>
+<button class="secondary" data-live="" disabled="" id="clear" title="Fjern samlingen eller malingen og start forfra">Ryd maling</button>
+</div>
+</div>
+</aside>
+<main>
+<div id="viewport"></div>
+<div id="welcome">
+<svg aria-hidden="true" focusable="false" height="82" viewbox="0 0 200 96" width="170">
+<rect fill="var(--part-a)" height="60" rx="8" width="80" x="6" y="18"></rect>
+<rect fill="var(--part-b)" height="60" rx="8" width="80" x="114" y="18"></rect>
+<rect fill="var(--accent)" height="16" rx="7" width="40" x="80" y="40"></rect>
+</svg>
+<p class="tagline">Fra miniature til massiv</p>
+<h2>Opdel og saml enhver 3D-model — præcis hvor du vil</h2>
+<p>
+          Tegn naturlige samlinger, lav lige eller automatiske snit, tilføj matchende samlestifter, og eksportér printbare dele — privat i din browser. Mal et område eller tegn en samling, skær modellen langs den, og få tappe og hulrum til at samle delene i én korrekt position.
+        </p>
+<p class="drop"><b>Slip en STL eller 3MF her</b></p>
+<p class="buttons">
+<button id="welcomePick" title="Åbn en STL eller 3MF fra din computer">Åbn en model</button>
+<button class="secondary" id="welcomeDemo" title="Indlæs et demoæg for at prøve værktøjerne">Prøv demoægget</button>
+</p>
+<p class="sub">Privat lokal testkopi af ModelSplitter · FabLab Guides. Modeller behandles i browseren. Besøgstælling, feedback, forum og mailingliste er deaktiveret. Ikke klar til publicering.</p>
+<details aria-hidden="true" class="sub" hidden="" id="countedDetails" inert="">
+<summary>Præcis hvad der tælles</summary>
+<p>
+            Hvilke værktøjer og skæremetoder der bruges, modellens omtrentlige størrelse, hvor
+            lang tid et snit tog og hvor mange dele det gav, eksportformatet, og når noget fejler
+            samt hvor i koden det sker. Sammen med dette sendes sprog, tema, eventuelle kampagne-tags i linket
+            du kom fra, og om launch-listens boks blev åbnet. Der læses intet direkte fra
+            din computer: hverken skærmstørrelse, processor eller hukommelse. Der udstedes intet besøgs-ID,
+            og hver optælling lagres for sig selv, uden cookie og uden din IP-adresse.
+          </p>
+<button class="secondary" id="countingToggle" title="Stop sending anonymous counts from this browser">Tæl ikke mine besøg</button>
+</details>
+
+<div aria-hidden="true" hidden="" id="launchInvite" inert="">
+<b><a aria-hidden="true" hidden="" rel="noopener" style="color: inherit" target="_blank">Pro kommer på Kickstarter</a></b>
+<span>Alle værktøjer er gratis, mens ModelSplitter er i beta. Når Pro lanceres den 3. november,
+          får de første 50 støtter adgang for £25 i stedet for £49. Tilmeld dig for at få besked i samme øjeblik det åbner; tilmelding reserverer ikke en plads.</span>
+<a aria-hidden="true" class="drawNote" hidden="" rel="noopener" target="_blank">Der trækkes også lod om tre Pro-licenser på lanceringsdagen — se hvordan det virker</a>
+<a aria-hidden="true" class="secondary" data-kickstarter="landing" hidden="" id="kickstarterOpen" rel="noopener" style="display: block; text-align: center; text-decoration: none" target="_blank" title="Følg projektet på Kickstarter og få besked når det lanceres">Følg på Kickstarter</a>
+<button class="secondary" id="launchOpen" title="Tilmeld listen for Kickstarter-annoncering og early-bird licenspris">Tilmeld Pro-lanceringslisten</button>
+</div>
+</div>
+<div id="hint"></div>
+<div data-live="" hidden="" id="busy"><span class="ring"></span><span id="busyLabel"></span><span id="busyMore"></span><button class="secondary" hidden="" id="busyStop" title="Stop the cut and leave the model exactly as it is. Nothing cut so far is kept">Stop</button></div>
+<div data-live="" id="status">indlæser…</div>
+<dialog aria-hidden="true" hidden="" id="launchList" inert="">
+<h2>Pro kommer på Kickstarter</h2>
+<p class="sub">
+          Alle værktøjer er gratis, mens ModelSplitter er i beta. Når Pro lanceres på Kickstarter den 3.
+          november, får de første 50 støtter adgang for £25 i stedet for £49: én betaling, alle Pro-funktioner nu og fremover.
+        </p>
+<p class="sub">
+          Tilmeld dig for at få besked i samme øjeblik det åbner. Tilmelding reserverer ikke en plads.
+          <a aria-hidden="true" hidden="" rel="noopener" target="_blank">Der trækkes også lod om tre Pro-licenser på lanceringsdagen.</a>
+</p>
+<a aria-hidden="true" class="secondary" data-kickstarter="dialog" hidden="" id="kickstarterOpenDialog" rel="noopener" style="display: block; text-align: center; text-decoration: none; margin: 0 0 12px" target="_blank" title="Følg projektet på Kickstarter og få besked når det lanceres">Følg på Kickstarter</a>
+<button class="secondary" id="launchFormLoad" style="width: 100%" title="Indlæs MailerLite-tilmeldingsformularen">Tilmeld Pro-lanceringslisten</button>
+<div class="ml-embedded" data-form="57oqA9" data-live=""></div>
+<p class="sub" data-signup-done="" hidden="">Du er på listen. Velkomstmailen kommer om få minutter.</p>
+<p class="sub" data-signup-blocked="" hidden="">Tilmeldingsformularen blev ikke indlæst. En adblocker kan blokere den. <a aria-hidden="true" hidden="" rel="noopener" target="_blank">Åbn tilmeldingsformularen i en ny fane</a></p>
+<div id="launchButtons">
+<button class="secondary" id="launchClose" title="Luk og fortsæt — du bliver ikke spurgt igen i denne session">Luk</button>
+</div>
+</dialog>
+<dialog aria-hidden="true" hidden="" id="say" inert="">
+<h2>Fortæl os hvad du synes</h2>
+<p class="sub">
+          Hvad virkede, hvad virkede ikke, og hvad mangler. Det går direkte til mig, personen der bygger dette.
+          Skriv på det sprog du foretrækker.
+        </p>
+<p class="sub" data-live="" hidden="" id="sayInterrupt"></p>
+<div id="sayForm">
+<p class="ask">Hvordan gik det?</p>
+<div id="sayRating">
+<label class="check">
+<span class="row"><span>Fik præcis det jeg ville have</span>
+<input name="sayRating" type="radio" value="great"/></span>
+</label>
+<label class="check">
+<span class="row"><span>Fik noget, men ikke helt rigtigt</span>
+<input name="sayRating" type="radio" value="partial"/></span>
+</label>
+<label class="check">
+<span class="row"><span>Kunne ikke få det til at virke</span>
+<input name="sayRating" type="radio" value="stuck"/></span>
+</label>
+<label class="check">
+<span class="row"><span>Kigger bare rundt</span>
+<input name="sayRating" type="radio" value="looking"/></span>
+</label>
+</div>
+<p class="ask" style="margin: 14px 0 4px">Noget du vil tilføje?</p>
+<textarea data-live="" id="sayText" maxlength="4000" rows="6"></textarea>
+<label>
+<span class="row"><span>Din e-mail, hvis du ønsker svar</span></span>
+<input autocomplete="email" id="sayEmail" placeholder="valgfri" title="Only used to write back to you about this message. It does not put you on the launch list — there is a separate button for that" type="email"/>
+</label>
+<p class="sub">
+          Bruges kun til at svare på dette. Det tilmelder dig ingen lister.
+        </p>
+<label class="check">
+<span class="row">
+<span>Medtag hvad jeg lavede</span>
+<input id="sayContext" title="Attach the line under the model, the language and roughly how big the model is. Never the model itself, and never its name — what would be sent is shown below before you send it" type="checkbox"/>
+</span>
+</label>
+<label class="check">
+<span class="row">
+<span>Jeg vil også gerne høre om beta-lanceringen — opgraderinger og kampagner</span>
+<input id="sayWantsList" title="Sends you to the launch list sign-up right after this message goes" type="checkbox"/>
+</span>
+</label>
+<label class="check">
+<span class="row">
+<span>Del også dette i det offentlige feedback-forum, så jeg kan dele det og andre kan se det</span>
+<input id="sayShareForum" title="Sender din besked til det offentlige feedback-forum — aldrig din e-mail, som forbliver privat selvom den er nødvendig ovenfor" type="checkbox"/>
+</span>
+</label>
+<div class="sub" data-live="" hidden="" id="sayContextNote"></div>
+</div>
+<div hidden="" id="sayThanks">
+<p>Tak — vi har modtaget det. Vi læser dem alle.</p>
+<p class="sub">
+            While you are here: the launch list carries the Kickstarter announcement, the
+            early-bird licence and what we are building next.
+          </p>
+</div>
+<div id="sayButtons">
+<button class="secondary" id="sayClose" title="Luk uden at sende">Luk</button>
+<button hidden="" id="sayJoin" title="Tilmeld listen for Kickstarter-annoncering og early-bird licenspris">Tilmeld Pro-lanceringslisten</button>
+<button id="saySend" title="Send dette til folkene bag ModelSplitter">Send</button>
+</div>
+</dialog>
+<dialog data-live="" id="notice">
+<h2 id="noticeTitle"></h2>
+<ul id="noticeList"></ul>
+<textarea aria-label="Diagnostic details" id="noticeDetails" readonly=""></textarea>
+<p id="noticeButtons">
+<button hidden="" id="noticeAction" title="Do the thing this notice is telling you to do, without going to find the button"></button>
+<button class="secondary" hidden="" id="noticeOther" title="The other answer to this notice, done from here rather than from the panel"></button>
+<button class="secondary" id="noticeCopy" title="Copy the diagnostic details">Kopiér detaljer</button>
+<button id="noticeClose">Forstået</button>
+</p>
+</dialog>
+</main>
+<section id="objects">
+<div id="objectsHead">
+<span id="objectsTitle">Objekter</span>
+<span style="display: flex; gap: 4px">
+<button class="secondary" id="objectAdd" title="Tilføj en STL eller 3MF som endnu et objekt">Importér</button>
+<button class="secondary" id="objectsFold" title="Fold panelet væk">›</button>
+</span>
+</div>
+<input accept=".stl,.3mf" hidden="" id="objectFile" type="file"/>
+<div id="exportBox">
+<button disabled="" id="export" style="margin: 0 0 6px" title="Gem det format der er valgt i listen nedenfor">Eksportér</button>
+<div class="sub" hidden="" id="exportWhere" style="margin: 0 0 6px; display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap">
+<span data-live="" id="exportWhereLabel"></span>
+<button class="inline secondary" data-live="" id="exportFolder" title="Vælg mappen hvor alle eksporter gemmes, i stedet for browserens downloads" type="button">Vælg mappe</button>
+<button class="inline secondary" hidden="" id="exportDownloads" title="Gå tilbage til at gemme eksporter i browserens downloadmappe" type="button">Brug downloads</button>
+</div>
+<label style="margin: 0; display: block">
+<select id="exportWhat" title="Hvad Eksportér skriver — modellen, en halvdel, begge eller alle dele i én 3MF">
+<option value="modelStl">Denne model — STL</option>
+<option value="reducedStl">Reduceret arbejdskopi — STL</option>
+<option value="all3mf">Alle dele — én 3MF</option>
+<option value="bundle">Alle dele + samlevejledning — ZIP</option>
+<option value="guidePdf">Samlevejledning med billeder — PDF</option>
+<option value="both3mf">Begge halvdele — én 3MF</option>
+<option value="bothStl">Begge halvdele — to STL-filer</option>
+<option value="a">Del A, den blå — STL</option>
+<option value="b">Del B, den orange — STL</option>
+</select>
+</label>
+</div>
+<div class="objects-body"><div data-clarity-mask="" data-live="" id="objectList"></div></div>
+<details class="panel" id="projectBox">
+<summary>Projekter</summary>
+<label>
+<span class="row"><span>Navn</span></span>
+<input id="projectName" placeholder="denne model" title="Hvad projektet skal hedde i listen nedenfor. Lad den stå som den er for at bruge modellens eget navn" type="text"/>
+</label>
+<button class="secondary" disabled="" id="projectSave" style="margin: 6px 0 0" title="Keep everything on screen — the model, the pieces, the seams and the settings — under that name, so it can be opened again later">
+          Gem dette projekt
+        </button>
+<div class="pair" style="margin: 6px 0 0">
+<button class="secondary" disabled="" id="projectExport" title="Skriv alt på skærmen til en fil på din computer — modellen, delene, samlingerne og indstillingerne. Gem den hvor du opbevarer dine modeller; browseren kan ikke rydde den">
+            Gem til fil
+          </button>
+<button class="secondary" id="projectImport" title="Åbn en projektfil gemt fra ModelSplitter og erstat det der er på skærmen">
+            Åbn en fil
+          </button>
+</div>
+<input accept=".msproj" hidden="" id="projectFile" title="The project file to open. Reached through the button above rather than directly" type="file"/>
+<div class="sub" data-live="" id="projectNote" style="margin: 6px 0 0"></div>
+<div data-clarity-mask="" data-live="" id="projectList"></div>
+</details>
+<details class="panel" id="sculptBox">
+<summary>Skulptér</summary>
+<button class="secondary" id="sculptToggle" style="margin: 0" title="Form overfladen med en pensel i stedet for at skære">Skulptér overfladen</button>
+<div id="sculptFields" style="display: none">
+<label>
+<span class="row"><span>Pensel</span></span>
+<select id="sculptKind" title="Hvilken skulpteringspensel et træk bruger">
+<option value="smooth">Udglat — blødgør det under penslen</option>
+<option value="inflate">Pust op — skub overfladen ud</option>
+<option value="flatten">Udjævn — pres den mod et plan</option>
+</select>
+</label>
+<label>
+<span class="row"><span>Størrelse</span><output for="sculptSize">—</output></span>
+<input id="sculptSize" max="100" min="0" step="0.5" title="Hvor bred en påvirkning skulpteringspenslen har" type="range" value="45"/>
+</label>
+<label id="sculptStrengthField">
+<span class="row"><span>Styrke</span><output for="sculptStrength">40%</output></span>
+<input id="sculptStrength" max="100" min="5" step="5" title="Hvor hårdt hvert strøg påvirker" type="range" value="40"/>
+</label>
+<div class="sub" id="sculptHelp" style="margin: 8px 0 0">
+<span>Træk på modellen. Hold Shift nede for at vende penslen — tøm,
+          skærp, løft. Justér størrelsen med</span> <b>[</b> <span>og</span> <b>]</b><span>,
+          eller Ctrl og hjulet. Maskerede dele holdes fast mod hver pensel. Hvert
+          strøg kan fortrydes med én Ctrl+Z.</span>
+</div>
+<div class="sub" id="maskHelp" style="margin: 8px 0 0; display: none">
+<span>Klik eller træk over delene for at holde dem fast. Hold Shift nede for at slippe dem igen.
+          Justér penselstørrelsen med</span> <b>[</b> <span>og</span> <b>]</b><span>, eller Ctrl
+          og hjulet. Maskerede dele holdes fast mod hver skulpteringspensel.</span>
+</div>
+<div style="display: flex; gap: 4px; margin: 6px 0 0">
+<button class="secondary" id="maskToggle" style="margin: 0" title="Mal de dele der skal holdes stille. En maskeret del holdes fast mod hver skulpteringspensel">Maskér</button>
+<button class="secondary" disabled="" id="clearMask" style="margin: 0" title="Frigiv alle maskerede dele">Ryd masken</button>
+</div>
+</div>
+</details>
+<details class="panel" id="move">
+<summary>Flyt</summary>
+<div class="sub" id="moveHint" style="margin: 0 0 6px">Klik på et objekt for at flytte det.</div>
+<div style="display: flex; gap: 4px">
+<button class="secondary" disabled="" id="moveTranslate" title="Håndtag der skubber objektet langs en akse">Flyt</button>
+<button class="secondary" disabled="" id="moveRotate" title="Håndtag der drejer objektet om en akse">Drej</button>
+<button class="secondary" disabled="" id="moveScale" title="Handles that make the object bigger or smaller">Størrelse</button>
+</div>
+<button class="secondary" disabled="" id="moveCentre" style="margin: 6px 0 0" title="Put the picked object in the middle of the model">
+          Centrér på modellen
+        </button>
+<button class="secondary" disabled="" id="moveDone" style="margin: 6px 0 0" title="Sæt objektet ned og fjern håndtagene">Færdig — fravælg</button>
+</details>
+<details class="panel" id="shapes">
+<summary>Former</summary>
+<div class="sub" style="margin: 0 0 6px">
+          Tilføj en form at skære med, flyt den på plads og brug boolske operationer.
+        </div>
+<div id="shapeRow">
+<button class="secondary" id="shapeCube" title="Tilføj en kube ved siden af modellen, klar til at blive flyttet på plads og brugt i boolske operationer">Kube</button>
+<button class="secondary" id="shapeBall" title="Tilføj en kugle ved siden af modellen, klar til at blive flyttet på plads og brugt i boolske operationer">Kugle</button>
+<button class="secondary" id="shapeTube" title="Add a tube beside the model — the usual start for a hole">Tube</button>
+<button class="secondary" id="shapeCone" title="Tilføj en kegle ved siden af modellen, klar til at blive flyttet på plads og brugt i boolske operationer">Kegle</button>
+<button class="secondary" id="shapeRing" title="Add a ring beside the model — a groove, a collar, or a washer to cut">Ring</button>
+</div>
+<div id="edgeRow">
+<button class="secondary on" id="edgeSharp" title="Behold formen med skarpe kanter">Skarp</button>
+<button class="secondary" id="edgeChamfer" title="Cut the shape back at 45 degrees along its edges">Chamfer</button>
+<button class="secondary" id="edgeRound" title="Afrund formen langs kanterne">Rund</button>
+</div>
+<label id="edgeSizeField" style="display: none">
+<span class="row"><span>Edge</span><output for="edgeSize">—</output></span>
+<input id="edgeSize" max="45" min="2" step="1" title="Hvor meget af hver kant fasning eller afrunding tager" type="range" value="15"/>
+</label>
+<div class="sub" id="shapeEdgeNote" style="margin: 8px 0 0; display: none"></div>
+<button class="secondary" id="edgeAll" style="margin: 6px 0 0; display: none" title="Go back to treating every edge, instead of only the ones you picked">
+          Tilbage til alle kanter
+        </button>
+<span class="row" style="margin: 6px 0 0"><span>Size, mm</span></span>
+<div style="display: flex; gap: 4px">
+<input disabled="" id="shapeSizeX" min="0.01" step="any" title="Hvor bred formen skal være, i millimeter. De to andre følger med, så proportionerne bevares" type="number"/>
+<input disabled="" id="shapeSizeY" min="0.01" step="any" title="Hvor dyb formen skal være, i millimeter. De to andre følger med, så proportionerne bevares" type="number"/>
+<input disabled="" id="shapeSizeZ" min="0.01" step="any" title="Hvor høj formen skal være, i millimeter. De to andre følger med, så proportionerne bevares" type="number"/>
+</div>
+<div class="sub" style="margin: 4px 0 0">Skriv i en af dem — X, Y, Z — så følger de andre to med.</div>
+<button class="secondary" disabled="" id="shapeDrop" style="margin: 6px 0 0" title="Klik derefter på modellen, så lander formen dér med front mod overfladen — klar til boolske operationer eller Udskær og behold for at efterlade et hulrum">
+          Slip på overflade
+        </button>
+<button class="secondary" disabled="" id="shapeDone" style="margin: 6px 0 0" title="Læg formen fra dig — venstre museknap går tilbage til at tegne på modellen">
+          Færdig med denne form
+        </button>
+</details>
+<details class="panel" id="combine">
+<summary>Boolsk</summary>
+<div class="sub" id="combineHint" style="margin: 0 0 6px">
+          Klik på to objekter for at kombinere dem.
+        </div>
+<button class="secondary" disabled="" id="opSwap" title="Byt rundt på hvilket objekt der er 1 og 2. Differens trækker 2 fra 1">Byt ① ②</button>
+<button class="secondary" disabled="" id="opUnion" title="Sammenføj de to valgte objekter til ét">Union</button>
+<button class="secondary" disabled="" id="opDifference" title="Træk objekt 2 fra objekt 1">Differens</button>
+<button class="secondary" disabled="" id="opIntersection" title="Behold kun den del hvor de to valgte objekter overlapper">Snitflade</button>
+<label style="margin: 10px 0 0">
+<span class="row"><span>Frigang</span></span>
+<input id="insertClearance" max="5" min="0" step="0.05" title="Ekstra plads omkring indsatsen på alle sider. Hæv den hvis delen ikke kan sættes i; sænk mod nul for friktionspasning uden lim" type="number" value="0.15"/>
+</label>
+<button class="secondary" disabled="" id="opCarveKeep" style="margin: 6px 0 0" title="Udskær objekt 2's form i objekt 1, og behold objekt 2 som separat del — et hulrum og indsatsen der passer i det">Udskær og behold</button>
+</details>
+<details class="panel" id="health">
+<summary>Inspicér &amp; reparér</summary>
+<div class="sub" data-live="" id="healthReport" style="margin: 0 0 6px">
+          Gennemgå arbejdsemnet før du skærer i det.
+        </div>
+<button class="secondary" id="doInspect" style="margin: 0" title="Undersøg emnet for huller, vendte flader, overlappende flader og separate skaller">Inspicér</button>
+<button class="secondary" disabled="" id="doRepair" style="margin: 6px 0 0" title="Reparér det der ikke bærer form — løse hjørner, dublerede og nul-areal flader, omvendte flader. Det ændrer ikke modellens udseende">
+          Reparér — kun sikker
+        </button>
+<button class="secondary" disabled="" id="doFill" style="margin: 6px 0 0" title="Split surfaces welded along a shared edge, fill holes, drop faces the safe repair leaves alone, and join shells that run through one another. This one does change the shape where it patches">
+          Avanceret — fjerner og tilføjer flader
+        </button>
+<button class="secondary" disabled="" id="doSeparate" style="margin: 6px 0 0" title="Split this piece into one object per lump, where it is several that do not touch">
+          Adskil de løse dele
+        </button>
+</details>
+</section>
+<footer id="siteFooter">
+<a aria-hidden="true" class="secondary" hidden="" id="forumOpen" inert="" rel="noopener" target="_blank" title="Læs feedback fra andre brugere og deltag i samtalen">Feedback-forum</a>
+<a aria-hidden="true" class="secondary" hidden="" id="proOpen" inert="" rel="noopener" target="_blank" title="Hvad Pro er, Kickstarter-prisen og lanceringstrækningen">Pro og lanceringstrækning</a>
+<a aria-hidden="true" class="secondary" data-kickstarter="sidebar" hidden="" id="kickstarterOpenSidebar" inert="" rel="noopener" target="_blank" title="Følg projektet på Kickstarter og få besked når det lanceres">Følg på Kickstarter</a>
+<button aria-hidden="true" class="secondary" hidden="" id="launchOpenSidebar" inert="" title="Tilmeld dig listen for Kickstarter-annoncering og early-bird licenspris">Tilmeld vores mailliste</button>
+</footer>
+<div class="grip" id="gripLeft" title="Træk for at gøre værktøjspanelet bredere eller smallere"></div>
+<div class="grip" id="gripRight" title="Træk for at gøre objektpanelet bredere eller smallere"></div>
+</body>
+</html>

@@ -21,24 +21,17 @@ const currentPages = fs.readdirSync('.')
         .filter(file => file.endsWith('.html'))
         .map(file => `en/${file}`));
 
-const legacyCarousels = [
-    'old/laser-aeon.html',
-    'old/laser-eduard.html',
-    'old/laser-lightburn.html',
-    'old/en/laser-aeon.html',
-    'old/en/laser-eduard.html',
-    'old/en/laser-lightburn.html'
+const carouselPages = [
+    'laser-aeon.html',
+    'laser-eduard.html',
+    'laser-lightburn.html',
+    'en/laser-aeon.html',
+    'en/laser-eduard.html',
+    'en/laser-lightburn.html'
 ];
 
-const legacyPages = fs.readdirSync('old')
-    .filter(file => file.endsWith('.html'))
-    .map(file => `old/${file}`)
-    .concat(fs.readdirSync('old/en')
-        .filter(file => file.endsWith('.html'))
-        .map(file => `old/en/${file}`));
-
-let legacyImageCount = 0;
-for (const pagePath of legacyPages) {
+let imageCount = 0;
+for (const pagePath of currentPages) {
     const source = fs.readFileSync(pagePath, 'utf8');
     for (const match of source.matchAll(/["']([^"']*billeder\/[^"']+)["']/g)) {
         const reference = decodeURIComponent(match[1].split(/[?#]/, 1)[0]);
@@ -47,10 +40,10 @@ for (const pagePath of legacyPages) {
             ? path.join('.', reference)
             : path.resolve(path.dirname(pagePath), reference);
         assert(fs.existsSync(assetPath), `${pagePath}: missing image ${match[1]}`);
-        legacyImageCount += 1;
+        imageCount += 1;
     }
 }
-console.log(`PASS ${legacyImageCount} image references across ${legacyPages.length} legacy pages`);
+console.log(`PASS ${imageCount} image references across ${currentPages.length} current pages`);
 
 (async () => {
     const browser = await puppeteer.launch(launchOptions);
@@ -76,7 +69,7 @@ console.log(`PASS ${legacyImageCount} image references across ${legacyPages.leng
         }
         console.log(`PASS ${guideCount} guide pages: numbered step buttons, selection and 320px layout`);
 
-        for (const pagePath of legacyPages) {
+        for (const pagePath of currentPages) {
             const page = await browser.newPage();
             const localFailures = [];
             page.on('response', response => {
@@ -98,9 +91,9 @@ console.log(`PASS ${legacyImageCount} image references across ${legacyPages.leng
             assert.deepEqual(brokenImages, [], `${pagePath}: broken rendered images`);
             await page.close();
         }
-        console.log(`PASS ${legacyPages.length} legacy pages: local resources and rendered images`);
+        console.log(`PASS ${currentPages.length} current pages: local resources and rendered images`);
 
-        for (const pagePath of legacyCarousels) {
+        for (const pagePath of carouselPages) {
             const page = await browser.newPage();
             await page.goto(`${base}/${pagePath}`, { waitUntil: 'domcontentloaded' });
             for (const key of ['Enter', 'Space']) {
@@ -116,9 +109,9 @@ console.log(`PASS ${legacyImageCount} image references across ${legacyPages.leng
             }
             await page.close();
         }
-        console.log(`PASS ${legacyCarousels.length} legacy carousels: Enter/Space, focus containment, Escape and focus restoration`);
+        console.log(`PASS ${carouselPages.length} carousels: Enter/Space, focus containment, Escape and focus restoration`);
 
-        for (const pagePath of ['old/index.html', 'old/en/index.html']) {
+        for (const pagePath of ['index.html', 'en/index.html']) {
             const page = await browser.newPage();
             await page.goto(`${base}/${pagePath}`, { waitUntil: 'domcontentloaded' });
             assert(await page.$eval('.lang-switch img', image => image.complete && image.naturalWidth > 0), `${pagePath}: language flag missing`);
@@ -126,7 +119,7 @@ console.log(`PASS ${legacyImageCount} image references across ${legacyPages.leng
             assert(await page.$eval('.lang-switch a', link => link === document.activeElement), `${pagePath}: language link cannot receive focus`);
             await page.close();
         }
-        console.log('PASS legacy language links: visible images and keyboard focus');
+        console.log('PASS language links: visible images and keyboard focus');
     } finally {
         await browser.close();
     }

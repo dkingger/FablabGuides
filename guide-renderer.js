@@ -26,7 +26,7 @@
             closeImg: 'Luk billede', enlargeImg: 'Forstør billede', imageDialog: 'Billedvisning', overview: 'Om guiden',
             relatedTitle: 'Andre guides i samme kategori',
             brandAriaLabel: 'FabLab Guides – Til forsiden',
-            currentSiteHref: 'old/index.html',
+            currentSiteHref: 'index.html',
             langSwitchText: 'English', langSwitchHrefPrefix: 'en/'
         },
         en: {
@@ -54,7 +54,7 @@
             closeImg: 'Close image', enlargeImg: 'Enlarge image', imageDialog: 'Image viewer', overview: 'About this guide',
             relatedTitle: 'Other guides in the same category',
             brandAriaLabel: 'FabLab Guides – To front page',
-            currentSiteHref: '../old/en/index.html',
+            currentSiteHref: '../en/index.html',
             langSwitchText: 'Dansk', langSwitchHrefPrefix: '../'
         }
     }[lang];

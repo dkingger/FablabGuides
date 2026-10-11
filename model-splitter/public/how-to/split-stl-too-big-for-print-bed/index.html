@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="da">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../../../media/favicon.svg" rel="icon" type="image/svg+xml"/>
+<title>Sådan opdeler du en STL, der er for stor til din byggeplade</title>
+<meta content="Opdel en 3D-model, der ikke passer på din printer: tegn samlingen hvor du vil have den, tilføj samlestifter, skær, eksportér og print. Gratis i browseren med STL eller 3MF." name="description"/>
+
+<meta content="article" property="og:type"/>
+<meta content="Model Splitter" property="og:site_name"/>
+<meta content="Sådan opdeler du en STL, der er for stor til din byggeplade" property="og:title"/>
+<meta content="Tegn samlingen hvor du vil have den, tilføj samlestifter, skær, eksportér og print. Gratis i browseren." property="og:description"/>
+<meta content="https://modelsplitter.com/how-to/split-stl-too-big-for-print-bed/" property="og:url"/>
+<meta content="../../../media/band-cut.jpg" property="og:image"/>
+<link href="../_style.css" rel="stylesheet"/>
+
+
+<!-- Leftovers from before 2026-10-07, when the Reddit pixel loaded on every
+         visit and MailerLite's script on every page: their cookie and ID stay
+         in a returning visitor's browser until something removes them, and the
+         cookie went back to us with every request. Cleared on every load; the
+         ID comes back only for somebody who presses Join, and goes again on
+         their next visit. -->
+
+<style>#countedDetails,#launchInvite,#launchList,#say,#forumOpen,#proOpen,#kickstarterOpenSidebar,#launchOpenSidebar{display:none!important}</style></head>
+<body>
+<header><a href="../../index.html">Model Splitter</a><span>·</span><a href="../index.html">How-to</a><span>·</span><a href="../../guide/index.html">Værktøjsguide</a></header>
+<main>
+<article>
+<h1>Sådan opdeler du en STL, der er for stor til din byggeplade</h1>
+<p class="lead">Tegn samlingen hvor du vil have den, tilføj samlestifter, skær, eksportér og print. Fem minutter, gratis, i browseren.</p>
+<p>De fleste modeller, der ikke passer på en printer, er kun lidt for store i én retning. Hvis du skalerer modellen ned, mister du den størrelse du ønskede. Den klassiske løsning, et fladt planesnit dér hvor softwaren tilfældigvis lægger det, giver ofte en synlig linje hen over modellen efter maling. Den bedre løsning er den, en skulptør ville vælge: læg samlingen dér hvor en samling naturligt hører hjemme, ved en fold, et bælte eller en kant, og brug stifter så delene samles præcist igen.</p>
+<figure>
+<video autoplay="" loop="" muted="" playsinline="" poster="../../../media/band-cut.jpg" src="../../../media/band-cut.mp4"></video>
+<figcaption>Et båndsnit rundt om en gladiatorarm: løkken trækkes ind i rustningens kant, og snittet giver en stift i den ene del og et hulrum i den anden.</figcaption>
+</figure>
+<h2>1. Indlæs modellen og tjek størrelsen</h2>
+<p>Åbn STL eller 3MF i <a href="../../index.html">Model Splitter</a> ved at slippe filen i visningen eller bruge Åbn. Felterne for størrelse viser X, Y og Z i millimeter. Sammenlign dem med din printers byggevolumen (en Bambu A1 er 256 mm i hver retning; en Ender 3 er 220 × 220 × 250; en Prusa MK4 er 250 × 210 × 220).</p>
+<p>Hvis modellen kun er for stor i én retning, er ét snit nok, og du bestemmer selv placeringen. Hvis den er for stor i to eller tre retninger, så hop til <a href="#big">meget større end byggepladen</a> længere nede og lad auto-planlæggeren tage første gennemgang.</p>
+<p class="note">En model med huller eller vendte flader kan ikke skæres. <strong>Inspicér &amp; reparér</strong> fortæller hvorfor, og <strong>Reparér — kun sikker</strong> løser det meste uden at ændre formen.</p>
+<h2>2. Tegn samlingen dér hvor du vil have den</h2>
+<p>Vælg <strong>Bånd</strong> i Skæreværktøj og tegn en løkke rundt om modellen, dér hvor samlingen skal være, fx omkring en arm, talje eller ved halsens base. Træk derefter den orange linje ind dér hvor samlingen kan skjules: langs en rustningskant, i en ærmefold eller under et bælte. Klik for at fastgøre et punkt; højreklik på et punkt for at frigive det. <strong>Udjævning</strong> glatter et trukket stræk, så samlingen ikke knækker skarpt.</p>
+<p>To andre måder at tegne samme samling på:</p>
+<ul>
+<li><strong>Linje</strong> — ét strøg på tværs af modellen, hvorefter løkken beregnes hen over bagsiden. Hurtigst, men drej modellen og tjek hvor den landede.</li>
+<li><strong>Reb</strong> — tegn det du kan se, drej modellen, fortsæt fra den løse ende, og luk rebet ved startpunktet. Brug denne når bagsiden er vigtig.</li>
+</ul>
+<p>Uanset metode: drej modellen hele vejen rundt før du skærer. Den samling du ikke kiggede på, ender ofte dér hvor den ses mest.</p>
+<h2>3. Tilføj samlestifter</h2>
+<p>I <strong>Samlinger</strong> lader du typen stå på indbyggede stifter og sætter <strong>Antal</strong> — to er ofte nok til en arm, tre eller fire til en torso. En stift er en del af den ene halvdel og passer i et hulrum i den anden. Stifterne giver placering, ikke styrke: limen holder delene sammen, mens stifterne forhindrer forskydning under hærdning og sikrer at en buet samling samles i præcis én position.</p>
+<p><strong>Stifttykkelse</strong> og <strong>længde</strong> bestemmes af skærefladen, og <strong>Frigang</strong> er afstanden omkring stiften. Standardværdierne passer normalt til FDM-print. Hvis stifterne sidder for stramt, øg frigangen lidt; hvis de rasler, sænk den.</p>
+<p>Vil du kunne skille delene ad igen? <strong>Magnethuller</strong> laver fordybninger til magneter i stedet. Vælg en forudindstilling eller skriv magnetens målte størrelse.</p>
+<h2>4. Skær og kontrollér begge dele</h2>
+<p>Tryk på <strong>Skær</strong>. Rotér resultatet og tjek skæreflader og stifter. Appen viser begge dele, og stiften skal ligge godt inde i fladen med plads omkring sig. Hvis samlingen skal flyttes, giver <strong>Tilbage til redigering</strong> dig den uskårne model tilbage med løkken bevaret til justering.</p>
+<p>Når et snit afvises, forklarer beskeden hvorfor. Oftest er skærefladen for smal til de valgte stifter. Færre eller tyndere stifter, eller en samling gennem et tykkere område, løser det normalt.</p>
+<h2>5. Eksportér og print</h2>
+<p><strong>Eksport</strong> giver delene som separate STL-filer (zip når der er mange) eller som én 3MF med alle dele samlet, som de fleste slicere åbner som en plade. Gem også projektet, hvis du senere vil flytte samlingen.</p>
+<p>I sliceren placerer du hver del med <strong>skærefladen ned mod byggepladen</strong>. Den er flad, kræver ofte ingen support, og skjuler first-layer-teksturen inde i samlingen. Print hulrumsdelen med lidt ekstra omhu i de første lag, da pasformen afhænger af den. Lav tørpasning, lim, og hold langs samlingen med tape eller elastik mens limen hærder.</p>
+<h2 id="big">Meget større end byggepladen?</h2>
+<p>Når modellen er for stor i to eller tre retninger, vælg <strong>Auto multi-plan</strong>, vælg printer fra listen eller indtast byggevolumen, og Model Splitter foreslår færrest mulige planer, så alle dele passer. <strong>Hold fri</strong> reserverer en margin ved hver kant af byggepladen. Hvert plan kan flyttes bagefter, og du kan stadig tegne en buet samling på en enkelt del, hvis et plan lander et uheldigt sted.</p>
+<p>Ved print i menneskestørrelse er forskellen stor: i en 1,8 m figur gav planlæggeren 58 dele, hvor et simpelt gitter gav 112.</p>
+<h2>Spørgsmål</h2>
+<details><summary>Hvor bør jeg placere samlingen?</summary><p>Dér hvor øjet allerede forventer en linje: i en tøjsøm/fold, langs kanten af et bælte eller en rustningsplade, ved materialeskift eller under et udhæng. En samling hen over en glat kind eller en flad paneloverflade ses næsten altid efter maling, uanset hvor godt du spartler.</p></details>
+<details><summary>Behøver jeg overhovedet stifter?</summary><p>Ved to dele som nemt kan limes på øjemål: nej, sæt Antal til 0 for en ren opdeling. Stifter er især nyttige ved buede samlinger, hvor der kun findes én korrekt position, og ved modeller med mere end to dele.</p></details>
+<details><summary>Hvad med support og overhæng efter opdeling?</summary><p>Opdeling er ofte en chance for at fjerne support. En del printet med skærefladen ned kan ofte printes uden support, hvor hele modellen ellers krævede meget. Har en del stadig et dårligt overhæng, løser et ekstra snit ved retningsskiftet det som regel.</p></details>
+<details><summary>Virker det med 3MF og på Mac?</summary><p>Ja. Den åbner STL og 3MF og eksporterer begge, og kører i Chrome, Edge eller Firefox på Windows, Mac og Linux. Intet installeres, og modellen forlader ikke din computer; snittet sker i browseren.</p></details>
+<details><summary>Er der en størrelsesgrænse?</summary><p>Scanninger med en million trekanter eller mere kan skæres, men tager længere tid. <strong>Reducér til skæring</strong> laver en lettere arbejdskopi til hurtigere previews, mens originalen bevares til eksport.</p></details>
+<section class="cta">
+<h2>Prøv den på din egen model</h2>
+<p>Gratis, ingen tilmelding, intet at installere. Hvis den gør det du har brug for, lanceres <a aria-hidden="true" hidden="">ModelSplitter Pro</a> på Kickstarter den 3. november med Early Bird-pris til de første halvtreds.</p>
+<a class="try" href="../../index.html?utm_source=how-to&amp;utm_medium=page&amp;utm_campaign=split-stl">Åbn Model Splitter</a>
+</section>
+</article>
+<footer>Sidder du fast i en bestemt model? <a href="../../guide/index.html">Fuld værktøjsguide</a>.</footer>
+</main>
+<!-- One count per read, same rule as /pro/: the page's slug and the campaign
+     tags, nothing that identifies anybody. -->
+
+</body>
+</html>

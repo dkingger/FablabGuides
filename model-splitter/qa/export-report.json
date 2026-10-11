@@ -1,0 +1,25 @@
+{
+  "egg.stl": {
+    "triangles": 2048,
+    "bytes": 102484,
+    "valid_binary_stl": true
+  },
+  "imported.stl": {
+    "triangles": 2048,
+    "bytes": 102484,
+    "valid_binary_stl": true
+  },
+  "parts.3mf": {
+    "objects": 2,
+    "build_items": 2,
+    "triangles": [
+      1086,
+      1086
+    ]
+  },
+  "egg.msproj": {
+    "bytes": 54392,
+    "header_valid": true,
+    "browser_roundtrip": "checked by verify.cjs"
+  }
+}

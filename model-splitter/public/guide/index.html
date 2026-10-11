@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Tool guide — Model Splitter</title>
+<meta content="Learn Model Splitter: prepare a model, mask the area you want to work on, choose a cut tool, add joints and export printable parts." name="description"/>
+<style>
+:root { color-scheme: dark; --bg:#17191d; --panel:#202329; --text:#edeef0; --muted:#b9bec7; --edge:#3b4049; --accent:#f43f5e; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,sans-serif; }
+a { color:var(--accent); text-underline-offset:3px; }
+a:focus-visible,summary:focus-visible { outline:2px solid var(--accent); outline-offset:5px; }
+header { padding:24px max(24px,calc((100vw - 1160px)/2)); border-bottom:1px solid var(--edge); }
+header p { margin:4px 0; color:var(--muted); }
+header a { font-weight:650; }
+.layout { max-width:1208px; margin:auto; display:grid; grid-template-columns:220px minmax(0,1fr); gap:48px; padding:32px 24px 80px; }
+nav { position:sticky; top:24px; align-self:start; max-height:calc(100vh - 48px); overflow-y:auto; }
+nav a { display:block; padding:5px 0; color:var(--muted); text-decoration:none; }
+nav a:hover { color:var(--accent); }
+main { min-width:0; }
+h1 { font-size:clamp(30px,4vw,42px); line-height:1.2; margin:0 0 12px; }
+h2 { margin:0 0 18px; font-size:26px; line-height:1.3; }
+h3 { font-size:19px; margin:24px 0 6px; }
+p { margin:8px 0 16px; }
+section { scroll-margin-top:24px; padding:30px 0; border-bottom:1px solid var(--edge); }
+section:first-child { padding-top:0; }
+li { margin:8px 0; }
+li::marker { color:var(--accent); font-weight:700; }
+.steps { padding-left:25px; }
+.steps li { padding:0 0 12px 8px; }
+.note { border-left:3px solid var(--accent); padding:12px 18px; background:var(--panel); }
+.table { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; text-align:left; }
+th,td { padding:12px 14px 12px 0; border-bottom:1px solid var(--edge); vertical-align:top; }
+th { color:var(--muted); font-size:14px; }
+td:first-child { width:29%; font-weight:650; }
+details { border-top:1px solid var(--edge); padding:14px 0; }
+summary { cursor:pointer; font-weight:650; }
+kbd { background:var(--panel); border:1px solid var(--edge); padding:1px 5px; border-radius:4px; font:inherit; font-size:14px; }
+footer { margin-top:30px; color:var(--muted); }
+@media(max-width:760px) { .layout { grid-template-columns:1fr; gap:24px; } nav { position:static; max-height:none; display:flex; flex-wrap:wrap; gap:4px 20px; border-bottom:1px solid var(--edge); padding-bottom:20px; } td:first-child { width:35%; } }
+@media print { nav,header a { display:none; } .layout { display:block; } body { background:white; color:black; } section { break-inside:avoid; } }
+</style>
+<!-- Leftovers from before 2026-10-07, when the Reddit pixel loaded on every
+         visit and MailerLite's script on every page: their cookie and ID stay
+         in a returning visitor's browser until something removes them, and the
+         cookie went back to us with every request. Cleared on every load; the
+         ID comes back only for somebody who presses Join, and goes again on
+         their next visit. -->
+
+<style>#countedDetails,#launchInvite,#launchList,#say,#forumOpen,#proOpen,#kickstarterOpenSidebar,#launchOpenSidebar{display:none!important}</style></head>
+<body>
+<header><a href="../index.html">Model Splitter</a><p>Tool guide · English · <a href="../how-to/index.html">How-to guides</a></p></header>
+<div class="layout">
+<nav aria-label="Guide sections">
+<a href="#start">Your first cut</a><a href="#prepare">Load, size &amp; repair</a><a href="#working-area">Mask tool &amp; paint</a><a href="#cut-tools">Choose a cut tool</a><a href="#cut-options">Cut face &amp; seam controls</a><a href="#joints">Joints &amp; fit</a><a href="#result">Review &amp; continue</a><a href="#export">Save &amp; export</a><a href="#editing">Sculpt, move &amp; shapes</a><a href="#controls">Mouse &amp; keyboard</a><a href="#trouble">When something goes wrong</a>
+</nav>
+<main>
+<section id="start">
+<h1>Know what to use next.</h1>
+<p>Start with one simple cut. You can isolate difficult areas, draw more detailed seams and adjust joints once the basic flow feels familiar.</p>
+<ol class="steps">
+<li><strong>Open a model or try the demo egg.</strong> Check its size. If the app reports a problem with the solid, repair it before cutting.</li>
+<li><strong>Choose Plane in Cut Tool.</strong> This is a simple way to try splitting the egg. Pick an axis and slide the plane to where you want the split.</li>
+<li><strong>Choose your joints.</strong> For a plain split, use no built-in pins by setting Count to 0. Add joints when you want the pieces to locate together.</li>
+<li><strong>Press Cut.</strong> Inspect both pieces. Use Back to editing if the cut needs moving.</li>
+<li><strong>Export the parts.</strong> Choose the output you need. Save a project as well if you want to continue editing later.</li>
+</ol>
+<p class="note">The Mask tool is optional. You can cut the whole model directly. Opening this guide from the app leaves your work in its original tab.</p>
+</section>
+<section id="prepare">
+<h2>Load, size &amp; repair</h2>
+<h3>Load and size</h3>
+<p>Open an STL or 3MF, or drop a supported model file into the viewport. Size X, Y and Z are in millimetres. Changing one dimension scales the others proportionally, so the model keeps its shape.</p>
+<p><strong>Reduce for cutting</strong> makes a lighter working copy for faster cuts and previews. Light preserves more detail; Strong removes more; Balanced sits between them. The original is retained for export. <strong>Use full detail</strong> discards the lighter copy.</p>
+<h3>Inspect &amp; repair</h3>
+<div class="table"><table><thead><tr><th>Action</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Inspect</td><td>Checks the working piece for holes, flipped or duplicate faces and separate shells.</td></tr>
+<tr><td>Repair — safe only</td><td>Cleans problems such as duplicate faces and faces inside out without deliberately changing the shape. It cannot close every hole.</td></tr>
+<tr><td>Advanced — removes and adds faces</td><td>Attempts more substantial repairs, including holes and problematic joined surfaces. It can change the shape where it patches; inspect the result.</td></tr>
+<tr><td>Separate the loose pieces</td><td>Makes separate objects from disconnected lumps in the current piece.</td></tr>
+</tbody></table></div>
+<p>Read the result of a repair: it may still report that the model is not a closed solid. A successful repair updates the working model; you should not need to export and reload it.</p>
+<p><strong>Start over</strong> returns to the loaded model or the latest repaired checkpoint, clearing paint, seams and cuts on the working piece. Finished parts already set aside remain. <strong>Start this seam again</strong> only resets the seam you are drawing.</p>
+</section>
+<section id="working-area">
+<h2>Mask tool &amp; paint</h2>
+<p>Use <strong>Mask tool → Paint</strong> when other parts of the model get in your way. Use <strong>Cut Tool → Paint to cut</strong> when you want to select an entire section to separate. Both entry points use the current paint selection; switching between them does not create another independent selection.</p>
+<ol><li>Press <strong>Paint</strong> in the Mask tool, then paint the area you want to reach. Turn the model to paint its back too.</li><li>Press <strong>Isolate the painted part</strong>. Everything outside that area is hidden from view and from brush hits. The cut still uses the whole model.</li><li>Use <strong>Choose a cut tool</strong> to return to the tool chooser. Your paint is preserved. Use <strong>Clear paint</strong> if you want to start a fresh selection inside this area.</li></ol>
+<p><strong>Show the whole model</strong> restores the hidden geometry and keeps your paint. Isolation changes visibility, not the model’s shape.</p>
+<div class="table"><table><thead><tr><th>Paint option</th><th>When to use it</th></tr></thead><tbody>
+<tr><td>Surface</td><td>Paints along connected faces and stops at sharp folds. Use it for following a surface without selecting every nearby layer.</td></tr>
+<tr><td>Sphere</td><td>Paints faces within a 3D radius, including nearby disconnected layers such as clothing over a body. Hidden isolated faces remain untouched.</td></tr>
+<tr><td>Paint size</td><td>Changes the brush radius. The displayed size is in millimetres.</td></tr>
+<tr><td>Shift + paint</td><td>Removes faces from the selection.</td></tr>
+<tr><td>Preview painted boundary</td><td>Shows the selection’s boundary without cutting. Orange means the preview is on. Click again to hide it; the button returns to grey. Undo also hides a visible preview before undoing paint.</td></tr>
+<tr><td>Repair touching boundary</td><td>Appears when a boundary is found to touch itself. Adds a small amount of paint around the problem. It does not generally smooth a jagged outline. Undo restores the previous selection.</td></tr>
+<tr><td>Clear paint</td><td>Removes the paint selection so you can begin again.</td></tr>
+</tbody></table></div>
+</section>
+<section id="cut-tools">
+<h2>Choose a cut tool</h2>
+<p>A <strong>seam</strong> is the line around the model where the pieces will separate. Pick the tool that makes that line easiest to place.</p>
+<h3>Line — a quick drawn cut</h3><p>Draw across the model. The tool constructs a loop using the front and back intersections from your view. Useful for a quick cut, but turn the model and check the back: the inferred path can cross a different part than you intended.</p>
+<h3>Band — an adjustable loop</h3><p>Draw a loop, then drag the orange line to reposition it. Click to pin a point; right-click a pin to release it. <strong>Smoothing</strong> controls how much a dragged stretch eases out afterwards; 0 leaves the drag as placed. Normal dragging follows the held surface. Alt-drag places a point on the visible surface beneath the pointer.</p>
+<h3>Rope — draw around the surface</h3><p>Draw what you can see, release the mouse, turn the model, then continue from the loose end. Close the rope at its starting anchor. Use this when you want to control the path around the back instead of letting Line infer it. Drag handles to adjust the contour.</p>
+<h3>Paint to cut — select the whole section</h3><p>Paint the entire region you want to separate, including its back. Preview the boundary, correct gaps or overspill, then press Cut. Painting a narrow stripe can produce two boundaries; paint the whole intended section for a cap-like split.</p>
+<h3>Plane — a straight cut</h3><p>Pick X, Y, Z or View to orient the plane. Use Position and the handles to move it, and the tilt control to rotate it. If it crosses several separate areas, you can pick the crossing rings you intend to cut. <strong>Cut through everything</strong> returns to the full plane cut.</p>
+<h3>Multi-plane — specify the number of cuts</h3><p>Enter the number of cuts across X, Y and Z. The planes start evenly spaced; click a plane to adjust it. Three cuts along one axis make four sections. Nothing is cut until you press Cut.</p>
+<h3>Auto multi-plane — fit your printer</h3><p>Choose a printer preset or enter the build width, depth and height in millimetres. <strong>Keep clear at each edge</strong> reserves space around the bed and below the height limit. The proposed planes are editable; check the fit report after moving them. The cuts panel selects and positions individual planes.</p>
+</section>
+<section id="cut-options">
+<h2>Cut face &amp; seam controls</h2>
+<div class="table"><table><thead><tr><th>Option</th><th>What changes</th></tr></thead><tbody>
+<tr><td>Follows the seam</td><td>The separating surface follows the contour you drew.</td></tr>
+<tr><td>Keeps the drawn step</td><td>Keeps a short level region around the seam to form a step rather than a thin edge.</td></tr>
+<tr><td>Flat plane — replaces the seam</td><td>Uses a flat separating surface instead of keeping the drawn contour’s shape.</td></tr>
+<tr><td>Start this seam again</td><td>Clears the seam in hand. Seams already put aside remain.</td></tr>
+<tr><td>Keep this seam, draw another</td><td>When offered, puts a seam aside so multiple seams can be cut together. A kept seam can be brought back for editing.</td></tr>
+</tbody></table></div>
+<p>The app shows options relevant to the selected cut tool. A preview is a proposal; <strong>Cut</strong> performs the split.</p>
+</section>
+<section id="joints">
+<h2>Joints &amp; fit</h2>
+<p>Joints help the printed pieces line up when assembled. Available controls depend on the cut and joint type.</p>
+<h3>Built-in pins — attached</h3><p>A pin is part of one half and fits a socket in the other. <strong>Count</strong> sets how many to use; 0 gives a plain split. Pin thickness and length control its size. Clearance controls the gap around the pin.</p>
+<h3>Loose tenons — printed separately</h3><p>Separate connectors fit sockets in both pieces. <strong>Per joint</strong> chooses the number of connectors; Auto uses the available face area. <strong>Size</strong> can be automatic or fixed. A round <strong>Shape</strong> allows rotation around a single connector; other shapes resist it. <strong>Fit</strong> changes the gap: increase it if the connector needs forcing, decrease it if it rattles.</p>
+<h3>Magnet sockets — removable assembly</h3><p>Makes recesses for magnets. Choose a preset or enter the magnet’s measured diameter and thickness. <strong>Advanced fit</strong> provides extra room around the magnet and extra depth below the face. Check these against the actual magnets and your printing process.</p>
+<h3>Joint numbers</h3><p><strong>Number the joints</strong> engraves matching numbers on mating faces that received connectors. <strong>Depth</strong> controls the engraving depth. Useful when assembling many pieces.</p>
+<p>Inspect joint positions after cutting. Where handles are offered, move pins along the cut face, adjust their length, or tilt the pins together. <strong>Reset the joints</strong> returns to the generated placement.</p>
+</section>
+<section id="result">
+<h2>Review &amp; continue</h2>
+<div class="table"><table><thead><tr><th>Action</th><th>What it does</th></tr></thead><tbody>
+<tr><td>Separation</td><td>Spreads the pieces apart for inspection. It changes the view, not the exported geometry.</td></tr>
+<tr><td>Close up / Explode</td><td>Switches between assembled and separated views.</td></tr>
+<tr><td>Back to editing</td><td>Returns to the editable model with the seam retained so you can adjust and cut again.</td></tr>
+<tr><td>Carry on cutting A / B</td><td>Makes that half the working piece and puts the other half aside as a finished part.</td></tr>
+<tr><td>Keep both — done cutting</td><td>Keeps both halves as finished parts.</td></tr>
+</tbody></table></div>
+<p>Check the back of each piece and the joints before exporting. The object list lets you select parts; names and colours help distinguish them as the job grows.</p>
+</section>
+<section id="export">
+<h2>Save &amp; export</h2>
+<p><strong>Projects</strong> preserve editable work. Give the project a name and save it in the browser, or use <strong>Save to a file</strong> for a project file you can keep elsewhere. <strong>Open a file</strong> in Projects restores that project. Exported STL files are geometry, not editable project backups.</p>
+<div class="table"><table><thead><tr><th>Export choice</th><th>Use it for</th></tr></thead><tbody>
+<tr><td>This model — STL</td><td>The current model as one STL.</td></tr>
+<tr><td>Reduced working copy — STL</td><td>The lighter model, when a reduced copy exists.</td></tr>
+<tr><td>Both halves / Part A / Part B</td><td>The result of the current cut, together in a 3MF or as individual STLs.</td></tr>
+<tr><td>Every part — one 3MF</td><td>All the pieces collected in one file.</td></tr>
+<tr><td>Every part + assembly guide — ZIP</td><td>A bundle of parts with assembly information.</td></tr>
+</tbody></table></div>
+<p>Export choices change with the current model and cut result. Choose the contents first, then export.</p>
+</section>
+<section id="editing">
+<h2>Sculpt, move &amp; shapes</h2>
+<details><summary>Sculpt — change the model surface</summary><p><strong>Smooth</strong> softens the surface, <strong>Inflate</strong> pushes it out and <strong>Flatten</strong> presses it toward a plane. Size controls the brush area; Strength controls how strongly it acts. Hold Shift to reverse the brush. Each stroke can be undone.</p><p><strong>Mask</strong> paints areas to hold still during sculpting. Shift removes protection; <strong>Clear the mask</strong> releases all protected areas.</p></details>
+<details><summary>Move — position an object</summary><p>Select an object, then use <strong>Move</strong>, <strong>Turn</strong> or <strong>Size</strong> to display its handles. <strong>Centre it on the model</strong> aligns its centre with the working model. <strong>Done — deselect</strong> removes the handles so you can draw again.</p></details>
+<details><summary>Shapes — add material or make a cutting object</summary><p>Add a <strong>Cube, Ball, Tube, Cone</strong> or <strong>Ring</strong>, move it into place, then use Boolean. Choose <strong>Sharp</strong>, <strong>Chamfer</strong> (a bevel) or <strong>Round</strong> edges. Edge controls the size of the bevel or rounding. Where edge selection is offered, choose individual edges or use <strong>Back to every edge</strong>. Finish with <strong>Done with this shape</strong>.</p></details>
+<details><summary>Boolean — combine two solid objects</summary><p>Select two objects. <strong>Union</strong> joins them. <strong>Difference</strong> removes object 2 from object 1. <strong>Intersect</strong> keeps their overlapping volume. <strong>Swap ① ②</strong> reverses their order; this matters for Difference. Both objects need to be suitable closed solids.</p></details>
+</section>
+<section id="controls">
+<h2>Mouse &amp; keyboard</h2>
+<ul><li><strong>Left-drag:</strong> use the active tool or its handles.</li><li><strong>Right-drag:</strong> rotate the view. <strong>Middle-drag:</strong> pan. <strong>Wheel:</strong> zoom.</li><li><strong>Shift + paint:</strong> deselect. During sculpting, Shift reverses the brush.</li><li><strong>Ctrl/Cmd + Z:</strong> undo. With a painted-boundary preview showing, the first undo hides that preview.</li><li><strong>Ctrl/Cmd + Shift + Z:</strong> redo. Redo can restore the selection rather than rerunning a cut; press Cut when ready.</li><li><strong>Axis widget:</strong> select a face to look from that direction.</li><li><strong>Panel edges:</strong> drag the divider to resize a sidebar. Open and close panel headings to keep the tools you need in view.</li></ul>
+</section>
+<section id="trouble">
+<h2>When something goes wrong</h2>
+<details><summary>Cut asks me to repair the model again</summary><p>Read the repair result in Inspect &amp; repair. Safe repair may leave holes that require Advanced repair; even Advanced repair cannot fix every model. If it reports a cuttable model but the next cut repeats the same repair request, report the exact message and the steps that trigger it.</p></details>
+<details><summary>The boundary looks wrong or runs around twice</summary><p>Rotate the model and inspect the whole selection. Unpainted gaps, islands or a painted stripe can produce multiple boundaries. Add paint or use Shift to remove overspill. The preview button only shows or hides a guide; it does not change the selected faces or cut the model.</p></details>
+<details><summary>I cannot draw on the model</summary><p>Check the selected tool and finish moving any selected object or shape. If an area is hidden, Show the whole model brings it back. Try a fresh stroke directly on the surface and check the brush size.</p></details>
+<details><summary>The cut does not separate the model</summary><p>Check that the seam fully surrounds the intended section, including its back. On layered models, isolate the relevant area and keep the seam on the intended surface. Read the cut’s error message before changing settings; use the offered details when reporting a repeatable failure.</p></details>
+<p><a aria-hidden="true" hidden="" rel="noopener" target="_blank">Open the feedback forum</a> to report an issue. Include the tool, exact message and sequence of actions.</p>
+</section>
+<footer>Step-by-step answers to common jobs are in the <a href="../how-to/index.html">how-to guides</a>. Keep this guide beside your model. Switch back to the original app tab to continue your work. <a aria-hidden="true" hidden="">ModelSplitter Pro and the launch draw</a>.</footer>
+</main></div>
+</body></html>

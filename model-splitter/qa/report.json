@@ -1,0 +1,50 @@
+{
+  "checked": [
+    "demo model",
+    "STL export and import",
+    "plane cut without joints",
+    "3MF export",
+    "project export and import",
+    "local help pages",
+    "hidden service controls",
+    "no external or API requests"
+  ],
+  "errors": [],
+  "blocked": [],
+  "missing": [],
+  "requests": [
+    "http://127.0.0.1:8776/model-splitter/public/",
+    "http://127.0.0.1:8776/model-splitter/public/assets/index-D4oyVY23.js",
+    "http://127.0.0.1:8776/model-splitter/public/assets/rolldown-runtime-hePW80VL.js",
+    "http://127.0.0.1:8776/model-splitter/public/assets/preload-helper-Czpn1I53.js",
+    "http://127.0.0.1:8776/model-splitter/public/assets/manifold-BE4c7gO-.wasm",
+    "http://127.0.0.1:8776/model-splitter/public/favicon.svg",
+    "http://127.0.0.1:8776/model-splitter/public/assets/cut-worker-DoH4OLGv.js",
+    "http://127.0.0.1:8776/model-splitter/public/assets/manifold-BE4c7gO-.wasm",
+    "http://127.0.0.1:8776/model-splitter/public/assets/cut-worker-DoH4OLGv.js",
+    "http://127.0.0.1:8776/model-splitter/public/assets/manifold-BE4c7gO-.wasm",
+    "http://127.0.0.1:8776/model-splitter/public/assets/cut-worker-DoH4OLGv.js",
+    "http://127.0.0.1:8776/model-splitter/public/assets/manifold-BE4c7gO-.wasm",
+    "http://127.0.0.1:8776/model-splitter/public/guide/",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/_style.css",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/split-stl-too-big-for-print-bed/",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/_style.css",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/media/band-cut.jpg",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/media/band-cut.mp4",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/meshmixer-alternative-for-splitting-models/",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/_style.css",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/media/band-cut.jpg",
+    "http://127.0.0.1:8776/model-splitter/public/how-to/media/band-cut.mp4"
+  ],
+  "files": [
+    "demo.png",
+    "egg.msproj",
+    "egg.stl",
+    "imported.stl",
+    "parts.3mf",
+    "plane-cut.png",
+    "project-restored.png",
+    "report.json"
+  ]
+}
