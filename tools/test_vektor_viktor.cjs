@@ -11,7 +11,7 @@ const base = process.argv[2] || 'http://127.0.0.1:8765';
     page.on('pageerror', e => errors.push(e.message));
     await page.setViewport({width:1440,height:1000});
     await page.goto(`${base}/vektor-viktor.html`);
-    assert.equal(await page.$eval('.version-badge', e => e.textContent), 'v1.92');
+    assert.equal(await page.$eval('.version-badge', e => e.textContent), 'v2.03');
     const result = await page.evaluate(async () => {
       const check = (ok, message) => { if (!ok) throw new Error(message); };
       const tick = () => new Promise(r => setTimeout(r, 30));
@@ -54,7 +54,7 @@ const base = process.argv[2] || 'http://127.0.0.1:8765';
       check(outline && outline.getAttribute('data-vv-fcm-keep-together')==='1','Text outline stays grouped');
       const textRoot=document.createElementNS(SVG_NS,'svg'); textRoot.appendChild(outline);
       check(fcmSplitPathsIntoPieces(fcmCollectPaths(textRoot).paths).length===1,'FCM keeps a whole text field together');
-      const saved=serializeEditableProject(); check(saved.appVersion==='1.92','Project version');
+      const saved=serializeEditableProject(); check(saved.appVersion==='2.03','Project version');
       loadEditableProject(saved); await tick();
       check(objects.length===2 && textRawContent(objects[0])==='Hej med dig','Curved text/image roundtrip');
       setProjectClean(true); zoomBy(1.25); await tick();
@@ -63,7 +63,7 @@ const base = process.argv[2] || 'http://127.0.0.1:8765';
       check(projectDirty,'Geometry change must mark dirty');
       projectDirtySince=Date.now()-PROJECT_SAVE_REMINDER_MS-1; checkProjectSaveReminder();
       check(document.querySelector('#saveReminderToast.show'),'Save reminder');
-      hideSaveReminder(); check(getComputedStyle(document.getElementById('saveReminderToast')).visibility==='hidden','Dismissed reminder hidden from keyboard');
+      hideSaveReminder(); check(!document.getElementById('saveReminderToast').classList.contains('show'),'Dismissed reminder hidden from keyboard');
       setPageSize('ScanNCut'); selectOnly(objects[1].id); applySelectedScanFill('#345678');
       check(objects[1].el.getAttribute('filter').includes('#vvScanTint_'),'Image foil preview');
       setPageSize('A4');
@@ -78,6 +78,16 @@ const base = process.argv[2] || 'http://127.0.0.1:8765';
       check(path.getAttribute('fill')==='#000000','Difference retains base fill');
       check((path.getAttribute('d').match(/M/g)||[]).length>=2,'Difference retains inner contour');
       check(!path.isPointInFill(new DOMPoint(40,35)) && path.isPointInFill(new DOMPoint(15,15)),'Difference hole geometry');
+      // The circular cutout must retain subpixel precision after rasterization.
+      let holeSamples=0, maxHoleError=0;
+      const perimeter=path.getTotalLength();
+      for(let i=0;i<2000;i++){
+        const p=path.getPointAtLength(perimeter*i/2000);
+        const radius=Math.hypot(p.x-40,p.y-35);
+        if(radius<12){holeSamples++;maxHoleError=Math.max(maxHoleError,Math.abs(radius-10));}
+      }
+      check(holeSamples>100 && maxHoleError<0.05,'Difference circular edge precision: '+maxHoleError);
+
       // Switch an A4 boolean result through the actual page/color controls.
       const differenceId=objects[0].id;
       const pageControl=document.getElementById('pageSize');
