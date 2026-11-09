@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Overview of all FabLab guides in one place.">
+    <meta name="author" content="Fablab">
+    <title>Guide Overview | FabLab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../guide.css">
+    <style>
+        .page-hero {
+            padding: 72px 0 48px;
+        }
+        .page-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin: 8px 0 16px;
+            line-height: 1.15;
+            color: var(--brand-strong);
+        }
+        .page-hero .lead {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            max-width: 680px;
+            margin: 0;
+        }
+        .guides-section {
+            padding: 48px 0 80px;
+        }
+        .category-block {
+            margin-bottom: 64px;
+        }
+        .category-block:last-child {
+            margin-bottom: 0;
+        }
+        .category-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--brand);
+            margin-bottom: 8px;
+        }
+        .category-label::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        .category-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--brand-strong);
+            margin: 0 0 28px;
+        }
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        .guide-card {
+            background: var(--surface-strong);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .guide-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .guide-img-frame {
+            background: var(--surface-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 20px;
+            height: 170px;
+        }
+        .guide-img-frame img {
+            max-height: 110px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .guide-placeholder-icon {
+            width: 52px;
+            height: 52px;
+            color: var(--brand);
+            opacity: 0.35;
+        }
+        .guide-body {
+            padding: 20px 24px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .guide-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--brand);
+            background: var(--surface-muted);
+            padding: 4px 12px;
+            border-radius: 999px;
+            width: fit-content;
+        }
+        .guide-name {
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0;
+            line-height: 1.3;
+        }
+        .guide-desc {
+            margin: 0;
+            color: var(--text-soft);
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+        .guide-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 2px;
+        }
+        .guide-highlights span {
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 4px 10px;
+        }
+        .guide-actions {
+            margin-top: auto;
+            padding-top: 2px;
+        }
+        .guide-actions a {
+            display: block;
+            text-align: center;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            background: var(--brand);
+            color: #fff;
+            transition: background 0.2s ease;
+        }
+        .guide-actions a:hover {
+            background: var(--brand-strong);
+        }
+        .empty-state {
+            padding: 22px;
+            border: 1px dashed var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-soft);
+            background: var(--surface);
+        }
+
+        @media (max-width: 760px) {
+            .page-hero {
+                padding: 48px 0 32px;
+            }
+            .guide-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .guide-img-frame {
+                height: 136px;
+                padding: 18px 14px;
+            }
+            .guide-body {
+                padding: 14px 16px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="/billeder/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/billeder/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/billeder/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/billeder/apple-touch-icon.png">
+    <link rel="manifest" href="/billeder/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="FabLab">
+</head>
+<body class="guide-shell">
+    <header class="site-header">
+        <a class="skip-link" href="#main-content">Skip to main content</a>
+        <div class="container nav-wrap">
+            <a class="brand interactive" href="index.html" aria-label="FabLab Guides - Back to front page">
+                <span class="brand-text">
+                    <strong>FabLab Guides</strong>
+                </span>
+            </a>
+            <nav class="top-nav" id="site-nav" aria-label="Primary navigation" data-lang="en" data-page="guides-overview"></nav>
+            <script src="../nav.js"></script>
+        </div>
+    </header>
+
+    <main tabindex="-1" id="main-content">
+        <section class="page-hero">
+            <div class="container">
+                <span class="eyebrow">FabLab</span>
+                <h1>Guide overview</h1>
+                <p class="lead">A complete overview of all guides on this site, grouped by category.</p>
+            </div>
+        </section>
+
+        <section class="guides-section">
+            <div class="container" id="guide-overview-root"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-wrap">
+            <div class="footer-license">
+                <a class="interactive" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">
+                    <img class="cc-license-logo" src="../billeder/ikoner/cc-by-sa.svg" alt="Creative Commons BY-SA 4.0">
+                </a>
+                <p class="cc-license-text">All text published under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA</a>.</p>
+            </div>
+            <div class="footer-license">
+                <a class="interactive" href="tilgaengelighedserklaering.html">
+                    <img class="cc-license-logo" src="../billeder/ikoner/accessibility-a11y.svg" alt="Accessibility statement">
+                </a>
+                <p class="cc-license-text">See the site's <a href="tilgaengelighedserklaering.html">accessibility statement</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="guide-data-en.js"></script>
+    <script>
+    (function () {
+        var root = document.getElementById('guide-overview-root');
+        var data = window.betaGuideData || {};
+        var guides = Object.keys(data).map(function (key) {
+            var item = data[key] || {};
+            return {
+                slug: item.slug || key,
+                title: item.title || key,
+                category: item.category || 'Other',
+                eyebrow: item.eyebrow || 'Guide',
+                icon: item.icon || '',
+                description: item.shortDescription || item.description || '',
+                highlights: Array.isArray(item.highlights) ? item.highlights.slice(0, 3) : []
+            };
+        });
+
+        if (!guides.length) {
+            root.innerHTML = '<p class="empty-state">No guides found in the data source.</p>';
+            return;
+        }
+
+        var categoryOrder = ['3D Printing', 'Laser Cutter', 'Vinyl Cutter', 'Textile Printing', 'Online', 'Other'];
+        var grouped = {};
+        guides.forEach(function (guide) {
+            if (!grouped[guide.category]) grouped[guide.category] = [];
+            grouped[guide.category].push(guide);
+        });
+
+        var categories = Object.keys(grouped).sort(function (a, b) {
+            var ai = categoryOrder.indexOf(a);
+            var bi = categoryOrder.indexOf(b);
+            if (ai === -1 && bi === -1) return a.localeCompare(b, 'en');
+            if (ai === -1) return 1;
+            if (bi === -1) return -1;
+            return ai - bi;
+        });
+
+        root.innerHTML = categories.map(function (category) {
+            var cards = grouped[category].sort(function (a, b) {
+                return a.title.localeCompare(b.title, 'en');
+            }).map(function (guide) {
+                var image = guide.icon
+                    ? '<img src="' + guide.icon + '" alt="' + guide.title + '">' 
+                    : '<svg class="guide-placeholder-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h10a2 2 0 0 1 2 2v11h2v2a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V3zm2 0v13h8V5H7zm9 15H8a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2z"/></svg>';
+                var highlights = guide.highlights.length
+                    ? '<div class="guide-highlights">' + guide.highlights.map(function (h) {
+                        return '<span>' + h + '</span>';
+                    }).join('') + '</div>'
+                    : '';
+                return ''
+                    + '<article class="guide-card">'
+                    + '  <div class="guide-img-frame">' + image + '</div>'
+                    + '  <div class="guide-body">'
+                    + '    <span class="guide-tag">' + guide.eyebrow + '</span>'
+                    + '    <h3 class="guide-name">' + guide.title + '</h3>'
+                    + '    <p class="guide-desc">' + guide.description + '</p>'
+                    +      highlights
+                    + '    <div class="guide-actions"><a href="' + guide.slug + '.html">Open guide</a></div>'
+                    + '  </div>'
+                    + '</article>';
+            }).join('');
+
+            return ''
+                + '<section class="category-block">'
+                + '  <p class="category-label">' + category + '</p>'
+                + '  <h2 class="category-title">' + category + '</h2>'
+                + '  <div class="guide-grid">' + cards + '</div>'
+                + '</section>';
+        }).join('');
+    })();
+    </script>
+</body>
+</html>

@@ -79,7 +79,6 @@
     board=Array.from({length:20},()=>Array(10).fill(0));bag=[];score=0;lines=0;elapsed=0;paused=false;running=true;next=pick();spawn();stats();
     pause.disabled=false;pause.textContent='Pause';status.textContent='God fornøjelse!';document.getElementById('start').textContent='Start forfra';canvas.focus();draw();
   });
-  document.getElementById('playAgain').addEventListener('click',()=>document.getElementById('start').click());
   pause.addEventListener('click',()=>setPaused(!paused));
   document.querySelectorAll('[data-action]').forEach(button=>button.addEventListener('click',()=>action(button.dataset.action)));
   document.addEventListener('keydown',e=>{
