@@ -2562,6 +2562,26 @@ function pointSegmentDistance(p,a,b){
 }
 function matrixPoint(m,p){return {x:m.a*p.x+m.c*p.y+m.e,y:m.b*p.x+m.d*p.y+m.f};}
 function bboxContainsPoint(b,p,tol=0){return !!b&&p.x>=b.x-tol&&p.x<=b.x+b.width+tol&&p.y>=b.y-tol&&p.y<=b.y+b.height+tol;}
+// Canvas tests SVG curves directly instead of repeatedly walking their length.
+// Keep only the local path cached: transforms are read afresh after moving/resizing.
+const hitPathCache=new WeakMap();
+const hitPathContext=document.createElement('canvas').getContext('2d');
+function pathNearPoint(el,pt,tol){
+  const d=el.getAttribute('d')||'';
+  let cached=hitPathCache.get(el);
+  if(!cached||cached.d!==d){
+    cached={d,path:new Path2D(d)};
+    hitPathCache.set(el,cached);
+  }
+  const m=matrixRelativeToObjects(el);
+  if(!m)return false;
+  const worldPath=new Path2D();
+  worldPath.addPath(cached.path,m);
+  hitPathContext.lineWidth=2*tol;
+  hitPathContext.lineCap='round';
+  hitPathContext.lineJoin='round';
+  return hitPathContext.isPointInStroke(worldPath,pt.x,pt.y);
+}
 function geometryNearPoint(el,pt,tol){
   if(!el||el.nodeType!==1)return false;
   const tag=(el.tagName||'').toLowerCase();
@@ -2570,6 +2590,11 @@ function geometryNearPoint(el,pt,tol){
       const objLike={el,type:tag};
       return bboxContainsPoint(getWorldBBox(objLike),pt,0);
     }catch(_){return false;}
+  }
+  // Reject distant groups and shapes before inspecting their curves.
+  try{if(!bboxContainsPoint(getWorldBBox({el,type:tag}),pt,tol))return false;}catch(_){}
+  if(tag==='path'){
+    try{return pathNearPoint(el,pt,tol);}catch(_){ /* Fall back for older browsers. */ }
   }
   if(tag==='g'||tag==='svg'||tag==='a'){
     const kids=Array.from(el.querySelectorAll('path,rect,ellipse,circle,line,polygon,polyline,text,image,use')).reverse();

@@ -70,6 +70,28 @@ const puppeteer=require('puppeteer');
         document.getElementById('traceDo').click();undo();
         check(objects.length===1&&objects[0].type==='image','Undo restores image without duplicate trace');
       }
+      // Grouped traces must use curve hit testing without walking path lengths.
+      clearAll();
+      const makePath=d=>{const el=document.createElementNS(SVG_NS,'path');el.setAttribute('d',d);return el;};
+      const ring=makePath('M 10 10 H 90 V 90 H 10 Z M 30 30 H 70 V 70 H 30 Z');
+      const other=makePath('M 110 10 C 120 80 180 80 190 10');
+      const ids=[addObject('traced',ring,{}),addObject('traced',other,{})];
+      selectedIds=ids;groupSelected();
+      let samples=0;
+      for(const el of [ring,other])el.getPointAtLength=()=>{samples++;throw Error('Unexpected path sampling');};
+      const group=objects[0];
+      check(objectMoveHit(group,{x:10,y:50},0.5),'Grouped trace outer edge');
+      check(objectMoveHit(group,{x:30,y:50},0.5),'Grouped trace hole edge');
+      check(!objectMoveHit(group,{x:50,y:50},0.5),'Do not select empty hole');
+      check(!objectMoveHit(group,{x:100,y:100},0.5),'Do not bridge separate subpaths');
+      check(!objectMoveHit(group,{x:250,y:250},0.5),'Reject distant group');
+      group.el.setAttribute('transform','translate(20 15)');
+      check(objectMoveHit(group,{x:30,y:65},0.5),'Hit testing follows group transform');
+      check(!objectMoveHit(group,{x:10,y:50},0.5),'Old location stops hitting');
+      ring.setAttribute('d','M 0 0 H 5 V 5 Z');
+      check(!objectMoveHit(group,{x:30,y:65},0.5),'Hit cache follows path edits');
+      check(samples===0,'Grouped traces must not sample SVG path lengths');
+      results.push({groupedTraceHitTest:'passed',pathLengthSamples:samples});
       return results;
     });
     assert.deepEqual(errors,[]);console.log(JSON.stringify(results,null,2));
