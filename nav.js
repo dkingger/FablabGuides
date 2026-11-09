@@ -7,13 +7,13 @@
     var isEn = lang === 'en';
 
     var links = isEn ? [
-        { href: 'index.html#guides', key: 'guides',    text: 'Guides' },
+        { href: 'guides.html', key: 'guides',    text: 'Guides' },
         { href: 'maskiner.html',     key: 'maskiner',   text: 'Machines' },
         { href: 'materialer.html',   key: 'materialer', text: 'Materials' },
         { href: 'moving-head.html',   key: 'moving-head', text: 'The Heads' },
         { href: '../index.html',     key: 'lang',       text: 'Dansk' }
     ] : [
-        { href: 'index.html#guides', key: 'guides',    text: 'Guides' },
+        { href: 'guides.html', key: 'guides',    text: 'Guides' },
         { href: 'maskiner.html',     key: 'maskiner',   text: 'Maskiner' },
         { href: 'materialer.html',   key: 'materialer', text: 'Materialer' },
         { href: 'moving-head.html',   key: 'moving-head', text: 'The Heads' },
