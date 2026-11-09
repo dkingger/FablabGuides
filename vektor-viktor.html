@@ -60,6 +60,7 @@ header .hint{font-size:.72rem;color:var(--text-dim);margin-left:auto;white-space
 .handle-box{fill:var(--accent);stroke:#fff;stroke-width:1.5;pointer-events:all}
 .canvas-wrap.select-mode{cursor:default}
 .props{width:270px;background:var(--panel);border-left:1px solid var(--border);padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.object-properties-title{font-size:.72rem;font-weight:800;margin:0 0 10px}
 .props h2{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);font-weight:600}
 .prop-group{background:var(--panel2);border-radius:8px;padding:10px;border:1px solid var(--border)}
 .prop-group label{display:block;font-size:.7rem;font-weight:500;color:var(--text-dim);margin-bottom:4px}
@@ -360,7 +361,7 @@ body.mini-mode .mini-toggle:hover{background:#e9eef2!important;color:#17212b!imp
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> <span id="appTitleName">Vektor-Viktor</span> <span class="version-badge">v2.04</span></h1>
+  <h1><span class="logo">V</span> <span id="appTitleName">Vektor-Viktor</span> <span class="version-badge">v2.05</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
@@ -435,29 +436,11 @@ body.mini-mode .mini-toggle:hover{background:#e9eef2!important;color:#17212b!imp
 
   <div class="props">
     <h2>Egenskaber</h2>
-    <div class="prop-group" id="laserModePanel">
-      <label>Laser-tilstand</label>
-      <div class="mode-row">
-        <button class="mode-btn cut active" data-mode="cut" title="Skær – rød linje"><div class="swatch"></div>Skær</button>
-        <button class="mode-btn green" data-mode="green" title="Tegn – grøn linje"><div class="swatch"></div>Tegn</button>
-        <button class="mode-btn engrave" data-mode="engrave" title="Graver – sort fyld"><div class="swatch"></div>Graver</button>
-      </div>
-    </div>
-    <div class="prop-group hidden" id="scanColorPanel">
-      <label>Foliefarve / klistermærke</label>
-      <div class="scan-color-row">
-        <input type="color" id="scanFillColor" value="#ff5a5f" title="Vælg farve">
-        <span id="scanFillHex">#FF5A5F</span>
-      </div>
-      <div class="scan-color-actions">
-        <button type="button" class="btn btn-secondary" id="btnClearScanFill">Ingen udfyldning</button>
-      </div>
-      <p class="scan-color-help">Farven er kun en forhåndsvisning på Scan N Cut-måtten. FCM-filen gemmes stadig som rene skærelinjer.</p>
-    </div>
     <div class="prop-group" id="noSelection">
       <p style="color:var(--text-dim);font-size:.8rem;line-height:1.45">Vælg et objekt for egenskaber.<br><br>Træk en kasse eller hold <b style="color:var(--text)">Shift</b> for flere. Brug Justering og Boolske operationer når 2+ er valgt.</p>
     </div>
     <div class="prop-group hidden" id="selectionProps">
+      <h3 class="object-properties-title">Objekt-egenskaber</h3>
       <label>Type</label>
       <div id="objType" style="font-weight:600;font-size:.9rem;margin-bottom:8px">–</div>
       <label>Størrelse (B × H mm)</label>
@@ -506,6 +489,25 @@ body.mini-mode .mini-toggle:hover{background:#e9eef2!important;color:#17212b!imp
         <button class="btn btn-trace" id="btnTraceImage">Spor til vektor</button>
         <p style="font-size:.7rem;color:var(--text-dim);margin-top:5px">Laver outline og sletter billedet.</p>
       </div>
+    </div>
+    <div class="prop-group" id="laserModePanel">
+      <label>Laser-tilstand</label>
+      <div class="mode-row">
+        <button class="mode-btn cut active" data-mode="cut" title="Skær – rød linje"><div class="swatch"></div>Skær</button>
+        <button class="mode-btn green" data-mode="green" title="Tegn – grøn linje"><div class="swatch"></div>Tegn</button>
+        <button class="mode-btn engrave" data-mode="engrave" title="Graver – sort fyld"><div class="swatch"></div>Graver</button>
+      </div>
+    </div>
+    <div class="prop-group hidden" id="scanColorPanel">
+      <label>Foliefarve / klistermærke</label>
+      <div class="scan-color-row">
+        <input type="color" id="scanFillColor" value="#ff5a5f" title="Vælg farve">
+        <span id="scanFillHex">#FF5A5F</span>
+      </div>
+      <div class="scan-color-actions">
+        <button type="button" class="btn btn-secondary" id="btnClearScanFill">Ingen udfyldning</button>
+      </div>
+      <p class="scan-color-help">Farven er kun en forhåndsvisning på Scan N Cut-måtten. FCM-filen gemmes stadig som rene skærelinjer.</p>
     </div>
     <div class="prop-group hidden" id="transformProps">
       <label>Transformér</label>
@@ -2585,7 +2587,9 @@ function pathNearPoint(el,pt,tol){
 function geometryNearPoint(el,pt,tol){
   if(!el||el.nodeType!==1)return false;
   const tag=(el.tagName||'').toLowerCase();
-  if(tag==='image'||tag==='text'){
+  // Grouping preserves each traced leaf's type. Keep the same easy grab area
+  // as an ungrouped trace rather than requiring a click on its thin contour.
+  if(tag==='image'||tag==='text'||el.getAttribute('data-vv-type')==='traced'){
     try{
       const objLike={el,type:tag};
       return bboxContainsPoint(getWorldBBox(objLike),pt,0);
@@ -8079,7 +8083,7 @@ function serializeEditableProject(){
   return {
     format:'Vektor-Viktor Project',
     formatVersion:1,
-    appVersion:'2.04',
+    appVersion:'2.05',
     savedAt:new Date().toISOString(),
     projectName:(document.getElementById('projectName')?.value||'Mit projekt').trim()||'Mit projekt',
     pageSize,
@@ -8240,7 +8244,7 @@ function initRightPanelAccordions(){
   }
 
   Array.from(panel.children).forEach(group=>{
-    if(!group.classList||!group.classList.contains('prop-group')||group.id==='noSelection')return;
+    if(!group.classList||!group.classList.contains('prop-group')||group.id==='noSelection'||group.id==='selectionProps')return;
     const firstLabel=Array.from(group.children).find(el=>el.tagName&&el.tagName.toLowerCase()==='label');
     if(!firstLabel)return;
     const title=titleById[group.id] || (firstLabel.textContent||'Menu').trim() || 'Menu';

@@ -11,7 +11,7 @@ const base = process.argv[2] || 'http://127.0.0.1:8765';
     page.on('pageerror', e => errors.push(e.message));
     await page.setViewport({width:1440,height:1000});
     await page.goto(`${base}/vektor-viktor.html`);
-    assert.equal(await page.$eval('.version-badge', e => e.textContent), 'v2.03');
+    assert.equal(await page.$eval('.version-badge', e => e.textContent), 'v2.05');
     const result = await page.evaluate(async () => {
       const check = (ok, message) => { if (!ok) throw new Error(message); };
       const tick = () => new Promise(r => setTimeout(r, 30));
