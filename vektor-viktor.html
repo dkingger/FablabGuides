@@ -361,7 +361,7 @@ body.mini-mode .mini-toggle:hover{background:#e9eef2!important;color:#17212b!imp
   <a href="https://www.fablabguides.dk/" class="header-btn back-btn" title="Tilbage til FabLab Guides" aria-label="Tilbage til FabLab Guides">
     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
-  <h1><span class="logo">V</span> <span id="appTitleName">Vektor-Viktor</span> <span class="version-badge">v2.05</span></h1>
+  <h1><span class="logo">V</span> <span id="appTitleName">Vektor-Viktor</span> <span class="version-badge">v2.06</span></h1>
   <div class="project-name-wrap">
     <label for="projectName">Projekt</label>
     <input type="text" id="projectName" value="Mit projekt" placeholder="Projektnavn" spellcheck="false" autocomplete="off">
@@ -507,7 +507,7 @@ body.mini-mode .mini-toggle:hover{background:#e9eef2!important;color:#17212b!imp
       <div class="scan-color-actions">
         <button type="button" class="btn btn-secondary" id="btnClearScanFill">Ingen udfyldning</button>
       </div>
-      <p class="scan-color-help">Farven er kun en forhåndsvisning på Scan N Cut-måtten. FCM-filen gemmes stadig som rene skærelinjer.</p>
+      <p class="scan-color-help"><strong>Dobbeltklik på en figur</strong> for at give den den valgte foliefarve. Enkeltklik markerer og flytter uden at ændre farven. FCM-filen gemmes stadig som rene skærelinjer.</p>
     </div>
     <div class="prop-group hidden" id="transformProps">
       <label>Transformér</label>
@@ -645,9 +645,9 @@ body.mini-mode .mini-toggle:hover{background:#e9eef2!important;color:#17212b!imp
     <p>Juster tærsklen så de mørke dele bliver sorte i forhåndsvisningen. Tryk derefter «Spor nu».</p>
     <div class="preview-box" id="tracePreview"><span style="color:#666">Indlæser…</span></div>
     <div class="slider-row"><label>Tærskel</label><input type="range" id="traceThreshold" min="0" max="255" value="128"><span id="threshVal">128</span></div>
-    <div class="slider-row"><label>Detaljer</label><input type="range" id="traceDetail" min="0" max="100" value="90"><span id="detailVal">90</span></div>
+    <div class="slider-row"><label>Detaljer</label><input type="range" id="traceDetail" min="0" max="100" value="75"><span id="detailVal">75</span></div>
     <div class="slider-row"><label>Udglatning</label><input type="range" id="traceSmooth" min="0" max="100" value="12"><span id="smoothVal">12</span></div>
-    <p style="font-size:.7rem;margin-top:-2px;margin-bottom:8px">Høj detalje bevarer små former. Lav udglatning giver den mest præcise kant.</p>
+    <p style="font-size:.7rem;margin-top:-2px;margin-bottom:8px">Normal detalje er hurtigere og fjerner støjprikker. Høj detalje bevarer flere små former og kan kræve mere af computeren.</p>
     <div class="modal-actions">
       <button class="btn btn-secondary" id="traceCancel">Annuller</button>
       <button class="btn btn-primary" id="traceDo">Spor nu</button>
@@ -781,7 +781,7 @@ const svg=document.getElementById('drawSvg');
 const objectsG=document.getElementById('objects');
 const tempG=document.getElementById('temp');
 const handlesG=document.getElementById('handles');
-let tool='select', objects=[], selectedIds=[], isDrawing=false, startPt=null, currentPath=null, penPoints=[], dragOffset=null, resizeState=null, rotateState=null, marqueeState=null, nextId=1, traceSourceId=null, traceImageData=null, currentMode='cut', undoStack=[];
+let tool='select', objects=[], selectedIds=[], isDrawing=false, startPt=null, currentPath=null, penPoints=[], dragOffset=null, resizeState=null, rotateState=null, marqueeState=null, nextId=1, traceSourceId=null, traceImageData=null, tracePreviewImageData=null, currentMode='cut', undoStack=[];
 let panState=null;
 let regularPolySides = 3; // for ngon tool (min 3)
 
@@ -2123,7 +2123,7 @@ function createSimpleShape(){
   pushUndo();
   const id=addObject('path',path,{mode:isScanNCutPageSize()?'cut':currentMode,generatedShape:shapeGenChoice,shapeName:simpleShapeNames[shapeGenChoice]},true);
   selectedIds=[id];
-  if(isScanNCutPageSize())autoApplyCurrentScanFillToSelection();
+  // Nye figurer får først en foliefarve, når de dobbeltklikkes.
   refreshUI();updateCount();markProjectDirty();
   setShapeGenOpen(false);
   document.querySelector('[data-tool="select"]')?.click();
@@ -2223,52 +2223,47 @@ document.getElementById('scanFillColor')?.addEventListener('input',e=>{
   if(hex)hex.textContent=color.toUpperCase();
 });
 document.getElementById('scanFillColor')?.addEventListener('change',e=>{
-  applySelectedScanFill(e.target.value);
-  markProjectDirty();
+  currentScanFillColor=normalizeHexColor(e.target.value);
+  updateScanColorControls();
+  // Farven anvendes først ved dobbeltklik på figuren (ikke ved markering eller flytning).
 });
 document.getElementById('btnClearScanFill')?.addEventListener('click',()=>{
   applySelectedScanFill(null);
   markProjectDirty();
 });
 
-function autoApplyCurrentScanFillToSelection(){
-  if(!isScanNCutPageSize() || !selectedIds.length)return;
-  const c=normalizeHexColor(currentScanFillColor);
-  let changed=false;
-  selectedIds.forEach(id=>{
-    const obj=objects.find(o=>o.id===id);
-    if(!obj)return;
-    obj.data=obj.data||{};
-    if(obj.data.scanFillColor!==c){
-      obj.data.scanFillColor=c;
-      changed=true;
-    }
-    applyModeRecursive(obj,'cut');
-    applyScanPreviewFill(obj);
-  });
-  if(changed)markProjectDirty();
+function colorScanObjectOnDoubleClick(obj){
+  if(!isScanNCutPageSize() || !obj)return;
+  const color=normalizeHexColor(currentScanFillColor);
+  if(obj.data?.scanFillColor===color)return;
+  pushUndo();
+  obj.data=obj.data||{};
+  obj.data.scanFillColor=color;
+  // Klargør sort skærekontur, og vis herefter den valgte foliefarve.
+  applyModeRecursive(obj,'cut');
+  applyScanPreviewFill(obj);
+  markProjectDirty();
+  setStatus('Foliefarve anvendt: '+color.toUpperCase());
+  refreshUI();
 }
-function selectOnly(id){selectedIds=[id];autoApplyCurrentScanFillToSelection();refreshUI()}
-function toggleSelect(id){const i=selectedIds.indexOf(id);if(i>=0)selectedIds.splice(i,1);else selectedIds.push(id);autoApplyCurrentScanFillToSelection();refreshUI()}
+function selectOnly(id){selectedIds=[id];refreshUI()}
+function toggleSelect(id){const i=selectedIds.indexOf(id);if(i>=0)selectedIds.splice(i,1);else selectedIds.push(id);refreshUI()}
 function deselectAll(){selectedIds=[];refreshUI()}
 function objectCanUngroup(obj){
   if(!obj)return false;
   if(obj.type==='group')return true;
   if(obj.type==='path' || obj.type==='traced'){
-    try{
-      const d=obj.el?.getAttribute('d')||'';
-      if(!d)return false;
-      const pts=parsePathNodes(d);
-      const subs=new Set();
-      pts.forEach(p=>subs.add(Number.isInteger(p.subpath)?p.subpath:0));
-      return subs.size>1;
-    }catch(_){ return false; }
+    // En ny delsti kræver altid en M/m-kommando. Undgå at parse tusinder af
+    // noder ved HVER refresh/musebevægelse på et sporet billede.
+    const d=obj.el?.getAttribute('d')||'';
+    const start=d.search(/[Mm]/);
+    return start>=0 && /[Mm]/.test(d.slice(start+1));
   }
   return false;
 }
 function refreshUI(){
   clearOffsetPreview();
-  objects.forEach(o=>{o.el.style.filter='';});
+  objects.forEach(o=>{if(o.el.style.filter)o.el.style.filter='';});
   handlesG.innerHTML='';
   selectedIds.forEach(id=>{const o=objects.find(x=>x.id===id);if(o)drawHandle(o)});
   if(tool==='node'&&nodeEdit){
@@ -2892,7 +2887,7 @@ function undo(){
   updateCount();
 }
 
-function addObject(type,el,data,skipUndo){
+function addObject(type,el,data,skipUndo,skipCount){
   if(!skipUndo)pushUndo();
   const id=uid();el.dataset.id=id;
   el.style.pointerEvents='all';
@@ -2911,7 +2906,8 @@ function addObject(type,el,data,skipUndo){
     applyScanPreviewFill(record);
   }
   if(!skipUndo) selectOnly(id);
-  updateCount();return id;
+  if(!skipCount)updateCount();
+  return id;
 }
 
 function deleteSelected(){if(!selectedIds.length)return;pushUndo();selectedIds.forEach(id=>{const i=objects.findIndex(o=>o.id===id);if(i>=0){objects[i].el.remove();objects.splice(i,1)}});deselectAll();updateCount()}
@@ -4372,6 +4368,26 @@ function onUp(e){
 }
 
 function onDbl(e){
+  if(isScanNCutPageSize() && tool==='select'){
+    const pt=svgPtRaw(e);
+    // Brug det faktisk klikkede SVG-element først: så virker det også inde i
+    // en stor SVG, selv om normal flytning kræver, at man griber dens kant.
+    const ownerNode=e.target.closest?.('[data-id]');
+    let obj=ownerNode?objects.find(o=>o.id===ownerNode.getAttribute('data-id')):null;
+    if(!obj)obj=findTopmostObjectAtPoint(pt);
+    // En allerede markeret omridsfigur kan desuden farves inde i sin ramme.
+    if(!obj && selectedIds.length===1){
+      const selected=objects.find(o=>o.id===selectedIds[0]);
+      if(selected && bboxContainsPoint(getWorldBBox(selected),pt,0))obj=selected;
+    }
+    if(obj){
+      e.preventDefault();
+      e.stopPropagation();
+      // Dobbeltklik farver kun den figur, man faktisk klikkede på.
+      colorScanObjectOnDoubleClick(obj);
+    }
+    return;
+  }
   if(tool==='bezier'&&bezierAnchors.length>=2){finishBezier();return}
   if(tool==='pen'&&penPoints.length>1){finishPen();return}
   if(tool==='polygon'&&penPoints.length>2){finishPoly();return}
@@ -5560,20 +5576,15 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       if (!href) { alert('Kunne ikke læse billedet.'); return; }
       const img = new Image();
       img.onload = () => {
-        // High-resolution trace buffer. More source pixels preserve small details.
-        const maxSide = 3000;
-        const maxPixels = 5000000;
-        let w = img.width, h = img.height;
-        let scale = Math.min(1, maxSide / Math.max(w, h), Math.sqrt(maxPixels / Math.max(1, w * h)));
-        w = Math.max(2, Math.round(w * scale));
-        h = Math.max(2, Math.round(h * scale));
-        // Small source images benefit from a larger working grid without inventing detail.
-        const targetLongSide = 1400;
-        if (Math.max(w, h) < targetLongSide) {
-          const up = Math.min(4, targetLongSide / Math.max(w, h), Math.sqrt(maxPixels / Math.max(1, w * h)));
-          w = Math.max(2, Math.round(w * up));
-          h = Math.max(2, Math.round(h * up));
-        }
+        // Performance: spor på billedets REELLE opløsning, aldrig 4x opskaleret.
+        // Opskalering skabte store mængder kunstige vektorpunkter og kunne låse
+        // browseren, selv når kildebilledet var lille.
+        const maxSide = 1600;
+        const maxPixels = 1400000;
+        const scale = Math.min(1, maxSide / Math.max(img.width, img.height),
+                                  Math.sqrt(maxPixels / Math.max(1, img.width * img.height)));
+        const w = Math.max(2, Math.round(img.width * scale));
+        const h = Math.max(2, Math.round(img.height * scale));
         const c = document.createElement('canvas');
         c.width = w; c.height = h;
         const ctx = c.getContext('2d');
@@ -5583,6 +5594,15 @@ document.getElementById('imageFile').addEventListener('change',e=>{
         ctx.fillRect(0, 0, w, h);
         ctx.drawImage(img, 0, 0, w, h);
         traceImageData = ctx.getImageData(0, 0, w, h);
+        // Separat lille forhåndsvisning: tærskel-slideren skal ikke behandle
+        // millioner af pixels, hver gang eleven trækker i den.
+        const pvScale=Math.min(1,650/Math.max(w,h));
+        const pc=document.createElement('canvas');
+        pc.width=Math.max(2,Math.round(w*pvScale));
+        pc.height=Math.max(2,Math.round(h*pvScale));
+        const pctx=pc.getContext('2d',{willReadFrequently:true});
+        pctx.drawImage(c,0,0,pc.width,pc.height);
+        tracePreviewImageData=pctx.getImageData(0,0,pc.width,pc.height);
         document.getElementById('traceModal').classList.add('show');
         updateTracePreview();
       };
@@ -5595,6 +5615,7 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       document.getElementById('traceModal').classList.remove('show');
       traceSourceId = null;
       traceImageData = null;
+      tracePreviewImageData = null;
     };
 
     document.getElementById('traceThreshold').oninput = e => {
@@ -5609,14 +5630,15 @@ document.getElementById('imageFile').addEventListener('change',e=>{
     };
 
     function updateTracePreview() {
-      if (!traceImageData) return;
+      const source=tracePreviewImageData||traceImageData;
+      if (!source) return;
       const thresh = parseInt(document.getElementById('traceThreshold').value, 10);
-      const w = traceImageData.width, h = traceImageData.height;
+      const w = source.width, h = source.height;
       const c = document.createElement('canvas');
       c.width = w; c.height = h;
       const ctx = c.getContext('2d');
       const out = ctx.createImageData(w, h);
-      const d = traceImageData.data;
+      const d = source.data;
       for (let i = 0; i < d.length; i += 4) {
         const gray = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
         const v = gray < thresh ? 0 : 255;
@@ -5658,42 +5680,77 @@ document.getElementById('imageFile').addEventListener('change',e=>{
 
       contours.sort((a, b) => Math.abs(contourArea(b)) - Math.abs(contourArea(a)));
 
-      // Detail controls simplification and removal of tiny speckles.
-      const simplifyPx = 0.12 + Math.pow((100 - detail) / 100, 1.7) * 2.4;
-      const minAreaPx = 0.35 + Math.pow((100 - detail) / 100, 2) * 20;
+      // Detail styrer både støjfiltrering og knudepunkter. Enkeltpixel-støj
+      // skaber ellers tusinder af selvstændige SVG-elementer.
+      const simplifyPx = 0.18 + Math.pow((100 - detail) / 100, 1.7) * 2.4;
+      const minAreaPx = 1.3 + Math.pow((100 - detail) / 100, 2) * 55;
+      const MAX_TRACE_CONTOURS = 1200;
+      const MAX_TRACE_OBJECTS = 420;
+      const MAX_TOTAL_PATH_POINTS = 48000;
 
       // IMPORTANT: A white area inside a dark silhouette (eyes, mouth, letters etc.)
       // is returned by marching-squares as its own closed contour. If every contour
       // is exported as an independent filled path, the hole is filled black again.
       // Build a nesting tree and keep each dark outer contour together with its
       // immediate white child contours in ONE compound path using evenodd fill.
-      const traceItems = contours
-        .map((pts, index) => ({ pts, index, absArea: Math.abs(contourArea(pts)), parent: -1, depth: 0, simplified: null }))
+      let traceItems = contours
+        .map((pts, index) => {
+          let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
+          for(const p of pts){
+            if(p.x<minX)minX=p.x;if(p.y<minY)minY=p.y;
+            if(p.x>maxX)maxX=p.x;if(p.y>maxY)maxY=p.y;
+          }
+          return {pts,index,absArea:Math.abs(contourArea(pts)),
+                  minX,minY,maxX,maxY,parent:-1,depth:0,simplified:null};
+        })
         .filter(it => it.pts.length >= 4 && it.absArea >= minAreaPx);
 
+      // Beskyt UI mod 10.000 støjkonturer uden at fjerne de store figurer.
+      const tooManyContours=traceItems.length>MAX_TRACE_CONTOURS;
+      if(tooManyContours)traceItems=traceItems.slice(0,MAX_TRACE_CONTOURS);
+      const maxPointsPerContour=Math.max(36,Math.min(2200,
+        Math.floor(MAX_TOTAL_PATH_POINTS/Math.max(1,traceItems.length))));
       traceItems.forEach(it => {
-        let simplified = simplifyClosedContour(it.pts, simplifyPx);
-        if (simplified.length < 3) simplified = it.pts;
-        it.simplified = simplified;
+        let eps=simplifyPx;
+        let simplified=simplifyClosedContour(it.pts,eps);
+        for(let tries=0;tries<6&&simplified.length>maxPointsPerContour;tries++){
+          eps=Math.max(0.5,eps*1.75);
+          simplified=simplifyClosedContour(it.pts,eps);
+        }
+        // I ekstreme tilfælde nedbringes antallet af punkter skånsomt.
+        if(simplified.length>maxPointsPerContour){
+          const step=Math.ceil(simplified.length/maxPointsPerContour);
+          simplified=simplified.filter((_,i)=>i%step===0);
+        }
+        it.simplified=simplified.length>=3?simplified:it.pts.slice(0,3);
       });
 
-      // Find the smallest larger contour that contains this contour.
-      // That becomes its direct parent in the contour tree.
-      for (let i = 0; i < traceItems.length; i++) {
-        const child = traceItems[i];
-        const probe = child.pts[0];
-        let best = -1, bestArea = Infinity;
-        for (let j = 0; j < traceItems.length; j++) {
-          if (i === j) continue;
-          const candidate = traceItems[j];
-          if (candidate.absArea <= child.absArea) continue;
-          if (candidate.absArea >= bestArea) continue;
-          if (pointInContour(probe, candidate.pts)) {
-            best = j;
-            bestArea = candidate.absArea;
+      // Hurtig konturtræ-opbygning: søg kun blandt større konturer, hvis
+      // bounding box dækker samme lille rude som barnets prøvepunkt.
+      // Før blev ALLE konturer sammenlignet med ALLE andre (O(n²)).
+      const cell=48;
+      const candidateGrid=new Map();
+      const gridKey=(x,y)=>x+','+y;
+      for(let i=0;i<traceItems.length;i++){
+        const child=traceItems[i],probe=child.pts[0];
+        const key=gridKey(Math.floor(probe.x/cell),Math.floor(probe.y/cell));
+        const candidates=candidateGrid.get(key)||[];
+        for(let k=candidates.length-1;k>=0;k--){
+          const j=candidates[k],candidate=traceItems[j];
+          if(probe.x<candidate.minX||probe.x>candidate.maxX||
+             probe.y<candidate.minY||probe.y>candidate.maxY)continue;
+          if(pointInContour(probe,candidate.pts)){
+            child.parent=j;
+            break; // sidst tilføjet kandidat er den mindste (nærmeste) større
           }
         }
-        child.parent = best;
+        const x0=Math.floor(child.minX/cell),x1=Math.floor(child.maxX/cell);
+        const y0=Math.floor(child.minY/cell),y1=Math.floor(child.maxY/cell);
+        for(let cy=y0;cy<=y1;cy++)for(let cx=x0;cx<=x1;cx++){
+          const ck=gridKey(cx,cy);
+          if(!candidateGrid.has(ck))candidateGrid.set(ck,[]);
+          candidateGrid.get(ck).push(i);
+        }
       }
 
       const getTraceDepth = i => {
@@ -5706,31 +5763,38 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       };
       traceItems.forEach((it, i) => { it.depth = getTraceDepth(i); });
 
-      let added = 0;
-      traceItems.forEach((outer, i) => {
-        // Even depths are dark regions. Odd depths are holes and are attached to
-        // their direct dark parent instead of becoming filled objects themselves.
-        if (outer.depth % 2 !== 0 || !outer.simplified || outer.simplified.length < 3) return;
-
-        const parts = [preciseClosedPathD(outer.simplified, scaleX, scaleY, ox, oy, smooth)];
-        traceItems.forEach((hole, j) => {
-          if (hole.parent === i && hole.depth === outer.depth + 1 && hole.depth % 2 === 1 && hole.simplified && hole.simplified.length >= 3) {
-            parts.push(preciseClosedPathD(hole.simplified, scaleX, scaleY, ox, oy, smooth));
+      const childrenByParent=new Map();
+      traceItems.forEach((it,index)=>{
+        if(it.parent<0)return;
+        if(!childrenByParent.has(it.parent))childrenByParent.set(it.parent,[]);
+        childrenByParent.get(it.parent).push(index);
+      });
+      // Kun et begrænset antal separate SVG-objekter oprettes. De øvrige er
+      // typisk støj, men de største former prioriteres og huller bevares.
+      const outerIds=traceItems.map((it,i)=>it.depth%2===0?i:-1).filter(i=>i>=0);
+      const tooManyObjects=outerIds.length>MAX_TRACE_OBJECTS;
+      const chosenOuter=outerIds.slice(0,MAX_TRACE_OBJECTS);
+      if(chosenOuter.length)pushUndo(); // Undo skal genskabe originalbilledet.
+      let added=0;
+      chosenOuter.forEach(i => {
+        const outer=traceItems[i];
+        if(!outer.simplified||outer.simplified.length<3)return;
+        const parts=[preciseClosedPathD(outer.simplified,scaleX,scaleY,ox,oy,smooth)];
+        (childrenByParent.get(i)||[]).forEach(j=>{
+          const hole=traceItems[j];
+          if(hole.depth%2===1 && hole.simplified && hole.simplified.length>=3){
+            parts.push(preciseClosedPathD(hole.simplified,scaleX,scaleY,ox,oy,smooth));
           }
         });
-
-        const path = document.createElementNS(SVG_NS, 'path');
-        path.setAttribute('d', parts.join(' '));
-        path.setAttribute('fill-rule', 'evenodd');
-        path.setAttribute('clip-rule', 'evenodd');
-        applyMode(path, currentMode);
-        addObject('traced', path, { mode: currentMode }, true);
+        const path=document.createElementNS(SVG_NS,'path');
+        path.setAttribute('d',parts.join(' '));
+        path.setAttribute('fill-rule','evenodd');
+        path.setAttribute('clip-rule','evenodd');
+        applyMode(path,currentMode);
+        addObject('traced',path,{mode:currentMode},true,true); // Batch: opdatér IKKE laglisten for hver kontur.
         added++;
       });
-
-
-      pushUndo();
-      const idx = objects.findIndex(o => o.id === traceSourceId);
+      const idx = chosenOuter.length?objects.findIndex(o => o.id === traceSourceId):-1;
       if (idx >= 0) {
         objects[idx].el.remove();
         objects.splice(idx, 1);
@@ -5739,9 +5803,13 @@ document.getElementById('imageFile').addEventListener('change',e=>{
       document.getElementById('traceModal').classList.remove('show');
       traceSourceId = null;
       traceImageData = null;
+      tracePreviewImageData = null;
       document.querySelector('[data-tool="select"]').click();
       updateCount();
       if (!added) alert('Konturer blev filtreret væk. Prøv en anden tærskel.');
+      else if(tooManyContours||tooManyObjects){
+        alert('Billedet indeholdt meget mange separate små former. De mindste detaljer blev frasorteret for at undgå at programmet går i stå. Prøv at sætte Detaljer lavere eller brug et renere billede, hvis du vil have et mere samlet motiv.');
+      }
     };
 
     // High-fidelity image tracer. The legacy findContours() remains in use by
@@ -8083,7 +8151,7 @@ function serializeEditableProject(){
   return {
     format:'Vektor-Viktor Project',
     formatVersion:1,
-    appVersion:'2.05',
+    appVersion:'2.06',
     savedAt:new Date().toISOString(),
     projectName:(document.getElementById('projectName')?.value||'Mit projekt').trim()||'Mit projekt',
     pageSize,
