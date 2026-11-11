@@ -1259,7 +1259,7 @@ function updateZoomLabel(){
 function zoomAt(clientX, clientY, factor){
   const wrap = document.querySelector('.canvas-wrap');
   let next = zoomLevel * factor;
-  next = Math.max(0.25, Math.min(4, next));
+  next = Math.max(0.25, Math.min(8, next));
   if(Math.abs(next - zoomLevel) < 0.001) return;
 
   if(!wrap){
@@ -1298,6 +1298,12 @@ function zoomBy(factor){
   const rect = svg.getBoundingClientRect();
   zoomAt(rect.left + rect.width/2, rect.top + rect.height/2, factor);
 }
+function zoomStep(direction, clientX, clientY){
+  const next = Math.max(0.25, Math.min(8, zoomLevel + direction * 0.25));
+  const factor = next / zoomLevel;
+  if(clientX === undefined) zoomBy(factor);
+  else zoomAt(clientX, clientY, factor);
+}
 function zoomReset(){
   zoomLevel = 1;
   svg.setAttribute('viewBox', '0 0 '+BASE_VB.w+' '+BASE_VB.h);
@@ -1309,8 +1315,8 @@ function zoomReset(){
 const canvasWrap=document.querySelector('.canvas-wrap');
 canvasWrap?.addEventListener('wheel', function(e){
   e.preventDefault();
-  const factor = e.deltaY > 0 ? (1/1.12) : 1.12;
-  zoomAt(e.clientX, e.clientY, factor);
+  if(e.deltaY === 0) return;
+  zoomStep(e.deltaY > 0 ? -1 : 1, e.clientX, e.clientY);
 }, { passive:false });
 
 // Hold rullehjulet nede og træk for at panorere arbejdsområdet.
@@ -1333,8 +1339,8 @@ document.addEventListener('mouseup', function(e){
   if(canvasWrap) canvasWrap.style.cursor='';
 }, true);
 
-document.getElementById('btnZoomIn')?.addEventListener('click', () => zoomBy(1.25));
-document.getElementById('btnZoomOut')?.addEventListener('click', () => zoomBy(1/1.25));
+document.getElementById('btnZoomIn')?.addEventListener('click', () => zoomStep(1));
+document.getElementById('btnZoomOut')?.addEventListener('click', () => zoomStep(-1));
 const customPageModal=document.getElementById('customPageModal');
 function setCustomPageModalOpen(open){
   if(!customPageModal)return;
